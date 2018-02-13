@@ -29,6 +29,21 @@ end
 bot.poll
 ```
 
+## Development
+
+This currently supports the following features
+
+- [x] Easy Command Syntax
+- [x] Standard API queries
+- [x] Stickers
+- [x] Inline Mode
+- [ ] Payments
+- [ ] Games
+- [x] Long Polling
+- [ ] Webhooks
+
+If you want a new feature feel free to submit an issue or open a pull request.
+
 ## Contributing
 
 1. Fork it ( https://github.com/watzon/tourmaline/fork )

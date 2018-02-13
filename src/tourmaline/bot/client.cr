@@ -30,6 +30,50 @@ module Tourmaline::Bot
 
   end
 
+  enum UpdateAction
+
+    Message
+    EditedMessage
+    CallbackQuery
+    InlineQuery
+    ShippingQuery
+    PreCheckoutQuery
+    ChosenInlineResult
+    ChannelPost
+    EditedChannelPost
+
+    Text
+    Audio
+    Document
+    Photo
+    Sticker
+    Video
+    Voice
+    Contact
+    Location
+    Venue
+    NewChatMembers
+    LeftChatMember
+    NewChatTitle
+    NewChatPhoto
+    DeleteChatPhoto
+    GroupChatCreated
+    MigrateToChatId
+    SupergroupChatCreated
+    ChannelChatCreated
+    MigrateFromChatId
+    PinnedMessage
+    Game
+    VideoNote
+    Invoice
+    SuccessfulPayment
+
+    def to_s
+      super.to_s.underscore
+    end
+
+  end
+
   class Client
 
     API_URL = "https://api.telegram.org/"
@@ -50,6 +94,8 @@ module Tourmaline::Bot
 
     @commands = {} of String => (Message ->) | (Message, Array(String) ->)
 
+    @event_handlers = {} of String => Update ->
+
     def initialize(
       @api_key : String,
       @updates_timeout : Int32? = nil,
@@ -61,14 +107,28 @@ module Tourmaline::Bot
       add_command_handler
     end
 
-    def command(name : String, &block : Message ->)
-      name = name[1..-1] if name[0] == "/"
-      @commands[name] = block
+    def command(names : String | Array(String), &block : Message ->)
+      if names.is_a?(Array)
+        names.each do |name|
+          name = name[1..-1] if name[0] == "/"
+          @commands[name] = block
+        end
+      else
+        names = names[1..-1] if names[0] == "/"
+        @commands[names] = block
+      end
     end
 
-    def command(name : String, &block : Message, Array(String) ->)
-      name = name[1..-1] if name[0] == "/"
-      @commands[name] = block
+    def command(names : String | Array(String), &block : Message, Array(String) ->)
+      if names.is_a?(Array)
+        names.each do |name|
+          name = name[1..-1] if name[0] == "/"
+          @commands[name] = block
+        end
+      else
+        names = names[1..-1] if names[0] == "/"
+        @commands[names] = block
+      end
     end
 
     def remove_command(name : String)
@@ -100,41 +160,14 @@ module Tourmaline::Bot
       admins.any? { |a| a.user.id = @bot_info.id }
     end
 
-    # handle messages
-    def handle(message : Message)
-      logger.warn "message handler is not implemented"
-    end
-
-    # handle edited messages
-    def handle_edited(message : Message)
-      logger.warn "edited message handler is not implemented"
-    end
-
-    def handle_channel_post(message : Message)
-      logger.warn "channel post handler is not implemented"
-    end
-
-    def handle_edited_channel_post(message : Message)
-      logger.warn "edited channel post handler is not implemented"
-    end
-
-    # handle inline query
-    def handle(inline_query : InlineQuery)
-      logger.warn "inline_query handler is not implemented"
-    end
-
-    # handle chosen inlien query
-    def handle(chosen_inline_result : ChosenInlineResult)
-      logger.warn "chosen_inline_result handler is not implemented"
-    end
-
-    # handle callback query
-    def handle(callback_query : CallbackQuery)
-      logger.warn "callback_query handler is not implemented"
+    def on(actions : UpdateAction | Array(UpdateAction), &block : Update ->)
+      actions = [ actions ] unless UpdateAction.is_a?(Array)
+      actions.as(Array(UpdateAction)).each do |action|
+        @event_handlers[action.to_s] = block
+      end
     end
 
     def poll
-
       @polling = true
 
       while @polling
@@ -153,30 +186,38 @@ module Tourmaline::Bot
       @polling = false
     end
 
-    def handle_update(u)
-      @middlewares.each { |m| m.call(u) }
+    def handle_update(update)
+      @middlewares.each { |m| m.call(update) }
 
-      if msg = u.message
-        handle msg
-      elsif query = u.inline_query
-        handle query
-      elsif chosen = u.chosen_inline_result
-        handle chosen
-      elsif callback_query = u.callback_query
-        handle callback_query
-      elsif message = u.edited_message
-        handle_edited message
-      elsif post = u.channel_post
-        handle_channel_post post
-      elsif post = u.edited_channel_post
-        handle_edited_channel_post post
+      case update
+      when .message
+        trigger(UpdateAction::Message, update)
+      when .edited_message
+        trigger(UpdateAction::EditedMessage, update)
+      when .channel_post
+        trigger(UpdateAction::ChannelPost, update)
+      when .edited_channel_post
+        trigger(UpdateAction::EditedChannelPost, update)
+      when .inline_query
+        trigger(UpdateAction::InlineQuery, update)
+      when .chosen_inline_result
+        trigger(UpdateAction::ChosenInlineResult, update)
+      when .callback_query
+        trigger(UpdateAction::CallbackQuery, update)
+      when .shipping_query
+        trigger(UpdateAction::ShippingQuery, update)
+      when .pre_checkout_query
+        trigger(UpdateAction::PreCheckoutQuery, update)
       end
     rescue ex
       logger.error("Update was not handled because: #{ex.message}")
     end
 
-    protected def logger : Logger
-      @logger ||= Logger.new(STDOUT).tap { |l| l.level = Logger::DEBUG }
+    def trigger(event : UpdateAction, update : Update)
+      if @event_handlers.has_key?(event.to_s)
+        proc = @event_handlers[event.to_s]
+        proc.call(update)
+      end
     end
 
     def get_me
@@ -235,7 +276,7 @@ module Tourmaline::Bot
 
       response = request("answerInlineQuery", {
         inline_query_id: inline_query_id,
-        results: results,
+        results: results.to_json,
         cache_time: cache_time,
         is_personal: is_personal,
         next_offset: next_offset,
@@ -274,7 +315,7 @@ module Tourmaline::Bot
         caption: caption,
         message_id: message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       response.is_a?(String) ?
@@ -296,7 +337,7 @@ module Tourmaline::Bot
         chat_id: chat_id,
         message_id: message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       response.is_a?(String) ?
@@ -330,7 +371,7 @@ module Tourmaline::Bot
         disable_web_page_preview: disable_link_preview,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -589,7 +630,7 @@ module Tourmaline::Bot
         title: title,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -623,7 +664,7 @@ module Tourmaline::Bot
         last_name: last_name,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -643,7 +684,7 @@ module Tourmaline::Bot
         caption: caption,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -665,7 +706,7 @@ module Tourmaline::Bot
         live_period: live_period,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -689,7 +730,7 @@ module Tourmaline::Bot
         disable_web_page_preview: disable_link_preview,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -709,7 +750,7 @@ module Tourmaline::Bot
         caption: caption,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -752,7 +793,7 @@ module Tourmaline::Bot
         foursquare_id: foursquare_id,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -778,7 +819,7 @@ module Tourmaline::Bot
         caption: caption,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -804,7 +845,7 @@ module Tourmaline::Bot
         caption: caption,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -828,7 +869,7 @@ module Tourmaline::Bot
         duration: duration,
         disable_notification: disable_notification,
         reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -852,7 +893,7 @@ module Tourmaline::Bot
         longitude: longitude,
         message_id: message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -872,7 +913,7 @@ module Tourmaline::Bot
         chat_id: chat_id,
         message_id: message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup
+        reply_markup: reply_markup ? reply_markup.to_json : nil
       })
 
       Message.from_json(response)
@@ -974,7 +1015,12 @@ module Tourmaline::Bot
         Halite.post(method_url, params: params)
 
       result = JSON.parse(response.body)
-      result["result"].to_json
+
+      if result = result["result"]?
+        return result.to_json
+      else
+        raise "Something went wrong: #{result}"
+      end
     end
 
     private def add_command_handler
@@ -1017,5 +1063,8 @@ module Tourmaline::Bot
       end
     end
 
+    protected def logger : Logger
+      @logger ||= Logger.new(STDOUT).tap { |l| l.level = Logger::DEBUG }
+    end
   end
 end
