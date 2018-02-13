@@ -2,8 +2,8 @@ require "logger"
 require "halite"
 
 require "./types"
-require "./command_handler"
-require "./middleware_handler"
+require "./fiber"
+require "./handlers/*"
 
 module Tourmaline::Bot
 
@@ -78,6 +78,7 @@ module Tourmaline::Bot
 
   class Client
     include CommandHandler
+    include EventHandler
     include MiddlewareHandler
 
     API_URL = "https://api.telegram.org/"
@@ -94,8 +95,6 @@ module Tourmaline::Bot
 
     @next_offset : Int64 = 0.to_i64
 
-    @event_handlers = {} of String => Update ->
-
     def initialize(
       @api_key : String,
       @updates_timeout : Int32? = nil,
@@ -110,13 +109,6 @@ module Tourmaline::Bot
     def is_admin?(chat_id)
       admins = get_chat_administrators(chat_id)
       admins.any? { |a| a.user.id = @bot_info.id }
-    end
-
-    def on(actions : UpdateAction | Array(UpdateAction), &block : Update ->)
-      actions = [ actions ] unless UpdateAction.is_a?(Array)
-      actions.as(Array(UpdateAction)).each do |action|
-        @event_handlers[action.to_s] = block
-      end
     end
 
     def poll
@@ -136,40 +128,6 @@ module Tourmaline::Bot
 
     def stop_polling
       @polling = false
-    end
-
-    def handle_update(update)
-      trigger_all_middlewares(update)
-
-      case update
-      when .message
-        trigger(UpdateAction::Message, update)
-      when .edited_message
-        trigger(UpdateAction::EditedMessage, update)
-      when .channel_post
-        trigger(UpdateAction::ChannelPost, update)
-      when .edited_channel_post
-        trigger(UpdateAction::EditedChannelPost, update)
-      when .inline_query
-        trigger(UpdateAction::InlineQuery, update)
-      when .chosen_inline_result
-        trigger(UpdateAction::ChosenInlineResult, update)
-      when .callback_query
-        trigger(UpdateAction::CallbackQuery, update)
-      when .shipping_query
-        trigger(UpdateAction::ShippingQuery, update)
-      when .pre_checkout_query
-        trigger(UpdateAction::PreCheckoutQuery, update)
-      end
-    rescue ex
-      logger.error("Update was not handled because: #{ex.message}")
-    end
-
-    def trigger(event : UpdateAction, update : Update)
-      if @event_handlers.has_key?(event.to_s)
-        proc = @event_handlers[event.to_s]
-        proc.call(update)
-      end
     end
 
     def get_me
@@ -875,8 +833,33 @@ module Tourmaline::Bot
     #        WEBHOOK         #
     ##########################
 
-    def set_webhook
+    def serve(address = "127.0.0.1", port = 8080, ssl_certificate_path = nil, ssl_key_path = nil)
+      server = HTTP::Server.new(address, port) do |context|
+        begin
+          Fiber.current.telegram_bot_server_http_context = context
+          handle_update(Update.from_json(context.request.body.not_nil!))
+        rescue exception
+          logger.error(exception)
+        ensure
+          Fiber.current.telegram_bot_server_http_context = nil
+        end
+      end
 
+      if ssl_certificate_path && ssl_key_path
+        ssl = OpenSSL::SSL::Context::Server.new
+        ssl.certificate_chain = ssl_certificate_path.not_nil!
+        ssl.private_key = ssl_key_path.not_nil!
+        server.tls = ssl
+      end
+
+      logger.info("Listening for Telegram requests at #{address}:#{port}#{" with tls" if server.tls}")
+      server.listen
+    end
+
+    def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
+      params = { url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate }
+      logger.info("Setting webhook to '#{url}'#{" with certificate" if certificate}")
+      response = request "setWebhook", params
     end
 
     def get_webhook_info

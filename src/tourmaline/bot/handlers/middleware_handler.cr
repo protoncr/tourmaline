@@ -1,4 +1,4 @@
-require "./types"
+require "../types"
 
 module Tourmaline::Bot
   module MiddlewareHandler
