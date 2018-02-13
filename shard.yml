@@ -1,0 +1,13 @@
+name: tourmaline
+version: 0.1.0
+
+authors:
+  - Chris Watson <chris@watzon.me>
+
+crystal: 0.24.1
+
+dependencies:
+  halite:
+    github: icyleaf/halite
+
+license: MIT
