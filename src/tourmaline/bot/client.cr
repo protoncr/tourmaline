@@ -2,6 +2,8 @@ require "logger"
 require "halite"
 
 require "./types"
+require "./command_handler"
+require "./middleware_handler"
 
 module Tourmaline::Bot
 
@@ -75,6 +77,8 @@ module Tourmaline::Bot
   end
 
   class Client
+    include CommandHandler
+    include MiddlewareHandler
 
     API_URL = "https://api.telegram.org/"
 
@@ -90,10 +94,6 @@ module Tourmaline::Bot
 
     @next_offset : Int64 = 0.to_i64
 
-    @middlewares = [] of Update ->
-
-    @commands = {} of String => (Message ->) | (Message, Array(String) ->)
-
     @event_handlers = {} of String => Update ->
 
     def initialize(
@@ -105,54 +105,6 @@ module Tourmaline::Bot
       @bot_name = @bot_info.username.not_nil!
 
       add_command_handler
-    end
-
-    def command(names : String | Array(String), &block : Message ->)
-      if names.is_a?(Array)
-        names.each do |name|
-          name = name[1..-1] if name[0] == "/"
-          @commands[name] = block
-        end
-      else
-        names = names[1..-1] if names[0] == "/"
-        @commands[names] = block
-      end
-    end
-
-    def command(names : String | Array(String), &block : Message, Array(String) ->)
-      if names.is_a?(Array)
-        names.each do |name|
-          name = name[1..-1] if name[0] == "/"
-          @commands[name] = block
-        end
-      else
-        names = names[1..-1] if names[0] == "/"
-        @commands[names] = block
-      end
-    end
-
-    def remove_command(name : String)
-      @@commands.delete_if { |n| n == name }
-    end
-
-    def call(cmd : String, message : Message, params : Array(String))
-      if proc = @commands[cmd]?
-        if proc.is_a?(Message ->)
-          proc.call(message)
-        else
-          proc.call(message, params)
-        end
-      else
-        raise "The command `#{cmd}` doesn't exist"
-      end
-    end
-
-    def use(middleware : Update ->)
-      @middlewares.push middleware
-    end
-
-    def use(&block : Update ->)
-      @middlewares.push block
     end
 
     def is_admin?(chat_id)
@@ -187,7 +139,7 @@ module Tourmaline::Bot
     end
 
     def handle_update(update)
-      @middlewares.each { |m| m.call(update) }
+      trigger_all_middlewares(update)
 
       case update
       when .message
@@ -1016,50 +968,10 @@ module Tourmaline::Bot
 
       result = JSON.parse(response.body)
 
-      if result = result["result"]?
-        return result.to_json
+      if result["result"]?
+        return result["result"].to_json
       else
-        raise "Something went wrong: #{result}"
-      end
-    end
-
-    private def add_command_handler
-      use do |update|
-        if message = update.message
-          if entities = message.entities
-            entities.each do |entity|
-              if entity.type == "bot_command" && entity.offset == 0
-                message_text = message.text.not_nil!
-
-                # Get the command value
-                command_name = message_text[1..entity.length - 1]
-
-                # Check if the command has the bot's name attached
-                if command_name.includes?("@")
-                  pieces = command_name.split("@")
-                  if pieces[1] != @bot_name
-                    next
-                  end
-
-                  command_name = pieces[0]
-                end
-
-                # Check the command against the commands hash
-                if @commands.has_key?(command_name)
-                  command = @commands[command_name]
-
-                  if command.is_a?(Message ->)
-                    command.call(message)
-                  else
-                    rest = message_text[entity.length..-1]
-                    params = rest.split(" ")
-                    command.call(message, params)
-                  end
-                end
-              end
-            end
-          end
-        end
+        raise result["description"].to_s
       end
     end
 
