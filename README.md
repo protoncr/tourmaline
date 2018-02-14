@@ -14,12 +14,19 @@ dependencies:
 
 ## Usage
 
-More usage examples will be coming soon, until then here's a sample echo bot implementation.
+### Basic usage
 
 ```crystal
 require "tourmaline"
 
-bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+alias TGBot = Tourmaline::Bot
+
+bot = TGBot::Client.new(ENV["API_KEY"])
+
+bot.command(["start", "help"]) do |message|
+  text = "Echo bot is a sample bot created with the Tourmaline bot framework."
+  bot.send_message(message.chat.id, text)
+end
 
 bot.command("echo") do |message, params|
   text = params.join(" ")
@@ -29,19 +36,120 @@ end
 bot.poll
 ```
 
+### Listening for events
+
+Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as follows:
+
+Standard update types:
+
+- Message
+- EditedMessage
+- CallbackQuery
+- InlineQuery
+- ShippingQuery
+- PreCheckoutQuery
+- ChosenInlineResult
+- ChannelPost
+- EditedChannelPost
+
+Update sub-types:
+
+- Text
+- Audio
+- Document
+- Photo
+- Sticker
+- Video
+- Voice
+- Contact
+- Location
+- Venue
+- NewChatMembers
+- LeftChatMember
+- NewChatTitle
+- NewChatPhoto
+- DeleteChatPhoto
+- GroupChatCreated
+- MigrateToChatId
+- SupergroupChatCreated
+- ChannelChatCreated
+- MigrateFromChatId
+- PinnedMessage
+- Game
+- VideoNote
+- Invoice
+- SuccessfulPayment
+
+All of which are available through the enum `Tourmaline::Bot::UpdateAction`
+
+```crystal
+bot.on(TGBot::UpdateAction::Text) do |update|
+  text = update.message.not_nil!.text.not_nil!
+  puts "TEXT: #{text}"
+end
+```
+
+### Adding middleware
+
+Middleware can be created by extending the `Tourmaline::Bot::Middleware` class. All middleware classes need to have a `call(update : Update)` method. The middleware will be called on every update.
+
+```crystal
+
+class MyMiddleware < TGBot::Middleware
+
+  # All middlware include a reference to the parent bot.
+  # @bot : Tourmaline::Bot::Client
+
+  def call(update : Update)
+    if message = update.message
+      if user = message.from_user
+        if text = message.text
+          puts "#{user.first_name}: #{text}"
+        end
+      end
+    end
+  end
+
+end
+
+bot.use MyMiddleware
+```
+
+### Webhooks
+
+Using webhooks is easy, even locally if you use the [ngrok.cr](https://github.com/watzon/ngrok.cr) package.
+
+```crystal
+
+# bot.poll
+
+bot.set_webhook("https://example.com/bots/my_tg_bot")
+bot.serve("0.0.0.0", 3400)
+
+# or with ngrok.cr
+
+require "ngrok"
+
+Ngrok.start({ addr: "127.0.0.1:3400" }) do |ngrok|
+  bot.set_webhook(ngrok.ngrok_url_https)
+  bot.serve("127.0.0.1", 3400)
+end
+```
+
 ## Development
 
 This currently supports the following features
 
-- [x] Implementation Examples
-- [x] Easy Command Syntax
+- [x] Implementation examples
+- [x] Easy command syntax
+- [x] Robust middleware system
 - [x] Standard API queries
 - [x] Stickers
-- [x] Inline Mode
+- [x] Inline mode
+- [x] Long polling
+- [x] Webhooks
 - [ ] Payments
 - [ ] Games
-- [x] Long Polling
-- [x] Webhooks
 
 If you want a new feature feel free to submit an issue or open a pull request.
 

@@ -1,7 +1,9 @@
 require "../types"
+require "./middleware_handler"
 
 module Tourmaline::Bot
   module EventHandler
+    include MiddlewareHandler
 
     macro included
       @event_handlers = {} of String => Update ->

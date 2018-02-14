@@ -3,6 +3,7 @@ require "halite"
 
 require "./types"
 require "./fiber"
+require "./middleware"
 require "./handlers/*"
 
 module Tourmaline::Bot
@@ -79,7 +80,6 @@ module Tourmaline::Bot
   class Client
     include CommandHandler
     include EventHandler
-    include MiddlewareHandler
 
     API_URL = "https://api.telegram.org/"
 
@@ -95,6 +95,8 @@ module Tourmaline::Bot
 
     @next_offset : Int64 = 0.to_i64
 
+    getter :bot_info, :bot_name, :polling
+
     def initialize(
       @api_key : String,
       @updates_timeout : Int32? = nil,
@@ -103,32 +105,12 @@ module Tourmaline::Bot
       @bot_info = get_me
       @bot_name = @bot_info.username.not_nil!
 
-      add_command_handler
+      load_default_middleware
     end
 
     def is_admin?(chat_id)
       admins = get_chat_administrators(chat_id)
       admins.any? { |a| a.user.id = @bot_info.id }
-    end
-
-    def poll
-      unset_webhook
-      @polling = true
-
-      while @polling
-        begin
-          updates = get_updates
-          updates.each do |u|
-            spawn handle_update(u)
-          end
-        rescue exception
-          logger.error(exception)
-        end
-      end
-    end
-
-    def stop_polling
-      @polling = false
     end
 
     def get_me
@@ -831,6 +813,31 @@ module Tourmaline::Bot
     end
 
     ##########################
+    #        POLLING         #
+    ##########################
+
+    def poll
+      unset_webhook
+      @polling = true
+
+      logger.info("Polling for updates")
+      while @polling
+        begin
+          updates = get_updates
+          updates.each do |u|
+            spawn handle_update(u)
+          end
+        rescue exception
+          logger.error(exception)
+        end
+      end
+    end
+
+    def stop_polling
+      @polling = false
+    end
+
+    ##########################
     #        WEBHOOK         #
     ##########################
 
@@ -860,11 +867,11 @@ module Tourmaline::Bot
     def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
       params = { url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate }
       logger.info("Setting webhook to '#{url}'#{" with certificate" if certificate}")
-      response = request "setWebhook", params
+      request("setWebhook", params)
     end
 
     def unset_webhook
-      set_webhook("")
+      request("setWebhook", { url: "" })
     end
 
     def get_webhook_info
@@ -961,6 +968,10 @@ module Tourmaline::Bot
       else
         raise result["description"].to_s
       end
+    end
+
+    protected def load_default_middleware
+      use CommandMiddleware
     end
 
     protected def logger : Logger

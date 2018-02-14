@@ -4,19 +4,19 @@ module Tourmaline::Bot
   module MiddlewareHandler
 
     macro included
-      @middlewares = [] of Update ->
+      @middlewares = {} of String => Middleware
     end
 
-    def use(middleware : Update ->)
-      @middlewares.push middleware
-    end
+    def use(middleware)
+      if @middlewares.has_key?(middleware.name)
+        raise "A middleware already exists with the name #{middleware.name}"
+      end
 
-    def use(&block : Update ->)
-      @middlewares.push block
+      @middlewares[middleware.name] = middleware.new(self)
     end
 
     def trigger_all_middlewares(update : Update)
-      @middlewares.each { |m| m.call(update) }
+      @middlewares.keys.each { |k| @middlewares[k].call(update) }
     end
 
   end
