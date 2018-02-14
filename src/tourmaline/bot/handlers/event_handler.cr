@@ -17,81 +17,48 @@ module Tourmaline::Bot
     def handle_update(update)
       trigger_all_middlewares(update)
 
-      case update
-      when .message
+      if message = update.message
         trigger(UpdateAction::Message, update)
-        case update.message.not_nil!
-        when .chat
-          case update.message.not_nil!.chat
-          when .pinned_message
-            trigger(UpdateAction::PinnedMessage, update)
-          end
-        when .text
-          trigger(UpdateAction::Text, update)
-        when .audio
-          trigger(UpdateAction::Audio, update)
-        when .document
-          trigger(UpdateAction::Document, update)
-        when .photo
-          trigger(UpdateAction::Photo, update)
-        when .sticker
-          trigger(UpdateAction::Sticker, update)
-        when .video
-          trigger(UpdateAction::Video, update)
-        when .voice
-          trigger(UpdateAction::Voice, update)
-        when .contact
-          trigger(UpdateAction::Contact, update)
-        when .location
-          trigger(UpdateAction::Location, update)
-        when .venue
-          trigger(UpdateAction::Venue, update)
-        when .new_chat_members
-          trigger(UpdateAction::NewChatMembers, update)
-        when .left_chat_member
-          trigger(UpdateAction::LeftChatMember, update)
-        when .new_chat_title
-          trigger(UpdateAction::NewChatTitle, update)
-        when .new_chat_photo
-          trigger(UpdateAction::NewChatPhoto, update)
-        when .delete_chat_photo
-          trigger(UpdateAction::DeleteChatPhoto, update)
-        when .group_chat_created
-          trigger(UpdateAction::GroupChatCreated, update)
-        when .migrate_to_chat_id
-          trigger(UpdateAction::MigrateToChatId, update)
-        when .supergroup_chat_created
-          trigger(UpdateAction::SupergroupChatCreated, update)
-        when .channel_chat_created
-          trigger(UpdateAction::ChannelChatCreated, update)
-        when .migrate_from_chat_id
-          trigger(UpdateAction::MigrateFromChatId, update)
-        when .game
-          trigger(UpdateAction::Game, update)
-        when .video_note
-          trigger(UpdateAction::VideoNote, update)
-        when .invoice
-          trigger(UpdateAction::Invoice, update)
-        when .successful_payment
-          trigger(UpdateAction::SuccessfulPayment, update)
+
+        if chat = message.chat
+          trigger(UpdateAction::PinnedMessage, update) if chat.pinned_message
         end
-      when .edited_message
-        trigger(UpdateAction::EditedMessage, update)
-      when .channel_post
-        trigger(UpdateAction::ChannelPost, update)
-      when .edited_channel_post
-        trigger(UpdateAction::EditedChannelPost, update)
-      when .inline_query
-        trigger(UpdateAction::InlineQuery, update)
-      when .chosen_inline_result
-        trigger(UpdateAction::ChosenInlineResult, update)
-      when .callback_query
-        trigger(UpdateAction::CallbackQuery, update)
-      when .shipping_query
-        trigger(UpdateAction::ShippingQuery, update)
-      when .pre_checkout_query
-        trigger(UpdateAction::PreCheckoutQuery, update)
+
+        trigger(UpdateAction::Text, update) if message.text
+        trigger(UpdateAction::Audio, update) if message.audio
+        trigger(UpdateAction::Document, update) if message.document
+        trigger(UpdateAction::Photo, update) if message.photo
+        trigger(UpdateAction::Sticker, update) if message.sticker
+        trigger(UpdateAction::Video, update) if message.video
+        trigger(UpdateAction::Voice, update) if message.voice
+        trigger(UpdateAction::Contact, update) if message.contact
+        trigger(UpdateAction::Location, update) if message.location
+        trigger(UpdateAction::Venue, update) if message.venue
+        trigger(UpdateAction::NewChatMembers, update) if message.new_chat_members
+        trigger(UpdateAction::LeftChatMember, update) if message.left_chat_member
+        trigger(UpdateAction::NewChatTitle, update) if message.new_chat_title
+        trigger(UpdateAction::NewChatPhoto, update) if message.new_chat_photo
+        trigger(UpdateAction::DeleteChatPhoto, update) if message.delete_chat_photo
+        trigger(UpdateAction::GroupChatCreated, update) if message.group_chat_created
+        trigger(UpdateAction::MigrateToChatId, update) if message.migrate_from_chat_id
+        trigger(UpdateAction::SupergroupChatCreated, update) if message.supergroup_chat_created
+        trigger(UpdateAction::ChannelChatCreated, update) if message.channel_chat_created
+        trigger(UpdateAction::MigrateFromChatId, update) if message.migrate_from_chat_id
+        trigger(UpdateAction::Game, update) if message.game
+        trigger(UpdateAction::VideoNote, update) if message.video_note
+        trigger(UpdateAction::Invoice, update) if message.invoice
+        trigger(UpdateAction::SuccessfulPayment, update) if message.successful_payment
       end
+
+      trigger(UpdateAction::EditedMessage, update) if update.edited_message
+      trigger(UpdateAction::ChannelPost, update) if update.channel_post
+      trigger(UpdateAction::EditedChannelPost, update) if update.edited_channel_post
+      trigger(UpdateAction::InlineQuery, update) if update.inline_query
+      trigger(UpdateAction::ChosenInlineResult, update) if update.chosen_inline_result
+      trigger(UpdateAction::CallbackQuery, update) if update.callback_query
+      trigger(UpdateAction::ShippingQuery, update) if update.shipping_query
+      trigger(UpdateAction::PreCheckoutQuery, update) if update.pre_checkout_query
+
     rescue ex
       logger.error("Update was not handled because: #{ex.message}")
     end
