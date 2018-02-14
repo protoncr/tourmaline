@@ -33,6 +33,7 @@ bot.poll
 
 This currently supports the following features
 
+- [x] Implementation Examples
 - [x] Easy Command Syntax
 - [x] Standard API queries
 - [x] Stickers
@@ -40,8 +41,7 @@ This currently supports the following features
 - [ ] Payments
 - [ ] Games
 - [x] Long Polling
-- [x] Webhooks (_need testing_)
-- [ ] Ngrok integration for easier webhook testing
+- [x] Webhooks
 
 If you want a new feature feel free to submit an issue or open a pull request.
 
