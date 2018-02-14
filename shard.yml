@@ -10,4 +10,8 @@ dependencies:
   halite:
     github: icyleaf/halite
 
+development_dependencies:
+  ngrok:
+    github: watzon/ngrok.cr
+
 license: MIT
