@@ -34,6 +34,8 @@ module Tourmaline::Bot
           trigger(UpdateAction::Document, update)
         when .photo
           trigger(UpdateAction::Photo, update)
+        when .sticker
+          trigger(UpdateAction::Sticker, update)
         when .video
           trigger(UpdateAction::Video, update)
         when .voice
