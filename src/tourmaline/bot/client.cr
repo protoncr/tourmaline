@@ -112,6 +112,7 @@ module Tourmaline::Bot
     end
 
     def poll
+      unset_webhook
       @polling = true
 
       while @polling
@@ -860,6 +861,10 @@ module Tourmaline::Bot
       params = { url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate }
       logger.info("Setting webhook to '#{url}'#{" with certificate" if certificate}")
       response = request "setWebhook", params
+    end
+
+    def unset_webhook
+      set_webhook("")
     end
 
     def get_webhook_info
