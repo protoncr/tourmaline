@@ -20,6 +20,59 @@ module Tourmaline::Bot
       case update
       when .message
         trigger(UpdateAction::Message, update)
+        case update.message.not_nil!
+        when .chat
+          case update.message.not_nil!.chat
+          when .pinned_message
+            trigger(UpdateAction::PinnedMessage, update)
+          end
+        when .text
+          trigger(UpdateAction::Text, update)
+        when .audio
+          trigger(UpdateAction::Audio, update)
+        when .document
+          trigger(UpdateAction::Document, update)
+        when .photo
+          trigger(UpdateAction::Photo, update)
+        when .video
+          trigger(UpdateAction::Video, update)
+        when .voice
+          trigger(UpdateAction::Voice, update)
+        when .contact
+          trigger(UpdateAction::Contact, update)
+        when .location
+          trigger(UpdateAction::Location, update)
+        when .venue
+          trigger(UpdateAction::Venue, update)
+        when .new_chat_members
+          trigger(UpdateAction::NewChatMembers, update)
+        when .left_chat_member
+          trigger(UpdateAction::LeftChatMember, update)
+        when .new_chat_title
+          trigger(UpdateAction::NewChatTitle, update)
+        when .new_chat_photo
+          trigger(UpdateAction::NewChatPhoto, update)
+        when .delete_chat_photo
+          trigger(UpdateAction::DeleteChatPhoto, update)
+        when .group_chat_created
+          trigger(UpdateAction::GroupChatCreated, update)
+        when .migrate_to_chat_id
+          trigger(UpdateAction::MigrateToChatId, update)
+        when .supergroup_chat_created
+          trigger(UpdateAction::SupergroupChatCreated, update)
+        when .channel_chat_created
+          trigger(UpdateAction::ChannelChatCreated, update)
+        when .migrate_from_chat_id
+          trigger(UpdateAction::MigrateFromChatId, update)
+        when .game
+          trigger(UpdateAction::Game, update)
+        when .video_note
+          trigger(UpdateAction::VideoNote, update)
+        when .invoice
+          trigger(UpdateAction::Invoice, update)
+        when .successful_payment
+          trigger(UpdateAction::SuccessfulPayment, update)
+        end
       when .edited_message
         trigger(UpdateAction::EditedMessage, update)
       when .channel_post

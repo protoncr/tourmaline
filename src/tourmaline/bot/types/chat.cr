@@ -3,7 +3,7 @@ require "json"
 module Tourmaline::Bot
 
   ## This object represents a Telegram user or bot.
-  struct Chat
+  class Chat
 
     JSON.mapping(
 
@@ -21,11 +21,13 @@ module Tourmaline::Bot
 
       all_members_are_administrators: Bool?,
 
-      # chat_photo: ChatPhoto?,
+      chat_photo: ChatPhoto?,
 
       description: String?,
 
       invite_link: String?,
+
+      pinned_message: Message?,
 
       sticker_set_name: String?,
 
