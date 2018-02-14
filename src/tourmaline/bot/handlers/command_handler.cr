@@ -75,8 +75,8 @@ module Tourmaline::Bot
                   if command.is_a?(Message ->)
                     command.call(message)
                   else
-                    rest = message_text[entity.length..-1]
-                    params = rest.split(" ")
+                    rest = message_text[entity.length + 1..-1]
+                    params = rest.split(/\s+/)
                     command.call(message, params)
                   end
                 end
