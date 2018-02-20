@@ -2,7 +2,7 @@ module Tourmaline::Bot
   class CommandMiddleware < Middleware
 
     # @bot : Tourmaline::Bot::Client - Inherited
-    @commands = {} of String => (Message ->) | (Message, Array(String) ->)
+    @commands = {} of String => Message, Array(String) ->
 
     property :commands
 
@@ -29,14 +29,9 @@ module Tourmaline::Bot
               # Check the command against the commands hash
               if @commands.has_key?(command_name)
                 command = @commands[command_name]
-
-                if command.is_a?(Message ->)
-                  command.call(message)
-                else
-                  rest = message_text[entity.length + 1..-1]
-                  params = rest.split(/\s+/)
-                  command.call(message, params)
-                end
+                rest = message_text[entity.length..-1]
+                params = rest.split(/\s+/)
+                command.call(message, params)
               end
             end
           end

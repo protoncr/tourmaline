@@ -4,30 +4,30 @@ module Tourmaline::Bot
   module CommandHandler
 
     def command(names : String | Array(String), &block : Message ->)
-      commands = middleware.commands
-
-      if names.is_a?(Array)
-        names.each do |name|
-          name = name[1..-1] if name[0] == "/"
-          commands[name] = block
+      if commands = middleware.commands
+        if names.is_a?(Array)
+          names.each do |name|
+            name = name[1..-1] if name[0] == "/"
+            commands[name] = block
+          end
+        else
+          names = names[1..-1] if names[0] == "/"
+          commands[names] = block
         end
-      else
-        names = names[1..-1] if names[0] == "/"
-        commands[names] = block
       end
     end
 
     def command(names : String | Array(String), &block : Message, Array(String) ->)
-      commands = middleware.commands
-
-      if names.is_a?(Array)
-        names.each do |name|
-          name = name[1..-1] if name[0] == "/"
-          commands[name] = block
+      if commands = middleware.commands
+        if names.is_a?(Array)
+          names.each do |name|
+            name = name[1..-1] if name[0] == "/"
+            commands[name] = block
+          end
+        else
+          names = names[1..-1] if names[0] == "/"
+          commands[names] = block
         end
-      else
-        names = names[1..-1] if names[0] == "/"
-        commands[names] = block
       end
     end
 
@@ -37,7 +37,7 @@ module Tourmaline::Bot
     end
 
     protected def middleware
-      @middlewares["Tourmaline::Bot::CommandMiddleware"].as(CommandMiddleware)
+      @middlewares["Tourmaline::Bot::CommandMiddleware"]?.as(CommandMiddleware)
     end
 
   end
