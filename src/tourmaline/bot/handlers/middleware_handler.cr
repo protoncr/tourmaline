@@ -2,7 +2,6 @@ require "../types"
 
 module Tourmaline::Bot
   module MiddlewareHandler
-
     macro included
       @middlewares = {} of String => Middleware
     end
@@ -18,6 +17,5 @@ module Tourmaline::Bot
     def trigger_all_middlewares(update : Update)
       @middlewares.keys.each { |k| @middlewares[k].call(update) }
     end
-
   end
 end

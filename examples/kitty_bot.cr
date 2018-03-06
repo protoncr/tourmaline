@@ -3,7 +3,7 @@ require "../src/tourmaline"
 bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
 
 reply_markup = Tourmaline::Bot::ReplyKeyboardMarkup.new([
-  ["/kitty"], ["/kittygif"]
+  ["/kitty"], ["/kittygif"],
 ])
 
 bot.command(["start", "help"]) do |message|
@@ -19,9 +19,8 @@ bot.command("about") do |message|
 end
 
 bot.command(["kitty", "kittygif"]) do |message|
-
   # The time hack is to get around Telegrsm's image cache
-  api = "https://thecatapi.com/api/images/get?time=%{time}&format=src&type=" % { time: Time.now }
+  api = "https://thecatapi.com/api/images/get?time=%{time}&format=src&type=" % {time: Time.now}
   cmd = message.text.not_nil!.split(" ")[0]
 
   if cmd == "/kitty"
@@ -31,7 +30,6 @@ bot.command(["kitty", "kittygif"]) do |message|
     bot.send_chat_action(message.chat.id, Tourmaline::Bot::ChatAction::UploadDocument)
     bot.send_document(message.chat.id, api + "gif")
   end
-
 end
 
 bot.poll

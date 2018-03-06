@@ -1,7 +1,6 @@
 require "json"
 
 module Tourmaline::Bot
-
   class KeyboardButton
     FIELDS = {
       text:             {type: String, nilable: false},
@@ -31,5 +30,4 @@ module Tourmaline::Bot
       initialize(buttons, resize_keyboard, one_time_keyboard, selective)
     end
   end
-
 end

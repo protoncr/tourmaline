@@ -16,7 +16,6 @@ module Tourmaline::Bot
       thumb_height:          {type: Int32, nilable: true},
     }
 
-
     JSON.mapping({{FIELDS}})
     initializer_for({{FIELDS}})
   end

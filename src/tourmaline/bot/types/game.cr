@@ -1,18 +1,14 @@
 require "json"
 
 module Tourmaline::Bot
-
   class Game
-
     JSON.mapping(
-      title:         String,
-      description:   String,
-      photo:         Array(PhotoSize),
-      text:          String?,
+      title: String,
+      description: String,
+      photo: Array(PhotoSize),
+      text: String?,
       text_entities: Array(MessageEntity)?,
-      animation:     Animation?,
+      animation: Animation?,
     )
-
   end
-
 end

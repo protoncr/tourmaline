@@ -1,20 +1,16 @@
 require "json"
 
 module Tourmaline::Bot
-
   class Sticker
-
     JSON.mapping(
-      file_id:       String,
-      width:         Int32,
-      height:        Int32,
-      thumb:         PhotoSize?,
-      emoji:         String?,
-      set_name:      String?,
+      file_id: String,
+      width: Int32,
+      height: Int32,
+      thumb: PhotoSize?,
+      emoji: String?,
+      set_name: String?,
       mask_position: MaskPosition?,
-      file_size:     Int32?,
+      file_size: Int32?,
     )
-
   end
-
 end

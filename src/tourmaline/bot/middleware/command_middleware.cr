@@ -1,6 +1,5 @@
 module Tourmaline::Bot
   class CommandMiddleware < Middleware
-
     # @bot : Tourmaline::Bot::Client - Inherited
     @commands = {} of String => Message, Array(String) ->
 

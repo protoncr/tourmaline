@@ -1,7 +1,6 @@
 require "json"
 
 module Tourmaline::Bot
-
   class InputTextMessageContent < InputMessageContent
     FIELDS = {
       message_text:             String,
@@ -12,5 +11,4 @@ module Tourmaline::Bot
     JSON.mapping({{FIELDS}})
     initializer_for({{FIELDS}})
   end
-
 end

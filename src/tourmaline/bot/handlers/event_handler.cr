@@ -10,7 +10,7 @@ module Tourmaline::Bot
     end
 
     def on(actions : UpdateAction | Array(UpdateAction), &block : Update ->)
-      actions = [ actions ] unless UpdateAction.is_a?(Array)
+      actions = [actions] unless UpdateAction.is_a?(Array)
       actions.as(Array(UpdateAction)).each do |action|
         @event_handlers[action.to_s] = block
       end
@@ -60,7 +60,6 @@ module Tourmaline::Bot
       trigger(UpdateAction::CallbackQuery, update) if update.callback_query
       trigger(UpdateAction::ShippingQuery, update) if update.shipping_query
       trigger(UpdateAction::PreCheckoutQuery, update) if update.pre_checkout_query
-
     rescue ex
       logger.error("Update was not handled because: #{ex.message}")
     end
@@ -71,6 +70,5 @@ module Tourmaline::Bot
         proc.call(update)
       end
     end
-
   end
 end

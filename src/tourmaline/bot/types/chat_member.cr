@@ -2,14 +2,13 @@ require "json"
 
 module Tourmaline::Bot
   struct ChatMember
-
     JSON.mapping(
 
       user: User,
 
       status: String,
 
-      until_date: { type: Time, converter: Time::EpochMillisConverter, nilable: true },
+      until_date: {type: Time, converter: Time::EpochMillisConverter, nilable: true},
 
       can_be_edited: Bool?,
 
@@ -34,8 +33,6 @@ module Tourmaline::Bot
       can_send_other_messages: Bool?,
 
       can_add_web_page_previews: Bool?
-
     )
-
   end
 end

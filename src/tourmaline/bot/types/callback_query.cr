@@ -1,9 +1,7 @@
 require "json"
 
 module Tourmaline::Bot
-
   class CallbackQuery
-
     JSON.mapping(
 
       id: String,
@@ -19,9 +17,6 @@ module Tourmaline::Bot
       data: String?,
 
       game_short_name: String?
-
     )
-
   end
-
 end

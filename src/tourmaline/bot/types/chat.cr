@@ -1,10 +1,8 @@
 require "json"
 
 module Tourmaline::Bot
-
-  ## This object represents a Telegram user or bot.
+  # # This object represents a Telegram user or bot.
   class Chat
-
     JSON.mapping(
 
       id: Int64,
@@ -32,9 +30,6 @@ module Tourmaline::Bot
       sticker_set_name: String?,
 
       can_set_sticker_set: Bool?
-
     )
-
   end
-
 end

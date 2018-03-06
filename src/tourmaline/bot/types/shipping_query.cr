@@ -1,9 +1,7 @@
 require "json"
 
 module Tourmaline::Bot
-
   class ShippingQuery
-
     JSON.mapping(
 
       id: String,
@@ -13,9 +11,6 @@ module Tourmaline::Bot
       invoice_payload: String,
 
       shipping_address: ShippingAddress
-
     )
-
   end
-
 end

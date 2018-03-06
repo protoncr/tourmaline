@@ -7,7 +7,6 @@ require "./middleware"
 require "./handlers/*"
 
 module Tourmaline::Bot
-
   enum ParseMode
     Normal
     Markdown
@@ -15,7 +14,6 @@ module Tourmaline::Bot
   end
 
   enum ChatAction
-
     Typing
     UploadPhoto
     RecordVideo
@@ -30,11 +28,9 @@ module Tourmaline::Bot
     def to_s
       super.to_s.underscore
     end
-
   end
 
   enum UpdateAction
-
     Message
     EditedMessage
     CallbackQuery
@@ -74,7 +70,6 @@ module Tourmaline::Bot
     def to_s
       super.to_s.underscore
     end
-
   end
 
   class Client
@@ -100,7 +95,8 @@ module Tourmaline::Bot
     def initialize(
       @api_key : String,
       @updates_timeout : Int32? = nil,
-      @allowed_updates : Array(String)? = nil)
+      @allowed_updates : Array(String)? = nil
+    )
       @endpoint_url = ::File.join(API_URL, "bot" + @api_key)
       @bot_info = get_me
       @bot_name = @bot_info.username.not_nil!
@@ -122,13 +118,13 @@ module Tourmaline::Bot
       offset = @next_offset,
       limit = nil,
       timeout = @updates_timeout,
-      allowed_updates = @allowed_updates)
-
+      allowed_updates = @allowed_updates
+    )
       response = request("getUpdates", {
-        offset: offset,
-        limit: limit,
-        timeout: timeout,
-        allowed_updates: allowed_updates
+        offset:          offset,
+        limit:           limit,
+        timeout:         timeout,
+        allowed_updates: allowed_updates,
       })
 
       updates = Array(Update).from_json(response)
@@ -145,14 +141,14 @@ module Tourmaline::Bot
       text = nil,
       show_alert = nil,
       url = nil,
-      cache_time = nil)
-
+      cache_time = nil
+    )
       response = request("answerCallbackQuery", {
         callback_query_id: callback_query_id,
-        text: text,
-        show_alert: show_alert,
-        url: url,
-        cache_time: cache_time
+        text:              text,
+        show_alert:        show_alert,
+        url:               url,
+        cache_time:        cache_time,
       })
 
       response == "true"
@@ -165,26 +161,25 @@ module Tourmaline::Bot
       is_personal = nil,
       next_offset = nil,
       switch_pm_text = nil,
-      switch_pm_parameter = nil)
-
+      switch_pm_parameter = nil
+    )
       response = request("answerInlineQuery", {
-        inline_query_id: inline_query_id,
-        results: results.to_json,
-        cache_time: cache_time,
-        is_personal: is_personal,
-        next_offset: next_offset,
-        switch_pm_text: switch_pm_text,
-        switch_pm_parameter: switch_pm_parameter
+        inline_query_id:     inline_query_id,
+        results:             results.to_json,
+        cache_time:          cache_time,
+        is_personal:         is_personal,
+        next_offset:         next_offset,
+        switch_pm_text:      switch_pm_text,
+        switch_pm_parameter: switch_pm_parameter,
       })
 
       response == "true"
     end
 
     def delete_message(chat_id, message_id)
-
       response = request("deleteMessage", {
-        chat_id: chat_id,
-        message_id: message_id
+        chat_id:    chat_id,
+        message_id: message_id,
       })
 
       puts response
@@ -197,45 +192,41 @@ module Tourmaline::Bot
       caption,
       message_id = nil,
       inline_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       if !message_id && !inline_message_id
         raise "A message_id or inline_message_id is required"
       end
 
       response = request("editMesasageCaption", {
-        chat_id: chat_id,
-        caption: caption,
-        message_id: message_id,
+        chat_id:           chat_id,
+        caption:           caption,
+        message_id:        message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
-      response.is_a?(String) ?
-        response == "true" :
-        Message.from_json(response)
+      response.is_a?(String) ? response == "true" : Message.from_json(response)
     end
 
     def edit_message_reply_markup(
       chat_id,
       message_id = nil,
       inline_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       if !message_id && !inline_message_id
         raise "A message_id or inline_message_id is required"
       end
 
       response = request("editMesasageReplyMarkup", {
-        chat_id: chat_id,
-        message_id: message_id,
+        chat_id:           chat_id,
+        message_id:        message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
-      response.is_a?(String) ?
-        response == "true" :
-        Message.from_json(response)
+      response.is_a?(String) ? response == "true" : Message.from_json(response)
     end
 
     def edit_message_text(
@@ -247,8 +238,8 @@ module Tourmaline::Bot
       disable_link_preview = false,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       if !message_id && !inline_message_id
         raise "A message_id or inline_message_id is required"
       end
@@ -256,15 +247,15 @@ module Tourmaline::Bot
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
       response = request("editMessageText", {
-        chat_id: chat_id,
-        message_id: message_id,
-        inline_message_id: inline_message_id,
-        text: text,
-        parse_mode: parse_mode,
+        chat_id:                  chat_id,
+        message_id:               message_id,
+        inline_message_id:        inline_message_id,
+        text:                     text,
+        parse_mode:               parse_mode,
         disable_web_page_preview: disable_link_preview,
-        disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        disable_notification:     disable_notification,
+        reply_to_message_id:      reply_to_message_id,
+        reply_markup:             reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -274,55 +265,49 @@ module Tourmaline::Bot
       chat_id,
       from_chat_id,
       message_id,
-      disable_notification = false)
-
+      disable_notification = false
+    )
       response = request("forwardMessage", {
-        chat_id: chat_id,
-        from_chat_id: from_chat_id,
-        message_id: message_id,
-        disable_notification: disable_notification
+        chat_id:              chat_id,
+        from_chat_id:         from_chat_id,
+        message_id:           message_id,
+        disable_notification: disable_notification,
       })
 
       Message.from_json(response)
     end
 
     def get_chat(chat_id)
-
       response = request("getChat", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       Chat.from_json(response)
     end
 
     def get_chat_administrators(chat_id)
-
       response = request("getChatAdministrators", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       Array(ChatMember).from_json(response)
     end
 
     def get_chat_member
-
     end
 
     def get_chat_members_count
-
     end
 
     def get_file(file_id)
-
       response = request("getFile", {
-        file_id: file_id
+        file_id: file_id,
       })
 
       File.from_json(response)
     end
 
     def get_file_link(file)
-
       if file.file_path
         return File.join(@endpoint_url, file.file_path)
       end
@@ -333,12 +318,12 @@ module Tourmaline::Bot
     def get_user_profile_photos(
       user_id,
       offset = nil,
-      limit = nil)
-
+      limit = nil
+    )
       response = request("getUserProfilePhotos", {
         user_id: user_id,
-        offset: offset,
-        limit: limit
+        offset:  offset,
+        limit:   limit,
       })
 
       UserProfilePhotos.from_json(response)
@@ -347,12 +332,12 @@ module Tourmaline::Bot
     def kick_chat_member(
       chat_id,
       user_id,
-      until_date = nil)
-
+      until_date = nil
+    )
       response = request("kickChatMember", {
-        chat_id: chat_id,
-        user_id: user_id,
-        until_date: until_date
+        chat_id:    chat_id,
+        user_id:    user_id,
+        until_date: until_date,
       })
 
       response == "true"
@@ -360,11 +345,11 @@ module Tourmaline::Bot
 
     def unban_chat_member(
       chat_id,
-      user_id)
-
+      user_id
+    )
       response = request("unbanChatMember", {
         chat_id: chat_id,
-        user_id: user_id
+        user_id: user_id,
       })
 
       response == "true"
@@ -377,16 +362,16 @@ module Tourmaline::Bot
       can_see_messages = nil,
       can_send_media_messages = nil,
       can_send_other_messages = nil,
-      can_add_web_page_previews = nil)
-
+      can_add_web_page_previews = nil
+    )
       response = request("restrictChatMember", {
-        chat_id: chat_id,
-        user_id: user_id,
-        until_date: until_date,
-        can_see_messages: can_see_messages,
-        can_send_media_messages: can_send_media_messages,
-        can_send_other_messages: can_send_other_messages,
-        can_add_web_page_previews: can_add_web_page_previews
+        chat_id:                   chat_id,
+        user_id:                   user_id,
+        until_date:                until_date,
+        can_see_messages:          can_see_messages,
+        can_send_media_messages:   can_send_media_messages,
+        can_send_other_messages:   can_send_other_messages,
+        can_add_web_page_previews: can_add_web_page_previews,
       })
 
       response == "true"
@@ -403,104 +388,95 @@ module Tourmaline::Bot
       can_invite_users = nil,
       can_restrict_members = nil,
       can_pin_messages = nil,
-      can_promote_members = nil)
-
+      can_promote_members = nil
+    )
       response = request("promoteChatMember", {
-        chat_id: chat_id,
-        user_id: user_id,
-        until_date: until_date,
-        can_change_info: can_change_info,
-        can_post_messages: can_post_messages,
-        can_edit_messages: can_edit_messages,
-        can_delete_messages: can_delete_messages,
-        can_invite_users: can_invite_users,
+        chat_id:              chat_id,
+        user_id:              user_id,
+        until_date:           until_date,
+        can_change_info:      can_change_info,
+        can_post_messages:    can_post_messages,
+        can_edit_messages:    can_edit_messages,
+        can_delete_messages:  can_delete_messages,
+        can_invite_users:     can_invite_users,
         can_restrict_members: can_restrict_members,
-        can_pin_messages: can_pin_messages,
-        can_promote_members: can_promote_members
+        can_pin_messages:     can_pin_messages,
+        can_promote_members:  can_promote_members,
       })
 
       response == "true"
     end
 
     def export_chat_invite_link(chat_id)
-
       response = request("exportChatInviteLink", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       response.to_s
     end
 
     def set_chat_photo(chat_id, photo)
-
       response = request("setChatPhoto", {
         chat_id: chat_id,
-        photo: photo
+        photo:   photo,
       })
 
       response == "true"
     end
 
     def delete_chat_photo(chat_id)
-
       response = request("deleteChatPhoto", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       response == "true"
     end
 
     def set_chat_title(chat_id, title)
-
       response = request("setchatTitle", {
         chat_id: chat_id,
-        title: title
+        title:   title,
       })
 
       response == "true"
     end
 
     def set_chat_description(chat_id, description)
-
       response = request("setchatDescription", {
-        chat_id: chat_id,
-        description: description
+        chat_id:     chat_id,
+        description: description,
       })
 
       response == "true"
     end
 
     def pin_chat_message(chat_id, message_id, disable_notification = false)
-
       response = request("pinChatMessage", {
-        chat_id: chat_id,
-        message_id: message_id,
-        disable_notification: disable_notification
+        chat_id:              chat_id,
+        message_id:           message_id,
+        disable_notification: disable_notification,
       })
 
       response == "true"
     end
 
     def unpin_chat_message(chat_id)
-
       response = request("unpinChatMessage", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       response == "true"
     end
 
     def leave_chat(chat_id)
-
       response = request("leaveChat", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       Chat.from_json(response)
     end
 
     def delete_webhook
-
     end
 
     def send_audio(
@@ -512,18 +488,18 @@ module Tourmaline::Bot
       title = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendAudio", {
-        chat_id: chat_id,
-        audio: audio,
-        caption: caption,
-        duration: duration,
-        preformer: preformer,
-        title: title,
+        chat_id:              chat_id,
+        audio:                audio,
+        caption:              caption,
+        duration:             duration,
+        preformer:            preformer,
+        title:                title,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -531,11 +507,11 @@ module Tourmaline::Bot
 
     def send_chat_action(
       chat_id,
-      action : ChatAction)
-
+      action : ChatAction
+    )
       response = request("sendChatAction", {
         chat_id: chat_id,
-        action: action.to_s
+        action:  action.to_s,
       })
 
       response == "true"
@@ -548,16 +524,16 @@ module Tourmaline::Bot
       last_name = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendContact", {
-        chat_id: chat_id,
-        phone_number: phone_number,
-        first_name: first_name,
-        last_name: last_name,
+        chat_id:              chat_id,
+        phone_number:         phone_number,
+        first_name:           first_name,
+        last_name:            last_name,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -569,15 +545,15 @@ module Tourmaline::Bot
       caption = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendDocument", {
-        chat_id: chat_id,
-        document: document,
-        caption: caption,
+        chat_id:              chat_id,
+        document:             document,
+        caption:              caption,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -590,16 +566,16 @@ module Tourmaline::Bot
       live_period = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendLocation", {
-        chat_id: chat_id,
-        latitude: latitude,
-        longitude: longitude,
-        live_period: live_period,
+        chat_id:              chat_id,
+        latitude:             latitude,
+        longitude:            longitude,
+        live_period:          live_period,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -612,18 +588,18 @@ module Tourmaline::Bot
       disable_link_preview = false,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
       response = request("sendMessage", {
-        chat_id: chat_id,
-        text: text,
-        parse_mode: parse_mode,
+        chat_id:                  chat_id,
+        text:                     text,
+        parse_mode:               parse_mode,
         disable_web_page_preview: disable_link_preview,
-        disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        disable_notification:     disable_notification,
+        reply_to_message_id:      reply_to_message_id,
+        reply_markup:             reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -635,15 +611,15 @@ module Tourmaline::Bot
       caption = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendPhoto", {
-        chat_id: chat_id,
-        photo: photo,
-        caption: caption,
+        chat_id:              chat_id,
+        photo:                photo,
+        caption:              caption,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -654,13 +630,13 @@ module Tourmaline::Bot
       chat_id,
       media,
       disable_notification = false,
-      reply_to_message_id = nil)
-
+      reply_to_message_id = nil
+    )
       response = request("sendMediaGroup", {
-        chat_id: chat_id,
-        media: media,
+        chat_id:              chat_id,
+        media:                media,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id
+        reply_to_message_id:  reply_to_message_id,
       })
 
       Message.from_json(response)
@@ -675,18 +651,18 @@ module Tourmaline::Bot
       foursquare_id = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendVenue", {
-        chat_id: chat_id,
-        latitude: latitude,
-        longitude: longitude,
-        title: title,
-        address: address,
-        foursquare_id: foursquare_id,
+        chat_id:              chat_id,
+        latitude:             latitude,
+        longitude:            longitude,
+        title:                title,
+        address:              address,
+        foursquare_id:        foursquare_id,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -701,18 +677,18 @@ module Tourmaline::Bot
       caption = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendVideo", {
-        chat_id: chat_id,
-        video: video,
-        duration: duration,
-        width: width,
-        height: height,
-        caption: caption,
+        chat_id:              chat_id,
+        video:                video,
+        duration:             duration,
+        width:                width,
+        height:               height,
+        caption:              caption,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -727,18 +703,18 @@ module Tourmaline::Bot
       caption = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendVideoNote", {
-        chat_id: chat_id,
-        video_note: video_note,
-        duration: duration,
-        width: width,
-        height: height,
-        caption: caption,
+        chat_id:              chat_id,
+        video_note:           video_note,
+        duration:             duration,
+        width:                width,
+        height:               height,
+        caption:              caption,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -753,16 +729,16 @@ module Tourmaline::Bot
       title = nil,
       disable_notification = false,
       reply_to_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       response = request("sendVoice", {
-        chat_id: chat_id,
-        voice: voice,
-        caption: caption,
-        duration: duration,
+        chat_id:              chat_id,
+        voice:                voice,
+        caption:              caption,
+        duration:             duration,
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -774,19 +750,19 @@ module Tourmaline::Bot
       longitude,
       message_id = nil,
       inline_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       if !message_id && !inline_message_id
         raise "A message_id or inline_message_id is required"
       end
 
       response = request("editMessageLiveLocation", {
-        chat_id: chat_id,
-        latitude: latitude,
-        longitude: longitude,
-        message_id: message_id,
+        chat_id:           chat_id,
+        latitude:          latitude,
+        longitude:         longitude,
+        message_id:        message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -796,17 +772,17 @@ module Tourmaline::Bot
       chat_id,
       message_id = nil,
       inline_message_id = nil,
-      reply_markup = nil)
-
+      reply_markup = nil
+    )
       if !message_id && !inline_message_id
         raise "A message_id or inline_message_id is required"
       end
 
       response = request("stopMessageLiveLocation", {
-        chat_id: chat_id,
-        message_id: message_id,
+        chat_id:           chat_id,
+        message_id:        message_id,
         inline_message_id: inline_message_id,
-        reply_markup: reply_markup ? reply_markup.to_json : nil
+        reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
       Message.from_json(response)
@@ -865,17 +841,16 @@ module Tourmaline::Bot
     end
 
     def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
-      params = { url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate }
+      params = {url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate}
       logger.info("Setting webhook to '#{url}'#{" with certificate" if certificate}")
       request("setWebhook", params)
     end
 
     def unset_webhook
-      request("setWebhook", { url: "" })
+      request("setWebhook", {url: ""})
     end
 
     def get_webhook_info
-
     end
 
     ##########################
@@ -883,39 +858,30 @@ module Tourmaline::Bot
     ##########################
 
     def send_sticker
-
     end
 
     def get_sticker_set
-
     end
 
     def set_chat_sticker_set
-
     end
 
     def add_sticker_to_set
-
     end
 
     def create_new_sticker_set
-
     end
 
     def delete_chat_sticker_set
-
     end
 
     def delete_sticker_from_set
-
     end
 
     def send_sticker_position_in_set
-
     end
 
     def upload_sticker_file
-
     end
 
     ##########################
@@ -923,15 +889,12 @@ module Tourmaline::Bot
     ##########################
 
     def send_invoice
-
     end
 
     def answer_shipping_query
-
     end
 
     def answer_pre_checkout_query
-
     end
 
     ##########################
@@ -939,27 +902,21 @@ module Tourmaline::Bot
     ##########################
 
     def send_game
-
     end
 
     def answer_game_query
-
     end
 
     def set_game_score
-
     end
 
     def get_game_high_scores
-
     end
 
     private def request(method, params = {} of String => String)
       method_url = ::File.join(@endpoint_url, method)
 
-      response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ?
-        Halite.post(method_url, form: params) :
-        Halite.post(method_url, params: params)
+      response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ? Halite.post(method_url, form: params) : Halite.post(method_url, params: params)
 
       result = JSON.parse(response.body)
 

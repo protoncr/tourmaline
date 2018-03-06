@@ -1,7 +1,6 @@
 require "json"
 
 module Tourmaline::Bot
-
   class InputVenueMessageContent < InputMessageContent
     FIELDS = {
       latitude:     Float64,
@@ -14,5 +13,4 @@ module Tourmaline::Bot
     JSON.mapping({{FIELDS}})
     initializer_for({{FIELDS}})
   end
-
 end

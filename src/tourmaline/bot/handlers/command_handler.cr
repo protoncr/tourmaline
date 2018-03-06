@@ -2,7 +2,6 @@ require "../types"
 
 module Tourmaline::Bot
   module CommandHandler
-
     def command(names : String | Array(String), &block : Message ->)
       if commands = middleware.commands
         if names.is_a?(Array)
@@ -39,6 +38,5 @@ module Tourmaline::Bot
     protected def middleware
       @middlewares["Tourmaline::Bot::CommandMiddleware"]?.as(CommandMiddleware)
     end
-
   end
 end

@@ -2,9 +2,7 @@ require "json"
 require "./input_message_content.cr"
 
 module Tourmaline::Bot
-
   class InputContactMessageContent < InputMessageContent
-
     FIELDS = {
       phone_number: String,
       first_name:   String,
@@ -13,7 +11,5 @@ module Tourmaline::Bot
 
     JSON.mapping({{FIELDS}})
     initializer_for({{FIELDS}})
-
   end
-
 end
