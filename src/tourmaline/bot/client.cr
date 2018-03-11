@@ -182,8 +182,6 @@ module Tourmaline::Bot
         message_id: message_id,
       })
 
-      puts response
-
       response == "true"
     end
 

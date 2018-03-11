@@ -2,7 +2,7 @@ require "json"
 
 module Tourmaline::Bot
   # # This object represents a Telegram user or bot.
-  struct Message
+  class Message
     JSON.mapping(
 
       message_id: Int64,
@@ -24,6 +24,8 @@ module Tourmaline::Bot
       forward_date: {type: Time, converter: Time::EpochMillisConverter, nilable: true},
 
       edit_date: {type: Time, converter: Time::EpochMillisConverter, nilable: true},
+
+      reply_to_message: Message?,
 
       media_group_id: String?,
 
