@@ -816,7 +816,7 @@ module Tourmaline::Bot
     ##########################
 
     def serve(address = "127.0.0.1", port = 8080, ssl_certificate_path = nil, ssl_key_path = nil)
-      server = HTTP::Server.new(address, port) do |context|
+      server = HTTP::Server.new do |context|
         begin
           Fiber.current.telegram_bot_server_http_context = context
           handle_update(Update.from_json(context.request.body.not_nil!))
@@ -826,6 +826,9 @@ module Tourmaline::Bot
           Fiber.current.telegram_bot_server_http_context = nil
         end
       end
+
+      server.bind_tcp address, port
+      server.listen
 
       if ssl_certificate_path && ssl_key_path
         ssl = OpenSSL::SSL::Context::Server.new
