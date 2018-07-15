@@ -29,7 +29,7 @@ module Tourmaline::Bot
               if @commands.has_key?(command_name)
                 command = @commands[command_name]
                 rest = message_text[entity.length..-1]
-                params = rest.split(/\s+/)
+                params = rest.split(/\s+/, remove_empty: true)
                 command.call(message, params)
               end
             end
