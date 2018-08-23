@@ -816,7 +816,7 @@ module Tourmaline::Bot
     ##########################
 
     def serve(address = "127.0.0.1", port = 8080, ssl_certificate_path = nil, ssl_key_path = nil)
-      server = HTTP::Server.new(address, port) do |context|
+      server = HTTP::Server.new do |context|
         begin
           Fiber.current.telegram_bot_server_http_context = context
           handle_update(Update.from_json(context.request.body.not_nil!))
@@ -827,15 +827,20 @@ module Tourmaline::Bot
         end
       end
 
+      flUseSSL = false
       if ssl_certificate_path && ssl_key_path
+	flUseSSL = true
         ssl = OpenSSL::SSL::Context::Server.new
         ssl.certificate_chain = ssl_certificate_path.not_nil!
         ssl.private_key = ssl_key_path.not_nil!
-        server.tls = ssl
+	server.bind_ssl address, port, ssl
+      else
+	server.bind_tcp address, port
       end
 
-      logger.info("Listening for Telegram requests at #{address}:#{port}#{" with tls" if server.tls}")
+      logger.info("Listening for Telegram requests at #{address}:#{port}#{" with tls" if flUseSSL}")
       server.listen
+
     end
 
     def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
