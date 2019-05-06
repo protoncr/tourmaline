@@ -9,6 +9,7 @@ crystal: 0.24.1
 dependencies:
   halite:
     github: icyleaf/halite
+    branch: master
 
 development_dependencies:
   ngrok:
