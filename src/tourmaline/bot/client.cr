@@ -827,15 +827,16 @@ module Tourmaline::Bot
         end
       end
 
-      flUseSSL = false
+      server.bind_tcp address, port
+      server.listen
       if ssl_certificate_path && ssl_key_path
-	flUseSSL = true
+	      flUseSSL = true
         ssl = OpenSSL::SSL::Context::Server.new
         ssl.certificate_chain = ssl_certificate_path.not_nil!
         ssl.private_key = ssl_key_path.not_nil!
-	server.bind_ssl address, port, ssl
+	      server.bind_ssl address, port, ssl
       else
-	server.bind_tcp address, port
+	      server.bind_tcp address, port
       end
 
       logger.info("Listening for Telegram requests at #{address}:#{port}#{" with tls" if flUseSSL}")
