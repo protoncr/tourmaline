@@ -138,6 +138,25 @@ Ngrok.start({ addr: "127.0.0.1:3400" }) do |ngrok|
 end
 ```
 
+### Payments
+
+You can now accept payments with your Tourmaline app! First make sure you follow the setup instructions [here](https://core.telegram.org/bots/payments) so that your bot is prepared to handle payments. Then just use the `send_invoice`, `answer_shipping_query`, and `answer_pre_checkout_query` methods to send invoices and accept payments.
+
+```crystal
+bot.command("buy") do |message, params|
+  bot.send_invoice(
+    message.chat.id,
+    "Sample Invoice",
+    "This is a test...",
+    "123344232323",
+    "YOUR_PROVIDER_TOKEN",
+    "test1",
+    "USD",
+    bot.labeled_prices([{label: "Sample", amount: 299}, {label: "Another", amount: 369}]).to_json
+  )
+end
+```
+
 ## Development
 
 This currently supports the following features
@@ -150,7 +169,7 @@ This currently supports the following features
 - [x] Inline mode
 - [x] Long polling
 - [x] Webhooks
-- [ ] Payments
+- [x] Payments (*beta*)
 - [ ] Games
 
 If you want a new feature feel free to submit an issue or open a pull request.

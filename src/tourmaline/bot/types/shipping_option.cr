@@ -2,10 +2,13 @@ require "json"
 
 module Tourmaline::Bot
   class ShippingOption
-    JSON.mapping(
-      id: String,
-      title: String,
+    FIELDS = {
+      id:     String,
+      title:  String,
       prices: Array(LabeledPrice),
-    )
+    }
+
+    JSON.mapping({{FIELDS}})
+    initializer_for({{FIELDS}})
   end
 end

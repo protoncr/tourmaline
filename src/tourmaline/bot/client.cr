@@ -830,18 +830,17 @@ module Tourmaline::Bot
       server.bind_tcp address, port
       server.listen
       if ssl_certificate_path && ssl_key_path
-	      flUseSSL = true
+        flUseSSL = true
         ssl = OpenSSL::SSL::Context::Server.new
         ssl.certificate_chain = ssl_certificate_path.not_nil!
         ssl.private_key = ssl_key_path.not_nil!
-	      server.bind_ssl address, port, ssl
+        server.bind_ssl address, port, ssl
       else
-	      server.bind_tcp address, port
+        server.bind_tcp address, port
       end
 
       logger.info("Listening for Telegram requests at #{address}:#{port}#{" with tls" if flUseSSL}")
       server.listen
-
     end
 
     def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
@@ -892,13 +891,96 @@ module Tourmaline::Bot
     #        PAYMENTS        #
     ##########################
 
-    def send_invoice
+    def send_invoice(
+      chat_id,
+      title,
+      description,
+      payload,
+      provider_token,
+      start_parameter,
+      currency,
+      prices,
+      provider_data = nil,
+      photo_url = nil,
+      photo_size = nil,
+      photo_width = nil,
+      photo_height = nil,
+      need_name = nil,
+      need_shipping_address = nil,
+      send_phone_number_to_provider = nil,
+      send_email_to_provider = nil,
+      is_flexible = nil,
+      disable_notification = nil,
+      reply_to_message_id = nil,
+      reply_markup = nil
+    )
+      response = request("sendInvoice", {
+        chat_id:                       chat_id,
+        title:                         title,
+        description:                   description,
+        payload:                       payload,
+        provider_token:                provider_token,
+        start_parameter:               start_parameter,
+        currency:                      currency,
+        prices:                        prices,
+        provider_data:                 provider_data,
+        photo_url:                     photo_url,
+        photo_size:                    photo_size,
+        photo_width:                   photo_width,
+        photo_height:                  photo_height,
+        need_name:                     need_name,
+        need_shipping_address:         need_shipping_address,
+        send_phone_number_to_provider: send_phone_number_to_provider,
+        send_email_to_provider:        send_email_to_provider,
+        is_flexible:                   is_flexible,
+        disable_notification:          disable_notification,
+        reply_to_message_id:           reply_to_message_id,
+        reply_markup:                  reply_markup ? reply_markup.to_json : nil,
+      })
+
+      Message.from_json(response)
     end
 
-    def answer_shipping_query
+    def answer_shipping_query(
+      shipping_query_id,
+      ok,
+      shipping_options = nil,
+      error_message = nil
+    )
+      response = request("answerShippingQuery", {
+        shipping_query_id: shipping_query_id,
+        ok:                ok,
+        shipping_options:  shipping_options,
+        error_message:     error_message,
+      })
+
+      Bool.from_json(response)
     end
 
-    def answer_pre_checkout_query
+    def answer_pre_checkout_query(
+      pre_checkout_query_id,
+      ok,
+      error_message
+    )
+      response = request("answerPreCheckoutQuery", {
+        pre_checkout_query_id: pre_checkout_query_id,
+        ok:                    ok,
+        error_message:         error_message,
+      })
+
+      Bool.from_json(response)
+    end
+
+    def labeled_prices(lp : Array(NamedTuple(label: String, amount: Int32)))
+      lp.reduce([] of Tourmaline::Bot::LabeledPrice) { |acc, i|
+        acc << Tourmaline::Bot::LabeledPrice.new(label: i[:label], amount: i[:amount])
+      }
+    end
+
+    def shipping_options(options : Array(NamedTuple(id: String, title: String, prices: Array(LabeledPrice))))
+      lp.reduce([] of Tourmaline::Bot::ShippingOption) { |acc, i|
+        acc << Tourmaline::Bot::ShippingOption.new(id: i[:id], title: i[:title], prices: i[:prices])
+      }
     end
 
     ##########################
