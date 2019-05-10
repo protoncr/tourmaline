@@ -1,4 +1,4 @@
-# Tourmaline
+![Header Image](img/header.png)
 
 [![Travis](https://img.shields.io/travis/watzon/tourmaline.svg)](https://travis.org/watzon/tourmaline) ![Github search hit counter](https://img.shields.io/github/search/watzon/tourmaline/goto.svg) ![license](https://img.shields.io/github/license/watzon/tourmaline.svg)
 
