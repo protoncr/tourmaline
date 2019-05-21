@@ -1,4 +1,5 @@
 ![Header Image](img/header.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwatzon%2Ftourmaline.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwatzon%2Ftourmaline?ref=badge_shield)
 
 [![Travis](https://img.shields.io/travis/watzon/tourmaline.svg)](https://travis-ci.org/watzon/tourmaline) ![Github search hit counter](https://img.shields.io/github/search/watzon/tourmaline/goto.svg) ![license](https://img.shields.io/github/license/watzon/tourmaline.svg)
 
@@ -185,3 +186,7 @@ If you want a new feature feel free to submit an issue or open a pull request.
 ## Contributors
 
 - [watzon](https://github.com/watzon) Chris Watson - creator, maintainer
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwatzon%2Ftourmaline.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwatzon%2Ftourmaline?ref=badge_large)
