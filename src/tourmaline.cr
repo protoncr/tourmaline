@@ -1,6 +1,4 @@
-require "./tourmaline/core_ext/*"
-require "./tourmaline/bot/client"
-require "./tourmaline/mtproto/**"
+require "./tourmaline/bot/*"
 
 # TODO: Write documentation for `Tourmaline`
 module Tourmaline
