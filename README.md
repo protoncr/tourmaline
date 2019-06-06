@@ -4,7 +4,7 @@
 
 Telegram Bot (and hopefully soon API) framework for Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
 
-[Read the docs](https://watzon.github.io/tourmaline)
+[Read the docs](https://watzon.github.io/tourmaline/)
 
 ## Installation
 
