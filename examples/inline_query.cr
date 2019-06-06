@@ -4,23 +4,23 @@ bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
 
 bot.on(Tourmaline::Bot::UpdateAction::InlineQuery) do |update|
   query = update.inline_query.not_nil!
-  results = [] of Tourmaline::Bot::InlineQueryResult
+  results = [] of Tourmaline::Bot::Model::InlineQueryResult
 
-  results << Tourmaline::Bot::InlineQueryResultArticle.new(
+  results << Tourmaline::Bot::Model::InlineQueryResultArticle.new(
     id: "query",
     title: "Inline title",
-    input_message_content: Tourmaline::Bot::InputTextMessageContent.new("Click!"),
+    input_message_content: Tourmaline::Bot::Model::InputTextMessageContent.new("Click!"),
     description: "Your query: #{query.query}",
   )
 
-  results << Tourmaline::Bot::InlineQueryResultPhoto.new(
+  results << Tourmaline::Bot::Model::InlineQueryResultPhoto.new(
     id: "photo",
     caption: "Telegram logo",
     photo_url: "https://telegram.org/img/t_logo.png",
     thumb_url: "https://telegram.org/img/t_logo.png"
   )
 
-  results << Tourmaline::Bot::InlineQueryResultGif.new(
+  results << Tourmaline::Bot::Model::InlineQueryResultGif.new(
     id: "gif",
     gif_url: "https://telegram.org/img/tl_card_wecandoit.gif",
     thumb_url: "https://telegram.org/img/tl_card_wecandoit.gif"

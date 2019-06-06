@@ -1,8 +1,10 @@
 ![Header Image](img/header.png)
 
-[![Travis](https://img.shields.io/travis/watzon/tourmaline.svg)](https://travis-ci.org/watzon/tourmaline) ![Github search hit counter](https://img.shields.io/github/search/watzon/tourmaline/goto.svg) ![license](https://img.shields.io/github/license/watzon/tourmaline.svg)
+![Github search hit counter](https://img.shields.io/github/search/watzon/tourmaline/goto.svg) ![license](https://img.shields.io/github/license/watzon/tourmaline.svg)
 
 Telegram Bot (and hopefully soon API) framework for Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
+
+[Read the docs](https://watzon.github.io/tourmaline)
 
 ## Installation
 
@@ -19,7 +21,7 @@ dependencies:
 ### Basic usage
 
 ```crystal
-require "tourmaline"
+require "tourmaline/bot"
 
 alias TGBot = Tourmaline::Bot
 
@@ -82,10 +84,10 @@ Update sub-types:
 - Invoice
 - SuccessfulPayment
 
-All of which are available through the enum `Tourmaline::Bot::UpdateAction`
+All of which are available through the enum `Tourmaline::Bot::UpdateAction`. To avoid having to use the full namespace you can just use a symbol.
 
 ```crystal
-bot.on(TGBot::UpdateAction::Text) do |update|
+bot.on(:text) do |update|
   text = update.message.not_nil!.text.not_nil!
   puts "TEXT: #{text}"
 end

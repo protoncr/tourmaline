@@ -1,4 +1,4 @@
-require "../types"
+require "../models"
 require "./middleware_handler"
 
 module Tourmaline::Bot
@@ -7,7 +7,7 @@ module Tourmaline::Bot
     include MiddlewareHandler
 
     macro included
-      @event_handlers = {} of String => Update ->
+      @event_handlers = {} of String => Model::Update ->
     end
 
     # Preform an action when a specific `UpdateAction` is called.
@@ -21,7 +21,7 @@ module Tourmaline::Bot
     #   # remove chat member from database
     # end
     # ```
-    def on(actions : UpdateAction | Array(UpdateAction), &block : Update ->)
+    def on(actions : UpdateAction | Array(UpdateAction), &block : Model::Update ->)
       actions = [actions] unless UpdateAction.is_a?(Array)
       actions.as(Array(UpdateAction)).each do |action|
         @event_handlers[action.to_s] = block
@@ -78,7 +78,7 @@ module Tourmaline::Bot
     end
 
     # Triggers an update event.
-    protected def trigger(event : UpdateAction, update : Update)
+    protected def trigger(event : UpdateAction, update : Model::Update)
       if @event_handlers.has_key?(event.to_s)
         proc = @event_handlers[event.to_s]
         proc.call(update)

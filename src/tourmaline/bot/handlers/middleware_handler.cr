@@ -1,4 +1,4 @@
-require "../types"
+require "../models"
 
 module Tourmaline::Bot
   # Allows the creation of `Middleware` for your bot.
@@ -16,7 +16,7 @@ module Tourmaline::Bot
       @middlewares[middleware.name] = middleware.new(self)
     end
 
-    protected def trigger_all_middlewares(update : Update)
+    protected def trigger_all_middlewares(update : Model::Update)
       @middlewares.keys.each { |k| @middlewares[k].call(update) }
     end
   end

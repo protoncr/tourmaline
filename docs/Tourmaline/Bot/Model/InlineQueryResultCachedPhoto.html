@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.28.0">
+
+
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../../../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../../../";
+</script>
+
+  <meta id="repository-name" content="github.com/watzon/tourmaline">
+  <title>Tourmaline::Bot::Model::InlineQueryResultCachedPhoto - github.com/watzon/tourmaline</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../../../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/toplevel" data-name="top level namespace">
+      <a href="../../../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline" data-name="tourmaline">
+      <a href="../../../Tourmaline.html">Tourmaline</a>
+      
+        <ul>
+  
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline/Bot" data-name="tourmaline::bot">
+      <a href="../../../Tourmaline/Bot.html">Bot</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/ChatAction" data-name="tourmaline::bot::chataction">
+      <a href="../../../Tourmaline/Bot/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client" data-name="tourmaline::bot::client">
+      <a href="../../../Tourmaline/Bot/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/CommandHandler" data-name="tourmaline::bot::commandhandler">
+      <a href="../../../Tourmaline/Bot/CommandHandler.html">CommandHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/CommandMiddleware" data-name="tourmaline::bot::commandmiddleware">
+      <a href="../../../Tourmaline/Bot/CommandMiddleware.html">CommandMiddleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/EventHandler" data-name="tourmaline::bot::eventhandler">
+      <a href="../../../Tourmaline/Bot/EventHandler.html">EventHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Middleware" data-name="tourmaline::bot::middleware">
+      <a href="../../../Tourmaline/Bot/Middleware.html">Middleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/MiddlewareHandler" data-name="tourmaline::bot::middlewarehandler">
+      <a href="../../../Tourmaline/Bot/MiddlewareHandler.html">MiddlewareHandler</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model" data-name="tourmaline::bot::model">
+      <a href="../../../Tourmaline/Bot/Model.html">Model</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Animation" data-name="tourmaline::bot::model::animation">
+      <a href="../../../Tourmaline/Bot/Model/Animation.html">Animation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Audio" data-name="tourmaline::bot::model::audio">
+      <a href="../../../Tourmaline/Bot/Model/Audio.html">Audio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/CallbackGame" data-name="tourmaline::bot::model::callbackgame">
+      <a href="../../../Tourmaline/Bot/Model/CallbackGame.html">CallbackGame</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/CallbackQuery" data-name="tourmaline::bot::model::callbackquery">
+      <a href="../../../Tourmaline/Bot/Model/CallbackQuery.html">CallbackQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Chat" data-name="tourmaline::bot::model::chat">
+      <a href="../../../Tourmaline/Bot/Model/Chat.html">Chat</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ChatMember" data-name="tourmaline::bot::model::chatmember">
+      <a href="../../../Tourmaline/Bot/Model/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ChatPhoto" data-name="tourmaline::bot::model::chatphoto">
+      <a href="../../../Tourmaline/Bot/Model/ChatPhoto.html">ChatPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ChosenInlineResult" data-name="tourmaline::bot::model::choseninlineresult">
+      <a href="../../../Tourmaline/Bot/Model/ChosenInlineResult.html">ChosenInlineResult</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Contact" data-name="tourmaline::bot::model::contact">
+      <a href="../../../Tourmaline/Bot/Model/Contact.html">Contact</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Document" data-name="tourmaline::bot::model::document">
+      <a href="../../../Tourmaline/Bot/Model/Document.html">Document</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/File" data-name="tourmaline::bot::model::file">
+      <a href="../../../Tourmaline/Bot/Model/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ForceReply" data-name="tourmaline::bot::model::forcereply">
+      <a href="../../../Tourmaline/Bot/Model/ForceReply.html">ForceReply</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Game" data-name="tourmaline::bot::model::game">
+      <a href="../../../Tourmaline/Bot/Model/Game.html">Game</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/GameHighScore" data-name="tourmaline::bot::model::gamehighscore">
+      <a href="../../../Tourmaline/Bot/Model/GameHighScore.html">GameHighScore</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineKeyboardButton" data-name="tourmaline::bot::model::inlinekeyboardbutton">
+      <a href="../../../Tourmaline/Bot/Model/InlineKeyboardButton.html">InlineKeyboardButton</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineKeyboardMarkup" data-name="tourmaline::bot::model::inlinekeyboardmarkup">
+      <a href="../../../Tourmaline/Bot/Model/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQuery" data-name="tourmaline::bot::model::inlinequery">
+      <a href="../../../Tourmaline/Bot/Model/InlineQuery.html">InlineQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResult" data-name="tourmaline::bot::model::inlinequeryresult">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResult.html">InlineQueryResult</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultArticle" data-name="tourmaline::bot::model::inlinequeryresultarticle">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultArticle.html">InlineQueryResultArticle</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultAudio" data-name="tourmaline::bot::model::inlinequeryresultaudio">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultAudio.html">InlineQueryResultAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedAudio" data-name="tourmaline::bot::model::inlinequeryresultcachedaudio">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedAudio.html">InlineQueryResultCachedAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedDocument" data-name="tourmaline::bot::model::inlinequeryresultcacheddocument">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedDocument.html">InlineQueryResultCachedDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedGif" data-name="tourmaline::bot::model::inlinequeryresultcachedgif">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedGif.html">InlineQueryResultCachedGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedMpeg4Gif" data-name="tourmaline::bot::model::inlinequeryresultcachedmpeg4gif">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedMpeg4Gif.html">InlineQueryResultCachedMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedPhoto" data-name="tourmaline::bot::model::inlinequeryresultcachedphoto">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedPhoto.html">InlineQueryResultCachedPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedSticker" data-name="tourmaline::bot::model::inlinequeryresultcachedsticker">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedSticker.html">InlineQueryResultCachedSticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedVideo" data-name="tourmaline::bot::model::inlinequeryresultcachedvideo">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedVideo.html">InlineQueryResultCachedVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultCachedVoice" data-name="tourmaline::bot::model::inlinequeryresultcachedvoice">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedVoice.html">InlineQueryResultCachedVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultContact" data-name="tourmaline::bot::model::inlinequeryresultcontact">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultContact.html">InlineQueryResultContact</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultDocument" data-name="tourmaline::bot::model::inlinequeryresultdocument">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultDocument.html">InlineQueryResultDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultGif" data-name="tourmaline::bot::model::inlinequeryresultgif">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultGif.html">InlineQueryResultGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultLocation" data-name="tourmaline::bot::model::inlinequeryresultlocation">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultLocation.html">InlineQueryResultLocation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultMpeg4Gif" data-name="tourmaline::bot::model::inlinequeryresultmpeg4gif">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultMpeg4Gif.html">InlineQueryResultMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultPhoto" data-name="tourmaline::bot::model::inlinequeryresultphoto">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultPhoto.html">InlineQueryResultPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultVenue" data-name="tourmaline::bot::model::inlinequeryresultvenue">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultVenue.html">InlineQueryResultVenue</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultVideo" data-name="tourmaline::bot::model::inlinequeryresultvideo">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultVideo.html">InlineQueryResultVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InlineQueryResultVoice" data-name="tourmaline::bot::model::inlinequeryresultvoice">
+      <a href="../../../Tourmaline/Bot/Model/InlineQueryResultVoice.html">InlineQueryResultVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InputContactMessageContent" data-name="tourmaline::bot::model::inputcontactmessagecontent">
+      <a href="../../../Tourmaline/Bot/Model/InputContactMessageContent.html">InputContactMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InputLocationMessageContent" data-name="tourmaline::bot::model::inputlocationmessagecontent">
+      <a href="../../../Tourmaline/Bot/Model/InputLocationMessageContent.html">InputLocationMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InputMedia" data-name="tourmaline::bot::model::inputmedia">
+      <a href="../../../Tourmaline/Bot/Model/InputMedia.html">InputMedia</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InputMediaVideo" data-name="tourmaline::bot::model::inputmediavideo">
+      <a href="../../../Tourmaline/Bot/Model/InputMediaVideo.html">InputMediaVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InputMessageContent" data-name="tourmaline::bot::model::inputmessagecontent">
+      <a href="../../../Tourmaline/Bot/Model/InputMessageContent.html">InputMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InputTextMessageContent" data-name="tourmaline::bot::model::inputtextmessagecontent">
+      <a href="../../../Tourmaline/Bot/Model/InputTextMessageContent.html">InputTextMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/InputVenueMessageContent" data-name="tourmaline::bot::model::inputvenuemessagecontent">
+      <a href="../../../Tourmaline/Bot/Model/InputVenueMessageContent.html">InputVenueMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Invoice" data-name="tourmaline::bot::model::invoice">
+      <a href="../../../Tourmaline/Bot/Model/Invoice.html">Invoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/KeyboardButton" data-name="tourmaline::bot::model::keyboardbutton">
+      <a href="../../../Tourmaline/Bot/Model/KeyboardButton.html">KeyboardButton</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/LabeledPrice" data-name="tourmaline::bot::model::labeledprice">
+      <a href="../../../Tourmaline/Bot/Model/LabeledPrice.html">LabeledPrice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Location" data-name="tourmaline::bot::model::location">
+      <a href="../../../Tourmaline/Bot/Model/Location.html">Location</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/MaskPosition" data-name="tourmaline::bot::model::maskposition">
+      <a href="../../../Tourmaline/Bot/Model/MaskPosition.html">MaskPosition</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Message" data-name="tourmaline::bot::model::message">
+      <a href="../../../Tourmaline/Bot/Model/Message.html">Message</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/MessageEntity" data-name="tourmaline::bot::model::messageentity">
+      <a href="../../../Tourmaline/Bot/Model/MessageEntity.html">MessageEntity</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/OrderInfo" data-name="tourmaline::bot::model::orderinfo">
+      <a href="../../../Tourmaline/Bot/Model/OrderInfo.html">OrderInfo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/PhotoSize" data-name="tourmaline::bot::model::photosize">
+      <a href="../../../Tourmaline/Bot/Model/PhotoSize.html">PhotoSize</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/PreCheckoutQuery" data-name="tourmaline::bot::model::precheckoutquery">
+      <a href="../../../Tourmaline/Bot/Model/PreCheckoutQuery.html">PreCheckoutQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ReplyKeyboardMarkup" data-name="tourmaline::bot::model::replykeyboardmarkup">
+      <a href="../../../Tourmaline/Bot/Model/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ReplyKeyboardRemove" data-name="tourmaline::bot::model::replykeyboardremove">
+      <a href="../../../Tourmaline/Bot/Model/ReplyKeyboardRemove.html">ReplyKeyboardRemove</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ShippingAddress" data-name="tourmaline::bot::model::shippingaddress">
+      <a href="../../../Tourmaline/Bot/Model/ShippingAddress.html">ShippingAddress</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ShippingOption" data-name="tourmaline::bot::model::shippingoption">
+      <a href="../../../Tourmaline/Bot/Model/ShippingOption.html">ShippingOption</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/ShippingQuery" data-name="tourmaline::bot::model::shippingquery">
+      <a href="../../../Tourmaline/Bot/Model/ShippingQuery.html">ShippingQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Sticker" data-name="tourmaline::bot::model::sticker">
+      <a href="../../../Tourmaline/Bot/Model/Sticker.html">Sticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/StickerSet" data-name="tourmaline::bot::model::stickerset">
+      <a href="../../../Tourmaline/Bot/Model/StickerSet.html">StickerSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/SuccessfulPayment" data-name="tourmaline::bot::model::successfulpayment">
+      <a href="../../../Tourmaline/Bot/Model/SuccessfulPayment.html">SuccessfulPayment</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Update" data-name="tourmaline::bot::model::update">
+      <a href="../../../Tourmaline/Bot/Model/Update.html">Update</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/User" data-name="tourmaline::bot::model::user">
+      <a href="../../../Tourmaline/Bot/Model/User.html">User</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/UserProfilePhotos" data-name="tourmaline::bot::model::userprofilephotos">
+      <a href="../../../Tourmaline/Bot/Model/UserProfilePhotos.html">UserProfilePhotos</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Venue" data-name="tourmaline::bot::model::venue">
+      <a href="../../../Tourmaline/Bot/Model/Venue.html">Venue</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Video" data-name="tourmaline::bot::model::video">
+      <a href="../../../Tourmaline/Bot/Model/Video.html">Video</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/VideoNote" data-name="tourmaline::bot::model::videonote">
+      <a href="../../../Tourmaline/Bot/Model/VideoNote.html">VideoNote</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/Voice" data-name="tourmaline::bot::model::voice">
+      <a href="../../../Tourmaline/Bot/Model/Voice.html">Voice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Model/WebhookInfo" data-name="tourmaline::bot::model::webhookinfo">
+      <a href="../../../Tourmaline/Bot/Model/WebhookInfo.html">WebhookInfo</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/ParseMode" data-name="tourmaline::bot::parsemode">
+      <a href="../../../Tourmaline/Bot/ParseMode.html">ParseMode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/UpdateAction" data-name="tourmaline::bot::updateaction">
+      <a href="../../../Tourmaline/Bot/UpdateAction.html">UpdateAction</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/User" data-name="tourmaline::user">
+      <a href="../../../Tourmaline/User.html">User</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/User/API" data-name="tourmaline::user::api">
+      <a href="../../../Tourmaline/User/API.html">API</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Tourmaline::Bot::Model::InlineQueryResultCachedPhoto
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../../Tourmaline/Bot/Model/InlineQueryResultCachedPhoto.html">Tourmaline::Bot::Model::InlineQueryResultCachedPhoto</a></li><li class="superclass"><a href="../../../Tourmaline/Bot/Model/InlineQueryResult.html">Tourmaline::Bot::Model::InlineQueryResult</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L4" target="_blank">
+        tourmaline/bot/models/inline/inline_query_result_cached_photo.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="FIELDS">
+        <strong>FIELDS</strong> = <code>{<span class="k">type</span>: {<span class="k">type</span>: <span class="t">String</span>, mustbe: <span class="s">&quot;photo&quot;</span>}, id: <span class="t">String</span>, photo_file_id: <span class="t">String</span>, title: {<span class="k">type</span>: <span class="t">String</span>, nilable: <span class="n">true</span>}, description: {<span class="k">type</span>: <span class="t">String</span>, nilable: <span class="n">true</span>}, caption: {<span class="k">type</span>: <span class="t">String</span>, nilable: <span class="n">true</span>}, reply_markup: {<span class="k">type</span>: <span class="t">InlineKeyboardMarkup</span>, nilable: <span class="n">true</span>}, input_message_content: {<span class="k">type</span>: <span class="t">InputMessageContent</span>, nilable: <span class="n">true</span>}}</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28id%3AString%2Cphoto_file_id%3AString%2Ctitle%3AString%3F%3Dnil%2Cdescription%3AString%3F%3Dnil%2Ccaption%3AString%3F%3Dnil%2Creply_markup%3AInlineKeyboardMarkup%3F%3Dnil%2Cinput_message_content%3AInputMessageContent%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(id : String, photo_file_id : String, title : String? = <span class="n">nil</span>, description : String? = <span class="n">nil</span>, caption : String? = <span class="n">nil</span>, reply_markup : InlineKeyboardMarkup? = <span class="n">nil</span>, input_message_content : InputMessageContent? = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28__temp_399%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(__temp_399 : JSON::PullParser)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#caption%3AString%3F-instance-method" class="signature"><strong>#caption</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#caption%3D%28_caption%3AString%3F%29-instance-method" class="signature"><strong>#caption=</strong>(_caption : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#description%3AString%3F-instance-method" class="signature"><strong>#description</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#description%3D%28_description%3AString%3F%29-instance-method" class="signature"><strong>#description=</strong>(_description : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#id%3AString-instance-method" class="signature"><strong>#id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#id%3D%28_id%3AString%29-instance-method" class="signature"><strong>#id=</strong>(_id : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#input_message_content%3AInputMessageContent%3F-instance-method" class="signature"><strong>#input_message_content</strong> : InputMessageContent?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#input_message_content%3D%28_input_message_content%3AInputMessageContent%3F%29-instance-method" class="signature"><strong>#input_message_content=</strong>(_input_message_content : InputMessageContent?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#photo_file_id%3AString-instance-method" class="signature"><strong>#photo_file_id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#photo_file_id%3D%28_photo_file_id%3AString%29-instance-method" class="signature"><strong>#photo_file_id=</strong>(_photo_file_id : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_markup%3AInlineKeyboardMarkup%3F-instance-method" class="signature"><strong>#reply_markup</strong> : InlineKeyboardMarkup?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_markup%3D%28_reply_markup%3AInlineKeyboardMarkup%3F%29-instance-method" class="signature"><strong>#reply_markup=</strong>(_reply_markup : InlineKeyboardMarkup?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#title%3AString%3F-instance-method" class="signature"><strong>#title</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#title%3D%28_title%3AString%3F%29-instance-method" class="signature"><strong>#title=</strong>(_title : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#type%3AString-instance-method" class="signature"><strong>#type</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#type%3D%28_type%3AString%29-instance-method" class="signature"><strong>#type=</strong>(_type : String)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(id:String,photo_file_id:String,title:String?=nil,description:String?=nil,caption:String?=nil,reply_markup:InlineKeyboardMarkup?=nil,input_message_content:InputMessageContent?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(id : String, photo_file_id : String, title : String? = <span class="n">nil</span>, description : String? = <span class="n">nil</span>, caption : String? = <span class="n">nil</span>, reply_markup : <a href="../../../Tourmaline/Bot/Model/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>? = <span class="n">nil</span>, input_message_content : <a href="../../../Tourmaline/Bot/Model/InputMessageContent.html">InputMessageContent</a>? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new%28id%3AString%2Cphoto_file_id%3AString%2Ctitle%3AString%3F%3Dnil%2Cdescription%3AString%3F%3Dnil%2Ccaption%3AString%3F%3Dnil%2Creply_markup%3AInlineKeyboardMarkup%3F%3Dnil%2Cinput_message_content%3AInputMessageContent%3F%3Dnil%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(__temp_399:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(__temp_399 : JSON::PullParser)
+
+        <a class="method-permalink" href="#new%28__temp_399%3AJSON%3A%3APullParser%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="caption:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>caption</strong> : String?
+
+        <a class="method-permalink" href="#caption%3AString%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="caption=(_caption:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>caption=</strong>(_caption : String?)
+
+        <a class="method-permalink" href="#caption%3D%28_caption%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="description:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>description</strong> : String?
+
+        <a class="method-permalink" href="#description%3AString%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="description=(_description:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>description=</strong>(_description : String?)
+
+        <a class="method-permalink" href="#description%3D%28_description%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="id:String-instance-method">
+      <div class="signature">
+        
+        def <strong>id</strong> : String
+
+        <a class="method-permalink" href="#id%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="id=(_id:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>id=</strong>(_id : String)
+
+        <a class="method-permalink" href="#id%3D%28_id%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="input_message_content:InputMessageContent?-instance-method">
+      <div class="signature">
+        
+        def <strong>input_message_content</strong> : <a href="../../../Tourmaline/Bot/Model/InputMessageContent.html">InputMessageContent</a>?
+
+        <a class="method-permalink" href="#input_message_content%3AInputMessageContent%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="input_message_content=(_input_message_content:InputMessageContent?)-instance-method">
+      <div class="signature">
+        
+        def <strong>input_message_content=</strong>(_input_message_content : <a href="../../../Tourmaline/Bot/Model/InputMessageContent.html">InputMessageContent</a>?)
+
+        <a class="method-permalink" href="#input_message_content%3D%28_input_message_content%3AInputMessageContent%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="photo_file_id:String-instance-method">
+      <div class="signature">
+        
+        def <strong>photo_file_id</strong> : String
+
+        <a class="method-permalink" href="#photo_file_id%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="photo_file_id=(_photo_file_id:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>photo_file_id=</strong>(_photo_file_id : String)
+
+        <a class="method-permalink" href="#photo_file_id%3D%28_photo_file_id%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_markup:InlineKeyboardMarkup?-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_markup</strong> : <a href="../../../Tourmaline/Bot/Model/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>?
+
+        <a class="method-permalink" href="#reply_markup%3AInlineKeyboardMarkup%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_markup=(_reply_markup:InlineKeyboardMarkup?)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_markup=</strong>(_reply_markup : <a href="../../../Tourmaline/Bot/Model/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>?)
+
+        <a class="method-permalink" href="#reply_markup%3D%28_reply_markup%3AInlineKeyboardMarkup%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="title:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>title</strong> : String?
+
+        <a class="method-permalink" href="#title%3AString%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="title=(_title:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>title=</strong>(_title : String?)
+
+        <a class="method-permalink" href="#title%3D%28_title%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json(json:JSON::Builder)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_json</strong>(json : JSON::Builder)
+
+        <a class="method-permalink" href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="type:String-instance-method">
+      <div class="signature">
+        
+        def <strong>type</strong> : String
+
+        <a class="method-permalink" href="#type%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="type=(_type:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>type=</strong>(_type : String)
+
+        <a class="method-permalink" href="#type%3D%28_type%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/8d09d5764a544aa95be4a6a1424878e1bf2dc0f6/src/tourmaline/bot/models/inline/inline_query_result_cached_photo.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

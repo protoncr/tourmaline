@@ -1,4 +1,4 @@
-require "../types"
+require "../models"
 
 module Tourmaline::Bot
   # Interfaces with the `CommandMiddleware` to allow the creation
@@ -19,7 +19,7 @@ module Tourmaline::Bot
     #   bot.delete_message(message.chat.id, message.message_id)
     # end
     # ```
-    def command(names : String | Array(String), &block : Message ->)
+    def command(names : String | Array(String), &block : Model::Message ->)
       if commands = middleware.commands
         if names.is_a?(Array)
           names.each do |name|
@@ -34,7 +34,7 @@ module Tourmaline::Bot
     end
 
     # ditto
-    def command(names : String | Array(String), &block : Message, Array(String) ->)
+    def command(names : String | Array(String), &block : Model::Message, Array(String) ->)
       if commands = middleware.commands
         if names.is_a?(Array)
           names.each do |name|

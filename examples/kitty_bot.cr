@@ -2,7 +2,7 @@ require "../src/tourmaline"
 
 bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
 
-reply_markup = Tourmaline::Bot::ReplyKeyboardMarkup.new([
+reply_markup = Tourmaline::Bot::Model::ReplyKeyboardMarkup.new([
   ["/kitty"], ["/kittygif"],
 ])
 
@@ -24,10 +24,10 @@ bot.command(["kitty", "kittygif"]) do |message|
   cmd = message.text.not_nil!.split(" ")[0]
 
   if cmd == "/kitty"
-    bot.send_chat_action(message.chat.id, Tourmaline::Bot::ChatAction::UploadPhoto)
+    bot.send_chat_action(message.chat.id, :upload_photo)
     bot.send_photo(message.chat.id, api + "jpg")
   else
-    bot.send_chat_action(message.chat.id, Tourmaline::Bot::ChatAction::UploadDocument)
+    bot.send_chat_action(message.chat.id, :upload_document)
     bot.send_document(message.chat.id, api + "gif")
   end
 end
