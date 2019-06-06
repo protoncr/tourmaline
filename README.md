@@ -167,7 +167,7 @@ This currently supports the following features
 - [x] Easy command syntax
 - [x] Robust middleware system
 - [x] Standard API queries
-- [ ] Stickers
+- [x] Stickers
 - [x] Inline mode
 - [x] Long polling
 - [x] Webhooks
