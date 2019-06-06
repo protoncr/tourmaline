@@ -1191,7 +1191,7 @@ module Tourmaline::Bot
         ssl = OpenSSL::SSL::Context::Server.new
         ssl.certificate_chain = ssl_certificate_path.not_nil!
         ssl.private_key = ssl_key_path.not_nil!
-        server.bind_ssl address, port, ssl
+        server.bind_tls address, port, ssl
       else
         server.bind_tcp address, port
       end
@@ -1284,7 +1284,7 @@ module Tourmaline::Bot
     # Returns `true` on success.
     def add_sticker_to_set(user_id, name, png_sticker, emojis, mask_position = nil)
       response = request("addStickerToSet", {
-        user_id: user_idm
+        user_id: user_id,
         name: name,
         png_sticker: png_sticker,
         emojis: emojis,
