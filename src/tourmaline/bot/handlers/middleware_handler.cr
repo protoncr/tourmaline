@@ -1,11 +1,13 @@
 require "../types"
 
 module Tourmaline::Bot
+  # Allows the creation of `Middleware` for your bot.
   module MiddlewareHandler
     macro included
       @middlewares = {} of String => Middleware
     end
 
+    # Attach a `Middleware` to your bot.
     def use(middleware)
       if @middlewares.has_key?(middleware.name)
         raise "A middleware already exists with the name #{middleware.name}"
@@ -14,7 +16,7 @@ module Tourmaline::Bot
       @middlewares[middleware.name] = middleware.new(self)
     end
 
-    def trigger_all_middlewares(update : Update)
+    protected def trigger_all_middlewares(update : Update)
       @middlewares.keys.each { |k| @middlewares[k].call(update) }
     end
   end

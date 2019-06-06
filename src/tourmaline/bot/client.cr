@@ -7,12 +7,18 @@ require "./middleware"
 require "./handlers/*"
 
 module Tourmaline::Bot
+
+  # Parse mode for messages.
   enum ParseMode
     Normal
     Markdown
     HTML
   end
 
+  # Chat actions are what appear at the top of the screen
+  # when users are typing, sending files, etc. You can
+  # mimic these actions by using the
+  # `Client#send_chat_action` method.
   enum ChatAction
     Typing
     UploadPhoto
@@ -29,6 +35,7 @@ module Tourmaline::Bot
       super.to_s.underscore
     end
   end
+
 
   enum UpdateAction
     Message
@@ -72,6 +79,122 @@ module Tourmaline::Bot
     end
   end
 
+  # Client is synonymous with Bot. You can create a bot by
+  # creating an instance of the `Tourmaline::Client`
+  # class and setting the correct `api_key`. For
+  # information on all the available methods,
+  # see below.
+  #
+  # ### Examples:
+  #
+  # Echo bot:
+  # ```
+  # require "tourmaline/bot"
+  #
+  # bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+  #
+  # bot.command("echo") do |message, params|
+  #   text = params.join(" ")
+  #   bot.send_message(message.chat.id, text)
+  #   bot.delete_message(message.chat.id, message.message_id)
+  # end
+  #
+  # bot.poll
+  # ```
+  #
+  # Inline query bot:
+  # ```
+  # require "tourmaline/bot"
+  #
+  # bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+  #
+  # bot.on(Tourmaline::Bot::UpdateAction::InlineQuery) do |update|
+  #   query = update.inline_query.not_nil!
+  #   results = [] of Tourmaline::Bot::InlineQueryResult
+  #
+  #   results << Tourmaline::Bot::InlineQueryResultArticle.new(
+  #     id: "query",
+  #     title: "Inline title",
+  #     input_message_content: Tourmaline::Bot::InputTextMessageContent.new("Click!"),
+  #     description: "Your query: #{query.query}",
+  #   )
+  #
+  #   results << Tourmaline::Bot::InlineQueryResultPhoto.new(
+  #     id: "photo",
+  #     caption: "Telegram logo",
+  #     photo_url: "https://telegram.org/img/t_logo.png",
+  #     thumb_url: "https://telegram.org/img/t_logo.png"
+  #   )
+  #
+  #   results << Tourmaline::Bot::InlineQueryResultGif.new(
+  #     id: "gif",
+  #     gif_url: "https://telegram.org/img/tl_card_wecandoit.gif",
+  #     thumb_url: "https://telegram.org/img/tl_card_wecandoit.gif"
+  #   )
+  #
+  #   bot.answer_inline_query(query.id, results)
+  # end
+  #
+  # bot.poll
+  # ```
+  #
+  # Kitty bot (using custom keyboard):
+  # ```
+  # require "tourmaline/bot"
+  #
+  # bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+  #
+  # reply_markup = Tourmaline::Bot::ReplyKeyboardMarkup.new([
+  #   ["/kitty"], ["/kittygif"],
+  # ])
+  #
+  # bot.command(["start", "help"]) do |message|
+  #   bot.send_message(
+  #     message.chat.id,
+  #     "😺 Use commands: /kitty, /kittygif and /about",
+  #     reply_markup: reply_markup)
+  # end
+  #
+  # bot.command("about") do |message|
+  #   text = "😽 This bot is powered by Tourmaline, a Telegram bot library for Crystal. Visit https://github.com/watzon/tourmaline to check out the source code."
+  #   bot.send_message(message.chat.id, text)
+  # end
+  #
+  # bot.command(["kitty", "kittygif"]) do |message|
+  #   # The time hack is to get around Telegrsm's image cache
+  #   api = "https://thecatapi.com/api/images/get?time=%{time}&format=src&type=" % {time: Time.now}
+  #   cmd = message.text.not_nil!.split(" ")[0]
+  #
+  #   if cmd == "/kitty"
+  #     bot.send_chat_action(message.chat.id, Tourmaline::Bot::ChatAction::UploadPhoto)
+  #     bot.send_photo(message.chat.id, api + "jpg")
+  #   else
+  #     bot.send_chat_action(message.chat.id, Tourmaline::Bot::ChatAction::UploadDocument)
+  #     bot.send_document(message.chat.id, api + "gif")
+  #   end
+  # end
+  #
+  # bot.poll
+  # ```
+  #
+  # Webhook bot (using [ngrok.cr](https://github.com/watzon/ngrok.cr)):
+  # ```
+  # require "ngrok"
+  # require "tourmaline/bot"
+  #
+  # Ngrok.start({addr: "127.0.0.1:3400"}) do |ngrok|
+  #   bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+  #
+  #   bot.command("echo") do |message, params|
+  #     text = params.join(" ")
+  #     bot.send_message(message.chat.id, text)
+  #     bot.delete_message(message.chat.id, message.message_id)
+  #   end
+  #
+  #   bot.set_webhook(ngrok.ngrok_url_https)
+  #   bot.serve("127.0.0.1", 3400)
+  # end
+  # ```
   class Client
     include CommandHandler
     include EventHandler
@@ -92,6 +215,10 @@ module Tourmaline::Bot
 
     getter :bot_info, :bot_name, :polling
 
+    # Create a new instance of `Tourmaline::Bot::Client`. It is
+    # highly recommended to set `@api_key` at an environment
+    # variable. `@logger` can be any logger that extends
+    # Crystal's built in Logger.
     def initialize(
       @api_key : String,
       @updates_timeout : Int32? = nil,
@@ -104,16 +231,25 @@ module Tourmaline::Bot
       load_default_middleware
     end
 
+    # Convenience method to check if this bot is an admin in
+    # the current chat. See `Client#get_chat_administrators`
+    # for more info.
     def is_admin?(chat_id)
       admins = get_chat_administrators(chat_id)
       admins.any? { |a| a.user.id = @bot_info.id }
     end
 
+    # A simple method for testing your bot's auth token. Requires
+    # no parameters. Returns basic information about the bot
+    # in form of a `User` object.
     def get_me
       response = request("getMe")
       User.from_json(response)
     end
 
+    # Use this method to receive incoming updates using long polling
+    # ([wiki](http://en.wikipedia.org/wiki/Push_technology#Long_polling)).
+    # An `Array` of `Update` objects is returned.
     def get_updates(
       offset = @next_offset,
       limit = nil,
@@ -136,6 +272,17 @@ module Tourmaline::Bot
       updates
     end
 
+    # Use this method to send answers to callback queries sent from
+    # inline keyboards. The answer will be displayed to the user
+    # as a notification at the top of the chat screen or as
+    # an alert. On success, `true` is returned.
+    #
+    # > Alternatively, the user can be redirected to the specified
+    # > Game URL (`url`). For this option to work, you must first
+    # > create a game for your bot via @Botfather and accept the
+    # > terms. Otherwise, you may use links like
+    # > [t.me/your_bot?start=XXXX](https://t.me/your_bot?start=XXXX)
+    # > that open your bot with a parameter.
     def answer_callback_query(
       callback_query_id,
       text = nil,
@@ -154,6 +301,9 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to send answers to an inline query.
+    # On success, True is returned. No more than
+    # **50** results per query are allowed.
     def answer_inline_query(
       inline_query_id,
       results,
@@ -176,6 +326,16 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to delete a `Message`, including service messages,
+    # with the following limitations:
+    # - A message can only be deleted if it was sent less than 48 hours ago.
+    # - Bots can delete outgoing messages in private chats, groups, and supergroups.
+    # - Bots can delete incoming messages in private chats.
+    # - Bots granted can_post_messages permissions can delete outgoing messages in channels.
+    # - If the bot is an administrator of a group, it can delete any message there.
+    # - If the bot has `can_delete_messages` permission in a supergroup or a
+    #   channel, it can delete any message there.
+    # Returns `true` on success.
     def delete_message(chat_id, message_id)
       response = request("deleteMessage", {
         chat_id:    chat_id,
@@ -185,6 +345,10 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to edit captions of messages. On success,
+    # if edited message is sent by the bot, the edited
+    # `Message` is returned, otherwise `true`
+    # is returned.
     def edit_message_caption(
       chat_id,
       caption,
@@ -207,6 +371,10 @@ module Tourmaline::Bot
       response.is_a?(String) ? response == "true" : Message.from_json(response)
     end
 
+    # Use this method to edit only the reply markup of messages.
+    # On success, if edited message is sent by the bot, the
+    # edited `Message` is returned, otherwise `true` is
+    # returned.
     def edit_message_reply_markup(
       chat_id,
       message_id = nil,
@@ -227,6 +395,9 @@ module Tourmaline::Bot
       response.is_a?(String) ? response == "true" : Message.from_json(response)
     end
 
+    # Use this method to edit text and game messages. On success, if
+    # edited message is sent by the bot, the edited `Message`
+    # is returned, otherwise `true` is returned.
     def edit_message_text(
       chat_id,
       text,
@@ -259,6 +430,8 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to forward messages of any kind. On success,
+    # the sent `Message` is returned.
     def forward_message(
       chat_id,
       from_chat_id,
@@ -275,6 +448,10 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to get up to date information about the chat
+    # (current name of the user for one-on-one conversations,
+    # current username of a user, group or channel, etc.).
+    # Returns a `Chat` object on success.
     def get_chat(chat_id)
       response = request("getChat", {
         chat_id: chat_id,
@@ -283,6 +460,11 @@ module Tourmaline::Bot
       Chat.from_json(response)
     end
 
+    # Use this method to get a list of administrators in a chat. On success,
+    # returns an `Array` of `ChatMember` objects that contains information
+    # about all chat administrators except other bots. If the chat is a
+    # group or a supergroup and no administrators were appointed,
+    # only the creator will be returned.
     def get_chat_administrators(chat_id)
       response = request("getChatAdministrators", {
         chat_id: chat_id,
@@ -291,12 +473,35 @@ module Tourmaline::Bot
       Array(ChatMember).from_json(response)
     end
 
-    def get_chat_member
+    # Use this method to get information about a member of a chat. Returns a
+    # `ChatMember` object on success.
+    def get_chat_member(chat_id, user_id)
+      response = request("getChatMember", {
+        chat_id: chat_id,
+        user_id: user_id
+      })
+
+      Array(ChatMember).from_json(response)
     end
 
-    def get_chat_members_count
+    # Use this method to get the number of members in a chat. Returns `Int32` on success.
+    def get_chat_members_count(chat_id)
+      response = request("getChatMembersCount", {
+        chat_id: chat_id
+      })
+
+      response.to_i32
     end
 
+    # Use this method to get basic info about a file and prepare it for downloading.
+    # For the moment, bots can download files of up to **20MB** in size. On success,
+    # a `File` object is returned. The file can then be downloaded via the
+    # link `https://api.telegram.org/file/bot<token>/<file_path>`, where
+    # `<file_path>` is taken from the response. It is guaranteed that
+    # the link will be valid for at least 1 hour. When the link
+    # expires, a new one can be requested by calling `#getFile` again.
+    #
+    # To simplify retrieving a link for a file, use the `#getFileLink` method.
     def get_file(file_id)
       response = request("getFile", {
         file_id: file_id,
@@ -305,6 +510,7 @@ module Tourmaline::Bot
       File.from_json(response)
     end
 
+    # Returns a download link for a `File`.
     def get_file_link(file)
       if file.file_path
         return File.join(@endpoint_url, file.file_path)
@@ -313,6 +519,8 @@ module Tourmaline::Bot
       nil
     end
 
+    # Use this method to get a list of profile pictures for a user.
+    # Returns a `UserProfilePhotos` object.
     def get_user_profile_photos(
       user_id,
       offset = nil,
@@ -327,6 +535,17 @@ module Tourmaline::Bot
       UserProfilePhotos.from_json(response)
     end
 
+    # Use this method to kick a user from a group, a supergroup or a channel.
+    # In the case of supergroups and channels, the user will not be able to
+    # return to the group on their own using invite links, etc., unless
+    # unbanned first. The bot must be an administrator in the chat
+    # for this to work and must have the appropriate admin
+    # rights. Returns `true` on success.
+    #
+    # > Note: In regular groups (non-supergroups), this method will only work
+    # > if the `All Members Are Admins` setting is off in the target group.
+    # > Otherwise members may only be removed by the group's creator or
+    # > by the member that added them.
     def kick_chat_member(
       chat_id,
       user_id,
@@ -341,6 +560,11 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to unban a previously kicked user in a supergroup
+    # or channel. The user will not return to the group or channel
+    # automatically, but will be able to join via link, etc.
+    # The bot must be an administrator for this to work.
+    # Returns `true` on success.
     def unban_chat_member(
       chat_id,
       user_id
@@ -353,6 +577,11 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to unban a previously kicked user in a supergroup or
+    # channel. The user will not return to the group or channel
+    # automatically, but will be able to join via link, etc.
+    # The bot must be an administrator for this to work.
+    # Returns `true` on success.
     def restrict_chat_member(
       chat_id,
       user_id,
@@ -375,6 +604,11 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to promote or demote a user in a supergroup or a channel.
+    # The bot must be an administrator in the chat for this to work and must
+    # have the appropriate admin rights. Pass False for all boolean
+    # parameters to demote a user.
+    # Returns `true` on success.
     def promote_chat_member(
       chat_id,
       user_id,
@@ -405,6 +639,10 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to generate a new invite link for a chat; any previously
+    # generated link is revoked. The bot must be an administrator in the chat
+    # for this to work and must have the appropriate admin rights.
+    # Returns the new invite link as `String` on success.
     def export_chat_invite_link(chat_id)
       response = request("exportChatInviteLink", {
         chat_id: chat_id,
@@ -413,6 +651,13 @@ module Tourmaline::Bot
       response.to_s
     end
 
+    # Use this method to set a new profile photo for the chat. Photos can't be changed
+    # for private chats. The bot must be an administrator in the chat for this to
+    # work and must have the appropriate admin rights.
+    # Returns `true` on success.
+    #
+    # > **Note:** In regular groups (non-supergroups), this method will only work if the
+    # > `All Members Are Admins` setting is off in the target group.
     def set_chat_photo(chat_id, photo)
       response = request("setChatPhoto", {
         chat_id: chat_id,
@@ -422,6 +667,13 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to delete a chat photo. Photos can't be changed for private chats.
+    # The bot must be an administrator in the chat for this to work and must have the
+    # appropriate admin rights.
+    # Returns `true` on success.
+    #
+    # > **Note:** In regular groups (non-supergroups), this method will only work if the
+    # `All Members Are Admins` setting is off in the target group.
     def delete_chat_photo(chat_id)
       response = request("deleteChatPhoto", {
         chat_id: chat_id,
@@ -430,6 +682,13 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to change the title of a chat. Titles can't be changed for
+    # private chats. The bot must be an administrator in the chat for this to
+    # work and must have the appropriate admin rights.
+    # Returns `true` on success.
+    #
+    # > **Note:** In regular groups (non-supergroups), this method will only
+    # > work if the `All Members Are Admins` setting is off in the target group.
     def set_chat_title(chat_id, title)
       response = request("setchatTitle", {
         chat_id: chat_id,
@@ -439,6 +698,10 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to change the description of a supergroup or a channel.
+    # The bot must be an administrator in the chat for this to work and
+    # must have the appropriate admin rights.
+    # Returns `true` on success.
     def set_chat_description(chat_id, description)
       response = request("setchatDescription", {
         chat_id:     chat_id,
@@ -448,6 +711,11 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to pin a message in a group, a supergroup, or a channel.
+    # The bot must be an administrator in the chat for this to work and must
+    # have the `can_pin_messages` admin right in the supergroup or
+    # `can_edit_messages` admin right in the channel.
+    # Returns `true` on success.
     def pin_chat_message(chat_id, message_id, disable_notification = false)
       response = request("pinChatMessage", {
         chat_id:              chat_id,
@@ -458,6 +726,11 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to unpin a message in a group, a supergroup, or a channel.
+    # The bot must be an administrator in the chat for this to work and must
+    # have the ‘can_pin_messages’ admin right in the supergroup or
+    # ‘can_edit_messages’ admin right in the channel.
+    # Returns `true` on success.
     def unpin_chat_message(chat_id)
       response = request("unpinChatMessage", {
         chat_id: chat_id,
@@ -466,6 +739,9 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method for your bot to leave a group,
+    # supergroup, or channel.
+    # Returns `true` on success.
     def leave_chat(chat_id)
       response = request("leaveChat", {
         chat_id: chat_id,
@@ -474,9 +750,23 @@ module Tourmaline::Bot
       Chat.from_json(response)
     end
 
+    # Use this method to remove webhook integration if you decide to switch
+    # back to getUpdates.
+    # Returns `true` on success.
+    # Requires no parameters.
     def delete_webhook
+      response = request("deleteWebhook")
+      response == "true"
     end
 
+    # Use this method to send audio files, if you want Telegram clients to display
+    # them in the music player. Your audio must be in the `.mp3` format.
+    # On success, the sent `Message` is returned. Bots can currently
+    # send audio files of up to **50 MB** in size, this limit may be
+    # changed in the future.
+    #
+    # For sending voice messages, use the `#sendVoice` method instead.
+    # TODO: Add filesize checking and validation.
     def send_audio(
       chat_id,
       audio,
@@ -503,6 +793,18 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method when you need to tell the user that something is happening on the
+    # bot's side. The status is set for 5 seconds or less (when a message arrives
+    # from your bot, Telegram clients clear its typing status).
+    # Returns `true` on success.
+    #
+    # > Example: The ImageBot needs some time to process a request and upload the image.
+    # > Instead of sending a text message along the lines of “Retrieving image, please
+    # > wait…”, the bot may use `#sendChatAction` with action = upload_photo. The user
+    # > will see a “sending photo” status for the bot.
+    #
+    # We only recommend using this method when a response from the bot will take a
+    # noticeable amount of time to arrive.
     def send_chat_action(
       chat_id,
       action : ChatAction
@@ -515,6 +817,8 @@ module Tourmaline::Bot
       response == "true"
     end
 
+    # Use this method to send phone contacts.
+    # On success, the sent `Message` is returned.
     def send_contact(
       chat_id,
       phone_number,
@@ -537,6 +841,11 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to send general files.
+    # On success, the sent `Message` is returned. Bots can currently send files
+    # of any type of up to **50 MB** in size, this limit
+    # may be changed in the future.
+    # TODO: Add filesize checking and validation.
     def send_document(
       chat_id,
       document,
@@ -557,6 +866,8 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to send point on the map.
+    # On success, the sent `Message` is returned.
     def send_location(
       chat_id,
       latitude,
@@ -579,6 +890,8 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to send text messages.
+    # On success, the sent `Message` is returned.
     def send_message(
       chat_id,
       text,
@@ -603,6 +916,8 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to send photos.
+    # On success, the sent `Message` is returned.
     def send_photo(
       chat_id,
       photo,
@@ -623,7 +938,9 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
-    # Not working yet
+    # Use this method to send a group of photos or videos as an album.
+    # On success, an array of the sent `Messages` is returned.
+    # TODO: Test this.
     def send_media_group(
       chat_id,
       media,
@@ -637,9 +954,11 @@ module Tourmaline::Bot
         reply_to_message_id:  reply_to_message_id,
       })
 
-      Message.from_json(response)
+      Array(Message).from_json(response)
     end
 
+    # Use this method to send information about a venue.
+    # On success, the sent `Message` is returned.
     def send_venue(
       chat_id,
       latitude,
@@ -666,6 +985,12 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to send video files, Telegram clients support mp4 videos
+    # (other formats may be sent as Document).
+    # On success, the sent `Message` is returned. Bots can currently send
+    # video files of up to **50 MB** in size, this limit may be
+    # changed in the future.
+    # TODO: Add filesize checking and validation.
     def send_video(
       chat_id,
       video,
@@ -692,6 +1017,10 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram
+    # clients support rounded square `mp4` videos of up to **1** minute long.
+    # Use this method to send video messages.
+    # On success, the sent `Message` is returned.
     def send_video_note(
       chat_id,
       video_note,
@@ -718,6 +1047,13 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to send audio files, if you want Telegram clients to display the
+    # file as a playable voice message. For this to work, your audio must be in
+    # an `.ogg` file encoded with OPUS (other formats may be sent as `Audio`
+    # or `Document`).
+    # On success, the sent `Message` is returned. Bots can currently send voice
+    # messages of up to **50 MB** in size, this limit may be changed in the future.
+    # TODO: Add filesize checking and validation.
     def send_voice(
       chat_id,
       voice,
@@ -742,6 +1078,11 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # Use this method to edit live location messages. A location can be edited until
+    # its live_period expires or editing is explicitly disabled by a call to
+    # `#stopMessageLiveLocation`.
+    # On success, if the edited message wasn't by the bot, the edited `Message` is
+    # returned, otherwise `true` is returned.
     def edit_message_live_location(
       chat_id,
       latitude,
@@ -763,9 +1104,17 @@ module Tourmaline::Bot
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
+      if message == "true" || message == "false"
+        return message == "true"
+      end
+
       Message.from_json(response)
     end
 
+    # Use this method to stop updating a live location message before
+    # live_period expires.
+    # On success, if the message was sent by the bot, the sent
+    # `Message` is returned, otherwise `true` is returned.
     def stop_message_live_location(
       chat_id,
       message_id = nil,
@@ -790,6 +1139,9 @@ module Tourmaline::Bot
     #        POLLING         #
     ##########################
 
+    # Start polling for updates. This method uses a combination of `#get_updates`
+    # and `#handle_update` to send continuously check Telegram's servers
+    # for updates.
     def poll
       unset_webhook
       @polling = true
@@ -807,6 +1159,7 @@ module Tourmaline::Bot
       end
     end
 
+    # Stops the bot from polling.
     def stop_polling
       @polling = false
     end
@@ -815,6 +1168,9 @@ module Tourmaline::Bot
     #        WEBHOOK         #
     ##########################
 
+    # Start an HTTP server at the specified `address` and `port` that listens for
+    # updates using Telegram's webhooks. This is the reccommended way to handle
+    # bots in production.
     def serve(address = "127.0.0.1", port = 8080, ssl_certificate_path = nil, ssl_key_path = nil)
       server = HTTP::Server.new do |context|
         begin
@@ -843,47 +1199,100 @@ module Tourmaline::Bot
       server.listen
     end
 
+    # Use this method to specify a url and receive incoming updates via an outgoing webhook.
+    # Whenever there is an update for the bot, we will send an HTTPS POST request to the
+    # specified url, containing a JSON-serialized `Update`. In case of an unsuccessful
+    # request, we will give up after a reasonable amount of attempts.
+    # Returns `true` on success.
+    #
+    # If you'd like to make sure that the Webhook request comes from Telegram, we recommend
+    # using a secret path in the URL, e.g. `https://www.example.com/<token>`. Since nobody
+    # else knows your bot‘s token, you can be pretty sure it’s us.
     def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
       params = {url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate}
       logger.info("Setting webhook to '#{url}'#{" with certificate" if certificate}")
       request("setWebhook", params)
     end
 
+    # Use this to unset the webhook and stop receiving updates to your bot.
     def unset_webhook
       request("setWebhook", {url: ""})
     end
 
+    # Use this method to get current webhook status. Requires no parameters.
+    # On success, returns a `WebhookInfo` object. If the bot is using
+    # `#getUpdates`, will return an object with the
+    # url field empty.
     def get_webhook_info
+      response = request("getWebhookInfo")
+      WebhookInfo.from_json(response)
     end
 
     ##########################
     #        STICKERS        #
     ##########################
 
+    # Use this method to send .webp stickers.
+    # On success, the sent `Message` is returned.
+    # TODO: Implement
     def send_sticker
     end
 
+    # Use this method to get a sticker set.
+    # On success, a `StickerSet` object is returned.
+    # TODO: Implement
     def get_sticker_set
     end
 
+    # Use this method to set a new group sticker set for a supergroup. The bot must
+    # be an administrator in the chat for this to work and must have the
+    # appropriate admin rights. Use the field can_set_sticker_set
+    # optionally returned in `#get_chat` requests to check if the
+    # bot can use this method.
+    # Returns `true` on success.
+    # TODO: Implement
     def set_chat_sticker_set
     end
 
+    # Use this method to add a new sticker to a set created by the bot.
+    # Returns `true` on success.
+    # TODO: Implement
     def add_sticker_to_set
     end
 
+    # Use this method to create new sticker set owned by a user. The bot will be able to
+    # edit the created sticker set.
+    # Returns `true` on success.
+    # TODO: Implement
     def create_new_sticker_set
     end
 
+    # Use this method to delete a group sticker set from a supergroup. The bot must be
+    # an administrator in the chat for this to work and must have the appropriate
+    # admin rights. Use the field can_set_sticker_set optionally returned in
+    # `#get_chat` requests to check if the bot can use this method.
+    # Returns `true` on success.
+    # TODO: Implement
     def delete_chat_sticker_set
     end
 
+    # Use this method to delete a sticker from a set created by the bot.
+    # Returns `true` on success.
+    # TODO: Implement
     def delete_sticker_from_set
     end
 
-    def send_sticker_position_in_set
+    # Use this method to move a sticker in a set created by the bot to a specific position.
+    # Returns `true` on success.
+    # TODO: Implement
+    def set_sticker_position_in_set
     end
 
+    # Use this method to upload a .png file with a sticker for later use in
+    # `#create_new_sticker_set` and `#add_sticker_to_set` methods (can be
+    # used multiple times).
+    # Returns the uploaded `File` on success.
+    # TODO: Implement
     def upload_sticker_file
     end
 
@@ -891,6 +1300,8 @@ module Tourmaline::Bot
     #        PAYMENTS        #
     ##########################
 
+    # Use this method to send invoices.
+    # On success, the sent `Message` is returned.
     def send_invoice(
       chat_id,
       title,
@@ -941,6 +1352,10 @@ module Tourmaline::Bot
       Message.from_json(response)
     end
 
+    # If you sent an invoice requesting a shipping address and the parameter is_flexible
+    # was specified, the Bot API will send an Update with a shipping_query field to
+    # the bot. Use this method to reply to shipping queries.
+    # On success, `true` is returned.
     def answer_shipping_query(
       shipping_query_id,
       ok,
@@ -957,6 +1372,12 @@ module Tourmaline::Bot
       Bool.from_json(response)
     end
 
+    # Once the user has confirmed their payment and shipping details, the Bot API sends
+    # the final confirmation in the form of an Update with the field pre_checkout_query.
+    # Use this method to respond to such pre-checkout queries.
+    # On success, `true` is returned.
+    # Note: The Bot API must receive an answer within 10 seconds after the
+    # pre-checkout query was sent.
     def answer_pre_checkout_query(
       pre_checkout_query_id,
       ok,
@@ -971,12 +1392,16 @@ module Tourmaline::Bot
       Bool.from_json(response)
     end
 
+    # Convenience method to create and `Array` of `LabledPrice` from an `Array`
+    # of `NamedTuple(label: String, amount: Int32)`.
     def labeled_prices(lp : Array(NamedTuple(label: String, amount: Int32)))
       lp.reduce([] of Tourmaline::Bot::LabeledPrice) { |acc, i|
         acc << Tourmaline::Bot::LabeledPrice.new(label: i[:label], amount: i[:amount])
       }
     end
 
+    # Convenience method to create an `Array` of `ShippingOption` from a
+    # `NamedTuple(id: String, title: String, prices: Array(LabeledPrice))`.
     def shipping_options(options : Array(NamedTuple(id: String, title: String, prices: Array(LabeledPrice))))
       lp.reduce([] of Tourmaline::Bot::ShippingOption) { |acc, i|
         acc << Tourmaline::Bot::ShippingOption.new(id: i[:id], title: i[:title], prices: i[:prices])
@@ -987,18 +1412,25 @@ module Tourmaline::Bot
     #         GAMES          #
     ##########################
 
+    # Use this method to send a game.
+    # On success, the sent `Message` is returned.
+    # TODO: Implement
     def send_game
     end
 
+    # TODO: Implement
     def answer_game_query
     end
 
+    # TODO: Implement
     def set_game_score
     end
 
+    # TODO: Implement
     def get_game_high_scores
     end
 
+    # Sends a json request to the Telegram bot API.
     private def request(method, params = {} of String => String)
       method_url = ::File.join(@endpoint_url, method)
 

@@ -1,4 +1,6 @@
 module Tourmaline::Bot
+  # Used by `Client` to allow the handling of commands.
+  # Commands are prefixed with `/`.
   class CommandMiddleware < Middleware
     # @bot : Tourmaline::Bot::Client - Inherited
     @commands = {} of String => Message, Array(String) ->

@@ -2,6 +2,7 @@ require "../types"
 require "./middleware_handler"
 
 module Tourmaline::Bot
+  # Allows your bot to hook into specific `UpdateAction`s.
   module EventHandler
     include MiddlewareHandler
 
@@ -9,6 +10,17 @@ module Tourmaline::Bot
       @event_handlers = {} of String => Update ->
     end
 
+    # Preform an action when a specific `UpdateAction` is called.
+    #
+    # ```
+    # bot.on(:new_chat_members) do |update|
+    #   # persist the user to a database
+    # end
+
+    # bot.on(:left_chat_member) do |update|
+    #   # remove chat member from database
+    # end
+    # ```
     def on(actions : UpdateAction | Array(UpdateAction), &block : Update ->)
       actions = [actions] unless UpdateAction.is_a?(Array)
       actions.as(Array(UpdateAction)).each do |action|
@@ -16,6 +28,7 @@ module Tourmaline::Bot
       end
     end
 
+    # Triggers events when correct `UpdateAction`s are received.
     def handle_update(update)
       trigger_all_middlewares(update)
 
@@ -64,7 +77,8 @@ module Tourmaline::Bot
       logger.error("Update was not handled because: #{ex.message}")
     end
 
-    def trigger(event : UpdateAction, update : Update)
+    # Triggers an update event.
+    protected def trigger(event : UpdateAction, update : Update)
       if @event_handlers.has_key?(event.to_s)
         proc = @event_handlers[event.to_s]
         proc.call(update)

@@ -1,5 +1,14 @@
-require "./tourmaline/bot/*"
+require "./tourmaline/version"
+require "./tourmaline/bot"
+# require "./tourmaline/user"
 
-# TODO: Write documentation for `Tourmaline`
+# Tourmaline is a Telegram bot (and very soon, client) API library
+# for [Telegram](https://telegram.com). It provides an easy to
+# use interface for creating telegram bots, and using the
+# various bot APIs that Telegram provides.
+#
+# For usage examples, see the
+# [examples](https://github.com/watzon/tourmaline/tree/master/examples)
+# directory.
 module Tourmaline
 end
