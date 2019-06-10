@@ -159,6 +159,27 @@ bot.command("buy") do |message, params|
 end
 ```
 
+## Kemal Middleware
+
+Tourmaline provides middleware for Kemal, just in case you want to use Kemal as the server.
+
+```crystal
+require "kemal"
+require "tourmaline/kemal/tourmaline_handler"
+
+require "./your_bot"
+
+add_handler Kemal::TourmalineHandler.new(
+  bot: YourBot.new,
+  url: "https://something.com",
+  path: "/bot-webhook/#{ENV["TGBOT_API_KEY"]}"
+)
+
+Kemal.run
+```
+
+**Note:** Telegram won't send webhook requests to non-ssl domains. This means that you need to be running your kemal server with ssl enabled. For local development this can be a pain, but it is made much easier with [ngrok.cr](https://github.com/watzon/ngrok.cr).
+
 ## Development
 
 This currently supports the following features
