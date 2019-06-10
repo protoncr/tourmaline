@@ -1,3 +1,3 @@
 module Tourmaline
-  VERSION = "0.4.0"
+  VERSION = "0.6.1"
 end
