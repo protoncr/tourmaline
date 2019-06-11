@@ -1,6 +1,6 @@
 ![Header Image](img/header.png)
 
-![Github search hit counter](https://img.shields.io/github/search/watzon/tourmaline/goto.svg) ![license](https://img.shields.io/github/license/watzon/tourmaline.svg)
+<a href="https://patreon.com/watzon"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fwatzon%2Fpledgesssss&style=for-the-badge" /></a>
 
 Telegram Bot (and hopefully soon API) framework for Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
 
