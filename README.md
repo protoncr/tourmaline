@@ -193,7 +193,7 @@ This currently supports the following features
 - [x] Long polling
 - [x] Webhooks
 - [x] Payments (*beta*)
-- [ ] Games
+- [x] Games
 
 If you want a new feature feel free to submit an issue or open a pull request.
 

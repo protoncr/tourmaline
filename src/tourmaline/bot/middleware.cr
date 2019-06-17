@@ -10,7 +10,6 @@ module Tourmaline::Bot
   # # bot definition...
   #
   # class MyMiddleware < TGBot::Middleware
-  #
   #   # All middlware include a reference to the parent bot.
   #   # @bot : Tourmaline::Bot::Client
   #   # getter bot : Tourmaline::Bot::Client

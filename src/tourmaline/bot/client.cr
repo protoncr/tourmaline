@@ -7,7 +7,6 @@ require "./middleware"
 require "./handlers/*"
 
 module Tourmaline::Bot
-
   # Parse mode for messages.
   enum ParseMode
     Normal
@@ -35,7 +34,6 @@ module Tourmaline::Bot
       super.to_s.underscore
     end
   end
-
 
   enum UpdateAction
     Message
@@ -478,7 +476,7 @@ module Tourmaline::Bot
     def get_chat_member(chat_id, user_id)
       response = request("getChatMember", {
         chat_id: chat_id,
-        user_id: user_id
+        user_id: user_id,
       })
 
       Array(Model::ChatMember).from_json(response)
@@ -488,7 +486,7 @@ module Tourmaline::Bot
     # Returns `Int32` on success.
     def get_chat_members_count(chat_id)
       response = request("getChatMembersCount", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       response.to_i32
@@ -1245,11 +1243,11 @@ module Tourmaline::Bot
       reply_markup = nil
     )
       response = request("sendSticker", {
-        chat_id: chat_id,
-        sticker: sticker,
+        chat_id:               chat_id,
+        sticker:               sticker,
         disable_notifications: disable_notifications,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_to_message_id:   reply_to_message_id,
+        reply_markup:          reply_markup,
       })
 
       Model::Message.from_json(response)
@@ -1259,7 +1257,7 @@ module Tourmaline::Bot
     # On success, a `StickerSet` object is returned.
     def get_sticker_set(name : String)
       response = request("getStickerSet", {
-        name: name
+        name: name,
       })
 
       Model::StickerSet.from_json(response)
@@ -1273,8 +1271,8 @@ module Tourmaline::Bot
     # Returns `true` on success.
     def set_chat_sticker_set(chat_id, sticker_set_name)
       response = request("setChatStickerSet", {
-        chat_id: chat_id,
-        sticker_set_name: sticker_set_name
+        chat_id:          chat_id,
+        sticker_set_name: sticker_set_name,
       })
 
       response == "true"
@@ -1284,11 +1282,11 @@ module Tourmaline::Bot
     # Returns `true` on success.
     def add_sticker_to_set(user_id, name, png_sticker, emojis, mask_position = nil)
       response = request("addStickerToSet", {
-        user_id: user_id,
-        name: name,
-        png_sticker: png_sticker,
-        emojis: emojis,
-        mask_position: mask_position
+        user_id:       user_id,
+        name:          name,
+        png_sticker:   png_sticker,
+        emojis:        emojis,
+        mask_position: mask_position,
       })
 
       response == "true"
@@ -1307,13 +1305,13 @@ module Tourmaline::Bot
       mask_position = nil
     )
       response = request("createNewStickerSet", {
-        user_id: user_id,
-        name: name,
-        title: title,
-        png_sticker: png_sticker,
-        emojis: emojis,
+        user_id:        user_id,
+        name:           name,
+        title:          title,
+        png_sticker:    png_sticker,
+        emojis:         emojis,
         contains_masks: contains_masks,
-        mask_position: mask_position
+        mask_position:  mask_position,
       })
 
       response == "true"
@@ -1326,7 +1324,7 @@ module Tourmaline::Bot
     # Returns `true` on success.
     def delete_chat_sticker_set(chat_id)
       response = request("deleteChatStickerSet", {
-        chat_id: chat_id
+        chat_id: chat_id,
       })
 
       response == "true"
@@ -1336,7 +1334,7 @@ module Tourmaline::Bot
     # Returns `true` on success.
     def delete_sticker_from_set(sticker)
       response = request("deleteStickerFromSet", {
-        sticker: sticker
+        sticker: sticker,
       })
 
       response == "true"
@@ -1346,8 +1344,8 @@ module Tourmaline::Bot
     # Returns `true` on success.
     def set_sticker_position_in_set(sticker, position)
       response = request("setStickerPositionInSet", {
-        sticker: sticker,
-        position: position
+        sticker:  sticker,
+        position: position,
       })
 
       response == "true"
@@ -1359,8 +1357,8 @@ module Tourmaline::Bot
     # Returns the uploaded `Model::File` on success.
     def upload_sticker_file(user_id, png_sticker)
       response = request("uploadStickerFile", {
-        user_id: user_id,
-        png_sticker: png_sticker
+        user_id:     user_id,
+        png_sticker: png_sticker,
       })
 
       Model::File.from_json(response)
@@ -1446,8 +1444,9 @@ module Tourmaline::Bot
     # the final confirmation in the form of a `Model::Update` with the field pre_checkout_query.
     # Use this method to respond to such pre-checkout queries.
     # On success, `true` is returned.
-    # Note: The Bot API must receive an answer within 10 seconds after the
-    # pre-checkout query was sent.
+    #
+    # > Note: The Bot API must receive an answer within 10 seconds after the
+    # > pre-checkout query was sent.
     def answer_pre_checkout_query(
       pre_checkout_query_id,
       ok,
@@ -1484,29 +1483,85 @@ module Tourmaline::Bot
 
     # Use this method to send a game.
     # On success, the sent `Model::Message` is returned.
-    # TODO: Implement
-    def send_game
+    def send_game(
+      chat_id,
+      game_short_name,
+      disable_notification = nil,
+      reply_to_message_id = nil,
+      reply_markup = nil
+    )
+      response = request("sendGame", {
+        chat_id:              chat_id,
+        game_short_name:      game_short_name,
+        disable_notification: disable_notification,
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup,
+      })
+
+      Model::Message.from_json(response)
     end
 
-    # TODO: Implement
-    def answer_game_query
+    # Use this method to set the score of the specified user in a game. On success,
+    # if the message was sent by the bot, returns the edited Message, otherwise
+    # returns `true`.
+    #
+    # Raises an error, if the new score is not greater than the user's current
+    # score in the chat and force is `false` (default).
+    def set_game_score(
+      user_id,
+      score,
+      force = false,
+      disable_edit_message = nil,
+      chat_id = nil,
+      message_id = nil,
+      inline_message_id = nil
+    )
+      response = request("setGameScore", {
+        user_id:              user_id,
+        score:                score,
+        force:                force,
+        disable_edit_message: disable_edit_message,
+        chat_id:              chat_id,
+        message_id:           message_id,
+        inline_message_id:    inline_message_id,
+      })
+
+      if response == "true"
+        true
+      else
+        Model::Message.from_json(response)
+      end
     end
 
-    # TODO: Implement
-    def set_game_score
-    end
+    # Use this method to get data for high score tables. Will return the score of the
+    # specified user and several of his neighbors in a game.
+    # On success, returns an `Array` of `Model::GameHighScore` objects.
+    #
+    # > This method will currently return scores for the target user, plus two of his
+    # > closest neighbors on each side. Will also return the top three users if the
+    # > user and his neighbors are not among them. Please note that this behavior
+    # > is subject to change.
+    def get_game_high_scores(
+      user_id,
+      chat_id = nil,
+      message_id = nil,
+      inline_message_id = nil
+    )
+      response = request("getGameHighScores", {
+        user_id:           user_id,
+        chat_id:           chat_id,
+        message_id:        message_id,
+        inline_message_id: inline_message_id,
+      })
 
-    # TODO: Implement
-    def get_game_high_scores
+      Array(Model::GameHighScore).from_json(response)
     end
 
     # Sends a json request to the Telegram bot API.
     private def request(method, params = {} of String => String)
       method_url = ::File.join(@endpoint_url, method)
 
-      response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ?
-        Halite.post(method_url, form: params) :
-        Halite.post(method_url, params: params)
+      response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ? Halite.post(method_url, form: params) : Halite.post(method_url, params: params)
 
       result = JSON.parse(response.body)
 

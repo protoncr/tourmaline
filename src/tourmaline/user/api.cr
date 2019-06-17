@@ -32,6 +32,5 @@ module Tourmaline::User
     def set_log_file_path(path)
       TDLib.td_set_log_file_path(path)
     end
-
   end
 end

@@ -3,7 +3,7 @@ require "json"
 module Tourmaline::Bot::Model
   class LabeledPrice
     FIELDS = {
-      label: String,
+      label:  String,
       amount: Int32,
     }
 

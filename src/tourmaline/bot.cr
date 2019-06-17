@@ -8,5 +8,4 @@ require "./bot/*"
 #
 # To create a bot, see the examples in the `Bot::Client` class.
 module Tourmaline::Bot
-
 end

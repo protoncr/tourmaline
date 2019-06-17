@@ -8,7 +8,6 @@ require "kemal"
 # that webhook requests can be sent to a specific path
 # and handled accordingly.
 class Kemal::TourmalineHandler < Kemal::Handler
-
   alias TGModel = Tourmaline::Bot::Model
 
   property bot : Tourmaline::Bot::Client
@@ -37,7 +36,7 @@ class Kemal::TourmalineHandler < Kemal::Handler
     @path = path || "/tgbot/#{bot.bot_name}"
 
     # Only match on this path
-    only([ @path ])
+    only([@path])
 
     # Set the webhook
     set_webhook(certificate, max_connections)
@@ -72,5 +71,4 @@ class Kemal::TourmalineHandler < Kemal::Handler
 
     call_next context
   end
-
 end

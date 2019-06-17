@@ -1,5 +1,6 @@
 require "./tourmaline/version"
 require "./tourmaline/bot"
+
 # require "./tourmaline/user"
 
 # Tourmaline is a Telegram bot (and very soon, client) API library
