@@ -56,8 +56,38 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client" data-name="tourmaline::bot::client">
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client" data-name="tourmaline::bot::client">
       <a href="Tourmaline/Bot/Client.html">Client</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Core" data-name="tourmaline::bot::client::core">
+      <a href="Tourmaline/Bot/Client/Core.html">Core</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Games" data-name="tourmaline::bot::client::games">
+      <a href="Tourmaline/Bot/Client/Games.html">Games</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Payments" data-name="tourmaline::bot::client::payments">
+      <a href="Tourmaline/Bot/Client/Payments.html">Payments</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Stickers" data-name="tourmaline::bot::client::stickers">
+      <a href="Tourmaline/Bot/Client/Stickers.html">Stickers</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Webhook" data-name="tourmaline::bot::client::webhook">
+      <a href="Tourmaline/Bot/Client/Webhook.html">Webhook</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -492,9 +522,9 @@
 
 <p>&lt;a href="https://patreon.com/watzon">&lt;img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fwatzon%2Fpledgesssss&style=for-the-badge" />&lt;/a></p>
 
-<p>Telegram Bot (and hopefully soon API) framework for Crystal. Based heavily off of <a href="http://telegraf.js.org" target="_blank">Telegraf</a> this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.</p>
+<p>Telegram Bot (and hopefully soon Client) API framework for Crystal. Based heavily off of <a href="http://telegraf.js.org" target="_blank">Telegraf</a> this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.</p>
 
-<p><a href="https://watzon.github.io/tourmaline/" target="_blank">Read the docs</a></p>
+<p>If you want to extend your bot by using NLP, see my other library <a href="https://github.com/watzon/cadmium" target="_blank">Cadmium</a>.</p>
 
 <h2>Installation</h2>
 
@@ -528,17 +558,7 @@ bot.poll</code></pre>
 
 <h3>Listening for events</h3>
 
-<p>Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as follows:</p>
-
-<p>Standard update types:</p>
-
-<ul><li>Message</li><li>EditedMessage</li><li>CallbackQuery</li><li>InlineQuery</li><li>ShippingQuery</li><li>PreCheckoutQuery</li><li>ChosenInlineResult</li><li>ChannelPost</li><li>EditedChannelPost</li></ul>
-
-<p>Update sub-types:</p>
-
-<ul><li>Text</li><li>Audio</li><li>Document</li><li>Photo</li><li>Sticker</li><li>Video</li><li>Voice</li><li>Contact</li><li>Location</li><li>Venue</li><li>NewChatMembers</li><li>LeftChatMember</li><li>NewChatTitle</li><li>NewChatPhoto</li><li>DeleteChatPhoto</li><li>GroupChatCreated</li><li>MigrateToChatId</li><li>SupergroupChatCreated</li><li>ChannelChatCreated</li><li>MigrateFromChatId</li><li>PinnedMessage</li><li>Game</li><li>VideoNote</li><li>Invoice</li><li>SuccessfulPayment</li></ul>
-
-<p>All of which are available through the enum <code><a href="Tourmaline/Bot/UpdateAction.html">Tourmaline::Bot::UpdateAction</a></code>. To avoid having to use the full namespace you can just use a symbol.</p>
+<p>Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as can be found <a href="https://watzon.github.io/tourmaline/Tourmaline/Bot/UpdateAction.html" target="_blank">in the documentation</a>.</p>
 
 <pre><code class="language-crystal">bot.on(<span class="n">:text</span>) <span class="k">do</span> <span class="o">|</span>update<span class="o">|</span>
   text <span class="o">=</span> update.message.not_nil!.text.not_nil!
@@ -605,6 +625,10 @@ bot.serve(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">3400</span
   )
 <span class="k">end</span></code></pre>
 
+<h3>Games</h3>
+
+<p>Ability to create and run games with your Tourmaline Bot is a recent feature that hasn't been tested yet. Please use the <a href="https://github.com/watzon/tourmaline/issues" target="_blank">issue tracker</a> if you experience problems.</p>
+
 <h2>Kemal Middleware</h2>
 
 <p>Tourmaline provides middleware for Kemal, just in case you want to use Kemal as the server.</p>
@@ -626,9 +650,9 @@ add_handler <span class="t">Kemal</span><span class="t">::</span><span class="t"
 
 <h2>Development</h2>
 
-<p>This currently supports the following features</p>
+<p>This currently supports the following features:</p>
 
-<ul><li>[x] Implementation examples</li><li>[x] Easy command syntax</li><li>[x] Robust middleware system</li><li>[x] Standard API queries</li><li>[x] Stickers</li><li>[x] Inline mode</li><li>[x] Long polling</li><li>[x] Webhooks</li><li>[x] Payments (<em>beta</em>)</li><li>[x] Games</li></ul>
+<ul><li>[x] Bot API</li><ul><li>[x] Implementation examples</li><li>[x] Easy command syntax</li><li>[x] Robust middleware system</li><li>[x] Standard API queries</li><li>[x] Stickers</li><li>[x] Inline mode</li><li>[x] Long polling</li><li>[x] Webhooks</li><li>[x] Payments</li><li>[x] Games</li></ul><li>[ ] Client API (in development)</li></ul>
 
 <p>If you want a new feature feel free to submit an issue or open a pull request.</p>
 

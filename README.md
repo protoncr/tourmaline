@@ -2,9 +2,9 @@
 
 <a href="https://patreon.com/watzon"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fwatzon%2Fpledgesssss&style=for-the-badge" /></a>
 
-Telegram Bot (and hopefully soon API) framework for Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
+Telegram Bot (and hopefully soon Client) API framework for Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
 
-[Read the docs](https://watzon.github.io/tourmaline/)
+If you want to extend your bot by using NLP, see my other library [Cadmium](https://github.com/watzon/cadmium).
 
 ## Installation
 
@@ -42,49 +42,7 @@ bot.poll
 
 ### Listening for events
 
-Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as follows:
-
-Standard update types:
-
-- Message
-- EditedMessage
-- CallbackQuery
-- InlineQuery
-- ShippingQuery
-- PreCheckoutQuery
-- ChosenInlineResult
-- ChannelPost
-- EditedChannelPost
-
-Update sub-types:
-
-- Text
-- Audio
-- Document
-- Photo
-- Sticker
-- Video
-- Voice
-- Contact
-- Location
-- Venue
-- NewChatMembers
-- LeftChatMember
-- NewChatTitle
-- NewChatPhoto
-- DeleteChatPhoto
-- GroupChatCreated
-- MigrateToChatId
-- SupergroupChatCreated
-- ChannelChatCreated
-- MigrateFromChatId
-- PinnedMessage
-- Game
-- VideoNote
-- Invoice
-- SuccessfulPayment
-
-All of which are available through the enum `Tourmaline::Bot::UpdateAction`. To avoid having to use the full namespace you can just use a symbol.
+Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as can be found [in the documentation](https://watzon.github.io/tourmaline/Tourmaline/Bot/UpdateAction.html).
 
 ```crystal
 bot.on(:text) do |update|
@@ -159,6 +117,10 @@ bot.command("buy") do |message, params|
 end
 ```
 
+### Games
+
+Ability to create and run games with your Tourmaline Bot is a recent feature that hasn't been tested yet. Please use the [issue tracker](https://github.com/watzon/tourmaline/issues) if you experience problems.
+
 ## Kemal Middleware
 
 Tourmaline provides middleware for Kemal, just in case you want to use Kemal as the server.
@@ -182,18 +144,20 @@ Kemal.run
 
 ## Development
 
-This currently supports the following features
+This currently supports the following features:
 
-- [x] Implementation examples
-- [x] Easy command syntax
-- [x] Robust middleware system
-- [x] Standard API queries
-- [x] Stickers
-- [x] Inline mode
-- [x] Long polling
-- [x] Webhooks
-- [x] Payments (*beta*)
-- [x] Games
+- [x] Bot API
+  - [x] Implementation examples
+  - [x] Easy command syntax
+  - [x] Robust middleware system
+  - [x] Standard API queries
+  - [x] Stickers
+  - [x] Inline mode
+  - [x] Long polling
+  - [x] Webhooks
+  - [x] Payments
+  - [x] Games
+- [ ] Client API (in development)
 
 If you want a new feature feel free to submit an issue or open a pull request.
 
