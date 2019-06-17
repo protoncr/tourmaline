@@ -283,7 +283,8 @@ module Tourmaline::Bot
 
       # Returns a download link for a `File`.
       def get_file_link(file)
-        if file.file_path::File.join(@endpoint_url, file.file_path)
+        if file.file_path
+          ::File.join(@endpoint_url, file.file_path)
         end
 
         nil
