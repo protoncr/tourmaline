@@ -14,6 +14,7 @@ Add this to your application's `shard.yml`:
 dependencies:
   tourmaline:
     github: watzon/tourmaline
+    version: ~> 0.7.0
 ```
 
 ## Usage

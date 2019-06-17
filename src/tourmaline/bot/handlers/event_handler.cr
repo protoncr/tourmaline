@@ -29,7 +29,7 @@ module Tourmaline::Bot
     end
 
     # Triggers events when correct `UpdateAction`s are received.
-    def handle_update(update)
+    def handle_update(update) # ameba:disable Metrics/CyclomaticComplexity
       trigger_all_middlewares(update)
 
       if message = update.message

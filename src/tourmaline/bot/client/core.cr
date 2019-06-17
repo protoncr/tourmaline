@@ -283,8 +283,7 @@ module Tourmaline::Bot
 
       # Returns a download link for a `File`.
       def get_file_link(file)
-        if file.file_path
-          return ::File.join(@endpoint_url, file.file_path)
+        if file.file_path::File.join(@endpoint_url, file.file_path)
         end
 
         nil
@@ -935,7 +934,7 @@ module Tourmaline::Bot
         result = JSON.parse(response.body)
 
         if result["result"]?
-          return result["result"].to_json
+          result["result"].to_json
         else
           raise result["description"].to_s
         end
