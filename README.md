@@ -132,7 +132,7 @@ require "tourmaline/bot/kemal_handler"
 
 require "./your_bot"
 
-add_handler Kemal::TourmalineHandler.new(
+add_handler Tourmaline::Bot::KemalHandler.new(
   bot: YourBot.new,
   url: "https://something.com",
   path: "/bot-webhook/#{ENV["TGBOT_API_KEY"]}"
