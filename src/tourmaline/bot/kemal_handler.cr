@@ -1,4 +1,4 @@
-require "../tourmaline/bot"
+require "../bot"
 require "kemal"
 
 # Tourmaline handler for Kemal.
