@@ -3,9 +3,7 @@ module Tourmaline::Bot
   # Commands are prefixed with `/`.
   class CommandMiddleware < Middleware
     # @bot : Tourmaline::Bot::Client - Inherited
-    @commands = {} of String => Model::Message, Array(String) ->
-
-    property :commands
+    property commands = {} of String => Model::Message, Array(String) ->
 
     def call(update : Model::Update)
       if message = update.message

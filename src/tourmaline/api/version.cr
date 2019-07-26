@@ -1,3 +1,3 @@
-module Tourmaline::User
+module Tourmaline::API
   VERSION = "0.1.0"
 end

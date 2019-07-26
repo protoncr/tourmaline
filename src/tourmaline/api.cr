@@ -1,4 +1,4 @@
-require "./user/version"
+require "./api/version"
 
 # require "./user/tdlib"
 # require "./user/api"
@@ -6,6 +6,6 @@ require "./user/version"
 module Tourmaline
   # The `User` module is an interface to Telegram's client/user API.
   # It is still in development.
-  module User
+  module API
   end
 end

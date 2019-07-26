@@ -7,7 +7,7 @@ module Tourmaline::Bot
     include MiddlewareHandler
 
     macro included
-      @event_handlers = {} of String => Model::Update ->
+      @event_handlers = {} of String => Array(Model::Update ->)
     end
 
     # Preform an action when a specific `UpdateAction` is called.
@@ -24,7 +24,8 @@ module Tourmaline::Bot
     def on(actions : UpdateAction | Array(UpdateAction), &block : Model::Update ->)
       actions = [actions] unless UpdateAction.is_a?(Array)
       actions.as(Array(UpdateAction)).each do |action|
-        @event_handlers[action.to_s] = block
+        @event_handlers[action.to_s] ||= [] of Model::Update ->
+        @event_handlers[action.to_s] << block
       end
     end
 
@@ -80,8 +81,10 @@ module Tourmaline::Bot
     # Triggers an update event.
     protected def trigger(event : UpdateAction, update : Model::Update)
       if @event_handlers.has_key?(event.to_s)
-        proc = @event_handlers[event.to_s]
-        proc.call(update)
+        procs = @event_handlers[event.to_s]
+        procs.each do |proc|
+          proc.call(update)
+        end
       end
     end
   end

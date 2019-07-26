@@ -128,7 +128,7 @@ Tourmaline provides middleware for Kemal, just in case you want to use Kemal as 
 
 ```crystal
 require "kemal"
-require "tourmaline/kemal/tourmaline_handler"
+require "tourmaline/bot/kemal_handler"
 
 require "./your_bot"
 

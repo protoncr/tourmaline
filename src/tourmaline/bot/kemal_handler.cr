@@ -36,7 +36,7 @@ class Kemal::TourmalineHandler < Kemal::Handler
     @path = path || "/tgbot/#{bot.bot_name}"
 
     # Only match on this path
-    only([@path])
+    only([@path], "POST")
 
     # Set the webhook
     set_webhook(certificate, max_connections)
