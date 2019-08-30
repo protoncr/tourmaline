@@ -8,8 +8,7 @@ module Tourmaline::Bot::Model
       "[#{name}](tg://user?id=#{id})"
     end
 
-    JSON.mapping(
-
+    Fields = {
       # # Unique identifier for this user or bot
       id: Int64,
 
@@ -27,6 +26,9 @@ module Tourmaline::Bot::Model
 
       # # Optional. IETF language tag of the user's language
       language_code: String?
-    )
+    }
+
+    JSON.mapping({{FIELDS}})
+    initializer_for({{FIELDS}})
   end
 end
