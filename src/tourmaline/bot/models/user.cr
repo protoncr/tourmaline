@@ -8,7 +8,7 @@ module Tourmaline::Bot::Model
       "[#{name}](tg://user?id=#{id})"
     end
 
-    Fields = {
+    FIELDS = {
       # # Unique identifier for this user or bot
       id: Int64,
 
