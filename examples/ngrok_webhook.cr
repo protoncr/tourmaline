@@ -2,7 +2,7 @@ require "ngrok"
 require "../src/tourmaline"
 
 Ngrok.start({addr: "127.0.0.1:3400"}) do |ngrok|
-  bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+  bot = Tourmaline::Bot.new(ENV["API_KEY"])
 
   bot.command("echo") do |message, params|
     text = params.join(" ")

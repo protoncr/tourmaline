@@ -1,8 +1,8 @@
 require "../src/tourmaline"
 
-bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+bot = Tourmaline::Bot.new(ENV["API_KEY"])
 
-reply_markup = Tourmaline::Bot::Model::ReplyKeyboardMarkup.new([
+reply_markup = Tourmaline::Model::ReplyKeyboardMarkup.new([
   ["/kitty"], ["/kittygif"],
 ])
 

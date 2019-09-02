@@ -22,11 +22,9 @@ dependencies:
 ### Basic usage
 
 ```crystal
-require "tourmaline/bot"
+require "tourmaline"
 
-alias TGBot = Tourmaline::Bot
-
-bot = TGBot::Client.new(ENV["API_KEY"])
+bot = Tourmaline::Bot.new(ENV["API_KEY"])
 
 bot.command(["start", "help"]) do |message|
   text = "Echo bot is a sample bot created with the Tourmaline bot framework."
@@ -43,7 +41,7 @@ bot.poll
 
 ### Listening for events
 
-Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as can be found [in the documentation](https://watzon.github.io/tourmaline/Tourmaline/Bot/UpdateAction.html).
+Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as can be found [in the documentation](https://watzon.github.io/tourmaline/Tourmaline/UpdateAction.html).
 
 ```crystal
 bot.on(:text) do |update|
@@ -61,7 +59,7 @@ Middleware can be created by extending the `Tourmaline::Bot::Middleware` class. 
 class MyMiddleware < TGBot::Middleware
 
   # All middlware include a reference to the parent bot.
-  # @bot : Tourmaline::Bot::Client
+  # @bot : Tourmaline::Bot
 
   def call(update : Update)
     if message = update.message
@@ -128,11 +126,11 @@ Tourmaline provides middleware for Kemal, just in case you want to use Kemal as 
 
 ```crystal
 require "kemal"
-require "tourmaline/bot/handlers/kemal_handler"
+require "tourmaline/handlers/kemal_handler"
 
 require "./your_bot"
 
-add_handler Tourmaline::Bot::KemalHandler.new(
+add_handler Tourmaline::KemalHandler.new(
   bot: YourBot.new,
   url: "https://something.com",
   path: "/bot-webhook/#{ENV["TGBOT_API_KEY"]}"
@@ -158,7 +156,6 @@ This currently supports the following features:
   - [x] Webhooks
   - [x] Payments
   - [x] Games
-- [ ] Client API (in development)
 
 If you want a new feature feel free to submit an issue or open a pull request.
 

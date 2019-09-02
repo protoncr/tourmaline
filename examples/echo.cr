@@ -1,11 +1,15 @@
 require "../src/tourmaline"
 
-bot = Tourmaline::Bot::Client.new(ENV["API_KEY"])
+class EchoBot < Tourmaline::Bot
+  include Tourmaline
 
-bot.command("echo") do |message, params|
-  text = params.join(" ")
-  bot.send_message(message.chat.id, text)
-  bot.delete_message(message.chat.id, message.message_id)
+  @[Command("echo", at_start: false)]
+  def echo_command(message, params)
+    text = params.join(" ")
+    send_message(message.chat.id, text)
+    delete_message(message.chat.id, message.message_id)
+  end
 end
 
+bot = EchoBot.new(ENV["API_KEY"])
 bot.poll
