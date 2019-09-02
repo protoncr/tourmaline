@@ -1,12 +1,13 @@
 module Tourmaline
   # Define a new Command. Commands always start with a `/`
   # and should usually be at the beginning of a message.
-  # To enforce this behavior use the option `at_start: true`.
+  # If you want to allow a command anywhere in a message
+  # set the `at_start` option to false.
   #
   # Example:
   #
   # ```crystal
-  # @[Tourmaline::Command("help", at_start: true)]
+  # @[Command("help")]
   # def help_command(message, params)
   #   message.chat.send_message("This is a help message")
   # end
@@ -21,7 +22,7 @@ module Tourmaline
   # Example:
   #
   # ```crystal
-  # @[Tourmaline::On(Tourmaline::UpdateAction::Message)]
+  # @[On(:message)]
   # def on_message(message)
   #   pp message
   # end
