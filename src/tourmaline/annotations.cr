@@ -21,7 +21,7 @@ module Tourmaline
   # Example:
   #
   # ```crystal
-  # @[Tourmaline::OnEvent(Tourmaline::UpdateAction::Message)]
+  # @[Tourmaline::On(Tourmaline::UpdateAction::Message)]
   # def on_message(message)
   #   pp message
   # end
