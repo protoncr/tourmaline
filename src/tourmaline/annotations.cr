@@ -26,5 +26,5 @@ module Tourmaline
   #   pp message
   # end
   # ```
-  annotation OnEvent; end
+  annotation On; end
 end

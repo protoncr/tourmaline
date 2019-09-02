@@ -1,16 +1,14 @@
-require "logger"
 require "halite"
 
+require "./logger"
 require "./chat_action"
+require "./update_action"
 require "./models"
 require "./fiber"
+require "./annotations"
 require "./command_registry"
 require "./event_registry"
-
-# require "./middleware"
-# require "./handlers/command_handler"
-# require "./handlers/event_handler"
-# require "./handlers/middleware_handler"
+require "./middleware_registry"
 
 require "./client/core"
 require "./client/games"
@@ -19,143 +17,20 @@ require "./client/stickers"
 require "./client/webhook"
 
 module Tourmaline
-  # Client is synonymous with Bot. You can create a bot by
-  # creating an instance of the `Tourmaline::Client`
-  # class and setting the correct `api_key`. For
-  # information on all the available methods,
-  # see below.
-  #
-  # ### Examples:
-  #
-  # Echo bot:
-  # ```
-  # require "tourmaline/bot"
-  #
-  # bot = Tourmaline::Bot.new(ENV["API_KEY"])
-  #
-  # bot.command("echo") do |message, params|
-  #   text = params.join(" ")
-  #   bot.send_message(message.chat.id, text)
-  #   bot.delete_message(message.chat.id, message.message_id)
-  # end
-  #
-  # bot.poll
-  # ```
-  #
-  # Inline query bot:
-  # ```
-  # require "tourmaline/bot"
-  #
-  # bot = Tourmaline::Bot.new(ENV["API_KEY"])
-  #
-  # bot.on(:inline_query) do |update|
-  #   query = update.inline_query.not_nil!
-  #   results = [] of Tourmaline::Model::InlineQueryResult
-  #
-  #   results << Tourmaline::Model::InlineQueryResultArticle.new(
-  #     id: "query",
-  #     title: "Inline title",
-  #     input_message_content: Tourmaline::Model::InputTextMessageContent.new("Click!"),
-  #     description: "Your query: #{query.query}",
-  #   )
-  #
-  #   results << Tourmaline::Model::InlineQueryResultPhoto.new(
-  #     id: "photo",
-  #     caption: "Telegram logo",
-  #     photo_url: "https://telegram.org/img/t_logo.png",
-  #     thumb_url: "https://telegram.org/img/t_logo.png"
-  #   )
-  #
-  #   results << Tourmaline::Model::InlineQueryResultGif.new(
-  #     id: "gif",
-  #     gif_url: "https://telegram.org/img/tl_card_wecandoit.gif",
-  #     thumb_url: "https://telegram.org/img/tl_card_wecandoit.gif"
-  #   )
-  #
-  #   bot.answer_inline_query(query.id, results)
-  # end
-  #
-  # bot.poll
-  # ```
-  #
-  # Kitty bot (using custom keyboard):
-  # ```
-  # require "tourmaline/bot"
-  #
-  # bot = Tourmaline::Bot.new(ENV["API_KEY"])
-  #
-  # reply_markup = Tourmaline::Model::ReplyKeyboardMarkup.new([
-  #   ["/kitty"], ["/kittygif"],
-  # ])
-  #
-  # bot.command(["start", "help"]) do |message|
-  #   bot.send_message(
-  #     message.chat.id,
-  #     "😺 Use commands: /kitty, /kittygif and /about",
-  #     reply_markup: reply_markup)
-  # end
-  #
-  # bot.command("about") do |message|
-  #   text = "😽 This bot is powered by Tourmaline, a Telegram bot library for Crystal. Visit https://github.com/watzon/tourmaline to check out the source code."
-  #   bot.send_message(message.chat.id, text)
-  # end
-  #
-  # bot.command(["kitty", "kittygif"]) do |message|
-  #   # The time hack is to get around Telegrsm's image cache
-  #   api = "https://thecatapi.com/api/images/get?time=%{time}&format=src&type=" % {time: Time.now}
-  #   cmd = message.text.not_nil!.split(" ")[0]
-  #
-  #   if cmd == "/kitty"
-  #     bot.send_chat_action(message.chat.id, :upload_photo)
-  #     bot.send_photo(message.chat.id, api + "jpg")
-  #   else
-  #     bot.send_chat_action(message.chat.id, :upload_document)
-  #     bot.send_document(message.chat.id, api + "gif")
-  #   end
-  # end
-  #
-  # bot.poll
-  # ```
-  #
-  # Webhook bot (using [ngrok.cr](https://github.com/watzon/ngrok.cr)):
-  # ```
-  # require "ngrok"
-  # require "tourmaline/bot"
-  #
-  # Ngrok.start({addr: "127.0.0.1:3400"}) do |ngrok|
-  #   bot = Tourmaline::Bot.new(ENV["API_KEY"])
-  #
-  #   bot.command("echo") do |message, params|
-  #     text = params.join(" ")
-  #     bot.send_message(message.chat.id, text)
-  #     bot.delete_message(message.chat.id, message.message_id)
-  #   end
-  #
-  #   bot.set_webhook(ngrok.ngrok_url_https)
-  #   bot.serve("127.0.0.1", 3400)
-  # end
-  # ```
+  # The `Bot` class is the base class for all Tourmaline based bots.
+  # Extend this class to create your own bots, or create an
+  # instance of `Bot` and add commands and listenters to it.
   class Bot
+    include Logger
     include EventRegistry
     include CommandRegistry
-
-    include Client::Core
-    include Client::Webhook
-    include Client::Stickers
-    include Client::Payments
-    include Client::Games
+    include MiddlewareRegistry
 
     API_URL = "https://api.telegram.org/"
 
-    @logger : Logger?
-
-    @next_offset : Int64 = 0.to_i64
+    @bot_name : String?
 
     property endpoint_url : String
-
-    getter bot_info : Model::User
-
-    getter bot_name : String
 
     # Create a new instance of `Tourmaline::Bot`. It is
     # highly recommended to set `@api_key` at an environment
@@ -167,14 +42,15 @@ module Tourmaline
       @allowed_updates : Array(String)? = nil
     )
       @endpoint_url = ::File.join(API_URL, "bot" + @api_key)
-      @bot_info = get_me
-      @bot_name = @bot_info.username.not_nil!
-
       register_commands
       register_event_listeners
     end
 
     def handle_update(update : Model::Update)
+      @@logger.debug("Update received: #{update}")
+
+      trigger_all_middlewares(update)
+
       if message = update.message
         trigger_event(UpdateAction::Message, update)
 
@@ -217,7 +93,7 @@ module Tourmaline
       trigger_event(UpdateAction::ShippingQuery, update) if update.shipping_query
       trigger_event(UpdateAction::PreCheckoutQuery, update) if update.pre_checkout_query
     rescue ex
-      logger.error("Update was not handled because: #{ex.message}")
+      @@logger.error("Update was not handled because: #{ex.message}")
     end
 
     # Triggers an update event.
@@ -229,8 +105,11 @@ module Tourmaline
       end
     end
 
-    protected def logger : Logger
-      @logger ||= Logger.new(STDOUT).tap { |l| l.level = Logger::DEBUG }
+    # Gets the name of the bot at the time the bot was
+    # started. Refreshing can be done by setting
+    # `@bot_name` to `get_me.username.to_s`.
+    def bot_name
+      @bot_name ||= get_me.username.to_s
     end
 
     # Parse mode for messages.

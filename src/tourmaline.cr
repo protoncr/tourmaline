@@ -1,4 +1,4 @@
-require "./tourmaline/**"
+require "./tourmaline/bot"
 
 # require "./tourmaline/user"
 

@@ -14,7 +14,7 @@
 </script>
 
   <meta id="repository-name" content="github.com/watzon/tourmaline">
-  <title>Tourmaline::CommandMiddleware - github.com/watzon/tourmaline</title>
+  <title>Tourmaline::On - github.com/watzon/tourmaline</title>
 </head>
 <body>
 
@@ -51,41 +51,6 @@
       
         <ul>
   
-  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client" data-name="tourmaline::bot::client">
-      <a href="../Tourmaline/Bot/Client.html">Client</a>
-      
-        <ul>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Core" data-name="tourmaline::bot::client::core">
-      <a href="../Tourmaline/Bot/Client/Core.html">Core</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Games" data-name="tourmaline::bot::client::games">
-      <a href="../Tourmaline/Bot/Client/Games.html">Games</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Payments" data-name="tourmaline::bot::client::payments">
-      <a href="../Tourmaline/Bot/Client/Payments.html">Payments</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Stickers" data-name="tourmaline::bot::client::stickers">
-      <a href="../Tourmaline/Bot/Client/Stickers.html">Stickers</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Webhook" data-name="tourmaline::bot::client::webhook">
-      <a href="../Tourmaline/Bot/Client/Webhook.html">Webhook</a>
-      
-    </li>
-  
-</ul>
-
-      
-    </li>
-  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/ParseMode" data-name="tourmaline::bot::parsemode">
       <a href="../Tourmaline/Bot/ParseMode.html">ParseMode</a>
       
@@ -106,16 +71,6 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandHandler" data-name="tourmaline::commandhandler">
-      <a href="../Tourmaline/CommandHandler.html">CommandHandler</a>
-      
-    </li>
-  
-  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/CommandMiddleware" data-name="tourmaline::commandmiddleware">
-      <a href="../Tourmaline/CommandMiddleware.html">CommandMiddleware</a>
-      
-    </li>
-  
   <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="../Tourmaline/CommandRegistry.html">CommandRegistry</a>
       
@@ -128,11 +83,6 @@
   
 </ul>
 
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
-      <a href="../Tourmaline/EventHandler.html">EventHandler</a>
       
     </li>
   
@@ -156,13 +106,28 @@
       
     </li>
   
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Logger" data-name="tourmaline::logger">
+      <a href="../Tourmaline/Logger.html">Logger</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Logger/Formatter" data-name="tourmaline::logger::formatter">
+      <a href="../Tourmaline/Logger/Formatter.html">Formatter</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Middleware" data-name="tourmaline::middleware">
       <a href="../Tourmaline/Middleware.html">Middleware</a>
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareHandler" data-name="tourmaline::middlewarehandler">
-      <a href="../Tourmaline/MiddlewareHandler.html">MiddlewareHandler</a>
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareRegistry" data-name="tourmaline::middlewareregistry">
+      <a href="../Tourmaline/MiddlewareRegistry.html">MiddlewareRegistry</a>
       
     </li>
   
@@ -526,8 +491,8 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/OnEvent" data-name="tourmaline::onevent">
-      <a href="../Tourmaline/OnEvent.html">OnEvent</a>
+  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/On" data-name="tourmaline::on">
+      <a href="../Tourmaline/On.html">On</a>
       
     </li>
   
@@ -550,20 +515,25 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::CommandMiddleware
+  <span class="kind">annotation</span> Tourmaline::On
 
 </h1>
 
-
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/CommandMiddleware.html">Tourmaline::CommandMiddleware</a></li><li class="superclass"><a href="../Tourmaline/Middleware.html">Tourmaline::Middleware</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
   <h2>Overview</h2>
 
-  <p>Used by <code>Client</code> to allow the handling of commands.
-Commands are prefixed with <code>/</code>.</p>
+  <p>Run the annotated method every time a particular <code><a href="../Tourmaline/UpdateAction.html">UpdateAction</a></code>
+is fired.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-crystal">@[<span class="t">Tourmaline</span><span class="t">::</span><span class="t">OnEvent</span>(<span class="t">Tourmaline</span><span class="t">::</span><span class="t">UpdateAction</span><span class="t">::</span><span class="t">Message</span>)]
+<span class="k">def</span> <span class="m">on_message</span>(message)
+  pp message
+<span class="k">end</span></code></pre>
 
 
 
@@ -581,8 +551,8 @@ Commands are prefixed with <code>/</code>.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/middleware/command_middleware.cr#L4" target="_blank">
-        tourmaline/middleware/command_middleware.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/annotations.cr#L29" target="_blank">
+        tourmaline/annotations.cr
       </a>
     
     <br/>
@@ -596,88 +566,11 @@ Commands are prefixed with <code>/</code>.</p>
 
 
 
-  <h2>Instance Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#call(update:Model::Update)-instance-method" class="signature"><strong>#call</strong>(update : Model::Update)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#commands:Hash(String,Tourmaline::Model::Message,Array(String)-%3ENil)-instance-method" class="signature"><strong>#commands</strong> : Hash(String, Tourmaline::Model::Message, Array(String) -> Nil)</a>
-        
-          <div class="summary"><p>@bot : Tourmaline::Bot - Inherited</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#commands=(commands)-instance-method" class="signature"><strong>#commands=</strong>(commands)</a>
-        
-          <div class="summary"><p>@bot : Tourmaline::Bot - Inherited</p></div>
-        
-      </li>
-    
-  </ul>
-
 
 
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from class <code><a href="../Tourmaline/Middleware.html">Tourmaline::Middleware</a></code></h3>
-  
-  
-    <a href="../Tourmaline/Middleware.html#bot:Tourmaline::Bot-instance-method" class="tooltip">
-      <span>bot : Tourmaline::Bot</span>
-    bot</a>, 
-    
-  
-    <a href="../Tourmaline/Middleware.html#call(update:Update)-instance-method" class="tooltip">
-      <span>call(update : Update)</span>
-    call</a>
-    
-  
-
-
-    
-
-  <h3>Constructor methods inherited from class <code><a href="../Tourmaline/Middleware.html">Tourmaline::Middleware</a></code></h3>
-  
-  
-    <a href="../Tourmaline/Middleware.html#new(bot:Tourmaline::Bot)-class-method" class="tooltip">
-      <span>new(bot : Tourmaline::Bot)</span>
-    new</a>
-    
-  
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
   
 </div>
 
@@ -685,61 +578,6 @@ Commands are prefixed with <code>/</code>.</p>
 
 
 
-
-  <h2>Instance Method Detail</h2>
-  
-    <div class="entry-detail" id="call(update:Model::Update)-instance-method">
-      <div class="signature">
-        
-        def <strong>call</strong>(update : <a href="../Tourmaline/Model/Update.html">Model::Update</a>)
-
-        <a class="method-permalink" href="#call(update:Model::Update)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/middleware/command_middleware.cr#L8" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="commands:Hash(String,Tourmaline::Model::Message,Array(String)-&gt;Nil)-instance-method">
-      <div class="signature">
-        
-        def <strong>commands</strong> : Hash(String, <a href="../Tourmaline/Model/Message.html">Tourmaline::Model::Message</a>, Array(String) -> Nil)
-
-        <a class="method-permalink" href="#commands:Hash(String,Tourmaline::Model::Message,Array(String)-%3ENil)-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>@bot : Tourmaline::Bot - Inherited</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/middleware/command_middleware.cr#L8" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="commands=(commands)-instance-method">
-      <div class="signature">
-        
-        def <strong>commands=</strong>(commands)
-
-        <a class="method-permalink" href="#commands=(commands)-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>@bot : Tourmaline::Bot - Inherited</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/middleware/command_middleware.cr#L12" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 

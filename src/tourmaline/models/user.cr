@@ -25,7 +25,7 @@ module Tourmaline::Model
       username: String?,
 
       # # Optional. IETF language tag of the user's language
-      language_code: String?
+      language_code: String?,
     }
 
     JSON.mapping({{FIELDS}})

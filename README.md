@@ -1,8 +1,8 @@
 ![Header Image](img/header.png)
 
-![Travis (.org)](https://img.shields.io/travis/watzon/tourmaline.svg?style=for-the-badge) <a href="https://patreon.com/watzon"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fwatzon%2Fpledgesssss&style=for-the-badge" /></a>
+<a href="https://patreon.com/watzon"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fwatzon%2Fpledgesssss&style=for-the-badge" /></a>
 
-Telegram Bot (and hopefully soon Client) API framework for Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
+Telegram Bot API framework written in Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
 
 If you want to extend your bot by using NLP, see my other library [Cadmium](https://github.com/watzon/cadmium).
 
@@ -14,26 +14,43 @@ Add this to your application's `shard.yml`:
 dependencies:
   tourmaline:
     github: watzon/tourmaline
-    version: ~> 0.7.0
+    version: ~> 0.8.0
 ```
 
 ## Usage
 
 ### Basic usage
 
+Tourmaline features both annoation and non-annotation based APIs. The annotation API is what most developers are probably going to want to use as it allows for more flexibility.
+
+```crystal
+class EchoBot < Tourmaline::Bot
+  include Tourmaline
+
+  @[Command("echo")]
+  def echo_command(message, params)
+    text = params.join(" ")
+    send_message(message.chat.id, text)
+    delete_message(message.chat.id, message.message_id)
+  end
+end
+
+bot = EchoBot.new(ENV["API_KEY"])
+bot.poll
+
+```
+
+The same can be done with the non-annoation based API.
+
 ```crystal
 require "tourmaline"
 
 bot = Tourmaline::Bot.new(ENV["API_KEY"])
 
-bot.command(["start", "help"]) do |message|
-  text = "Echo bot is a sample bot created with the Tourmaline bot framework."
-  bot.send_message(message.chat.id, text)
-end
-
 bot.command("echo") do |message, params|
   text = params.join(" ")
-  bot.send_message(message.chat.id, text)
+  send_message(message.chat.id, text)
+  delete_message(message.chat.id, message.message_id)
 end
 
 bot.poll
@@ -44,6 +61,14 @@ bot.poll
 Tourmaline has a number of events that you can listen for (the same events as Telegraf actually). The full list of events is as can be found [in the documentation](https://watzon.github.io/tourmaline/Tourmaline/UpdateAction.html).
 
 ```crystal
+@[On(:text)]
+def on_text(update)
+  text = update.message.not_nil!.text.not_nil!
+  puts "TEXT: #{text}"
+end
+
+# or without annotations
+
 bot.on(:text) do |update|
   text = update.message.not_nil!.text.not_nil!
   puts "TEXT: #{text}"
@@ -55,7 +80,6 @@ end
 Middleware can be created by extending the `Tourmaline::Bot::Middleware` class. All middleware classes need to have a `call(update : Update)` method. The middleware will be called on every update.
 
 ```crystal
-
 class MyMiddleware < TGBot::Middleware
 
   # All middlware include a reference to the parent bot.
@@ -102,8 +126,9 @@ end
 You can now accept payments with your Tourmaline app! First make sure you follow the setup instructions [here](https://core.telegram.org/bots/payments) so that your bot is prepared to handle payments. Then just use the `send_invoice`, `answer_shipping_query`, and `answer_pre_checkout_query` methods to send invoices and accept payments.
 
 ```crystal
-bot.command("buy") do |message, params|
-  bot.send_invoice(
+@[Command("buy)]
+def buy(message, params)
+  send_invoice(
     message.chat.id,
     "Sample Invoice",
     "This is a test...",
@@ -111,7 +136,7 @@ bot.command("buy") do |message, params|
     "YOUR_PROVIDER_TOKEN",
     "test1",
     "USD",
-    bot.labeled_prices([{label: "Sample", amount: 299}, {label: "Another", amount: 369}]).to_json
+    labeled_prices([{label: "Sample", amount: 299}, {label: "Another", amount: 369}]).to_json
   )
 end
 ```
@@ -126,7 +151,7 @@ Tourmaline provides middleware for Kemal, just in case you want to use Kemal as 
 
 ```crystal
 require "kemal"
-require "tourmaline/handlers/kemal_handler"
+require "tourmaline/kemal_handler"
 
 require "./your_bot"
 

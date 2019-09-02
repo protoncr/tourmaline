@@ -37,5 +37,3 @@ module Tourmaline
     abstract def call(update : Update)
   end
 end
-
-require "./middleware/*"

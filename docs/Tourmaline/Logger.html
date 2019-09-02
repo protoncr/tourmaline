@@ -14,7 +14,7 @@
 </script>
 
   <meta id="repository-name" content="github.com/watzon/tourmaline">
-  <title>Tourmaline::CommandHandler - github.com/watzon/tourmaline</title>
+  <title>Tourmaline::Logger - github.com/watzon/tourmaline</title>
 </head>
 <body>
 
@@ -51,41 +51,6 @@
       
         <ul>
   
-  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client" data-name="tourmaline::bot::client">
-      <a href="../Tourmaline/Bot/Client.html">Client</a>
-      
-        <ul>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Core" data-name="tourmaline::bot::client::core">
-      <a href="../Tourmaline/Bot/Client/Core.html">Core</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Games" data-name="tourmaline::bot::client::games">
-      <a href="../Tourmaline/Bot/Client/Games.html">Games</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Payments" data-name="tourmaline::bot::client::payments">
-      <a href="../Tourmaline/Bot/Client/Payments.html">Payments</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Stickers" data-name="tourmaline::bot::client::stickers">
-      <a href="../Tourmaline/Bot/Client/Stickers.html">Stickers</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Webhook" data-name="tourmaline::bot::client::webhook">
-      <a href="../Tourmaline/Bot/Client/Webhook.html">Webhook</a>
-      
-    </li>
-  
-</ul>
-
-      
-    </li>
-  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/ParseMode" data-name="tourmaline::bot::parsemode">
       <a href="../Tourmaline/Bot/ParseMode.html">ParseMode</a>
       
@@ -106,16 +71,6 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/CommandHandler" data-name="tourmaline::commandhandler">
-      <a href="../Tourmaline/CommandHandler.html">CommandHandler</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandMiddleware" data-name="tourmaline::commandmiddleware">
-      <a href="../Tourmaline/CommandMiddleware.html">CommandMiddleware</a>
-      
-    </li>
-  
   <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="../Tourmaline/CommandRegistry.html">CommandRegistry</a>
       
@@ -128,11 +83,6 @@
   
 </ul>
 
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
-      <a href="../Tourmaline/EventHandler.html">EventHandler</a>
       
     </li>
   
@@ -156,13 +106,28 @@
       
     </li>
   
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline/Logger" data-name="tourmaline::logger">
+      <a href="../Tourmaline/Logger.html">Logger</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Logger/Formatter" data-name="tourmaline::logger::formatter">
+      <a href="../Tourmaline/Logger/Formatter.html">Formatter</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Middleware" data-name="tourmaline::middleware">
       <a href="../Tourmaline/Middleware.html">Middleware</a>
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareHandler" data-name="tourmaline::middlewarehandler">
-      <a href="../Tourmaline/MiddlewareHandler.html">MiddlewareHandler</a>
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareRegistry" data-name="tourmaline::middlewareregistry">
+      <a href="../Tourmaline/MiddlewareRegistry.html">MiddlewareRegistry</a>
       
     </li>
   
@@ -526,8 +491,8 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/OnEvent" data-name="tourmaline::onevent">
-      <a href="../Tourmaline/OnEvent.html">OnEvent</a>
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/On" data-name="tourmaline::on">
+      <a href="../Tourmaline/On.html">On</a>
       
     </li>
   
@@ -550,7 +515,7 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Tourmaline::CommandHandler
+  <span class="kind">module</span> Tourmaline::Logger
 
 </h1>
 
@@ -558,10 +523,6 @@
 
 
 
-  <h2>Overview</h2>
-
-  <p>Interfaces with the <code><a href="../Tourmaline/CommandMiddleware.html">CommandMiddleware</a></code> to allow the creation
-of commands.</p>
 
 
 
@@ -572,6 +533,12 @@ of commands.</p>
 
 
 
+  <h2>Direct including types</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../Tourmaline/Bot.html">Tourmaline::Bot</a></li>
+  
+  </ul>
 
 
 
@@ -579,8 +546,8 @@ of commands.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/handlers/command_handler.cr#L6" target="_blank">
-        tourmaline/handlers/command_handler.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L5" target="_blank">
+        tourmaline/logger.cr
       </a>
     
     <br/>
@@ -592,22 +559,143 @@ of commands.</p>
 
 
 
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#alert(message)-class-method" class="signature"><strong>.alert</strong>(message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#crit(message)-class-method" class="signature"><strong>.crit</strong>(message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debug(message)-class-method" class="signature"><strong>.debug</strong>(message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#emerg(message)-class-method" class="signature"><strong>.emerg</strong>(message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error(message)-class-method" class="signature"><strong>.error</strong>(message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#info(message)-class-method" class="signature"><strong>.info</strong>(message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#logger-class-method" class="signature"><strong>.logger</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#logger=(logger)-class-method" class="signature"><strong>.logger=</strong>(logger)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#notice(message)-class-method" class="signature"><strong>.notice</strong>(message)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#warning(message)-class-method" class="signature"><strong>.warning</strong>(message)</a>
+        
+      </li>
+    
+  </ul>
+
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#command(names:String%7CArray(String),&block:Model::Message,Array(String)-%3E)-instance-method" class="signature"><strong>#command</strong>(names : String | Array(String), &block : Model::Message, Array(String) -> )</a>
-        
-          <div class="summary"><p>Creates a new command.</p></div>
+        <a href="#alert(*args,**options)-instance-method" class="signature"><strong>#alert</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#remove_command(name:String)-instance-method" class="signature"><strong>#remove_command</strong>(name : String)</a>
+        <a href="#alert(*args,**options,&block)-instance-method" class="signature"><strong>#alert</strong>(*args, **options, &block)</a>
         
-          <div class="summary"><p>Removes a command by name.</p></div>
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#crit(*args,**options)-instance-method" class="signature"><strong>#crit</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#crit(*args,**options,&block)-instance-method" class="signature"><strong>#crit</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debug(*args,**options)-instance-method" class="signature"><strong>#debug</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debug(*args,**options,&block)-instance-method" class="signature"><strong>#debug</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#emerg(*args,**options)-instance-method" class="signature"><strong>#emerg</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#emerg(*args,**options,&block)-instance-method" class="signature"><strong>#emerg</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error(*args,**options)-instance-method" class="signature"><strong>#error</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error(*args,**options,&block)-instance-method" class="signature"><strong>#error</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#info(*args,**options)-instance-method" class="signature"><strong>#info</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#info(*args,**options,&block)-instance-method" class="signature"><strong>#info</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#notice(*args,**options)-instance-method" class="signature"><strong>#notice</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#notice(*args,**options,&block)-instance-method" class="signature"><strong>#notice</strong>(*args, **options, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#warning(*args,**options)-instance-method" class="signature"><strong>#warning</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#warning(*args,**options,&block)-instance-method" class="signature"><strong>#warning</strong>(*args, **options, &block)</a>
         
       </li>
     
@@ -624,54 +712,425 @@ of commands.</p>
 
 
 
-
-
-  <h2>Instance Method Detail</h2>
+  <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="command(names:String|Array(String),&amp;block:Model::Message,Array(String)-&gt;)-instance-method">
+    <div class="entry-detail" id="alert(message)-class-method">
       <div class="signature">
         
-        def <strong>command</strong>(names : String | Array(String), &block : <a href="../Tourmaline/Model/Message.html">Model::Message</a>, Array(String) -> )
+        def self.<strong>alert</strong>(message)
 
-        <a class="method-permalink" href="#command(names:String%7CArray(String),&block:Model::Message,Array(String)-%3E)-instance-method">#</a>
+        <a class="method-permalink" href="#alert(message)-class-method">#</a>
       </div>
-      
-        <div class="doc"><p>Creates a new command.</p>
-
-<pre><code><span class="c"># Creates the commands `/help` and `/start`</span>
-command([<span class="s">&quot;help&quot;</span>, <span class="s">&quot;start&quot;</span>]) <span class="k">do</span> <span class="o">|</span>message<span class="o">|</span>
-  bot.send_message(message.chat.id, <span class="s">&quot;Hello, world&quot;</span>)
-<span class="k">end</span>
-
-<span class="c"># Creates the command `/echo`</span>
-command(<span class="s">&quot;echo&quot;</span>) <span class="k">do</span> <span class="o">|</span>message, params<span class="o">|</span>
-  text <span class="o">=</span> params.join(<span class="s">&quot; &quot;</span>)
-  bot.send_message(message.chat.id, text)
-  bot.delete_message(message.chat.id, message.message_id)
-<span class="k">end</span></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/handlers/command_handler.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="remove_command(name:String)-instance-method">
+    <div class="entry-detail" id="crit(message)-class-method">
       <div class="signature">
         
-        def <strong>remove_command</strong>(name : String)
+        def self.<strong>crit</strong>(message)
 
-        <a class="method-permalink" href="#remove_command(name:String)-instance-method">#</a>
+        <a class="method-permalink" href="#crit(message)-class-method">#</a>
       </div>
-      
-        <div class="doc"><p>Removes a command by name.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/handlers/command_handler.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug(message)-class-method">
+      <div class="signature">
+        
+        def self.<strong>debug</strong>(message)
+
+        <a class="method-permalink" href="#debug(message)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="emerg(message)-class-method">
+      <div class="signature">
+        
+        def self.<strong>emerg</strong>(message)
+
+        <a class="method-permalink" href="#emerg(message)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error(message)-class-method">
+      <div class="signature">
+        
+        def self.<strong>error</strong>(message)
+
+        <a class="method-permalink" href="#error(message)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info(message)-class-method">
+      <div class="signature">
+        
+        def self.<strong>info</strong>(message)
+
+        <a class="method-permalink" href="#info(message)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="logger-class-method">
+      <div class="signature">
+        
+        def self.<strong>logger</strong>
+
+        <a class="method-permalink" href="#logger-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="logger=(logger)-class-method">
+      <div class="signature">
+        
+        def self.<strong>logger=</strong>(logger)
+
+        <a class="method-permalink" href="#logger=(logger)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="notice(message)-class-method">
+      <div class="signature">
+        
+        def self.<strong>notice</strong>(message)
+
+        <a class="method-permalink" href="#notice(message)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="warning(message)-class-method">
+      <div class="signature">
+        
+        def self.<strong>warning</strong>(message)
+
+        <a class="method-permalink" href="#warning(message)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="alert(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>alert</strong>(*args, **options)
+
+        <a class="method-permalink" href="#alert(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="alert(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>alert</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#alert(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="crit(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>crit</strong>(*args, **options)
+
+        <a class="method-permalink" href="#crit(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="crit(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>crit</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#crit(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>debug</strong>(*args, **options)
+
+        <a class="method-permalink" href="#debug(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>debug</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#debug(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="emerg(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>emerg</strong>(*args, **options)
+
+        <a class="method-permalink" href="#emerg(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="emerg(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>emerg</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#emerg(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>error</strong>(*args, **options)
+
+        <a class="method-permalink" href="#error(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>error</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#error(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>info</strong>(*args, **options)
+
+        <a class="method-permalink" href="#info(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>info</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#info(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="notice(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>notice</strong>(*args, **options)
+
+        <a class="method-permalink" href="#notice(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="notice(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>notice</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#notice(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="warning(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>warning</strong>(*args, **options)
+
+        <a class="method-permalink" href="#warning(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="warning(*args,**options,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>warning</strong>(*args, **options, &block)
+
+        <a class="method-permalink" href="#warning(*args,**options,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>

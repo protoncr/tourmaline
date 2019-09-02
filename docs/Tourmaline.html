@@ -51,41 +51,6 @@
       
         <ul>
   
-  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client" data-name="tourmaline::bot::client">
-      <a href="Tourmaline/Bot/Client.html">Client</a>
-      
-        <ul>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Core" data-name="tourmaline::bot::client::core">
-      <a href="Tourmaline/Bot/Client/Core.html">Core</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Games" data-name="tourmaline::bot::client::games">
-      <a href="Tourmaline/Bot/Client/Games.html">Games</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Payments" data-name="tourmaline::bot::client::payments">
-      <a href="Tourmaline/Bot/Client/Payments.html">Payments</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Stickers" data-name="tourmaline::bot::client::stickers">
-      <a href="Tourmaline/Bot/Client/Stickers.html">Stickers</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/Client/Webhook" data-name="tourmaline::bot::client::webhook">
-      <a href="Tourmaline/Bot/Client/Webhook.html">Webhook</a>
-      
-    </li>
-  
-</ul>
-
-      
-    </li>
-  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/ParseMode" data-name="tourmaline::bot::parsemode">
       <a href="Tourmaline/Bot/ParseMode.html">ParseMode</a>
       
@@ -106,16 +71,6 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandHandler" data-name="tourmaline::commandhandler">
-      <a href="Tourmaline/CommandHandler.html">CommandHandler</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandMiddleware" data-name="tourmaline::commandmiddleware">
-      <a href="Tourmaline/CommandMiddleware.html">CommandMiddleware</a>
-      
-    </li>
-  
   <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="Tourmaline/CommandRegistry.html">CommandRegistry</a>
       
@@ -128,11 +83,6 @@
   
 </ul>
 
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
-      <a href="Tourmaline/EventHandler.html">EventHandler</a>
       
     </li>
   
@@ -156,13 +106,28 @@
       
     </li>
   
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Logger" data-name="tourmaline::logger">
+      <a href="Tourmaline/Logger.html">Logger</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Logger/Formatter" data-name="tourmaline::logger::formatter">
+      <a href="Tourmaline/Logger/Formatter.html">Formatter</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Middleware" data-name="tourmaline::middleware">
       <a href="Tourmaline/Middleware.html">Middleware</a>
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareHandler" data-name="tourmaline::middlewarehandler">
-      <a href="Tourmaline/MiddlewareHandler.html">MiddlewareHandler</a>
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareRegistry" data-name="tourmaline::middlewareregistry">
+      <a href="Tourmaline/MiddlewareRegistry.html">MiddlewareRegistry</a>
       
     </li>
   
@@ -526,8 +491,8 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/OnEvent" data-name="tourmaline::onevent">
-      <a href="Tourmaline/OnEvent.html">OnEvent</a>
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/On" data-name="tourmaline::on">
+      <a href="Tourmaline/On.html">On</a>
       
     </li>
   
@@ -560,14 +525,12 @@
 
   <h2>Overview</h2>
 
-  <p>Tourmaline is a Telegram Bot API library
-for <a href="https://telegram.com" target="_blank">Telegram</a>. It provides an easy to
-use interface for creating telegram bots, and using the
-various bot APIs that Telegram provides.</p>
+  <p>Tourmaline handler for Kemal.</p>
 
-<p>For usage examples, see the
-<a href="https://github.com/watzon/tourmaline/tree/master/examples" target="_blank">examples</a>
-directory.</p>
+<p>This handler allows you to use Tourmaline as a part of your
+Kemal server rather than as a standalone server. This means
+that webhook requests can be sent to a specific path
+and handled accordingly.</p>
 
 
 
@@ -585,134 +548,120 @@ directory.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/annotations.cr#L1" target="_blank">
-        tourmaline/annotations.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/logger.cr#L4" target="_blank">
+        tourmaline/logger.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/chat_action.cr#L1" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/chat_action.cr#L1" target="_blank">
         tourmaline/chat_action.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/command_registry.cr#L1" target="_blank">
-        tourmaline/command_registry.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/event_registry.cr#L1" target="_blank">
-        tourmaline/event_registry.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/client/core.cr#L1" target="_blank">
-        tourmaline/client/core.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/client/games.cr#L1" target="_blank">
-        tourmaline/client/games.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/client/payments.cr#L1" target="_blank">
-        tourmaline/client/payments.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/client/stickers.cr#L1" target="_blank">
-        tourmaline/client/stickers.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/client/webhook.cr#L1" target="_blank">
-        tourmaline/client/webhook.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/bot.cr#L21" target="_blank">
-        tourmaline/bot.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/middleware.cr#L1" target="_blank">
-        tourmaline/middleware.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/middleware/command_middleware.cr#L1" target="_blank">
-        tourmaline/middleware/command_middleware.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/update_action.cr#L1" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/update_action.cr#L1" target="_blank">
         tourmaline/update_action.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/version.cr#L1" target="_blank">
-        tourmaline/version.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/annotations.cr#L1" target="_blank">
+        tourmaline/annotations.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/handlers/command_handler.cr#L3" target="_blank">
-        tourmaline/handlers/command_handler.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/command_registry.cr#L1" target="_blank">
+        tourmaline/command_registry.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/handlers/middleware_handler.cr#L3" target="_blank">
-        tourmaline/handlers/middleware_handler.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/event_registry.cr#L1" target="_blank">
+        tourmaline/event_registry.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/handlers/event_handler.cr#L4" target="_blank">
-        tourmaline/handlers/event_handler.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/middleware.cr#L1" target="_blank">
+        tourmaline/middleware.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline/handlers/kemal_handler.cr#L10" target="_blank">
-        tourmaline/handlers/kemal_handler.cr
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/middleware_registry.cr#L3" target="_blank">
+        tourmaline/middleware_registry.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/9598a2fb39274ab0a6afa95da1bab01e958ced00/src/tourmaline.cr#L13" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/client/core.cr#L1" target="_blank">
+        tourmaline/client/core.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/client/games.cr#L1" target="_blank">
+        tourmaline/client/games.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/client/payments.cr#L1" target="_blank">
+        tourmaline/client/payments.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/client/stickers.cr#L1" target="_blank">
+        tourmaline/client/stickers.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/client/webhook.cr#L1" target="_blank">
+        tourmaline/client/webhook.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/bot.cr#L19" target="_blank">
+        tourmaline/bot.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline.cr#L13" target="_blank">
         tourmaline.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/kemal_handler.cr#L9" target="_blank">
+        tourmaline/kemal_handler.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/6e363cfc4d88a27ba7d8599d42358ed7b78098a2/src/tourmaline/version.cr#L1" target="_blank">
+        tourmaline/version.cr
       </a>
     
     <br/>

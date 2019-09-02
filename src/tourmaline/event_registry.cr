@@ -6,7 +6,7 @@ module Tourmaline
       {% begin %}
         {% for command_class in Tourmaline::Bot.subclasses %}
           {% for method in command_class.methods %}
-            {% if ann = method.annotation(OnEvent) %}
+            {% if ann = method.annotation(On) %}
               %proc = ->(update : Model::Update){ {{method.name.id}}(update); nil }
               on({{ann[0]}}, %proc)
             {% end %}

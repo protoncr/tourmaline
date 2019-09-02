@@ -10,6 +10,8 @@ dependencies:
   halite:
     github: icyleaf/halite
     branch: master
+  strange:
+    github: hydecr/strange
 
 development_dependencies:
   ngrok:

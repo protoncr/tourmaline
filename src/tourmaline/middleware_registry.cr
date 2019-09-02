@@ -1,11 +1,8 @@
-require "../models"
+require "./middleware"
 
 module Tourmaline
-  # Allows the creation of `Middleware` for your bot.
-  module MiddlewareHandler
-    macro included
-      @middlewares = {} of String => Middleware
-    end
+  module MiddlewareRegistry
+    getter middlewares = {} of String => Middleware
 
     # Attach a `Middleware` to your bot.
     def use(middleware)
