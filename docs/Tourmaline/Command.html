@@ -527,11 +527,12 @@
 
   <p>Define a new Command. Commands always start with a <code>/</code>
 and should usually be at the beginning of a message.
-To enforce this behavior use the option <code>at_start: true</code>.</p>
+If you want to allow a command anywhere in a message
+set the <code>at_start</code> option to false.</p>
 
 <p>Example:</p>
 
-<pre><code class="language-crystal">@[<span class="t">Tourmaline</span><span class="t">::</span><span class="t">Command</span>(<span class="s">&quot;help&quot;</span>, at_start: <span class="n">true</span>)]
+<pre><code class="language-crystal">@[<span class="t">Command</span>(<span class="s">&quot;help&quot;</span>)]
 <span class="k">def</span> <span class="m">help_command</span>(message, params)
   message.chat.send_message(<span class="s">&quot;This is a help message&quot;</span>)
 <span class="k">end</span></code></pre>
@@ -554,7 +555,7 @@ To enforce this behavior use the option <code>at_start: true</code>.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/b2aad28064d4a3ccf80fc3fb39640845778adade/src/tourmaline/annotations.cr#L16" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/861bb0c84fcf8406a186b4462acc4d3da57e8214/src/tourmaline/annotations.cr#L17" target="_blank">
         tourmaline/annotations.cr
       </a>
     
