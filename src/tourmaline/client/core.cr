@@ -253,7 +253,7 @@ module Tourmaline
         user_id: user_id,
       })
 
-      Array(Model::ChatMember).from_json(response)
+      Model::ChatMember.from_json(response)
     end
 
     # Use this method to get the number of members in a chat.
