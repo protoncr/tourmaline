@@ -7,7 +7,7 @@ module Tourmaline
       {% begin %}
         {% for command_class in Tourmaline::Bot.subclasses %}
           {% for method in command_class.methods %}
-            {% if ann = method.annotation(Command) %}
+            {% if ann = (method.annotation(Command) || method.annotation(Tourmaline::Command)) %}
               %at_start = {{!!ann[:at_start]}}
               %proc = ->(message : Model::Message, params : Array(String)){ {{method.name.id}}(message, params); nil }
               command({{ann[0]}}, at_start: %at_start, proc: %proc)
