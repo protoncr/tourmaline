@@ -359,19 +359,14 @@ module Tourmaline
       chat_id,
       user_id,
       until_date = nil,
-      can_see_messages = nil,
-      can_send_media_messages = nil,
-      can_send_other_messages = nil,
-      can_add_web_page_previews = nil
+      permissions = nil
     )
+      until_date = (Time.utc + until_date).to_unix unless until_date.nil?
       response = request("restrictChatMember", {
-        chat_id:                   chat_id,
-        user_id:                   user_id,
-        until_date:                until_date,
-        can_see_messages:          can_see_messages,
-        can_send_media_messages:   can_send_media_messages,
-        can_send_other_messages:   can_send_other_messages,
-        can_add_web_page_previews: can_add_web_page_previews,
+        chat_id:      chat_id,
+        user_id:      user_id,
+        until_date:   until_date,
+        permissions:  permissions
       })
 
       response == "true"
