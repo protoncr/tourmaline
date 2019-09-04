@@ -1,0 +1,2920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/watzon/tourmaline">
+  <title>Tourmaline::Bot - github.com/watzon/tourmaline</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline" data-name="tourmaline">
+      <a href="../Tourmaline.html">Tourmaline</a>
+      
+        <ul>
+  
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline/Bot" data-name="tourmaline::bot">
+      <a href="../Tourmaline/Bot.html">Bot</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/ParseMode" data-name="tourmaline::bot::parsemode">
+      <a href="../Tourmaline/Bot/ParseMode.html">ParseMode</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
+      <a href="../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Command" data-name="tourmaline::command">
+      <a href="../Tourmaline/Command.html">Command</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
+      <a href="../Tourmaline/CommandRegistry.html">CommandRegistry</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry/CommandSig" data-name="tourmaline::commandregistry::commandsig">
+      <a href="../Tourmaline/CommandRegistry/CommandSig.html">CommandSig</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventRegistry" data-name="tourmaline::eventregistry">
+      <a href="../Tourmaline/EventRegistry.html">EventRegistry</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/KemalHandler" data-name="tourmaline::kemalhandler">
+      <a href="../Tourmaline/KemalHandler.html">KemalHandler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/KemalHandler/TGModel" data-name="tourmaline::kemalhandler::tgmodel">
+      <a href="../Tourmaline/KemalHandler/TGModel.html">TGModel</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Logger" data-name="tourmaline::logger">
+      <a href="../Tourmaline/Logger.html">Logger</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Logger/Formatter" data-name="tourmaline::logger::formatter">
+      <a href="../Tourmaline/Logger/Formatter.html">Formatter</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Middleware" data-name="tourmaline::middleware">
+      <a href="../Tourmaline/Middleware.html">Middleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareRegistry" data-name="tourmaline::middlewareregistry">
+      <a href="../Tourmaline/MiddlewareRegistry.html">MiddlewareRegistry</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Model" data-name="tourmaline::model">
+      <a href="../Tourmaline/Model.html">Model</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Animation" data-name="tourmaline::model::animation">
+      <a href="../Tourmaline/Model/Animation.html">Animation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Audio" data-name="tourmaline::model::audio">
+      <a href="../Tourmaline/Model/Audio.html">Audio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/CallbackGame" data-name="tourmaline::model::callbackgame">
+      <a href="../Tourmaline/Model/CallbackGame.html">CallbackGame</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/CallbackQuery" data-name="tourmaline::model::callbackquery">
+      <a href="../Tourmaline/Model/CallbackQuery.html">CallbackQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Chat" data-name="tourmaline::model::chat">
+      <a href="../Tourmaline/Model/Chat.html">Chat</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatMember" data-name="tourmaline::model::chatmember">
+      <a href="../Tourmaline/Model/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatPhoto" data-name="tourmaline::model::chatphoto">
+      <a href="../Tourmaline/Model/ChatPhoto.html">ChatPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChosenInlineResult" data-name="tourmaline::model::choseninlineresult">
+      <a href="../Tourmaline/Model/ChosenInlineResult.html">ChosenInlineResult</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Contact" data-name="tourmaline::model::contact">
+      <a href="../Tourmaline/Model/Contact.html">Contact</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Document" data-name="tourmaline::model::document">
+      <a href="../Tourmaline/Model/Document.html">Document</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/File" data-name="tourmaline::model::file">
+      <a href="../Tourmaline/Model/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ForceReply" data-name="tourmaline::model::forcereply">
+      <a href="../Tourmaline/Model/ForceReply.html">ForceReply</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Game" data-name="tourmaline::model::game">
+      <a href="../Tourmaline/Model/Game.html">Game</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/GameHighScore" data-name="tourmaline::model::gamehighscore">
+      <a href="../Tourmaline/Model/GameHighScore.html">GameHighScore</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineKeyboardButton" data-name="tourmaline::model::inlinekeyboardbutton">
+      <a href="../Tourmaline/Model/InlineKeyboardButton.html">InlineKeyboardButton</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineKeyboardMarkup" data-name="tourmaline::model::inlinekeyboardmarkup">
+      <a href="../Tourmaline/Model/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQuery" data-name="tourmaline::model::inlinequery">
+      <a href="../Tourmaline/Model/InlineQuery.html">InlineQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResult" data-name="tourmaline::model::inlinequeryresult">
+      <a href="../Tourmaline/Model/InlineQueryResult.html">InlineQueryResult</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultArticle" data-name="tourmaline::model::inlinequeryresultarticle">
+      <a href="../Tourmaline/Model/InlineQueryResultArticle.html">InlineQueryResultArticle</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultAudio" data-name="tourmaline::model::inlinequeryresultaudio">
+      <a href="../Tourmaline/Model/InlineQueryResultAudio.html">InlineQueryResultAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedAudio" data-name="tourmaline::model::inlinequeryresultcachedaudio">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedAudio.html">InlineQueryResultCachedAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedDocument" data-name="tourmaline::model::inlinequeryresultcacheddocument">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedDocument.html">InlineQueryResultCachedDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedGif" data-name="tourmaline::model::inlinequeryresultcachedgif">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedGif.html">InlineQueryResultCachedGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedMpeg4Gif" data-name="tourmaline::model::inlinequeryresultcachedmpeg4gif">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedMpeg4Gif.html">InlineQueryResultCachedMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedPhoto" data-name="tourmaline::model::inlinequeryresultcachedphoto">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedPhoto.html">InlineQueryResultCachedPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedSticker" data-name="tourmaline::model::inlinequeryresultcachedsticker">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedSticker.html">InlineQueryResultCachedSticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedVideo" data-name="tourmaline::model::inlinequeryresultcachedvideo">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedVideo.html">InlineQueryResultCachedVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedVoice" data-name="tourmaline::model::inlinequeryresultcachedvoice">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedVoice.html">InlineQueryResultCachedVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultContact" data-name="tourmaline::model::inlinequeryresultcontact">
+      <a href="../Tourmaline/Model/InlineQueryResultContact.html">InlineQueryResultContact</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultDocument" data-name="tourmaline::model::inlinequeryresultdocument">
+      <a href="../Tourmaline/Model/InlineQueryResultDocument.html">InlineQueryResultDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultGif" data-name="tourmaline::model::inlinequeryresultgif">
+      <a href="../Tourmaline/Model/InlineQueryResultGif.html">InlineQueryResultGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultLocation" data-name="tourmaline::model::inlinequeryresultlocation">
+      <a href="../Tourmaline/Model/InlineQueryResultLocation.html">InlineQueryResultLocation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultMpeg4Gif" data-name="tourmaline::model::inlinequeryresultmpeg4gif">
+      <a href="../Tourmaline/Model/InlineQueryResultMpeg4Gif.html">InlineQueryResultMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultPhoto" data-name="tourmaline::model::inlinequeryresultphoto">
+      <a href="../Tourmaline/Model/InlineQueryResultPhoto.html">InlineQueryResultPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultVenue" data-name="tourmaline::model::inlinequeryresultvenue">
+      <a href="../Tourmaline/Model/InlineQueryResultVenue.html">InlineQueryResultVenue</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultVideo" data-name="tourmaline::model::inlinequeryresultvideo">
+      <a href="../Tourmaline/Model/InlineQueryResultVideo.html">InlineQueryResultVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultVoice" data-name="tourmaline::model::inlinequeryresultvoice">
+      <a href="../Tourmaline/Model/InlineQueryResultVoice.html">InlineQueryResultVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputContactMessageContent" data-name="tourmaline::model::inputcontactmessagecontent">
+      <a href="../Tourmaline/Model/InputContactMessageContent.html">InputContactMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputLocationMessageContent" data-name="tourmaline::model::inputlocationmessagecontent">
+      <a href="../Tourmaline/Model/InputLocationMessageContent.html">InputLocationMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputMedia" data-name="tourmaline::model::inputmedia">
+      <a href="../Tourmaline/Model/InputMedia.html">InputMedia</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputMediaVideo" data-name="tourmaline::model::inputmediavideo">
+      <a href="../Tourmaline/Model/InputMediaVideo.html">InputMediaVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputMessageContent" data-name="tourmaline::model::inputmessagecontent">
+      <a href="../Tourmaline/Model/InputMessageContent.html">InputMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputTextMessageContent" data-name="tourmaline::model::inputtextmessagecontent">
+      <a href="../Tourmaline/Model/InputTextMessageContent.html">InputTextMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputVenueMessageContent" data-name="tourmaline::model::inputvenuemessagecontent">
+      <a href="../Tourmaline/Model/InputVenueMessageContent.html">InputVenueMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Invoice" data-name="tourmaline::model::invoice">
+      <a href="../Tourmaline/Model/Invoice.html">Invoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/KeyboardButton" data-name="tourmaline::model::keyboardbutton">
+      <a href="../Tourmaline/Model/KeyboardButton.html">KeyboardButton</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/LabeledPrice" data-name="tourmaline::model::labeledprice">
+      <a href="../Tourmaline/Model/LabeledPrice.html">LabeledPrice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Location" data-name="tourmaline::model::location">
+      <a href="../Tourmaline/Model/Location.html">Location</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/MaskPosition" data-name="tourmaline::model::maskposition">
+      <a href="../Tourmaline/Model/MaskPosition.html">MaskPosition</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Message" data-name="tourmaline::model::message">
+      <a href="../Tourmaline/Model/Message.html">Message</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/MessageEntity" data-name="tourmaline::model::messageentity">
+      <a href="../Tourmaline/Model/MessageEntity.html">MessageEntity</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/OrderInfo" data-name="tourmaline::model::orderinfo">
+      <a href="../Tourmaline/Model/OrderInfo.html">OrderInfo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/PhotoSize" data-name="tourmaline::model::photosize">
+      <a href="../Tourmaline/Model/PhotoSize.html">PhotoSize</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/PreCheckoutQuery" data-name="tourmaline::model::precheckoutquery">
+      <a href="../Tourmaline/Model/PreCheckoutQuery.html">PreCheckoutQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ReplyKeyboardMarkup" data-name="tourmaline::model::replykeyboardmarkup">
+      <a href="../Tourmaline/Model/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ReplyKeyboardRemove" data-name="tourmaline::model::replykeyboardremove">
+      <a href="../Tourmaline/Model/ReplyKeyboardRemove.html">ReplyKeyboardRemove</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ShippingAddress" data-name="tourmaline::model::shippingaddress">
+      <a href="../Tourmaline/Model/ShippingAddress.html">ShippingAddress</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ShippingOption" data-name="tourmaline::model::shippingoption">
+      <a href="../Tourmaline/Model/ShippingOption.html">ShippingOption</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ShippingQuery" data-name="tourmaline::model::shippingquery">
+      <a href="../Tourmaline/Model/ShippingQuery.html">ShippingQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Sticker" data-name="tourmaline::model::sticker">
+      <a href="../Tourmaline/Model/Sticker.html">Sticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/StickerSet" data-name="tourmaline::model::stickerset">
+      <a href="../Tourmaline/Model/StickerSet.html">StickerSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/SuccessfulPayment" data-name="tourmaline::model::successfulpayment">
+      <a href="../Tourmaline/Model/SuccessfulPayment.html">SuccessfulPayment</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Update" data-name="tourmaline::model::update">
+      <a href="../Tourmaline/Model/Update.html">Update</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/User" data-name="tourmaline::model::user">
+      <a href="../Tourmaline/Model/User.html">User</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/UserProfilePhotos" data-name="tourmaline::model::userprofilephotos">
+      <a href="../Tourmaline/Model/UserProfilePhotos.html">UserProfilePhotos</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Venue" data-name="tourmaline::model::venue">
+      <a href="../Tourmaline/Model/Venue.html">Venue</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Video" data-name="tourmaline::model::video">
+      <a href="../Tourmaline/Model/Video.html">Video</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/VideoNote" data-name="tourmaline::model::videonote">
+      <a href="../Tourmaline/Model/VideoNote.html">VideoNote</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Voice" data-name="tourmaline::model::voice">
+      <a href="../Tourmaline/Model/Voice.html">Voice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/WebhookInfo" data-name="tourmaline::model::webhookinfo">
+      <a href="../Tourmaline/Model/WebhookInfo.html">WebhookInfo</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/On" data-name="tourmaline::on">
+      <a href="../Tourmaline/On.html">On</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/UpdateAction" data-name="tourmaline::updateaction">
+      <a href="../Tourmaline/UpdateAction.html">UpdateAction</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Tourmaline::Bot
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/Bot.html">Tourmaline::Bot</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>The <code><a href="../Tourmaline/Bot.html">Bot</a></code> class is the base class for all Tourmaline based bots.
+Extend this class to create your own bots, or create an
+instance of <code><a href="../Tourmaline/Bot.html">Bot</a></code> and add commands and listenters to it.</p>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../Tourmaline/CommandRegistry.html">Tourmaline::CommandRegistry</a></li>
+  
+    <li class="other-type"><a href="../Tourmaline/EventRegistry.html">Tourmaline::EventRegistry</a></li>
+  
+    <li class="other-type"><a href="../Tourmaline/Logger.html">Tourmaline::Logger</a></li>
+  
+    <li class="other-type"><a href="../Tourmaline/MiddlewareRegistry.html">Tourmaline::MiddlewareRegistry</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L2" target="_blank">
+        tourmaline/client/core.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/games.cr#L2" target="_blank">
+        tourmaline/client/games.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/payments.cr#L2" target="_blank">
+        tourmaline/client/payments.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L2" target="_blank">
+        tourmaline/client/stickers.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/webhook.cr#L2" target="_blank">
+        tourmaline/client/webhook.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/bot.cr#L23" target="_blank">
+        tourmaline/bot.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="API_URL">
+        <strong>API_URL</strong> = <code><span class="s">&quot;https://api.telegram.org/&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil)-class-method" class="signature"><strong>.new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Create a new instance of <code><a href="../Tourmaline/Bot.html">Tourmaline::Bot</a></code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method" class="signature"><strong>#add_sticker_to_set</strong>(user_id, name, png_sticker, emojis, mask_position = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to add a new sticker to a set created by the bot.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#answer_callback_query(callback_query_id,text=nil,show_alert=nil,url=nil,cache_time=nil)-instance-method" class="signature"><strong>#answer_callback_query</strong>(callback_query_id, text = <span class="n">nil</span>, show_alert = <span class="n">nil</span>, url = <span class="n">nil</span>, cache_time = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send answers to callback queries sent from inline keyboards.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#answer_inline_query(inline_query_id,results,cache_time=nil,is_personal=nil,next_offset=nil,switch_pm_text=nil,switch_pm_parameter=nil)-instance-method" class="signature"><strong>#answer_inline_query</strong>(inline_query_id, results, cache_time = <span class="n">nil</span>, is_personal = <span class="n">nil</span>, next_offset = <span class="n">nil</span>, switch_pm_text = <span class="n">nil</span>, switch_pm_parameter = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send answers to an inline query.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#answer_pre_checkout_query(pre_checkout_query_id,ok,error_message)-instance-method" class="signature"><strong>#answer_pre_checkout_query</strong>(pre_checkout_query_id, ok, error_message)</a>
+        
+          <div class="summary"><p>Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of a <code><a href="../Tourmaline/Model/Update.html">Model::Update</a></code> with the field pre_checkout_query.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#answer_shipping_query(shipping_query_id,ok,shipping_options=nil,error_message=nil)-instance-method" class="signature"><strong>#answer_shipping_query</strong>(shipping_query_id, ok, shipping_options = <span class="n">nil</span>, error_message = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send a <code><a href="../Tourmaline/Model/Update.html">Model::Update</a></code> with a shipping_query field to the bot.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bot_name-instance-method" class="signature"><strong>#bot_name</strong></a>
+        
+          <div class="summary"><p>Gets the name of the bot at the time the bot was started.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method" class="signature"><strong>#create_new_sticker_set</strong>(user_id, name, title, png_sticker, emojis, contains_masks = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to create new sticker set owned by a user.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete_chat_photo(chat_id)-instance-method" class="signature"><strong>#delete_chat_photo</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method to delete a chat photo.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete_chat_sticker_set(chat_id)-instance-method" class="signature"><strong>#delete_chat_sticker_set</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method to delete a group sticker set from a supergroup.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete_message(chat_id,message_id)-instance-method" class="signature"><strong>#delete_message</strong>(chat_id, message_id)</a>
+        
+          <div class="summary"><p>Use this method to delete a <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code>, including service messages, with the following limitations: - A message can only be deleted if it was sent less than 48 hours ago.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete_sticker_from_set(sticker)-instance-method" class="signature"><strong>#delete_sticker_from_set</strong>(sticker)</a>
+        
+          <div class="summary"><p>Use this method to delete a sticker from a set created by the bot.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete_webhook-instance-method" class="signature"><strong>#delete_webhook</strong></a>
+        
+          <div class="summary"><p>Use this method to remove webhook integration if you decide to switch back to getUpdates.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edit_message_caption(chat_id,caption,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_caption</strong>(chat_id, caption, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to edit captions of messages.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edit_message_live_location(chat_id,latitude,longitude,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_live_location</strong>(chat_id, latitude, longitude, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to edit live location messages.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edit_message_reply_markup(chat_id,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_reply_markup</strong>(chat_id, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to edit only the reply markup of messages.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edit_message_text(chat_id,text,message_id=nil,inline_message_id=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_text</strong>(chat_id, text, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to edit text and game messages.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#endpoint_url:String-instance-method" class="signature"><strong>#endpoint_url</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#endpoint_url=(endpoint_url:String)-instance-method" class="signature"><strong>#endpoint_url=</strong>(endpoint_url : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#export_chat_invite_link(chat_id)-instance-method" class="signature"><strong>#export_chat_invite_link</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method to generate a new invite link for a chat; any previously generated link is revoked.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#forward_message(chat_id,from_chat_id,message_id,disable_notification=false)-instance-method" class="signature"><strong>#forward_message</strong>(chat_id, from_chat_id, message_id, disable_notification = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Use this method to forward messages of any kind.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_chat(chat_id)-instance-method" class="signature"><strong>#get_chat</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_chat_administrators(chat_id)-instance-method" class="signature"><strong>#get_chat_administrators</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method to get a list of administrators in a chat.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_chat_member(chat_id,user_id)-instance-method" class="signature"><strong>#get_chat_member</strong>(chat_id, user_id)</a>
+        
+          <div class="summary"><p>Use this method to get information about a member of a chat.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_chat_members_count(chat_id)-instance-method" class="signature"><strong>#get_chat_members_count</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method to get the number of members in a chat.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_file(file_id)-instance-method" class="signature"><strong>#get_file</strong>(file_id)</a>
+        
+          <div class="summary"><p>Use this method to get basic info about a file and prepare it for downloading.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_file_link(file)-instance-method" class="signature"><strong>#get_file_link</strong>(file)</a>
+        
+          <div class="summary"><p>Returns a download link for a <code>File</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_game_high_scores(user_id,chat_id=nil,message_id=nil,inline_message_id=nil)-instance-method" class="signature"><strong>#get_game_high_scores</strong>(user_id, chat_id = <span class="n">nil</span>, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to get data for high score tables.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_me-instance-method" class="signature"><strong>#get_me</strong></a>
+        
+          <div class="summary"><p>A simple method for testing your bot's auth token.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_sticker_set(name:String)-instance-method" class="signature"><strong>#get_sticker_set</strong>(name : String)</a>
+        
+          <div class="summary"><p>Use this method to get a sticker set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method" class="signature"><strong>#get_updates</strong>(offset = @next_offset, limit = <span class="n">nil</span>, timeout = @updates_timeout, allowed_updates = @allowed_updates)</a>
+        
+          <div class="summary"><p>Use this method to receive incoming updates using long polling (<a href="http://en.wikipedia.org/wiki/Push_technology#Long_polling" target="_blank">wiki</a>).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_user_profile_photos(user_id,offset=nil,limit=nil)-instance-method" class="signature"><strong>#get_user_profile_photos</strong>(user_id, offset = <span class="n">nil</span>, limit = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to get a list of profile pictures for a user.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_webhook_info-instance-method" class="signature"><strong>#get_webhook_info</strong></a>
+        
+          <div class="summary"><p>Use this method to get current webhook status.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#handle_update(update:Model::Update)-instance-method" class="signature"><strong>#handle_update</strong>(update : Model::Update)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_admin?(chat_id)-instance-method" class="signature"><strong>#is_admin?</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Convenience method to check if this bot is an admin in the current chat.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#kick_chat_member(chat_id,user_id,until_date=nil)-instance-method" class="signature"><strong>#kick_chat_member</strong>(chat_id, user_id, until_date = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to kick a user from a group, a supergroup or a channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#labeled_prices(lp:Array(NamedTuple()))-instance-method" class="signature"><strong>#labeled_prices</strong>(lp : Array(NamedTuple()))</a>
+        
+          <div class="summary"><p>Convenience method to create and <code>Array</code> of <code>LabledPrice</code> from an <code>Array</code> of <code>NamedTuple(label: String, amount: Int32)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#leave_chat(chat_id)-instance-method" class="signature"><strong>#leave_chat</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method for your bot to leave a group, supergroup, or channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#next_offset:Int64-instance-method" class="signature"><strong>#next_offset</strong> : Int64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pin_chat_message(chat_id,message_id,disable_notification=false)-instance-method" class="signature"><strong>#pin_chat_message</strong>(chat_id, message_id, disable_notification = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Use this method to pin a message in a group, a supergroup, or a channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#poll-instance-method" class="signature"><strong>#poll</strong></a>
+        
+          <div class="summary"><p>Start polling for updates.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#polling:Bool-instance-method" class="signature"><strong>#polling</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#promote_chat_member(chat_id,user_id,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method" class="signature"><strong>#promote_chat_member</strong>(chat_id, user_id, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to promote or demote a user in a supergroup or a channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#restrict_chat_member(chat_id,user_id,until_date=nil,permissions=nil)-instance-method" class="signature"><strong>#restrict_chat_member</strong>(chat_id, user_id, until_date = <span class="n">nil</span>, permissions = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to unban a previously kicked user in a supergroup or channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_audio(chat_id,audio,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_audio</strong>(chat_id, audio, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send audio files, if you want Telegram clients to display them in the music player.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_chat_action(chat_id,action:ChatAction)-instance-method" class="signature"><strong>#send_chat_action</strong>(chat_id, action : ChatAction)</a>
+        
+          <div class="summary"><p>Use this method when you need to tell the user that something is happening on the bot's side.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_contact(chat_id,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_contact</strong>(chat_id, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send phone contacts.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_document(chat_id,document,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_document</strong>(chat_id, document, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send general files.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_game(chat_id,game_short_name,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_game</strong>(chat_id, game_short_name, disable_notification = <span class="n">nil</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send a game.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_invoice(chat_id,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_invoice</strong>(chat_id, title, description, payload, provider_token, start_parameter, currency, prices, provider_data = <span class="n">nil</span>, photo_url = <span class="n">nil</span>, photo_size = <span class="n">nil</span>, photo_width = <span class="n">nil</span>, photo_height = <span class="n">nil</span>, need_name = <span class="n">nil</span>, need_shipping_address = <span class="n">nil</span>, send_phone_number_to_provider = <span class="n">nil</span>, send_email_to_provider = <span class="n">nil</span>, is_flexible = <span class="n">nil</span>, disable_notification = <span class="n">nil</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send invoices.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_location(chat_id,latitude,longitude,live_period=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_location</strong>(chat_id, latitude, longitude, live_period = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send point on the map.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_media_group(chat_id,media,disable_notification=false,reply_to_message_id=nil)-instance-method" class="signature"><strong>#send_media_group</strong>(chat_id, media, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send a group of photos or videos as an album.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_message(chat_id,text,parse_mode=ParseMode::Normal,disable_link_preview=false,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_message</strong>(chat_id, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send text messages.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_photo(chat_id,photo,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_photo</strong>(chat_id, photo, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send photos.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_sticker(chat_id:Int32%7CString,sticker:Model::InputFile%7CString,disable_notification:Bool?=nil,reply_to_message_id:Int32?=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_sticker</strong>(chat_id : Int32 | String, sticker : Model::InputFile | String, disable_notification : Bool? = <span class="n">nil</span>, reply_to_message_id : Int32? = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send <code>.webp</code> stickers.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_venue(chat_id,latitude,longitude,title,address,foursquare_id=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_venue</strong>(chat_id, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send information about a venue.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_video(chat_id,video,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_video</strong>(chat_id, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_video_note(chat_id,video_note,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_video_note</strong>(chat_id, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>As of <a href="https://telegram.org/blog/video-messages-and-telescope" target="_blank">v.4.0</a>, Telegram clients support rounded square <code>mp4</code> videos of up to <strong>1</strong> minute long.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_voice(chat_id,voice,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_voice</strong>(chat_id, voice, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#serve(address=&quot;127.0.0.1&quot;,port=8080,ssl_certificate_path=nil,ssl_key_path=nil)-instance-method" class="signature"><strong>#serve</strong>(address = <span class="s">&quot;127.0.0.1&quot;</span>, port = <span class="n">8080</span>, ssl_certificate_path = <span class="n">nil</span>, ssl_key_path = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Start an HTTP server at the specified <code>address</code> and <code>port</code> that listens for updates using Telegram's webhooks.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_chat_description(chat_id,description)-instance-method" class="signature"><strong>#set_chat_description</strong>(chat_id, description)</a>
+        
+          <div class="summary"><p>Use this method to change the description of a supergroup or a channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_chat_photo(chat_id,photo)-instance-method" class="signature"><strong>#set_chat_photo</strong>(chat_id, photo)</a>
+        
+          <div class="summary"><p>Use this method to set a new profile photo for the chat.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_chat_sticker_set(chat_id,sticker_set_name)-instance-method" class="signature"><strong>#set_chat_sticker_set</strong>(chat_id, sticker_set_name)</a>
+        
+          <div class="summary"><p>Use this method to set a new group sticker set for a supergroup.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_chat_title(chat_id,title)-instance-method" class="signature"><strong>#set_chat_title</strong>(chat_id, title)</a>
+        
+          <div class="summary"><p>Use this method to change the title of a chat.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_game_score(user_id,score,force=false,disable_edit_message=nil,chat_id=nil,message_id=nil,inline_message_id=nil)-instance-method" class="signature"><strong>#set_game_score</strong>(user_id, score, force = <span class="n">false</span>, disable_edit_message = <span class="n">nil</span>, chat_id = <span class="n">nil</span>, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to set the score of the specified user in a game.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_sticker_position_in_set(sticker,position)-instance-method" class="signature"><strong>#set_sticker_position_in_set</strong>(sticker, position)</a>
+        
+          <div class="summary"><p>Use this method to move a sticker in a set created by the bot to a specific position.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method" class="signature"><strong>#set_webhook</strong>(url, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates)</a>
+        
+          <div class="summary"><p>Use this method to specify a url and receive incoming updates via an outgoing webhook.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#shipping_options(options:Array(NamedTuple()))-instance-method" class="signature"><strong>#shipping_options</strong>(options : Array(NamedTuple()))</a>
+        
+          <div class="summary"><p>Convenience method to create an <code>Array</code> of <code>ShippingOption</code> from a <code>NamedTuple(id: String, title: String, prices: Array(LabeledPrice))</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stop_message_live_location(chat_id,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#stop_message_live_location</strong>(chat_id, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to stop updating a live location message before live_period expires.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stop_polling-instance-method" class="signature"><strong>#stop_polling</strong></a>
+        
+          <div class="summary"><p>Stops the bot from polling.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unban_chat_member(chat_id,user_id)-instance-method" class="signature"><strong>#unban_chat_member</strong>(chat_id, user_id)</a>
+        
+          <div class="summary"><p>Use this method to unban a previously kicked user in a supergroup or channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unpin_chat_message(chat_id)-instance-method" class="signature"><strong>#unpin_chat_message</strong>(chat_id)</a>
+        
+          <div class="summary"><p>Use this method to unpin a message in a group, a supergroup, or a channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unset_webhook-instance-method" class="signature"><strong>#unset_webhook</strong></a>
+        
+          <div class="summary"><p>Use this to unset the webhook and stop receiving updates to your bot.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#upload_sticker_file(user_id,png_sticker)-instance-method" class="signature"><strong>#upload_sticker_file</strong>(user_id, png_sticker)</a>
+        
+          <div class="summary"><p>Use this method to upload a .png file with a sticker for later use in <code><a href="../Tourmaline/Bot.html#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">#create_new_sticker_set</a></code> and <code><a href="../Tourmaline/Bot.html#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">#add_sticker_to_set</a></code> methods (can be used multiple times).</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Tourmaline/MiddlewareRegistry.html">Tourmaline::MiddlewareRegistry</a></code></h3>
+  
+  
+    <a href="../Tourmaline/MiddlewareRegistry.html#middlewares-instance-method" class="tooltip">
+      <span>middlewares</span>
+    middlewares</a>, 
+    
+  
+    <a href="../Tourmaline/MiddlewareRegistry.html#use(middleware)-instance-method" class="tooltip">
+      <span>use(middleware)</span>
+    use</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Tourmaline/CommandRegistry.html">Tourmaline::CommandRegistry</a></code></h3>
+  
+  
+    <a href="../Tourmaline/CommandRegistry.html#command(names:String%7CArray(String),at_start=true,&block:Model::Message,Array(String)-%3E)-instance-method" class="tooltip">
+      <span>command(names : String | Array(String), at_start = <span class="n">true</span>, &block : Model::Message, Array(String) -> )<br/>command(names : String | Array(String), proc : Model::Message, Array(String) -> , at_start = <span class="n">true</span>)</span>
+    command</a>, 
+    
+  
+    <a href="../Tourmaline/CommandRegistry.html#commands-instance-method" class="tooltip">
+      <span>commands</span>
+    commands</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Tourmaline/EventRegistry.html">Tourmaline::EventRegistry</a></code></h3>
+  
+  
+    <a href="../Tourmaline/EventRegistry.html#event_handlers-instance-method" class="tooltip">
+      <span>event_handlers</span>
+    event_handlers</a>, 
+    
+  
+    <a href="../Tourmaline/EventRegistry.html#on(action:UpdateAction,proc:Model::Update-%3E)-instance-method" class="tooltip">
+      <span>on(action : UpdateAction, proc : Model::Update -> )<br/>on(action : UpdateAction, &block : Model::Update -> )</span>
+    on</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Tourmaline/Logger.html">Tourmaline::Logger</a></code></h3>
+  
+  
+    <a href="../Tourmaline/Logger.html#alert(*args,**options)-instance-method" class="tooltip">
+      <span>alert(*args, **options)<br/>alert(*args, **options, &block)</span>
+    alert</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#crit(*args,**options)-instance-method" class="tooltip">
+      <span>crit(*args, **options)<br/>crit(*args, **options, &block)</span>
+    crit</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#debug(*args,**options)-instance-method" class="tooltip">
+      <span>debug(*args, **options)<br/>debug(*args, **options, &block)</span>
+    debug</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#emerg(*args,**options)-instance-method" class="tooltip">
+      <span>emerg(*args, **options)<br/>emerg(*args, **options, &block)</span>
+    emerg</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#error(*args,**options)-instance-method" class="tooltip">
+      <span>error(*args, **options)<br/>error(*args, **options, &block)</span>
+    error</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#info(*args,**options)-instance-method" class="tooltip">
+      <span>info(*args, **options)<br/>info(*args, **options, &block)</span>
+    info</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#notice(*args,**options)-instance-method" class="tooltip">
+      <span>notice(*args, **options)<br/>notice(*args, **options, &block)</span>
+    notice</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#warning(*args,**options)-instance-method" class="tooltip">
+      <span>warning(*args, **options)<br/>warning(*args, **options, &block)</span>
+    warning</a>
+    
+  
+
+
+    
+
+
+    
+
+  <h3>Class methods inherited from module <code><a href="../Tourmaline/Logger.html">Tourmaline::Logger</a></code></h3>
+  
+  
+    <a href="../Tourmaline/Logger.html#alert(message)-class-method" class="tooltip">
+      <span>alert(message)</span>
+    alert</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#crit(message)-class-method" class="tooltip">
+      <span>crit(message)</span>
+    crit</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#debug(message)-class-method" class="tooltip">
+      <span>debug(message)</span>
+    debug</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#emerg(message)-class-method" class="tooltip">
+      <span>emerg(message)</span>
+    emerg</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#error(message)-class-method" class="tooltip">
+      <span>error(message)</span>
+    error</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#info(message)-class-method" class="tooltip">
+      <span>info(message)</span>
+    info</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#logger-class-method" class="tooltip">
+      <span>logger</span>
+    logger</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#logger=(logger)-class-method" class="tooltip">
+      <span>logger=(logger)</span>
+    logger=</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#notice(message)-class-method" class="tooltip">
+      <span>notice(message)</span>
+    notice</a>, 
+    
+  
+    <a href="../Tourmaline/Logger.html#warning(message)-class-method" class="tooltip">
+      <span>warning(message)</span>
+    warning</a>
+    
+  
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil)-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create a new instance of <code><a href="../Tourmaline/Bot.html">Tourmaline::Bot</a></code>. It is
+highly recommended to set <code>@api_key</code> at an environment
+variable. <code>@logger</code> can be any logger that extends
+Crystal's built in Logger.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/bot.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_sticker_to_set</strong>(user_id, name, png_sticker, emojis, mask_position = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to add a new sticker to a set created by the bot.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="answer_callback_query(callback_query_id,text=nil,show_alert=nil,url=nil,cache_time=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>answer_callback_query</strong>(callback_query_id, text = <span class="n">nil</span>, show_alert = <span class="n">nil</span>, url = <span class="n">nil</span>, cache_time = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#answer_callback_query(callback_query_id,text=nil,show_alert=nil,url=nil,cache_time=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send answers to callback queries sent from
+inline keyboards. The answer will be displayed to the user
+as a notification at the top of the chat screen or as
+an alert. On success, <code>true</code> is returned.</p>
+
+<blockquote>Alternatively, the user can be redirected to the specified
+> Game URL (<code>url</code>). For this option to work, you must first
+> create a game for your bot via @Botfather and accept the
+> terms. Otherwise, you may use links like
+> <a href="https://t.me/your_bot?start=XXXX" target="_blank">t.me/your_bot?start=XXXX</a>
+> that open your bot with a parameter.</blockquote></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="answer_inline_query(inline_query_id,results,cache_time=nil,is_personal=nil,next_offset=nil,switch_pm_text=nil,switch_pm_parameter=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>answer_inline_query</strong>(inline_query_id, results, cache_time = <span class="n">nil</span>, is_personal = <span class="n">nil</span>, next_offset = <span class="n">nil</span>, switch_pm_text = <span class="n">nil</span>, switch_pm_parameter = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#answer_inline_query(inline_query_id,results,cache_time=nil,is_personal=nil,next_offset=nil,switch_pm_text=nil,switch_pm_parameter=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send answers to an inline query.
+On success, True is returned. No more than
+<strong>50</strong> results per query are allowed.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L79" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="answer_pre_checkout_query(pre_checkout_query_id,ok,error_message)-instance-method">
+      <div class="signature">
+        
+        def <strong>answer_pre_checkout_query</strong>(pre_checkout_query_id, ok, error_message)
+
+        <a class="method-permalink" href="#answer_pre_checkout_query(pre_checkout_query_id,ok,error_message)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Once the user has confirmed their payment and shipping details, the Bot API sends
+the final confirmation in the form of a <code><a href="../Tourmaline/Model/Update.html">Model::Update</a></code> with the field pre_checkout_query.
+Use this method to respond to such pre-checkout queries.
+On success, <code>true</code> is returned.</p>
+
+<blockquote>Note: The Bot API must receive an answer within 10 seconds after the
+> pre-checkout query was sent.</blockquote></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/payments.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="answer_shipping_query(shipping_query_id,ok,shipping_options=nil,error_message=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>answer_shipping_query</strong>(shipping_query_id, ok, shipping_options = <span class="n">nil</span>, error_message = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#answer_shipping_query(shipping_query_id,ok,shipping_options=nil,error_message=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>If you sent an invoice requesting a shipping address and the parameter is_flexible
+was specified, the Bot API will send a <code><a href="../Tourmaline/Model/Update.html">Model::Update</a></code> with a shipping_query field to
+the bot. Use this method to reply to shipping queries.
+On success, <code>true</code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/payments.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bot_name-instance-method">
+      <div class="signature">
+        
+        def <strong>bot_name</strong>
+
+        <a class="method-permalink" href="#bot_name-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets the name of the bot at the time the bot was
+started. Refreshing can be done by setting
+<code>@bot_name</code> to <code>get_me.username.to_s</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/bot.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>create_new_sticker_set</strong>(user_id, name, title, png_sticker, emojis, contains_masks = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to create new sticker set owned by a user. The bot will be able to
+edit the created sticker set.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L67" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete_chat_photo(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete_chat_photo</strong>(chat_id)
+
+        <a class="method-permalink" href="#delete_chat_photo(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to delete a chat photo. Photos can't be changed for private chats.
+The bot must be an administrator in the chat for this to work and must have the
+appropriate admin rights.
+Returns <code>true</code> on success.</p>
+
+<blockquote><strong>Note:</strong> In regular groups (non-supergroups), this method will only work if the
+<code>All Members Are Admins</code> setting is off in the target group.</blockquote></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L445" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete_chat_sticker_set(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete_chat_sticker_set</strong>(chat_id)
+
+        <a class="method-permalink" href="#delete_chat_sticker_set(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to delete a group sticker set from a supergroup. The bot must be
+an administrator in the chat for this to work and must have the appropriate
+admin rights. Use the field can_set_sticker_set optionally returned in
+<code><a href="../Tourmaline/Bot.html#get_chat(chat_id)-instance-method">#get_chat</a></code> requests to check if the bot can use this method.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L94" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete_message(chat_id,message_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete_message</strong>(chat_id, message_id)
+
+        <a class="method-permalink" href="#delete_message(chat_id,message_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to delete a <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code>, including service messages,
+with the following limitations:</p>
+
+<ul><li>A message can only be deleted if it was sent less than 48 hours ago.</li><li>Bots can delete outgoing messages in private chats, groups, and supergroups.</li><li>Bots can delete incoming messages in private chats.</li><li>Bots granted can_post_messages permissions can delete outgoing messages in channels.</li><li>If the bot is an administrator of a group, it can delete any message there.</li><li>If the bot has <code>can_delete_messages</code> permission in a supergroup or a
+  channel, it can delete any message there.
+Returns <code>true</code> on success.</li></ul></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete_sticker_from_set(sticker)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete_sticker_from_set</strong>(sticker)
+
+        <a class="method-permalink" href="#delete_sticker_from_set(sticker)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to delete a sticker from a set created by the bot.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L104" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete_webhook-instance-method">
+      <div class="signature">
+        
+        def <strong>delete_webhook</strong>
+
+        <a class="method-permalink" href="#delete_webhook-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to remove webhook integration if you decide to switch
+back to getUpdates.
+Returns <code>true</code> on success.
+Requires no parameters.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/webhook.cr#L67" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_message_caption(chat_id,caption,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_message_caption</strong>(chat_id, caption, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#edit_message_caption(chat_id,caption,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to edit captions of messages. On success,
+if edited message is sent by the bot, the edited
+<code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned, otherwise <code>true</code>
+is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L124" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_message_live_location(chat_id,latitude,longitude,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_message_live_location</strong>(chat_id, latitude, longitude, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#edit_message_live_location(chat_id,latitude,longitude,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to edit live location messages. A location can be edited until
+its live_period expires or editing is explicitly disabled by a call to
+<code>#stopMessageLiveLocation</code>.
+On success, if the edited message wasn't by the bot, the edited <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is
+returned, otherwise <code>true</code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L845" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_message_reply_markup(chat_id,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_message_reply_markup</strong>(chat_id, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#edit_message_reply_markup(chat_id,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to edit only the reply markup of messages.
+On success, if edited message is sent by the bot, the
+edited <code>Message</code> is returned, otherwise <code>true</code> is
+returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L150" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_message_text(chat_id,text,message_id=nil,inline_message_id=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_message_text</strong>(chat_id, text, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#edit_message_text(chat_id,text,message_id=nil,inline_message_id=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to edit text and game messages. On success, if
+edited message is sent by the bot, the edited <code>Message</code>
+is returned, otherwise <code>true</code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="endpoint_url:String-instance-method">
+      <div class="signature">
+        
+        def <strong>endpoint_url</strong> : String
+
+        <a class="method-permalink" href="#endpoint_url:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/bot.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="endpoint_url=(endpoint_url:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>endpoint_url=</strong>(endpoint_url : String)
+
+        <a class="method-permalink" href="#endpoint_url=(endpoint_url:String)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/bot.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="export_chat_invite_link(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>export_chat_invite_link</strong>(chat_id)
+
+        <a class="method-permalink" href="#export_chat_invite_link(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to generate a new invite link for a chat; any previously
+generated link is revoked. The bot must be an administrator in the chat
+for this to work and must have the appropriate admin rights.
+Returns the new invite link as <code>String</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L414" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="forward_message(chat_id,from_chat_id,message_id,disable_notification=false)-instance-method">
+      <div class="signature">
+        
+        def <strong>forward_message</strong>(chat_id, from_chat_id, message_id, disable_notification = <span class="n">false</span>)
+
+        <a class="method-permalink" href="#forward_message(chat_id,from_chat_id,message_id,disable_notification=false)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to forward messages of any kind. On success,
+the sent <code>Message</code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L207" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_chat(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_chat</strong>(chat_id)
+
+        <a class="method-permalink" href="#get_chat(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get up to date information about the chat
+(current name of the user for one-on-one conversations,
+current username of a user, group or channel, etc.).
+Returns a <code><a href="../Tourmaline/Model/Chat.html">Model::Chat</a></code> object on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L227" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_chat_administrators(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_chat_administrators</strong>(chat_id)
+
+        <a class="method-permalink" href="#get_chat_administrators(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get a list of administrators in a chat. On success,
+returns an <code>Array</code> of <code>ChatMember</code> objects that contains information
+about all chat administrators except other bots. If the chat is a
+group or a supergroup and no administrators were appointed,
+only the creator will be returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L240" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_chat_member(chat_id,user_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_chat_member</strong>(chat_id, user_id)
+
+        <a class="method-permalink" href="#get_chat_member(chat_id,user_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get information about a member of a chat. Returns a
+<code><a href="../Tourmaline/Model/ChatMember.html">Model::ChatMember</a></code> object on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L250" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_chat_members_count(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_chat_members_count</strong>(chat_id)
+
+        <a class="method-permalink" href="#get_chat_members_count(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get the number of members in a chat.
+Returns <code>Int32</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L261" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_file(file_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_file</strong>(file_id)
+
+        <a class="method-permalink" href="#get_file(file_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get basic info about a file and prepare it for downloading.
+For the moment, bots can download files of up to <strong>20MB</strong> in size. On success,
+a <code><a href="../Tourmaline/Model/File.html">Model::File</a></code> object is returned. The file can then be downloaded via the
+link <code>https://api.telegram.org/file/bot<token>/<file_path></code>, where
+<code><file_path></code> is taken from the response. It is guaranteed that
+the link will be valid for at least 1 hour. When the link
+expires, a new one can be requested by calling <code><a href="../Tourmaline/Bot.html#get_file(file_id)-instance-method">#get_file</a></code> again.</p>
+
+<p>To simplify retrieving a link for a file, use the <code><a href="../Tourmaline/Bot.html#get_file_link(file)-instance-method">#get_file_link</a></code> method.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L278" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_file_link(file)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_file_link</strong>(file)
+
+        <a class="method-permalink" href="#get_file_link(file)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a download link for a <code>File</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L287" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_game_high_scores(user_id,chat_id=nil,message_id=nil,inline_message_id=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_game_high_scores</strong>(user_id, chat_id = <span class="n">nil</span>, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#get_game_high_scores(user_id,chat_id=nil,message_id=nil,inline_message_id=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get data for high score tables. Will return the score of the
+specified user and several of his neighbors in a game.
+On success, returns an <code>Array</code> of <code><a href="../Tourmaline/Model/GameHighScore.html">Model::GameHighScore</a></code> objects.</p>
+
+<blockquote>This method will currently return scores for the target user, plus two of his
+> closest neighbors on each side. Will also return the top three users if the
+> user and his neighbors are not among them. Please note that this behavior
+> is subject to change.</blockquote></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/games.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_me-instance-method">
+      <div class="signature">
+        
+        def <strong>get_me</strong>
+
+        <a class="method-permalink" href="#get_me-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>A simple method for testing your bot's auth token. Requires
+no parameters. Returns basic information about the bot
+in form of a <code><a href="../Tourmaline/Model/User.html">Model::User</a></code> object.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_sticker_set(name:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_sticker_set</strong>(name : String)
+
+        <a class="method-permalink" href="#get_sticker_set(name:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get a sticker set.
+On success, a <code>StickerSet</code> object is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_updates</strong>(offset = @next_offset, limit = <span class="n">nil</span>, timeout = @updates_timeout, allowed_updates = @allowed_updates)
+
+        <a class="method-permalink" href="#get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to receive incoming updates using long polling
+(<a href="http://en.wikipedia.org/wiki/Push_technology#Long_polling" target="_blank">wiki</a>).
+An <code>Array</code> of <code><a href="../Tourmaline/Model/Update.html">Model::Update</a></code> objects is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_user_profile_photos(user_id,offset=nil,limit=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_user_profile_photos</strong>(user_id, offset = <span class="n">nil</span>, limit = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#get_user_profile_photos(user_id,offset=nil,limit=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get a list of profile pictures for a user.
+Returns a <code><a href="../Tourmaline/Model/UserProfilePhotos.html">Model::UserProfilePhotos</a></code> object.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L297" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_webhook_info-instance-method">
+      <div class="signature">
+        
+        def <strong>get_webhook_info</strong>
+
+        <a class="method-permalink" href="#get_webhook_info-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to get current webhook status. Requires no parameters.
+On success, returns a <code>WebhookInfo</code> object. If the bot is using
+<code>#getUpdates</code>, will return an object with the
+url field empty.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/webhook.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="handle_update(update:Model::Update)-instance-method">
+      <div class="signature">
+        
+        def <strong>handle_update</strong>(update : <a href="../Tourmaline/Model/Update.html">Model::Update</a>)
+
+        <a class="method-permalink" href="#handle_update(update:Model::Update)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/bot.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_admin?(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>is_admin?</strong>(chat_id)
+
+        <a class="method-permalink" href="#is_admin?(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Convenience method to check if this bot is an admin in
+the current chat. See <code>Client#get_chat_administrators</code>
+for more info.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="kick_chat_member(chat_id,user_id,until_date=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>kick_chat_member</strong>(chat_id, user_id, until_date = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#kick_chat_member(chat_id,user_id,until_date=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to kick a user from a group, a supergroup or a channel.
+In the case of supergroups and channels, the user will not be able to
+return to the group on their own using invite links, etc., unless
+unbanned first. The bot must be an administrator in the chat
+for this to work and must have the appropriate admin
+rights. Returns <code>true</code> on success.</p>
+
+<blockquote>Note: In regular groups (non-supergroups), this method will only work
+> if the <code>All Members Are Admins</code> setting is off in the target group.
+> Otherwise members may only be removed by the group's creator or
+> by the member that added them.</blockquote></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L322" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="labeled_prices(lp:Array(NamedTuple()))-instance-method">
+      <div class="signature">
+        
+        def <strong>labeled_prices</strong>(lp : Array(NamedTuple()))
+
+        <a class="method-permalink" href="#labeled_prices(lp:Array(NamedTuple()))-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Convenience method to create and <code>Array</code> of <code>LabledPrice</code> from an <code>Array</code>
+of <code>NamedTuple(label: String, amount: Int32)</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/payments.cr#L98" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="leave_chat(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>leave_chat</strong>(chat_id)
+
+        <a class="method-permalink" href="#leave_chat(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method for your bot to leave a group,
+supergroup, or channel.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L513" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="next_offset:Int64-instance-method">
+      <div class="signature">
+        
+        def <strong>next_offset</strong> : Int64
+
+        <a class="method-permalink" href="#next_offset:Int64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pin_chat_message(chat_id,message_id,disable_notification=false)-instance-method">
+      <div class="signature">
+        
+        def <strong>pin_chat_message</strong>(chat_id, message_id, disable_notification = <span class="n">false</span>)
+
+        <a class="method-permalink" href="#pin_chat_message(chat_id,message_id,disable_notification=false)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to pin a message in a group, a supergroup, or a channel.
+The bot must be an administrator in the chat for this to work and must
+have the <code>can_pin_messages</code> admin right in the supergroup or
+<code>can_edit_messages</code> admin right in the channel.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L487" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="poll-instance-method">
+      <div class="signature">
+        
+        def <strong>poll</strong>
+
+        <a class="method-permalink" href="#poll-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Start polling for updates. This method uses a combination of <code><a href="../Tourmaline/Bot.html#get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method">#get_updates</a></code>
+and <code><a href="../Tourmaline/Bot.html#handle_update(update:Model::Update)-instance-method">#handle_update</a></code> to send continuously check Telegram's servers
+for updates.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L904" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="polling:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>polling</strong> : Bool
+
+        <a class="method-permalink" href="#polling:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="promote_chat_member(chat_id,user_id,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>promote_chat_member</strong>(chat_id, user_id, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#promote_chat_member(chat_id,user_id,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to promote or demote a user in a supergroup or a channel.
+The bot must be an administrator in the chat for this to work and must
+have the appropriate admin rights. Pass False for all boolean
+parameters to demote a user.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L380" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="restrict_chat_member(chat_id,user_id,until_date=nil,permissions=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>restrict_chat_member</strong>(chat_id, user_id, until_date = <span class="n">nil</span>, permissions = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#restrict_chat_member(chat_id,user_id,until_date=nil,permissions=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to unban a previously kicked user in a supergroup or
+channel. The user will not return to the group or channel
+automatically, but will be able to join via link, etc.
+The bot must be an administrator for this to work.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L358" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_audio(chat_id,audio,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_audio</strong>(chat_id, audio, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_audio(chat_id,audio,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send audio files, if you want Telegram clients to display
+them in the music player. Your audio must be in the <code>.mp3</code> format.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned. Bots can currently
+send audio files of up to <strong>50 MB</strong> in size, this limit may be
+changed in the future.</p>
+
+<p>For sending voice messages, use the <code>#sendVoice</code> method instead.</p>
+
+<p><span class="flag orange">TODO</span>  Add filesize checking and validation.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L529" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_chat_action(chat_id,action:ChatAction)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_chat_action</strong>(chat_id, action : <a href="../Tourmaline/ChatAction.html">ChatAction</a>)
+
+        <a class="method-permalink" href="#send_chat_action(chat_id,action:ChatAction)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method when you need to tell the user that something is happening on the
+bot's side. The status is set for 5 seconds or less (when a message arrives
+from your bot, Telegram clients clear its typing status).
+Returns <code>true</code> on success.</p>
+
+<blockquote>Example: The ImageBot needs some time to process a request and upload the image.
+> Instead of sending a text message along the lines of “Retrieving image, please
+> wait…”, the bot may use <code>#sendChatAction</code> with action = upload_photo. The user
+> will see a “sending photo” status for the bot.</blockquote>
+
+<p>We only recommend using this method when a response from the bot will take a
+noticeable amount of time to arrive.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L567" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_contact(chat_id,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_contact</strong>(chat_id, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_contact(chat_id,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send phone contacts.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L581" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_document(chat_id,document,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_document</strong>(chat_id, document, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_document(chat_id,document,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send general files.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned. Bots can currently send files
+of any type of up to <strong>50 MB</strong> in size, this limit
+may be changed in the future.</p>
+
+<p><span class="flag orange">TODO</span>  Add filesize checking and validation.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L608" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_game(chat_id,game_short_name,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_game</strong>(chat_id, game_short_name, disable_notification = <span class="n">nil</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_game(chat_id,game_short_name,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send a game.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/games.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_invoice(chat_id,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_invoice</strong>(chat_id, title, description, payload, provider_token, start_parameter, currency, prices, provider_data = <span class="n">nil</span>, photo_url = <span class="n">nil</span>, photo_size = <span class="n">nil</span>, photo_width = <span class="n">nil</span>, photo_height = <span class="n">nil</span>, need_name = <span class="n">nil</span>, need_shipping_address = <span class="n">nil</span>, send_phone_number_to_provider = <span class="n">nil</span>, send_email_to_provider = <span class="n">nil</span>, is_flexible = <span class="n">nil</span>, disable_notification = <span class="n">nil</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_invoice(chat_id,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send invoices.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/payments.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_location(chat_id,latitude,longitude,live_period=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_location</strong>(chat_id, latitude, longitude, live_period = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_location(chat_id,latitude,longitude,live_period=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send point on the map.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L630" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_media_group(chat_id,media,disable_notification=false,reply_to_message_id=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_media_group</strong>(chat_id, media, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_media_group(chat_id,media,disable_notification=false,reply_to_message_id=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send a group of photos or videos as an album.
+On success, an array of the sent <code>Messages</code> is returned.</p>
+
+<p><span class="flag orange">TODO</span>  Test this.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L703" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_message(chat_id,text,parse_mode=ParseMode::Normal,disable_link_preview=false,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_message</strong>(chat_id, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_message(chat_id,text,parse_mode=ParseMode::Normal,disable_link_preview=false,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send text messages.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L654" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_photo(chat_id,photo,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_photo</strong>(chat_id, photo, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_photo(chat_id,photo,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send photos.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L680" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_sticker(chat_id:Int32|String,sticker:Model::InputFile|String,disable_notification:Bool?=nil,reply_to_message_id:Int32?=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_sticker</strong>(chat_id : Int32 | String, sticker : Model::InputFile | String, disable_notification : Bool? = <span class="n">nil</span>, reply_to_message_id : Int32? = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_sticker(chat_id:Int32%7CString,sticker:Model::InputFile%7CString,disable_notification:Bool?=nil,reply_to_message_id:Int32?=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send <code>.webp</code> stickers.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p>
+
+<p>See: https://core.telegram.org/bots/api#stickers for more info.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_venue(chat_id,latitude,longitude,title,address,foursquare_id=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_venue</strong>(chat_id, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_venue(chat_id,latitude,longitude,title,address,foursquare_id=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send information about a venue.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L721" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_video(chat_id,video,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_video</strong>(chat_id, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_video(chat_id,video,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send video files, Telegram clients support mp4 videos
+(other formats may be sent as Document).
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned. Bots can currently send
+video files of up to <strong>50 MB</strong> in size, this limit may be
+changed in the future.</p>
+
+<p><span class="flag orange">TODO</span>  Add filesize checking and validation.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L753" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_video_note(chat_id,video_note,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_video_note</strong>(chat_id, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_video_note(chat_id,video_note,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>As of <a href="https://telegram.org/blog/video-messages-and-telescope" target="_blank">v.4.0</a>, Telegram
+clients support rounded square <code>mp4</code> videos of up to <strong>1</strong> minute long.
+Use this method to send video messages.
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L783" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_voice(chat_id,voice,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_voice</strong>(chat_id, voice, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_voice(chat_id,voice,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to send audio files, if you want Telegram clients to display the
+file as a playable voice message. For this to work, your audio must be in
+an <code>.ogg</code> file encoded with OPUS (other formats may be sent as <code>Audio</code>
+or <code>Document</code>).
+On success, the sent <code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned. Bots can currently send voice
+messages of up to <strong>50 MB</strong> in size, this limit may be changed in the future.</p>
+
+<p><span class="flag orange">TODO</span>  Add filesize checking and validation.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L816" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="serve(address=&amp;quot;127.0.0.1&amp;quot;,port=8080,ssl_certificate_path=nil,ssl_key_path=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>serve</strong>(address = <span class="s">&quot;127.0.0.1&quot;</span>, port = <span class="n">8080</span>, ssl_certificate_path = <span class="n">nil</span>, ssl_key_path = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#serve(address=&quot;127.0.0.1&quot;,port=8080,ssl_certificate_path=nil,ssl_key_path=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Start an HTTP server at the specified <code>address</code> and <code>port</code> that listens for
+updates using Telegram's webhooks. This is the reccommended way to handle
+bots in production.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/webhook.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_chat_description(chat_id,description)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_chat_description</strong>(chat_id, description)
+
+        <a class="method-permalink" href="#set_chat_description(chat_id,description)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to change the description of a supergroup or a channel.
+The bot must be an administrator in the chat for this to work and
+must have the appropriate admin rights.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L473" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_chat_photo(chat_id,photo)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_chat_photo</strong>(chat_id, photo)
+
+        <a class="method-permalink" href="#set_chat_photo(chat_id,photo)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to set a new profile photo for the chat. Photos can't be changed
+for private chats. The bot must be an administrator in the chat for this to
+work and must have the appropriate admin rights.
+Returns <code>true</code> on success.</p>
+
+<blockquote><strong>Note:</strong> In regular groups (non-supergroups), this method will only work if the
+> <code>All Members Are Admins</code> setting is off in the target group.</blockquote></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L429" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_chat_sticker_set(chat_id,sticker_set_name)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_chat_sticker_set</strong>(chat_id, sticker_set_name)
+
+        <a class="method-permalink" href="#set_chat_sticker_set(chat_id,sticker_set_name)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to set a new group sticker set for a supergroup. The bot must
+be an administrator in the chat for this to work and must have the
+appropriate admin rights. Use the field can_set_sticker_set
+optionally returned in <code><a href="../Tourmaline/Bot.html#get_chat(chat_id)-instance-method">#get_chat</a></code> requests to check if the
+bot can use this method.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_chat_title(chat_id,title)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_chat_title</strong>(chat_id, title)
+
+        <a class="method-permalink" href="#set_chat_title(chat_id,title)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to change the title of a chat. Titles can't be changed for
+private chats. The bot must be an administrator in the chat for this to
+work and must have the appropriate admin rights.
+Returns <code>true</code> on success.</p>
+
+<blockquote><strong>Note:</strong> In regular groups (non-supergroups), this method will only
+> work if the <code>All Members Are Admins</code> setting is off in the target group.</blockquote></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L460" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_game_score(user_id,score,force=false,disable_edit_message=nil,chat_id=nil,message_id=nil,inline_message_id=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_game_score</strong>(user_id, score, force = <span class="n">false</span>, disable_edit_message = <span class="n">nil</span>, chat_id = <span class="n">nil</span>, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#set_game_score(user_id,score,force=false,disable_edit_message=nil,chat_id=nil,message_id=nil,inline_message_id=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to set the score of the specified user in a game. On success,
+if the message was sent by the bot, returns the edited Message, otherwise
+returns <code>true</code>.</p>
+
+<p>Raises an error, if the new score is not greater than the user's current
+score in the chat and force is <code>false</code> (default).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/games.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_sticker_position_in_set(sticker,position)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_sticker_position_in_set</strong>(sticker, position)
+
+        <a class="method-permalink" href="#set_sticker_position_in_set(sticker,position)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to move a sticker in a set created by the bot to a specific position.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L114" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_webhook</strong>(url, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates)
+
+        <a class="method-permalink" href="#set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to specify a url and receive incoming updates via an outgoing webhook.
+Whenever there is an update for the bot, we will send an HTTPS POST request to the
+specified url, containing a JSON-serialized <code><a href="../Tourmaline/Model/Update.html">Model::Update</a></code>. In case of an unsuccessful
+request, we will give up after a reasonable amount of attempts.
+Returns <code>true</code> on success.</p>
+
+<p>If you'd like to make sure that the Webhook request comes from Telegram, we recommend
+using a secret path in the URL, e.g. <code>https://www.example.com/<token></code>. Since nobody
+else knows your bot‘s token, you can be pretty sure it’s us.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/webhook.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="shipping_options(options:Array(NamedTuple()))-instance-method">
+      <div class="signature">
+        
+        def <strong>shipping_options</strong>(options : Array(NamedTuple()))
+
+        <a class="method-permalink" href="#shipping_options(options:Array(NamedTuple()))-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Convenience method to create an <code>Array</code> of <code>ShippingOption</code> from a
+<code>NamedTuple(id: String, title: String, prices: Array(LabeledPrice))</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/payments.cr#L106" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stop_message_live_location(chat_id,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>stop_message_live_location</strong>(chat_id, message_id = <span class="n">nil</span>, inline_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#stop_message_live_location(chat_id,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to stop updating a live location message before
+live_period expires.
+On success, if the message was sent by the bot, the sent
+<code><a href="../Tourmaline/Model/Message.html">Model::Message</a></code> is returned, otherwise <code>true</code> is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L877" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stop_polling-instance-method">
+      <div class="signature">
+        
+        def <strong>stop_polling</strong>
+
+        <a class="method-permalink" href="#stop_polling-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Stops the bot from polling.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L922" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unban_chat_member(chat_id,user_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>unban_chat_member</strong>(chat_id, user_id)
+
+        <a class="method-permalink" href="#unban_chat_member(chat_id,user_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to unban a previously kicked user in a supergroup
+or channel. The user will not return to the group or channel
+automatically, but will be able to join via link, etc.
+The bot must be an administrator for this to work.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L341" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unpin_chat_message(chat_id)-instance-method">
+      <div class="signature">
+        
+        def <strong>unpin_chat_message</strong>(chat_id)
+
+        <a class="method-permalink" href="#unpin_chat_message(chat_id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to unpin a message in a group, a supergroup, or a channel.
+The bot must be an administrator in the chat for this to work and must
+have the ‘can_pin_messages’ admin right in the supergroup or
+‘can_edit_messages’ admin right in the channel.
+Returns <code>true</code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/core.cr#L502" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unset_webhook-instance-method">
+      <div class="signature">
+        
+        def <strong>unset_webhook</strong>
+
+        <a class="method-permalink" href="#unset_webhook-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this to unset the webhook and stop receiving updates to your bot.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/webhook.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="upload_sticker_file(user_id,png_sticker)-instance-method">
+      <div class="signature">
+        
+        def <strong>upload_sticker_file</strong>(user_id, png_sticker)
+
+        <a class="method-permalink" href="#upload_sticker_file(user_id,png_sticker)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Use this method to upload a .png file with a sticker for later use in
+<code><a href="../Tourmaline/Bot.html#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">#create_new_sticker_set</a></code> and <code><a href="../Tourmaline/Bot.html#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">#add_sticker_to_set</a></code> methods (can be
+used multiple times).
+Returns the uploaded <code><a href="../Tourmaline/Model/File.html">Model::File</a></code> on success.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/client/stickers.cr#L127" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

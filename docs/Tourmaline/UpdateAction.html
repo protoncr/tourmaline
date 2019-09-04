@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/watzon/tourmaline">
+  <title>Tourmaline::UpdateAction - github.com/watzon/tourmaline</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline" data-name="tourmaline">
+      <a href="../Tourmaline.html">Tourmaline</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Bot" data-name="tourmaline::bot">
+      <a href="../Tourmaline/Bot.html">Bot</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Bot/ParseMode" data-name="tourmaline::bot::parsemode">
+      <a href="../Tourmaline/Bot/ParseMode.html">ParseMode</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
+      <a href="../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Command" data-name="tourmaline::command">
+      <a href="../Tourmaline/Command.html">Command</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
+      <a href="../Tourmaline/CommandRegistry.html">CommandRegistry</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry/CommandSig" data-name="tourmaline::commandregistry::commandsig">
+      <a href="../Tourmaline/CommandRegistry/CommandSig.html">CommandSig</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventRegistry" data-name="tourmaline::eventregistry">
+      <a href="../Tourmaline/EventRegistry.html">EventRegistry</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/KemalHandler" data-name="tourmaline::kemalhandler">
+      <a href="../Tourmaline/KemalHandler.html">KemalHandler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/KemalHandler/TGModel" data-name="tourmaline::kemalhandler::tgmodel">
+      <a href="../Tourmaline/KemalHandler/TGModel.html">TGModel</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Logger" data-name="tourmaline::logger">
+      <a href="../Tourmaline/Logger.html">Logger</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Logger/Formatter" data-name="tourmaline::logger::formatter">
+      <a href="../Tourmaline/Logger/Formatter.html">Formatter</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Middleware" data-name="tourmaline::middleware">
+      <a href="../Tourmaline/Middleware.html">Middleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/MiddlewareRegistry" data-name="tourmaline::middlewareregistry">
+      <a href="../Tourmaline/MiddlewareRegistry.html">MiddlewareRegistry</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Model" data-name="tourmaline::model">
+      <a href="../Tourmaline/Model.html">Model</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Animation" data-name="tourmaline::model::animation">
+      <a href="../Tourmaline/Model/Animation.html">Animation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Audio" data-name="tourmaline::model::audio">
+      <a href="../Tourmaline/Model/Audio.html">Audio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/CallbackGame" data-name="tourmaline::model::callbackgame">
+      <a href="../Tourmaline/Model/CallbackGame.html">CallbackGame</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/CallbackQuery" data-name="tourmaline::model::callbackquery">
+      <a href="../Tourmaline/Model/CallbackQuery.html">CallbackQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Chat" data-name="tourmaline::model::chat">
+      <a href="../Tourmaline/Model/Chat.html">Chat</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatMember" data-name="tourmaline::model::chatmember">
+      <a href="../Tourmaline/Model/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatPhoto" data-name="tourmaline::model::chatphoto">
+      <a href="../Tourmaline/Model/ChatPhoto.html">ChatPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChosenInlineResult" data-name="tourmaline::model::choseninlineresult">
+      <a href="../Tourmaline/Model/ChosenInlineResult.html">ChosenInlineResult</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Contact" data-name="tourmaline::model::contact">
+      <a href="../Tourmaline/Model/Contact.html">Contact</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Document" data-name="tourmaline::model::document">
+      <a href="../Tourmaline/Model/Document.html">Document</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/File" data-name="tourmaline::model::file">
+      <a href="../Tourmaline/Model/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ForceReply" data-name="tourmaline::model::forcereply">
+      <a href="../Tourmaline/Model/ForceReply.html">ForceReply</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Game" data-name="tourmaline::model::game">
+      <a href="../Tourmaline/Model/Game.html">Game</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/GameHighScore" data-name="tourmaline::model::gamehighscore">
+      <a href="../Tourmaline/Model/GameHighScore.html">GameHighScore</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineKeyboardButton" data-name="tourmaline::model::inlinekeyboardbutton">
+      <a href="../Tourmaline/Model/InlineKeyboardButton.html">InlineKeyboardButton</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineKeyboardMarkup" data-name="tourmaline::model::inlinekeyboardmarkup">
+      <a href="../Tourmaline/Model/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQuery" data-name="tourmaline::model::inlinequery">
+      <a href="../Tourmaline/Model/InlineQuery.html">InlineQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResult" data-name="tourmaline::model::inlinequeryresult">
+      <a href="../Tourmaline/Model/InlineQueryResult.html">InlineQueryResult</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultArticle" data-name="tourmaline::model::inlinequeryresultarticle">
+      <a href="../Tourmaline/Model/InlineQueryResultArticle.html">InlineQueryResultArticle</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultAudio" data-name="tourmaline::model::inlinequeryresultaudio">
+      <a href="../Tourmaline/Model/InlineQueryResultAudio.html">InlineQueryResultAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedAudio" data-name="tourmaline::model::inlinequeryresultcachedaudio">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedAudio.html">InlineQueryResultCachedAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedDocument" data-name="tourmaline::model::inlinequeryresultcacheddocument">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedDocument.html">InlineQueryResultCachedDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedGif" data-name="tourmaline::model::inlinequeryresultcachedgif">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedGif.html">InlineQueryResultCachedGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedMpeg4Gif" data-name="tourmaline::model::inlinequeryresultcachedmpeg4gif">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedMpeg4Gif.html">InlineQueryResultCachedMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedPhoto" data-name="tourmaline::model::inlinequeryresultcachedphoto">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedPhoto.html">InlineQueryResultCachedPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedSticker" data-name="tourmaline::model::inlinequeryresultcachedsticker">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedSticker.html">InlineQueryResultCachedSticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedVideo" data-name="tourmaline::model::inlinequeryresultcachedvideo">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedVideo.html">InlineQueryResultCachedVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultCachedVoice" data-name="tourmaline::model::inlinequeryresultcachedvoice">
+      <a href="../Tourmaline/Model/InlineQueryResultCachedVoice.html">InlineQueryResultCachedVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultContact" data-name="tourmaline::model::inlinequeryresultcontact">
+      <a href="../Tourmaline/Model/InlineQueryResultContact.html">InlineQueryResultContact</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultDocument" data-name="tourmaline::model::inlinequeryresultdocument">
+      <a href="../Tourmaline/Model/InlineQueryResultDocument.html">InlineQueryResultDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultGif" data-name="tourmaline::model::inlinequeryresultgif">
+      <a href="../Tourmaline/Model/InlineQueryResultGif.html">InlineQueryResultGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultLocation" data-name="tourmaline::model::inlinequeryresultlocation">
+      <a href="../Tourmaline/Model/InlineQueryResultLocation.html">InlineQueryResultLocation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultMpeg4Gif" data-name="tourmaline::model::inlinequeryresultmpeg4gif">
+      <a href="../Tourmaline/Model/InlineQueryResultMpeg4Gif.html">InlineQueryResultMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultPhoto" data-name="tourmaline::model::inlinequeryresultphoto">
+      <a href="../Tourmaline/Model/InlineQueryResultPhoto.html">InlineQueryResultPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultVenue" data-name="tourmaline::model::inlinequeryresultvenue">
+      <a href="../Tourmaline/Model/InlineQueryResultVenue.html">InlineQueryResultVenue</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultVideo" data-name="tourmaline::model::inlinequeryresultvideo">
+      <a href="../Tourmaline/Model/InlineQueryResultVideo.html">InlineQueryResultVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InlineQueryResultVoice" data-name="tourmaline::model::inlinequeryresultvoice">
+      <a href="../Tourmaline/Model/InlineQueryResultVoice.html">InlineQueryResultVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputContactMessageContent" data-name="tourmaline::model::inputcontactmessagecontent">
+      <a href="../Tourmaline/Model/InputContactMessageContent.html">InputContactMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputLocationMessageContent" data-name="tourmaline::model::inputlocationmessagecontent">
+      <a href="../Tourmaline/Model/InputLocationMessageContent.html">InputLocationMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputMedia" data-name="tourmaline::model::inputmedia">
+      <a href="../Tourmaline/Model/InputMedia.html">InputMedia</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputMediaVideo" data-name="tourmaline::model::inputmediavideo">
+      <a href="../Tourmaline/Model/InputMediaVideo.html">InputMediaVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputMessageContent" data-name="tourmaline::model::inputmessagecontent">
+      <a href="../Tourmaline/Model/InputMessageContent.html">InputMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputTextMessageContent" data-name="tourmaline::model::inputtextmessagecontent">
+      <a href="../Tourmaline/Model/InputTextMessageContent.html">InputTextMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/InputVenueMessageContent" data-name="tourmaline::model::inputvenuemessagecontent">
+      <a href="../Tourmaline/Model/InputVenueMessageContent.html">InputVenueMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Invoice" data-name="tourmaline::model::invoice">
+      <a href="../Tourmaline/Model/Invoice.html">Invoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/KeyboardButton" data-name="tourmaline::model::keyboardbutton">
+      <a href="../Tourmaline/Model/KeyboardButton.html">KeyboardButton</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/LabeledPrice" data-name="tourmaline::model::labeledprice">
+      <a href="../Tourmaline/Model/LabeledPrice.html">LabeledPrice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Location" data-name="tourmaline::model::location">
+      <a href="../Tourmaline/Model/Location.html">Location</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/MaskPosition" data-name="tourmaline::model::maskposition">
+      <a href="../Tourmaline/Model/MaskPosition.html">MaskPosition</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Message" data-name="tourmaline::model::message">
+      <a href="../Tourmaline/Model/Message.html">Message</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/MessageEntity" data-name="tourmaline::model::messageentity">
+      <a href="../Tourmaline/Model/MessageEntity.html">MessageEntity</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/OrderInfo" data-name="tourmaline::model::orderinfo">
+      <a href="../Tourmaline/Model/OrderInfo.html">OrderInfo</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/PhotoSize" data-name="tourmaline::model::photosize">
+      <a href="../Tourmaline/Model/PhotoSize.html">PhotoSize</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/PreCheckoutQuery" data-name="tourmaline::model::precheckoutquery">
+      <a href="../Tourmaline/Model/PreCheckoutQuery.html">PreCheckoutQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ReplyKeyboardMarkup" data-name="tourmaline::model::replykeyboardmarkup">
+      <a href="../Tourmaline/Model/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ReplyKeyboardRemove" data-name="tourmaline::model::replykeyboardremove">
+      <a href="../Tourmaline/Model/ReplyKeyboardRemove.html">ReplyKeyboardRemove</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ShippingAddress" data-name="tourmaline::model::shippingaddress">
+      <a href="../Tourmaline/Model/ShippingAddress.html">ShippingAddress</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ShippingOption" data-name="tourmaline::model::shippingoption">
+      <a href="../Tourmaline/Model/ShippingOption.html">ShippingOption</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ShippingQuery" data-name="tourmaline::model::shippingquery">
+      <a href="../Tourmaline/Model/ShippingQuery.html">ShippingQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Sticker" data-name="tourmaline::model::sticker">
+      <a href="../Tourmaline/Model/Sticker.html">Sticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/StickerSet" data-name="tourmaline::model::stickerset">
+      <a href="../Tourmaline/Model/StickerSet.html">StickerSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/SuccessfulPayment" data-name="tourmaline::model::successfulpayment">
+      <a href="../Tourmaline/Model/SuccessfulPayment.html">SuccessfulPayment</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Update" data-name="tourmaline::model::update">
+      <a href="../Tourmaline/Model/Update.html">Update</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/User" data-name="tourmaline::model::user">
+      <a href="../Tourmaline/Model/User.html">User</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/UserProfilePhotos" data-name="tourmaline::model::userprofilephotos">
+      <a href="../Tourmaline/Model/UserProfilePhotos.html">UserProfilePhotos</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Venue" data-name="tourmaline::model::venue">
+      <a href="../Tourmaline/Model/Venue.html">Venue</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Video" data-name="tourmaline::model::video">
+      <a href="../Tourmaline/Model/Video.html">Video</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/VideoNote" data-name="tourmaline::model::videonote">
+      <a href="../Tourmaline/Model/VideoNote.html">VideoNote</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/Voice" data-name="tourmaline::model::voice">
+      <a href="../Tourmaline/Model/Voice.html">Voice</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/WebhookInfo" data-name="tourmaline::model::webhookinfo">
+      <a href="../Tourmaline/Model/WebhookInfo.html">WebhookInfo</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/On" data-name="tourmaline::on">
+      <a href="../Tourmaline/On.html">On</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/UpdateAction" data-name="tourmaline::updateaction">
+      <a href="../Tourmaline/UpdateAction.html">UpdateAction</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Tourmaline::UpdateAction
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L2" target="_blank">
+        tourmaline/update_action.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="Message">
+        <strong>Message</strong> = <code><span class="n">0</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="EditedMessage">
+        <strong>EditedMessage</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="CallbackQuery">
+        <strong>CallbackQuery</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="InlineQuery">
+        <strong>InlineQuery</strong> = <code><span class="n">3</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="ShippingQuery">
+        <strong>ShippingQuery</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="PreCheckoutQuery">
+        <strong>PreCheckoutQuery</strong> = <code><span class="n">5</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="ChosenInlineResult">
+        <strong>ChosenInlineResult</strong> = <code><span class="n">6</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="ChannelPost">
+        <strong>ChannelPost</strong> = <code><span class="n">7</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="EditedChannelPost">
+        <strong>EditedChannelPost</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Text">
+        <strong>Text</strong> = <code><span class="n">9</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Audio">
+        <strong>Audio</strong> = <code><span class="n">10</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Document">
+        <strong>Document</strong> = <code><span class="n">11</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Photo">
+        <strong>Photo</strong> = <code><span class="n">12</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Sticker">
+        <strong>Sticker</strong> = <code><span class="n">13</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Video">
+        <strong>Video</strong> = <code><span class="n">14</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Voice">
+        <strong>Voice</strong> = <code><span class="n">15</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Contact">
+        <strong>Contact</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Location">
+        <strong>Location</strong> = <code><span class="n">17</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Venue">
+        <strong>Venue</strong> = <code><span class="n">18</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="NewChatMembers">
+        <strong>NewChatMembers</strong> = <code><span class="n">19</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="LeftChatMember">
+        <strong>LeftChatMember</strong> = <code><span class="n">20</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="NewChatTitle">
+        <strong>NewChatTitle</strong> = <code><span class="n">21</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="NewChatPhoto">
+        <strong>NewChatPhoto</strong> = <code><span class="n">22</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="DeleteChatPhoto">
+        <strong>DeleteChatPhoto</strong> = <code><span class="n">23</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="GroupChatCreated">
+        <strong>GroupChatCreated</strong> = <code><span class="n">24</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="MigrateToChatId">
+        <strong>MigrateToChatId</strong> = <code><span class="n">25</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SupergroupChatCreated">
+        <strong>SupergroupChatCreated</strong> = <code><span class="n">26</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="ChannelChatCreated">
+        <strong>ChannelChatCreated</strong> = <code><span class="n">27</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="MigrateFromChatId">
+        <strong>MigrateFromChatId</strong> = <code><span class="n">28</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="PinnedMessage">
+        <strong>PinnedMessage</strong> = <code><span class="n">29</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Game">
+        <strong>Game</strong> = <code><span class="n">30</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="VideoNote">
+        <strong>VideoNote</strong> = <code><span class="n">31</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Invoice">
+        <strong>Invoice</strong> = <code><span class="n">32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SuccessfulPayment">
+        <strong>SuccessfulPayment</strong> = <code><span class="n">33</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#audio?-instance-method" class="signature"><strong>#audio?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#callback_query?-instance-method" class="signature"><strong>#callback_query?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#channel_chat_created?-instance-method" class="signature"><strong>#channel_chat_created?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#channel_post?-instance-method" class="signature"><strong>#channel_post?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chosen_inline_result?-instance-method" class="signature"><strong>#chosen_inline_result?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#contact?-instance-method" class="signature"><strong>#contact?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete_chat_photo?-instance-method" class="signature"><strong>#delete_chat_photo?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#document?-instance-method" class="signature"><strong>#document?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edited_channel_post?-instance-method" class="signature"><strong>#edited_channel_post?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edited_message?-instance-method" class="signature"><strong>#edited_message?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#game?-instance-method" class="signature"><strong>#game?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#group_chat_created?-instance-method" class="signature"><strong>#group_chat_created?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inline_query?-instance-method" class="signature"><strong>#inline_query?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#invoice?-instance-method" class="signature"><strong>#invoice?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#left_chat_member?-instance-method" class="signature"><strong>#left_chat_member?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#location?-instance-method" class="signature"><strong>#location?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message?-instance-method" class="signature"><strong>#message?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#migrate_from_chat_id?-instance-method" class="signature"><strong>#migrate_from_chat_id?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#migrate_to_chat_id?-instance-method" class="signature"><strong>#migrate_to_chat_id?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new_chat_members?-instance-method" class="signature"><strong>#new_chat_members?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new_chat_photo?-instance-method" class="signature"><strong>#new_chat_photo?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new_chat_title?-instance-method" class="signature"><strong>#new_chat_title?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#photo?-instance-method" class="signature"><strong>#photo?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pinned_message?-instance-method" class="signature"><strong>#pinned_message?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pre_checkout_query?-instance-method" class="signature"><strong>#pre_checkout_query?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#shipping_query?-instance-method" class="signature"><strong>#shipping_query?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sticker?-instance-method" class="signature"><strong>#sticker?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#successful_payment?-instance-method" class="signature"><strong>#successful_payment?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#supergroup_chat_created?-instance-method" class="signature"><strong>#supergroup_chat_created?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text?-instance-method" class="signature"><strong>#text?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s-instance-method" class="signature"><strong>#to_s</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#venue?-instance-method" class="signature"><strong>#venue?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#video?-instance-method" class="signature"><strong>#video?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#video_note?-instance-method" class="signature"><strong>#video_note?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#voice?-instance-method" class="signature"><strong>#voice?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="audio?-instance-method">
+      <div class="signature">
+        
+        def <strong>audio?</strong>
+
+        <a class="method-permalink" href="#audio?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="callback_query?-instance-method">
+      <div class="signature">
+        
+        def <strong>callback_query?</strong>
+
+        <a class="method-permalink" href="#callback_query?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="channel_chat_created?-instance-method">
+      <div class="signature">
+        
+        def <strong>channel_chat_created?</strong>
+
+        <a class="method-permalink" href="#channel_chat_created?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="channel_post?-instance-method">
+      <div class="signature">
+        
+        def <strong>channel_post?</strong>
+
+        <a class="method-permalink" href="#channel_post?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chosen_inline_result?-instance-method">
+      <div class="signature">
+        
+        def <strong>chosen_inline_result?</strong>
+
+        <a class="method-permalink" href="#chosen_inline_result?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="contact?-instance-method">
+      <div class="signature">
+        
+        def <strong>contact?</strong>
+
+        <a class="method-permalink" href="#contact?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete_chat_photo?-instance-method">
+      <div class="signature">
+        
+        def <strong>delete_chat_photo?</strong>
+
+        <a class="method-permalink" href="#delete_chat_photo?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document?-instance-method">
+      <div class="signature">
+        
+        def <strong>document?</strong>
+
+        <a class="method-permalink" href="#document?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edited_channel_post?-instance-method">
+      <div class="signature">
+        
+        def <strong>edited_channel_post?</strong>
+
+        <a class="method-permalink" href="#edited_channel_post?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edited_message?-instance-method">
+      <div class="signature">
+        
+        def <strong>edited_message?</strong>
+
+        <a class="method-permalink" href="#edited_message?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="game?-instance-method">
+      <div class="signature">
+        
+        def <strong>game?</strong>
+
+        <a class="method-permalink" href="#game?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="group_chat_created?-instance-method">
+      <div class="signature">
+        
+        def <strong>group_chat_created?</strong>
+
+        <a class="method-permalink" href="#group_chat_created?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inline_query?-instance-method">
+      <div class="signature">
+        
+        def <strong>inline_query?</strong>
+
+        <a class="method-permalink" href="#inline_query?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="invoice?-instance-method">
+      <div class="signature">
+        
+        def <strong>invoice?</strong>
+
+        <a class="method-permalink" href="#invoice?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="left_chat_member?-instance-method">
+      <div class="signature">
+        
+        def <strong>left_chat_member?</strong>
+
+        <a class="method-permalink" href="#left_chat_member?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="location?-instance-method">
+      <div class="signature">
+        
+        def <strong>location?</strong>
+
+        <a class="method-permalink" href="#location?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message?-instance-method">
+      <div class="signature">
+        
+        def <strong>message?</strong>
+
+        <a class="method-permalink" href="#message?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L3" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="migrate_from_chat_id?-instance-method">
+      <div class="signature">
+        
+        def <strong>migrate_from_chat_id?</strong>
+
+        <a class="method-permalink" href="#migrate_from_chat_id?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="migrate_to_chat_id?-instance-method">
+      <div class="signature">
+        
+        def <strong>migrate_to_chat_id?</strong>
+
+        <a class="method-permalink" href="#migrate_to_chat_id?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new_chat_members?-instance-method">
+      <div class="signature">
+        
+        def <strong>new_chat_members?</strong>
+
+        <a class="method-permalink" href="#new_chat_members?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new_chat_photo?-instance-method">
+      <div class="signature">
+        
+        def <strong>new_chat_photo?</strong>
+
+        <a class="method-permalink" href="#new_chat_photo?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new_chat_title?-instance-method">
+      <div class="signature">
+        
+        def <strong>new_chat_title?</strong>
+
+        <a class="method-permalink" href="#new_chat_title?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="photo?-instance-method">
+      <div class="signature">
+        
+        def <strong>photo?</strong>
+
+        <a class="method-permalink" href="#photo?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pinned_message?-instance-method">
+      <div class="signature">
+        
+        def <strong>pinned_message?</strong>
+
+        <a class="method-permalink" href="#pinned_message?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pre_checkout_query?-instance-method">
+      <div class="signature">
+        
+        def <strong>pre_checkout_query?</strong>
+
+        <a class="method-permalink" href="#pre_checkout_query?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="shipping_query?-instance-method">
+      <div class="signature">
+        
+        def <strong>shipping_query?</strong>
+
+        <a class="method-permalink" href="#shipping_query?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sticker?-instance-method">
+      <div class="signature">
+        
+        def <strong>sticker?</strong>
+
+        <a class="method-permalink" href="#sticker?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="successful_payment?-instance-method">
+      <div class="signature">
+        
+        def <strong>successful_payment?</strong>
+
+        <a class="method-permalink" href="#successful_payment?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="supergroup_chat_created?-instance-method">
+      <div class="signature">
+        
+        def <strong>supergroup_chat_created?</strong>
+
+        <a class="method-permalink" href="#supergroup_chat_created?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text?-instance-method">
+      <div class="signature">
+        
+        def <strong>text?</strong>
+
+        <a class="method-permalink" href="#text?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>
+
+        <a class="method-permalink" href="#to_s-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="venue?-instance-method">
+      <div class="signature">
+        
+        def <strong>venue?</strong>
+
+        <a class="method-permalink" href="#venue?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="video?-instance-method">
+      <div class="signature">
+        
+        def <strong>video?</strong>
+
+        <a class="method-permalink" href="#video?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="video_note?-instance-method">
+      <div class="signature">
+        
+        def <strong>video_note?</strong>
+
+        <a class="method-permalink" href="#video_note?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="voice?-instance-method">
+      <div class="signature">
+        
+        def <strong>voice?</strong>
+
+        <a class="method-permalink" href="#voice?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/bc5d518187b76edf2ac1621e0a4fb777fe535002/src/tourmaline/update_action.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
