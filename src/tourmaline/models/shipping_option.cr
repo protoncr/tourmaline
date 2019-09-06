@@ -2,13 +2,15 @@ require "json"
 
 module Tourmaline::Model
   class ShippingOption
-    FIELDS = {
-      id:     String,
-      title:  String,
-      prices: Array(LabeledPrice),
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter id : String
+
+    getter title : String
+
+    getter prices : Array(LabeledPrice)
+
+    def initialize(@id : String, @title : String, @prices : Array(LabledPrice))
+    end
   end
 end

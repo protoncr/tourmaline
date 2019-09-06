@@ -1,14 +1,16 @@
 require "json"
-require "./input_message_content.cr"
 
 module Tourmaline::Model
-  class InputLocationMessageContent < InputMessageContent
-    FIELDS = {
-      latitude:  String,
-      longitude: String,
-    }
+  class InputLocationMessageContent
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter latitude : String
+
+    getter longitude : String
+
+    getter live_period : Int32?
+
+    def initialize(@latitude : String, @longitude : String, @live_period : Int32?)
+    end
   end
 end

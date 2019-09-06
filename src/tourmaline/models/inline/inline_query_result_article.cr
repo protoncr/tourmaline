@@ -2,21 +2,29 @@ require "json"
 
 module Tourmaline::Model
   class InlineQueryResultArticle < InlineQueryResult
-    FIELDS = {
-      type:                  {type: String, mustbe: "article"},
-      id:                    String,
-      title:                 String,
-      input_message_content: InputMessageContent,
-      reply_markup:          {type: InlineKeyboardMarkup, nilable: true},
-      url:                   {type: String, nilable: true},
-      hide_url:              {type: Bool, nilable: true},
-      description:           {type: String, nilable: true},
-      thumb_url:             {type: String, nilable: true},
-      thumb_width:           {type: Int32, nilable: true},
-      thumb_height:          {type: Int32, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter type : String = "article"
+
+    getter id : String
+
+    getter title : String
+
+    getter input_message_content : InputMessageContent
+
+    getter reply_markup : InlineKeyboardMarkup?
+
+    getter url : String?
+
+    getter hide_url : Bool?
+
+    getter thumb_url : String?
+
+    getter thumb_width : Int32?
+
+    getter thumb_height : Int32?
+
+    def initialize(@id, @title, @input_message_content, @reply_markup, @url, @hide_url, @thumb_url, @thumb_width, @thumb_height)
+    end
   end
 end

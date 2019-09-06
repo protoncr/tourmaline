@@ -2,17 +2,23 @@ require "json"
 
 module Tourmaline::Model
   class InlineQueryResultCachedMpeg4Gif < InlineQueryResult
-    FIELDS = {
-      type:                  {type: String, mustbe: "mpeg4_gif"},
-      id:                    String,
-      mpeg4_file_id:         String,
-      title:                 {type: String, nilable: true},
-      caption:               {type: String, nilable: true},
-      reply_markup:          {type: InlineKeyboardMarkup, nilable: true},
-      input_message_content: {type: InputMessageContent, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter type : String = "mpeg4_gif"
+
+    getter id : String
+
+    getter mpeg4_file_id : String
+
+    getter title : String?
+
+    getter caption : String?
+
+    getter reply_markup : InlineKeyboardMarkup?
+
+    getter input_message_content : InputMessageContent?
+
+    def initialize(@id, @mpeg4_file_id, @title, @caption, @reply_markup, @input_message_content)
+    end
   end
 end

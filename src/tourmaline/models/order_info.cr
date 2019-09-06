@@ -2,11 +2,14 @@ require "json"
 
 module Tourmaline::Model
   class OrderInfo
-    JSON.mapping(
-      name: String?,
-      phone_number: String?,
-      email: String?,
-      shipping_address: ShippingAddress?,
-    )
+    include JSON::Serializable
+
+    getter name : String?
+
+    getter phone_number : String?
+
+    getter email : String?
+
+    getter shipping_address : ShippingAddress?
   end
 end

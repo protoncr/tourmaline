@@ -2,15 +2,17 @@ require "json"
 
 module Tourmaline::Model
   class ShippingQuery
-    JSON.mapping(
+    include JSON::Serializable
 
-      id: String,
+    getter id : String
 
-      from: User,
+    getter from : User
 
-      invoice_payload: String,
+    getter invoice_payload : String
 
-      shipping_address: ShippingAddress
-    )
+    getter shipping_address : ShippingAddress
+
+    def initialize(@id : Strig, @from : User, @invoice_payload : String, @shipping_address : ShippingAddress)
+    end
   end
 end

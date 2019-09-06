@@ -2,21 +2,20 @@ require "json"
 
 module Tourmaline::Model
   class CallbackQuery
-    JSON.mapping(
+    include JSON::Serializable
 
-      id: String,
+    getter id : String
 
-      from: User,
+    getter from : User
 
-      message: Message?,
+    getter message : Message?
 
-      inline_message_id: String?,
+    getter inline_message_id : String?
 
-      chat_instance: String?,
+    getter chat_instance : String?
 
-      data: String?,
+    getter data : String?
 
-      game_short_name: String?
-    )
+    getter game_short_name : String?
   end
 end

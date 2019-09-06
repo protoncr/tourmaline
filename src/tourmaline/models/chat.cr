@@ -3,33 +3,32 @@ require "json"
 module Tourmaline::Model
   # # This object represents a Telegram user or bot.
   class Chat
-    JSON.mapping(
+    include JSON::Serializable
 
-      id: Int64,
+    getter id : Int64
 
-      type: String,
+    getter type : String
 
-      title: String?,
+    getter title : String?
 
-      username: String?,
+    getter username : String?
 
-      first_name: String?,
+    getter first_name : String?
 
-      last_name: String?,
+    getter last_name : String?
 
-      all_members_are_administrators: Bool?,
+    getter all_members_are_administrators : Bool?
 
-      chat_photo: ChatPhoto?,
+    getter chat_photo : ChatPhoto?
 
-      description: String?,
+    getter description : String?
 
-      invite_link: String?,
+    getter invite_link : String?
 
-      pinned_message: Message?,
+    getter pinned_message : Message?
 
-      sticker_set_name: String?,
+    getter sticker_set_name : String?
 
-      can_set_sticker_set: Bool?
-    )
+    getter can_set_sticker_set : Bool?
   end
 end

@@ -2,12 +2,16 @@ require "json"
 
 module Tourmaline::Model
   class ChosenInlineResult
-    JSON.mapping(
-      result_id: String,
-      from: User,
-      location: Location?,
-      inline_message_id: String?,
-      query: String,
-    )
+    include JSON::Serializable
+
+    getter result_id : String
+
+    getter from : User
+
+    getter location : Location?
+
+    getter inline_message_id : String?
+
+    getter query : String
   end
 end

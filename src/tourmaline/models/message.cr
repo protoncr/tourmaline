@@ -3,102 +3,93 @@ require "json"
 module Tourmaline::Model
   # # This object represents a Telegram user or bot.
   class Message
-    JSON.mapping(
+    include JSON::Serializable
 
-      message_id: Int64,
+    getter message_id : Int64
 
-      from: User?,
+    getter from : User?
 
-      date: {type: Time, converter: Time::EpochMillisConverter},
+    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    getter date : Time
 
-      chat: Chat,
+    getter chat : Chat
 
-      forward_from: User?,
+    getter forward_from : User?
 
-      forward_from_chat: Chat?,
+    getter forward_from_chat : Chat?
 
-      forward_from_message_id: Int64?,
+    getter forward_from_message_id : Int64?
 
-      forward_signature: String?,
+    getter forward_signature : String?
 
-      forward_date: {type: Time, converter: Time::EpochMillisConverter, nilable: true},
+    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    getter forward_date : Time?
 
-      edit_date: {type: Time, converter: Time::EpochMillisConverter, nilable: true},
+    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    getter edit_date : Time?
 
-      reply_to_message: Message?,
+    getter reply_to_message : Message?
 
-      media_group_id: String?,
+    getter media_group_id : String?
 
-      author_signature: String?,
+    getter author_signature : String?
 
-      text: String?,
+    getter text : String?
 
-      entities: Array(MessageEntity)?,
+    getter entities : Array(MessageEntity)?
 
-      caption_entities: Array(MessageEntity)?,
+    getter caption_entities : Array(MessageEntity)?
 
-      audio: Audio?,
+    getter audio : Audio?
 
-      document: Document?,
+    getter document : Document?
 
-      game: Game?,
+    getter game : Game?
 
-      photo: Array(PhotoSize)?,
+    getter photo : Array(PhotoSize)?
 
-      sticker: Sticker?,
+    getter sticker : Sticker?
 
-      video: Video?,
+    getter video : Video?
 
-      voice: Voice?,
+    getter voice : Voice?
 
-      video_note: VideoNote?,
+    getter video_note : VideoNote?
 
-      caption: String?,
+    getter caption : String?
 
-      contact: Contact?,
+    getter contact : Contact?
 
-      location: Location?,
+    getter location : Location?
 
-      venue: Venue?,
+    getter venue : Venue?
 
-      new_chat_members: Array(User)?,
+    getter new_chat_members : Array(User)?
 
-      left_chat_member: User?,
+    getter left_chat_member : User?
 
-      new_chat_title: String?,
+    getter new_chat_title : String?
 
-      new_chat_photo: Array(PhotoSize)?,
+    getter new_chat_photo : Array(PhotoSize)?
 
-      delete_chat_photo: Bool?,
+    getter delete_chat_photo : Bool?
 
-      group_chat_created: Bool?,
+    getter group_chat_created : Bool?
 
-      supergroup_chat_created: Bool?,
+    getter supergroup_chat_created : Bool?
 
-      channel_chat_created: Bool?,
+    getter channel_chat_created : Bool?
 
-      migrate_to_chat_id: Int64?,
+    getter migrate_to_chat_id : Int64?
 
-      migrate_from_chat_id: Int64?,
+    getter migrate_from_chat_id : Int64?
 
-      invoice: Invoice?,
+    getter invoice : Invoice?
 
-      successful_payment: SuccessfulPayment?,
-    )
+    getter successful_payment : SuccessfulPayment?
   end
 
-  class MessageEntity
-    JSON.mapping(
-
-      type: String,
-
-      offset: Int64,
-
-      length: Int64,
-
-      url: String?,
-
-      user: User?
-    )
+  record MessageEntity, type : String, offset : Int64, length : Int64, url : String?, user : User? do
+    include JSON::Serializable
   end
 end

@@ -2,13 +2,17 @@ require "json"
 
 module Tourmaline::Model
   class InlineKeyboardButton
-    FIELDS = {
-      text:                String,
-      url:                 {type: String, nilable: true},
-      callback_data:       {type: String, nilable: true},
-      switch_inline_query: {type: String, nilable: true},
-    }
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    include JSON::Serializable
+
+    getter text : String
+
+    getter url : String?
+
+    getter callback_data : String?
+
+    getter switch_inline_query : String?
+
+    def initialize(@text : String, @url : String?, @callback_data : String?, @switch_inline_query : String?)
+    end
   end
 end

@@ -2,12 +2,16 @@ require "json"
 
 module Tourmaline::Model
   class VideoNote
-    JSON.mapping(
-      file_id: String,
-      length: Int32,
-      duration: Int32,
-      thumb: PhotoSize?,
-      file_size: Int32?,
-    )
+    include JSON::Serializable
+
+    getter file_id : String
+
+    getter length : Int32
+
+    getter duration : Int32
+
+    getter thumb : PhotoSize?
+
+    getter file_size : Int32?
   end
 end

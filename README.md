@@ -151,11 +151,11 @@ Tourmaline provides middleware for Kemal, just in case you want to use Kemal as 
 
 ```crystal
 require "kemal"
-require "tourmaline/kemal_handler"
+require "tourmaline/adapters/kemal"
 
 require "./your_bot"
 
-add_handler Tourmaline::KemalHandler.new(
+add_handler Tourmaline::KemalAdapter.new(
   bot: YourBot.new,
   url: "https://something.com",
   path: "/bot-webhook/#{ENV["TGBOT_API_KEY"]}"

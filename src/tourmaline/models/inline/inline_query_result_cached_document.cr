@@ -2,18 +2,25 @@ require "json"
 
 module Tourmaline::Model
   class InlineQueryResultCachedDocument < InlineQueryResult
-    FIELDS = {
-      type:                  {type: String, mustbe: "document"},
-      id:                    String,
-      title:                 String,
-      document_file_id:      String,
-      description:           {type: String, nilable: true},
-      caption:               {type: String, nilable: true},
-      reply_markup:          {type: InlineKeyboardMarkup, nilable: true},
-      input_message_content: {type: InputMessageContent, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter type : String = "document"
+
+    getter id : String
+
+    getter title : String
+
+    getter document_file_id : String
+
+    getter description : String?
+
+    getter caption : String?
+
+    getter reply_markup : InlineKeyboardMarkup?
+
+    getter input_message_content : InputMessageContent?
+
+    def initialize(@id, @title, @document_file_id, @description, @caption, @reply_markup, @input_message_content)
+    end
   end
 end

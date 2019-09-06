@@ -2,12 +2,13 @@ require "json"
 
 module Tourmaline::Model
   class LabeledPrice
-    FIELDS = {
-      label:  String,
-      amount: Int32,
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter label : String
+
+    getter amount : Int32
+
+    def initialize(@label : String, @amount : Int32)
+    end
   end
 end

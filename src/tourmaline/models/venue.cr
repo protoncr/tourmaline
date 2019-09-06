@@ -2,11 +2,14 @@ require "json"
 
 module Tourmaline::Model
   class Venue
-    JSON.mapping(
-      location: Location,
-      title: String,
-      address: String,
-      foursquare_id: String?,
-    )
+    include JSON::Serializable
+
+    getter location : Location
+
+    getter title : String
+
+    getter address : String
+
+    getter foursquare_id : String?
   end
 end

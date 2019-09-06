@@ -2,12 +2,12 @@ require "json"
 
 module Tourmaline::Model
   class ReplyKeyboardRemove
-    FIELDS = {
-      remove_keyboard: {type: Bool, mustbe: true},
-      selective:       {type: Bool, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter remove_keyboard : Bool = true
+    getter selective : Bool?
+
+    def initialize(@selective : Bool?, @remove_keyboard : Bool = true)
+    end
   end
 end

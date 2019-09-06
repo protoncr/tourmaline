@@ -2,16 +2,21 @@ require "json"
 
 module Tourmaline::Model
   class InlineQueryResultCachedVoice < InlineQueryResult
-    FIELDS = {
-      type:                  {type: String, mustbe: "voice"},
-      id:                    String,
-      voice_file_id:         String,
-      title:                 String,
-      reply_markup:          {type: InlineKeyboardMarkup, nilable: true},
-      input_message_content: {type: InputMessageContent, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter type : String = "voice"
+
+    getter id : String
+
+    getter voice_file_id : String
+
+    getter title : String
+
+    getter reply_markup : InlineKeyboardMarkup?
+
+    getter input_message_content : InputMessageContent?
+
+    def initialize(@id, @voice_file_id, @title, @reply_markup, @input_message_content)
+    end
   end
 end

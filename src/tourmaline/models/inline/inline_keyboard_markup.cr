@@ -2,36 +2,24 @@ require "json"
 
 module Tourmaline::Model
   class InlineKeyboardMarkup
-    JSON.mapping({
-      inline_keyboard: Array(Array(InlineKeyboardButton)),
-    })
+    include JSON::Serializable
 
-    def initialize
+    getter inline_keyboard : Array(Array(InlineKeyboardButton))
+
+    def initialize(@inline_keyboard = [] of Array(InlineKeyboard))
+    end
+
+    def initialize(*lines : Array(InlineKeyboardButton))
       @inline_keyboard = Array(Array(InlineKeyboardButton)).new
+      @inline_keyboard.concat(lines)
     end
 
-    def initialize(@inline_keyboard : Array(Array(InlineKeyboardButton)))
+    def <<(row, btn : InlineKeyboardButton)
+      inline_keyboard[row] << btn
     end
 
-    def initialize(first_line : Array(InlineKeyboardButton))
-      @inline_keyboard = Array(Array(InlineKeyboardButton)).new
-
-      @inline_keyboard << first_line
-    end
-
-    def <<(btn : InlineKeyboardButton)
-      if inline_keyboard.empty?
-        inline_keyboard << Array(InlineKeyboardButton).new
-      end
-      inline_keyboard[0] << btn
-    end
-
-    def <<(btns)
-      a = Array.new(btns.size)
-      btns.each do |btn|
-        a << btn
-      end
-      inline_keyboard << a
+    def <<(btns : Array(InlineKeyboardButton))
+      @inline_keyboard << btns
     end
   end
 end

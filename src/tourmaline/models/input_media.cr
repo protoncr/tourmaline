@@ -1,6 +1,5 @@
 require "json"
 
 module Tourmaline::Model
-  class InputMedia
-  end
+  alias InputMedia = InputMediaAnimation | InputMediaDocument | InputMediaAudio | InputMediaVideo | InputMediaPhoto
 end

@@ -2,23 +2,36 @@ require "json"
 
 module Tourmaline::Model
   class InlineQueryResultVideo < InlineQueryResult
-    FIELDS = {
-      type:                  {type: String, mustbe: "video"},
-      id:                    String,
-      video_url:             String,
-      mime_type:             String,
-      thumb_url:             String,
-      title:                 String,
-      caption:               {type: String, nilable: true},
-      video_width:           {type: Int32, nilable: true},
-      video_height:          {type: Int32, nilable: true},
-      video_duration:        {type: Int32, nilable: true},
-      description:           {type: String, nilable: true},
-      reply_markup:          {type: InlineKeyboardMarkup, nilable: true},
-      input_message_content: {type: InputMessageContent, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter type : String = "video"
+
+    getter id : String
+
+    getter video_url : String
+
+    getter mime_type : String
+
+    getter thumb_url : String
+
+    getter title : String
+
+    getter caption : String?
+
+    getter video_width : Int32?
+
+    getter video_height : Int32?
+
+    getter video_duration : Int32?
+
+    getter description : String?
+
+    getter reply_markup : InlineKeyboardMarkup?
+
+    getter input_message_content : InputMessageContent?
+
+    def initialize(@id, @video_url, @mime_type, @thumb_url, @title, @caption, @video_width,
+                   @video_height, @video_duration, @description, @reply_markup, @input_message_content)
+    end
   end
 end

@@ -363,10 +363,10 @@ module Tourmaline
     )
       until_date = (Time.utc + until_date).to_unix unless until_date.nil?
       response = request("restrictChatMember", {
-        chat_id:      chat_id,
-        user_id:      user_id,
-        until_date:   until_date,
-        permissions:  permissions
+        chat_id:     chat_id,
+        user_id:     user_id,
+        until_date:  until_date,
+        permissions: permissions,
       })
 
       response == "true"

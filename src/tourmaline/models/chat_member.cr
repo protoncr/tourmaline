@@ -1,38 +1,38 @@
 require "json"
 
 module Tourmaline::Model
-  struct ChatMember
-    JSON.mapping(
+  class ChatMember
+    include JSON::Serializable
 
-      user: User,
+    getter user : User
 
-      status: String,
+    getter status : String
 
-      until_date: {type: Time, converter: Time::EpochMillisConverter, nilable: true},
+    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    getter until_date : Time?
 
-      can_be_edited: Bool?,
+    getter can_be_edited : Bool?
 
-      can_change_info: Bool?,
+    getter can_change_info : Bool?
 
-      can_post_messages: Bool?,
+    getter can_post_messages : Bool?
 
-      can_edit_messages: Bool?,
+    getter can_edit_messages : Bool?
 
-      can_delete_messages: Bool?,
+    getter can_delete_messages : Bool?
 
-      can_invite_users: Bool?,
+    getter can_invite_users : Bool?
 
-      can_restrict_members: Bool?,
+    getter can_restrict_members : Bool?
 
-      can_promote_members: Bool?,
+    getter can_promote_members : Bool?
 
-      can_send_messages: Bool?,
+    getter can_send_messages : Bool?
 
-      can_send_media_messages: Bool?,
+    getter can_send_media_messages : Bool?
 
-      can_send_other_messages: Bool?,
+    getter can_send_other_messages : Bool?
 
-      can_add_web_page_previews: Bool?
-    )
+    getter can_add_web_page_previews : Bool?
   end
 end

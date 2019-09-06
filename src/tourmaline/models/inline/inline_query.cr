@@ -2,12 +2,16 @@ require "json"
 
 module Tourmaline::Model
   class InlineQuery
-    JSON.mapping({
-      id:       String,
-      from:     User,
-      location: {type: Location, nilable: true},
-      query:    String,
-      offset:   String,
-    })
+    include JSON::Serializable
+
+    getter id : String
+
+    getter from : User
+
+    getter location : Location
+
+    getter query : String
+
+    getter offset : String
   end
 end

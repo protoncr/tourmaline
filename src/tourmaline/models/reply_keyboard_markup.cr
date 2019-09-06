@@ -2,32 +2,31 @@ require "json"
 
 module Tourmaline::Model
   class KeyboardButton
-    FIELDS = {
-      text:             {type: String, nilable: false},
-      request_contact:  {type: Bool, nilable: true},
-      request_location: {type: Bool, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter text : String
+
+    getter request_contact : Bool
+
+    getter request_location : Bool
+
+    def initialize(@text : String, @request_contact : Bool, @request_location : Bool)
+    end
   end
 
   class ReplyKeyboardMarkup
-    FIELDS = {
-      keyboard:          Array(Array(KeyboardButton)),
-      resize_keyboard:   {type: Bool, nilable: true},
-      one_time_keyboard: {type: Bool, nilable: true},
-      selective:         {type: Bool, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
+    getter keyboard : Array(Array(KeyboardButton))
 
-    initializer_for({{FIELDS}})
+    getter resize_keyboard : Bool
 
-    # Alternative constructor that allows to build markup object with text-only buttons
-    def initialize(keyboard : Array(Array(String)), resize_keyboard : Bool? = nil, one_time_keyboard : Bool? = nil, selective : Bool? = nil)
-      buttons = keyboard.map { |row| row.map { |text| KeyboardButton.new(text) } }
-      initialize(buttons, resize_keyboard, one_time_keyboard, selective)
+    getter one_time_keyboard : Bool
+
+    getter selective : Bool
+
+    def initialize(keyboard : Array(Array(String | KeyboardButton)), @resize_keyboard : Bool? = nil, @one_time_keyboard : Bool? = nil, @selective : Bool? = nil)
+      @keyboard = keyboard.map { |row| row.map { |text| text.is_a?(String) ? KeyboardButton.new(text) : text } }
     end
   end
 end

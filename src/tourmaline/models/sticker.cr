@@ -2,15 +2,22 @@ require "json"
 
 module Tourmaline::Model
   class Sticker
-    JSON.mapping(
-      file_id: String,
-      width: Int32,
-      height: Int32,
-      thumb: PhotoSize?,
-      emoji: String?,
-      set_name: String?,
-      mask_position: MaskPosition?,
-      file_size: Int32?,
-    )
+    include JSON::Serializable
+
+    getter file_id : String
+
+    getter width : Int32
+
+    getter height : Int32
+
+    getter thumb : PhotoSize?
+
+    getter emoji : String?
+
+    getter set_name : String?
+
+    getter mask_position : MaskPosition?
+
+    getter file_size : Int32?
   end
 end

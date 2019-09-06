@@ -2,13 +2,18 @@ require "json"
 
 module Tourmaline::Model
   class ShippingAddress
-    JSON.mapping(
-      country_code: String,
-      state: String,
-      city: String,
-      street_line1: String,
-      street_line2: String,
-      post_code: String,
-    )
+    include JSON::Serializable
+
+    getter country_code : String
+
+    getter state : String
+
+    getter city : String
+
+    getter street_line1 : String
+
+    getter street_line2 : String
+
+    getter post_code : String
   end
 end

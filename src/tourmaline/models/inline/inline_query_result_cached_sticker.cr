@@ -2,15 +2,19 @@ require "json"
 
 module Tourmaline::Model
   class InlineQueryResultCachedSticker < InlineQueryResult
-    FIELDS = {
-      type:                  {type: String, mustbe: "sticker"},
-      id:                    String,
-      sticker_file_id:       String,
-      reply_markup:          {type: InlineKeyboardMarkup, nilable: true},
-      input_message_content: {type: InputMessageContent, nilable: true},
-    }
+    include JSON::Serializable
 
-    JSON.mapping({{FIELDS}})
-    initializer_for({{FIELDS}})
+    getter type : String = "sticker"
+
+    getter id : String
+
+    getter sticker_file_id : String
+
+    getter reply_markup : InlineKeyboardMarkup
+
+    getter input_message_content : InputMessageContent
+
+    def initialize(@id, @sticker_file_id, @reply_markup, @input_message_content)
+    end
   end
 end
