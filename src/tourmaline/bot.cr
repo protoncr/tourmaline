@@ -43,6 +43,7 @@ module Tourmaline
     end
 
     private def handle_update(update : Model::Update)
+      @@logger.debug(update.to_pretty_json)
       trigger_all_middlewares(update)
 
       if message = update.message

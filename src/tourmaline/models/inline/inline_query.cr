@@ -8,7 +8,7 @@ module Tourmaline::Model
 
     getter from : User
 
-    getter location : Location
+    getter location : Location?
 
     getter query : String
 

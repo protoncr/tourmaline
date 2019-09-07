@@ -42,31 +42,32 @@ module Tourmaline
 
     private def trigger_commands(update : Model::Update)
       if message = update.message
-        message_text = message.text.not_nil!
-        pieces = message_text.split(' ')
+        if message_text = message.text
+          pieces = message_text.split(' ')
 
-        command = pieces[0]
+          command = pieces[0]
 
-        # Check if the command has the bot's name attached
-        if command.includes?("@")
-          cmd_pieces = command.split("@")
-          if cmd_pieces[1] != bot_name
-            return
+          # Check if the command has the bot's name attached
+          if command.includes?("@")
+            cmd_pieces = command.split("@")
+            if cmd_pieces[1] != bot_name
+              return
+            end
+
+            command = cmd_pieces[0]
           end
 
-          command = cmd_pieces[0]
+          params = pieces[1..-1]
+
+          # Check the command against the commands hash
+          if @commands.has_key?(command)
+            proc = @commands[command]
+            spawn proc.call(message, params)
+          end
         end
-
-        params = pieces[1..-1]
-
-        # Check the command against the commands hash
-        if @commands.has_key?(command)
-          proc = @commands[command]
-          spawn proc.call(message, params)
-        end
-
-        nil
       end
+
+      nil
     end
   end
 end

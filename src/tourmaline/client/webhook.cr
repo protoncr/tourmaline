@@ -62,8 +62,6 @@ module Tourmaline
 
     # Use this method to remove webhook integration if you decide to switch
     # back to getUpdates.
-    # Returns `true` on success.
-    # Requires no parameters.
     def delete_webhook
       response = request("deleteWebhook")
       response == "true"
