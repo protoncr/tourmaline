@@ -14,7 +14,7 @@ module Tourmaline
     end
 
     protected def trigger_all_middlewares(update : Model::Update)
-      @middlewares.keys.each { |k| @middlewares[k].call(update) }
+      @middlewares.keys.each { |k| spawn @middlewares[k].call(update) }
     end
   end
 end

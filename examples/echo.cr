@@ -3,7 +3,7 @@ require "../src/tourmaline"
 class EchoBot < Tourmaline::Bot
   include Tourmaline
 
-  @[Command("echo", at_start: false)]
+  @[Command("echo")]
   def echo_command(message, params)
     text = params.join(" ")
     send_message(message.chat.id, text)

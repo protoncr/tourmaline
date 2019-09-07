@@ -922,20 +922,5 @@ module Tourmaline
     def stop_polling
       @polling = false
     end
-
-    # Sends a json request to the Telegram bot API.
-    private def request(method, params = {} of String => String)
-      method_url = ::File.join(@endpoint_url, method)
-
-      response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ? Halite.post(method_url, form: params) : Halite.post(method_url, params: params)
-
-      result = JSON.parse(response.body)
-
-      if result["result"]?
-        result["result"].to_json
-      else
-        raise result["description"].to_s
-      end
-    end
   end
 end

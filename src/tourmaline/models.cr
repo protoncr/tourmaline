@@ -1,2 +1,0 @@
-require "./helpers"
-require "./models/*"

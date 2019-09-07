@@ -1,20 +1,16 @@
 require "halite"
 
+require "./error"
 require "./logger"
 require "./chat_action"
 require "./update_action"
-require "./models"
+require "./models/*"
 require "./fiber"
 require "./annotations"
 require "./command_registry"
 require "./event_registry"
 require "./middleware_registry"
-
-require "./client/core"
-require "./client/games"
-require "./client/payments"
-require "./client/stickers"
-require "./client/webhook"
+require "./client/*"
 
 module Tourmaline
   # The `Bot` class is the base class for all Tourmaline based bots.
@@ -46,7 +42,7 @@ module Tourmaline
       register_event_listeners
     end
 
-    def handle_update(update : Model::Update)
+    private def handle_update(update : Model::Update)
       @@logger.debug("Update received: #{update}")
 
       trigger_all_middlewares(update)
@@ -110,6 +106,40 @@ module Tourmaline
     # `@bot_name` to `get_me.username.to_s`.
     def bot_name
       @bot_name ||= get_me.username.to_s
+    end
+
+    # Sends a json request to the Telegram bot API.
+    private def request(method, params = {} of String => String)
+      method_url = ::File.join(@endpoint_url, method)
+
+      response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ? Halite.post(method_url, form: params) : Halite.post(method_url, params: params)
+      result = JSON.parse(response.body)
+
+      if res = result["result"]?
+        res.to_json
+      else
+        handle_error(response.status_code, result["description"].as_s)
+      end
+    end
+
+    # Parses the status code and returns the right error
+    private def handle_error(code, message)
+      case code
+      when 401..403
+        raise Error::Unauthorized.new(message)
+      when 400
+        raise Error::BadRequest.new(message)
+      when 404
+        raise Error::InvalidToken.new
+      when 409
+        raise Error::Conflict.new(message)
+      when 413
+        raise Error::NetworkError.new("File too large. Check telegram api limits https://core.telegram.org/bots/api#senddocument.")
+      when 503
+        raise Error::NetworkError.new("Bad gateway")
+      else
+        raise Error.new("#{message} (#{code})")
+      end
     end
 
     # Parse mode for messages.
