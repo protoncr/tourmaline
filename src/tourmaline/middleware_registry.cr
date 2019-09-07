@@ -10,11 +10,12 @@ module Tourmaline
         raise "A middleware already exists with the name #{middleware.name}"
       end
 
-      @middlewares[middleware.name] = middleware.new(self)
+      @middlewares[middleware.name] = middleware
     end
 
     protected def trigger_all_middlewares(update : Model::Update)
-      @middlewares.keys.each { |k| spawn @middlewares[k].call(update) }
+      context = Middleware::Context.new(self, update)
+      @middlewares.keys.each { |k| spawn @middlewares[k].call(context) }
     end
   end
 end

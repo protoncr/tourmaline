@@ -9,12 +9,11 @@ module Tourmaline
   # ```
   # # bot definition...
   #
-  # class MyMiddleware < TGBot::Middleware
-  #   # All middlware include a reference to the parent bot.
-  #   # @bot : Tourmaline::Bot
-  #   # getter bot : Tourmaline::Bot
+  # class MyMiddleware < Tourmaline::Middleware
+  #  getter name = "test_middleware"
   #
-  #   def call(update : Update)
+  #   def call(context)
+  #     update = context.update
   #     if message = update.message
   #       if user = message.from_user
   #         if text = message.text
@@ -26,14 +25,20 @@ module Tourmaline
   # end
   #
   # # Register the middleware with your bot
-  # bot.use MyMiddleware
+  # bot.use(MyMiddleware.new)
   # ```
   abstract class Middleware
-    getter bot : Tourmaline::Bot
+    abstract def name : String
 
-    def initialize(@bot : Tourmaline::Bot)
+    abstract def call(context : Context)
+
+    class Context
+      property bot : Tourmaline::Bot
+
+      property update : Tourmaline::Model::Update
+
+      def initialize(@bot, @update)
+      end
     end
-
-    abstract def call(update : Update)
   end
 end
