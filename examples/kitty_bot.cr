@@ -3,7 +3,7 @@ require "../src/tourmaline"
 class KittyBot < Tourmaline::Bot
   include Tourmaline
 
-  REPLY_MARKUP = Tourmaline::Model::ReplyKeyboardMarkup.new([
+  REPLY_MARKUP = Markup.keyboard([
     ["/kitty"], ["/kittygif"],
   ])
 

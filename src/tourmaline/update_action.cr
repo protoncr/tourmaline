@@ -35,6 +35,8 @@ module Tourmaline
     VideoNote
     Invoice
     SuccessfulPayment
+    ConnectedWebsite
+    PassportData
 
     def to_s
       super.to_s.underscore

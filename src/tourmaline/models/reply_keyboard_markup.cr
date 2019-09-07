@@ -25,8 +25,7 @@ module Tourmaline::Model
 
     getter selective : Bool?
 
-    def initialize(keyboard : Array(Array(String | KeyboardButton)), @resize_keyboard : Bool? = nil, @one_time_keyboard : Bool? = nil, @selective : Bool? = nil)
-      @keyboard = keyboard.map { |row| row.map { |text| text.is_a?(String) ? KeyboardButton.new(text) : text } }
+    def initialize(@keyboard : Array(Array(KeyboardButton)), @resize_keyboard : Bool? = nil, @one_time_keyboard : Bool? = nil, @selective : Bool? = nil)
     end
   end
 end
