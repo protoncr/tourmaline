@@ -15,7 +15,7 @@ module Tourmaline
 
     protected def trigger_all_middlewares(update : Model::Update)
       context = Middleware::Context.new(self, update)
-      @middlewares.keys.each { |k| spawn @middlewares[k].call(context) }
+      @middlewares.keys.each { |k| @middlewares[k].call(context) }
     end
   end
 end

@@ -3,9 +3,13 @@ require "strange/formatter/color_formatter"
 
 module Tourmaline
   module Logger
-    class_property logger = Strange.new("env", transports: [
+    @@logger = Strange.new("env", transports: [
       Strange::ConsoleTransport.new(formatter: Formatter.new).as(Strange::Transport),
     ])
+
+    def logger
+      @@logger
+    end
 
     delegate :emerg, :alert, :crit, :error, :warning, :notice, :info, :debug, to: @@logger
 
