@@ -17,7 +17,7 @@ module Tourmaline::Model
     getter foursquare_type : String?
 
     def initialize(@latitude : Float64, @longitude : Float64, @title : String, @address : String,
-                   @foursquare_id : String?, @foursquare_type : String?)
+                   @foursquare_id : String? = nil, @foursquare_type : String? = nil)
     end
   end
 end

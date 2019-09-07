@@ -26,8 +26,8 @@ module Tourmaline::Model
 
     getter input_message_content : InputMessageContent?
 
-    def initialize(@id, @gif_url, @gif_width, @gif_height, @gif_duration, @thumb_url,
-                   @title, @caption, @reply_markup, @input_message_content)
+    def initialize(@id, @gif_url, @gif_width = nil, @gif_height = nil, @gif_duration = nil, @thumb_url = nil,
+                   @title = nil, @caption = nil, @reply_markup = nil, @input_message_content = nil)
     end
   end
 end

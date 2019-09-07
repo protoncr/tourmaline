@@ -13,7 +13,7 @@ module Tourmaline::Model
 
     getter vcard : String?
 
-    def initialize(@phone_number : String, @first_name : String, @last_name : String?, @vcard : String?)
+    def initialize(@phone_number : String, @first_name : String, @last_name : String? = nil, @vcard : String? = nil)
     end
   end
 end

@@ -9,7 +9,10 @@ module Tourmaline
             {% if ann = (method.annotation(Command) || method.annotation(Tourmaline::Command)) %}
               %prefix = {{ann[:prefix] || '/'}}
               %proc = ->(message : Model::Message, params : Array(String)){ {{method.name.id}}(message, params); nil }
-              %command = %prefix + {{ann[0]}}
+
+              %command = {{ann[0]}}
+              %command = %command.is_a?(Array) ? %command.map { |cmd| %prefix + cmd } : %prefix + %command
+
               command(%command, %proc)
             {% end %}
           {% end %}

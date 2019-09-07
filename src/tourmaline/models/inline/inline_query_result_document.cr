@@ -28,8 +28,8 @@ module Tourmaline::Model
 
     getter thumb_height : Int32?
 
-    def initialize(@id, @title, @caption, @document_url, @mime_type, @description,
-                   @reply_markup, @input_message_content, @thumb_url, @thumb_width, @thumb_height)
+    def initialize(@id, @title, @caption = nil, @document_url = nil, @mime_type = nil, @description = nil,
+                   @reply_markup = nil, @input_message_content = nil, @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
     end
   end
 end

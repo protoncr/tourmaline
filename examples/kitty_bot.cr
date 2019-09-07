@@ -1,35 +1,43 @@
 require "../src/tourmaline"
 
-bot = Tourmaline::Bot.new(ENV["API_KEY"])
+class KittyBot < Tourmaline::Bot
+  include Tourmaline
 
-reply_markup = Tourmaline::Model::ReplyKeyboardMarkup.new([
-  ["/kitty"], ["/kittygif"],
-])
+  REPLY_MARKUP = Tourmaline::Model::ReplyKeyboardMarkup.new([
+    ["/kitty"], ["/kittygif"],
+  ])
 
-bot.command(["start", "help"]) do |message|
-  bot.send_message(
-    message.chat.id,
-    "😺 Use commands: /kitty, /kittygif and /about",
-    reply_markup: reply_markup)
-end
+  API_URL = "https://thecatapi.com/api/images/get"
 
-bot.command("about") do |message|
-  text = "😽 This bot is powered by Tourmaline, a Telegram bot library for Crystal. Visit https://github.com/watzon/tourmaline to check out the source code."
-  bot.send_message(message.chat.id, text)
-end
+  @[Command(["start", "help"])]
+  def help_command(message, params)
+    send_message(
+      message.chat.id,
+      "😺 Use commands: /kitty, /kittygif and /about",
+      reply_markup: REPLY_MARKUP)
+  end
 
-bot.command(["kitty", "kittygif"]) do |message|
-  # The time hack is to get around Telegrsm's image cache
-  api = "https://thecatapi.com/api/images/get?time=%{time}&format=src&type=" % {time: Time.now}
-  cmd = message.text.not_nil!.split(" ")[0]
+  @[Command("abount")]
+  def about_command(message, params)
+    text = "😽 This bot is powered by Tourmaline, a Telegram bot library for Crystal. Visit https://github.com/watzon/tourmaline to check out the source code."
+    send_message(message.chat.id, text)
+  end
 
-  if cmd == "/kitty"
-    bot.send_chat_action(message.chat.id, :upload_photo)
-    bot.send_photo(message.chat.id, api + "jpg")
-  else
-    bot.send_chat_action(message.chat.id, :upload_document)
-    bot.send_document(message.chat.id, api + "gif")
+  @[Command(["kitty", "kittygif"])]
+  def kitty_command(message, params)
+    # The time hack is to get around Telegram's image cache
+    api = API_URL + "?time=#{Time.now}&format=src&type="
+    cmd = message.text.not_nil!.split(" ")[0]
+
+    if cmd == "/kitty"
+      send_chat_action(message.chat.id, :upload_photo)
+      send_photo(message.chat.id, api + "jpg")
+    else
+      send_chat_action(message.chat.id, :upload_document)
+      send_document(message.chat.id, api + "gif")
+    end
   end
 end
 
+bot = KittyBot.new(ENV["API_KEY"])
 bot.poll

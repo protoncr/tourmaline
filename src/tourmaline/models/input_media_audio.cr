@@ -20,8 +20,8 @@ module Tourmaline::Model
 
     getter title : String?
 
-    def initialize(@type : String, @media : String, @thumb : (File | String)?, @caption : String?, @parse_mode : String?,
-                   duration : Int32?, @performer : String?, @title : String?)
+    def initialize(@type : String, @media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
+                   duration : Int32? = nil, @performer : String? = nil, @title : String? = nil)
     end
   end
 end

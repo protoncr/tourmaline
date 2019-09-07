@@ -14,7 +14,7 @@ module Tourmaline::Model
 
     getter parse_mode : String?
 
-    def initialize(@type : String, @media : String, @thumb : (File | String)?, @caption : String?, @parse_mode : String?)
+    def initialize(@type : String, @media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil)
     end
   end
 end

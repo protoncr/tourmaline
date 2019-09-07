@@ -12,7 +12,7 @@ module Tourmaline::Model
 
     getter parse_mode : String?
 
-    def initialize(@type : String, @media : String, @caption : String?, @parse_mode : String?)
+    def initialize(@type : String, @media : String, @caption : String? = nil, @parse_mode : String? = nil)
     end
   end
 end

@@ -16,7 +16,7 @@ module Tourmaline::Model
 
     getter mpeg4_duration : Int32?
 
-    getter thumb_url : String
+    getter thumb_url : String?
 
     getter title : String?
 
@@ -26,8 +26,8 @@ module Tourmaline::Model
 
     getter input_message_content : InputMessageContent?
 
-    def initialize(@id, @mpeg4_url, @mpeg4_width, @mpeg4_height, @mpeg4_duration, @thumb_url,
-                   @title, @caption, @reply_markup, @input_message_content)
+    def initialize(@id, @mpeg4_url, @mpeg4_width = nil, @mpeg4_height = nil, @mpeg4_duration = nil, @thumb_url = nil,
+                   @title = nil, @caption = nil, @reply_markup = nil, @input_message_content = nil)
     end
   end
 end

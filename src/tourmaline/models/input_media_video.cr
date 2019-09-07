@@ -22,8 +22,8 @@ module Tourmaline::Model
 
     getter supports_streaming : Bool?
 
-    def initialize(@type : String, @media : String, @thumb : (File | String)?, @caption : String?, @parse_mode : String?,
-                   @width : Int32?, @height : Int32?, duration : Int32?, @supports_streaming : Bool?)
+    def initialize(@type : String, @media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
+                   @width : Int32? = nil, @height : Int32? = nil, duration : Int32? = nil, @supports_streaming : Bool? = nil)
     end
   end
 end

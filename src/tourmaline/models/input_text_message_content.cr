@@ -10,7 +10,7 @@ module Tourmaline::Model
 
     getter disable_web_page_preview : Bool?
 
-    def initialize(@message_text : String, @parse_mode : String?, @disable_web_page_preview : Bool?)
+    def initialize(@message_text : String, @parse_mode : String? = nil, @disable_web_page_preview : Bool? = nil)
     end
   end
 end

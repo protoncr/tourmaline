@@ -18,13 +18,15 @@ module Tourmaline::Model
 
     getter hide_url : Bool?
 
+    getter description : String?
+
     getter thumb_url : String?
 
     getter thumb_width : Int32?
 
     getter thumb_height : Int32?
 
-    def initialize(@id, @title, @input_message_content, @reply_markup, @url, @hide_url, @thumb_url, @thumb_width, @thumb_height)
+    def initialize(@id, @title, @input_message_content, @reply_markup = nil, @url = nil, @hide_url = nil, @description = nil, @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
     end
   end
 end

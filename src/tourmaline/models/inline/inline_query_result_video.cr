@@ -30,8 +30,8 @@ module Tourmaline::Model
 
     getter input_message_content : InputMessageContent?
 
-    def initialize(@id, @video_url, @mime_type, @thumb_url, @title, @caption, @video_width,
-                   @video_height, @video_duration, @description, @reply_markup, @input_message_content)
+    def initialize(@id, @video_url, @mime_type, @thumb_url, @title, @caption = nil, @video_width = nil,
+                   @video_height = nil, @video_duration = nil, @description = nil, @reply_markup = nil, @input_message_content = nil)
     end
   end
 end
