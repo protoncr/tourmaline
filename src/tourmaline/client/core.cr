@@ -358,15 +358,24 @@ module Tourmaline
     def restrict_chat_member(
       chat_id,
       user_id,
+      permissions,
       until_date = nil,
-      permissions = nil
     )
       until_date = (Time.utc + until_date.seconds).to_unix unless until_date.nil?
+      permissions = permissions.is_a?(NamedTuple) ? Model::ChatPermissions.new(**permissions) : permissions
+
+      pp({
+        chat_id:     chat_id,
+        user_id:     user_id,
+        until_date:  until_date,
+        permissions: permissions.to_json,
+      })
+
       response = request("restrictChatMember", {
         chat_id:     chat_id,
         user_id:     user_id,
         until_date:  until_date,
-        permissions: permissions,
+        permissions: permissions.to_json,
       })
 
       response == "true"

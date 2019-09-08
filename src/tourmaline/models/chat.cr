@@ -17,8 +17,6 @@ module Tourmaline::Model
 
     getter last_name : String?
 
-    getter all_members_are_administrators : Bool?
-
     getter chat_photo : ChatPhoto?
 
     getter description : String?
@@ -26,6 +24,8 @@ module Tourmaline::Model
     getter invite_link : String?
 
     getter pinned_message : Message?
+
+    getter permissions : ChatPermissions?
 
     getter sticker_set_name : String?
 
