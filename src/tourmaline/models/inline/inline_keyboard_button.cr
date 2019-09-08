@@ -20,7 +20,7 @@ module Tourmaline::Model
 
     getter pay : Bool?
 
-    def initialize(@text : String, @url : String?, @login_url : LoginURL? = nil, @callback_data : String? = nil, @switch_inline_query : String? = nil,
+    def initialize(@text : String, @url : String? = nil, @login_url : LoginURL? = nil, @callback_data : String? = nil, @switch_inline_query : String? = nil,
       switch_inline_query_current_chat : String? = nil, callback_game : CallbackGame? = nil, pay : Bool? = nil)
     end
   end

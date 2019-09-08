@@ -38,14 +38,7 @@ module Tourmaline
     def inline_keyboard(buttons : Array(Array(NamedTuple | Model::InlineKeyboardButton)))
       buttons = buttons.map do |row|
         row.map do |opts|
-          case opts
-          when String
-            Model::InlineKeyboardButton.new(opts)
-          when NamedTuple
-            Model::InlineKeyboardButton.new(**opts)
-          else
-            opts
-          end
+          opts.is_a?(NamedTuple) ? Model::InlineKeyboardButton.new(**opts) : opts
         end
       end
 
