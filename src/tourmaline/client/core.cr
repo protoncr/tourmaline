@@ -285,11 +285,9 @@ module Tourmaline
 
     # Returns a download link for a `File`.
     def get_file_link(file)
-      if file.file_path
-        ::File.join(@endpoint_url, file.file_path)
+      if file_path = file.file_path
+        ::File.join("#{API_URL}/file/bot#{@api_key}", file_path)
       end
-
-      nil
     end
 
     # Use this method to get a list of profile pictures for a user.
@@ -363,14 +361,6 @@ module Tourmaline
     )
       until_date = (Time.utc + until_date.seconds).to_unix unless until_date.nil?
       permissions = permissions.is_a?(NamedTuple) ? Model::ChatPermissions.new(**permissions) : permissions
-
-      pp({
-        chat_id:     chat_id,
-        user_id:     user_id,
-        until_date:  until_date,
-        permissions: permissions.to_json,
-      })
-
       response = request("restrictChatMember", {
         chat_id:     chat_id,
         user_id:     user_id,
@@ -561,6 +551,36 @@ module Tourmaline
       Model::Message.from_json(response)
     end
 
+    def send_animation(
+      chat_id,
+      animation,
+      duration = nil,
+      width = nil,
+      height = nil,
+      thumb = nil,
+      caption = nil,
+      parse_mode = ParseMode::Normal,
+      disable_notification = false,
+      reply_to_message_id = nil,
+      reply_markup = nil
+    )
+      response = request("sendAnimation", {
+        chat_id:              chat_id,
+        animation:            animation,
+        duration:             duration,
+        width:                width,
+        height:               height,
+        thumb:                thumb,
+        caption:              caption,
+        parse_mode:           parse_mode,
+        disable_notification: disable_notification,
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup ? reply_markup.to_json : nil,
+      })
+
+      Model::Message.from_json(response)
+    end
+
     # Use this method when you need to tell the user that something is happening on the
     # bot's side. The status is set for 5 seconds or less (when a message arrives
     # from your bot, Telegram clients clear its typing status).
@@ -690,6 +710,7 @@ module Tourmaline
       chat_id,
       photo,
       caption = nil,
+      parse_mode = ParseMode::Normal,
       disable_notification = false,
       reply_to_message_id = nil,
       reply_markup = nil
@@ -698,6 +719,7 @@ module Tourmaline
         chat_id:              chat_id,
         photo:                photo,
         caption:              caption,
+        parse_mode:           parse_mode,
         disable_notification: disable_notification,
         reply_to_message_id:  reply_to_message_id,
         reply_markup:         reply_markup ? reply_markup.to_json : nil,

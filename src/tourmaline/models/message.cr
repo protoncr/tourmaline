@@ -87,6 +87,10 @@ module Tourmaline::Model
     getter invoice : Invoice?
 
     getter successful_payment : SuccessfulPayment?
+
+    def link(chat)
+      "https://t.me/{}/{}" % [chat.username, message_id]
+    end
   end
 
   record MessageEntity, type : String, offset : Int64, length : Int64, url : String?, user : User? do
