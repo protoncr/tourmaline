@@ -361,7 +361,7 @@ module Tourmaline
       until_date = nil,
       permissions = nil
     )
-      until_date = (Time.utc + time.seconds).to_unix unless until_date.nil?
+      until_date = (Time.utc + until_date.seconds).to_unix unless until_date.nil?
       response = request("restrictChatMember", {
         chat_id:     chat_id,
         user_id:     user_id,
