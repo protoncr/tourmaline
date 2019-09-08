@@ -9,12 +9,27 @@ module Tourmaline
   # ```crystal
   # @[Command("help")]
   # def help_command(message, params)
-  #   message.chat.send_message("This is a help message")
+  #   send_message(message.chat.id, "This is a help message")
   # end
   # ```
   #
   # The command can be a string or an array of strings.
   annotation Command; end
+
+  # Similar to `Command`, `Hears` is a more general pattern matcher.
+  # Any time a message matches a pattern defined inside of a
+  # `Hears` annotation the annotated method will be fired.
+  #
+  # Example:
+  #
+  # ```crystal
+  # @[Hears(/^Hello/)]
+  # def respond_to_hello(message)
+  #   send_message(message.chat.id, "Hello to you", respond_to_message: message.message_id)
+  # end
+  #
+  # The pattern can be a string, regex, or an array of string/regex.
+  annotation Hears; end
 
   # Run the annotated method every time a particular `UpdateAction`
   # is fired.

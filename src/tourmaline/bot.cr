@@ -8,9 +8,7 @@ require "./models/*"
 require "./fiber"
 require "./markup"
 require "./annotations"
-require "./command_registry"
-require "./event_registry"
-require "./middleware_registry"
+require "./registries/*"
 require "./client/*"
 
 module Tourmaline
@@ -21,6 +19,7 @@ module Tourmaline
     include Logger
     include EventRegistry
     include CommandRegistry
+    include PatternRegistry
     include MiddlewareRegistry
 
     API_URL = "https://api.telegram.org/"
@@ -40,6 +39,7 @@ module Tourmaline
     )
       @endpoint_url = ::File.join(API_URL, "bot" + @api_key)
       register_commands
+      register_patterns
       register_event_listeners
     end
 

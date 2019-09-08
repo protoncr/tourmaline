@@ -1,4 +1,4 @@
-require "./middleware"
+require "../middleware"
 
 module Tourmaline
   module MiddlewareRegistry

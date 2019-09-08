@@ -25,7 +25,7 @@ module Tourmaline
     end
 
     def command(names : String | Array(String), &block : Model::Message, Array(String) ->)
-      command(names, block, at_start)
+      command(names, block)
     end
 
     def command(names : String | Array(String), proc : Model::Message, Array(String) ->)
