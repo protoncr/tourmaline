@@ -56,6 +56,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/BotContainer" data-name="tourmaline::botcontainer">
+      <a href="../../Tourmaline/BotContainer.html">BotContainer</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../../Tourmaline/ChatAction.html">ChatAction</a>
       
@@ -123,6 +128,11 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventRegistry" data-name="tourmaline::eventregistry">
       <a href="../../Tourmaline/EventRegistry.html">EventRegistry</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Hears" data-name="tourmaline::hears">
+      <a href="../../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -218,6 +228,11 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatMember" data-name="tourmaline::model::chatmember">
       <a href="../../Tourmaline/Model/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatPermissions" data-name="tourmaline::model::chatpermissions">
+      <a href="../../Tourmaline/Model/ChatPermissions.html">ChatPermissions</a>
       
     </li>
   
@@ -576,6 +591,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/PatternRegistry" data-name="tourmaline::patternregistry">
+      <a href="../../Tourmaline/PatternRegistry.html">PatternRegistry</a>
+      
+    </li>
+  
   <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Persistence" data-name="tourmaline::persistence">
       <a href="../../Tourmaline/Persistence.html">Persistence</a>
       
@@ -643,7 +663,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L4" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L4" target="_blank">
         tourmaline/models/inline/inline_keyboard_button.cr
       </a>
     
@@ -658,12 +678,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(text:String,url:String?,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method" class="signature"><strong>.new</strong>(text : String, url : String?, login_url : LoginURL? = <span class="n">nil</span>, callback_data : String? = <span class="n">nil</span>, switch_inline_query : String? = <span class="n">nil</span>, switch_inline_query_current_chat : String? = <span class="n">nil</span>, callback_game : CallbackGame? = <span class="n">nil</span>, pay : Bool? = <span class="n">nil</span>)</a>
+        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new(text:String,url:String?=nil,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method" class="signature"><strong>.new</strong>(text : String, url : String? = <span class="n">nil</span>, login_url : LoginURL? = <span class="n">nil</span>, callback_data : String? = <span class="n">nil</span>, switch_inline_query : String? = <span class="n">nil</span>, switch_inline_query_current_chat : String? = <span class="n">nil</span>, callback_game : CallbackGame? = <span class="n">nil</span>, pay : Bool? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -759,22 +779,6 @@
 
   <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new(text:String,url:String?,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(text : String, url : String?, login_url : <a href="../../Tourmaline/Model/LoginURL.html">LoginURL</a>? = <span class="n">nil</span>, callback_data : String? = <span class="n">nil</span>, switch_inline_query : String? = <span class="n">nil</span>, switch_inline_query_current_chat : String? = <span class="n">nil</span>, callback_game : <a href="../../Tourmaline/Model/CallbackGame.html">CallbackGame</a>? = <span class="n">nil</span>, pay : Bool? = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(text:String,url:String?,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L23" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
         
@@ -786,7 +790,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(text:String,url:String?=nil,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(text : String, url : String? = <span class="n">nil</span>, login_url : <a href="../../Tourmaline/Model/LoginURL.html">LoginURL</a>? = <span class="n">nil</span>, callback_data : String? = <span class="n">nil</span>, switch_inline_query : String? = <span class="n">nil</span>, switch_inline_query_current_chat : String? = <span class="n">nil</span>, callback_game : <a href="../../Tourmaline/Model/CallbackGame.html">CallbackGame</a>? = <span class="n">nil</span>, pay : Bool? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new(text:String,url:String?=nil,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -809,7 +829,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -825,7 +845,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -841,7 +861,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -857,7 +877,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -873,7 +893,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -889,7 +909,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -905,7 +925,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -921,7 +941,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/inline/inline_keyboard_button.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/inline/inline_keyboard_button.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>

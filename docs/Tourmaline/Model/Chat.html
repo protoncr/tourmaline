@@ -56,6 +56,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/BotContainer" data-name="tourmaline::botcontainer">
+      <a href="../../Tourmaline/BotContainer.html">BotContainer</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../../Tourmaline/ChatAction.html">ChatAction</a>
       
@@ -123,6 +128,11 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventRegistry" data-name="tourmaline::eventregistry">
       <a href="../../Tourmaline/EventRegistry.html">EventRegistry</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Hears" data-name="tourmaline::hears">
+      <a href="../../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -218,6 +228,11 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatMember" data-name="tourmaline::model::chatmember">
       <a href="../../Tourmaline/Model/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatPermissions" data-name="tourmaline::model::chatpermissions">
+      <a href="../../Tourmaline/Model/ChatPermissions.html">ChatPermissions</a>
       
     </li>
   
@@ -576,6 +591,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/PatternRegistry" data-name="tourmaline::patternregistry">
+      <a href="../../Tourmaline/PatternRegistry.html">PatternRegistry</a>
+      
+    </li>
+  
   <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Persistence" data-name="tourmaline::persistence">
       <a href="../../Tourmaline/Persistence.html">Persistence</a>
       
@@ -647,7 +667,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L5" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L5" target="_blank">
         tourmaline/models/chat.cr
       </a>
     
@@ -676,17 +696,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#all_members_are_administrators:Bool?-instance-method" class="signature"><strong>#all_members_are_administrators</strong> : Bool?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#can_set_sticker_set:Bool?-instance-method" class="signature"><strong>#can_set_sticker_set</strong> : Bool?</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#chat_photo:ChatPhoto?-instance-method" class="signature"><strong>#chat_photo</strong> : ChatPhoto?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete_photo-instance-method" class="signature"><strong>#delete_photo</strong></a>
         
       </li>
     
@@ -706,7 +726,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#invite_link:String?-instance-method" class="signature"><strong>#invite_link</strong> : String?</a>
+        <a href="#invite_link-instance-method" class="signature"><strong>#invite_link</strong></a>
         
       </li>
     
@@ -716,7 +736,47 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#member_count-instance-method" class="signature"><strong>#member_count</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#permissions:ChatPermissions?-instance-method" class="signature"><strong>#permissions</strong> : ChatPermissions?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#pinned_message:Message?-instance-method" class="signature"><strong>#pinned_message</strong> : Message?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_message(*args,**kwargs)-instance-method" class="signature"><strong>#send_message</strong>(*args, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_description(description)-instance-method" class="signature"><strong>#set_description</strong>(description)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_permissions(permissions)-instance-method" class="signature"><strong>#set_permissions</strong>(permissions)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_photo(photo)-instance-method" class="signature"><strong>#set_photo</strong>(photo)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_sticker_set(set_name)-instance-method" class="signature"><strong>#set_sticker_set</strong>(set_name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_title(title)-instance-method" class="signature"><strong>#set_title</strong>(title)</a>
         
       </li>
     
@@ -732,6 +792,11 @@
     
       <li class="entry-summary">
         <a href="#type:String-instance-method" class="signature"><strong>#type</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unpin_message-instance-method" class="signature"><strong>#unpin_message</strong></a>
         
       </li>
     
@@ -794,7 +859,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -805,22 +870,6 @@
 
 
   <h2>Instance Method Detail</h2>
-  
-    <div class="entry-detail" id="all_members_are_administrators:Bool?-instance-method">
-      <div class="signature">
-        
-        def <strong>all_members_are_administrators</strong> : Bool?
-
-        <a class="method-permalink" href="#all_members_are_administrators:Bool?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L22" target="_blank">View source</a>]
-        
-      </div>
-    </div>
   
     <div class="entry-detail" id="can_set_sticker_set:Bool?-instance-method">
       <div class="signature">
@@ -833,7 +882,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -849,7 +898,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete_photo-instance-method">
+      <div class="signature">
+        
+        def <strong>delete_photo</strong>
+
+        <a class="method-permalink" href="#delete_photo-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -865,7 +930,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -881,7 +946,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -897,23 +962,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="invite_link:String?-instance-method">
+    <div class="entry-detail" id="invite_link-instance-method">
       <div class="signature">
         
-        def <strong>invite_link</strong> : String?
+        def <strong>invite_link</strong>
 
-        <a class="method-permalink" href="#invite_link:String?-instance-method">#</a>
+        <a class="method-permalink" href="#invite_link-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -929,7 +994,39 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="member_count-instance-method">
+      <div class="signature">
+        
+        def <strong>member_count</strong>
+
+        <a class="method-permalink" href="#member_count-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="permissions:ChatPermissions?-instance-method">
+      <div class="signature">
+        
+        def <strong>permissions</strong> : <a href="../../Tourmaline/Model/ChatPermissions.html">ChatPermissions</a>?
+
+        <a class="method-permalink" href="#permissions:ChatPermissions?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -945,7 +1042,103 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_message(*args,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_message</strong>(*args, **kwargs)
+
+        <a class="method-permalink" href="#send_message(*args,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_description(description)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_description</strong>(description)
+
+        <a class="method-permalink" href="#set_description(description)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_permissions(permissions)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_permissions</strong>(permissions)
+
+        <a class="method-permalink" href="#set_permissions(permissions)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_photo(photo)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_photo</strong>(photo)
+
+        <a class="method-permalink" href="#set_photo(photo)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_sticker_set(set_name)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_sticker_set</strong>(set_name)
+
+        <a class="method-permalink" href="#set_sticker_set(set_name)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_title(title)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_title</strong>(title)
+
+        <a class="method-permalink" href="#set_title(title)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -961,7 +1154,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -977,7 +1170,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -993,7 +1186,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unpin_message-instance-method">
+      <div class="signature">
+        
+        def <strong>unpin_message</strong>
+
+        <a class="method-permalink" href="#unpin_message-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1009,7 +1218,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>

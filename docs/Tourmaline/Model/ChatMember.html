@@ -56,6 +56,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/BotContainer" data-name="tourmaline::botcontainer">
+      <a href="../../Tourmaline/BotContainer.html">BotContainer</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../../Tourmaline/ChatAction.html">ChatAction</a>
       
@@ -123,6 +128,11 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventRegistry" data-name="tourmaline::eventregistry">
       <a href="../../Tourmaline/EventRegistry.html">EventRegistry</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Hears" data-name="tourmaline::hears">
+      <a href="../../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -218,6 +228,11 @@
   
   <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatMember" data-name="tourmaline::model::chatmember">
       <a href="../../Tourmaline/Model/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatPermissions" data-name="tourmaline::model::chatpermissions">
+      <a href="../../Tourmaline/Model/ChatPermissions.html">ChatPermissions</a>
       
     </li>
   
@@ -576,6 +591,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/PatternRegistry" data-name="tourmaline::patternregistry">
+      <a href="../../Tourmaline/PatternRegistry.html">PatternRegistry</a>
+      
+    </li>
+  
   <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Persistence" data-name="tourmaline::persistence">
       <a href="../../Tourmaline/Persistence.html">Persistence</a>
       
@@ -643,7 +663,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L4" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L4" target="_blank">
         tourmaline/models/chat_member.cr
       </a>
     
@@ -665,6 +685,16 @@
   </ul>
 
 
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_user(user)-class-method" class="signature"><strong>.from_user</strong>(user)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -732,7 +762,42 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#chat_id-instance-method" class="signature"><strong>#chat_id</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chat_id=(chat_id:Int64)-instance-method" class="signature"><strong>#chat_id=</strong>(chat_id : Int64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chat_id?:Int64?-instance-method" class="signature"><strong>#chat_id?</strong> : Int64?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#kick(until_date=nil)-instance-method" class="signature"><strong>#kick</strong>(until_date = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#promote(**permissions)-instance-method" class="signature"><strong>#promote</strong>(**permissions)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#restrict(permissions,until_date=nil)-instance-method" class="signature"><strong>#restrict</strong>(permissions, until_date = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#status:String-instance-method" class="signature"><strong>#status</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unban-instance-method" class="signature"><strong>#unban</strong></a>
         
       </li>
     
@@ -800,13 +865,32 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
 
 
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="from_user(user)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from_user</strong>(user)
+
+        <a class="method-permalink" href="#from_user(user)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L81" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
@@ -823,7 +907,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -839,7 +923,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -855,7 +939,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -871,7 +955,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L26" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -887,7 +971,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -903,7 +987,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -919,7 +1003,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -935,7 +1019,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -951,7 +1035,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -967,7 +1051,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -983,7 +1067,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -999,7 +1083,99 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chat_id-instance-method">
+      <div class="signature">
+        
+        def <strong>chat_id</strong>
+
+        <a class="method-permalink" href="#chat_id-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chat_id=(chat_id:Int64)-instance-method">
+      <div class="signature">
+        
+        def <strong>chat_id=</strong>(chat_id : Int64)
+
+        <a class="method-permalink" href="#chat_id=(chat_id:Int64)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chat_id?:Int64?-instance-method">
+      <div class="signature">
+        
+        def <strong>chat_id?</strong> : Int64?
+
+        <a class="method-permalink" href="#chat_id?:Int64?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="kick(until_date=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>kick</strong>(until_date = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#kick(until_date=nil)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="promote(**permissions)-instance-method">
+      <div class="signature">
+        
+        def <strong>promote</strong>(**permissions)
+
+        <a class="method-permalink" href="#promote(**permissions)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L77" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="restrict(permissions,until_date=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>restrict</strong>(permissions, until_date = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#restrict(permissions,until_date=nil)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1015,7 +1191,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unban-instance-method">
+      <div class="signature">
+        
+        def <strong>unban</strong>
+
+        <a class="method-permalink" href="#unban-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1031,7 +1223,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1047,7 +1239,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/chat_member.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/chat_member.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>

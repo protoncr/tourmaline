@@ -56,6 +56,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/BotContainer" data-name="tourmaline::botcontainer">
+      <a href="../../Tourmaline/BotContainer.html">BotContainer</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../../Tourmaline/ChatAction.html">ChatAction</a>
       
@@ -123,6 +128,11 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventRegistry" data-name="tourmaline::eventregistry">
       <a href="../../Tourmaline/EventRegistry.html">EventRegistry</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Hears" data-name="tourmaline::hears">
+      <a href="../../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -218,6 +228,11 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatMember" data-name="tourmaline::model::chatmember">
       <a href="../../Tourmaline/Model/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Model/ChatPermissions" data-name="tourmaline::model::chatpermissions">
+      <a href="../../Tourmaline/Model/ChatPermissions.html">ChatPermissions</a>
       
     </li>
   
@@ -576,6 +591,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/PatternRegistry" data-name="tourmaline::patternregistry">
+      <a href="../../Tourmaline/PatternRegistry.html">PatternRegistry</a>
+      
+    </li>
+  
   <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/Persistence" data-name="tourmaline::persistence">
       <a href="../../Tourmaline/Persistence.html">Persistence</a>
       
@@ -647,7 +667,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L5" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L5" target="_blank">
         tourmaline/models/message.cr
       </a>
     
@@ -716,6 +736,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#delete-instance-method" class="signature"><strong>#delete</strong></a>
+        
+          <div class="summary"><p>Delete the message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#delete_chat_photo:Bool?-instance-method" class="signature"><strong>#delete_chat_photo</strong> : Bool?</a>
         
       </li>
@@ -726,12 +753,45 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#edit_caption(caption,**kwargs)-instance-method" class="signature"><strong>#edit_caption</strong>(caption, **kwargs)</a>
+        
+          <div class="summary"><p>Edits the message's caption.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#edit_date:Time?-instance-method" class="signature"><strong>#edit_date</strong> : Time?</a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#edit_live_location(latitude,longitude,**kwargs)-instance-method" class="signature"><strong>#edit_live_location</strong>(latitude, longitude, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edit_reply_markup(reply_markup)-instance-method" class="signature"><strong>#edit_reply_markup</strong>(reply_markup)</a>
+        
+          <div class="summary"><p>Set the reply markup for the message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edit_text(text,**kwargs)-instance-method" class="signature"><strong>#edit_text</strong>(text, **kwargs)</a>
+        
+          <div class="summary"><p>Edits the text of a message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#entities:Array(MessageEntity)?-instance-method" class="signature"><strong>#entities</strong> : Array(MessageEntity)?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#forward(to_chat,**kwargs)-instance-method" class="signature"><strong>#forward</strong>(to_chat, **kwargs)</a>
+        
+          <div class="summary"><p>Forward the message to another chat.</p></div>
         
       </li>
     
@@ -786,6 +846,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#link(chat)-instance-method" class="signature"><strong>#link</strong>(chat)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#location:Location?-instance-method" class="signature"><strong>#location</strong> : Location?</a>
         
       </li>
@@ -831,12 +896,86 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#pin(**kwargs)-instance-method" class="signature"><strong>#pin</strong>(**kwargs)</a>
+        
+          <div class="summary"><p>Pin the message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply(message,**kwargs)-instance-method" class="signature"><strong>#reply</strong>(message, **kwargs)</a>
+        
+          <div class="summary"><p>Reply to a message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#reply_to_message:Message?-instance-method" class="signature"><strong>#reply_to_message</strong> : Message?</a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#reply_with_animation(animation,**kwargs)-instance-method" class="signature"><strong>#reply_with_animation</strong>(animation, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_audio(audio,**kwargs)-instance-method" class="signature"><strong>#reply_with_audio</strong>(audio, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_contact(phone_number,first_name,**kwargs)-instance-method" class="signature"><strong>#reply_with_contact</strong>(phone_number, first_name, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_document(document,**kwargs)-instance-method" class="signature"><strong>#reply_with_document</strong>(document, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_location(latitude,longitude,**kwargs)-instance-method" class="signature"><strong>#reply_with_location</strong>(latitude, longitude, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_media_group(media,**kwargs)-instance-method" class="signature"><strong>#reply_with_media_group</strong>(media, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_photo(photo,**kwargs)-instance-method" class="signature"><strong>#reply_with_photo</strong>(photo, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_venue(latitude,longitude,title,address,**kwargs)-instance-method" class="signature"><strong>#reply_with_venue</strong>(latitude, longitude, title, address, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_video(video,**kwargs)-instance-method" class="signature"><strong>#reply_with_video</strong>(video, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_video_note(video_note,**kwargs)-instance-method" class="signature"><strong>#reply_with_video_note</strong>(video_note, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reply_with_voice(voice,**kwargs)-instance-method" class="signature"><strong>#reply_with_voice</strong>(voice, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#sticker:Sticker?-instance-method" class="signature"><strong>#sticker</strong> : Sticker?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stop_live_location(**kwargs)-instance-method" class="signature"><strong>#stop_live_location</strong>(**kwargs)</a>
         
       </li>
     
@@ -929,7 +1068,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -952,7 +1091,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L45" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -968,7 +1107,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -984,7 +1123,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1000,7 +1139,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1016,7 +1155,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1032,7 +1171,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1048,7 +1187,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1064,7 +1203,25 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>
+
+        <a class="method-permalink" href="#delete-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Delete the message. See <code><a href="../../Tourmaline/Bot.html#delete_message(chat_id,message_id)-instance-method">Tourmaline::Bot#delete_message</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1080,7 +1237,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1096,7 +1253,25 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_caption(caption,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_caption</strong>(caption, **kwargs)
+
+        <a class="method-permalink" href="#edit_caption(caption,**kwargs)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Edits the message's caption. See <code><a href="../../Tourmaline/Bot.html#edit_message_caption(chat_id,caption,message_id=nil,inline_message_id=nil,parse_mode=ParseMode::Normal,reply_markup=nil)-instance-method">Tourmaline::Bot#edit_message_caption</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1112,7 +1287,59 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_live_location(latitude,longitude,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_live_location</strong>(latitude, longitude, **kwargs)
+
+        <a class="method-permalink" href="#edit_live_location(latitude,longitude,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L174" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_reply_markup(reply_markup)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_reply_markup</strong>(reply_markup)
+
+        <a class="method-permalink" href="#edit_reply_markup(reply_markup)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Set the reply markup for the message. See <code><a href="../../Tourmaline/Bot.html#edit_message_reply_markup(chat_id,message_id=nil,inline_message_id=nil,reply_markup=nil)-instance-method">Tourmaline::Bot#edit_message_reply_markup</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L106" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_text(text,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_text</strong>(text, **kwargs)
+
+        <a class="method-permalink" href="#edit_text(text,**kwargs)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Edits the text of a message. See <code><a href="../../Tourmaline/Bot.html#edit_message_text(chat_id,text,message_id=nil,inline_message_id=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,reply_markup=nil)-instance-method">Tourmaline::Bot#edit_message_text</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L111" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1128,7 +1355,25 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="forward(to_chat,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>forward</strong>(to_chat, **kwargs)
+
+        <a class="method-permalink" href="#forward(to_chat,**kwargs)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Forward the message to another chat. See <code><a href="../../Tourmaline/Bot.html#forward_message(chat_id,from_chat_id,message_id,disable_notification=false)-instance-method">Tourmaline::Bot#forward_message</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1144,7 +1389,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1160,7 +1405,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1176,7 +1421,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1192,7 +1437,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1208,7 +1453,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1224,7 +1469,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1240,7 +1485,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1256,7 +1501,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1272,7 +1517,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L89" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1288,7 +1533,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L71" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="link(chat)-instance-method">
+      <div class="signature">
+        
+        def <strong>link</strong>(chat)
+
+        <a class="method-permalink" href="#link(chat)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1304,7 +1565,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L65" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1320,7 +1581,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1336,7 +1597,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1352,7 +1613,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L87" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1368,7 +1629,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1384,7 +1645,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1400,7 +1661,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L75" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1416,7 +1677,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1432,7 +1693,43 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pin(**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>pin</strong>(**kwargs)
+
+        <a class="method-permalink" href="#pin(**kwargs)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Pin the message. See <code>Tourmaline::Bot#pin_message</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L121" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply(message,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply</strong>(message, **kwargs)
+
+        <a class="method-permalink" href="#reply(message,**kwargs)-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Reply to a message. See <code><a href="../../Tourmaline/Bot.html#send_message(chat_id,text,parse_mode=ParseMode::Normal,disable_link_preview=false,disable_notification=false,reply_to_message_id=nil,reply_markup=nil)-instance-method">Tourmaline::Bot#send_message</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1448,7 +1745,183 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_animation(animation,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_animation</strong>(animation, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_animation(animation,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L134" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_audio(audio,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_audio</strong>(audio, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_audio(audio,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L130" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_contact(phone_number,first_name,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_contact</strong>(phone_number, first_name, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_contact(phone_number,first_name,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L138" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_document(document,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_document</strong>(document, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_document(document,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L142" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_location(latitude,longitude,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_location</strong>(latitude, longitude, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_location(latitude,longitude,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L146" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_media_group(media,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_media_group</strong>(media, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_media_group(media,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L154" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_photo(photo,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_photo</strong>(photo, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_photo(photo,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L150" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_venue(latitude,longitude,title,address,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_venue</strong>(latitude, longitude, title, address, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_venue(latitude,longitude,title,address,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L158" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_video(video,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_video</strong>(video, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_video(video,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L162" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_video_note(video_note,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_video_note</strong>(video_note, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_video_note(video_note,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L166" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reply_with_voice(voice,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>reply_with_voice</strong>(voice, **kwargs)
+
+        <a class="method-permalink" href="#reply_with_voice(voice,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1464,7 +1937,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stop_live_location(**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>stop_live_location</strong>(**kwargs)
+
+        <a class="method-permalink" href="#stop_live_location(**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L178" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1480,7 +1969,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L91" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1496,7 +1985,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1512,7 +2001,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1528,7 +2017,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1544,7 +2033,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1560,7 +2049,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1576,7 +2065,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/3302d92676ecbcf5a0a00eb000a5d807ed78eebf/src/tourmaline/models/message.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/ba8818dd19ad187452c3ba932f50ccf5dba09aa7/src/tourmaline/models/message.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
