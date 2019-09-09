@@ -4,7 +4,7 @@
 
 Telegram Bot API framework written in Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
 
-If you want to extend your bot by using NLP, see my other library [Cadmium](https://github.com/watzon/cadmium).
+If you want to extend your bot by using NLP, see my other library [Cadmium](https://github.com/cadmiumcr).
 
 ## Installation
 
