@@ -667,7 +667,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L5" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L5" target="_blank">
         tourmaline/models/user.cr
       </a>
     
@@ -696,12 +696,27 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#add_sticker_to_set(name,png_sticker,emojis,mask_position=nil)-instance-method" class="signature"><strong>#add_sticker_to_set</strong>(name, png_sticker, emojis, mask_position = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create_new_sticker_set(name,title,png_sticker,emojis,**kwargs)-instance-method" class="signature"><strong>#create_new_sticker_set</strong>(name, title, png_sticker, emojis, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#first_name:String-instance-method" class="signature"><strong>#first_name</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#full_name-instance-method" class="signature"><strong>#full_name</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_game_high_scores(**kwargs)-instance-method" class="signature"><strong>#get_game_high_scores</strong>(**kwargs)</a>
         
       </li>
     
@@ -732,6 +747,16 @@
     
       <li class="entry-summary">
         <a href="#profile_photos(offset=nil,limit=nil)-instance-method" class="signature"><strong>#profile_photos</strong>(offset = <span class="n">nil</span>, limit = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_game_score(score,**kwargs)-instance-method" class="signature"><strong>#set_game_score</strong>(score, **kwargs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#upload_sticker_file(png_sticker)-instance-method" class="signature"><strong>#upload_sticker_file</strong>(png_sticker)</a>
         
       </li>
     
@@ -794,7 +819,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -805,6 +830,38 @@
 
 
   <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="add_sticker_to_set(name,png_sticker,emojis,mask_position=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_sticker_to_set</strong>(name, png_sticker, emojis, mask_position = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#add_sticker_to_set(name,png_sticker,emojis,mask_position=nil)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_new_sticker_set(name,title,png_sticker,emojis,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>create_new_sticker_set</strong>(name, title, png_sticker, emojis, **kwargs)
+
+        <a class="method-permalink" href="#create_new_sticker_set(name,title,png_sticker,emojis,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="first_name:String-instance-method">
       <div class="signature">
@@ -817,7 +874,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -833,7 +890,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_game_high_scores(**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_game_high_scores</strong>(**kwargs)
+
+        <a class="method-permalink" href="#get_game_high_scores(**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -849,7 +922,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -865,7 +938,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -881,7 +954,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -897,7 +970,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -913,7 +986,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -929,7 +1002,39 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_game_score(score,**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_game_score</strong>(score, **kwargs)
+
+        <a class="method-permalink" href="#set_game_score(score,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="upload_sticker_file(png_sticker)-instance-method">
+      <div class="signature">
+        
+        def <strong>upload_sticker_file</strong>(png_sticker)
+
+        <a class="method-permalink" href="#upload_sticker_file(png_sticker)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -945,7 +1050,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/5d4c75cf318edb676fd2220c9e75c7e7d39ff369/src/tourmaline/models/user.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/user.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
