@@ -2,6 +2,7 @@ require "halite"
 
 require "./error"
 require "./logger"
+require "./bot_container"
 require "./chat_action"
 require "./update_action"
 require "./models/*"
@@ -41,6 +42,8 @@ module Tourmaline
       register_commands
       register_patterns
       register_event_listeners
+
+      BotContainer.bot = self
     end
 
     private def handle_update(update : Model::Update)

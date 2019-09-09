@@ -126,6 +126,7 @@ module Tourmaline
       caption,
       message_id = nil,
       inline_message_id = nil,
+      parse_mode = ParseMode::Normal,
       reply_markup = nil
     )
       if !message_id && !inline_message_id
@@ -137,6 +138,7 @@ module Tourmaline
         caption:           caption,
         message_id:        message_id,
         inline_message_id: inline_message_id,
+        parse_mode:        parse_mode,
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
@@ -177,8 +179,6 @@ module Tourmaline
       inline_message_id = nil,
       parse_mode = ParseMode::Normal,
       disable_link_preview = false,
-      disable_notification = false,
-      reply_to_message_id = nil,
       reply_markup = nil
     )
       if !message_id && !inline_message_id
@@ -194,12 +194,10 @@ module Tourmaline
         text:                     text,
         parse_mode:               parse_mode,
         disable_web_page_preview: disable_link_preview,
-        disable_notification:     disable_notification,
-        reply_to_message_id:      reply_to_message_id,
         reply_markup:             reply_markup ? reply_markup.to_json : nil,
       })
 
-      Message.from_json(response)
+      Model::Message.from_json(response)
     end
 
     # Use this method to forward messages of any kind. On success,
@@ -447,6 +445,19 @@ module Tourmaline
       })
 
       response == "true"
+    end
+
+    # Use this method to set default chat permissions for all members. The bot must be
+    # an administrator in the group or a supergroup for this to work and must have
+    # the can_restrict_members admin rights.
+    # Returns True on success.
+    def set_chat_permissions(chat_id, permissions)
+      response = request("setChatPermissions", {
+        chat_id: chat_id,
+        permissions: permissions.to_json
+      })
+
+      response == true
     end
 
     # Use this method to change the title of a chat. Titles can't be changed for
