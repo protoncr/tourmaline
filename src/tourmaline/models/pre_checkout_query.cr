@@ -17,5 +17,9 @@ module Tourmaline::Model
     getter shipping_option_id : String?
 
     getter order_info : OrderInfo?
+
+    def answer(ok, **kwargs)
+      BotContainer.bot.answer_pre_checkout_query(id, ok, **kwargs)
+    end
   end
 end

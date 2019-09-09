@@ -14,5 +14,9 @@ module Tourmaline::Model
 
     def initialize(@id : Strig, @from : User, @invoice_payload : String, @shipping_address : ShippingAddress)
     end
+
+    def answer(ok, **kwargs)
+      BotContainer.bot.answer_shipping_query(is, ok, **kwargs)
+    end
   end
 end

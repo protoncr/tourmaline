@@ -59,6 +59,14 @@ module Tourmaline::Model
       BotContainer.bot.send_document(id, document, **kwargs)
     end
 
+    def send_game(game_name, **kwargs)
+      BotContainer.bot.send_game(id, game_name, **kwargs)
+    end
+
+    def send_invoice(invoice, **kwargs)
+      BotContainer.bot.send_invoice(id, invoice, **kwargs)
+    end
+
     def send_location(latitude, longitude, **kwargs)
       BotContainer.bot.send_location(id, latitude, longitude, **kwargs)
     end
@@ -69,6 +77,10 @@ module Tourmaline::Model
 
     def send_media_group(media, **kwargs)
       BotContainer.bot.send_media_group(id, media, **kwargs)
+    end
+
+    def send_sticker(sticker, **kwargs)
+      BotContainer.bot.send_sticker(id, sticker, **kwargs)
     end
 
     def send_venue(latitude, longitude, title, address, **kwargs)
@@ -93,6 +105,10 @@ module Tourmaline::Model
 
     def stop_live_location(**kwargs)
       BotContainer.bot.stop_message_live_location(id, message_id, **kwargs)
+    end
+
+    def delete_chat_sticker_set
+      BotContainer.bot.delete_chat_sticker_set(id)
     end
 
     def send_chat_action(action : ChatAction)

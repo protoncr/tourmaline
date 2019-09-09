@@ -82,7 +82,7 @@ module Tourmaline
     def answer_pre_checkout_query(
       pre_checkout_query_id,
       ok,
-      error_message
+      error_message = nil
     )
       response = request("answerPreCheckoutQuery", {
         pre_checkout_query_id: pre_checkout_query_id,
