@@ -240,7 +240,8 @@ module Tourmaline
         chat_id: chat_id,
       })
 
-      Array(Model::ChatMember).from_json(response)
+      admins = Array(Model::ChatMember).from_json(response)
+      admins.map { |admin| admin.chat_id = chat_id }
     end
 
     # Use this method to get information about a member of a chat. Returns a
@@ -251,7 +252,9 @@ module Tourmaline
         user_id: user_id,
       })
 
-      Model::ChatMember.from_json(response)
+      chat_member = Model::ChatMember.from_json(response)
+      chat_member.chat_id = chat_id
+      chat_member
     end
 
     # Use this method to get the number of members in a chat.
@@ -320,6 +323,7 @@ module Tourmaline
       user_id,
       until_date = nil
     )
+      until_date = until_date.to_unix unless until_date.is_a?(Int)
       response = request("kickChatMember", {
         chat_id:    chat_id,
         user_id:    user_id,
@@ -357,7 +361,7 @@ module Tourmaline
       permissions,
       until_date = nil,
     )
-      until_date = (Time.utc + until_date.seconds).to_unix unless until_date.nil?
+      until_date = until_date.to_unix unless until_date.is_a?(Int)
       permissions = permissions.is_a?(NamedTuple) ? Model::ChatPermissions.new(**permissions) : permissions
       response = request("restrictChatMember", {
         chat_id:     chat_id,

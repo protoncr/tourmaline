@@ -31,6 +31,14 @@ module Tourmaline::Model
 
     getter can_set_sticker_set : Bool?
 
+    def invite_link
+      BotContainer.bot.export_chat_invite_link(id)
+    end
+
+    def member_count
+      BotContainer.bot.get_chat_members_count(id)
+    end
+
     def send_message(*args, **kwargs)
       BotContainer.bot.send_message(id, *args, **kwargs)
     end

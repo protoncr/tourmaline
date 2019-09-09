@@ -24,5 +24,9 @@ module Tourmaline::Model
     def inline_mention
       "[#{full_name}](tg://user?id=#{id})"
     end
+
+    def profile_photos(offset = nil, limit = nil)
+      BotContainer.bot.get_user_profile_photos(id, offset, limit)
+    end
   end
 end
