@@ -43,6 +43,62 @@ module Tourmaline::Model
       BotContainer.bot.send_message(id, *args, **kwargs)
     end
 
+    def send_audio(audio, **kwargs)
+      BotContainer.bot.send_audio(id, audio, **kwargs)
+    end
+
+    def send_animation(animation, **kwargs)
+      BotContainer.bot.send_animation(id, animation, **kwargs)
+    end
+
+    def send_contact(phone_number, first_name, **kwargs)
+      BotContainer.bot.send_contact(id, phone_number, first_name, **kwargs)
+    end
+
+    def send_document(document, **kwargs)
+      BotContainer.bot.send_document(id, document, **kwargs)
+    end
+
+    def send_location(latitude, longitude, **kwargs)
+      BotContainer.bot.send_location(id, latitude, longitude, **kwargs)
+    end
+
+    def send_photo(photo, **kwargs)
+      BotContainer.bot.send_photo(id, photo, **kwargs)
+    end
+
+    def send_media_group(media, **kwargs)
+      BotContainer.bot.send_media_group(id, media, **kwargs)
+    end
+
+    def send_venue(latitude, longitude, title, address, **kwargs)
+      BotContainer.bot.send_venu(id, latitude, longitude, title, address, **kwargs)
+    end
+
+    def send_video(video, **kwargs)
+      BotContainer.bot.send_video(id, video, **kwargs)
+    end
+
+    def send_video_note(video_note, **kwargs)
+      BotContainer.bot.send_video(id, video_note, **kwargs)
+    end
+
+    def send_voice(voice, **kwargs)
+      BotContainer.bot.send_voice(id, voice, **kwargs)
+    end
+
+    def edit_live_location(latitude, longitude, **kwargs)
+      BotContainer.bot.edit_message_live_location(id, latitude, longitude, **kwargs, message_id: message_id)
+    end
+
+    def stop_live_location(**kwargs)
+      BotContainer.bot.stop_message_live_location(id, message_id, **kwargs)
+    end
+
+    def send_chat_action(action : ChatAction)
+      BotContainer.bot.send_chat_action(id, action)
+    end
+
     def unpin_message
       BotContainer.bot.unpin_chat_message(id)
     end

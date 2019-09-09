@@ -7,8 +7,8 @@ class EchoBot < Tourmaline::Bot
   @[Command("echo")]
   def echo_command(message, params)
     text = params.join(" ")
-    send_message(message.chat.id, text)
-    delete_message(message.chat.id, message.message_id)
+    message.chat.send_message(text)
+    message.delete
   end
 end
 

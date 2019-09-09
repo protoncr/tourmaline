@@ -133,6 +133,8 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
+      parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
+
       response = request("editMesasageCaption", {
         chat_id:           chat_id,
         caption:           caption,
@@ -579,6 +581,7 @@ module Tourmaline
       reply_to_message_id = nil,
       reply_markup = nil
     )
+      parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
       response = request("sendAnimation", {
         chat_id:              chat_id,
         animation:            animation,
@@ -730,6 +733,7 @@ module Tourmaline
       reply_to_message_id = nil,
       reply_markup = nil
     )
+      parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
       response = request("sendPhoto", {
         chat_id:              chat_id,
         photo:                photo,
