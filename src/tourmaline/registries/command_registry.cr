@@ -43,7 +43,7 @@ module Tourmaline
     private def trigger_commands(update : Model::Update)
       if message = update.message
         if message_text = message.text
-          pieces = message_text.split(/\s/)
+          pieces = message_text.split(' ')
 
           command = pieces[0]
 
