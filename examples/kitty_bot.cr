@@ -14,7 +14,7 @@ class KittyBot < Tourmaline::Bot
     message.chat.send_message("😺 Use commands: /kitty, /kittygif and /about", reply_markup: REPLY_MARKUP)
   end
 
-  @[Command("abount")]
+  @[Command("about")]
   def about_command(message, params)
     text = "😽 This bot is powered by Tourmaline, a Telegram bot library for Crystal. Visit https://github.com/watzon/tourmaline to check out the source code."
     message.chat.send_message(text)
