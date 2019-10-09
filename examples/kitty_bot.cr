@@ -23,7 +23,7 @@ class KittyBot < Tourmaline::Bot
   @[Command(["kitty", "kittygif"])]
   def kitty_command(message, params)
     # The time hack is to get around Telegram's image cache
-    api = API_URL + "?time=#{Time.now}&format=src&type="
+    api = API_URL + "?time=#{Time.utc}&format=src&type="
     cmd = message.text.to_s.split(" ")[0]
 
     if cmd == "/kitty"
