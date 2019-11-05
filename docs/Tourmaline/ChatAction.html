@@ -71,8 +71,23 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="../Tourmaline/CommandRegistry.html">CommandRegistry</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry/CommandWrapper" data-name="tourmaline::commandregistry::commandwrapper">
+      <a href="../Tourmaline/CommandRegistry/CommandWrapper.html">CommandWrapper</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Context" data-name="tourmaline::context">
+      <a href="../Tourmaline/Context.html">Context</a>
       
     </li>
   
@@ -661,7 +676,7 @@ mimic these actions by using the
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L6" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L6" target="_blank">
         tourmaline/chat_action.cr
       </a>
     
@@ -758,6 +773,8 @@ mimic these actions by using the
     
       <li class="entry-summary">
         <a href="#to_s-instance-method" class="signature"><strong>#to_s</strong></a>
+        
+          <div class="summary"><p>Returns a <code>String</code> representation of this enum member.</p></div>
         
       </li>
     
@@ -859,7 +876,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -875,7 +892,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -891,7 +908,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -907,7 +924,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -920,10 +937,31 @@ mimic these actions by using the
         <a class="method-permalink" href="#to_s-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from struct Enum
+            </div>
+          
+          <p>Returns a <code>String</code> representation of this enum member.
+In the case of regular enums, this is just the name of the member.
+In the case of flag enums, it's the names joined by vertical bars, or "None",
+if the value is zero.</p>
+
+<p>If an enum's value doesn't match a member's value, the raw value
+is returned as a string.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Red</span>.to_s                     <span class="c"># =&gt; &quot;Red&quot;</span>
+<span class="t">IOMode</span><span class="t">::</span><span class="t">None</span>.to_s                   <span class="c"># =&gt; &quot;None&quot;</span>
+(<span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Write</span>).to_s <span class="c"># =&gt; &quot;Read | Write&quot;</span>
+
+<span class="t">Color</span>.<span class="k">new</span>(<span class="n">10</span>).to_s <span class="c"># =&gt; &quot;10&quot;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -939,7 +977,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -955,7 +993,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -971,7 +1009,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -987,7 +1025,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1003,7 +1041,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1019,7 +1057,7 @@ mimic these actions by using the
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/chat_action.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/chat_action.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -108,7 +108,10 @@ module Tourmaline
     # - If the bot has `can_delete_messages` permission in a supergroup or a
     #   channel, it can delete any message there.
     # Returns `true` on success.
-    def delete_message(chat_id, message_id)
+    def delete_message(chat, message)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+
       response = request("deleteMessage", {
         chat_id:    chat_id,
         message_id: message_id,
@@ -122,17 +125,20 @@ module Tourmaline
     # `Model::Message` is returned, otherwise `true`
     # is returned.
     def edit_message_caption(
-      chat_id,
+      chat,
       caption,
-      message_id = nil,
-      inline_message_id = nil,
+      message = nil,
+      inline_message = nil,
       parse_mode = ParseMode::Normal,
       reply_markup = nil
     )
-      if !message_id && !inline_message_id
+      if !message && !inline_message
         raise "A message_id or inline_message_id is required"
       end
 
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+      inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
       response = request("editMesasageCaption", {
@@ -152,14 +158,18 @@ module Tourmaline
     # edited `Message` is returned, otherwise `true` is
     # returned.
     def edit_message_reply_markup(
-      chat_id,
-      message_id = nil,
-      inline_message_id = nil,
+      chat,
+      message = nil,
+      inline_message = nil,
       reply_markup = nil
     )
-      if !message_id && !inline_message_id
+      if !message && !inline_message
         raise "A message_id or inline_message_id is required"
       end
+
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+      inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
 
       response = request("editMesasageReplyMarkup", {
         chat_id:           chat_id,
@@ -175,18 +185,21 @@ module Tourmaline
     # edited message is sent by the bot, the edited `Message`
     # is returned, otherwise `true` is returned.
     def edit_message_text(
-      chat_id,
+      chat,
       text,
-      message_id = nil,
-      inline_message_id = nil,
+      message = nil,
+      inline_message = nil,
       parse_mode = ParseMode::Normal,
       disable_link_preview = false,
       reply_markup = nil
     )
-      if !message_id && !inline_message_id
+      if !message && !inline_message
         raise "A message_id or inline_message_id is required"
       end
 
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+      inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
       response = request("editMessageText", {
@@ -205,11 +218,15 @@ module Tourmaline
     # Use this method to forward messages of any kind. On success,
     # the sent `Message` is returned.
     def forward_message(
-      chat_id,
-      from_chat_id,
-      message_id,
+      chat,
+      from_chat,
+      message,
       disable_notification = false
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int) ? message : message.id
+      from_chat_id = from_chat.is_a?(Int) ? from_chat : from_chat.id
+
       response = request("forwardMessage", {
         chat_id:              chat_id,
         from_chat_id:         from_chat_id,
@@ -224,7 +241,9 @@ module Tourmaline
     # (current name of the user for one-on-one conversations,
     # current username of a user, group or channel, etc.).
     # Returns a `Model::Chat` object on success.
-    def get_chat(chat_id)
+    def get_chat(chat)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("getChat", {
         chat_id: chat_id,
       })
@@ -237,7 +256,9 @@ module Tourmaline
     # about all chat administrators except other bots. If the chat is a
     # group or a supergroup and no administrators were appointed,
     # only the creator will be returned.
-    def get_chat_administrators(chat_id)
+    def get_chat_administrators(chat)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("getChatAdministrators", {
         chat_id: chat_id,
       })
@@ -248,7 +269,10 @@ module Tourmaline
 
     # Use this method to get information about a member of a chat. Returns a
     # `Model::ChatMember` object on success.
-    def get_chat_member(chat_id, user_id)
+    def get_chat_member(chat, user)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      user_id = user.is_a?(Int) ? user : user.id
+
       response = request("getChatMember", {
         chat_id: chat_id,
         user_id: user_id,
@@ -261,7 +285,9 @@ module Tourmaline
 
     # Use this method to get the number of members in a chat.
     # Returns `Int32` on success.
-    def get_chat_members_count(chat_id)
+    def get_chat_members_count(chat)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("getChatMembersCount", {
         chat_id: chat_id,
       })
@@ -296,10 +322,12 @@ module Tourmaline
     # Use this method to get a list of profile pictures for a user.
     # Returns a `Model::UserProfilePhotos` object.
     def get_user_profile_photos(
-      user_id,
+      user,
       offset = nil,
       limit = nil
     )
+      user_id = user.is_a?(Int) ? user : user.id
+
       response = request("getUserProfilePhotos", {
         user_id: user_id,
         offset:  offset,
@@ -321,11 +349,14 @@ module Tourmaline
     # > Otherwise members may only be removed by the group's creator or
     # > by the member that added them.
     def kick_chat_member(
-      chat_id,
-      user_id,
+      chat,
+      user,
       until_date = nil
     )
-      until_date = until_date.to_unix unless until_date.is_a?(Int)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      user_id = user.is_a?(Int) ? user : user.id
+      until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
+
       response = request("kickChatMember", {
         chat_id:    chat_id,
         user_id:    user_id,
@@ -341,9 +372,12 @@ module Tourmaline
     # The bot must be an administrator for this to work.
     # Returns `true` on success.
     def unban_chat_member(
-      chat_id,
-      user_id
+      chat,
+      user
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      user_id = user.is_a?(Int) ? user : user.id
+
       response = request("unbanChatMember", {
         chat_id: chat_id,
         user_id: user_id,
@@ -358,13 +392,16 @@ module Tourmaline
     # The bot must be an administrator for this to work.
     # Returns `true` on success.
     def restrict_chat_member(
-      chat_id,
-      user_id,
+      chat,
+      user,
       permissions,
       until_date = nil,
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      user_id = user.is_a?(Int) ? user : user.id
       until_date = until_date.to_unix unless until_date.is_a?(Int)
       permissions = permissions.is_a?(NamedTuple) ? Model::ChatPermissions.new(**permissions) : permissions
+
       response = request("restrictChatMember", {
         chat_id:     chat_id,
         user_id:     user_id,
@@ -381,8 +418,8 @@ module Tourmaline
     # parameters to demote a user.
     # Returns `true` on success.
     def promote_chat_member(
-      chat_id,
-      user_id,
+      chat,
+      user,
       until_date = nil,
       can_change_info = nil,
       can_post_messages = nil,
@@ -393,6 +430,9 @@ module Tourmaline
       can_pin_messages = nil,
       can_promote_members = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      user_id = user.is_a?(Int) ? user : user.id
+
       response = request("promoteChatMember", {
         chat_id:              chat_id,
         user_id:              user_id,
@@ -414,7 +454,9 @@ module Tourmaline
     # generated link is revoked. The bot must be an administrator in the chat
     # for this to work and must have the appropriate admin rights.
     # Returns the new invite link as `String` on success.
-    def export_chat_invite_link(chat_id)
+    def export_chat_invite_link(chat)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("exportChatInviteLink", {
         chat_id: chat_id,
       })
@@ -429,7 +471,9 @@ module Tourmaline
     #
     # > **Note:** In regular groups (non-supergroups), this method will only work if the
     # > `All Members Are Admins` setting is off in the target group.
-    def set_chat_photo(chat_id, photo)
+    def set_chat_photo(chat, photo)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("setChatPhoto", {
         chat_id: chat_id,
         photo:   photo,
@@ -445,7 +489,9 @@ module Tourmaline
     #
     # > **Note:** In regular groups (non-supergroups), this method will only work if the
     # `All Members Are Admins` setting is off in the target group.
-    def delete_chat_photo(chat_id)
+    def delete_chat_photo(chat)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("deleteChatPhoto", {
         chat_id: chat_id,
       })
@@ -457,7 +503,9 @@ module Tourmaline
     # an administrator in the group or a supergroup for this to work and must have
     # the can_restrict_members admin rights.
     # Returns True on success.
-    def set_chat_permissions(chat_id, permissions)
+    def set_chat_permissions(chat, permissions)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("setChatPermissions", {
         chat_id: chat_id,
         permissions: permissions.to_json
@@ -473,7 +521,9 @@ module Tourmaline
     #
     # > **Note:** In regular groups (non-supergroups), this method will only
     # > work if the `All Members Are Admins` setting is off in the target group.
-    def set_chat_title(chat_id, title)
+    def set_chat_title(chat, title)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("setchatTitle", {
         chat_id: chat_id,
         title:   title,
@@ -486,7 +536,9 @@ module Tourmaline
     # The bot must be an administrator in the chat for this to work and
     # must have the appropriate admin rights.
     # Returns `true` on success.
-    def set_chat_description(chat_id, description)
+    def set_chat_description(chat, description)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("setchatDescription", {
         chat_id:     chat_id,
         description: description,
@@ -500,7 +552,10 @@ module Tourmaline
     # have the `can_pin_messages` admin right in the supergroup or
     # `can_edit_messages` admin right in the channel.
     # Returns `true` on success.
-    def pin_chat_message(chat_id, message_id, disable_notification = false)
+    def pin_chat_message(chat, message, disable_notification = false)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int) ? message : message.id
+
       response = request("pinChatMessage", {
         chat_id:              chat_id,
         message_id:           message_id,
@@ -515,7 +570,9 @@ module Tourmaline
     # have the ‘can_pin_messages’ admin right in the supergroup or
     # ‘can_edit_messages’ admin right in the channel.
     # Returns `true` on success.
-    def unpin_chat_message(chat_id)
+    def unpin_chat_message(chat)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("unpinChatMessage", {
         chat_id: chat_id,
       })
@@ -526,7 +583,9 @@ module Tourmaline
     # Use this method for your bot to leave a group,
     # supergroup, or channel.
     # Returns `true` on success.
-    def leave_chat(chat_id)
+    def leave_chat(chat)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("leaveChat", {
         chat_id: chat_id,
       })
@@ -543,16 +602,19 @@ module Tourmaline
     # For sending voice messages, use the `#sendVoice` method instead.
     # TODO: Add filesize checking and validation.
     def send_audio(
-      chat_id,
+      chat,
       audio,
       caption = nil,
       duration = nil,
       preformer = nil,
       title = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendAudio", {
         chat_id:              chat_id,
         audio:                audio,
@@ -569,7 +631,7 @@ module Tourmaline
     end
 
     def send_animation(
-      chat_id,
+      chat,
       animation,
       duration = nil,
       width = nil,
@@ -578,10 +640,13 @@ module Tourmaline
       caption = nil,
       parse_mode = ParseMode::Normal,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendAnimation", {
         chat_id:              chat_id,
         animation:            animation,
@@ -612,9 +677,11 @@ module Tourmaline
     # We only recommend using this method when a response from the bot will take a
     # noticeable amount of time to arrive.
     def send_chat_action(
-      chat_id,
+      chat,
       action : ChatAction
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+
       response = request("sendChatAction", {
         chat_id: chat_id,
         action:  action.to_s,
@@ -626,14 +693,17 @@ module Tourmaline
     # Use this method to send phone contacts.
     # On success, the sent `Model::Message` is returned.
     def send_contact(
-      chat_id,
+      chat,
       phone_number,
       first_name,
       last_name = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendContact", {
         chat_id:              chat_id,
         phone_number:         phone_number,
@@ -653,13 +723,16 @@ module Tourmaline
     # may be changed in the future.
     # TODO: Add filesize checking and validation.
     def send_document(
-      chat_id,
+      chat,
       document,
       caption = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendDocument", {
         chat_id:              chat_id,
         document:             document,
@@ -675,14 +748,17 @@ module Tourmaline
     # Use this method to send point on the map.
     # On success, the sent `Model::Message` is returned.
     def send_location(
-      chat_id,
+      chat,
       latitude,
       longitude,
       live_period = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendLocation", {
         chat_id:              chat_id,
         latitude:             latitude,
@@ -699,21 +775,23 @@ module Tourmaline
     # Use this method to send text messages.
     # On success, the sent `Model::Message` is returned.
     def send_message(
-      chat_id,
+      chat,
       text,
       parse_mode = ParseMode::Normal,
-      disable_link_preview = false,
+      link_preview = false,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendMessage", {
         chat_id:                  chat_id,
         text:                     text,
         parse_mode:               parse_mode,
-        disable_web_page_preview: disable_link_preview,
+        disable_web_page_preview: !link_preview,
         disable_notification:     disable_notification,
         reply_to_message_id:      reply_to_message_id,
         reply_markup:             reply_markup ? reply_markup.to_json : nil,
@@ -725,15 +803,18 @@ module Tourmaline
     # Use this method to send photos.
     # On success, the sent `Model::Message` is returned.
     def send_photo(
-      chat_id,
+      chat,
       photo,
       caption = nil,
       parse_mode = ParseMode::Normal,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendPhoto", {
         chat_id:              chat_id,
         photo:                photo,
@@ -751,11 +832,14 @@ module Tourmaline
     # On success, an array of the sent `Messages` is returned.
     # TODO: Test this.
     def send_media_group(
-      chat_id,
+      chat,
       media,
       disable_notification = false,
-      reply_to_message_id = nil
+      reply_to_message = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendMediaGroup", {
         chat_id:              chat_id,
         media:                media,
@@ -769,16 +853,19 @@ module Tourmaline
     # Use this method to send information about a venue.
     # On success, the sent `Model::Message` is returned.
     def send_venue(
-      chat_id,
+      chat,
       latitude,
       longitude,
       title,
       address,
       foursquare_id = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendVenue", {
         chat_id:              chat_id,
         latitude:             latitude,
@@ -801,16 +888,19 @@ module Tourmaline
     # changed in the future.
     # TODO: Add filesize checking and validation.
     def send_video(
-      chat_id,
+      chat,
       video,
       duration = nil,
       width = nil,
       height = nil,
       caption = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendVideo", {
         chat_id:              chat_id,
         video:                video,
@@ -831,16 +921,19 @@ module Tourmaline
     # Use this method to send video messages.
     # On success, the sent `Model::Message` is returned.
     def send_video_note(
-      chat_id,
+      chat,
       video_note,
       duration = nil,
       width = nil,
       height = nil,
       caption = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendVideoNote", {
         chat_id:              chat_id,
         video_note:           video_note,
@@ -864,16 +957,19 @@ module Tourmaline
     # messages of up to **50 MB** in size, this limit may be changed in the future.
     # TODO: Add filesize checking and validation.
     def send_voice(
-      chat_id,
+      chat,
       voice,
       caption = nil,
       duration = nil,
       preformer = nil,
       title = nil,
       disable_notification = false,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
       response = request("sendVoice", {
         chat_id:              chat_id,
         voice:                voice,
@@ -893,16 +989,20 @@ module Tourmaline
     # On success, if the edited message wasn't by the bot, the edited `Model::Message` is
     # returned, otherwise `true` is returned.
     def edit_message_live_location(
-      chat_id,
+      chat,
       latitude,
       longitude,
-      message_id = nil,
-      inline_message_id = nil,
+      message = nil,
+      inline_message = nil,
       reply_markup = nil
     )
-      if !message_id && !inline_message_id
+      if !message && !inline_message
         raise "A message_id or inline_message_id is required"
       end
+
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+      inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
 
       response = request("editMessageLiveLocation", {
         chat_id:           chat_id,
@@ -925,14 +1025,18 @@ module Tourmaline
     # On success, if the message was sent by the bot, the sent
     # `Model::Message` is returned, otherwise `true` is returned.
     def stop_message_live_location(
-      chat_id,
-      message_id = nil,
-      inline_message_id = nil,
+      chat,
+      message = nil,
+      inline_message = nil,
       reply_markup = nil
     )
       if !message_id && !inline_message_id
         raise "A message_id or inline_message_id is required"
       end
+
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+      inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
 
       response = request("stopMessageLiveLocation", {
         chat_id:           chat_id,

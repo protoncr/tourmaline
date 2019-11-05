@@ -1,19 +1,19 @@
 module Tourmaline
   module CommandRegistry
-    getter commands = {} of String => Proc(Model::Message, Array(String), Nil)
+    record CommandWrapper, name : String, prefix : String, private_only : Bool, proc : Proc(Tourmaline::Context, Nil)
+    getter commands = [] of CommandWrapper
 
     private def register_commands
       {% begin %}
         {% for command_class in Tourmaline::Bot.subclasses %}
           {% for method in command_class.methods %}
             {% if ann = (method.annotation(Command) || method.annotation(Tourmaline::Command)) %}
-              %prefix = {{ann[:prefix] || '/'}}
-              %proc = ->(message : Model::Message, params : Array(String)){ {{method.name.id}}(message, params); nil }
+              %command = {{ann[0] || ann[:command]}}
+              %prefix = {{ann[:prefix] || "/"}}
+              %private_only = {{ann[:private_only] || false}}
+              %proc = ->(ctx : Tourmaline::Context){ {{method.name.id}}(ctx); nil }
 
-              %command = {{ann[0]}}
-              %command = %command.is_a?(Array) ? %command.map { |cmd| %prefix + cmd } : %prefix + %command
-
-              command(%command, %proc)
+              command(%command, %proc, %prefix, %private_only)
             {% end %}
           {% end %}
         {% end %}
@@ -24,45 +24,42 @@ module Tourmaline
       {% end %}
     end
 
-    def command(names : String | Array(String), &block : Model::Message, Array(String) ->)
+    def command(names : String | Array(String), prefix = "/", private_only = false, &block : Tourmaline::Context ->)
       command(names, block)
     end
 
-    def command(names : String | Array(String), proc : Model::Message, Array(String) ->)
+    def command(names : String | Array(String), proc : Tourmaline::Context ->, prefix = "/", private_only = false)
       if names.is_a?(Array)
-        names.each do |name|
-          name = name[1..-1] if name[0] == "/"
-          commands[name] = proc
-        end
+        names.each { |name| command(name, proc, prefix, private_only) }
       else
-        names = names[1..-1] if names[0] == "/"
-        commands[names] = proc
+        command = CommandWrapper.new(names, prefix, private_only, proc)
+        commands << command
       end
     end
 
     private def trigger_commands(update : Model::Update)
       if message = update.message
         if message_text = message.text
-          pieces = message_text.split(' ')
+          return unless message_text.size >= 2
 
-          command = pieces[0]
+          command = message_text.split(" ")[0]
+          text    = message_text.sub(command, "").lstrip
 
           # Check if the command has the bot's name attached
           if command.includes?("@")
-            cmd_pieces = command.split("@")
-            if cmd_pieces[1] != bot_name
+            command, name = command.split("@")
+            if name != bot_name
               return
             end
-
-            command = cmd_pieces[0]
           end
 
-          params = pieces[1..-1]
-
           # Check the command against the commands hash
-          if @commands.has_key?(command)
-            proc = @commands[command]
-            spawn proc.call(message, params)
+          @commands.each do |cmd|
+            if cmd.name == command[1..-1] && cmd.prefix == command[0].to_s
+              return if cmd.private_only && !(message.chat.type == "private")
+              context = Tourmaline::Context.new(self, update, message, command[1..-1], text)
+              spawn cmd.proc.call(context)
+            end
           end
         end
       end

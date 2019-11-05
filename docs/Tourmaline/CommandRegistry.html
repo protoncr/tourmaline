@@ -71,8 +71,23 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
+  <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="../Tourmaline/CommandRegistry.html">CommandRegistry</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry/CommandWrapper" data-name="tourmaline::commandregistry::commandwrapper">
+      <a href="../Tourmaline/CommandRegistry/CommandWrapper.html">CommandWrapper</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Context" data-name="tourmaline::context">
+      <a href="../Tourmaline/Context.html">Context</a>
       
     </li>
   
@@ -661,7 +676,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/registries/command_registry.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/registries/command_registry.cr#L2" target="_blank">
         tourmaline/registries/command_registry.cr
       </a>
     
@@ -680,12 +695,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#command(names:String%7CArray(String),&block:Model::Message,Array(String)-%3E)-instance-method" class="signature"><strong>#command</strong>(names : String | Array(String), &block : Model::Message, Array(String) -> )</a>
+        <a href="#command(names:String%7CArray(String),prefix=&quot;/&quot;,private_only=false,&block:Tourmaline::Context-%3E)-instance-method" class="signature"><strong>#command</strong>(names : String | Array(String), prefix = <span class="s">&quot;/&quot;</span>, private_only = <span class="n">false</span>, &block : Tourmaline::Context -> )</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#command(names:String%7CArray(String),proc:Model::Message,Array(String)-%3E)-instance-method" class="signature"><strong>#command</strong>(names : String | Array(String), proc : Model::Message, Array(String) -> )</a>
+        <a href="#command(names:String%7CArray(String),proc:Tourmaline::Context-%3E,prefix=&quot;/&quot;,private_only=false)-instance-method" class="signature"><strong>#command</strong>(names : String | Array(String), proc : Tourmaline::Context -> , prefix = <span class="s">&quot;/&quot;</span>, private_only = <span class="n">false</span>)</a>
         
       </li>
     
@@ -711,34 +726,34 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="command(names:String|Array(String),&amp;block:Model::Message,Array(String)-&gt;)-instance-method">
+    <div class="entry-detail" id="command(names:String|Array(String),prefix=&amp;quot;/&amp;quot;,private_only=false,&amp;block:Tourmaline::Context-&gt;)-instance-method">
       <div class="signature">
         
-        def <strong>command</strong>(names : String | Array(String), &block : <a href="../Tourmaline/Model/Message.html">Model::Message</a>, Array(String) -> )
+        def <strong>command</strong>(names : String | Array(String), prefix = <span class="s">&quot;/&quot;</span>, private_only = <span class="n">false</span>, &block : <a href="../Tourmaline/Context.html">Tourmaline::Context</a> -> )
 
-        <a class="method-permalink" href="#command(names:String%7CArray(String),&block:Model::Message,Array(String)-%3E)-instance-method">#</a>
+        <a class="method-permalink" href="#command(names:String%7CArray(String),prefix=&quot;/&quot;,private_only=false,&block:Tourmaline::Context-%3E)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/registries/command_registry.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/registries/command_registry.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="command(names:String|Array(String),proc:Model::Message,Array(String)-&gt;)-instance-method">
+    <div class="entry-detail" id="command(names:String|Array(String),proc:Tourmaline::Context-&gt;,prefix=&amp;quot;/&amp;quot;,private_only=false)-instance-method">
       <div class="signature">
         
-        def <strong>command</strong>(names : String | Array(String), proc : <a href="../Tourmaline/Model/Message.html">Model::Message</a>, Array(String) -> )
+        def <strong>command</strong>(names : String | Array(String), proc : <a href="../Tourmaline/Context.html">Tourmaline::Context</a> -> , prefix = <span class="s">&quot;/&quot;</span>, private_only = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#command(names:String%7CArray(String),proc:Model::Message,Array(String)-%3E)-instance-method">#</a>
+        <a class="method-permalink" href="#command(names:String%7CArray(String),proc:Tourmaline::Context-%3E,prefix=&quot;/&quot;,private_only=false)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/registries/command_registry.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/registries/command_registry.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -754,7 +769,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/registries/command_registry.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/registries/command_registry.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>

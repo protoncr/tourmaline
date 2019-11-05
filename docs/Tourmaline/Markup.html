@@ -71,8 +71,23 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="../Tourmaline/CommandRegistry.html">CommandRegistry</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry/CommandWrapper" data-name="tourmaline::commandregistry::commandwrapper">
+      <a href="../Tourmaline/CommandRegistry/CommandWrapper.html">CommandWrapper</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Context" data-name="tourmaline::context">
+      <a href="../Tourmaline/Context.html">Context</a>
       
     </li>
   
@@ -661,7 +676,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L2" target="_blank">
         tourmaline/markup.cr
       </a>
     
@@ -776,7 +791,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -792,7 +807,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -808,7 +823,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -824,7 +839,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L90" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -840,7 +855,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -853,12 +868,15 @@
         <a class="method-permalink" href="#inline_keyboard(buttons:Array(Array(NamedTuple%7CModel::InlineKeyboardButton)))-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Create an inline keyboard using the provided <code>buttons</code>.</p></div>
+        <div class="doc">
+          
+          <p>Create an inline keyboard using the provided <code>buttons</code>.</p>
+        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -871,7 +889,9 @@
         <a class="method-permalink" href="#keyboard(buttons:Array(Array(String%7CNamedTuple%7CModel::KeyboardButton)),resize=false,one_time=false,selective=nil)-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Creates a reply keyboard using the provided <code>buttons</code> and options.</p>
+        <div class="doc">
+          
+          <p>Creates a reply keyboard using the provided <code>buttons</code> and options.</p>
 
 <p>If <code>resize</code> is true, clients will attempt to resize the keyboard vertically
 for optimal fit (e.g., make the keyboard smaller if there are just
@@ -885,12 +905,13 @@ in the input field to see the custom keyboard again. Defaults to false.</p>
 <p>If <code>selective</code> is true, the keyboard will be displayed to specific users only.
 Targets: 1) users that are @mentioned in the text of the Message object;
 2) if the bot's message is a reply (has reply_to_message_id), sender
-of the original message.</p></div>
+of the original message.</p>
+        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -906,7 +927,7 @@ of the original message.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -922,7 +943,7 @@ of the original message.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L98" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -938,7 +959,7 @@ of the original message.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L94" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L94" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -954,7 +975,7 @@ of the original message.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L82" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L82" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -970,7 +991,7 @@ of the original message.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L86" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L86" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -986,7 +1007,7 @@ of the original message.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/markup.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/markup.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>

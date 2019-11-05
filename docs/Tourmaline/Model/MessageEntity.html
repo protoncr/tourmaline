@@ -71,8 +71,23 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
+  <li class="parent " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="../../Tourmaline/CommandRegistry.html">CommandRegistry</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry/CommandWrapper" data-name="tourmaline::commandregistry::commandwrapper">
+      <a href="../../Tourmaline/CommandRegistry/CommandWrapper.html">CommandWrapper</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Context" data-name="tourmaline::context">
+      <a href="../../Tourmaline/Context.html">Context</a>
       
     </li>
   
@@ -630,12 +645,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Tourmaline::Model::MessageEntity
+  <span class="kind">class</span> Tourmaline::Model::MessageEntity
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Tourmaline/Model/MessageEntity.html">Tourmaline::Model::MessageEntity</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Tourmaline/Model/MessageEntity.html">Tourmaline::Model::MessageEntity</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -663,8 +678,8 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/message.cr#L183" target="_blank">
-        tourmaline/models/message.cr
+      <a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L2" target="_blank">
+        tourmaline/models/message_entity.cr
       </a>
     
     <br/>
@@ -672,15 +687,22 @@
 
 
 
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="MENTION_TYPES">
+        <strong>MENTION_TYPES</strong> = <code>[<span class="s">&quot;mention&quot;</span>, <span class="s">&quot;text_mention&quot;</span>, <span class="s">&quot;hashtag&quot;</span>, <span class="s">&quot;cashtag&quot;</span>, <span class="s">&quot;bot_command&quot;</span>, <span class="s">&quot;url&quot;</span>, <span class="s">&quot;email&quot;</span>, <span class="s">&quot;phone_number&quot;</span>, <span class="s">&quot;bold&quot;</span>, <span class="s">&quot;italic&quot;</span>, <span class="s">&quot;code&quot;</span>, <span class="s">&quot;pre&quot;</span>, <span class="s">&quot;text_link&quot;</span>] <span class="k">of</span> <span class="t">::</span><span class="t">String</span></code>
+      </dt>
+      
+    
+  </dl>
+
 
 
   <h2>Constructors</h2>
   <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new(type:String,offset:Int64,length:Int64,url:String?,user:User?)-class-method" class="signature"><strong>.new</strong>(type : String, offset : Int64, length : Int64, url : String?, user : User?)</a>
-        
-      </li>
     
       <li class="entry-summary">
         <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
@@ -697,12 +719,37 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        <a href="#bold?-instance-method" class="signature"><strong>#bold?</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_with(type_type=@type,offset_offset=@offset,length_length=@length,url_url=@url,user_user=@user)-instance-method" class="signature"><strong>#copy_with</strong>(type _type = @type, offset _offset = @offset, length _length = @length, url _url = @url, user _user = @user)</a>
+        <a href="#bot_command?-instance-method" class="signature"><strong>#bot_command?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cashtag?-instance-method" class="signature"><strong>#cashtag?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code?-instance-method" class="signature"><strong>#code?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#email?-instance-method" class="signature"><strong>#email?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hashtag?-instance-method" class="signature"><strong>#hashtag?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#italic?-instance-method" class="signature"><strong>#italic?</strong></a>
         
       </li>
     
@@ -712,7 +759,32 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#mention?-instance-method" class="signature"><strong>#mention?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#offset:Int64-instance-method" class="signature"><strong>#offset</strong> : Int64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#phone_number?-instance-method" class="signature"><strong>#phone_number?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pre?-instance-method" class="signature"><strong>#pre?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text_link?-instance-method" class="signature"><strong>#text_link?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text_mention?-instance-method" class="signature"><strong>#text_mention?</strong></a>
         
       </li>
     
@@ -723,6 +795,11 @@
     
       <li class="entry-summary">
         <a href="#url:String?-instance-method" class="signature"><strong>#url</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#url?-instance-method" class="signature"><strong>#url?</strong></a>
         
       </li>
     
@@ -769,36 +846,10 @@
 
 
   
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
 
   <h2>Constructor Detail</h2>
-  
-    <div class="entry-detail" id="new(type:String,offset:Int64,length:Int64,url:String?,user:User?)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(type : String, offset : Int64, length : Int64, url : String?, user : <a href="../../Tourmaline/Model/User.html">User</a>?)
-
-        <a class="method-permalink" href="#new(type:String,offset:Int64,length:Int64,url:String?,user:User?)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/message.cr#L183" target="_blank">View source</a>]
-        
-      </div>
-    </div>
   
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
@@ -811,7 +862,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/message.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L3" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -823,34 +874,114 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="clone-instance-method">
+    <div class="entry-detail" id="bold?-instance-method">
       <div class="signature">
         
-        def <strong>clone</strong>
+        def <strong>bold?</strong>
 
-        <a class="method-permalink" href="#clone-instance-method">#</a>
+        <a class="method-permalink" href="#bold?-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/message.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="copy_with(type_type=@type,offset_offset=@offset,length_length=@length,url_url=@url,user_user=@user)-instance-method">
+    <div class="entry-detail" id="bot_command?-instance-method">
       <div class="signature">
         
-        def <strong>copy_with</strong>(type _type = @type, offset _offset = @offset, length _length = @length, url _url = @url, user _user = @user)
+        def <strong>bot_command?</strong>
 
-        <a class="method-permalink" href="#copy_with(type_type=@type,offset_offset=@offset,length_length=@length,url_url=@url,user_user=@user)-instance-method">#</a>
+        <a class="method-permalink" href="#bot_command?-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/4b6fc7f185c60e7048e672cc9210e892968a4591/src/tourmaline/models/message.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cashtag?-instance-method">
+      <div class="signature">
+        
+        def <strong>cashtag?</strong>
+
+        <a class="method-permalink" href="#cashtag?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code?-instance-method">
+      <div class="signature">
+        
+        def <strong>code?</strong>
+
+        <a class="method-permalink" href="#code?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="email?-instance-method">
+      <div class="signature">
+        
+        def <strong>email?</strong>
+
+        <a class="method-permalink" href="#email?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hashtag?-instance-method">
+      <div class="signature">
+        
+        def <strong>hashtag?</strong>
+
+        <a class="method-permalink" href="#hashtag?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="italic?-instance-method">
+      <div class="signature">
+        
+        def <strong>italic?</strong>
+
+        <a class="method-permalink" href="#italic?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -866,6 +997,24 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mention?-instance-method">
+      <div class="signature">
+        
+        def <strong>mention?</strong>
+
+        <a class="method-permalink" href="#mention?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -879,6 +1028,72 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="phone_number?-instance-method">
+      <div class="signature">
+        
+        def <strong>phone_number?</strong>
+
+        <a class="method-permalink" href="#phone_number?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pre?-instance-method">
+      <div class="signature">
+        
+        def <strong>pre?</strong>
+
+        <a class="method-permalink" href="#pre?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text_link?-instance-method">
+      <div class="signature">
+        
+        def <strong>text_link?</strong>
+
+        <a class="method-permalink" href="#text_link?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text_mention?-instance-method">
+      <div class="signature">
+        
+        def <strong>text_mention?</strong>
+
+        <a class="method-permalink" href="#text_mention?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -894,6 +1109,8 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L12" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -908,6 +1125,24 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="url?-instance-method">
+      <div class="signature">
+        
+        def <strong>url?</strong>
+
+        <a class="method-permalink" href="#url?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -921,6 +1156,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/5666e68392bde0d8d53ee72a05818dc5d3f45eaa/src/tourmaline/models/message_entity.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>

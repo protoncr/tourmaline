@@ -2,6 +2,7 @@ require "halite"
 
 require "./error"
 require "./logger"
+require "./context"
 require "./bot_container"
 require "./chat_action"
 require "./update_action"
