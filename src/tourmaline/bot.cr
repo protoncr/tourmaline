@@ -39,7 +39,7 @@ module Tourmaline
       @updates_timeout : Int32? = nil,
       @allowed_updates : Array(String)? = nil
     )
-      @endpoint_url = ::File.join(API_URL, "bot" + @api_key)
+      @endpoint_url = Path[API_URL, "bot" + @api_key].to_s
       register_commands
       register_patterns
       register_event_listeners
