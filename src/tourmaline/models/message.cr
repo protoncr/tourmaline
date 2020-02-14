@@ -1,7 +1,7 @@
 require "json"
 require "./message_entity"
 
-module Tourmaline::Model
+module Tourmaline
   # # This object represents a Telegram user or bot.
   class Message
     include JSON::Serializable
@@ -38,9 +38,9 @@ module Tourmaline::Model
 
     getter text : String?
 
-    getter entities : Array(MessageEntity) = [] of Tourmaline::Model::MessageEntity
+    getter entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
 
-    getter caption_entities : Array(MessageEntity) = [] of Tourmaline::Model::MessageEntity
+    getter caption_entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
 
     getter audio : Audio?
 
@@ -48,7 +48,7 @@ module Tourmaline::Model
 
     getter game : Game?
 
-    getter photo : Array(PhotoSize) = [] of Tourmaline::Model::PhotoSize
+    getter photo : Array(PhotoSize) = [] of Tourmaline::PhotoSize
 
     getter sticker : Sticker?
 
@@ -66,13 +66,13 @@ module Tourmaline::Model
 
     getter venue : Venue?
 
-    getter new_chat_members : Array(User) = [] of Tourmaline::Model::User
+    getter new_chat_members : Array(User) = [] of Tourmaline::User
 
     getter left_chat_member : User?
 
     getter new_chat_title : String?
 
-    getter new_chat_photo : Array(PhotoSize) = [] of Tourmaline::Model::PhotoSize
+    getter new_chat_photo : Array(PhotoSize) = [] of Tourmaline::PhotoSize
 
     getter delete_chat_photo : Bool?
 

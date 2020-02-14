@@ -1,6 +1,6 @@
 require "json"
 
-module Tourmaline::Model
+module Tourmaline
   class CallbackGame
     include JSON::Serializable
   end

@@ -1,12 +1,12 @@
 module Tourmaline
   class Bot
     # Use this method to send `.webp` stickers.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     #
     # See: https://core.telegram.org/bots/api#stickers for more info.
     def send_sticker(
       chat_id : Int32 | String,
-      sticker : Model::InputFile | String,
+      sticker : InputFile | String,
       disable_notification : Bool? = nil,
       reply_to_message_id : Int32? = nil,
       reply_markup = nil
@@ -19,7 +19,7 @@ module Tourmaline
         reply_markup:          reply_markup,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to get a sticker set.
@@ -29,7 +29,7 @@ module Tourmaline
         name: name,
       })
 
-      Model::StickerSet.from_json(response)
+      StickerSet.from_json(response)
     end
 
     # Use this method to set a new group sticker set for a supergroup. The bot must
@@ -123,14 +123,14 @@ module Tourmaline
     # Use this method to upload a .png file with a sticker for later use in
     # `#create_new_sticker_set` and `#add_sticker_to_set` methods (can be
     # used multiple times).
-    # Returns the uploaded `Model::File` on success.
+    # Returns the uploaded `File` on success.
     def upload_sticker_file(user_id, png_sticker)
       response = request("uploadStickerFile", {
         user_id:     user_id,
         png_sticker: png_sticker,
       })
 
-      Model::File.from_json(response)
+      File.from_json(response)
     end
   end
 end

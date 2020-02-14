@@ -1,6 +1,6 @@
 require "json"
 
-module Tourmaline::Model
+module Tourmaline
   class InlineQueryResultCachedVoice < InlineQueryResult
     include JSON::Serializable
 

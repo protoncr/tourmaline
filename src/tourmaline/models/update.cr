@@ -1,6 +1,6 @@
 require "json"
 
-module Tourmaline::Model
+module Tourmaline
   # # This object represents a Telegram user or bot.
   struct Update
     include JSON::Serializable

@@ -35,7 +35,7 @@ module Tourmaline
     class Context
       property bot : Tourmaline::Bot
 
-      property update : Tourmaline::Model::Update
+      property update : Tourmaline::Update
 
       def initialize(@bot, @update)
       end

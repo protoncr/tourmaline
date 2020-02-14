@@ -13,15 +13,15 @@ module Tourmaline
 
     # A simple method for testing your bot's auth token. Requires
     # no parameters. Returns basic information about the bot
-    # in form of a `Model::User` object.
+    # in form of a `User` object.
     def get_me
       response = request("getMe")
-      Model::User.from_json(response)
+      User.from_json(response)
     end
 
     # Use this method to receive incoming updates using long polling
     # ([wiki](http://en.wikipedia.org/wiki/Push_technology#Long_polling)).
-    # An `Array` of `Model::Update` objects is returned.
+    # An `Array` of `Update` objects is returned.
     def get_updates(
       offset = @next_offset,
       limit = nil,
@@ -35,7 +35,7 @@ module Tourmaline
         allowed_updates: allowed_updates,
       })
 
-      updates = Array(Model::Update).from_json(response)
+      updates = Array(Update).from_json(response)
 
       if !updates.empty?
         @next_offset = updates.last.update_id + 1
@@ -98,7 +98,7 @@ module Tourmaline
       response == "true"
     end
 
-    # Use this method to delete a `Model::Message`, including service messages,
+    # Use this method to delete a `Message`, including service messages,
     # with the following limitations:
     # - A message can only be deleted if it was sent less than 48 hours ago.
     # - Bots can delete outgoing messages in private chats, groups, and supergroups.
@@ -122,7 +122,7 @@ module Tourmaline
 
     # Use this method to edit captions of messages. On success,
     # if edited message is sent by the bot, the edited
-    # `Model::Message` is returned, otherwise `true`
+    # `Message` is returned, otherwise `true`
     # is returned.
     def edit_message_caption(
       chat,
@@ -150,7 +150,7 @@ module Tourmaline
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
-      response.is_a?(String) ? response == "true" : Model::Message.from_json(response)
+      response.is_a?(String) ? response == "true" : Message.from_json(response)
     end
 
     # Use this method to edit only the reply markup of messages.
@@ -178,7 +178,7 @@ module Tourmaline
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
-      response.is_a?(String) ? response == "true" : Model::Message.from_json(response)
+      response.is_a?(String) ? response == "true" : Message.from_json(response)
     end
 
     # Use this method to edit text and game messages. On success, if
@@ -212,7 +212,7 @@ module Tourmaline
         reply_markup:             reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to forward messages of any kind. On success,
@@ -234,13 +234,13 @@ module Tourmaline
         disable_notification: disable_notification,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to get up to date information about the chat
     # (current name of the user for one-on-one conversations,
     # current username of a user, group or channel, etc.).
-    # Returns a `Model::Chat` object on success.
+    # Returns a `Chat` object on success.
     def get_chat(chat)
       chat_id = chat.is_a?(Int) ? chat : chat.id
 
@@ -248,7 +248,7 @@ module Tourmaline
         chat_id: chat_id,
       })
 
-      Model::Chat.from_json(response)
+      Chat.from_json(response)
     end
 
     # Use this method to get a list of administrators in a chat. On success,
@@ -263,12 +263,12 @@ module Tourmaline
         chat_id: chat_id,
       })
 
-      admins = Array(Model::ChatMember).from_json(response)
+      admins = Array(ChatMember).from_json(response)
       admins.map { |admin| admin.chat_id = chat_id }
     end
 
     # Use this method to get information about a member of a chat. Returns a
-    # `Model::ChatMember` object on success.
+    # `ChatMember` object on success.
     def get_chat_member(chat, user)
       chat_id = chat.is_a?(Int) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
@@ -278,7 +278,7 @@ module Tourmaline
         user_id: user_id,
       })
 
-      chat_member = Model::ChatMember.from_json(response)
+      chat_member = ChatMember.from_json(response)
       chat_member.chat_id = chat_id
       chat_member
     end
@@ -297,7 +297,7 @@ module Tourmaline
 
     # Use this method to get basic info about a file and prepare it for downloading.
     # For the moment, bots can download files of up to **20MB** in size. On success,
-    # a `Model::File` object is returned. The file can then be downloaded via the
+    # a `File` object is returned. The file can then be downloaded via the
     # link `https://api.telegram.org/file/bot<token>/<file_path>`, where
     # `<file_path>` is taken from the response. It is guaranteed that
     # the link will be valid for at least 1 hour. When the link
@@ -309,7 +309,7 @@ module Tourmaline
         file_id: file_id,
       })
 
-      Model::File.from_json(response)
+      File.from_json(response)
     end
 
     # Returns a download link for a `File`.
@@ -320,7 +320,7 @@ module Tourmaline
     end
 
     # Use this method to get a list of profile pictures for a user.
-    # Returns a `Model::UserProfilePhotos` object.
+    # Returns a `UserProfilePhotos` object.
     def get_user_profile_photos(
       user,
       offset = nil,
@@ -334,7 +334,7 @@ module Tourmaline
         limit:   limit,
       })
 
-      Model::UserProfilePhotos.from_json(response)
+      UserProfilePhotos.from_json(response)
     end
 
     # Use this method to kick a user from a group, a supergroup or a channel.
@@ -400,7 +400,7 @@ module Tourmaline
       chat_id = chat.is_a?(Int) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
       until_date = until_date.to_unix unless until_date.is_a?(Int)
-      permissions = permissions.is_a?(NamedTuple) ? Model::ChatPermissions.new(**permissions) : permissions
+      permissions = permissions.is_a?(NamedTuple) ? ChatPermissions.new(**permissions) : permissions
 
       response = request("restrictChatMember", {
         chat_id:     chat_id,
@@ -605,12 +605,12 @@ module Tourmaline
         chat_id: chat_id,
       })
 
-      Model::Chat.from_json(response)
+      Chat.from_json(response)
     end
 
     # Use this method to send audio files, if you want Telegram clients to display
     # them in the music player. Your audio must be in the `.mp3` format.
-    # On success, the sent `Model::Message` is returned. Bots can currently
+    # On success, the sent `Message` is returned. Bots can currently
     # send audio files of up to **50 MB** in size, this limit may be
     # changed in the future.
     #
@@ -642,7 +642,7 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     def send_animation(
@@ -676,7 +676,7 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method when you need to tell the user that something is happening on the
@@ -706,7 +706,7 @@ module Tourmaline
     end
 
     # Use this method to send phone contacts.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_contact(
       chat,
       phone_number,
@@ -729,11 +729,11 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to send general files.
-    # On success, the sent `Model::Message` is returned. Bots can currently send files
+    # On success, the sent `Message` is returned. Bots can currently send files
     # of any type of up to **50 MB** in size, this limit
     # may be changed in the future.
     # TODO: Add filesize checking and validation.
@@ -757,11 +757,11 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to send point on the map.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_location(
       chat,
       latitude,
@@ -784,11 +784,11 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to send text messages.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_message(
       chat,
       text,
@@ -812,11 +812,11 @@ module Tourmaline
         reply_markup:             reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to send photos.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_photo(
       chat,
       photo,
@@ -840,7 +840,7 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to send a group of photos or videos as an album.
@@ -862,11 +862,11 @@ module Tourmaline
         reply_to_message_id:  reply_to_message_id,
       })
 
-      Array(Model::Message).from_json(response)
+      Array(Message).from_json(response)
     end
 
     # Use this method to send information about a venue.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_venue(
       chat,
       latitude,
@@ -893,12 +893,12 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to send video files, Telegram clients support mp4 videos
     # (other formats may be sent as Document).
-    # On success, the sent `Model::Message` is returned. Bots can currently send
+    # On success, the sent `Message` is returned. Bots can currently send
     # video files of up to **50 MB** in size, this limit may be
     # changed in the future.
     # TODO: Add filesize checking and validation.
@@ -928,13 +928,13 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram
     # clients support rounded square `mp4` videos of up to **1** minute long.
     # Use this method to send video messages.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_video_note(
       chat,
       video_note,
@@ -961,14 +961,14 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to send audio files, if you want Telegram clients to display the
     # file as a playable voice message. For this to work, your audio must be in
     # an `.ogg` file encoded with OPUS (other formats may be sent as `Audio`
     # or `Document`).
-    # On success, the sent `Model::Message` is returned. Bots can currently send voice
+    # On success, the sent `Message` is returned. Bots can currently send voice
     # messages of up to **50 MB** in size, this limit may be changed in the future.
     # TODO: Add filesize checking and validation.
     def send_voice(
@@ -995,13 +995,13 @@ module Tourmaline
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to edit live location messages. A location can be edited until
     # its live_period expires or editing is explicitly disabled by a call to
     # `#stopMessageLiveLocation`.
-    # On success, if the edited message wasn't by the bot, the edited `Model::Message` is
+    # On success, if the edited message wasn't by the bot, the edited `Message` is
     # returned, otherwise `true` is returned.
     def edit_message_live_location(
       chat,
@@ -1032,13 +1032,13 @@ module Tourmaline
         return message == "true"
       end
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to stop updating a live location message before
     # live_period expires.
     # On success, if the message was sent by the bot, the sent
-    # `Model::Message` is returned, otherwise `true` is returned.
+    # `Message` is returned, otherwise `true` is returned.
     def stop_message_live_location(
       chat,
       message = nil,
@@ -1060,7 +1060,7 @@ module Tourmaline
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     ##########################

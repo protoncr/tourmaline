@@ -1,6 +1,6 @@
 require "json"
 
-module Tourmaline::Model
+module Tourmaline
   # # This object represents a Telegram user or bot.
   class Chat
     include JSON::Serializable

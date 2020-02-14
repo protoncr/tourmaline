@@ -13,7 +13,7 @@ module Tourmaline
       @middlewares[middleware.name] = middleware
     end
 
-    protected def trigger_all_middlewares(update : Model::Update)
+    protected def trigger_all_middlewares(update : Update)
       context = Middleware::Context.new(self, update)
       @middlewares.keys.each { |k| @middlewares[k].call(context) }
     end

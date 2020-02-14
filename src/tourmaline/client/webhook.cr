@@ -7,7 +7,7 @@ module Tourmaline
       server = HTTP::Server.new do |context|
         begin
           Fiber.current.telegram_bot_server_http_context = context
-          handle_update(Model::Update.from_json(context.request.body.not_nil!))
+          handle_update(Update.from_json(context.request.body.not_nil!))
         rescue exception
           @@logger.error(exception.message.to_s)
         ensure
@@ -33,7 +33,7 @@ module Tourmaline
 
     # Use this method to specify a url and receive incoming updates via an outgoing webhook.
     # Whenever there is an update for the bot, we will send an HTTPS POST request to the
-    # specified url, containing a JSON-serialized `Model::Update`. In case of an unsuccessful
+    # specified url, containing a JSON-serialized `Update`. In case of an unsuccessful
     # request, we will give up after a reasonable amount of attempts.
     # Returns `true` on success.
     #
@@ -57,7 +57,7 @@ module Tourmaline
     # url field empty.
     def get_webhook_info
       response = request("getWebhookInfo")
-      Model::WebhookInfo.from_json(response)
+      WebhookInfo.from_json(response)
     end
 
     # Use this method to remove webhook integration if you decide to switch

@@ -1,27 +1,27 @@
 module Tourmaline
   module PatternRegistry
     getter patterns = {} of Regex => Int32
-    getter procs = [] of Proc(Model::Message, Nil)
+    getter procs = [] of Proc(Message, Nil)
 
     private def register_patterns
       {% begin %}
         {% for command_class in Tourmaline::Bot.subclasses %}
           {% for method in command_class.methods %}
             {% if ann = (method.annotation(Hears) || method.annotation(Tourmaline::Hears)) %}
-              %proc = ->(message : Model::Message){ {{method.name.id}}(message); nil }
+              %proc = ->(message : Message){ {{method.name.id}}(message); nil }
               hears({{ ann[0] }}, %proc)
             {% end %}
           {% end %}
         {% end %}
-        on(:message, ->trigger_patterns(Model::Update))
+        on(:message, ->trigger_patterns(Update))
       {% end %}
     end
 
-    def hears(patterns : String | Regex | Array(String | Regex), &block : Model::Message ->)
+    def hears(patterns : String | Regex | Array(String | Regex), &block : Message ->)
       hears(patterns, block)
     end
 
-    def hears(patterns : String | Regex | Array(String | Regex), proc : Model::Message ->)
+    def hears(patterns : String | Regex | Array(String | Regex), proc : Message ->)
       procs.push(proc)
       proc_idx = procs.size - 1
 
@@ -37,7 +37,7 @@ module Tourmaline
       end
     end
 
-    private def trigger_patterns(update : Model::Update)
+    private def trigger_patterns(update : Update)
       if message = update.message
         if message_text = message.text
           patterns.each do |(pattern, proc_idx)|

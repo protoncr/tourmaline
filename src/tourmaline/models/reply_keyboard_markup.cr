@@ -1,7 +1,7 @@
 require "json"
 
-module Tourmaline::Model
-  alias Button = Model::KeyboardButton | Model::InlineKeyboardButton
+module Tourmaline
+  alias Button = KeyboardButton | InlineKeyboardButton
 
   class KeyboardButton
     include JSON::Serializable
@@ -23,7 +23,7 @@ module Tourmaline::Model
   class KeyboardButtonPollType
     include JSON::Serializable
 
-    @[JSON::Field(converter: Tourmaline::Model::Poll::PollTypeConverter)]
+    @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
     getter type : PollType
 
     def initialize(@type)

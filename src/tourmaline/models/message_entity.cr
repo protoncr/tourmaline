@@ -1,4 +1,4 @@
-module Tourmaline::Model
+module Tourmaline
   class MessageEntity
     include JSON::Serializable
 

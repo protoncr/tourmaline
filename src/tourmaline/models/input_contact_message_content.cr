@@ -1,7 +1,7 @@
 require "json"
 require "./input_message_content.cr"
 
-module Tourmaline::Model
+module Tourmaline
   class InputContactMessageContent
     include JSON::Serializable
 

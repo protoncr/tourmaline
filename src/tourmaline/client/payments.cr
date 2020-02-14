@@ -1,7 +1,7 @@
 module Tourmaline
   class Bot
     # Use this method to send invoices.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_invoice(
       chat_id,
       title,
@@ -49,11 +49,11 @@ module Tourmaline
         reply_markup:                  reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # If you sent an invoice requesting a shipping address and the parameter is_flexible
-    # was specified, the Bot API will send a `Model::Update` with a shipping_query field to
+    # was specified, the Bot API will send a `Update` with a shipping_query field to
     # the bot. Use this method to reply to shipping queries.
     # On success, `true` is returned.
     def answer_shipping_query(
@@ -73,7 +73,7 @@ module Tourmaline
     end
 
     # Once the user has confirmed their payment and shipping details, the Bot API sends
-    # the final confirmation in the form of a `Model::Update` with the field pre_checkout_query.
+    # the final confirmation in the form of a `Update` with the field pre_checkout_query.
     # Use this method to respond to such pre-checkout queries.
     # On success, `true` is returned.
     #
@@ -96,16 +96,16 @@ module Tourmaline
     # Convenience method to create and `Array` of `LabledPrice` from an `Array`
     # of `NamedTuple(label: String, amount: Int32)`.
     def labeled_prices(lp : Array(NamedTuple(label: String, amount: Int32)))
-      lp.reduce([] of Tourmaline::Model::LabeledPrice) { |acc, i|
-        acc << Tourmaline::Model::LabeledPrice.new(label: i[:label], amount: i[:amount])
+      lp.reduce([] of Tourmaline::LabeledPrice) { |acc, i|
+        acc << Tourmaline::LabeledPrice.new(label: i[:label], amount: i[:amount])
       }
     end
 
     # Convenience method to create an `Array` of `ShippingOption` from a
     # `NamedTuple(id: String, title: String, prices: Array(LabeledPrice))`.
     def shipping_options(options : Array(NamedTuple(id: String, title: String, prices: Array(LabeledPrice))))
-      lp.reduce([] of Tourmaline::Model::ShippingOption) { |acc, i|
-        acc << Tourmaline::Model::ShippingOption.new(id: i[:id], title: i[:title], prices: i[:prices])
+      lp.reduce([] of Tourmaline::ShippingOption) { |acc, i|
+        acc << Tourmaline::ShippingOption.new(id: i[:id], title: i[:title], prices: i[:prices])
       }
     end
   end

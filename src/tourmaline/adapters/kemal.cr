@@ -8,7 +8,7 @@ require "kemal"
 # and handled accordingly.
 module Tourmaline
   class KemalAdapter < Kemal::Handler
-    alias TGModel = Tourmaline::Model
+    alias TGModel = Tourmaline
 
     property bot : Tourmaline::Bot
 
@@ -63,7 +63,7 @@ module Tourmaline
       return call_next(context) unless only_match?(context)
 
       if body = context.request.body
-        update = TGModel::Update.from_json(body)
+        update = TGUpdate.from_json(body)
         @bot.handle_update(update)
         pp update
       end

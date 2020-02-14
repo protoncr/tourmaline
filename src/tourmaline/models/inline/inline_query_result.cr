@@ -1,6 +1,6 @@
 require "json"
 
-module Tourmaline::Model
+module Tourmaline
   abstract class InlineQueryResult
     include JSON::Serializable
   end

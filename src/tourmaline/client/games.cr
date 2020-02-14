@@ -1,7 +1,7 @@
 module Tourmaline
   class Bot
     # Use this method to send a game.
-    # On success, the sent `Model::Message` is returned.
+    # On success, the sent `Message` is returned.
     def send_game(
       chat_id,
       game_short_name,
@@ -17,7 +17,7 @@ module Tourmaline
         reply_markup:         reply_markup,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to set the score of the specified user in a game. On success,
@@ -48,13 +48,13 @@ module Tourmaline
       if response == "true"
         true
       else
-        Model::Message.from_json(response)
+        Message.from_json(response)
       end
     end
 
     # Use this method to get data for high score tables. Will return the score of the
     # specified user and several of his neighbors in a game.
-    # On success, returns an `Array` of `Model::GameHighScore` objects.
+    # On success, returns an `Array` of `GameHighScore` objects.
     #
     # > This method will currently return scores for the target user, plus two of his
     # > closest neighbors on each side. Will also return the top three users if the
@@ -73,7 +73,7 @@ module Tourmaline
         inline_message_id: inline_message_id,
       })
 
-      Array(Model::GameHighScore).from_json(response)
+      Array(GameHighScore).from_json(response)
     end
   end
 end

@@ -47,7 +47,7 @@ module Tourmaline
       BotContainer.bot = self
     end
 
-    private def handle_update(update : Model::Update)
+    private def handle_update(update : Update)
       @@logger.debug(update.to_pretty_json)
       trigger_all_middlewares(update)
 
@@ -97,7 +97,7 @@ module Tourmaline
     end
 
     # Triggers an update event.
-    protected def trigger_event(event : UpdateAction, update : Model::Update)
+    protected def trigger_event(event : UpdateAction, update : Update)
       if procs = @event_handlers[event]?
         procs.each do |proc|
           spawn proc.call(update)

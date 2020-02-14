@@ -2,9 +2,9 @@ require "xml"
 
 module Tourmaline
   class Markup
-    @keyboard : Array(Array(Model::KeyboardButton))
+    @keyboard : Array(Array(KeyboardButton))
 
-    @inline_keyboard : Array(Array(Model::InlineKeyboardButton))
+    @inline_keyboard : Array(Array(InlineKeyboardButton))
 
     property force_reply : Bool
 
@@ -20,14 +20,14 @@ module Tourmaline
       @force_reply = false,
       @remove_keyboard = false,
       @selective = false,
-      @keyboard = [] of Array(Model::KeyboardButton),
-      @inline_keyboard = [] of Array(Model::InlineKeyboardButton),
+      @keyboard = [] of Array(KeyboardButton),
+      @inline_keyboard = [] of Array(InlineKeyboardButton),
       @resize = false,
       @one_time = false
     )
     end
 
-    def buttons(buttons : Array(Model::KeyboardButton), columns = 1)
+    def buttons(buttons : Array(KeyboardButton), columns = 1)
       keyboard = Markup.build_keyboard(buttons, columns: columns)
       if keyboard.size > 0
         @keyboard = keyboard
@@ -36,10 +36,10 @@ module Tourmaline
     end
 
     def keyboard
-      Model::ReplyKeyboardMarkup.new(@keyboard, @resize, @one_time, @selective)
+      ReplyKeyboardMarkup.new(@keyboard, @resize, @one_time, @selective)
     end
 
-    def inline_buttons(buttons : Array(Model::InlineKeyboardButton), columns = buttons.size)
+    def inline_buttons(buttons : Array(InlineKeyboardButton), columns = buttons.size)
       keyboard = Markup.build_keyboard(buttons, columns: columns)
       if keyboard.size > 0
         @inline_keyboard = keyboard
@@ -48,7 +48,7 @@ module Tourmaline
     end
 
     def inline_keyboard
-      Model::InlineKeyboardMarkup.new(@inline_keyboard)
+      InlineKeyboardMarkup.new(@inline_keyboard)
     end
 
     def force_reply(value)
@@ -153,7 +153,7 @@ module Tourmaline
     end
 
     def self.button(text, request_contact = false, request_location = false, request_poll = nil)
-      Model::KeyboardButton.new(text, request_contact, request_location, request_poll)
+      KeyboardButton.new(text, request_contact, request_location, request_poll)
     end
 
     def self.inline_button(
@@ -166,7 +166,7 @@ module Tourmaline
       callback_game = nil,
       pay = nil
     )
-      Model::InlineKeyboardButton.new(text, url, login_url, callback_data, switch_inline_query,
+      InlineKeyboardButton.new(text, url, login_url, callback_data, switch_inline_query,
       switch_inline_query_current_chat, callback_game, pay)
     end
 
@@ -179,7 +179,7 @@ module Tourmaline
     end
 
     def self.poll_request_button(text, type : PollType)
-      type = Model::KeyboardButtonPollType.new(type)
+      type = KeyboardButtonPollType.new(type)
       Markup.button(text, request_poll: type)
     end
 
@@ -200,7 +200,7 @@ module Tourmaline
     end
 
     def self.game_button(text)
-      Markup.inline_button(text, callback_game: Model::CallbackGame.new)
+      Markup.inline_button(text, callback_game: CallbackGame.new)
     end
 
     def self.pay_button(text)
@@ -208,12 +208,12 @@ module Tourmaline
     end
 
     def self.login_button(text, url, **opts)
-      Markup.inline_button(text, login_url: Model::LoginUrl.new(url, **opts))
+      Markup.inline_button(text, login_url: LoginUrl.new(url, **opts))
     end
 
-    def self.format_html(text = "", entities = [] of Model::MessageEntity)
+    def self.format_html(text = "", entities = [] of MessageEntity)
       available = entities.dup
-      opened = [] of Model::MessageEntity
+      opened = [] of MessageEntity
       result = [] of String | Char
 
       text.chars.each_index do |i|

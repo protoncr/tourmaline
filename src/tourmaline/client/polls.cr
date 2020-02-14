@@ -47,7 +47,7 @@ module Tourmaline
         reply_markup:            reply_markup ? reply_markup.to_json : nil,
       })
 
-      Model::Message.from_json(response)
+      Message.from_json(response)
     end
 
     # Use this method to stop a poll which was sent by the bot.
@@ -66,7 +66,7 @@ module Tourmaline
         reply_markup: reply_markup,
       })
 
-      Model::Poll.from_json(response)
+      Poll.from_json(response)
     end
   end
 

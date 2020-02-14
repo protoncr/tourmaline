@@ -18,7 +18,7 @@ module Tourmaline
           {% end %}
         {% end %}
 
-        on(:message, ->trigger_commands(Model::Update))
+        on(:message, ->trigger_commands(Update))
 
         @commands
       {% end %}
@@ -37,7 +37,7 @@ module Tourmaline
       end
     end
 
-    private def trigger_commands(update : Model::Update)
+    private def trigger_commands(update : Update)
       if message = update.message
         if message_text = message.text
           return unless message_text.size >= 2

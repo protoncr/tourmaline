@@ -1,7 +1,7 @@
 require "json"
 require "../client/polls"
 
-module Tourmaline::Model
+module Tourmaline
   # This object contains information about a poll.
   class Poll
     include JSON::Serializable
@@ -18,7 +18,7 @@ module Tourmaline::Model
 
     getter is_anonymous : Bool
 
-    @[JSON::Field(converter: Tourmaline::Model::Poll::PollTypeConverter)]
+    @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
     getter type : PollType
 
     getter allows_multiple_answers : Bool
