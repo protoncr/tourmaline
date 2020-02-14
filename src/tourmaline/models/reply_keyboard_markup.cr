@@ -10,8 +10,19 @@ module Tourmaline::Model
 
     getter request_location : Bool?
 
+    getter request_poll : KeyboardButtonPollType?
+
     def initialize(@text : String, @request_contact : Bool? = nil, @request_location : Bool? = nil)
     end
+  end
+
+  # This object represents type of a poll, which is allowed to be
+  # created and sent when the corresponding button is pressed.
+  class KeyboardButtonPollType
+    include JSON::Serializable
+
+    @[JSON::Field(converter: Tourmaline::Model::Poll::PollTypeConverter)]
+    getter type : PollType
   end
 
   class ReplyKeyboardMarkup

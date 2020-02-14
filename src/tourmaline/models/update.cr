@@ -42,5 +42,13 @@ module Tourmaline::Model
 
     # Optional. New incoming pre-checkout query. Contains full information about checkout
     getter pre_checkout_query : PreCheckoutQuery?
+
+    # Optional. New poll state. Bots receive only updates about stopped polls and polls,
+    # which are sent by the bot
+    getter poll : Poll?
+
+    # Optional. A user changed their answer in a non-anonymous poll. Bots receive new
+    # votes only in polls that were sent by the bot itself.
+    getter poll_answer : PollAnswer?
   end
 end

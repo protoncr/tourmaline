@@ -17,6 +17,12 @@ module Tourmaline::Model
 
     getter language_code : String?
 
+    getter can_join_groups : Bool?
+
+    getter can_read_all_group_messages : Bool?
+
+    getter supports_inline_queries : Bool?
+
     def full_name
       [first_name, last_name].compact.join(" ")
     end

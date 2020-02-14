@@ -5,10 +5,9 @@ class EchoBot < Tourmaline::Bot
   include Tourmaline
 
   @[Command("echo")]
-  def echo_command(message, params)
-    text = params.join(" ")
-    message.chat.send_message(text)
-    message.delete
+  def echo_command(ctx)
+    message = ctx.message
+    message.reply(ctx.text)
   end
 end
 
