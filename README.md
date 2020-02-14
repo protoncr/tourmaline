@@ -36,6 +36,7 @@ This currently supports the following features:
   - [x] Webhooks
   - [x] Payments
   - [x] Games
+  - [x] Polls
   - [ ] Telegram Passport
 
 If you want a new feature feel free to submit an issue or open a pull request.
