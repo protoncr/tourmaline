@@ -12,6 +12,7 @@ require "./annotations"
 require "./registries/*"
 require "./client/*"
 require "./markup"
+require "./query_result_builder"
 
 module Tourmaline
   # The `Bot` class is the base class for all Tourmaline based bots.
