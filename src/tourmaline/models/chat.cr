@@ -27,6 +27,8 @@ module Tourmaline::Model
 
     getter permissions : ChatPermissions?
 
+    getter slow_mode_delay : Int32?
+
     getter sticker_set_name : String?
 
     getter can_set_sticker_set : Bool?
@@ -142,6 +144,10 @@ module Tourmaline::Model
     def set_sticker_set(set_name)
       BotContainer.bot.set_chat_sticker_set(id, set_name)
       @sticker_set_name = set_name
+    end
+
+    def set_administrator_custom_title(user, custom_title)
+      BotContainer.bot.set_chat_admininstrator_custom_title(id, user, custom_title)
     end
 
     def set_permissions(permissions)

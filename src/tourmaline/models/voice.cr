@@ -6,6 +6,8 @@ module Tourmaline::Model
 
     getter file_id : String
 
+    getter file_unique_id : String
+
     getter duration : Int32
 
     getter mime_type : String?

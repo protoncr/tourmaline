@@ -10,6 +10,8 @@ module Tourmaline::Model
 
     getter status : String
 
+    getter custom_title : String?
+
     @[JSON::Field(converter: Time::EpochMillisConverter)]
     getter until_date : Time?
 

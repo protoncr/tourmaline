@@ -37,6 +37,8 @@ module Tourmaline
     SuccessfulPayment
     ConnectedWebsite
     PassportData
+    Poll
+    PollAnswer
 
     def to_s
       super.to_s.underscore

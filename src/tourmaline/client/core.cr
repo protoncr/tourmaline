@@ -499,6 +499,21 @@ module Tourmaline
       response == "true"
     end
 
+    # Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
+    # Returns True on success.
+    def set_chat_admininstrator_custom_title(chat, user, custom_title)
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      user_id = user.is_a?(Int) ? user : user.id
+
+      response = request("setChatAdministratorCustomTitle", {
+        chat_id: chat_id,
+        user_id: user_id,
+        custom_title: custom_title
+      })
+
+      response == true
+    end
+
     # Use this method to set default chat permissions for all members. The bot must be
     # an administrator in the group or a supergroup for this to work and must have
     # the can_restrict_members admin rights.
