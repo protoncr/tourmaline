@@ -19,6 +19,9 @@ module Tourmaline::Model
 
     getter language : String?
 
+    def initialize(@type, @offset, @length, @url = nil, @user = nil, @language = nil)
+    end
+
     {% for mention_type in MENTION_TYPES %}
       def {{mention_type.id}}?
         @type == {{mention_type}}

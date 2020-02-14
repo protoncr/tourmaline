@@ -1,6 +1,8 @@
 require "json"
 
 module Tourmaline::Model
+  alias Button = Model::KeyboardButton | Model::InlineKeyboardButton
+
   class KeyboardButton
     include JSON::Serializable
 
@@ -12,7 +14,7 @@ module Tourmaline::Model
 
     getter request_poll : KeyboardButtonPollType?
 
-    def initialize(@text : String, @request_contact : Bool? = nil, @request_location : Bool? = nil)
+    def initialize(@text : String, @request_contact = nil, @request_location = nil, @request_poll = nil)
     end
   end
 
@@ -23,6 +25,9 @@ module Tourmaline::Model
 
     @[JSON::Field(converter: Tourmaline::Model::Poll::PollTypeConverter)]
     getter type : PollType
+
+    def initialize(@type)
+    end
   end
 
   class ReplyKeyboardMarkup
@@ -36,7 +41,7 @@ module Tourmaline::Model
 
     getter selective : Bool?
 
-    def initialize(@keyboard : Array(Array(KeyboardButton)), @resize_keyboard : Bool? = nil, @one_time_keyboard : Bool? = nil, @selective : Bool? = nil)
+    def initialize(@keyboard = [] of Array(KeyboardButton), @resize_keyboard = nil, @one_time_keyboard = nil, @selective = nil)
     end
 
     def <<(row : Int32, key : KeyboardButton)
@@ -53,6 +58,10 @@ module Tourmaline::Model
 
     def delete_row(row)
       keyboard[row].delete
+    end
+
+    def size
+      keyboard.size
     end
   end
 end

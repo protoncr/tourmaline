@@ -1,63 +1,162 @@
+require "xml"
+
 module Tourmaline
-  module Markup
-    extend self
+  class Markup
+    @keyboard : Array(Array(Model::KeyboardButton))
 
-    # Creates a reply keyboard using the provided `buttons` and options.
-    #
-    # If `resize` is true, clients will attempt to resize the keyboard vertically
-    # for optimal fit (e.g., make the keyboard smaller if there are just
-    # two rows of buttons). Defaults to false.
-    #
-    # If `one_time` is true, clients will hide the keyboard as soon as it's been used.
-    # The keyboard will still be available, but clients will automatically display
-    # the usual letter-keyboard in the chat – the user can press a special button
-    # in the input field to see the custom keyboard again. Defaults to false.
-    #
-    # If `selective` is true, the keyboard will be displayed to specific users only.
-    # Targets: 1) users that are @mentioned in the text of the Message object;
-    # 2) if the bot's message is a reply (has reply_to_message_id), sender
-    # of the original message.
-    def keyboard(buttons : Array(Array(String | NamedTuple | Model::KeyboardButton)), resize = false, one_time = false, selective = nil)
-      buttons = buttons.map do |row|
-        row.map do |opts|
-          case opts
-          when String
-            Model::KeyboardButton.new(opts)
-          when NamedTuple
-            Model::KeyboardButton.new(**opts)
-          else
-            opts
-          end
-        end
+    @inline_keyboard : Array(Array(Model::InlineKeyboardButton))
+
+    property force_reply : Bool
+
+    property remove_keyboard : Bool
+
+    property selective : Bool
+
+    property resize : Bool
+
+    property one_time : Bool
+
+    def initialize(
+      @force_reply = false,
+      @remove_keyboard = false,
+      @selective = false,
+      @keyboard = [] of Array(Model::KeyboardButton),
+      @inline_keyboard = [] of Array(Model::InlineKeyboardButton),
+      @resize = false,
+      @one_time = false
+    )
+    end
+
+    def buttons(buttons : Array(Model::KeyboardButton), columns = 1)
+      keyboard = Markup.build_keyboard(buttons, columns: columns)
+      if keyboard.size > 0
+        @keyboard = keyboard
       end
-
-      Model::ReplyKeyboardMarkup.new(buttons, resize, one_time, selective)
+      self
     end
 
-    # Create an inline keyboard using the provided `buttons`.
-    def inline_keyboard(buttons : Array(Array(NamedTuple | Model::InlineKeyboardButton)))
-      buttons = buttons.map do |row|
-        row.map do |opts|
-          opts.is_a?(NamedTuple) ? Model::InlineKeyboardButton.new(**opts) : opts
-        end
+    def keyboard
+      Model::ReplyKeyboardMarkup.new(@keyboard, @resize, @one_time, @selective)
+    end
+
+    def inline_buttons(buttons : Array(Model::InlineKeyboardButton), columns = buttons.size)
+      keyboard = Markup.build_keyboard(buttons, columns: columns)
+      if keyboard.size > 0
+        @inline_keyboard = keyboard
       end
-
-      Model::InlineKeyboardMarkup.new(buttons)
+      self
     end
 
-    def button(text, request_contact = false, request_location = false)
-      Model::KeyboardButton.new(text, request_contact, request_location)
+    def inline_keyboard
+      Model::InlineKeyboardMarkup.new(@inline_keyboard)
     end
 
-    def location_button(text)
-      button(text, false, true)
+    def force_reply(value)
+      @force_reply = value
+      self
     end
 
-    def contact_button(text)
-      button(text, true, false)
+    def remove_keyboard(value)
+      @remove_keyboard = value
+      self
     end
 
-    def inline_button(
+    def selective(value)
+      @selective = value
+      self
+    end
+
+    def resize(value)
+      @resize = value
+      self
+    end
+
+    def one_time(value)
+      @one_time = value
+      self
+    end
+
+    def button(**opts)
+      Markup.button(**opts)
+    end
+
+    def inline_button(**opts)
+      Markup.inline_button(**opts)
+    end
+
+    def contact_request_button(text)
+      Markup.contact_request_button(text)
+    end
+
+    def location_request_button(text)
+      Markup.location_request_button(text)
+    end
+
+    def poll_request_button(text, type)
+      Markup.poll_request_button(text, type)
+    end
+
+    def url_button(text, url)
+      Markup.url_button(text, url)
+    end
+
+    def callback_button(text, data)
+      Markup.callback_button(text, data)
+    end
+
+    def switch_to_chat_button(text, value)
+      Markup.switch_to_chat_button(text, value)
+    end
+
+    def switch_to_current_chat_button(text, value)
+      Markup.switch_to_current_chat_button(text, value)
+    end
+
+    def game_button(text)
+      Markup.game_button(text)
+    end
+
+    def pay_button(text)
+      Markup.pay_button(text)
+    end
+
+    def login_button(text, url, **opts)
+      Markup.login_button(text, url, **opts)
+    end
+
+    def self.remove_keyboard(value : Bool)
+      Markup.new.tap { |k| k.remove_keyboard = true }
+    end
+
+    def self.force_reply(value : Bool)
+      Markup.new.tap { |k| k.force_reply = true }
+    end
+
+    def self.buttons(buttons, **options)
+      Markup.new.tap { |k| k.buttons(buttons, **options) }
+    end
+
+    def self.inline_buttons(buttons, **options)
+      Markup.new.tap { |k| k.inline_buttons(buttons, **options) }
+    end
+
+    def self.resize(value : Bool)
+      Markup.new.tap { |k| k.resize = true }
+    end
+
+    def self.selective(value : Bool)
+      Markup.new.tap { |k| k.selective = true }
+    end
+
+    def self.one_time(value : Bool)
+      Markup.new.tap { |k| k.one_time = true }
+    end
+
+    def self.button(text, request_contact = false, request_location = false, request_poll = nil)
+      Model::KeyboardButton.new(text, request_contact, request_location, request_poll)
+    end
+
+    def self.inline_button(
       text,
       url = nil,
       login_url = nil,
@@ -71,32 +170,148 @@ module Tourmaline
       switch_inline_query_current_chat, callback_game, pay)
     end
 
-    def url_button(text, url)
-      inline_button(text, url: url)
+    def self.contact_request_button(text)
+      Markup.button(text, request_contact: true)
     end
 
-    def callback_button(text, data)
-      inline_button(text, callback: data)
+    def self.location_request_button(text)
+      Markup.button(text, request_location: true)
     end
 
-    def switch_to_chat_button(text, value)
-      inline_button(text, switch_inline_query: value)
+    def self.poll_request_button(text, type : PollType)
+      type = Model::KeyboardButtonPollType.new(type)
+      Markup.button(text, request_poll: type)
     end
 
-    def switch_to_current_chat_button(text, value)
-      inline_button(text, switch_inline_query_current_chat: value)
+    def self.url_button(text, url)
+      Markup.inline_button(text, url: url)
     end
 
-    def game_button(text)
-      inline_button(text, callback_game: Model::CallbackGame.new)
+    def self.callback_button(text, data)
+      Markup.inline_button(text, callback: data)
     end
 
-    def pay_button(text)
-      inline_button(text, pay: true)
+    def self.switch_to_chat_button(text, value)
+      Markup.inline_button(text, switch_inline_query: value)
     end
 
-    def login_button(text, url, **opts)
-      inline_button(text, login_url: Model::LoginUrl.new(url, **opts))
+    def self.switch_to_current_chat_button(text, value)
+      Markup.inline_button(text, switch_inline_query_current_chat: value)
+    end
+
+    def self.game_button(text)
+      Markup.inline_button(text, callback_game: Model::CallbackGame.new)
+    end
+
+    def self.pay_button(text)
+      Markup.inline_button(text, pay: true)
+    end
+
+    def self.login_button(text, url, **opts)
+      Markup.inline_button(text, login_url: Model::LoginUrl.new(url, **opts))
+    end
+
+    def self.format_html(text = "", entities = [] of Model::MessageEntity)
+      available = entities.dup
+      opened = [] of Model::MessageEntity
+      result = [] of String | Char
+
+      text.chars.each_index do |i|
+        loop do
+          index = available.index { |e| e.offset == i }
+          break if index.nil?
+          entity = available[index]
+
+          case entity.type
+          when "bold"
+            result << "<b>"
+          when "italic"
+            result << "<i>"
+          when "code"
+            result << "<code>"
+          when "pre"
+            if entity.language
+              result << "<pre language=\"#{entity.language}\">"
+            else
+              result << "<pre>"
+            end
+          when "strikethrough"
+            result << "<s>"
+          when "underline"
+            result << "<u>"
+          when "text_mention"
+            if user = entity.user
+              result << "<a href=\"tg://user?id=#{user.id}\">"
+            end
+          when "text_link"
+            result << "<a href=\"#{entity.url}\">"
+          end
+
+          opened.unshift(entity)
+          available.delete_at(index)
+        end
+
+        result << text[i]
+
+        loop do
+          index = opened.index { |e| e.offset + e.length - 1 == i }
+          break if index.nil?
+          entity = opened[index]
+
+          case entity.type
+          when "bold"
+            result << "</b>"
+          when "italic"
+            result << "</i>"
+          when "code"
+            result << "</code>"
+          when "pre"
+            result << "</pre>"
+          when "strikethrough"
+            result << "</s>"
+          when "underline"
+            result << "</u>"
+          when "text_mention"
+            if user = entity.user
+              result << "</a>"
+            end
+          when "text_link"
+            result << "</a>"
+          end
+
+          opened.delete_at(index)
+        end
+      end
+
+     result.join("")
+    end
+
+    def self.build_keyboard(
+      buttons : Array(U),
+      columns = 1,
+      wrap = nil
+    ) forall U
+      result = [] of Array(U)
+      wrap_fn = wrap ? wrap : ->(btn : U, index : Int32, current_row : Array(U)) {
+        current_row.size >= columns
+      }
+
+      current_row = [] of U
+
+      buttons.each_with_index do |btn, index|
+        if (wrap_fn.call(btn, index, current_row) && current_row.size > 0)
+          result << current_row
+          current_row.clear
+        end
+
+        current_row << btn
+      end
+
+      if current_row.size > 0
+        result << current_row
+      end
+
+      result
     end
   end
 end

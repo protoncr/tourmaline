@@ -8,10 +8,10 @@ require "./chat_action"
 require "./update_action"
 require "./models/*"
 require "./fiber"
-require "./markup"
 require "./annotations"
 require "./registries/*"
 require "./client/*"
+require "./markup"
 
 module Tourmaline
   # The `Bot` class is the base class for all Tourmaline based bots.
