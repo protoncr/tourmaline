@@ -150,6 +150,7 @@ module Tourmaline
     enum ParseMode
       Normal
       Markdown
+      MarkdownV2
       HTML
     end
   end
