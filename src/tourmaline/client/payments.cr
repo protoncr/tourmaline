@@ -3,7 +3,7 @@ module Tourmaline
     # Use this method to send invoices.
     # On success, the sent `Message` is returned.
     def send_invoice(
-      chat_id,
+      chat,
       title,
       description,
       payload,
@@ -22,9 +22,12 @@ module Tourmaline
       send_email_to_provider = nil,
       is_flexible = nil,
       disable_notification = nil,
-      reply_to_message_id = nil,
+      reply_to_message = nil,
       reply_markup = nil
     )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int) ? reply_to_message : reply_to_message.id
+
       response = request("sendInvoice", {
         chat_id:                       chat_id,
         title:                         title,
@@ -33,7 +36,7 @@ module Tourmaline
         provider_token:                provider_token,
         start_parameter:               start_parameter,
         currency:                      currency,
-        prices:                        prices,
+        prices:                        prices.to_json,
         provider_data:                 provider_data,
         photo_url:                     photo_url,
         photo_size:                    photo_size,
@@ -46,7 +49,7 @@ module Tourmaline
         is_flexible:                   is_flexible,
         disable_notification:          disable_notification,
         reply_to_message_id:           reply_to_message_id,
-        reply_markup:                  reply_markup ? reply_markup.to_json : nil,
+        reply_markup:                  reply_markup,
       })
 
       Message.from_json(response)

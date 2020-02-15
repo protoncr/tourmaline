@@ -10,7 +10,7 @@ module Tourmaline
 
     getter prices : Array(LabeledPrice)
 
-    def initialize(@id : String, @title : String, @prices : Array(LabledPrice))
+    def initialize(@id : String, @title : String, @prices : Array(LabeledPrice))
     end
   end
 end

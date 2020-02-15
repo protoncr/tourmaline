@@ -13,5 +13,8 @@ module Tourmaline
     getter currency : String
 
     getter total_amount : Int32
+
+    def initialize(@title, @description, @start_parameter, @currency, @total_amount)
+    end
   end
 end

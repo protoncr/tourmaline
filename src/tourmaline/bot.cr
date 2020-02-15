@@ -116,6 +116,9 @@ module Tourmaline
     # Sends a json request to the Telegram bot API.
     private def request(method, params = {} of String => String)
       method_url = ::File.join(@endpoint_url, method)
+      params = params.map do |k, v|
+        {k.to_s, v.responds_to?(:to_json) && !v.is_a?(String) ? v.to_json : v.to_s}
+      end.to_h
 
       response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ? Halite.post(method_url, form: params) : Halite.post(method_url, params: params)
       result = JSON.parse(response.body)

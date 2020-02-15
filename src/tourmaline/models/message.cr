@@ -145,7 +145,7 @@ module Tourmaline
       BotContainer.bot.send_message(chat, message, **kwargs, reply_to_message: nil)
     end
 
-    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice] %}
+    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         BotContainer.bot.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end
