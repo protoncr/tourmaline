@@ -32,7 +32,7 @@ module Tourmaline
       end
 
       def self.to_json(value : PollType, json : JSON::Builder)
-        json.string(PollType.to_s)
+        json.string(value.to_s)
       end
     end
   end

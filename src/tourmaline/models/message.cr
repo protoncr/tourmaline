@@ -90,6 +90,10 @@ module Tourmaline
 
     getter successful_payment : SuccessfulPayment?
 
+    getter connected_website : String?
+
+    getter reply_markup : InlineKeyboardMarkup?
+
     def link
       if chat.username
         "https://t.me/#{chat.username}/#{message_id}"
@@ -145,7 +149,7 @@ module Tourmaline
       BotContainer.bot.send_message(chat, message, **kwargs, reply_to_message: nil)
     end
 
-    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice] %}
+    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         BotContainer.bot.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end

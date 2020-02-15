@@ -83,6 +83,8 @@ module Tourmaline
         trigger_event(UpdateAction::VideoNote, update) if message.video_note
         trigger_event(UpdateAction::Invoice, update) if message.invoice
         trigger_event(UpdateAction::SuccessfulPayment, update) if message.successful_payment
+        trigger_event(UpdateAction::ConnectedWebsite, update) if message.connected_website
+        # trigger_event(UpdateAction::PassportData, update) if message.passport_data
       end
 
       trigger_event(UpdateAction::EditedMessage, update) if update.edited_message
@@ -93,6 +95,8 @@ module Tourmaline
       trigger_event(UpdateAction::CallbackQuery, update) if update.callback_query
       trigger_event(UpdateAction::ShippingQuery, update) if update.shipping_query
       trigger_event(UpdateAction::PreCheckoutQuery, update) if update.pre_checkout_query
+      trigger_event(UpdateAction::Poll, update) if update.poll
+      trigger_event(UpdateAction::PollAnswer, update) if update.poll_answer
     rescue ex
       @@logger.error("Update was not handled because: #{ex.message}")
     end
@@ -117,7 +121,16 @@ module Tourmaline
     private def request(method, params = {} of String => String)
       method_url = ::File.join(@endpoint_url, method)
       params = params.map do |k, v|
-        {k.to_s, v.responds_to?(:to_json) && !v.is_a?(String) ? v.to_json : v.to_s}
+        case v
+        when .responds_to?(:to_json)
+          unless v.is_a?(String) || v.nil?
+            v = v.to_json
+          end
+        else
+          v = v.to_s
+        end
+
+        {k.to_s, v}
       end.to_h
 
       response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ? Halite.post(method_url, form: params) : Halite.post(method_url, params: params)

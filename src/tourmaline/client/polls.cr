@@ -6,11 +6,11 @@ module Tourmaline
       chat,
       question : String,
       options : Array(String), # 2-10 strings, up to 100 chars each
-      is_anonymous : Bool = true,
+      anonymous : Bool = true,
       type : PollType = PollType::Regular,
       allows_multiple_answers : Bool = false,
-      correct_option_index : Int32? = nil, # required for quiz mode
-      is_closed : Bool = false,
+      correct_option_id : Int32? = nil, # required for quiz mode
+      closed : Bool = false,
       disable_notification : Bool = false,
       reply_to_message = nil,
       reply_markup = nil
@@ -19,12 +19,12 @@ module Tourmaline
         raise "Incorrect option count. Expected 2-10, given #{options.size}."
       end
 
-      if options.any { |o| o.size < 1 || o.size > 100 }
+      if options.any? { |o| o.size < 1 || o.size > 100 }
         raise "Incorrect option size. Poll options must be between 1 and 100 characters."
       end
 
-      if type == PollType::Quiz && !correct_option_index
-        raise "Quiz poll type requires a correct_option_index be set."
+      if type == PollType::Quiz && !correct_option_id
+        raise "Quiz poll type requires a correct_option_id be set."
       end
 
       chat_id = chat.is_a?(Int) ? chat : chat.id
@@ -36,15 +36,14 @@ module Tourmaline
         chat_id:                 chat_id,
         question:                question,
         options:                 options,
-        is_anonymous:            is_anonymous,
+        anonymous:               anonymous,
         type:                    type.to_s,
         allows_multiple_answers: allows_multiple_answers,
-        correct_option_id:       correct_option_index,
-        is_closed:               is_closed,
+        correct_option_id:       correct_option_id,
+        is_closed:               closed,
         disable_notification:    disable_notification,
         reply_to_message_id:     reply_to_message,
-        parse_mode:              parse_mode,
-        reply_markup:            reply_markup ? reply_markup.to_json : nil,
+        reply_markup:            reply_markup,
       })
 
       Message.from_json(response)
@@ -74,8 +73,8 @@ module Tourmaline
     Quiz
     Regular
 
-    def to_s(io)
-      io << super.to_s.downcase
+    def to_s
+      super.to_s.downcase
     end
   end
 end
