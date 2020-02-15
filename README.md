@@ -21,6 +21,8 @@ dependencies:
 
 For usage information please see [the wiki](https://github.com/watzon/tourmaline/wiki). API documentation is also available [here](https://watzon.github.io/tourmaline/).
 
+Examples are available in the [examples](./examples) folder.
+
 ## Development
 
 This currently supports the following features:
