@@ -8,13 +8,13 @@ module Tourmaline
 
     getter text : String
 
-    getter request_contact : Bool?
+    getter request_contact : Bool = false
 
-    getter request_location : Bool?
+    getter request_location : Bool = false
 
     getter request_poll : KeyboardButtonPollType?
 
-    def initialize(@text : String, @request_contact = nil, @request_location = nil, @request_poll = nil)
+    def initialize(@text : String, @request_contact = false, @request_location = false, @request_poll = nil)
     end
   end
 
@@ -35,13 +35,13 @@ module Tourmaline
 
     getter keyboard : Array(Array(KeyboardButton))
 
-    getter resize_keyboard : Bool?
+    getter resize_keyboard : Bool = false
 
-    getter one_time_keyboard : Bool?
+    getter one_time_keyboard : Bool = false
 
-    getter selective : Bool?
+    getter selective : Bool = false
 
-    def initialize(@keyboard = [] of Array(KeyboardButton), @resize_keyboard = nil, @one_time_keyboard = nil, @selective = nil)
+    def initialize(@keyboard = [] of Array(KeyboardButton), @resize_keyboard = false, @one_time_keyboard = false, @selective = false)
     end
 
     def <<(row : Int32, key : KeyboardButton)

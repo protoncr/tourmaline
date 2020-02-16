@@ -27,10 +27,16 @@ module Tourmaline
     )
     end
 
-    def buttons(buttons : Array(KeyboardButton), columns = 1)
-      keyboard = Markup.build_keyboard(buttons, columns: columns)
-      if keyboard.size > 0
-        @keyboard = keyboard
+    def buttons(buttons : Array(KeyboardButton | String))
+      buttons = buttons.map { |b| b.is_a?(String) ? Markup.button(b) : b }
+      keyboard = Markup.build_keyboard(buttons, columns: 1)
+      buttons(keyboard)
+    end
+
+    def buttons(buttons : Array(Array(KeyboardButton | String)))
+      buttons = buttons.map { |b| b.map { |b| b.is_a?(String) ? Markup.button(b) : b } }
+      if buttons.size > 0
+        @keyboard = buttons
       end
       self
     end
@@ -39,10 +45,16 @@ module Tourmaline
       ReplyKeyboardMarkup.new(@keyboard, @resize, @one_time, @selective)
     end
 
-    def inline_buttons(buttons : Array(InlineKeyboardButton), columns = buttons.size)
-      keyboard = Markup.build_keyboard(buttons, columns: columns)
-      if keyboard.size > 0
-        @inline_keyboard = keyboard
+    def inline_buttons(buttons : Array(Array(InlineKeyboardButton | String)))
+      buttons = buttons.map { |b| b.is_a?(String) ? Markup.inline_button(b) : b }
+      keyboard = Markup.build_keyboard(buttons, columns: 1)
+      buttons(keyboard)
+    end
+
+    def inline_buttons(buttons : Array(InlineKeyboardButton | String))
+      buttons = buttons.map { |b| b.map { |b| b.is_a?(String) ? Markup.inline_button(b) : b } }
+      if buttons.size > 0
+        @inline_keyboard = buttons
       end
       self
     end

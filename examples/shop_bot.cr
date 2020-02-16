@@ -16,16 +16,16 @@ class ShopBot < Tourmaline::Bot
     ],
     photo_url: "https://img.clipartfest.com/5a7f4b14461d1ab2caaa656bcee42aeb_future-me-fredo-and-pidjin-the-webcomic-time-travel-cartoon_390-240.png",
   }
-  
+
   SHIPPING_OPTIONS = [
     ShippingOption.new("unicorn", "Unicorn express", [LabeledPrice.new(label: "Unicorn", amount: 2000)]),
     ShippingOption.new("slowpoke", "Slowpoke Mail", [LabeledPrice.new(label: "Unicorn", amount: 100)])
   ]
 
-  REPLY_MARKUP = Markup.inline_buttons([
+  REPLY_MARKUP = Markup.inline_buttons([[
     Markup.pay_button("💸 Buy"),
     Markup.url_button("❤️", "https://github.com/watzon/tourmaline")
-  ]).inline_keyboard
+  ]]).inline_keyboard
 
   @[Command("start")]
   def start_command(ctx)

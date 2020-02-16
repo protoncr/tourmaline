@@ -3,10 +3,10 @@ require "../src/tourmaline"
 class PollBot < Tourmaline::Bot
   include Tourmaline
 
-  KEYBOARD = Markup.keys([
+  KEYBOARD = Markup.buttons([[
     Markup.poll_request_button("Create poll", "regular"),
     Markup.poll_request_button("Create quiz", "quiz")
-  ]).keyboard
+  ]]).keyboard
 
   @[On(:poll)]
   def on_poll(update)

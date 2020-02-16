@@ -3,10 +3,10 @@ require "../src/tourmaline"
 class KittyBot < Tourmaline::Bot
   include Tourmaline
 
-  REPLY_MARKUP = Markup.buttons([
-    Markup.button("/kitty"),
-    Markup.button("/kittygif"),
-  ]).keyboard
+  REPLY_MARKUP = Markup.buttons([[
+    "/kitty",
+    "/kittygif",
+  ]]).keyboard
 
   API_URL = "https://thecatapi.com/api/images/get"
 
