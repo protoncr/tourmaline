@@ -23,7 +23,7 @@ development_dependencies:
     github: veelenga/ameba
     version: ~> 0.10.0
   spectator:
-    gitlab: icy-arctic-fox/spectator
+    github: icy-arctic-fox/spectator
     branch: master
 
 license: MIT
