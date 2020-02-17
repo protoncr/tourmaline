@@ -160,7 +160,7 @@ module Tourmaline
     {% end %}
 
     def edit_live_location(latitude, longitude, **kwargs)
-      BotContainer.bot.edit_message_live_location(chat, latitude, longitude, **kwargs, message_id: message_id)
+      BotContainer.bot.edit_message_live_location(chat, latitude, longitude, **kwargs, message: message_id)
     end
 
     def stop_live_location(**kwargs)

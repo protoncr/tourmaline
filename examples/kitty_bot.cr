@@ -12,13 +12,13 @@ class KittyBot < Tourmaline::Bot
 
   @[Command(["start", "help"])]
   def help_command(ctx)
-    ctx.message.reply("😺 Use commands: /kitty, /kittygif and /about", reply_markup: REPLY_MARKUP)
+    ctx.reply("😺 Use commands: /kitty, /kittygif and /about", reply_markup: REPLY_MARKUP)
   end
 
   @[Command("about")]
   def about_command(ctx)
     text = "😽 This bot is powered by Tourmaline, a Telegram bot library for Crystal. Visit https://github.com/watzon/tourmaline to check out the source code."
-    ctx.message.reply(text)
+    ctx.reply(text)
   end
 
   @[Command(["kitty", "kittygif"])]
@@ -28,11 +28,11 @@ class KittyBot < Tourmaline::Bot
 
     case ctx.command
     when "kitty"
-      ctx.message.chat.send_chat_action(:upload_photo)
-      ctx.message.chat.send_photo(api + "jpg")
+      ctx.chat.send_chat_action(:upload_photo)
+      ctx.chat.send_photo(api + "jpg")
     when "kittygif"
-      ctx.message.chat.send_chat_action(:upload_photo)
-      ctx.message.chat.send_animation(api + "gif")
+      ctx.chat.send_chat_action(:upload_photo)
+      ctx.chat.send_animation(api + "gif")
     end
   end
 end

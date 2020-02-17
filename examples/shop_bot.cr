@@ -29,12 +29,12 @@ class ShopBot < Tourmaline::Bot
 
   @[Command("start")]
   def start_command(ctx)
-    ctx.message.reply_with_invoice(**INVOICE)
+    ctx.reply_with_invoice(**INVOICE)
   end
 
   @[Command("buy")]
   def buy_command(ctx)
-    ctx.message.reply_with_invoice(**INVOICE, reply_markup: REPLY_MARKUP)
+    ctx.reply_with_invoice(**INVOICE, reply_markup: REPLY_MARKUP)
   end
 
   @[On(:shipping_query)]

@@ -6,8 +6,7 @@ class EchoBot < Tourmaline::Bot
 
   @[Command("echo")]
   def echo_command(ctx)
-    message = ctx.message
-    message.reply(ctx.text)
+    ctx.reply(ctx.text)
   end
 end
 

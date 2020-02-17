@@ -22,7 +22,7 @@ class PollBot < Tourmaline::Bot
 
   @[Command("poll")]
   def poll_command(ctx)
-    ctx.message.reply_with_poll(
+    ctx.reply_with_poll(
       "Your favorite math constant",
       ["x", "e", "π", "φ", "γ"],
       anonymous: false
@@ -31,7 +31,7 @@ class PollBot < Tourmaline::Bot
 
   @[Command("quiz")]
   def quiz_command(ctx)
-    ctx.message.reply_with_poll(
+    ctx.reply_with_poll(
       "2b|!2b",
       ["True", "False"],
       correct_option_id: 0,
