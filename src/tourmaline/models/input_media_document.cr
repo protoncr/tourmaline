@@ -4,17 +4,17 @@ module Tourmaline
   class InputMediaDocument
     include JSON::Serializable
 
-    getter type : String
+    @type = "document"
 
-    getter media : String
+    property media : String | ::File
 
-    getter thumb : (File | String)?
+    property thumb : (String | ::File)?
 
-    getter caption : String?
+    property caption : String?
 
-    getter parse_mode : String?
+    property parse_mode : String?
 
-    def initialize(@type : String, @media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil)
+    def initialize(@media : String, @thumb : (::File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil)
     end
   end
 end

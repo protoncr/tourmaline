@@ -5,7 +5,7 @@ class PollBot < Tourmaline::Bot
 
   KEYBOARD = Markup.buttons([[
     Markup.poll_request_button("Create poll", "regular"),
-    Markup.poll_request_button("Create quiz", "quiz")
+    Markup.poll_request_button("Create quiz", "quiz"),
   ]]).keyboard
 
   @[On(:poll)]

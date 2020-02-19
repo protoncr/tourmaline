@@ -1,6 +1,5 @@
 module Tourmaline
   class QueryResultBuilder
-
     getter results : Array(Tourmaline::InlineQueryResult)
 
     def initialize

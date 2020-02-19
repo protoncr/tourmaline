@@ -43,7 +43,7 @@ module Tourmaline
           return unless message_text.size >= 2
 
           command = message_text.split(" ")[0]
-          text    = message_text.sub(command, "").lstrip
+          text = message_text.sub(command, "").lstrip
 
           # Check if the command has the bot's name attached
           if command.includes?("@")

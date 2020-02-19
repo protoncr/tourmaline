@@ -4,15 +4,15 @@ module Tourmaline
   class Invoice
     include JSON::Serializable
 
-    getter title : String
+    property title : String
 
-    getter description : String
+    property description : String
 
-    getter start_parameter : String
+    property start_parameter : String
 
-    getter currency : String
+    property currency : String
 
-    getter total_amount : Int32
+    property total_amount : Int32
 
     def initialize(@title, @description, @start_parameter, @currency, @total_amount)
     end

@@ -1,6 +1,5 @@
 require "../src/tourmaline"
 
-
 class LiveLocationBot < Tourmaline::Bot
   include Tourmaline
 

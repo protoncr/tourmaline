@@ -4,23 +4,23 @@ module Tourmaline
   class InputMediaAnimation
     include JSON::Serializable
 
-    getter type : String
+    @type = "animation"
 
-    getter media : String
+    property media : String | ::File
 
-    getter thumb : (File | String)?
+    property thumb : (String | ::File)?
 
-    getter caption : String?
+    property caption : String?
 
-    getter parse_mode : String?
+    property parse_mode : String?
 
-    getter width : Int32?
+    property width : Int32?
 
-    getter height : Int32?
+    property height : Int32?
 
-    getter duration : Int32?
+    property duration : Int32?
 
-    def initialize(@type : String, @media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
+    def initialize(@media : String, @thumb : (::File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
                    @width : Int32? = nil, @height : Int32? = nil, duration : Int32? = nil)
     end
   end

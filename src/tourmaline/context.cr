@@ -9,7 +9,7 @@ module Tourmaline
   # update, and client in that order. So rather than calling
   # `ctx.message.reply` you can just do `ctx.reply`.
   record Context, client : Tourmaline::Bot, update : Tourmaline::Update,
-      message : Tourmaline::Message, command : String, text : String do
+    message : Tourmaline::Message, command : String, text : String do
     macro method_missing(call)
       {% if Tourmaline::Message.has_method?(call.name) %}
         message.{{call}}

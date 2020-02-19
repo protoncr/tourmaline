@@ -4,23 +4,23 @@ module Tourmaline
   class InputMediaAudio
     include JSON::Serializable
 
-    getter type : String
+    @type = "audio"
 
-    getter media : String
+    property media : String | ::File
 
-    getter thumb : (File | String)?
+    property thumb : (String | ::File)?
 
-    getter caption : String?
+    property caption : String?
 
-    getter parse_mode : String?
+    property parse_mode : String?
 
-    getter duration : Int32?
+    property duration : Int32?
 
-    getter performer : String?
+    property performer : String?
 
-    getter title : String?
+    property title : String?
 
-    def initialize(@type : String, @media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
+    def initialize(@media : String, @thumb : (::File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
                    duration : Int32? = nil, @performer : String? = nil, @title : String? = nil)
     end
   end

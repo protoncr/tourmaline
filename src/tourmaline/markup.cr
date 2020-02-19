@@ -45,13 +45,13 @@ module Tourmaline
       ReplyKeyboardMarkup.new(@keyboard, @resize, @one_time, @selective)
     end
 
-    def inline_buttons(buttons : Array(Array(InlineKeyboardButton | String)))
+    def inline_buttons(buttons : Array(InlineKeyboardButton | String))
       buttons = buttons.map { |b| b.is_a?(String) ? Markup.inline_button(b) : b }
       keyboard = Markup.build_keyboard(buttons, columns: 1)
-      buttons(keyboard)
+      inline_buttons(keyboard)
     end
 
-    def inline_buttons(buttons : Array(InlineKeyboardButton | String))
+    def inline_buttons(buttons : Array(Array(InlineKeyboardButton | String)))
       buttons = buttons.map { |b| b.map { |b| b.is_a?(String) ? Markup.inline_button(b) : b } }
       if buttons.size > 0
         @inline_keyboard = buttons
@@ -179,7 +179,7 @@ module Tourmaline
       pay = nil
     )
       InlineKeyboardButton.new(text, url, login_url, callback_data, switch_inline_query,
-      switch_inline_query_current_chat, callback_game, pay)
+        switch_inline_query_current_chat, callback_game, pay)
     end
 
     def self.contact_request_button(text)
@@ -200,7 +200,7 @@ module Tourmaline
     end
 
     def self.callback_button(text, data)
-      Markup.inline_button(text, callback: data)
+      Markup.inline_button(text, callback_data: data)
     end
 
     def self.switch_to_chat_button(text, value)
@@ -295,7 +295,7 @@ module Tourmaline
         end
       end
 
-     result.join("")
+      result.join("")
     end
 
     def self.build_keyboard(

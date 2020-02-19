@@ -10,7 +10,7 @@ module Tourmaline
   # # bot definition...
   #
   # class MyMiddleware < Tourmaline::Middleware
-  #  getter name = "test_middleware"
+  #   getter name = "test_middleware"
   #
   #   def call(context)
   #     update = context.update

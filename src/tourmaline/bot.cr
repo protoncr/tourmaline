@@ -1,4 +1,5 @@
 require "halite"
+require "mime/multipart"
 
 require "./error"
 require "./logger"
@@ -26,6 +27,16 @@ module Tourmaline
     include MiddlewareRegistry
 
     API_URL = "https://api.telegram.org/"
+
+    DEFAULT_EXTENSIONS = {
+      audio:      "mp3",
+      photo:      "jpg",
+      sticker:    "webp",
+      video:      "mp4",
+      animation:  "mp4",
+      video_note: "mp4",
+      voice:      "ogg",
+    }
 
     @bot_name : String?
 
@@ -120,20 +131,16 @@ module Tourmaline
     # Sends a json request to the Telegram bot API.
     private def request(method, params = {} of String => String)
       method_url = ::File.join(@endpoint_url, method)
-      params = params.map do |k, v|
-        case v
-        when .responds_to?(:to_json)
-          unless v.is_a?(String) || v.nil?
-            v = v.to_json
-          end
-        else
-          v = v.to_s
-        end
+      multipart = includes_media(params)
 
-        {k.to_s, v}
-      end.to_h
+      if multipart
+        config = build_form_data_config(params)
+        response = Halite.request(**config, uri: method_url)
+      else
+        config = build_json_config(params)
+        response = Halite.request(**config, uri: method_url)
+      end
 
-      response = params.values.any?(&.is_a?(::IO::FileDescriptor)) ? Halite.post(method_url, form: params) : Halite.post(method_url, params: params)
       result = JSON.parse(response.body)
 
       if res = result["result"]?
@@ -161,6 +168,114 @@ module Tourmaline
       else
         raise Error.new("#{message} (#{code})")
       end
+    end
+
+    private def object_or_id(object)
+      if object.responds_to?(:id)
+        return object.id
+      end
+      object
+    end
+
+    private def includes_media(params)
+      params.values.any? do |val|
+        case val
+        when Array
+          val.any? { |v| v.is_a?(::File | InputMedia) }
+        when ::File, InputMedia
+          true
+        else
+          false
+        end
+      end
+    end
+
+    private def build_json_config(payload)
+      {
+        verb:    "POST",
+        headers: {"Content-Type" => "application/json", "Connection" => "keep-alive"},
+        raw:     payload.to_h.compact.to_json, # TODO: Figure out why this is necessary
+      }
+    end
+
+    private def build_form_data_config(payload)
+      boundary = MIME::Multipart.generate_boundary
+      formdata = MIME::Multipart.build(boundary) do |form|
+        payload.each do |key, value|
+          attach_form_value(form, key.to_s, value)
+        end
+      end
+
+      {
+        verb:    "POST",
+        headers: {
+          "Content-Type" => "multipart/form-data; boundary=#{boundary}",
+          "Connection"   => "keep-alive",
+        },
+        raw: formdata,
+      }
+    end
+
+    private def attach_form_value(form : MIME::Multipart::Builder, id : String, value)
+      return unless value
+      headers = HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}"}
+
+      case value
+      when Array
+        # Likely an Array(InputMedia)
+        items = value.map do |item|
+          if item.is_a?(InputMedia)
+            attach_form_media(form, item)
+          end
+          item
+        end
+        form.body_part(headers, items.to_json)
+      when InputMedia
+        attach_form_media(form, value)
+        form.body_part(headers, value.to_json)
+      when ::File
+        filename = "#{id}.#{DEFAULT_EXTENSIONS[id]? || "dat"}"
+        form.body_part(
+          HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
+          value
+        )
+      else
+        form.body_part(headers, value.to_json)
+      end
+    end
+
+    private def attach_form_media(form : MIME::Multipart::Builder, value : InputMedia)
+      media = value.media
+      thumb = value.responds_to?(:thumb) ? value.thumb : nil
+
+      {media: media, thumb: thumb}.each do |key, item|
+        item = check_open_local_file(item)
+        if item.is_a?(::File)
+          pp [key, item]
+          id = Random.new.random_bytes(16).hexstring
+          filename = "#{id}.#{DEFAULT_EXTENSIONS[id]? || "dat"}"
+
+          form.body_part(
+            HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
+            item
+          )
+
+          if key == :media
+            value.media = "attach://#{id}"
+          elsif value.responds_to?(:thumb)
+            value.thumb = "attach://#{id}"
+          end
+        end
+      end
+    end
+
+    private def check_open_local_file(file)
+      if file.is_a?(String)
+        if ::File.file?(file)
+          return ::File.open(file)
+        end
+      end
+      file
     end
 
     # Parse mode for messages.

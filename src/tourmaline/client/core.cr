@@ -1,3 +1,5 @@
+require "uri"
+
 module Tourmaline
   class Bot
     getter polling : Bool = false
@@ -395,7 +397,7 @@ module Tourmaline
       chat,
       user,
       permissions,
-      until_date = nil,
+      until_date = nil
     )
       chat_id = chat.is_a?(Int) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
@@ -506,9 +508,9 @@ module Tourmaline
       user_id = user.is_a?(Int) ? user : user.id
 
       response = request("setChatAdministratorCustomTitle", {
-        chat_id: chat_id,
-        user_id: user_id,
-        custom_title: custom_title
+        chat_id:      chat_id,
+        user_id:      user_id,
+        custom_title: custom_title,
       })
 
       response == true
@@ -522,8 +524,8 @@ module Tourmaline
       chat_id = chat.is_a?(Int) ? chat : chat.id
 
       response = request("setChatPermissions", {
-        chat_id: chat_id,
-        permissions: permissions.to_json
+        chat_id:     chat_id,
+        permissions: permissions.to_json,
       })
 
       response == true
@@ -745,6 +747,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
+      document = check_open_local_file(document)
       chat_id = chat.is_a?(Int) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
@@ -826,9 +829,10 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
+      photo = check_open_local_file(photo)
       chat_id = chat.is_a?(Int) ? chat : chat.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
-      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+      reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.id
 
       response = request("sendPhoto", {
         chat_id:              chat_id,
@@ -843,12 +847,38 @@ module Tourmaline
       Message.from_json(response)
     end
 
-    # Use this method to send a group of photos or videos as an album.
-    # On success, an array of the sent `Messages` is returned.
-    # TODO: Test this.
-    def send_media_group(
+    def edit_message_media(
       chat,
       media,
+      message = nil,
+      inline_message = nil,
+      reply_markup = nil
+    )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      media = check_open_local_file(media)
+      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+      inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
+
+      if !message_id && !inline_message_id
+        raise "Either a message or inline_message is required"
+      end
+
+      response = request("editMessageMedia", {
+        chat_id:           chat_id,
+        media:             media,
+        message_id:        message_id,
+        inline_message_id: inline_message_id,
+        reply_markup:      reply_markup,
+      })
+
+      Message.from_json(response)
+    end
+
+    # Use this method to send a group of photos or videos as an album.
+    # On success, an array of the sent `Messages` is returned.
+    def send_media_group(
+      chat,
+      media : Array(InputMediaPhoto | InputMediaVideo),
       disable_notification = false,
       reply_to_message = nil
     )
@@ -913,6 +943,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
+      video = check_open_local_file(video)
       chat_id = chat.is_a?(Int) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
@@ -946,6 +977,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
+      video_note = check_open_local_file(video_note)
       chat_id = chat.is_a?(Int) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
@@ -982,6 +1014,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
+      voice = check_open_local_file(voice)
       chat_id = chat.is_a?(Int) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
@@ -1049,9 +1082,9 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int) ? chat : chat.id
-      message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
-      inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
+      chat_id = object_or_id(chat)
+      message_id = object_or_id(message)
+      inline_message_id = object_or_id(inline_message)
 
       response = request("stopMessageLiveLocation", {
         chat_id:           chat_id,

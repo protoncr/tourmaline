@@ -721,7 +721,7 @@
   </h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L4" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L4" target="_blank">
         tourmaline/models/input_media_audio.cr
       </a>
     
@@ -743,12 +743,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(type:String,media:String,thumb:File%7CString?=nil,caption:String?=nil,parse_mode:String?=nil,duration:Int32?=nil,performer:String?=nil,title:String?=nil)-class-method" class="signature"><strong>.new</strong>(type : String, media : String, thumb : File | String? = <span class="n">nil</span>, caption : String? = <span class="n">nil</span>, parse_mode : String? = <span class="n">nil</span>, duration : Int32? = <span class="n">nil</span>, performer : String? = <span class="n">nil</span>, title : String? = <span class="n">nil</span>)</a>
+        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new(media:String,thumb:::File%7CString?=nil,caption:String?=nil,parse_mode:String?=nil,duration:Int32?=nil,performer:String?=nil,title:String?=nil)-class-method" class="signature"><strong>.new</strong>(media : String, thumb : ::File | String? = <span class="n">nil</span>, caption : String? = <span class="n">nil</span>, parse_mode : String? = <span class="n">nil</span>, duration : Int32? = <span class="n">nil</span>, performer : String? = <span class="n">nil</span>, title : String? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -774,12 +774,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#caption=(caption:String?)-instance-method" class="signature"><strong>#caption=</strong>(caption : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#duration:Int32?-instance-method" class="signature"><strong>#duration</strong> : Int32?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#media:String-instance-method" class="signature"><strong>#media</strong> : String</a>
+        <a href="#duration=(duration:Int32?)-instance-method" class="signature"><strong>#duration=</strong>(duration : Int32?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#media:String%7C::File-instance-method" class="signature"><strong>#media</strong> : String | ::File</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#media=(media:String%7C::File)-instance-method" class="signature"><strong>#media=</strong>(media : String | ::File)</a>
         
       </li>
     
@@ -789,12 +804,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#parse_mode=(parse_mode:String?)-instance-method" class="signature"><strong>#parse_mode=</strong>(parse_mode : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#performer:String?-instance-method" class="signature"><strong>#performer</strong> : String?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#thumb:File%7CString%7CNil-instance-method" class="signature"><strong>#thumb</strong> : File | String | Nil</a>
+        <a href="#performer=(performer:String?)-instance-method" class="signature"><strong>#performer=</strong>(performer : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#thumb:String%7C::File%7CNil-instance-method" class="signature"><strong>#thumb</strong> : String | ::File | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#thumb=(thumb:String%7C::File%7CNil)-instance-method" class="signature"><strong>#thumb=</strong>(thumb : String | ::File | Nil)</a>
         
       </li>
     
@@ -804,7 +834,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#type:String-instance-method" class="signature"><strong>#type</strong> : String</a>
+        <a href="#title=(title:String?)-instance-method" class="signature"><strong>#title=</strong>(title : String?)</a>
         
       </li>
     
@@ -858,22 +888,6 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(type:String,media:String,thumb:File|String?=nil,caption:String?=nil,parse_mode:String?=nil,duration:Int32?=nil,performer:String?=nil,title:String?=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(type : String, media : String, thumb : <a href="../Tourmaline/File.html">File</a> | String? = <span class="n">nil</span>, caption : String? = <span class="n">nil</span>, parse_mode : String? = <span class="n">nil</span>, duration : Int32? = <span class="n">nil</span>, performer : String? = <span class="n">nil</span>, title : String? = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(type:String,media:String,thumb:File%7CString?=nil,caption:String?=nil,parse_mode:String?=nil,duration:Int32?=nil,performer:String?=nil,title:String?=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L23" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
         
@@ -885,7 +899,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(media:String,thumb:::File|String?=nil,caption:String?=nil,parse_mode:String?=nil,duration:Int32?=nil,performer:String?=nil,title:String?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(media : String, thumb : ::File | String? = <span class="n">nil</span>, caption : String? = <span class="n">nil</span>, parse_mode : String? = <span class="n">nil</span>, duration : Int32? = <span class="n">nil</span>, performer : String? = <span class="n">nil</span>, title : String? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new(media:String,thumb:::File%7CString?=nil,caption:String?=nil,parse_mode:String?=nil,duration:Int32?=nil,performer:String?=nil,title:String?=nil)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -915,7 +945,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="caption=(caption:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>caption=</strong>(caption : String?)
+
+        <a class="method-permalink" href="#caption=(caption:String?)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -931,23 +977,55 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="media:String-instance-method">
+    <div class="entry-detail" id="duration=(duration:Int32?)-instance-method">
       <div class="signature">
         
-        def <strong>media</strong> : String
+        def <strong>duration=</strong>(duration : Int32?)
 
-        <a class="method-permalink" href="#media:String-instance-method">#</a>
+        <a class="method-permalink" href="#duration=(duration:Int32?)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="media:String|::File-instance-method">
+      <div class="signature">
+        
+        def <strong>media</strong> : String | ::File
+
+        <a class="method-permalink" href="#media:String%7C::File-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="media=(media:String|::File)-instance-method">
+      <div class="signature">
+        
+        def <strong>media=</strong>(media : String | ::File)
+
+        <a class="method-permalink" href="#media=(media:String%7C::File)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -963,7 +1041,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_mode=(parse_mode:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>parse_mode=</strong>(parse_mode : String?)
+
+        <a class="method-permalink" href="#parse_mode=(parse_mode:String?)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -979,23 +1073,55 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="thumb:File|String|Nil-instance-method">
+    <div class="entry-detail" id="performer=(performer:String?)-instance-method">
       <div class="signature">
         
-        def <strong>thumb</strong> : <a href="../Tourmaline/File.html">File</a> | String | Nil
+        def <strong>performer=</strong>(performer : String?)
 
-        <a class="method-permalink" href="#thumb:File%7CString%7CNil-instance-method">#</a>
+        <a class="method-permalink" href="#performer=(performer:String?)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="thumb:String|::File|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>thumb</strong> : String | ::File | Nil
+
+        <a class="method-permalink" href="#thumb:String%7C::File%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="thumb=(thumb:String|::File|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>thumb=</strong>(thumb : String | ::File | Nil)
+
+        <a class="method-permalink" href="#thumb=(thumb:String%7C::File%7CNil)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1011,23 +1137,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="type:String-instance-method">
+    <div class="entry-detail" id="title=(title:String?)-instance-method">
       <div class="signature">
         
-        def <strong>type</strong> : String
+        def <strong>title=</strong>(title : String?)
 
-        <a class="method-permalink" href="#type:String-instance-method">#</a>
+        <a class="method-permalink" href="#title=(title:String?)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/models/input_media_audio.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/models/input_media_audio.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>

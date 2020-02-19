@@ -1,18 +1,18 @@
 require "json"
 
 module Tourmaline
-  class InputMediaVideo
+  class InputMediaPhoto
     include JSON::Serializable
 
-    getter type : String
+    @type = "photo"
 
-    getter media : String
+    property media : String | ::File
 
-    getter caption : String?
+    property caption : String?
 
-    getter parse_mode : String?
+    property parse_mode : String?
 
-    def initialize(@type : String, @media : String, @caption : String? = nil, @parse_mode : String? = nil)
+    def initialize(@media : String, @caption : String? = nil, @parse_mode : String? = nil)
     end
   end
 end

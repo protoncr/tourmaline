@@ -4,7 +4,7 @@ module Tourmaline
   class InlineKeyboardMarkup
     include JSON::Serializable
 
-    getter inline_keyboard : Array(Array(InlineKeyboardButton))
+    property inline_keyboard : Array(Array(InlineKeyboardButton))
 
     def initialize(@inline_keyboard = [] of Array(InlineKeyboard))
     end

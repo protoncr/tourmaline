@@ -742,49 +742,49 @@ instance of <code><a href="../Tourmaline/Bot.html">Bot</a></code> and add comman
   </h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/polls.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/polls.cr#L2" target="_blank">
         tourmaline/client/polls.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L4" target="_blank">
         tourmaline/client/core.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/games.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/games.cr#L2" target="_blank">
         tourmaline/client/games.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/payments.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/payments.cr#L2" target="_blank">
         tourmaline/client/payments.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L2" target="_blank">
         tourmaline/client/stickers.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/webhook.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/webhook.cr#L2" target="_blank">
         tourmaline/client/webhook.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/bot.cr#L21" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/bot.cr#L22" target="_blank">
         tourmaline/bot.cr
       </a>
     
@@ -807,6 +807,11 @@ instance of <code><a href="../Tourmaline/Bot.html">Bot</a></code> and add comman
     
       <dt class="entry-const" id="API_URL">
         <strong>API_URL</strong> = <code><span class="s">&quot;https://api.telegram.org/&quot;</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="DEFAULT_EXTENSIONS">
+        <strong>DEFAULT_EXTENSIONS</strong> = <code>{audio: <span class="s">&quot;mp3&quot;</span>, photo: <span class="s">&quot;jpg&quot;</span>, sticker: <span class="s">&quot;webp&quot;</span>, video: <span class="s">&quot;mp4&quot;</span>, animation: <span class="s">&quot;mp4&quot;</span>, video_note: <span class="s">&quot;mp4&quot;</span>, voice: <span class="s">&quot;ogg&quot;</span>}</code>
       </dt>
       
     
@@ -942,6 +947,11 @@ instance of <code><a href="../Tourmaline/Bot.html">Bot</a></code> and add comman
         <a href="#edit_message_live_location(chat,latitude,longitude,message=nil,inline_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_live_location</strong>(chat, latitude, longitude, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to edit live location messages.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#edit_message_media(chat,media,message=nil,inline_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_media</strong>(chat, media, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1174,7 +1184,7 @@ instance of <code><a href="../Tourmaline/Bot.html">Bot</a></code> and add comman
       </li>
     
       <li class="entry-summary">
-        <a href="#send_invoice(chat_id,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_invoice</strong>(chat_id, title, description, payload, provider_token, start_parameter, currency, prices, provider_data = <span class="n">nil</span>, photo_url = <span class="n">nil</span>, photo_size = <span class="n">nil</span>, photo_width = <span class="n">nil</span>, photo_height = <span class="n">nil</span>, need_name = <span class="n">nil</span>, need_shipping_address = <span class="n">nil</span>, send_phone_number_to_provider = <span class="n">nil</span>, send_email_to_provider = <span class="n">nil</span>, is_flexible = <span class="n">nil</span>, disable_notification = <span class="n">nil</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_invoice(chat,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_invoice</strong>(chat, title, description, payload, provider_token, start_parameter, currency, prices, provider_data = <span class="n">nil</span>, photo_url = <span class="n">nil</span>, photo_size = <span class="n">nil</span>, photo_width = <span class="n">nil</span>, photo_height = <span class="n">nil</span>, need_name = <span class="n">nil</span>, need_shipping_address = <span class="n">nil</span>, send_phone_number_to_provider = <span class="n">nil</span>, send_email_to_provider = <span class="n">nil</span>, is_flexible = <span class="n">nil</span>, disable_notification = <span class="n">nil</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send invoices.</p></div>
         
@@ -1188,7 +1198,7 @@ instance of <code><a href="../Tourmaline/Bot.html">Bot</a></code> and add comman
       </li>
     
       <li class="entry-summary">
-        <a href="#send_media_group(chat,media,disable_notification=false,reply_to_message=nil)-instance-method" class="signature"><strong>#send_media_group</strong>(chat, media, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>)</a>
+        <a href="#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo),disable_notification=false,reply_to_message=nil)-instance-method" class="signature"><strong>#send_media_group</strong>(chat, media : Array(InputMediaPhoto | InputMediaVideo), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send a group of photos or videos as an album.</p></div>
         
@@ -1209,7 +1219,7 @@ instance of <code><a href="../Tourmaline/Bot.html">Bot</a></code> and add comman
       </li>
     
       <li class="entry-summary">
-        <a href="#send_poll(chat,question:String,options:Array(String),is_anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_index:Int32?=nil,is_closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_poll</strong>(chat, question : String, options : Array(String), is_anonymous : Bool = <span class="n">true</span>, type : PollType = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_index : Int32? = <span class="n">nil</span>, is_closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_poll</strong>(chat, question : String, options : Array(String), anonymous : Bool = <span class="n">true</span>, type : PollType = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_id : Int32? = <span class="n">nil</span>, closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send a native poll.</p></div>
         
@@ -1639,7 +1649,7 @@ Crystal's built in Logger.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/bot.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/bot.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1675,7 +1685,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1706,7 +1716,7 @@ an alert. On success, <code>true</code> is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1729,7 +1739,7 @@ On success, True is returned. No more than
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1756,7 +1766,7 @@ On success, <code>true</code> is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/payments.cr#L82" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/payments.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1780,7 +1790,7 @@ On success, <code>true</code> is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/payments.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/payments.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1803,7 +1813,7 @@ started. Refreshing can be done by setting
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/bot.cr#L112" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/bot.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1826,7 +1836,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1853,7 +1863,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L492" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L494" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1878,7 +1888,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L94" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L94" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1904,7 +1914,7 @@ Returns <code>true</code> on success.</li></ul>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1926,7 +1936,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1948,7 +1958,7 @@ back to getUpdates.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/webhook.cr#L65" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/webhook.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1972,7 +1982,7 @@ is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L127" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L129" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1997,7 +2007,23 @@ returned, otherwise <code>true</code> is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L1006" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L1039" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="edit_message_media(chat,media,message=nil,inline_message=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>edit_message_media</strong>(chat, media, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#edit_message_media(chat,media,message=nil,inline_message=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L850" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2021,7 +2047,7 @@ returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L160" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L162" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2044,7 +2070,7 @@ is returned, otherwise <code>true</code> is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L189" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2060,7 +2086,7 @@ is returned, otherwise <code>true</code> is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/bot.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/bot.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2076,7 +2102,7 @@ is returned, otherwise <code>true</code> is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/bot.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/bot.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2100,7 +2126,7 @@ Returns the new invite link as <code>String</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L457" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L459" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2122,7 +2148,7 @@ the sent <code><a href="../Tourmaline/Message.html">Message</a></code> is return
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L220" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L222" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2146,7 +2172,7 @@ Returns a <code><a href="../Tourmaline/Chat.html">Chat</a></code> object on succ
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L244" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L246" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2171,7 +2197,7 @@ only the creator will be returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L259" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L261" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2193,7 +2219,7 @@ only the creator will be returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L272" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L274" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2215,7 +2241,7 @@ Returns <code>Int32</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L288" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L290" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2244,7 +2270,7 @@ expires, a new one can be requested by calling <code><a href="../Tourmaline/Bot.
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L307" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L309" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2265,7 +2291,7 @@ expires, a new one can be requested by calling <code><a href="../Tourmaline/Bot.
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L316" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L318" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2293,7 +2319,7 @@ On success, returns an <code>Array</code> of <code><a href="../Tourmaline/GameHi
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/games.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/games.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2316,7 +2342,7 @@ in form of a <code><a href="../Tourmaline/User.html">User</a></code> object.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2338,7 +2364,7 @@ On success, a <code><a href="../Tourmaline/StickerSet.html">StickerSet</a></code
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2361,7 +2387,7 @@ An <code>Array</code> of <code><a href="../Tourmaline/Update.html">Update</a></c
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2383,7 +2409,7 @@ Returns a <code><a href="../Tourmaline/UserProfilePhotos.html">UserProfilePhotos
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L324" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L326" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2407,7 +2433,7 @@ url field empty.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/webhook.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/webhook.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2430,7 +2456,7 @@ for more info.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2461,7 +2487,7 @@ rights. Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L351" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L353" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2483,7 +2509,7 @@ of <code>NamedTuple(label: String, amount: Int32)</code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/payments.cr#L98" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/payments.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2506,7 +2532,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L601" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L603" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2522,7 +2548,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2547,7 +2573,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L570" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L572" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2570,7 +2596,7 @@ for updates.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L1073" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L1106" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2586,7 +2612,7 @@ for updates.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2611,7 +2637,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L420" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L422" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2636,7 +2662,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L394" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L396" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2652,7 +2678,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L648" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L650" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2681,7 +2707,7 @@ changed in the future.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L619" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L621" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2713,7 +2739,7 @@ noticeable amount of time to arrive.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L694" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L696" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2735,7 +2761,7 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L710" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L712" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2761,7 +2787,7 @@ may be changed in the future.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L740" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L742" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2783,17 +2809,17 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/games.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/games.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="send_invoice(chat_id,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_invoice(chat,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message=nil,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_invoice</strong>(chat_id, title, description, payload, provider_token, start_parameter, currency, prices, provider_data = <span class="n">nil</span>, photo_url = <span class="n">nil</span>, photo_size = <span class="n">nil</span>, photo_width = <span class="n">nil</span>, photo_height = <span class="n">nil</span>, need_name = <span class="n">nil</span>, need_shipping_address = <span class="n">nil</span>, send_phone_number_to_provider = <span class="n">nil</span>, send_email_to_provider = <span class="n">nil</span>, is_flexible = <span class="n">nil</span>, disable_notification = <span class="n">nil</span>, reply_to_message_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_invoice</strong>(chat, title, description, payload, provider_token, start_parameter, currency, prices, provider_data = <span class="n">nil</span>, photo_url = <span class="n">nil</span>, photo_size = <span class="n">nil</span>, photo_width = <span class="n">nil</span>, photo_height = <span class="n">nil</span>, need_name = <span class="n">nil</span>, need_shipping_address = <span class="n">nil</span>, send_phone_number_to_provider = <span class="n">nil</span>, send_email_to_provider = <span class="n">nil</span>, is_flexible = <span class="n">nil</span>, disable_notification = <span class="n">nil</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_invoice(chat_id,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message_id=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_invoice(chat,title,description,payload,provider_token,start_parameter,currency,prices,provider_data=nil,photo_url=nil,photo_size=nil,photo_width=nil,photo_height=nil,need_name=nil,need_shipping_address=nil,send_phone_number_to_provider=nil,send_email_to_provider=nil,is_flexible=nil,disable_notification=nil,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2805,7 +2831,7 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/payments.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/payments.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2827,31 +2853,29 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L765" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L768" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="send_media_group(chat,media,disable_notification=false,reply_to_message=nil)-instance-method">
+    <div class="entry-detail" id="send_media_group(chat,media:Array(InputMediaPhoto|InputMediaVideo),disable_notification=false,reply_to_message=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_media_group</strong>(chat, media, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>)
+        def <strong>send_media_group</strong>(chat, media : Array(<a href="../Tourmaline/InputMediaPhoto.html">InputMediaPhoto</a> | <a href="../Tourmaline/InputMediaVideo.html">InputMediaVideo</a>), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_media_group(chat,media,disable_notification=false,reply_to_message=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo),disable_notification=false,reply_to_message=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Use this method to send a group of photos or videos as an album.
 On success, an array of the sent <code>Messages</code> is returned.</p>
-
-<p><span class="flag orange">TODO</span>  Test this.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L849" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L879" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2873,7 +2897,7 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L792" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L795" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2895,17 +2919,17 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L820" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L823" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="send_poll(chat,question:String,options:Array(String),is_anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_index:Int32?=nil,is_closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_poll</strong>(chat, question : String, options : Array(String), is_anonymous : Bool = <span class="n">true</span>, type : <a href="../Tourmaline/PollType.html">PollType</a> = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_index : Int32? = <span class="n">nil</span>, is_closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_poll</strong>(chat, question : String, options : Array(String), anonymous : Bool = <span class="n">true</span>, type : <a href="../Tourmaline/PollType.html">PollType</a> = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_id : Int32? = <span class="n">nil</span>, closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_poll(chat,question:String,options:Array(String),is_anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_index:Int32?=nil,is_closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2917,7 +2941,7 @@ On success, the sent Message is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/polls.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/polls.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2941,7 +2965,7 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2963,7 +2987,7 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L870" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L900" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2990,7 +3014,7 @@ changed in the future.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L905" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L935" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3014,7 +3038,7 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L938" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L969" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3042,7 +3066,7 @@ messages of up to <strong>50 MB</strong> in size, this limit may be changed in t
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L974" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L1006" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3065,7 +3089,7 @@ bots in production.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/webhook.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/webhook.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3087,7 +3111,7 @@ Returns True on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L504" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L506" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3111,7 +3135,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L554" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L556" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3135,7 +3159,7 @@ Returns True on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L521" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L523" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3162,7 +3186,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L476" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3188,7 +3212,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3215,7 +3239,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L539" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L541" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3241,7 +3265,7 @@ score in the chat and force is <code>false</code> (default).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/games.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/games.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3263,7 +3287,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L114" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3292,7 +3316,7 @@ else knows your bot‘s token, you can be pretty sure it’s us.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/webhook.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/webhook.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3314,7 +3338,7 @@ else knows your bot‘s token, you can be pretty sure it’s us.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/payments.cr#L106" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/payments.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3338,7 +3362,7 @@ On success, if the message was sent by the bot, the sent
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L1042" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L1075" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3360,7 +3384,7 @@ On success, the stopped <code><a href="../Tourmaline/Poll.html">Poll</a></code> 
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/polls.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/polls.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3381,7 +3405,7 @@ On success, the stopped <code><a href="../Tourmaline/Poll.html">Poll</a></code> 
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L1091" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L1124" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3406,7 +3430,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L374" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L376" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3431,7 +3455,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/core.cr#L588" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/core.cr#L590" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3452,7 +3476,7 @@ Returns <code>true</code> on success.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/webhook.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/webhook.cr#L50" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3476,7 +3500,7 @@ Returns the uploaded <code><a href="../Tourmaline/File.html">File</a></code> on 
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/stickers.cr#L127" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/stickers.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>

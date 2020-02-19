@@ -705,7 +705,7 @@
   </h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/polls.cr#L73" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/polls.cr#L72" target="_blank">
         tourmaline/client/polls.cr
       </a>
     
@@ -765,7 +765,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#to_s(io)-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
+        <a href="#to_s-instance-method" class="signature"><strong>#to_s</strong></a>
+        
+          <div class="summary"><p>Returns a <code>String</code> representation of this enum member.</p></div>
         
       </li>
     
@@ -844,7 +846,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/polls.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/polls.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -860,23 +862,44 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/polls.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/polls.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_s(io)-instance-method">
+    <div class="entry-detail" id="to_s-instance-method">
       <div class="signature">
         
-        def <strong>to_s</strong>(io)
+        def <strong>to_s</strong>
 
-        <a class="method-permalink" href="#to_s(io)-instance-method">#</a>
+        <a class="method-permalink" href="#to_s-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from struct Enum
+            </div>
+          
+          <p>Returns a <code>String</code> representation of this enum member.
+In the case of regular enums, this is just the name of the member.
+In the case of flag enums, it's the names joined by vertical bars, or "None",
+if the value is zero.</p>
+
+<p>If an enum's value doesn't match a member's value, the raw value
+is returned as a string.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Red</span>.to_s                     <span class="c"># =&gt; &quot;Red&quot;</span>
+<span class="t">IOMode</span><span class="t">::</span><span class="t">None</span>.to_s                   <span class="c"># =&gt; &quot;None&quot;</span>
+(<span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Write</span>).to_s <span class="c"># =&gt; &quot;Read | Write&quot;</span>
+
+<span class="t">Color</span>.<span class="k">new</span>(<span class="n">10</span>).to_s <span class="c"># =&gt; &quot;10&quot;</span></code></pre>
+        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/client/polls.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/client/polls.cr#L76" target="_blank">View source</a>]
         
       </div>
     </div>

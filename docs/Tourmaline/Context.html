@@ -684,6 +684,25 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p><code><a href="../Tourmaline/Context.html">Context</a></code> represents the data passed into a bot command. It gives access to
+the <code><a href="../Tourmaline/Context.html#client:Tourmaline::Bot-instance-method">#client</a></code>, the full <code><a href="../Tourmaline/Context.html#update:Tourmaline::Update-instance-method">#update</a></code>, the <code><a href="../Tourmaline/Context.html#message:Tourmaline::Message-instance-method">#message</a></code>, the <code><a href="../Tourmaline/Context.html#command:String-instance-method">#command</a></code>
+(including the prefix), and the raw message <code><a href="../Tourmaline/Context.html#text:String-instance-method">#text</a></code>
+(not including the command).</p>
+
+<p>Since it can be annoying and verbose to have to type <code>ctx<a href="../Tourmaline/Context.html#message:Tourmaline::Message-instance-method">.message</a>.method</code>
+every time, <code><a href="../Tourmaline/Context.html">Context</a></code> also forwards missing methods to the message,
+update, and client in that order. So rather than calling
+<code>ctx<a href="../Tourmaline/Context.html#message:Tourmaline::Message-instance-method">.message</a>.reply</code> you can just do <code>ctx.reply</code>.</p>
+
 
 
 
@@ -707,7 +726,7 @@
   </h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/context.cr#L2" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/context.cr#L11" target="_blank">
         tourmaline/context.cr
       </a>
     
@@ -862,7 +881,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/context.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/context.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -906,7 +925,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/context.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/context.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -936,7 +955,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/context.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/context.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1006,7 +1025,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/58ec20e4b86dfca7dee6121cb3e55157bc74fa25/src/tourmaline/context.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/context.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>

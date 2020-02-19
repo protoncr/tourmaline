@@ -4,24 +4,24 @@ module Tourmaline
   class InlineKeyboardButton
     include JSON::Serializable
 
-    getter text : String
+    property text : String
 
-    getter url : String?
+    property url : String?
 
-    getter login_url : LoginURL?
+    property login_url : LoginURL?
 
-    getter callback_data : String?
+    property callback_data : String?
 
-    getter switch_inline_query : String?
+    property switch_inline_query : String?
 
-    getter switch_inline_query_current_chat : String?
+    property switch_inline_query_current_chat : String?
 
-    getter callback_game : CallbackGame?
+    property callback_game : CallbackGame?
 
-    getter pay : Bool?
+    property pay : Bool?
 
     def initialize(@text : String, @url : String? = nil, @login_url : LoginURL? = nil, @callback_data : String? = nil, @switch_inline_query : String? = nil,
-      switch_inline_query_current_chat : String? = nil, callback_game : CallbackGame? = nil, pay : Bool? = nil)
+                   switch_inline_query_current_chat : String? = nil, callback_game : CallbackGame? = nil, pay : Bool? = nil)
     end
   end
 end

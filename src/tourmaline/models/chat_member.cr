@@ -51,25 +51,25 @@ module Tourmaline
       case permissions
       when true
         BotContainer.bot.restrict_chat_member(chat_id, user.id, {
-          can_send_messages: true,
-          can_send_media_messages: true,
-          can_send_polls: true,
-          can_send_other_messages: true,
+          can_send_messages:         true,
+          can_send_media_messages:   true,
+          can_send_polls:            true,
+          can_send_other_messages:   true,
           can_add_web_page_previews: true,
-          can_change_info: true,
-          can_invite_users: true,
-          can_pin_messages: true
+          can_change_info:           true,
+          can_invite_users:          true,
+          can_pin_messages:          true,
         }, until_date)
       when false
         BotContainer.bot.restrict_chat_member(chat_id, user.id, {
-          can_send_messages: false,
-          can_send_media_messages: false,
-          can_send_polls: false,
-          can_send_other_messages: false,
+          can_send_messages:         false,
+          can_send_media_messages:   false,
+          can_send_polls:            false,
+          can_send_other_messages:   false,
           can_add_web_page_previews: false,
-          can_change_info: false,
-          can_invite_users: false,
-          can_pin_messages: false
+          can_change_info:           false,
+          can_invite_users:          false,
+          can_pin_messages:          false,
         }, until_date)
       else
         BotContainer.bot.restrict_chat_member(chat_id, user.id, permissions, until_date)
