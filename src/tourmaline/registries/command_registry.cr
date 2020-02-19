@@ -56,7 +56,9 @@ module Tourmaline
             if cmd.name == command[1..-1] && cmd.prefix == command[0].to_s
               return if cmd.private_only && !(message.chat.type == "private")
               context = Tourmaline::CommandContext.new(self, update, message, command[1..-1], text)
-              spawn cmd.proc.call(context)
+              spawn do
+                cmd.proc.call(context)
+              end
             end
           end
         end

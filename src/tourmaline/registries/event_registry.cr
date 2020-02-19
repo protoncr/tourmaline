@@ -50,18 +50,22 @@ module Tourmaline
       if procs = @on_handlers[event]?
         ctx = Tourmaline::EventContext.new(self, update, update.message, event)
         procs.each do |proc|
-          spawn proc.call(ctx)
+          spawn do
+            proc.call(ctx)
+          end
         end
       end
     end
 
     protected def trigger_action_event(event : String, update : Update)
       if (procs = @action_handlers[event]?) &&
-         (query = update.callback_query) &&
-         (message = query.message)
+          (query = update.callback_query) &&
+           (message = query.message)
         ctx = Tourmaline::ActionContext.new(self, update, message, query, event)
         procs.each do |proc|
-          spawn proc.call(ctx)
+          spawn do
+            proc.call(ctx)
+          end
         end
       end
     end

@@ -11,6 +11,7 @@ require "./models/*"
 require "./fiber"
 require "./annotations"
 require "./registries/*"
+require "./middleware"
 require "./client/*"
 require "./markup"
 require "./query_result_builder"
@@ -24,7 +25,6 @@ module Tourmaline
     include EventRegistry
     include CommandRegistry
     include PatternRegistry
-    include MiddlewareRegistry
 
     API_URL = "https://api.telegram.org/"
 
@@ -59,9 +59,27 @@ module Tourmaline
       BotContainer.bot = self
     end
 
+    macro use(middleware)
+      # For reasons this is only allowed to be called inside of a bot instance
+      {% unless @type == Bot || @type.superclass == Bot %}
+        {% raise "Bot#use can only be called inside of a Bot class definition" %}
+      {% end %}
+
+      # Iterate over the middleware's methods and look for ones marked with the
+      # `@[Export]` annotation. These will be added to the bot directly.
+      {% for method in middleware.resolve.methods %}
+        {% if ann = method.annotation(Export) || method.annotation(Tourmaline::Export) %}
+          # Add the method to `Tourmaline::Client`
+          {{ method }}
+        {% end %}
+      {% end %}
+    end
+
+    use(CallbackQueryMiddleware)
+
     private def handle_update(update : Update)
       @@logger.debug(update.to_pretty_json)
-      trigger_all_middlewares(update)
+      # trigger_all_middleware(update)
       trigger_commands(update)
       trigger_patterns(update)
 

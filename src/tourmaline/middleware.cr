@@ -27,10 +27,25 @@ module Tourmaline
   # # Register the middleware with your bot
   # bot.use(MyMiddleware.new)
   # ```
-  abstract class Middleware
-    abstract def name : String
+  #
+  module MiddlewareInterface
+    @@registered_middleware = {} of MiddlewareInterface.class => MiddlewareInterface
 
-    abstract def call(context : Context)
+    def init(bot : Tourmaline::Bot)
+      # Do nothing
+    end
+
+    def call(context : Context)
+      # Do nothing
+    end
+
+    macro included
+      {% begin %}
+        {% for subclass in @type.subclasses %}
+          {% puts(subclass) %}
+        {% end %}
+      {% end %}
+    end
 
     class Context
       property bot : Tourmaline::Bot
@@ -42,3 +57,5 @@ module Tourmaline
     end
   end
 end
+
+require "./middleware/*"

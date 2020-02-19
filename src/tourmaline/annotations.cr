@@ -56,4 +56,7 @@ module Tourmaline
   # end
   # ```
   annotation Action; end
+
+  annotation OnCallbackQuery; end
+  annotation Export; end
 end
