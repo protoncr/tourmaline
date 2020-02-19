@@ -4,8 +4,8 @@ class InlineQueryBot < Tourmaline::Bot
   include Tourmaline
 
   @[On(:inline_query)]
-  def on_inline_query(update)
-    if query = update.inline_query
+  def on_inline_query(ctx)
+    if query = ctx.inline_query
       results = Tourmaline::QueryResultBuilder.build do |builder|
         builder.article(
           id: "query",

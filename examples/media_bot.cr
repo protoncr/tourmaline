@@ -54,14 +54,9 @@ class MediaBot < Tourmaline::Bot
     )
   end
 
-  @[On(:callback_query)]
-  def on_swap_media(update)
-    if cb = update.callback_query
-      if (data = cb.data) && data.includes?("swap_media")
-        message = cb.message.not_nil!
-        message.edit_media(InputMediaAnimation.new(AnimationUrl2))
-      end
-    end
+  @[Action("swap_media")]
+  def on_swap_media(ctx)
+    ctx.edit_media(InputMediaAnimation.new(AnimationUrl2))
   end
 end
 

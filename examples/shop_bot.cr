@@ -38,21 +38,21 @@ class ShopBot < Tourmaline::Bot
   end
 
   @[On(:shipping_query)]
-  def on_shipping_query(update)
-    if query = update.shipping_query
+  def on_shipping_query(ctx)
+    if query = ctx.shipping_query
       query.answer(true, shipping_options: SHIPPING_OPTIONS)
     end
   end
 
   @[On(:pre_checkout_query)]
-  def on_pre_checkout_query(update)
-    if query = update.pre_checkout_query
+  def on_pre_checkout_query(ctx)
+    if query = ctx.pre_checkout_query
       query.answer(true)
     end
   end
 
   @[On(:successful_payment)]
-  def on_successful_payment(update)
+  def on_successful_payment(ctx)
     puts "Wooooo"
   end
 end

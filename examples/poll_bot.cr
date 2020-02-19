@@ -9,15 +9,15 @@ class PollBot < Tourmaline::Bot
   ]]).keyboard
 
   @[On(:poll)]
-  def on_poll(update)
+  def on_poll(ctx)
     puts "Poll update:"
-    pp update.poll
+    pp ctx.poll
   end
 
   @[On(:poll_answer)]
-  def on_poll_answer(update)
+  def on_poll_answer(ctx)
     puts "Poll answer:"
-    pp update.poll_answer
+    pp ctx.poll_answer
   end
 
   @[Command("poll")]

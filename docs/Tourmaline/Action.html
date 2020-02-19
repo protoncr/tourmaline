@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="github.com/watzon/tourmaline">
-  <title>Tourmaline::InputTextMessageContent - github.com/watzon/tourmaline</title>
+  <title>Tourmaline::Action - github.com/watzon/tourmaline</title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -45,7 +45,7 @@
       
         <ul>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Action" data-name="tourmaline::action">
+  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/Action" data-name="tourmaline::action">
       <a href="../Tourmaline/Action.html">Action</a>
       
     </li>
@@ -410,7 +410,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/InputTextMessageContent" data-name="tourmaline::inputtextmessagecontent">
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/InputTextMessageContent" data-name="tourmaline::inputtextmessagecontent">
       <a href="../Tourmaline/InputTextMessageContent.html">InputTextMessageContent</a>
       
     </li>
@@ -689,33 +689,36 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::InputTextMessageContent
+  <span class="kind">annotation</span> Tourmaline::Action
 
 </h1>
-
-
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/InputTextMessageContent.html">Tourmaline::InputTextMessageContent</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
 
 
 
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="overview" class="anchor" href="#overview">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Overview
   </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">JSON::Serializable</li>
-    
-  </ul>
+
+  <p>Run the annotated method when a matching callback_query is found, passing
+in a <code>Context</code> object.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-crystal">@[<span class="t">Action</span>(<span class="s">&quot;button_click&quot;</span>)]
+<span class="k">def</span> <span class="m">on_button_click</span>(ctx)
+  pp ctx.update_action
+<span class="k">end</span></code></pre>
+
+
+
+
 
 
 
@@ -736,8 +739,8 @@
   </h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L4" target="_blank">
-        tourmaline/models/input_text_message_content.cr
+      <a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/annotations.cr#L58" target="_blank">
+        tourmaline/annotations.cr
       </a>
     
     <br/>
@@ -747,58 +750,9 @@
 
 
 
-  <h2>
-    <a id="constructors" class="anchor" href="#constructors">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructors
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new(message_text:String,parse_mode:String?=nil,disable_web_page_preview:Bool?=nil)-class-method" class="signature"><strong>.new</strong>(message_text : String, parse_mode : String? = <span class="n">nil</span>, disable_web_page_preview : Bool? = <span class="n">nil</span>)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
-
-
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#disable_web_page_preview:Bool?-instance-method" class="signature"><strong>#disable_web_page_preview</strong> : Bool?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#message_text:String-instance-method" class="signature"><strong>#message_text</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#parse_mode:String?-instance-method" class="signature"><strong>#parse_mode</strong> : String?</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -806,142 +760,12 @@
 
 <div class="methods-inherited">
   
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
 
-  <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructor Detail
-  </h2>
-  
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(pull : JSON::PullParser)
-
-        <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L5" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(message_text:String,parse_mode:String?=nil,disable_web_page_preview:Bool?=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(message_text : String, parse_mode : String? = <span class="n">nil</span>, disable_web_page_preview : Bool? = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(message_text:String,parse_mode:String?=nil,disable_web_page_preview:Bool?=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L13" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 
-
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="disable_web_page_preview:Bool?-instance-method">
-      <div class="signature">
-        
-        def <strong>disable_web_page_preview</strong> : Bool?
-
-        <a class="method-permalink" href="#disable_web_page_preview:Bool?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L11" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="message_text:String-instance-method">
-      <div class="signature">
-        
-        def <strong>message_text</strong> : String
-
-        <a class="method-permalink" href="#message_text:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L7" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="parse_mode:String?-instance-method">
-      <div class="signature">
-        
-        def <strong>parse_mode</strong> : String?
-
-        <a class="method-permalink" href="#parse_mode:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L9" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 

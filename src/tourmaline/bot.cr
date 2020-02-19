@@ -62,63 +62,62 @@ module Tourmaline
     private def handle_update(update : Update)
       @@logger.debug(update.to_pretty_json)
       trigger_all_middlewares(update)
+      trigger_commands(update)
+      trigger_patterns(update)
 
+      # Trigger methods marked with the `Action` annotation.
+      if (cb = update.callback_query) && (data = cb.data)
+        trigger_action_event(data, update)
+      end
+
+      # Trigger events marked with the `On` annotation.
       if message = update.message
-        trigger_event(UpdateAction::Message, update)
+        trigger_on_event(UpdateAction::Message, update)
 
         if chat = message.chat
-          trigger_event(UpdateAction::PinnedMessage, update) if chat.pinned_message
+          trigger_on_event(UpdateAction::PinnedMessage, update) if chat.pinned_message
         end
 
-        trigger_event(UpdateAction::Text, update) if message.text
-        trigger_event(UpdateAction::Audio, update) if message.audio
-        trigger_event(UpdateAction::Document, update) if message.document
-        trigger_event(UpdateAction::Photo, update) if message.photo
-        trigger_event(UpdateAction::Sticker, update) if message.sticker
-        trigger_event(UpdateAction::Video, update) if message.video
-        trigger_event(UpdateAction::Voice, update) if message.voice
-        trigger_event(UpdateAction::Contact, update) if message.contact
-        trigger_event(UpdateAction::Location, update) if message.location
-        trigger_event(UpdateAction::Venue, update) if message.venue
-        trigger_event(UpdateAction::NewChatMembers, update) if message.new_chat_members
-        trigger_event(UpdateAction::LeftChatMember, update) if message.left_chat_member
-        trigger_event(UpdateAction::NewChatTitle, update) if message.new_chat_title
-        trigger_event(UpdateAction::NewChatPhoto, update) if message.new_chat_photo
-        trigger_event(UpdateAction::DeleteChatPhoto, update) if message.delete_chat_photo
-        trigger_event(UpdateAction::GroupChatCreated, update) if message.group_chat_created
-        trigger_event(UpdateAction::MigrateToChatId, update) if message.migrate_from_chat_id
-        trigger_event(UpdateAction::SupergroupChatCreated, update) if message.supergroup_chat_created
-        trigger_event(UpdateAction::ChannelChatCreated, update) if message.channel_chat_created
-        trigger_event(UpdateAction::MigrateFromChatId, update) if message.migrate_from_chat_id
-        trigger_event(UpdateAction::Game, update) if message.game
-        trigger_event(UpdateAction::VideoNote, update) if message.video_note
-        trigger_event(UpdateAction::Invoice, update) if message.invoice
-        trigger_event(UpdateAction::SuccessfulPayment, update) if message.successful_payment
-        trigger_event(UpdateAction::ConnectedWebsite, update) if message.connected_website
-        # trigger_event(UpdateAction::PassportData, update) if message.passport_data
+        trigger_on_event(UpdateAction::Text, update) if message.text
+        trigger_on_event(UpdateAction::Audio, update) if message.audio
+        trigger_on_event(UpdateAction::Document, update) if message.document
+        trigger_on_event(UpdateAction::Photo, update) if message.photo
+        trigger_on_event(UpdateAction::Sticker, update) if message.sticker
+        trigger_on_event(UpdateAction::Video, update) if message.video
+        trigger_on_event(UpdateAction::Voice, update) if message.voice
+        trigger_on_event(UpdateAction::Contact, update) if message.contact
+        trigger_on_event(UpdateAction::Location, update) if message.location
+        trigger_on_event(UpdateAction::Venue, update) if message.venue
+        trigger_on_event(UpdateAction::NewChatMembers, update) if message.new_chat_members
+        trigger_on_event(UpdateAction::LeftChatMember, update) if message.left_chat_member
+        trigger_on_event(UpdateAction::NewChatTitle, update) if message.new_chat_title
+        trigger_on_event(UpdateAction::NewChatPhoto, update) if message.new_chat_photo
+        trigger_on_event(UpdateAction::DeleteChatPhoto, update) if message.delete_chat_photo
+        trigger_on_event(UpdateAction::GroupChatCreated, update) if message.group_chat_created
+        trigger_on_event(UpdateAction::MigrateToChatId, update) if message.migrate_from_chat_id
+        trigger_on_event(UpdateAction::SupergroupChatCreated, update) if message.supergroup_chat_created
+        trigger_on_event(UpdateAction::ChannelChatCreated, update) if message.channel_chat_created
+        trigger_on_event(UpdateAction::MigrateFromChatId, update) if message.migrate_from_chat_id
+        trigger_on_event(UpdateAction::Game, update) if message.game
+        trigger_on_event(UpdateAction::VideoNote, update) if message.video_note
+        trigger_on_event(UpdateAction::Invoice, update) if message.invoice
+        trigger_on_event(UpdateAction::SuccessfulPayment, update) if message.successful_payment
+        trigger_on_event(UpdateAction::ConnectedWebsite, update) if message.connected_website
+        # trigger_on_event(UpdateAction::PassportData, update) if message.passport_data
       end
 
-      trigger_event(UpdateAction::EditedMessage, update) if update.edited_message
-      trigger_event(UpdateAction::ChannelPost, update) if update.channel_post
-      trigger_event(UpdateAction::EditedChannelPost, update) if update.edited_channel_post
-      trigger_event(UpdateAction::InlineQuery, update) if update.inline_query
-      trigger_event(UpdateAction::ChosenInlineResult, update) if update.chosen_inline_result
-      trigger_event(UpdateAction::CallbackQuery, update) if update.callback_query
-      trigger_event(UpdateAction::ShippingQuery, update) if update.shipping_query
-      trigger_event(UpdateAction::PreCheckoutQuery, update) if update.pre_checkout_query
-      trigger_event(UpdateAction::Poll, update) if update.poll
-      trigger_event(UpdateAction::PollAnswer, update) if update.poll_answer
+      trigger_on_event(UpdateAction::EditedMessage, update) if update.edited_message
+      trigger_on_event(UpdateAction::ChannelPost, update) if update.channel_post
+      trigger_on_event(UpdateAction::EditedChannelPost, update) if update.edited_channel_post
+      trigger_on_event(UpdateAction::InlineQuery, update) if update.inline_query
+      trigger_on_event(UpdateAction::ChosenInlineResult, update) if update.chosen_inline_result
+      trigger_on_event(UpdateAction::CallbackQuery, update) if update.callback_query
+      trigger_on_event(UpdateAction::ShippingQuery, update) if update.shipping_query
+      trigger_on_event(UpdateAction::PreCheckoutQuery, update) if update.pre_checkout_query
+      trigger_on_event(UpdateAction::Poll, update) if update.poll
+      trigger_on_event(UpdateAction::PollAnswer, update) if update.poll_answer
     rescue ex
       @@logger.error("Update was not handled because: #{ex.message}")
-    end
-
-    # Triggers an update event.
-    protected def trigger_event(event : UpdateAction, update : Update)
-      if procs = @event_handlers[event]?
-        procs.each do |proc|
-          spawn proc.call(update)
-        end
-      end
     end
 
     # Gets the name of the bot at the time the bot was

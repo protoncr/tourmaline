@@ -45,6 +45,16 @@
       
         <ul>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Action" data-name="tourmaline::action">
+      <a href="../../Tourmaline/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/ActionContext" data-name="tourmaline::actioncontext">
+      <a href="../../Tourmaline/ActionContext.html">ActionContext</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Animation" data-name="tourmaline::animation">
       <a href="../../Tourmaline/Animation.html">Animation</a>
       
@@ -125,6 +135,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/CommandContext" data-name="tourmaline::commandcontext">
+      <a href="../../Tourmaline/CommandContext.html">CommandContext</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="github.com/watzon/tourmaline/Tourmaline/CommandRegistry" data-name="tourmaline::commandregistry">
       <a href="../../Tourmaline/CommandRegistry.html">CommandRegistry</a>
       
@@ -142,11 +157,6 @@
   
   <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Contact" data-name="tourmaline::contact">
       <a href="../../Tourmaline/Contact.html">Contact</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/Context" data-name="tourmaline::context">
-      <a href="../../Tourmaline/Context.html">Context</a>
       
     </li>
   
@@ -202,6 +212,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventContext" data-name="tourmaline::eventcontext">
+      <a href="../../Tourmaline/EventContext.html">EventContext</a>
       
     </li>
   
@@ -707,7 +722,7 @@
   </h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/registries/command_registry.cr#L3" target="_blank">
+      <a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/registries/command_registry.cr#L3" target="_blank">
         tourmaline/registries/command_registry.cr
       </a>
     
@@ -729,7 +744,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(name:String,prefix:String,private_only:Bool,proc:Proc(Tourmaline::Context,Nil))-class-method" class="signature"><strong>.new</strong>(name : String, prefix : String, private_only : Bool, proc : Proc(Tourmaline::Context, Nil))</a>
+        <a href="#new(name:String,prefix:String,private_only:Bool,proc:Proc(Tourmaline::CommandContext,Nil))-class-method" class="signature"><strong>.new</strong>(name : String, prefix : String, private_only : Bool, proc : Proc(Tourmaline::CommandContext, Nil))</a>
         
       </li>
     
@@ -775,7 +790,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#proc:Proc(Tourmaline::Context,Nil)-instance-method" class="signature"><strong>#proc</strong> : Proc(Tourmaline::Context, Nil)</a>
+        <a href="#proc:Proc(Tourmaline::CommandContext,Nil)-instance-method" class="signature"><strong>#proc</strong> : Proc(Tourmaline::CommandContext, Nil)</a>
         
       </li>
     
@@ -829,18 +844,18 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(name:String,prefix:String,private_only:Bool,proc:Proc(Tourmaline::Context,Nil))-class-method">
+    <div class="entry-detail" id="new(name:String,prefix:String,private_only:Bool,proc:Proc(Tourmaline::CommandContext,Nil))-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(name : String, prefix : String, private_only : Bool, proc : Proc(<a href="../../Tourmaline/Context.html">Tourmaline::Context</a>, Nil))
+        def self.<strong>new</strong>(name : String, prefix : String, private_only : Bool, proc : Proc(<a href="../../Tourmaline/CommandContext.html">Tourmaline::CommandContext</a>, Nil))
 
-        <a class="method-permalink" href="#new(name:String,prefix:String,private_only:Bool,proc:Proc(Tourmaline::Context,Nil))-class-method">#</a>
+        <a class="method-permalink" href="#new(name:String,prefix:String,private_only:Bool,proc:Proc(Tourmaline::CommandContext,Nil))-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/registries/command_registry.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/registries/command_registry.cr#L3" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -870,7 +885,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/registries/command_registry.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/registries/command_registry.cr#L3" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -886,7 +901,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/f8d07734be2544e7c44d6e5e9e4763262896c45e/src/tourmaline/registries/command_registry.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/registries/command_registry.cr#L3" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -933,12 +948,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="proc:Proc(Tourmaline::Context,Nil)-instance-method">
+    <div class="entry-detail" id="proc:Proc(Tourmaline::CommandContext,Nil)-instance-method">
       <div class="signature">
         
-        def <strong>proc</strong> : Proc(<a href="../../Tourmaline/Context.html">Tourmaline::Context</a>, Nil)
+        def <strong>proc</strong> : Proc(<a href="../../Tourmaline/CommandContext.html">Tourmaline::CommandContext</a>, Nil)
 
-        <a class="method-permalink" href="#proc:Proc(Tourmaline::Context,Nil)-instance-method">#</a>
+        <a class="method-permalink" href="#proc:Proc(Tourmaline::CommandContext,Nil)-instance-method">#</a>
       </div>
       
       <br/>

@@ -13,7 +13,6 @@ module Tourmaline
             {% end %}
           {% end %}
         {% end %}
-        on(:message, ->trigger_patterns(Update))
       {% end %}
     end
 

@@ -1,6 +1,6 @@
 module Tourmaline
   module CommandRegistry
-    record CommandWrapper, name : String, prefix : String, private_only : Bool, proc : Proc(Tourmaline::Context, Nil)
+    record CommandWrapper, name : String, prefix : String, private_only : Bool, proc : Proc(Tourmaline::CommandContext, Nil)
     getter commands = [] of CommandWrapper
 
     private def register_commands
@@ -11,24 +11,22 @@ module Tourmaline
               %command = {{ann[0] || ann[:command]}}
               %prefix = {{ann[:prefix] || "/"}}
               %private_only = {{ann[:private_only] || false}}
-              %proc = ->(ctx : Tourmaline::Context){ {{method.name.id}}(ctx); nil }
+              %proc = ->(ctx : Tourmaline::CommandContext){ {{method.name.id}}(ctx); nil }
 
               command(%command, %proc, %prefix, %private_only)
             {% end %}
           {% end %}
         {% end %}
 
-        on(:message, ->trigger_commands(Update))
-
         @commands
       {% end %}
     end
 
-    def command(names : String | Array(String), prefix = "/", private_only = false, &block : Tourmaline::Context ->)
+    def command(names : String | Array(String), prefix = "/", private_only = false, &block : Tourmaline::CommandContext ->)
       command(names, block)
     end
 
-    def command(names : String | Array(String), proc : Tourmaline::Context ->, prefix = "/", private_only = false)
+    def command(names : String | Array(String), proc : Tourmaline::CommandContext ->, prefix = "/", private_only = false)
       if names.is_a?(Array)
         names.each { |name| command(name, proc, prefix, private_only) }
       else
@@ -57,7 +55,7 @@ module Tourmaline
           @commands.each do |cmd|
             if cmd.name == command[1..-1] && cmd.prefix == command[0].to_s
               return if cmd.private_only && !(message.chat.type == "private")
-              context = Tourmaline::Context.new(self, update, message, command[1..-1], text)
+              context = Tourmaline::CommandContext.new(self, update, message, command[1..-1], text)
               spawn cmd.proc.call(context)
             end
           end

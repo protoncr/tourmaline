@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="github.com/watzon/tourmaline">
-  <title>Tourmaline::InputTextMessageContent - github.com/watzon/tourmaline</title>
+  <title>Tourmaline::EventContext - github.com/watzon/tourmaline</title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -215,7 +215,7 @@
       
     </li>
   
-  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/EventContext" data-name="tourmaline::eventcontext">
+  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/EventContext" data-name="tourmaline::eventcontext">
       <a href="../Tourmaline/EventContext.html">EventContext</a>
       
     </li>
@@ -410,7 +410,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/watzon/tourmaline/Tourmaline/InputTextMessageContent" data-name="tourmaline::inputtextmessagecontent">
+  <li class=" " data-id="github.com/watzon/tourmaline/Tourmaline/InputTextMessageContent" data-name="tourmaline::inputtextmessagecontent">
       <a href="../Tourmaline/InputTextMessageContent.html">InputTextMessageContent</a>
       
     </li>
@@ -689,33 +689,35 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::InputTextMessageContent
+  <span class="kind">struct</span> Tourmaline::EventContext
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/InputTextMessageContent.html">Tourmaline::InputTextMessageContent</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/EventContext.html">Tourmaline::EventContext</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="overview" class="anchor" href="#overview">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Overview
   </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">JSON::Serializable</li>
-    
-  </ul>
+
+  <p><code><a href="../Tourmaline/EventContext.html">EventContext</a></code> represents the data passed into an <code><a href="../Tourmaline/On.html">On</a></code> event. It wraps the <code><a href="../Tourmaline/EventContext.html#update:Tourmaline::Update-instance-method">#update</a></code>,
+and possibly the <code><a href="../Tourmaline/EventContext.html#message:Tourmaline::Message?-instance-method">#message</a></code>. It also includes access to the name of the event that
+triggered it.</p>
+
+<p>Like the other events, missing methods are forwarded to the client in this one. Since
+<code><a href="../Tourmaline/EventContext.html#message:Tourmaline::Message?-instance-method">#message</a></code> might be nil, calls are not forwarded to it.</p>
+
+
+
+
 
 
 
@@ -736,8 +738,8 @@
   </h2>
   
     
-      <a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L4" target="_blank">
-        tourmaline/models/input_text_message_content.cr
+      <a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/context.cr#L32" target="_blank">
+        tourmaline/context.cr
       </a>
     
     <br/>
@@ -758,12 +760,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new(message_text:String,parse_mode:String?=nil,disable_web_page_preview:Bool?=nil)-class-method" class="signature"><strong>.new</strong>(message_text : String, parse_mode : String? = <span class="n">nil</span>, disable_web_page_preview : Bool? = <span class="n">nil</span>)</a>
+        <a href="#new(client:Tourmaline::Bot,update:Tourmaline::Update,message:Tourmaline::Message?,event:Tourmaline::UpdateAction)-class-method" class="signature"><strong>.new</strong>(client : Tourmaline::Bot, update : Tourmaline::Update, message : Tourmaline::Message?, event : Tourmaline::UpdateAction)</a>
         
       </li>
     
@@ -784,23 +781,55 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#disable_web_page_preview:Bool?-instance-method" class="signature"><strong>#disable_web_page_preview</strong> : Bool?</a>
+        <a href="#client:Tourmaline::Bot-instance-method" class="signature"><strong>#client</strong> : Tourmaline::Bot</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#message_text:String-instance-method" class="signature"><strong>#message_text</strong> : String</a>
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#parse_mode:String?-instance-method" class="signature"><strong>#parse_mode</strong> : String?</a>
+        <a href="#copy_with(client_client=@client,update_update=@update,message_message=@message,event_event=@event)-instance-method" class="signature"><strong>#copy_with</strong>(client _client = @client, update _update = @update, message _message = @message, event _event = @event)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#event:Tourmaline::UpdateAction-instance-method" class="signature"><strong>#event</strong> : Tourmaline::UpdateAction</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message:Tourmaline::Message?-instance-method" class="signature"><strong>#message</strong> : Tourmaline::Message?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#update:Tourmaline::Update-instance-method" class="signature"><strong>#update</strong> : Tourmaline::Update</a>
         
       </li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="macro-summary" class="anchor" href="#macro-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#method_missing(call)-macro" class="signature"><strong>method_missing</strong>(call)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -848,34 +877,18 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+    <div class="entry-detail" id="new(client:Tourmaline::Bot,update:Tourmaline::Update,message:Tourmaline::Message?,event:Tourmaline::UpdateAction)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pull : JSON::PullParser)
+        def self.<strong>new</strong>(client : <a href="../Tourmaline/Bot.html">Tourmaline::Bot</a>, update : <a href="../Tourmaline/Update.html">Tourmaline::Update</a>, message : <a href="../Tourmaline/Message.html">Tourmaline::Message</a>?, event : <a href="../Tourmaline/UpdateAction.html">Tourmaline::UpdateAction</a>)
 
-        <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
+        <a class="method-permalink" href="#new(client:Tourmaline::Bot,update:Tourmaline::Update,message:Tourmaline::Message?,event:Tourmaline::UpdateAction)-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L5" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(message_text:String,parse_mode:String?=nil,disable_web_page_preview:Bool?=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(message_text : String, parse_mode : String? = <span class="n">nil</span>, disable_web_page_preview : Bool? = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(message_text:String,parse_mode:String?=nil,disable_web_page_preview:Bool?=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/context.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -894,56 +907,122 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="disable_web_page_preview:Bool?-instance-method">
+    <div class="entry-detail" id="client:Tourmaline::Bot-instance-method">
       <div class="signature">
         
-        def <strong>disable_web_page_preview</strong> : Bool?
+        def <strong>client</strong> : <a href="../Tourmaline/Bot.html">Tourmaline::Bot</a>
 
-        <a class="method-permalink" href="#disable_web_page_preview:Bool?-instance-method">#</a>
+        <a class="method-permalink" href="#client:Tourmaline::Bot-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L11" target="_blank">View source</a>]
-        
       </div>
     </div>
   
-    <div class="entry-detail" id="message_text:String-instance-method">
+    <div class="entry-detail" id="clone-instance-method">
       <div class="signature">
         
-        def <strong>message_text</strong> : String
+        def <strong>clone</strong>
 
-        <a class="method-permalink" href="#message_text:String-instance-method">#</a>
+        <a class="method-permalink" href="#clone-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/context.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="parse_mode:String?-instance-method">
+    <div class="entry-detail" id="copy_with(client_client=@client,update_update=@update,message_message=@message,event_event=@event)-instance-method">
       <div class="signature">
         
-        def <strong>parse_mode</strong> : String?
+        def <strong>copy_with</strong>(client _client = @client, update _update = @update, message _message = @message, event _event = @event)
 
-        <a class="method-permalink" href="#parse_mode:String?-instance-method">#</a>
+        <a class="method-permalink" href="#copy_with(client_client=@client,update_update=@update,message_message=@message,event_event=@event)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/models/input_text_message_content.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/context.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="event:Tourmaline::UpdateAction-instance-method">
+      <div class="signature">
+        
+        def <strong>event</strong> : <a href="../Tourmaline/UpdateAction.html">Tourmaline::UpdateAction</a>
+
+        <a class="method-permalink" href="#event:Tourmaline::UpdateAction-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message:Tourmaline::Message?-instance-method">
+      <div class="signature">
+        
+        def <strong>message</strong> : <a href="../Tourmaline/Message.html">Tourmaline::Message</a>?
+
+        <a class="method-permalink" href="#message:Tourmaline::Message?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="update:Tourmaline::Update-instance-method">
+      <div class="signature">
+        
+        def <strong>update</strong> : <a href="../Tourmaline/Update.html">Tourmaline::Update</a>
+
+        <a class="method-permalink" href="#update:Tourmaline::Update-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
         
       </div>
     </div>
   
 
 
+
+  <h2>
+    <a id="macro-detail" class="anchor" href="#macro-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Detail
+  </h2>
+  
+    <div class="entry-detail" id="method_missing(call)-macro">
+      <div class="signature">
+        
+        macro <strong>method_missing</strong>(call)
+
+        <a class="method-permalink" href="#method_missing(call)-macro">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/watzon/tourmaline/blob/efb7db9237d769da16b49c2cdfe270b2af0afd63/src/tourmaline/context.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 </div>
