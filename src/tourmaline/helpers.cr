@@ -2,6 +2,16 @@ module Tourmaline
   module Helpers
     extend self
 
+    DEFAULT_EXTENSIONS = {
+      audio:      "mp3",
+      photo:      "jpg",
+      sticker:    "webp",
+      video:      "mp4",
+      animation:  "mp4",
+      video_note: "mp4",
+      voice:      "ogg",
+    }
+
     def actions_from_update(update : Update)
       actions = [] of UpdateAction
 

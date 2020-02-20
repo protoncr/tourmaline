@@ -1,3 +1,5 @@
+require "kemal"
+
 # Tourmaline handler for Kemal.
 #
 # This handler allows you to use Tourmaline as a part of your

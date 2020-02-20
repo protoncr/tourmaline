@@ -6,13 +6,15 @@ module Tourmaline
     getter proc : Proc(CommandContext, Void)
     getter prefix : String
     getter anywhere : Bool
+    getter remove_leading : Bool
 
     def initialize(
       commands : String | Array(String),
       proc : CommandContext ->,
       @prefix : String = "/",
       @anywhere : Bool = false,
-      @private_only : Bool = false
+      @private_only : Bool = false,
+      @remove_leading : Bool = true
     )
       @commands = commands.is_a?(Array) ? commands : [commands]
       @proc = ->(ctx : CommandContext) { proc.call(ctx); nil }
@@ -29,6 +31,11 @@ module Tourmaline
           return unless message_text.size >= 2
 
           if command = command_match(client, message)
+            if @remove_leading
+              re = Regex.new("^" + Regex.escape(@prefix + command) + "\\s+")
+              message_text = message_text.sub(re, "")
+            end
+
             return if @private_only && !(message.chat.type == "private")
             context = CommandContext.new(client, update, message, command, message_text)
             @proc.call(context)

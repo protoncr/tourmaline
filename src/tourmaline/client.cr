@@ -4,7 +4,8 @@ require "mime/multipart"
 require "./helpers"
 require "./error"
 require "./logger"
-require "./context"
+require "./persistence"
+require "./parse_mode"
 require "./container"
 require "./chat_action"
 require "./update_action"
@@ -26,16 +27,6 @@ module Tourmaline
 
     API_URL = "https://api.telegram.org/"
 
-    DEFAULT_EXTENSIONS = {
-      audio:      "mp3",
-      photo:      "jpg",
-      sticker:    "webp",
-      video:      "mp4",
-      animation:  "mp4",
-      video_note: "mp4",
-      voice:      "ogg",
-    }
-
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
     # `@bot_name` to `get_me.username.to_s`.
@@ -55,9 +46,14 @@ module Tourmaline
     )
       @endpoint_url = Path[API_URL, "bot" + @api_key].to_s
       @handlers = {} of UpdateAction => Array(Handler)
-      register_annotated_methods
 
+      register_annotated_methods
       Container.client = self
+
+      self.try &.init_p
+      [Signal::INT, Signal::TERM].each do |sig|
+        sig.trap { self.try &.cleanup_p; exit }
+      end
     end
 
     def add_handler(handler : Handler)
@@ -68,6 +64,8 @@ module Tourmaline
     end
 
     private def handle_update(update : Update)
+      self.try &.handle_persistent_update(update)
+
       actions = Helpers.actions_from_update(update)
       actions.each do |action|
         trigger_handlers(action, update)
@@ -188,7 +186,7 @@ module Tourmaline
         attach_form_media(form, value)
         form.body_part(headers, value.to_json)
       when ::File
-        filename = "#{id}.#{DEFAULT_EXTENSIONS[id]? || "dat"}"
+        filename = "#{id}.#{Helpers::DEFAULT_EXTENSIONS[id]? || "dat"}"
         form.body_part(
           HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
           value
@@ -206,7 +204,7 @@ module Tourmaline
         item = check_open_local_file(item)
         if item.is_a?(::File)
           id = Random.new.random_bytes(16).hexstring
-          filename = "#{id}.#{DEFAULT_EXTENSIONS[id]? || "dat"}"
+          filename = "#{id}.#{Helpers::DEFAULT_EXTENSIONS[id]? || "dat"}"
 
           form.body_part(
             HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
@@ -229,14 +227,6 @@ module Tourmaline
         end
       end
       file
-    end
-
-    # Parse mode for messages.
-    enum ParseMode
-      Normal
-      Markdown
-      MarkdownV2
-      HTML
     end
   end
 end
