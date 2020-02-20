@@ -33,7 +33,6 @@ module Tourmaline
     def check_update(client : Client, update : Update) : Bool
       if (result = update.chosen_inline_result)
         if (!@id && !@query && !@inline_message_id)
-          puts "true 1"
           return true
         end
 

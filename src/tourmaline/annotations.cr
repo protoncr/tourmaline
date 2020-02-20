@@ -57,16 +57,29 @@ module Tourmaline
   # ```
   annotation OnCallbackQuery; end
 
-  # Run the annotated method when a matching callback_query is found, passing
+  # Run the annotated method when a matching chosen_inline_result is found, passing
   # in a `Context` object.
   #
   # Example:
   #
   # ```crystal
-  # @[OnChosenInlineResult("button_click")]
-  # def on_button_click(ctx)
-  #   pp ctx.update_action
+  # @[OnChosenInlineResult(id: "gif")]
+  # def on_chosen_result(ctx)
+  #   pp ctx.result
   # end
   # ```
   annotation OnChosenInlineResult; end
+
+  # Run the annotated method when a matching inline_query is found, passing
+  # in a `Context` object.
+  #
+  # Example:
+  #
+  # ```crystal
+  # @[OnInlineQuery(id: "foo")]
+  # def on_inline_foo(ctx)
+  #   pp ctx.inline_query
+  # end
+  # ```
+  annotation OnInlineQuery; end
 end
