@@ -39,7 +39,7 @@ module Tourmaline
                             {% inputs = arg.restriction.inputs %}\
                             {{ arg.name }}: {{ ("->(" + inputs.map_with_index { |a, i| "v#{i} : #{a}" }.join(", ") +  ") { #{method.name.id}(" + inputs.map_with_index { |_, i| "v#{i}" }.join(", ") + "); nil }").id }},
                           {% else %}
-                            {{ arg.name }}: {{ ann[:name] || ann[i] || arg.default_value }}{% unless i == init.args.size - 1 %},{% end %}
+                            {{ arg.name }}: {{ ann[arg.name] || ann[i] || arg.default_value }}{% unless i == init.args.size - 1 %},{% end %}
                           {% end %}
                         {% end %}
                       ))
@@ -54,3 +54,5 @@ module Tourmaline
     end
   end
 end
+
+require "./handlers/*"

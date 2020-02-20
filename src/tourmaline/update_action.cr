@@ -1,5 +1,6 @@
 module Tourmaline
   enum UpdateAction
+    Update
     Message
     EditedMessage
     CallbackQuery

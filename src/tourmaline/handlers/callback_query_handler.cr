@@ -1,5 +1,3 @@
-require "./handler"
-
 module Tourmaline
   class CallbackQueryHandler < Handler
     ANNOTATIONS = [ OnCallbackQuery ]

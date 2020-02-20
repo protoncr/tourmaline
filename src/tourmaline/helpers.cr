@@ -5,6 +5,8 @@ module Tourmaline
     def actions_from_update(update : Update)
       actions = [] of UpdateAction
 
+      actions << UpdateAction::Update
+
       if message = update.message
         actions << UpdateAction::Message
 

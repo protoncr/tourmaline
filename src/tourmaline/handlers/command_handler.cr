@@ -1,5 +1,3 @@
-require "./handler"
-
 module Tourmaline
   class CommandHandler < Handler
     ANNOTATIONS = [ Command ]

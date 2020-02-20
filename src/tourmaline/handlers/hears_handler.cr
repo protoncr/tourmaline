@@ -1,5 +1,3 @@
-require "./handler"
-
 module Tourmaline
   class HearsHandler < Handler
     ANNOTATIONS = [ Hears ]
