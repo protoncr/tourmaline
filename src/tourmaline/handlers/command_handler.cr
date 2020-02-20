@@ -93,8 +93,6 @@ module Tourmaline
   # `ctx.message.reply` you can just do `ctx.reply`.
   record CommandContext, client : Tourmaline::Client, update : Tourmaline::Update,
     message : Tourmaline::Message, command : String, text : String do
-    include Tourmaline::Context
-
     macro method_missing(call)
       {% if Tourmaline::Message.has_method?(call.name) %}
         message.{{call}}

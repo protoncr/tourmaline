@@ -1,7 +1,4 @@
 module Tourmaline
-  module Context
-  end
-
   # # `CommandContext` represents the data passed into a bot command. It gives access to
   # # the `client`, the full `update`, the `message`, the `command`
   # # (including the prefix), and the raw message `text`
