@@ -27,13 +27,7 @@ module Tourmaline
     end
 
     def check_update(client : Client, update : Update) : Bool
-      actions = Helpers.actions_from_update(update)
-      actions.each do |action|
-        if @event == action
-          return true
-        end
-      end
-      false
+      true
     end
   end
 

@@ -205,7 +205,6 @@ module Tourmaline
       {media: media, thumb: thumb}.each do |key, item|
         item = check_open_local_file(item)
         if item.is_a?(::File)
-          pp [key, item]
           id = Random.new.random_bytes(16).hexstring
           filename = "#{id}.#{DEFAULT_EXTENSIONS[id]? || "dat"}"
 

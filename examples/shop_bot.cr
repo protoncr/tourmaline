@@ -58,5 +58,4 @@ class ShopBot < Tourmaline::Client
 end
 
 bot = ShopBot.new(ENV["API_KEY"])
-pp bot.get_me
 bot.poll

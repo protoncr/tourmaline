@@ -40,13 +40,7 @@ module Tourmaline
     end
 
     def check_update(client : Client, update : Update) : Bool
-      if message = update.message
-        text = message.text
-        if command_match(client, message)
-          return true
-        end
-      end
-      false
+      true
     end
 
     private def validate_commands(commands)

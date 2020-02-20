@@ -12,9 +12,9 @@ class EchoBot < Tourmaline::Client
     ctx.reply(ctx.text)
   end
 
-  @[On(:message)]
+  @[Hears(/hello/i)]
   def on_message(ctx)
-    pp ctx.message
+    ctx.reply("Hi there")
   end
 end
 

@@ -1,5 +1,3 @@
-require "kemal"
-
 # Tourmaline handler for Kemal.
 #
 # This handler allows you to use Tourmaline as a part of your
@@ -65,7 +63,6 @@ module Tourmaline
       if body = context.request.body
         update = TGUpdate.from_json(body)
         @bot.handle_update(update)
-        pp update
       end
 
       call_next context
