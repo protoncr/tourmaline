@@ -5,7 +5,7 @@ module Tourmaline
 
     private def register_commands
       {% begin %}
-        {% for command_class in Tourmaline::Bot.subclasses %}
+        {% for command_class in Tourmaline::Client.subclasses %}
           {% for method in command_class.methods %}
             {% if ann = (method.annotation(Command) || method.annotation(Tourmaline::Command)) %}
               %command = {{ann[0] || ann[:command]}}

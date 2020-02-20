@@ -5,7 +5,7 @@ module Tourmaline
 
     private def register_patterns
       {% begin %}
-        {% for command_class in Tourmaline::Bot.subclasses %}
+        {% for command_class in Tourmaline::Client.subclasses %}
           {% for method in command_class.methods %}
             {% if ann = (method.annotation(Hears) || method.annotation(Tourmaline::Hears)) %}
               %proc = ->(message : Message){ {{method.name.id}}(message); nil }

@@ -1,7 +1,7 @@
 require "uri"
 
 module Tourmaline
-  class Bot
+  class Client
     getter polling : Bool = false
     getter next_offset : Int64 = 0.to_i64
 

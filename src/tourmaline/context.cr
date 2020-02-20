@@ -8,14 +8,14 @@ module Tourmaline
   # every time, `CommandContext` also forwards missing methods to the message,
   # update, and client in that order. So rather than calling
   # `ctx.message.reply` you can just do `ctx.reply`.
-  record CommandContext, client : Tourmaline::Bot, update : Tourmaline::Update,
+  record CommandContext, client : Tourmaline::Client, update : Tourmaline::Update,
     message : Tourmaline::Message, command : String, text : String do
     macro method_missing(call)
       {% if Tourmaline::Message.has_method?(call.name) %}
         message.{{call}}
       {% elsif Tourmaline::Update.has_method?(call.name) %}
         update.{{call}}
-      {% elsif Tourmaline::Bot.has_method?(call.name) %}
+      {% elsif Tourmaline::Client.has_method?(call.name) %}
         client.{{call}}
       {% else %}
         {% raise "Unexpected method '##{call.name}' for class #{@type.id}" %}
@@ -29,12 +29,12 @@ module Tourmaline
   #
   # Like the other events, missing methods are forwarded to the client in this one. Since
   # `message` might be nil, calls are not forwarded to it.
-  record EventContext, client : Tourmaline::Bot, update : Tourmaline::Update,
+  record EventContext, client : Tourmaline::Client, update : Tourmaline::Update,
     message : Tourmaline::Message?, event : Tourmaline::UpdateAction do
     macro method_missing(call)
       {% if Tourmaline::Update.has_method?(call.name) %}
         update.{{call}}
-      {% elsif Tourmaline::Bot.has_method?(call.name) %}
+      {% elsif Tourmaline::Client.has_method?(call.name) %}
         client.{{call}}
       {% else %}
         {% raise "Unexpected method '##{call.name}' for class #{@type.id}" %}
@@ -42,13 +42,13 @@ module Tourmaline
     end
   end
 
-  # `ActionContext` represents the data passed into an `Action` event. It includes
+  # `CallbackQueryContext` represents the data passed into an `Action` event. It includes
   # access to the `client`, the full `update`, the `message`, the callback_query
   # (`query`), and the query data.
   #
   # Missing methods are forwarded to, in order of most important, the `query`,
   # `message`, `update`, and then `client`.
-  record ActionContext, client : Tourmaline::Bot, update : Tourmaline::Update,
+  record CallbackQueryContext, client : Tourmaline::Client, update : Tourmaline::Update,
     message : Tourmaline::Message, query : Tourmaline::CallbackQuery, data : String do
     macro method_missing(call)
       {% if Tourmaline::CallbackQuery.has_method?(call.name) %}
@@ -57,7 +57,7 @@ module Tourmaline
         message.{{call}}
       {% elsif Tourmaline::Update.has_method?(call.name) %}
         update.{{call}}
-      {% elsif Tourmaline::Bot.has_method?(call.name) %}
+      {% elsif Tourmaline::Client.has_method?(call.name) %}
         client.{{call}}
       {% else %}
         {% raise "Unexpected method '##{call.name}' for class #{@type.id}" %}

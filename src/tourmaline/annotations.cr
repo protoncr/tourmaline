@@ -57,6 +57,7 @@ module Tourmaline
   # ```
   annotation Action; end
 
-  annotation OnCallbackQuery; end
-  annotation Export; end
+  {% for val in UpdateAction.constants %}
+    annotation On{{val.id}}; end
+  {% end %}
 end

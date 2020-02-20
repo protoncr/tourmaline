@@ -1,21 +1,18 @@
-# require "../middleware"
+module Tourmaline
+  module MiddlewareRegistry
+    getter middleware = {} of String => Middleware
 
-# module Tourmaline
-#   module MiddlewareRegistry
-#     getter middleware = [] of Middleware
+    # Attach a `Middleware` to your bot.
+    def use(middleware)
+      if @middleware.has_key?(middleware.name)
+        raise "A middleware already exists with the name #{middleware.name}"
+      end
 
-#     # Attach a `Middleware` to your bot.
-#     macro use(middleware)
-#       {% begin %}
-#         %mw = {{ middleware }}.new
-#         @middleware << %mw
-#         %mw.init(self)
-#       {% end %}
-#     end
+      @middleware[middleware.name] = middleware
+    end
 
-#     protected def trigger_all_middleware(update : Update)
-#       context = Middleware::Context.new(self, update)
-#       @middleware.each { |m| m.call(context) }
-#     end
-#   end
-# end
+    protected def trigger_all_middleware(update : Update)
+      @middleware.keys.each { |k| @middleware[k].call(self, update) }
+    end
+  end
+end

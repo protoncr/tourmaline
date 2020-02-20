@@ -16,7 +16,7 @@ module Tourmaline
     end
 
     def answer(ok, **kwargs)
-      BotContainer.bot.answer_shipping_query(id, ok, **kwargs)
+      Container.client.answer_shipping_query(id, ok, **kwargs)
     end
   end
 end

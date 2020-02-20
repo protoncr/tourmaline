@@ -10,7 +10,7 @@ module Tourmaline
   class KemalAdapter < Kemal::Handler
     alias TGModel = Tourmaline
 
-    property bot : Tourmaline::Bot
+    property bot : Tourmaline::Client
 
     property url : String
 
@@ -25,7 +25,7 @@ module Tourmaline
     # it is recommended to use your bot's API key somewhere in the
     # path for security reasons.
     def initialize(
-      @bot : Tourmaline::Bot,
+      @bot : Tourmaline::Client,
       @url : String,
       path = nil,
       certificate = nil,

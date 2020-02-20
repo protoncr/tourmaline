@@ -1,7 +1,7 @@
 require "../src/tourmaline"
 require "ngrok"
 
-class EchoBot < Tourmaline::Bot
+class EchoBot < Tourmaline::Client
   include Tourmaline
 
   @[Command("echo")]

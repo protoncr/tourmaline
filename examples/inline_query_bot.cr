@@ -1,6 +1,6 @@
 require "../src/tourmaline"
 
-class InlineQueryBot < Tourmaline::Bot
+class InlineQueryBot < Tourmaline::Client
   include Tourmaline
 
   @[On(:inline_query)]

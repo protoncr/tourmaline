@@ -1,6 +1,6 @@
 require "../src/tourmaline"
 
-class PollBot < Tourmaline::Bot
+class PollBot < Tourmaline::Client
   include Tourmaline
 
   KEYBOARD = Markup.buttons([[

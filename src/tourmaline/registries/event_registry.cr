@@ -1,11 +1,11 @@
 module Tourmaline
   module EventRegistry
     getter on_handlers = {} of UpdateAction => Array(Proc(Tourmaline::EventContext, Nil))
-    getter action_handlers = {} of String => Array(Proc(Tourmaline::ActionContext, Nil))
+    getter callback_query_handlers = {} of String => Array(Proc(Tourmaline::CallbackQueryContext, Nil))
 
     private def register_event_listeners
       {% begin %}
-        {% for command_class in Tourmaline::Bot.subclasses %}
+        {% for command_class in Tourmaline::Client.subclasses %}
           {% for method in command_class.methods %}
             {% if ann = (method.annotation(On) || method.annotation(Tourmaline::On)) %}
               %proc = ->(ctx : Tourmaline::EventContext){ {{method.name.id}}(ctx); nil }
@@ -13,13 +13,11 @@ module Tourmaline
             {% end %}
 
             {% if ann = (method.annotation(Action) || method.annotation(Tourmaline::Action)) %}
-              %proc = ->(ctx : Tourmaline::ActionContext) { {{method.name.id}}(ctx); nil }
-              action({{ann[0]}}, %proc)
+              %proc = ->(ctx : Tourmaline::CallbackQueryContext) { {{method.name.id}}(ctx); nil }
+              on_callback_query({{ann[0]}}, %proc)
             {% end %}
           {% end %}
         {% end %}
-
-        { on: @on_handlers, action: @action_handlers }
       {% end %}
     end
 
@@ -32,39 +30,46 @@ module Tourmaline
       on(action, block)
     end
 
-    def action(action : String | Symbol | Array(String | Symbol), proc : Tourmaline::ActionContext ->)
-      if action.is_a?(Array)
-        action.each { |a| action(a) }
+    def on_callback_query(callback_query : String | Symbol | Array(String | Symbol), proc : Tourmaline::CallbackQueryContext ->)
+      if callback_query.is_a?(Array)
+        callback_query.each { |a| on_callback_query(a) }
       else
-        @action_handlers[action.to_s] ||= [] of Proc(Tourmaline::ActionContext, Nil)
-        @action_handlers[action.to_s] << proc
+        @callback_query_handlers[callback_query.to_s] ||= [] of Proc(Tourmaline::CallbackQueryContext, Nil)
+        @callback_query_handlers[callback_query.to_s] << proc
       end
     end
 
-    def action(action : String | Symbol | Array(String | Symbol), &block : Tourmaline::ActionContext ->)
-      action(action, block)
+    def on_callback_query(callback_query : String | Symbol | Array(String | Symbol), &block : Tourmaline::CallbackQueryContext ->)
+      on_callback_query(callback_query, block)
     end
 
     # Triggers an update event.
-    protected def trigger_on_event(event : UpdateAction, update : Update)
-      if procs = @on_handlers[event]?
-        ctx = Tourmaline::EventContext.new(self, update, update.message, event)
-        procs.each do |proc|
-          spawn do
-            proc.call(ctx)
+    protected def trigger_event(event : UpdateAction, update : Update)
+      case event
+      when UpdateAction::CallbackQuery
+        trigger_callback_query_event(update)
+      else
+        if procs = @on_handlers[event]?
+          ctx = Tourmaline::EventContext.new(self, update, update.message, event)
+          procs.each do |proc|
+            spawn do
+              proc.call(ctx)
+            end
           end
         end
       end
     end
 
-    protected def trigger_action_event(event : String, update : Update)
-      if (procs = @action_handlers[event]?) &&
-          (query = update.callback_query) &&
-           (message = query.message)
-        ctx = Tourmaline::ActionContext.new(self, update, message, query, event)
-        procs.each do |proc|
-          spawn do
-            proc.call(ctx)
+    protected def trigger_callback_query_event(update : Update)
+      if (query = update.callback_query) &&
+           (message = query.message) &&
+             (data = query.data)
+        ctx = Tourmaline::CallbackQueryContext.new(self, update, message, query, data)
+        if procs = @callback_query_handlers[data]
+          procs.each do |proc|
+            spawn do
+              proc.call(ctx)
+            end
           end
         end
       end

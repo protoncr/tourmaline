@@ -15,7 +15,7 @@ module Tourmaline
     getter offset : String
 
     def answer(results, **kwargs)
-      BotContainer.bot.answer_inline_query(id, results, **kwargs)
+      Container.client.answer_inline_query(id, results, **kwargs)
     end
   end
 end

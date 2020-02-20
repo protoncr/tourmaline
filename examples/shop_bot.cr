@@ -1,6 +1,6 @@
 require "../src/tourmaline"
 
-class ShopBot < Tourmaline::Bot
+class ShopBot < Tourmaline::Client
   include Tourmaline
 
   INVOICE = {

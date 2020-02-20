@@ -1,5 +1,5 @@
 module Tourmaline
-  class Bot
+  class Client
     # Start an HTTP server at the specified `address` and `port` that listens for
     # updates using Telegram's webhooks. This is the reccommended way to handle
     # bots in production.

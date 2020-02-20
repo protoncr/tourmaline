@@ -1,5 +1,5 @@
 module Tourmaline
-  class Bot
+  class Client
     # Use this method to send invoices.
     # On success, the sent `Message` is returned.
     def send_invoice(
@@ -56,7 +56,7 @@ module Tourmaline
     end
 
     # If you sent an invoice requesting a shipping address and the parameter is_flexible
-    # was specified, the Bot API will send a `Update` with a shipping_query field to
+    # was specified, the Client API will send a `Update` with a shipping_query field to
     # the bot. Use this method to reply to shipping queries.
     # On success, `true` is returned.
     def answer_shipping_query(
@@ -75,12 +75,12 @@ module Tourmaline
       Bool.from_json(response)
     end
 
-    # Once the user has confirmed their payment and shipping details, the Bot API sends
+    # Once the user has confirmed their payment and shipping details, the Client API sends
     # the final confirmation in the form of a `Update` with the field pre_checkout_query.
     # Use this method to respond to such pre-checkout queries.
     # On success, `true` is returned.
     #
-    # > Note: The Bot API must receive an answer within 10 seconds after the
+    # > Note: The Client API must receive an answer within 10 seconds after the
     # > pre-checkout query was sent.
     def answer_pre_checkout_query(
       pre_checkout_query_id,

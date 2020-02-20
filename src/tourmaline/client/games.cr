@@ -1,5 +1,5 @@
 module Tourmaline
-  class Bot
+  class Client
     # Use this method to send a game.
     # On success, the sent `Message` is returned.
     def send_game(

@@ -1,6 +1,6 @@
 require "../src/tourmaline"
 
-class LiveLocationBot < Tourmaline::Bot
+class LiveLocationBot < Tourmaline::Client
   include Tourmaline
 
   @[Command("start")]

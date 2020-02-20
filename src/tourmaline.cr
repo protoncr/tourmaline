@@ -1,5 +1,5 @@
 require "./tourmaline/version"
-require "./tourmaline/bot"
+require "./tourmaline/client"
 
 # require "./tourmaline/user"
 

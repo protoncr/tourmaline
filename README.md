@@ -27,7 +27,7 @@ Examples are available in the [examples](./examples) folder.
 
 This currently supports the following features:
 
-- [x] Bot API
+- [x] Client API
   - [x] Implementation examples
   - [x] Easy command syntax
   - [x] Robust middleware system

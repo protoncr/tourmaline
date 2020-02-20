@@ -19,7 +19,7 @@ module Tourmaline
     getter order_info : OrderInfo?
 
     def answer(ok, **kwargs)
-      BotContainer.bot.answer_pre_checkout_query(id, ok, **kwargs)
+      Container.client.answer_pre_checkout_query(id, ok, **kwargs)
     end
   end
 end

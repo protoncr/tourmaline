@@ -1,6 +1,6 @@
 require "../src/tourmaline"
 
-class MediaBot < Tourmaline::Bot
+class MediaBot < Tourmaline::Client
   include Tourmaline
 
   AnimationUrl1 = "https://media.giphy.com/media/ya4eevXU490Iw/giphy.gif"

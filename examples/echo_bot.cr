@@ -1,6 +1,6 @@
 require "../src/tourmaline"
 
-class EchoBot < Tourmaline::Bot
+class EchoBot < Tourmaline::Client
   include Tourmaline
 
   @[Command("echo")]

@@ -109,72 +109,72 @@ module Tourmaline
       end
     end
 
-    # Delete the message. See `Tourmaline::Bot#delete_message`.
+    # Delete the message. See `Tourmaline::Client#delete_message`.
     def delete
-      BotContainer.bot.delete_message(chat, message_id)
+      Container.client.delete_message(chat, message_id)
     end
 
-    # Edits the message's media. See `Tourmaline::Bot#edit_message_media`
+    # Edits the message's media. See `Tourmaline::Client#edit_message_media`
     def edit_media(media, **kwargs)
-      BotContainer.bot.edit_message_media(chat, media, **kwargs, message: message_id)
+      Container.client.edit_message_media(chat, media, **kwargs, message: message_id)
     end
 
-    # Edits the message's caption. See `Tourmaline::Bot#edit_message_caption`
+    # Edits the message's caption. See `Tourmaline::Client#edit_message_caption`
     def edit_caption(caption, **kwargs)
-      BotContainer.bot.edit_message_caption(chat, caption, **kwargs, message: message_id)
+      Container.client.edit_message_caption(chat, caption, **kwargs, message: message_id)
     end
 
-    # Set the reply markup for the message. See `Tourmaline::Bot#edit_message_reply_markup`.
+    # Set the reply markup for the message. See `Tourmaline::Client#edit_message_reply_markup`.
     def edit_reply_markup(reply_markup)
-      BotContainer.bot.edit_message_reply_markup(chat, message: message_id, reply_markup: reply_markup)
+      Container.client.edit_message_reply_markup(chat, message: message_id, reply_markup: reply_markup)
     end
 
-    # Edits the text of a message. See `Tourmaline::Bot#edit_message_text`.
+    # Edits the text of a message. See `Tourmaline::Client#edit_message_text`.
     def edit_text(text, **kwargs)
-      BotContainer.bot.edit_message_text(chat, text, **kwargs, message: message_id)
+      Container.client.edit_message_text(chat, text, **kwargs, message: message_id)
     end
 
-    # Edits the message's live_location. See `Tourmaline::Bot#edit_message_live_location`
+    # Edits the message's live_location. See `Tourmaline::Client#edit_message_live_location`
     def edit_live_location(lat, long, **kwargs)
-      BotContainer.bot.edit_message_live_location(chat, lat, long, **kwargs, message: message_id)
+      Container.client.edit_message_live_location(chat, lat, long, **kwargs, message: message_id)
     end
 
-    # Forward the message to another chat. See `Tourmaline::Bot#forward_message`.
+    # Forward the message to another chat. See `Tourmaline::Client#forward_message`.
     def forward(to_chat, **kwargs)
-      BotContainer.bot.forward_message(to_chat, chat, message_id, **kwargs)
+      Container.client.forward_message(to_chat, chat, message_id, **kwargs)
     end
 
-    # Pin the message. See `Tourmaline::Bot#pin_message`.
+    # Pin the message. See `Tourmaline::Client#pin_message`.
     def pin(**kwargs)
-      BotContainer.bot.pin_message(chat, message_id, **kwargs)
+      Container.client.pin_message(chat, message_id, **kwargs)
     end
 
-    # Reply to a message. See `Tourmaline::Bot#send_message`.
+    # Reply to a message. See `Tourmaline::Client#send_message`.
     def reply(message, **kwargs)
-      BotContainer.bot.send_message(chat, message, **kwargs, reply_to_message: message_id)
+      Container.client.send_message(chat, message, **kwargs, reply_to_message: message_id)
     end
 
-    # Respond to a message. See `Tourmaline::Bot#send_message`.
+    # Respond to a message. See `Tourmaline::Client#send_message`.
     def respond(message, **kwargs)
-      BotContainer.bot.send_message(chat, message, **kwargs, reply_to_message: nil)
+      Container.client.send_message(chat, message, **kwargs, reply_to_message: nil)
     end
 
     {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
-        BotContainer.bot.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
+        Container.client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end
 
       def respond_with_{{content_type.id}}(*args, **kwargs)
-        BotContainer.bot.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: nil)
+        Container.client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: nil)
       end
     {% end %}
 
     def edit_live_location(latitude, longitude, **kwargs)
-      BotContainer.bot.edit_message_live_location(chat, latitude, longitude, **kwargs, message: message_id)
+      Container.client.edit_message_live_location(chat, latitude, longitude, **kwargs, message: message_id)
     end
 
     def stop_live_location(**kwargs)
-      BotContainer.bot.stop_message_live_location(chat, message_id, **kwargs)
+      Container.client.stop_message_live_location(chat, message_id, **kwargs)
     end
   end
 end

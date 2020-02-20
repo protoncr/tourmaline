@@ -1,5 +1,5 @@
 module Tourmaline
-  class Bot
+  class Client
     # Use this method to send `.webp` stickers.
     # On success, the sent `Message` is returned.
     #

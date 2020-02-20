@@ -10,10 +10,7 @@ module Tourmaline
   # # bot definition...
   #
   # class MyMiddleware < Tourmaline::Middleware
-  #   getter name = "test_middleware"
-  #
-  #   def call(context)
-  #     update = context.update
+  #   def call(client, update)
   #     if message = update.message
   #       if user = message.from_user
   #         if text = message.text
@@ -27,35 +24,13 @@ module Tourmaline
   # # Register the middleware with your bot
   # bot.use(MyMiddleware.new)
   # ```
-  #
-  module MiddlewareInterface
-    @@registered_middleware = {} of MiddlewareInterface.class => MiddlewareInterface
-
-    def init(bot : Tourmaline::Bot)
+  abstract class Middleware
+    def init(client : Tourmaline::Client)
       # Do nothing
     end
 
-    def call(context : Context)
+    def call(client : Tourmaline::Client, update : Tourmaline::Update)
       # Do nothing
-    end
-
-    macro included
-      {% begin %}
-        {% for subclass in @type.subclasses %}
-          {% puts(subclass) %}
-        {% end %}
-      {% end %}
-    end
-
-    class Context
-      property bot : Tourmaline::Bot
-
-      property update : Tourmaline::Update
-
-      def initialize(@bot, @update)
-      end
     end
   end
 end
-
-require "./middleware/*"
