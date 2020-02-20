@@ -2,10 +2,10 @@ module Tourmaline
   class CallbackQueryHandler < Handler
     ANNOTATIONS = [ OnCallbackQuery ]
 
-    getter data : String
+    getter data : String?
     getter proc : Proc(CallbackQueryContext, Void)
 
-    def initialize(data, proc : CallbackQueryContext ->)
+    def initialize(proc : CallbackQueryContext ->, data = nil)
       @data = data
       @proc = ->(ctx : CallbackQueryContext) { proc.call(ctx); nil }
     end
@@ -16,10 +16,9 @@ module Tourmaline
 
     def call(client : Client, update : Update)
       if (query = update.callback_query) &&
-          (message = query.message) &&
-          (data = query.data)
-        if data == @data
-          context = CallbackQueryContext.new(client, update, message, query, data)
+          (message = query.message)
+        if !@data || @data == query.data
+          context = CallbackQueryContext.new(client, update, message, query, query.data)
           @proc.call(context)
         end
       end
@@ -37,7 +36,7 @@ module Tourmaline
   # Like the other events, missing methods are forwarded to the client in this one. Since
   # `message` might be nil, calls are not forwarded to it.
   record CallbackQueryContext, client : Tourmaline::Client, update : Tourmaline::Update,
-    message : Tourmaline::Message, query : Tourmaline::CallbackQuery, data : String do
+    message : Tourmaline::Message, query : Tourmaline::CallbackQuery, data : String? do
     macro method_missing(call)
       {% if Tourmaline::Message.has_method?(call.name) %}
         message.{{call}}
