@@ -1,6 +1,7 @@
 require "halite"
 require "mime/multipart"
 
+require "./helpers"
 require "./error"
 require "./logger"
 require "./context"
@@ -10,8 +11,7 @@ require "./update_action"
 require "./models/*"
 require "./fiber"
 require "./annotations"
-require "./registries/*"
-require "./middleware"
+require "./handlers/*"
 require "./client/*"
 require "./markup"
 require "./query_result_builder"
@@ -22,10 +22,7 @@ module Tourmaline
   # instance of `Client` and add commands and listenters to it.
   class Client
     include Logger
-    include EventRegistry
-    include CommandRegistry
-    include PatternRegistry
-    include MiddlewareRegistry
+    include Handler::Annotator
 
     API_URL = "https://api.telegram.org/"
 
@@ -43,6 +40,7 @@ module Tourmaline
     # started. Refreshing can be done by setting
     # `@bot_name` to `get_me.username.to_s`.
     getter bot_name : String { get_me.username.to_s }
+    getter handlers : Hash(UpdateAction, Array(Handler))
 
     property endpoint_url : String
 
@@ -56,67 +54,32 @@ module Tourmaline
       @allowed_updates : Array(String)? = nil
     )
       @endpoint_url = Path[API_URL, "bot" + @api_key].to_s
-      register_commands
-      register_patterns
-      register_event_listeners
+      @handlers = {} of UpdateAction => Array(Handler)
+      register_annotated_methods
 
       Container.client = self
     end
 
-    private def handle_update(update : Update)
-      # @@logger.debug(update.to_pretty_json)
-      trigger_all_middleware(update)
-      trigger_commands(update)
-      trigger_patterns(update)
-
-      # Trigger events marked with the `On` annotation.
-      if message = update.message
-        trigger_event(UpdateAction::Message, update)
-
-        if chat = message.chat
-          trigger_event(UpdateAction::PinnedMessage, update) if chat.pinned_message
-        end
-
-        trigger_event(UpdateAction::Text, update) if message.text
-        trigger_event(UpdateAction::Audio, update) if message.audio
-        trigger_event(UpdateAction::Document, update) if message.document
-        trigger_event(UpdateAction::Photo, update) if message.photo
-        trigger_event(UpdateAction::Sticker, update) if message.sticker
-        trigger_event(UpdateAction::Video, update) if message.video
-        trigger_event(UpdateAction::Voice, update) if message.voice
-        trigger_event(UpdateAction::Contact, update) if message.contact
-        trigger_event(UpdateAction::Location, update) if message.location
-        trigger_event(UpdateAction::Venue, update) if message.venue
-        trigger_event(UpdateAction::NewChatMembers, update) if message.new_chat_members
-        trigger_event(UpdateAction::LeftChatMember, update) if message.left_chat_member
-        trigger_event(UpdateAction::NewChatTitle, update) if message.new_chat_title
-        trigger_event(UpdateAction::NewChatPhoto, update) if message.new_chat_photo
-        trigger_event(UpdateAction::DeleteChatPhoto, update) if message.delete_chat_photo
-        trigger_event(UpdateAction::GroupChatCreated, update) if message.group_chat_created
-        trigger_event(UpdateAction::MigrateToChatId, update) if message.migrate_from_chat_id
-        trigger_event(UpdateAction::SupergroupChatCreated, update) if message.supergroup_chat_created
-        trigger_event(UpdateAction::ChannelChatCreated, update) if message.channel_chat_created
-        trigger_event(UpdateAction::MigrateFromChatId, update) if message.migrate_from_chat_id
-        trigger_event(UpdateAction::Game, update) if message.game
-        trigger_event(UpdateAction::VideoNote, update) if message.video_note
-        trigger_event(UpdateAction::Invoice, update) if message.invoice
-        trigger_event(UpdateAction::SuccessfulPayment, update) if message.successful_payment
-        trigger_event(UpdateAction::ConnectedWebsite, update) if message.connected_website
-        # trigger_event(UpdateAction::PassportData, update) if message.passport_data
+    def add_handler(handler : Handler)
+      handler.actions.each do |action|
+        @handlers[action] ||= [] of Handler
+        @handlers[action] << handler
       end
+    end
 
-      trigger_event(UpdateAction::EditedMessage, update) if update.edited_message
-      trigger_event(UpdateAction::ChannelPost, update) if update.channel_post
-      trigger_event(UpdateAction::EditedChannelPost, update) if update.edited_channel_post
-      trigger_event(UpdateAction::InlineQuery, update) if update.inline_query
-      trigger_event(UpdateAction::ChosenInlineResult, update) if update.chosen_inline_result
-      trigger_event(UpdateAction::CallbackQuery, update) if update.callback_query
-      trigger_event(UpdateAction::ShippingQuery, update) if update.shipping_query
-      trigger_event(UpdateAction::PreCheckoutQuery, update) if update.pre_checkout_query
-      trigger_event(UpdateAction::Poll, update) if update.poll
-      trigger_event(UpdateAction::PollAnswer, update) if update.poll_answer
-    rescue ex
-      @@logger.error("Update was not handled because: #{ex.message}")
+    private def handle_update(update : Update)
+      actions = Helpers.actions_from_update(update)
+      actions.each do |action|
+        trigger_handlers(action, update)
+      end
+    end
+
+    def trigger_handlers(action : UpdateAction, update : Update)
+      if handlers = @handlers[action]?
+        handlers.each do |handler|
+          handler.handle_update(self, update)
+        end
+      end
     end
 
     # Sends a json request to the Telegram Client API.
