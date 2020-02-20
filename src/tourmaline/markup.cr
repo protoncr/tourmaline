@@ -27,9 +27,9 @@ module Tourmaline
     )
     end
 
-    def buttons(buttons : Array(KeyboardButton | String))
+    def buttons(buttons : Array(KeyboardButton | String), columns = nil)
       buttons = buttons.map { |b| b.is_a?(String) ? Markup.button(b) : b }
-      keyboard = Markup.build_keyboard(buttons, columns: 1)
+      keyboard = Markup.build_keyboard(buttons, columns: columns || 1)
       buttons(keyboard)
     end
 
@@ -45,9 +45,9 @@ module Tourmaline
       ReplyKeyboardMarkup.new(@keyboard, @resize, @one_time, @selective)
     end
 
-    def inline_buttons(buttons : Array(InlineKeyboardButton | String))
+    def inline_buttons(buttons : Array(InlineKeyboardButton | String), columns = nil)
       buttons = buttons.map { |b| b.is_a?(String) ? Markup.inline_button(b) : b }
-      keyboard = Markup.build_keyboard(buttons, columns: 1)
+      keyboard = Markup.build_keyboard(buttons, columns: columns || buttons.size)
       inline_buttons(keyboard)
     end
 
@@ -303,12 +303,18 @@ module Tourmaline
       columns = 1,
       wrap = nil
     ) forall U
+      # If `columns` is one or less we don't need to do
+      # any hard work
+      if columns < 2
+        return buttons.map { |b| [b] }
+      end
+
       result = [] of Array(U)
+      current_row = [] of U
+
       wrap_fn = wrap ? wrap : ->(btn : U, index : Int32, current_row : Array(U)) {
         current_row.size >= columns
       }
-
-      current_row = [] of U
 
       buttons.each_with_index do |btn, index|
         if (wrap_fn.call(btn, index, current_row) && current_row.size > 0)
