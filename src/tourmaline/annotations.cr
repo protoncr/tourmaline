@@ -50,14 +50,10 @@ module Tourmaline
   # Example:
   #
   # ```crystal
-  # @[Action("button_click")]
+  # @[Query("button_click")]
   # def on_button_click(ctx)
   #   pp ctx.update_action
   # end
   # ```
-  annotation Action; end
-
-  {% for val in UpdateAction.constants %}
-    annotation On{{val.id}}; end
-  {% end %}
+  annotation Query; end
 end

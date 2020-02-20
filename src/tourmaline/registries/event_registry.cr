@@ -12,7 +12,7 @@ module Tourmaline
               on({{ann[0]}}, %proc)
             {% end %}
 
-            {% if ann = (method.annotation(Action) || method.annotation(Tourmaline::Action)) %}
+            {% if ann = (method.annotation(Query) || method.annotation(Tourmaline::Query)) %}
               %proc = ->(ctx : Tourmaline::CallbackQueryContext) { {{method.name.id}}(ctx); nil }
               on_callback_query({{ann[0]}}, %proc)
             {% end %}
