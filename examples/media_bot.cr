@@ -54,7 +54,7 @@ class MediaBot < Tourmaline::Client
     )
   end
 
-  @[Query("swap_media")]
+  @[OnCallbackQuery("swap_media")]
   def on_swap_media(ctx)
     ctx.edit_media(InputMediaAnimation.new(AnimationUrl2))
   end

@@ -50,10 +50,10 @@ module Tourmaline
   # Example:
   #
   # ```crystal
-  # @[CallbackQuery("button_click")]
+  # @[OnCallbackQuery("button_click")]
   # def on_button_click(ctx)
   #   pp ctx.update_action
   # end
   # ```
-  annotation CallbackQuery; end
+  annotation OnCallbackQuery; end
 end
