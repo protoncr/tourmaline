@@ -50,9 +50,11 @@ module Tourmaline
       register_annotated_methods
       Container.client = self
 
-      self.try &.init_p
-      [Signal::INT, Signal::TERM].each do |sig|
-        sig.trap { self.try &.cleanup_p; exit }
+      if self.is_a?(Persistence)
+        self.init_p
+        [Signal::INT, Signal::TERM].each do |sig|
+          sig.trap { self.cleanup_p; exit }
+        end
       end
     end
 
@@ -64,7 +66,9 @@ module Tourmaline
     end
 
     private def handle_update(update : Update)
-      self.try &.handle_persistent_update(update)
+      if self.is_a?(Persistence)
+        self.handle_persistent_update(update)
+      end
 
       actions = Helpers.actions_from_update(update)
       actions.each do |action|
