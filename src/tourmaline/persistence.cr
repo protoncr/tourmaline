@@ -1,8 +1,8 @@
 module Tourmaline
   module Persistence
-    abstract def save_user(user : User) : User
+    abstract def insert_user(user : User) : User
 
-    abstract def save_chat(chat : Chat) : Chat
+    abstract def update_chat(chat : Chat) : Chat
 
     abstract def update_user(user : User) : User
 

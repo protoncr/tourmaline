@@ -13,7 +13,7 @@ module Tourmaline
     getter persisted_user_ids = {} of String => Int64
     getter persisted_chat_ids = {} of String => Int64
 
-    def save_user(user : User) : User
+    def insert_user(user : User) : User
       @persisted_users[user.id] ||= user
       if username = user.username
         @persisted_user_ids[username] ||= user.id
@@ -21,7 +21,7 @@ module Tourmaline
       user
     end
 
-    def save_chat(chat : Chat) : Chat
+    def insert_chat(chat : Chat) : Chat
       @persisted_chats[chat.id] ||= chat
       if username = chat.username
         @persisted_chat_ids[username] ||= chat.id
