@@ -24,5 +24,4 @@ jobs:
         committer_email: cawatson1993@gmail.com
         commit_message: "Update docs"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
