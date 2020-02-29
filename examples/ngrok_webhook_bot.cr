@@ -2,8 +2,6 @@ require "../src/tourmaline"
 require "ngrok"
 
 class EchoBot < Tourmaline::Client
-  include Tourmaline
-
   @[Command("echo")]
   def echo_command(ctx)
     ctx.reply(ctx.text)

@@ -10,11 +10,11 @@ module Tourmaline
 
     def initialize(
       commands : String | Array(String),
-      proc : CommandContext ->,
       @prefix : String = "/",
       @anywhere : Bool = false,
       @private_only : Bool = false,
-      @remove_leading : Bool = true
+      @remove_leading : Bool = true,
+      &proc : CommandContext ->
     )
       @commands = commands.is_a?(Array) ? commands : [commands]
       @proc = ->(ctx : CommandContext) { proc.call(ctx); nil }

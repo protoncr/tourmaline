@@ -1,8 +1,6 @@
 require "../src/tourmaline"
 
 class ShopBot < Tourmaline::Client
-  include Tourmaline
-
   INVOICE = {
     title:           "Working Time Machine",
     description:     "Want to visit your great-great-great-grandparents? Make a fortune at the races? Shake hands with Hammurabi and take a stroll in the Hanging Gardens? Order our Working Time Machine today!",

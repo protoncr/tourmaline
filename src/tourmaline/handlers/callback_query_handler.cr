@@ -5,7 +5,7 @@ module Tourmaline
     getter data : String?
     getter proc : Proc(CallbackQueryContext, Void)
 
-    def initialize(proc : CallbackQueryContext ->, data = nil)
+    def initialize(data = nil, &proc : CallbackQueryContext ->)
       @data = data
       @proc = ->(ctx : CallbackQueryContext) { proc.call(ctx); nil }
     end

@@ -3,7 +3,6 @@ require "../src/tourmaline/persistence/json_persistence"
 
 
 class PersistentBot < Tourmaline::Client
-  include Tourmaline
   include JsonPersistence
 
   @[Command("seen")]

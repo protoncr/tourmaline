@@ -34,14 +34,15 @@ module Tourmaline
                       {% init = handler.methods.find { |d| d.name.stringify == "initialize" } %}
                       {% args = init.args %}
                       add_handler({{ handler.resolve }}.new(
-                        {% for arg, i in init.args %}
-                          {% if arg.name == "proc" %}
+                        {% for arg, i in init.args %}\
+                          {{ arg.name }}: {{ ann[arg.name] || ann[i] || arg.default_value }}{% if (i != init.args.size - 1) || init.accepts_block? %},{% end %}
+                        {% end %}\
+                        {% if init.accepts_block? %}\
+                          {% if arg = init.block_arg %}\
                             {% inputs = arg.restriction.inputs %}\
-                            {{ arg.name }}: {{ ("->(" + inputs.map_with_index { |a, i| "v#{i} : #{a}" }.join(", ") +  ") { #{method.name.id}(" + inputs.map_with_index { |_, i| "v#{i}" }.join(", ") + "); nil }").id }},
-                          {% else %}
-                            {{ arg.name }}: {{ ann[arg.name] || ann[i] || arg.default_value }}{% unless i == init.args.size - 1 %},{% end %}
-                          {% end %}
-                        {% end %}
+                            {{ ("&->(" + inputs.map_with_index { |a, i| "v#{i} : #{a}" }.join(", ") +  ") { #{method.name.id}(" + inputs.map_with_index { |_, i| "v#{i}" }.join(", ") + "); nil }").id }}
+                          {% end %}\
+                        {% end %}\
                       ))
                     {% end %}
                   {% end %}

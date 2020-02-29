@@ -1,8 +1,6 @@
 require "../src/tourmaline"
 
 class KittyBot < Tourmaline::Client
-  include Tourmaline
-
   REPLY_MARKUP = Markup.buttons([[
     "/kitty",
     "/kittygif",

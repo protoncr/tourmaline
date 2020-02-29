@@ -22,6 +22,10 @@ module Tourmaline
   # Extend this class to create your own bots, or create an
   # instance of `Client` and add commands and listenters to it.
   class Client
+    macro inherited
+      include Tourmaline
+    end
+    
     include Logger
     include Handler::Annotator
 

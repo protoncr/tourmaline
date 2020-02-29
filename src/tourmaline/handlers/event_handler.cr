@@ -5,7 +5,7 @@ module Tourmaline
     getter event : UpdateAction
     getter proc : Proc(EventContext, Void)
 
-    def initialize(event : Tourmaline::UpdateAction, proc : EventContext ->)
+    def initialize(event : Tourmaline::UpdateAction, &proc : EventContext ->)
       @event = event
       @proc = ->(ctx : EventContext) { proc.call(ctx); nil }
     end

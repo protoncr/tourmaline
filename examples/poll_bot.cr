@@ -1,8 +1,6 @@
 require "../src/tourmaline"
 
 class PollBot < Tourmaline::Client
-  include Tourmaline
-
   KEYBOARD = Markup.buttons([[
     Markup.poll_request_button("Create poll", "regular"),
     Markup.poll_request_button("Create quiz", "quiz"),

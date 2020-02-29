@@ -8,10 +8,10 @@ module Tourmaline
     getter proc : Proc(ChosenInlineResultContext, Void)
 
     def initialize(
-      proc : ChosenInlineResultContext ->,
       id : String? = nil,
       query : String? = nil,
-      inline_message_id : String? = nil
+      inline_message_id : String? = nil,
+      &proc : ChosenInlineResultContext ->
     )
       @id = id
       @query = query

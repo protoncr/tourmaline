@@ -5,7 +5,7 @@ module Tourmaline
     getter regexs : Array(Regex)
     getter proc : Proc(HearsContext, Void)
 
-    def initialize(regexs : Regex | Array(Regex), proc : HearsContext ->)
+    def initialize(regexs : Regex | Array(Regex), &proc : HearsContext ->)
       @regexs = regexs.is_a?(Array) ? regexs : [regexs]
       @proc = ->(ctx : HearsContext) { proc.call(ctx); nil }
     end

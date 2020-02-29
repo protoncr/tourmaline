@@ -7,9 +7,9 @@ module Tourmaline
     getter proc : Proc(InlineQueryContext, Void)
 
     def initialize(
-      proc : InlineQueryContext ->,
       id : String? = nil,
-      query : String? = nil
+      query : String? = nil,
+      &proc : InlineQueryContext ->
     )
       @id = id
       @query = query

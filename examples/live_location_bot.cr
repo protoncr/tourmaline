@@ -1,8 +1,6 @@
 require "../src/tourmaline"
 
 class LiveLocationBot < Tourmaline::Client
-  include Tourmaline
-
   @[Command("start")]
   def send_live_location(ctx)
     lat = 40.7608
