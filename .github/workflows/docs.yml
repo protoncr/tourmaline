@@ -1,0 +1,28 @@
+name: Docs
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    container:
+      image: crystallang/crystal
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Docs
+      run: crystal docs
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v1.3.0
+      with:
+        keep_history: true
+        build_dir: docs
+        committer_name: Chris Watson
+        committer_email: cawatson1993@gmail.com
+        commit_message: "Update docs"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
