@@ -12,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: shards install
     - name: Build Docs
       run: crystal docs
     - name: Deploy to GitHub Pages
