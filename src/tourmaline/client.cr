@@ -25,7 +25,7 @@ module Tourmaline
     macro inherited
       include Tourmaline
     end
-    
+
     include Logger
     include Handler::Annotator
 
