@@ -43,6 +43,12 @@ This currently supports the following features:
 
 If you want a new feature feel free to submit an issue or open a pull request.
 
+## Who's Using Tourmaline
+
+If you're using Tourmaline and would like to have your bot added to this list, just submit a PR!
+
+- [fckeverywordbot](https://github.com/watzon/fckeverywordbot)
+
 ## Contributing
 
 1. Fork it ( https://github.com/watzon/tourmaline/fork )
