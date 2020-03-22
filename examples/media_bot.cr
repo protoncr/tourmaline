@@ -3,10 +3,11 @@ require "../src/tourmaline"
 class MediaBot < Tourmaline::Client
   AnimationUrl1 = "https://media.giphy.com/media/ya4eevXU490Iw/giphy.gif"
   AnimationUrl2 = "https://media.giphy.com/media/LrmU6jXIjwziE/giphy.gif"
+  LocalFile = ::File.expand_path("./cat.jpg", __DIR__)
 
   @[Command("local")]
   def local_command(ctx)
-    ctx.reply_with_photo(::File.expand_path("./cat.jpg", __DIR__))
+    ctx.reply_with_photo(LocalFile)
   end
 
   @[Command("url")]
@@ -26,6 +27,11 @@ class MediaBot < Tourmaline::Client
       caption: "Caption **text**",
       parse_mode: :markdown
     )
+  end
+
+  @[Command("document")]
+  def document_command(ctx)
+    ctx.reply_with_document(LocalFile)
   end
 
   @[Command("album")]

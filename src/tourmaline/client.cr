@@ -194,7 +194,7 @@ module Tourmaline
         attach_form_media(form, value)
         form.body_part(headers, value.to_json)
       when ::File
-        filename = "#{id}.#{Helpers::DEFAULT_EXTENSIONS[id]? || "dat"}"
+        filename = ::File.basename(value.path)
         form.body_part(
           HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
           value
@@ -212,7 +212,7 @@ module Tourmaline
         item = check_open_local_file(item)
         if item.is_a?(::File)
           id = Random.new.random_bytes(16).hexstring
-          filename = "#{id}.#{Helpers::DEFAULT_EXTENSIONS[id]? || "dat"}"
+          filename = ::File.basename(item.path)
 
           form.body_part(
             HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
