@@ -781,7 +781,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(commands:String%7CArray(String),prefix:String=&quot;/&quot;,anywhere:Bool=false,private_only:Bool=false,remove_leading:Bool=true,&proc:CommandContext-%3E)-class-method" class="signature"><strong>.new</strong>(commands : String | Array(String), prefix : String = <span class="s">&quot;/&quot;</span>, anywhere : Bool = <span class="n">false</span>, private_only : Bool = <span class="n">false</span>, remove_leading : Bool = <span class="n">true</span>, &proc : CommandContext -> )</a>
+        <a href="#new(commands:String%7CArray(String),prefix:String=&quot;/&quot;,anywhere:Bool=false,private__arg0:Bool=true,private_only:Bool=false,group_only:Bool=false,remove_leading:Bool=true,&proc:CommandContext-%3E)-class-method" class="signature"><strong>.new</strong>(commands : String | Array(String), prefix : String = <span class="s">&quot;/&quot;</span>, anywhere : Bool = <span class="n">false</span>, private __arg0 : Bool = <span class="n">true</span>, private_only : Bool = <span class="n">false</span>, group_only : Bool = <span class="n">false</span>, remove_leading : Bool = <span class="n">true</span>, &proc : CommandContext -> )</a>
         
       </li>
     
@@ -812,6 +812,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#anywhere=(anywhere:Bool)-instance-method" class="signature"><strong>#anywhere=</strong>(anywhere : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#call(client:Client,update:Update)-instance-method" class="signature"><strong>#call</strong>(client : Client, update : Update)</a>
         
       </li>
@@ -827,7 +832,37 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#commands=(commands:Array(String))-instance-method" class="signature"><strong>#commands=</strong>(commands : Array(String))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#group_only:Bool-instance-method" class="signature"><strong>#group_only</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#group_only=(group_only:Bool)-instance-method" class="signature"><strong>#group_only=</strong>(group_only : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#prefix:String-instance-method" class="signature"><strong>#prefix</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#prefix=(prefix:String)-instance-method" class="signature"><strong>#prefix=</strong>(prefix : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#private_only:Bool-instance-method" class="signature"><strong>#private_only</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#private_only=(private_only:Bool)-instance-method" class="signature"><strong>#private_only=</strong>(private_only : Bool)</a>
         
       </li>
     
@@ -837,7 +872,17 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#proc=(proc:Proc(CommandContext,Void))-instance-method" class="signature"><strong>#proc=</strong>(proc : Proc(CommandContext, Void))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#remove_leading:Bool-instance-method" class="signature"><strong>#remove_leading</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_leading=(remove_leading:Bool)-instance-method" class="signature"><strong>#remove_leading=</strong>(remove_leading : Bool)</a>
         
       </li>
     
@@ -915,12 +960,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(commands:String|Array(String),prefix:String=&amp;quot;/&amp;quot;,anywhere:Bool=false,private_only:Bool=false,remove_leading:Bool=true,&amp;proc:CommandContext-&gt;)-class-method">
+    <div class="entry-detail" id="new(commands:String|Array(String),prefix:String=&amp;quot;/&amp;quot;,anywhere:Bool=false,private__arg0:Bool=true,private_only:Bool=false,group_only:Bool=false,remove_leading:Bool=true,&amp;proc:CommandContext-&gt;)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(commands : String | Array(String), prefix : String = <span class="s">&quot;/&quot;</span>, anywhere : Bool = <span class="n">false</span>, private_only : Bool = <span class="n">false</span>, remove_leading : Bool = <span class="n">true</span>, &proc : <a href="../Tourmaline/CommandContext.html">CommandContext</a> -> )
+        def self.<strong>new</strong>(commands : String | Array(String), prefix : String = <span class="s">&quot;/&quot;</span>, anywhere : Bool = <span class="n">false</span>, private __arg0 : Bool = <span class="n">true</span>, private_only : Bool = <span class="n">false</span>, group_only : Bool = <span class="n">false</span>, remove_leading : Bool = <span class="n">true</span>, &proc : <a href="../Tourmaline/CommandContext.html">CommandContext</a> -> )
 
-        <a class="method-permalink" href="#new(commands:String%7CArray(String),prefix:String=&quot;/&quot;,anywhere:Bool=false,private_only:Bool=false,remove_leading:Bool=true,&proc:CommandContext-%3E)-class-method">#</a>
+        <a class="method-permalink" href="#new(commands:String%7CArray(String),prefix:String=&quot;/&quot;,anywhere:Bool=false,private__arg0:Bool=true,private_only:Bool=false,group_only:Bool=false,remove_leading:Bool=true,&proc:CommandContext-%3E)-class-method">#</a>
       </div>
       
       <br/>
@@ -971,6 +1016,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="anywhere=(anywhere:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>anywhere=</strong>(anywhere : Bool)
+
+        <a class="method-permalink" href="#anywhere=(anywhere:Bool)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="call(client:Client,update:Update)-instance-method">
       <div class="signature">
         
@@ -1013,12 +1072,96 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="commands=(commands:Array(String))-instance-method">
+      <div class="signature">
+        
+        def <strong>commands=</strong>(commands : Array(String))
+
+        <a class="method-permalink" href="#commands=(commands:Array(String))-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="group_only:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>group_only</strong> : Bool
+
+        <a class="method-permalink" href="#group_only:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="group_only=(group_only:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>group_only=</strong>(group_only : Bool)
+
+        <a class="method-permalink" href="#group_only=(group_only:Bool)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="prefix:String-instance-method">
       <div class="signature">
         
         def <strong>prefix</strong> : String
 
         <a class="method-permalink" href="#prefix:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="prefix=(prefix:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>prefix=</strong>(prefix : String)
+
+        <a class="method-permalink" href="#prefix=(prefix:String)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="private_only:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>private_only</strong> : Bool
+
+        <a class="method-permalink" href="#private_only:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="private_only=(private_only:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>private_only=</strong>(private_only : Bool)
+
+        <a class="method-permalink" href="#private_only=(private_only:Bool)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1041,12 +1184,40 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="proc=(proc:Proc(CommandContext,Void))-instance-method">
+      <div class="signature">
+        
+        def <strong>proc=</strong>(proc : Proc(<a href="../Tourmaline/CommandContext.html">CommandContext</a>, Void))
+
+        <a class="method-permalink" href="#proc=(proc:Proc(CommandContext,Void))-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="remove_leading:Bool-instance-method">
       <div class="signature">
         
         def <strong>remove_leading</strong> : Bool
 
         <a class="method-permalink" href="#remove_leading:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove_leading=(remove_leading:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove_leading=</strong>(remove_leading : Bool)
+
+        <a class="method-permalink" href="#remove_leading=(remove_leading:Bool)-instance-method">#</a>
       </div>
       
       <br/>
