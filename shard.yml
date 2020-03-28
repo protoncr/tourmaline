@@ -1,10 +1,10 @@
 name: tourmaline
-version: 0.10.0
+version: 0.14.0
 
 authors:
   - Chris Watson <chris@watzon.me>
 
-crystal: 0.28.0
+crystal: 0.33.0
 
 dependencies:
   halite:
