@@ -1118,7 +1118,7 @@ module Tourmaline
     end
 
     # Use this method to change the list of the bot's commands.
-    # Returns True on success.
+    # Returns `true` on success.
     def set_my_commands(
       commands : Array(BotCommand | NamedTuple(command: String, description: String))
     )

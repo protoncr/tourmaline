@@ -13,5 +13,7 @@ module Tourmaline
     getter contains_masks : Bool
 
     getter stickers : Array(Sticker)
+
+    getter thumb : PhotoSize?
   end
 end
