@@ -734,6 +734,27 @@ module Tourmaline
       Message.from_json(response)
     end
 
+    # Use this method to send a dice, which will have a random value from 1 to 6.
+    # On success, the sent Message is returned.
+    def send_dice(
+      chat,
+      disable_notification = false,
+      reply_to_message = nil,
+      reply_markup = nil
+    )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
+      response = request("sendDice", {
+        chat_id: chat_id,
+        disable_notification: disable_notification,
+        reply_to_message_id: reply_to_message_id,
+        reply_markup: reply_markup
+      })
+
+      Message.from_json(response)
+    end
+
     # Use this method to send general files.
     # On success, the sent `Message` is returned. Bots can currently send files
     # of any type of up to **50 MB** in size, this limit
