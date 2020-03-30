@@ -66,6 +66,10 @@ module Tourmaline
 
     getter venue : Venue?
 
+    getter poll : Poll?
+
+    getter dice : Dice?
+
     getter new_chat_members : Array(User) = [] of Tourmaline::User
 
     getter left_chat_member : User?
@@ -159,7 +163,7 @@ module Tourmaline
       Container.client.send_message(chat, message, **kwargs, reply_to_message: nil)
     end
 
-    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll] %}
+    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll dice] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         Container.client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end

@@ -528,7 +528,7 @@ module Tourmaline
         permissions: permissions.to_json,
       })
 
-      response == true
+      response == "true"
     end
 
     # Use this method to change the title of a chat. Titles can't be changed for
@@ -1115,6 +1115,27 @@ module Tourmaline
       })
 
       Message.from_json(response)
+    end
+
+    # Use this method to change the list of the bot's commands.
+    # Returns True on success.
+    def set_my_commands(
+      commands : Array(BotCommand | NamedTuple(command: String, description: String))
+    )
+      # commands = commands.map(&.to_h.transform_keys(&.to_s))
+
+      response = request("setMyCommands", {
+        commands: commands
+      })
+
+      response == "true"
+    end
+
+    # Use this method to get the current list of the bot's commands. Requires no parameters.
+    # Returns Array of BotCommand on success.
+    def get_my_commands
+      response = request("getMyCommands")
+      Array(BotCommand).from_json(response)
     end
 
     ##########################
