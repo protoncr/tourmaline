@@ -40,6 +40,7 @@ module Tourmaline
     PassportData
     Poll
     PollAnswer
+    Dice
 
     def to_s
       super.to_s.underscore

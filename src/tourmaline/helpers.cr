@@ -50,6 +50,8 @@ module Tourmaline
         actions << UpdateAction::SuccessfulPayment if message.successful_payment
         actions << UpdateAction::ConnectedWebsite if message.connected_website
         # actions << UpdateAction::PassportData if message.passport_data
+        actions << UpdateAction::Poll if message.poll
+        actions << UpdateAction::Dice if message.dice
       end
 
       actions << UpdateAction::EditedMessage if update.edited_message
