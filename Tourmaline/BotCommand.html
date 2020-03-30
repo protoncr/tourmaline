@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="">
-  <title>Tourmaline::InlineQueryResultCachedAudio - </title>
+  <title>Tourmaline::BotCommand - </title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -55,7 +55,7 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/BotCommand" data-name="tourmaline::botcommand">
+  <li class=" current" data-id="/Tourmaline/BotCommand" data-name="tourmaline::botcommand">
       <a href="../Tourmaline/BotCommand.html">BotCommand</a>
       
     </li>
@@ -330,7 +330,7 @@
       
     </li>
   
-  <li class=" current" data-id="/Tourmaline/InlineQueryResultCachedAudio" data-name="tourmaline::inlinequeryresultcachedaudio">
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedAudio" data-name="tourmaline::inlinequeryresultcachedaudio">
       <a href="../Tourmaline/InlineQueryResultCachedAudio.html">InlineQueryResultCachedAudio</a>
       
     </li>
@@ -724,12 +724,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::InlineQueryResultCachedAudio
+  <span class="kind">class</span> Tourmaline::BotCommand
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/InlineQueryResultCachedAudio.html">Tourmaline::InlineQueryResultCachedAudio</a></li><li class="superclass"><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/BotCommand.html">Tourmaline::BotCommand</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -786,11 +786,6 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(id:String,audio_file_id,reply_markup=nil,input_message_content=nil)-class-method" class="signature"><strong>.new</strong>(id : String, audio_file_id, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
       </li>
@@ -812,27 +807,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#audio_file_id:String-instance-method" class="signature"><strong>#audio_file_id</strong> : String</a>
+        <a href="#command:String-instance-method" class="signature"><strong>#command</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#id:String-instance-method" class="signature"><strong>#id</strong> : String</a>
+        <a href="#description:String-instance-method" class="signature"><strong>#description</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#input_message_content:InputMessageContent?-instance-method" class="signature"><strong>#input_message_content</strong> : InputMessageContent?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#reply_markup:InlineKeyboardMarkup?-instance-method" class="signature"><strong>#reply_markup</strong> : InlineKeyboardMarkup?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#type:String-instance-method" class="signature"><strong>#type</strong> : String</a>
+        <a href="#to_h-instance-method" class="signature"><strong>#to_h</strong></a>
         
       </li>
     
@@ -843,35 +828,6 @@
 
 
 <div class="methods-inherited">
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-  <h3>Constructor methods inherited from class <code><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></code></h3>
-  
-  
-    <a href="../Tourmaline/InlineQueryResult.html#new(pull:JSON::PullParser)-class-method" class="tooltip">
-      <span>new(pull : JSON::PullParser)</span>
-    new</a>
-    
-  
-
-
-    
-
-
   
     
 
@@ -915,20 +871,6 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(id:String,audio_file_id,reply_markup=nil,input_message_content=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(id : String, audio_file_id, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(id:String,audio_file_id,reply_markup=nil,input_message_content=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
         
@@ -957,12 +899,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="audio_file_id:String-instance-method">
+    <div class="entry-detail" id="command:String-instance-method">
       <div class="signature">
         
-        def <strong>audio_file_id</strong> : String
+        def <strong>command</strong> : String
 
-        <a class="method-permalink" href="#audio_file_id:String-instance-method">#</a>
+        <a class="method-permalink" href="#command:String-instance-method">#</a>
       </div>
       
       <br/>
@@ -971,12 +913,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="id:String-instance-method">
+    <div class="entry-detail" id="description:String-instance-method">
       <div class="signature">
         
-        def <strong>id</strong> : String
+        def <strong>description</strong> : String
 
-        <a class="method-permalink" href="#id:String-instance-method">#</a>
+        <a class="method-permalink" href="#description:String-instance-method">#</a>
       </div>
       
       <br/>
@@ -985,40 +927,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="input_message_content:InputMessageContent?-instance-method">
+    <div class="entry-detail" id="to_h-instance-method">
       <div class="signature">
         
-        def <strong>input_message_content</strong> : <a href="../Tourmaline/InputMessageContent.html">InputMessageContent</a>?
+        def <strong>to_h</strong>
 
-        <a class="method-permalink" href="#input_message_content:InputMessageContent?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="reply_markup:InlineKeyboardMarkup?-instance-method">
-      <div class="signature">
-        
-        def <strong>reply_markup</strong> : <a href="../Tourmaline/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>?
-
-        <a class="method-permalink" href="#reply_markup:InlineKeyboardMarkup?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="type:String-instance-method">
-      <div class="signature">
-        
-        def <strong>type</strong> : String
-
-        <a class="method-permalink" href="#type:String-instance-method">#</a>
+        <a class="method-permalink" href="#to_h-instance-method">#</a>
       </div>
       
       <br/>

@@ -55,6 +55,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/BotCommand" data-name="tourmaline::botcommand">
+      <a href="../Tourmaline/BotCommand.html">BotCommand</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Button" data-name="tourmaline::button">
       <a href="../Tourmaline/Button.html">Button</a>
       
@@ -152,6 +157,11 @@
   
   <li class=" " data-id="/Tourmaline/Contact" data-name="tourmaline::contact">
       <a href="../Tourmaline/Contact.html">Contact</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Dice" data-name="tourmaline::dice">
+      <a href="../Tourmaline/Dice.html">Dice</a>
       
     </li>
   
@@ -838,7 +848,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
-        <a href="#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method" class="signature"><strong>#add_sticker_to_set</strong>(user_id, name, png_sticker, emojis, mask_position = <span class="n">nil</span>)</a>
+        <a href="#add_sticker_to_set(user_id,name,emojis,png_sticker=nil,tgs_sticker=nil,mask_position=nil)-instance-method" class="signature"><strong>#add_sticker_to_set</strong>(user_id, name, emojis, png_sticker = <span class="n">nil</span>, tgs_sticker = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to add a new sticker to a set created by the bot.</p></div>
         
@@ -880,7 +890,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
-        <a href="#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method" class="signature"><strong>#create_new_sticker_set</strong>(user_id, name, title, png_sticker, emojis, contains_masks = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)</a>
+        <a href="#create_new_sticker_set(user_id,name,title,emojis,png_sticker=nil,tgs_sticker=nil,contains_masks=nil,mask_position=nil)-instance-method" class="signature"><strong>#create_new_sticker_set</strong>(user_id, name, title, emojis, png_sticker = <span class="n">nil</span>, tgs_sticker = <span class="n">nil</span>, contains_masks = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to create new sticker set owned by a user.</p></div>
         
@@ -1035,6 +1045,13 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
+        <a href="#get_my_commands-instance-method" class="signature"><strong>#get_my_commands</strong></a>
+        
+          <div class="summary"><p>Use this method to get the current list of the bot's commands.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#get_sticker_set(name:String)-instance-method" class="signature"><strong>#get_sticker_set</strong>(name : String)</a>
         
           <div class="summary"><p>Use this method to get a sticker set.</p></div>
@@ -1156,6 +1173,13 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
         <a href="#send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_contact</strong>(chat, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send phone contacts.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send a dice, which will have a random value from 1 to 6.</p></div>
         
       </li>
     
@@ -1307,9 +1331,23 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
+        <a href="#set_my_commands(commands:Array(BotCommand%7CNamedTuple()))-instance-method" class="signature"><strong>#set_my_commands</strong>(commands : Array(BotCommand | NamedTuple()))</a>
+        
+          <div class="summary"><p>Use this method to change the list of the bot's commands.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#set_sticker_position_in_set(sticker,position)-instance-method" class="signature"><strong>#set_sticker_position_in_set</strong>(sticker, position)</a>
         
           <div class="summary"><p>Use this method to move a sticker in a set created by the bot to a specific position.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_sticker_set_thumb(name,user,thumb=nil)-instance-method" class="signature"><strong>#set_sticker_set_thumb</strong>(name, user, thumb = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to set the thumbnail of a sticker set.</p></div>
         
       </li>
     
@@ -1377,7 +1415,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       <li class="entry-summary">
         <a href="#upload_sticker_file(user_id,png_sticker)-instance-method" class="signature"><strong>#upload_sticker_file</strong>(user_id, png_sticker)</a>
         
-          <div class="summary"><p>Use this method to upload a .png file with a sticker for later use in <code><a href="../Tourmaline/Client.html#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">#create_new_sticker_set</a></code> and <code><a href="../Tourmaline/Client.html#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">#add_sticker_to_set</a></code> methods (can be used multiple times).</p></div>
+          <div class="summary"><p>Use this method to upload a .png file with a sticker for later use in <code><a href="../Tourmaline/Client.html#create_new_sticker_set(user_id,name,title,emojis,png_sticker=nil,tgs_sticker=nil,contains_masks=nil,mask_position=nil)-instance-method">#create_new_sticker_set</a></code> and <code><a href="../Tourmaline/Client.html#add_sticker_to_set(user_id,name,emojis,png_sticker=nil,tgs_sticker=nil,mask_position=nil)-instance-method">#add_sticker_to_set</a></code> methods (can be used multiple times).</p></div>
         
       </li>
     
@@ -1584,12 +1622,12 @@ Crystal's built in Logger.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">
+    <div class="entry-detail" id="add_sticker_to_set(user_id,name,emojis,png_sticker=nil,tgs_sticker=nil,mask_position=nil)-instance-method">
       <div class="signature">
         
-        def <strong>add_sticker_to_set</strong>(user_id, name, png_sticker, emojis, mask_position = <span class="n">nil</span>)
+        def <strong>add_sticker_to_set</strong>(user_id, name, emojis, png_sticker = <span class="n">nil</span>, tgs_sticker = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#add_sticker_to_set(user_id,name,emojis,png_sticker=nil,tgs_sticker=nil,mask_position=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1722,18 +1760,18 @@ started. Refreshing can be done by setting
       </div>
     </div>
   
-    <div class="entry-detail" id="create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">
+    <div class="entry-detail" id="create_new_sticker_set(user_id,name,title,emojis,png_sticker=nil,tgs_sticker=nil,contains_masks=nil,mask_position=nil)-instance-method">
       <div class="signature">
         
-        def <strong>create_new_sticker_set</strong>(user_id, name, title, png_sticker, emojis, contains_masks = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)
+        def <strong>create_new_sticker_set</strong>(user_id, name, title, emojis, png_sticker = <span class="n">nil</span>, tgs_sticker = <span class="n">nil</span>, contains_masks = <span class="n">nil</span>, mask_position = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#create_new_sticker_set(user_id,name,title,emojis,png_sticker=nil,tgs_sticker=nil,contains_masks=nil,mask_position=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Use this method to create new sticker set owned by a user. The bot will be able to
-edit the created sticker set.
+edit the created sticker set. You must use exactly one of the fields <code>png_sticker</code> or <code>tgs_sticker</code>.
 Returns <code>true</code> on success.</p>
         </div>
       
@@ -2205,6 +2243,26 @@ in form of a <code><a href="../Tourmaline/User.html">User</a></code> object.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="get_my_commands-instance-method">
+      <div class="signature">
+        
+        def <strong>get_my_commands</strong>
+
+        <a class="method-permalink" href="#get_my_commands-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to get the current list of the bot's commands. Requires no parameters.
+Returns Array of BotCommand on success.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="get_sticker_set(name:String)-instance-method">
       <div class="signature">
         
@@ -2594,6 +2652,26 @@ noticeable amount of time to arrive.</p>
           
           <p>Use this method to send phone contacts.
 On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></code> is returned.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to send a dice, which will have a random value from 1 to 6.
+On success, the sent Message is returned.</p>
         </div>
       
       <br/>
@@ -3064,6 +3142,26 @@ score in the chat and force is <code>false</code> (default).</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="set_my_commands(commands:Array(BotCommand|NamedTuple()))-instance-method">
+      <div class="signature">
+        
+        def <strong>set_my_commands</strong>(commands : Array(<a href="../Tourmaline/BotCommand.html">BotCommand</a> | NamedTuple()))
+
+        <a class="method-permalink" href="#set_my_commands(commands:Array(BotCommand%7CNamedTuple()))-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to change the list of the bot's commands.
+Returns <code>true</code> on success.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="set_sticker_position_in_set(sticker,position)-instance-method">
       <div class="signature">
         
@@ -3075,6 +3173,27 @@ score in the chat and force is <code>false</code> (default).</p>
         <div class="doc">
           
           <p>Use this method to move a sticker in a set created by the bot to a specific position.
+Returns <code>true</code> on success.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_sticker_set_thumb(name,user,thumb=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_sticker_set_thumb</strong>(name, user, thumb = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#set_sticker_set_thumb(name,user,thumb=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be
+set for animated sticker sets only.
 Returns <code>true</code> on success.</p>
         </div>
       
@@ -3282,7 +3401,7 @@ Returns <code>true</code> on success.</p>
         <div class="doc">
           
           <p>Use this method to upload a .png file with a sticker for later use in
-<code><a href="../Tourmaline/Client.html#create_new_sticker_set(user_id,name,title,png_sticker,emojis,contains_masks=nil,mask_position=nil)-instance-method">#create_new_sticker_set</a></code> and <code><a href="../Tourmaline/Client.html#add_sticker_to_set(user_id,name,png_sticker,emojis,mask_position=nil)-instance-method">#add_sticker_to_set</a></code> methods (can be
+<code><a href="../Tourmaline/Client.html#create_new_sticker_set(user_id,name,title,emojis,png_sticker=nil,tgs_sticker=nil,contains_masks=nil,mask_position=nil)-instance-method">#create_new_sticker_set</a></code> and <code><a href="../Tourmaline/Client.html#add_sticker_to_set(user_id,name,emojis,png_sticker=nil,tgs_sticker=nil,mask_position=nil)-instance-method">#add_sticker_to_set</a></code> methods (can be
 used multiple times).
 Returns the uploaded <code><a href="../Tourmaline/File.html">File</a></code> on success.</p>
         </div>
