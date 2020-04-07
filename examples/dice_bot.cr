@@ -3,7 +3,7 @@ require "../src/tourmaline"
 class DiceBot < Tourmaline::Client
   @[Command("roll")]
   def roll_command(ctx)
-    ctx.respond_with_dice()
+    ctx.reply_with_dice()
   end
 end
 
