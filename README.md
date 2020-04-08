@@ -2,6 +2,8 @@
   <img src="./img/logo.png" alt="tourmaline logo">
 </div>
 
+# Tourmaline
+
 [![Chat on Telegram](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/protoncr)
 
 Telegram Bot API framework written in Crystal. Based heavily off of [Telegraf](http://telegraf.js.org) this Crystal implementation allows your Telegram bot to be written in a language that's both beautiful and fast. Benchmarks coming soon.
