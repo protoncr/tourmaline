@@ -1,4 +1,6 @@
-![Header Image](img/header.png)
+<div align="center">
+  <img src="./img/logo.png" alt="tourmaline logo">
+</div>
 
 [![Chat on Telegram](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/protoncr)
 
