@@ -13,13 +13,13 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   tourmaline:
-    github: watzon/tourmaline
+    github: protoncr/tourmaline
     version: ~> 0.15.0
 ```
 
 ## Usage
 
-For usage information please see [the wiki](https://github.com/watzon/tourmaline/wiki). API documentation is also available [here](https://watzon.github.io/tourmaline/).
+For usage information please see [the wiki](https://github.com/protoncr/tourmaline/wiki). API documentation is also available [here](https://watzon.github.io/tourmaline/).
 
 Examples are available in the [examples](./examples) folder.
 
@@ -51,7 +51,7 @@ If you're using Tourmaline and would like to have your bot added to this list, j
 
 ## Contributing
 
-1. Fork it ( https://github.com/watzon/tourmaline/fork )
+1. Fork it ( https://github.com/protoncr/tourmaline/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
