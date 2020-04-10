@@ -51,7 +51,8 @@ If you want a new feature feel free to submit an issue or open a pull request.
 
 If you're using Tourmaline and would like to have your bot added to this list, just submit a PR!
 
-- [fckeverywordbot](https://github.com/watzon/fckeverywordbot)
+- [fckeverywordbot](https://t.me/fckeverywordbot)
+- [PixieImageBot](https://t.me/pixieimagebot)
 
 ## Contributing
 
