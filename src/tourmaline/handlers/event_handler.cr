@@ -1,23 +1,31 @@
 module Tourmaline
   class EventHandler < Handler
-    ANNOTATIONS = [ On ]
+    ANNOTATIONS = [On]
 
     getter event : UpdateAction
+    getter filter : (Filter | FilterGroup)?
     getter proc : Proc(EventContext, Void)
 
-    def initialize(event : Tourmaline::UpdateAction, &proc : EventContext ->)
+    def initialize(event : Tourmaline::UpdateAction,
+                   filter : Filter | FilterGroup = nil,
+                   &proc : EventContext ->)
       @event = event
+      @filter = filter
       @proc = ->(ctx : EventContext) { proc.call(ctx); nil }
     end
 
     def actions : Array(UpdateAction)
-      [ @event ]
+      [@event]
     end
 
     def call(client : Client, update : Update)
       actions = Helpers.actions_from_update(update)
       actions.each do |action|
         if @event == action
+          if filter = @filter
+            return unless filter.exec(update)
+          end
+
           context = EventContext.new(client, update, update.message, actions)
           @proc.call(context)
         end
