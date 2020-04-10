@@ -45,5 +45,9 @@ module Tourmaline
     def to_s
       super.to_s.underscore
     end
+
+    def self.to_a
+      {{ @type.constants.map { |c| c.stringify.id } }}
+    end
   end
 end

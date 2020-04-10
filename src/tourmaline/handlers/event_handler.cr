@@ -11,7 +11,7 @@ module Tourmaline
     end
 
     def actions : Array(UpdateAction)
-      {{ Tourmaline::UpdateAction.constants.map { |c| ("Tourmaline::UpdateAction::" + c.stringify).id } }}
+      [ @event ]
     end
 
     def call(client : Client, update : Update)
