@@ -4,14 +4,12 @@ version: 0.15.0
 authors:
   - Chris Watson <chris@watzon.me>
 
-crystal: 0.33.0
+crystal: 0.34.0
 
 dependencies:
   halite:
     github: icyleaf/halite
     branch: master
-  strange:
-    github: hydecr/strange
 
 development_dependencies:
   ngrok:
