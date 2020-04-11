@@ -265,8 +265,7 @@ module Tourmaline
         chat_id: chat_id,
       })
 
-      admins = Array(ChatMember).from_json(response)
-      admins.map { |admin| admin.chat_id = chat_id }
+      Array(ChatMember).from_json(response)
     end
 
     # Use this method to get information about a member of a chat. Returns a

@@ -9,11 +9,12 @@ require "./parse_mode"
 require "./container"
 require "./chat_action"
 require "./update_action"
+require "./update_context"
 require "./models/*"
 require "./fiber"
 require "./annotations"
 require "./filter"
-require "./handler"
+require "./event_handler"
 require "./client/*"
 require "./markup"
 require "./query_result_builder"
@@ -28,7 +29,7 @@ module Tourmaline
     end
 
     include Logger
-    include Handler::Annotator
+    include EventHandler::Annotator
 
     API_URL = "https://api.telegram.org/"
 
@@ -36,7 +37,7 @@ module Tourmaline
     # started. Refreshing can be done by setting
     # `@bot_name` to `get_me.username.to_s`.
     getter bot_name : String { get_me.username.to_s }
-    getter handlers : Hash(UpdateAction, Array(Handler))
+    getter event_handlers : Array(EventHandler)
 
     property endpoint_url : String
 
@@ -50,9 +51,10 @@ module Tourmaline
       @allowed_updates : Array(String)? = nil
     )
       @endpoint_url = Path[API_URL, "bot" + @api_key].to_s
-      @handlers = {} of UpdateAction => Array(Handler)
 
-      register_annotated_methods
+      @event_handlers = [] of EventHandler
+      register_event_handlers
+
       Container.client = self
 
       if self.is_a?(Persistence)
@@ -63,11 +65,8 @@ module Tourmaline
       end
     end
 
-    def add_handler(handler : Handler)
-      handler.actions.each do |action|
-        @handlers[action] ||= [] of Handler
-        @handlers[action] << handler
-      end
+    def add_event_handler(handler : EventHandler)
+      @event_handlers << handler
     end
 
     private def handle_update(update : Update)
@@ -75,17 +74,8 @@ module Tourmaline
         self.handle_persistent_update(update)
       end
 
-      actions = Helpers.actions_from_update(update)
-      actions.each do |action|
-        trigger_handlers(action, update)
-      end
-    end
-
-    def trigger_handlers(action : UpdateAction, update : Update)
-      if handlers = @handlers[action]?
-        handlers.each do |handler|
-          handler.handle_update(self, update)
-        end
+      @event_handlers.each do |handler|
+        handler.handle_update(self, update)
       end
     end
 

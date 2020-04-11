@@ -6,14 +6,14 @@ class PersistentBot < Tourmaline::Client
   include JsonPersistence
 
   @[Command("seen")]
-  def seen_command(ctx)
+  def seen_command(client, update)
     users = persisted_users.map(&.[1].id).join('\n')
-    ctx.reply(users)
+    update.message.try &.reply(users)
   end
 
   @[Command("info")]
-  def info_command(ctx)
-    uid = ctx.text.lstrip('@')
+  def info_command(client, update)
+    uid = update.context["text"].as_s.lstrip('@')
     if i = uid.to_i64?
       uid = i
     end
@@ -24,9 +24,9 @@ class PersistentBot < Tourmaline::Client
         str.puts "  id: `#{user.id}`"
         str.puts "  username: `#{user.username}`"
       end
-      ctx.reply(message, parse_mode: :markdown)
+      update.message.try &.reply(message, parse_mode: :markdown)
     else
-      ctx.reply("User not found")
+      update.message.try &.reply("User not found")
     end
   end
 end

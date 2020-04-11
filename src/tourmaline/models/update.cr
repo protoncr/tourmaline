@@ -2,7 +2,7 @@ require "json"
 
 module Tourmaline
   # # This object represents a Telegram user or bot.
-  struct Update
+  class Update
     include JSON::Serializable
 
     # The update‘s unique identifier. Update identifiers start from a certain
@@ -50,5 +50,22 @@ module Tourmaline
     # Optional. A user changed their answer in a non-anonymous poll. Bots receive new
     # votes only in polls that were sent by the bot itself.
     getter poll_answer : PollAnswer?
+
+    # The context is an object similar to JSON::Any. Items can be added to the context
+    # by filters or other methods, and then accessed in other methods.
+    @[JSON::Field(ignore: true)]
+    property context : UpdateContext = UpdateContext.new
+
+    def set_context(**kwargs)
+      @context = @context.set(**kwargs)
+    end
+
+    def set_context(values : Hash(String, V)) forall V
+      @context = @context.set(values)
+    end
+
+    def set_context(values : NamedTuple)
+      @context = @context.set(values)
+    end
   end
 end

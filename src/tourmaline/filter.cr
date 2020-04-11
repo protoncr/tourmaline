@@ -1,6 +1,6 @@
 module Tourmaline
   abstract class Filter
-    abstract def exec(update : Update) : Bool
+    abstract def exec(client : Client, update : Update) : Bool
 
     def |(other : Filter | FilterGroup)
       FilterGroup.new(self) | other
@@ -19,11 +19,11 @@ module Tourmaline
       @expressions << { :base, base }
     end
 
-    def exec(update : Update) : Bool
+    def exec(client : Client, update : Update) : Bool
       return true if @expressions.empty?
 
       if @expressions.size == 1
-        return @expressions[0][1].exec(update)
+        return @expressions[0][1].exec(client, update)
       end
 
       last = nil
@@ -32,9 +32,9 @@ module Tourmaline
         when :base
           last = f
         when :or
-          return false unless last.try &.exec(update) || f.exec(update)
+          return false unless last.try &.exec(client, update) || f.exec(client, update)
         when :and
-          return false unless last.try &.exec(update) && f.exec(update)
+          return false unless last.try &.exec(client, update) && f.exec(client, update)
         else
         end
       end
