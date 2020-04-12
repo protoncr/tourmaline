@@ -29,7 +29,7 @@ module Tourmaline
                 %action = {{ ann[0] }}
                 %filter = {{ ann[:filter] || ann[1] }}
 
-                if %action.is_a?(Symbol)
+                if %action.is_a?(Symbol | String)
                   begin
                     %action = UpdateAction.parse(%action.to_s)
                   rescue
