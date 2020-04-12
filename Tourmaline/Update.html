@@ -260,6 +260,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/InlineQueryFilter" data-name="tourmaline::inlinequeryfilter">
+      <a href="../Tourmaline/InlineQueryFilter.html">InlineQueryFilter</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/InlineQueryResult" data-name="tourmaline::inlinequeryresult">
       <a href="../Tourmaline/InlineQueryResult.html">InlineQueryResult</a>
       
@@ -452,6 +457,11 @@
   
   <li class=" " data-id="/Tourmaline/LabeledPrice" data-name="tourmaline::labeledprice">
       <a href="../Tourmaline/LabeledPrice.html">LabeledPrice</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/LocaleFilter" data-name="tourmaline::localefilter">
+      <a href="../Tourmaline/LocaleFilter.html">LocaleFilter</a>
       
     </li>
   
@@ -872,12 +882,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#set_context(values:NamedTuple)-instance-method" class="signature"><strong>#set_context</strong>(values : NamedTuple)</a>
+        <a href="#set_context(values:Hash(String,V))forallV-instance-method" class="signature"><strong>#set_context</strong>(values : Hash(String, V)) forall V</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#set_context(values:Hash(String,V))forallV-instance-method" class="signature"><strong>#set_context</strong>(values : Hash(String, V)) forall V</a>
+        <a href="#set_context(values:NamedTuple)-instance-method" class="signature"><strong>#set_context</strong>(values : NamedTuple)</a>
         
       </li>
     
@@ -892,6 +902,20 @@
         <a href="#update_id:Int64-instance-method" class="signature"><strong>#update_id</strong> : Int64</a>
         
           <div class="summary"><p>The update‘s unique identifier.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#users-instance-method" class="signature"><strong>#users</strong></a>
+        
+          <div class="summary"><p>Returns all users included in this update as a Set</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#users(&block:User-%3E)-instance-method" class="signature"><strong>#users</strong>(&block : User -> )</a>
+        
+          <div class="summary"><p>Yields each unique user in this update to the block.</p></div>
         
       </li>
     
@@ -1209,12 +1233,12 @@ votes only in polls that were sent by the bot itself.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="set_context(values:NamedTuple)-instance-method">
+    <div class="entry-detail" id="set_context(values:Hash(String,V))forallV-instance-method">
       <div class="signature">
         
-        def <strong>set_context</strong>(values : NamedTuple)
+        def <strong>set_context</strong>(values : Hash(String, V)) forall V
 
-        <a class="method-permalink" href="#set_context(values:NamedTuple)-instance-method">#</a>
+        <a class="method-permalink" href="#set_context(values:Hash(String,V))forallV-instance-method">#</a>
       </div>
       
       <br/>
@@ -1223,12 +1247,12 @@ votes only in polls that were sent by the bot itself.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="set_context(values:Hash(String,V))forallV-instance-method">
+    <div class="entry-detail" id="set_context(values:NamedTuple)-instance-method">
       <div class="signature">
         
-        def <strong>set_context</strong>(values : Hash(String, V)) forall V
+        def <strong>set_context</strong>(values : NamedTuple)
 
-        <a class="method-permalink" href="#set_context(values:Hash(String,V))forallV-instance-method">#</a>
+        <a class="method-permalink" href="#set_context(values:NamedTuple)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1273,6 +1297,44 @@ repeated updates or to restore the correct update sequence,
 should they get out of order. If there are no new updates
 for at least a week, then identifier of the next update
 will be chosen randomly instead of sequentially.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="users-instance-method">
+      <div class="signature">
+        
+        def <strong>users</strong>
+
+        <a class="method-permalink" href="#users-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns all users included in this update as a Set</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="users(&amp;block:User-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>users</strong>(&block : <a href="../Tourmaline/User.html">User</a> -> )
+
+        <a class="method-permalink" href="#users(&block:User-%3E)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Yields each unique user in this update to the block.</p>
         </div>
       
       <br/>
