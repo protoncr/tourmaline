@@ -1,7 +1,18 @@
 module Tourmaline
   class UpdateContext
     # https://github.com/crystal-lang/crystal/blob/052903270710a4d0f11333696fdd455559f19d1e/src/crystal/datum.cr#L33
-    Crystal.datum types: {bool: Bool, i: Int32, i64: Int64, f: Float32, f64: Float64, s: String, time: Time, match_data: Regex::MatchData}, hash_key_type: String, immutable: false
+    Crystal.datum types: {
+      bool: Bool,
+      i: Int32,
+      i64: Int64,
+      f: Float32,
+      f64: Float64,
+      s: String,
+      time: Time,
+      match_data: Regex::MatchData,
+      # message: Message,
+      # user: User,
+    }, hash_key_type: String, immutable: false
 
     # Creates an empty `UpdateContext`.
     def initialize
