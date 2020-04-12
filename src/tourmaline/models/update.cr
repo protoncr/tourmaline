@@ -67,5 +67,38 @@ module Tourmaline
     def set_context(values : NamedTuple)
       @context = @context.set(values)
     end
+
+    # Returns all users included in this update as a Set
+    def users
+      users = Set(User).new
+
+      [self.channel_post, self.edited_channel_post, self.edited_message, self.message].each do |message|
+        if message
+          users.concat(message.users)
+        end
+      end
+
+      if query = self.callback_query
+        users << query.from
+        if message = query.message
+          users.concat(message.users)
+        end
+      end
+
+      [self.chosen_inline_result, self.shipping_query, self.inline_query, self.pre_checkout_query].each do |e|
+        users << e.from if e.from
+      end
+
+      [self.poll_answer].each do |e|
+        users << e.user if e.user
+      end
+
+      users
+    end
+
+    # Yields each unique user in this update to the block.
+    def users(&block : User ->)
+      self.users.each { |u| block.call(u) }
+    end
   end
 end

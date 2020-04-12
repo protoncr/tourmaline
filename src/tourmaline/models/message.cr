@@ -113,6 +113,19 @@ module Tourmaline
       end
     end
 
+    def users
+      users = Set(User).new
+      users << self.from if self.from
+      users << self.forward_from if self.forward_from
+      users << self.left_chat_member if self.left_chat_member
+      users.concat(self.new_chat_members)
+      users
+    end
+
+    def users(&block : User ->)
+      self.users.each { |u| block.call(u) }
+    end
+
     # Delete the message. See `Tourmaline::Client#delete_message`.
     def delete
       Container.client.delete_message(chat, message_id)
