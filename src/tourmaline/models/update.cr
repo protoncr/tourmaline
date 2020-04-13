@@ -70,9 +70,9 @@ module Tourmaline
 
     # Returns all users included in this update as a Set
     def users
-      users = Set(User).new
+      users = [] of User?
 
-      [self.channel_post, self.edited_channel_post, self.edited_message, self.message].each do |message|
+      [self.channel_post, self.edited_channel_post, self.edited_message, self.message].compact.each do |message|
         if message
           users.concat(message.users)
         end
@@ -85,15 +85,15 @@ module Tourmaline
         end
       end
 
-      [self.chosen_inline_result, self.shipping_query, self.inline_query, self.pre_checkout_query].each do |e|
+      [self.chosen_inline_result, self.shipping_query, self.inline_query, self.pre_checkout_query].compact.each do |e|
         users << e.from if e.from
       end
 
-      [self.poll_answer].each do |e|
+      [self.poll_answer].compact.each do |e|
         users << e.user if e.user
       end
 
-      users
+      users.compact.uniq!
     end
 
     # Yields each unique user in this update to the block.

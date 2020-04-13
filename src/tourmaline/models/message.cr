@@ -114,12 +114,12 @@ module Tourmaline
     end
 
     def users
-      users = Set(User).new
+      users = [] of User?
       users << self.from if self.from
       users << self.forward_from if self.forward_from
       users << self.left_chat_member if self.left_chat_member
       users.concat(self.new_chat_members)
-      users
+      users.compact.uniq
     end
 
     def users(&block : User ->)
