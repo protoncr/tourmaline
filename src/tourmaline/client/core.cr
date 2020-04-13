@@ -298,7 +298,7 @@ module Tourmaline
 
     # Use this method to get basic info about a file and prepare it for downloading.
     # For the moment, bots can download files of up to **20MB** in size. On success,
-    # a `File` object is returned. The file can then be downloaded via the
+    # a `TFile` object is returned. The file can then be downloaded via the
     # link `https://api.telegram.org/file/bot<token>/<file_path>`, where
     # `<file_path>` is taken from the response. It is guaranteed that
     # the link will be valid for at least 1 hour. When the link
@@ -310,10 +310,10 @@ module Tourmaline
         file_id: file_id,
       })
 
-      File.from_json(response)
+      TFile.from_json(response)
     end
 
-    # Returns a download link for a `File`.
+    # Returns a download link for a `TFile`.
     def get_file_link(file)
       if file_path = file.file_path
         ::File.join("#{API_URL}/file/bot#{@api_key}", file_path)

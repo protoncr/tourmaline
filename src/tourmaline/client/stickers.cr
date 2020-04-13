@@ -137,14 +137,14 @@ module Tourmaline
     # Use this method to upload a .png file with a sticker for later use in
     # `#create_new_sticker_set` and `#add_sticker_to_set` methods (can be
     # used multiple times).
-    # Returns the uploaded `File` on success.
+    # Returns the uploaded `TFile` on success.
     def upload_sticker_file(user_id, png_sticker)
       response = request("uploadStickerFile", {
         user_id:     user_id,
         png_sticker: png_sticker,
       })
 
-      File.from_json(response)
+      TFile.from_json(response)
     end
 
     # Use this method to set the thumbnail of a sticker set. Animated thumbnails can be

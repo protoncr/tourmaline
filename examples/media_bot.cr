@@ -3,7 +3,7 @@ require "../src/tourmaline"
 class MediaBot < Tourmaline::Client
   AnimationUrl1 = "https://media.giphy.com/media/ya4eevXU490Iw/giphy.gif"
   AnimationUrl2 = "https://media.giphy.com/media/LrmU6jXIjwziE/giphy.gif"
-  LocalFile = ::File.expand_path("./cat.jpg", __DIR__)
+  LocalFile = File.expand_path("./cat.jpg", __DIR__)
 
   @[Command("local")]
   def local_command(client, update)
@@ -42,7 +42,7 @@ class MediaBot < Tourmaline::Client
         caption: "From url"
       ),
       InputMediaPhoto.new(
-        media: ::File.expand_path("./cat.jpg", __DIR__),
+        media: File.expand_path("./cat.jpg", __DIR__),
         caption: "Local"
       ),
     ])
