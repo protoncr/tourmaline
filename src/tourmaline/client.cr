@@ -43,8 +43,7 @@ module Tourmaline
 
     # Create a new instance of `Tourmaline::Client`. It is
     # highly recommended to set `@api_key` at an environment
-    # variable. `@logger` can be any logger that extends
-    # Crystal's built in Logger.
+    # variable.
     def initialize(
       @api_key : String,
       @updates_timeout : Int32? = nil,
@@ -70,6 +69,8 @@ module Tourmaline
     end
 
     private def handle_update(update : Update)
+      Log.debug { update.to_pretty_json }
+
       if self.is_a?(Persistence)
         self.handle_persistent_update(update)
       end
