@@ -465,18 +465,8 @@
       
     </li>
   
-  <li class="parent open current" data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
+  <li class=" current" data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
       <a href="../Tourmaline/Logger.html">Logger</a>
-      
-        <ul>
-  
-  <li class=" " data-id="/Tourmaline/Logger/Formatter" data-name="tourmaline::logger::formatter">
-      <a href="../Tourmaline/Logger/Formatter.html">Formatter</a>
-      
-    </li>
-  
-</ul>
-
       
     </li>
   
@@ -746,160 +736,42 @@
 
 
 
-
-
-
-
-  <h2>
-    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Class Method Summary
-  </h2>
-  <ul class="list-summary">
+      Constant Summary
+    </h2>
+  
+  <dl>
     
-      <li class="entry-summary">
-        <a href="#alert(message)-class-method" class="signature"><strong>.alert</strong>(message)</a>
-        
-      </li>
+      <dt class="entry-const" id="Formatter">
+        <strong>Formatter</strong> = <code>->(entry : <span class="t">::</span><span class="t">Log</span><span class="t">::</span><span class="t">Entry</span>, io : <span class="t">IO</span>) <span class="k">do</span>
+  severity <span class="o">=</span> entry.severity
+  level <span class="o">=</span> (<span class="s">&quot;[&quot;</span> <span class="o">+</span> (<span class="s">&quot;%-7s&quot;</span> <span class="o">%</span> severity.to_s)) <span class="o">+</span> <span class="s">&quot;]&quot;</span>
+  source <span class="o">=</span> (<span class="s">&quot;[&quot;</span> <span class="o">+</span> (<span class="s">&quot;%-10s&quot;</span> <span class="o">%</span> entry.source)) <span class="o">+</span> <span class="s">&quot;]&quot;</span>
+  io <span class="o">&lt;&lt;</span> (color_message(<span class="s">&quot;</span><span class="i">#{</span>level<span class="i">}</span><span class="s"> </span><span class="i">#{</span>source<span class="i">}</span><span class="s"> - </span><span class="i">#{</span>entry.message<span class="i">}</span><span class="s">&quot;</span>, severity))
+<span class="k">end</span></code>
+      </dt>
+      
     
-      <li class="entry-summary">
-        <a href="#crit(message)-class-method" class="signature"><strong>.crit</strong>(message)</a>
-        
-      </li>
+      <dt class="entry-const" id="LogBackend">
+        <strong>LogBackend</strong> = <code><span class="t">::</span><span class="t">Log</span><span class="t">::</span><span class="t">IOBackend</span>.<span class="k">new</span>.tap <span class="k">do</span> <span class="o">|</span>l<span class="o">|</span>
+  l.formatter <span class="o">=</span> <span class="t">Logger</span><span class="t">::</span><span class="t">Formatter</span>
+<span class="k">end</span></code>
+      </dt>
+      
     
-      <li class="entry-summary">
-        <a href="#debug(message)-class-method" class="signature"><strong>.debug</strong>(message)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#emerg(message)-class-method" class="signature"><strong>.emerg</strong>(message)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#error(message)-class-method" class="signature"><strong>.error</strong>(message)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#info(message)-class-method" class="signature"><strong>.info</strong>(message)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#notice(message)-class-method" class="signature"><strong>.notice</strong>(message)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#warning(message)-class-method" class="signature"><strong>.warning</strong>(message)</a>
-        
-      </li>
-    
-  </ul>
+  </dl>
 
 
 
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#alert(*args,**options)-instance-method" class="signature"><strong>#alert</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#alert(*args,**options,&)-instance-method" class="signature"><strong>#alert</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#crit(*args,**options)-instance-method" class="signature"><strong>#crit</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#crit(*args,**options,&)-instance-method" class="signature"><strong>#crit</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#debug(*args,**options,&)-instance-method" class="signature"><strong>#debug</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#debug(*args,**options)-instance-method" class="signature"><strong>#debug</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#emerg(*args,**options)-instance-method" class="signature"><strong>#emerg</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#emerg(*args,**options,&)-instance-method" class="signature"><strong>#emerg</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#error(*args,**options,&)-instance-method" class="signature"><strong>#error</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#error(*args,**options)-instance-method" class="signature"><strong>#error</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#info(*args,**options)-instance-method" class="signature"><strong>#info</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#info(*args,**options,&)-instance-method" class="signature"><strong>#info</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#logger-instance-method" class="signature"><strong>#logger</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#notice(*args,**options)-instance-method" class="signature"><strong>#notice</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#notice(*args,**options,&)-instance-method" class="signature"><strong>#notice</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#warning(*args,**options)-instance-method" class="signature"><strong>#warning</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#warning(*args,**options,&)-instance-method" class="signature"><strong>#warning</strong>(*args, **options, &)</a>
-        
-      </li>
-    
-  </ul>
+
+
+
 
 
 
@@ -912,377 +784,7 @@
 
 
 
-  <h2>
-    <a id="class-method-detail" class="anchor" href="#class-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Class Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="alert(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>alert</strong>(message)
 
-        <a class="method-permalink" href="#alert(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="crit(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>crit</strong>(message)
-
-        <a class="method-permalink" href="#crit(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="debug(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>debug</strong>(message)
-
-        <a class="method-permalink" href="#debug(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="emerg(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>emerg</strong>(message)
-
-        <a class="method-permalink" href="#emerg(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="error(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>error</strong>(message)
-
-        <a class="method-permalink" href="#error(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="info(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>info</strong>(message)
-
-        <a class="method-permalink" href="#info(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="notice(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>notice</strong>(message)
-
-        <a class="method-permalink" href="#notice(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="warning(message)-class-method">
-      <div class="signature">
-        
-        def self.<strong>warning</strong>(message)
-
-        <a class="method-permalink" href="#warning(message)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-
-
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="alert(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>alert</strong>(*args, **options)
-
-        <a class="method-permalink" href="#alert(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="alert(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>alert</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#alert(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="crit(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>crit</strong>(*args, **options)
-
-        <a class="method-permalink" href="#crit(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="crit(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>crit</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#crit(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="debug(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>debug</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#debug(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="debug(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>debug</strong>(*args, **options)
-
-        <a class="method-permalink" href="#debug(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="emerg(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>emerg</strong>(*args, **options)
-
-        <a class="method-permalink" href="#emerg(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="emerg(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>emerg</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#emerg(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="error(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>error</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#error(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="error(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>error</strong>(*args, **options)
-
-        <a class="method-permalink" href="#error(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="info(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>info</strong>(*args, **options)
-
-        <a class="method-permalink" href="#info(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="info(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>info</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#info(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="logger-instance-method">
-      <div class="signature">
-        
-        def <strong>logger</strong>
-
-        <a class="method-permalink" href="#logger-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="notice(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>notice</strong>(*args, **options)
-
-        <a class="method-permalink" href="#notice(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="notice(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>notice</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#notice(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="warning(*args,**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>warning</strong>(*args, **options)
-
-        <a class="method-permalink" href="#warning(*args,**options)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="warning(*args,**options,&amp;)-instance-method">
-      <div class="signature">
-        
-        def <strong>warning</strong>(*args, **options, &)
-
-        <a class="method-permalink" href="#warning(*args,**options,&)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 

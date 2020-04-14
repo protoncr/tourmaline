@@ -465,18 +465,8 @@
       
     </li>
   
-  <li class="parent " data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
+  <li class=" " data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
       <a href="../Tourmaline/Logger.html">Logger</a>
-      
-        <ul>
-  
-  <li class=" " data-id="/Tourmaline/Logger/Formatter" data-name="tourmaline::logger::formatter">
-      <a href="../Tourmaline/Logger/Formatter.html">Formatter</a>
-      
-    </li>
-  
-</ul>
-
       
     </li>
   
@@ -777,6 +767,11 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     
       <dt class="entry-const" id="API_URL">
         <strong>API_URL</strong> = <code><span class="s">&quot;https://api.telegram.org/&quot;</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="Log">
+        <strong>Log</strong> = <code><span class="t">::</span><span class="t">Log</span>.<span class="k">for</span>(<span class="k">self</span>)</code>
       </dt>
       
     
@@ -1409,104 +1404,11 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
   
     
 
-  <h3>Instance methods inherited from module <code><a href="../Tourmaline/Logger.html">Tourmaline::Logger</a></code></h3>
-  
-  
-    <a href="../Tourmaline/Logger.html#alert(*args,**options)-instance-method" class="tooltip">
-      <span>alert(*args, **options)<br/>alert(*args, **options, &)</span>
-    alert</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#crit(*args,**options)-instance-method" class="tooltip">
-      <span>crit(*args, **options)<br/>crit(*args, **options, &)</span>
-    crit</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#debug(*args,**options,&)-instance-method" class="tooltip">
-      <span>debug(*args, **options, &)<br/>debug(*args, **options)</span>
-    debug</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#emerg(*args,**options)-instance-method" class="tooltip">
-      <span>emerg(*args, **options)<br/>emerg(*args, **options, &)</span>
-    emerg</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#error(*args,**options,&)-instance-method" class="tooltip">
-      <span>error(*args, **options, &)<br/>error(*args, **options)</span>
-    error</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#info(*args,**options)-instance-method" class="tooltip">
-      <span>info(*args, **options)<br/>info(*args, **options, &)</span>
-    info</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#logger-instance-method" class="tooltip">
-      <span>logger</span>
-    logger</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#notice(*args,**options)-instance-method" class="tooltip">
-      <span>notice(*args, **options)<br/>notice(*args, **options, &)</span>
-    notice</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#warning(*args,**options)-instance-method" class="tooltip">
-      <span>warning(*args, **options)<br/>warning(*args, **options, &)</span>
-    warning</a>
-    
-  
-
 
     
 
 
     
-
-  <h3>Class methods inherited from module <code><a href="../Tourmaline/Logger.html">Tourmaline::Logger</a></code></h3>
-  
-  
-    <a href="../Tourmaline/Logger.html#alert(message)-class-method" class="tooltip">
-      <span>alert(message)</span>
-    alert</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#crit(message)-class-method" class="tooltip">
-      <span>crit(message)</span>
-    crit</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#debug(message)-class-method" class="tooltip">
-      <span>debug(message)</span>
-    debug</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#emerg(message)-class-method" class="tooltip">
-      <span>emerg(message)</span>
-    emerg</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#error(message)-class-method" class="tooltip">
-      <span>error(message)</span>
-    error</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#info(message)-class-method" class="tooltip">
-      <span>info(message)</span>
-    info</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#notice(message)-class-method" class="tooltip">
-      <span>notice(message)</span>
-    notice</a>, 
-    
-  
-    <a href="../Tourmaline/Logger.html#warning(message)-class-method" class="tooltip">
-      <span>warning(message)</span>
-    warning</a>
-    
-  
 
 
   
@@ -1554,8 +1456,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
           
           <p>Create a new instance of <code><a href="../Tourmaline/Client.html">Tourmaline::Client</a></code>. It is
 highly recommended to set <code>@api_key</code> at an environment
-variable. <code>@logger</code> can be any logger that extends
-Crystal's built in Logger.</p>
+variable.</p>
         </div>
       
       <br/>
