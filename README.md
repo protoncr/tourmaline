@@ -18,7 +18,7 @@ Add this to your application's `shard.yml`:
 dependencies:
   tourmaline:
     github: protoncr/tourmaline
-    version: ~> 0.15.1
+    branch: master
 ```
 
 ## Usage
