@@ -1148,7 +1148,7 @@ module Tourmaline
       unset_webhook
       @polling = true
 
-      @@logger.info("Polling for updates")
+      Log.info { "Polling for updates" }
       while @polling
         begin
           updates = get_updates
@@ -1156,7 +1156,7 @@ module Tourmaline
             handle_update(u)
           end
         rescue exception
-          @@logger.error(exception.message.to_s)
+          Log.error { exception.message.to_s }
         end
       end
     end

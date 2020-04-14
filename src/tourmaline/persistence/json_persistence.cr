@@ -27,7 +27,7 @@ module Tourmaline
     end
 
     def cleanup_p
-      @@logger.info("Persisting data...")
+      Log.info { "Persisting data..." }
       json = {
         users: @persisted_users,
         user_ids: @persisted_user_ids,
