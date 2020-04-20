@@ -16,7 +16,6 @@ require "./annotations"
 require "./filter"
 require "./event_handler"
 require "./client/*"
-require "./query_result_builder"
 
 module Tourmaline
   # The `Client` class is the base class for all Tourmaline based bots.

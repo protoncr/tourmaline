@@ -6,7 +6,9 @@ I will do my best to keep this updated with changes as they happen.
 
 - **(breaking change)** Replace `Markup` class with `KeyboardBuilder` abstract class and extend it with `ReplyKeyboardMarkup::Builder` and `InlineKeyboardMarkup::Builder`.
 - Add `.build` methods to `ReplyKeyboardMarkup` and `InlineKeyboardMarkup`
-- Update examples with new keyboard builders
+- **(breaking change)** Replace `QueryResultBuilder` with `InlineQueryResult::Builder`.
+- Add `.build` method to `InlineQueryResult`
+- Update examples with new `Builder` classes being used
 
 ## 0.16.0
 
