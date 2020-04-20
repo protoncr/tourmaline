@@ -1,4 +1,3 @@
-require "db"
 require "halite"
 require "mime/multipart"
 
