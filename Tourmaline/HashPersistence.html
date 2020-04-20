@@ -125,6 +125,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/DBPersistence" data-name="tourmaline::dbpersistence">
+      <a href="../Tourmaline/DBPersistence.html">DBPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Dice" data-name="tourmaline::dice">
       <a href="../Tourmaline/Dice.html">Dice</a>
       
@@ -515,6 +520,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/NilPersistence" data-name="tourmaline::nilpersistence">
+      <a href="../Tourmaline/NilPersistence.html">NilPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
       <a href="../Tourmaline/On.html">On</a>
       
@@ -714,31 +724,28 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Tourmaline::HashPersistence
+  <span class="kind">class</span> Tourmaline::HashPersistence
 
 </h1>
 
 
-
-
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/HashPersistence.html">Tourmaline::HashPersistence</a></li><li class="superclass"><a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="overview" class="anchor" href="#overview">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Overview
   </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type"><a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a></li>
-    
-  </ul>
+
+  <p>Stores all persisted data in memory using a collection of hash tables.</p>
+
+
 
 
 
@@ -747,18 +754,20 @@
 
 
   <h2>
-    <a id="direct-including-types" class="anchor" href="#direct-including-types">
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Direct including types
+    Direct Known Subclasses
   </h2>
   <ul class="other-types-list">
     
       <li class="other-type"><a href="../Tourmaline/JsonPersistence.html">Tourmaline::JsonPersistence</a></li>
     
   </ul>
+
+
 
 
 
@@ -776,6 +785,23 @@
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(filename=nil)-class-method" class="signature"><strong>.new</strong>(filename = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -802,17 +828,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#cleanup_p-instance-method" class="signature"><strong>#cleanup_p</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#get_chat(username:String):User?-instance-method" class="signature"><strong>#get_chat</strong>(username : String) : User?</a>
+        <a href="#filename:String-instance-method" class="signature"><strong>#filename</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#get_chat(chat_id:Int):Chat?-instance-method" class="signature"><strong>#get_chat</strong>(chat_id : Int) : Chat?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_chat(username:String):Chat?-instance-method" class="signature"><strong>#get_chat</strong>(username : String) : Chat?</a>
         
       </li>
     
@@ -832,37 +858,32 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#init_p-instance-method" class="signature"><strong>#init_p</strong></a>
+        <a href="#persisted_chat_ids:Hash(String,Int64)-instance-method" class="signature"><strong>#persisted_chat_ids</strong> : Hash(String, Int64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#insert_chat(chat:Chat):Chat-instance-method" class="signature"><strong>#insert_chat</strong>(chat : Chat) : Chat</a>
+        <a href="#persisted_chats:Hash(Int64,Tourmaline::Chat)-instance-method" class="signature"><strong>#persisted_chats</strong> : Hash(Int64, Tourmaline::Chat)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#insert_user(user:User):User-instance-method" class="signature"><strong>#insert_user</strong>(user : User) : User</a>
+        <a href="#persisted_user_ids:Hash(String,Int64)-instance-method" class="signature"><strong>#persisted_user_ids</strong> : Hash(String, Int64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#persisted_chat_ids-instance-method" class="signature"><strong>#persisted_chat_ids</strong></a>
+        <a href="#persisted_users:Hash(Int64,Tourmaline::User)-instance-method" class="signature"><strong>#persisted_users</strong> : Hash(Int64, Tourmaline::User)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#persisted_chats-instance-method" class="signature"><strong>#persisted_chats</strong></a>
+        <a href="#persistent_cleanup-instance-method" class="signature"><strong>#persistent_cleanup</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#persisted_user_ids-instance-method" class="signature"><strong>#persisted_user_ids</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#persisted_users-instance-method" class="signature"><strong>#persisted_users</strong></a>
+        <a href="#persistent_init-instance-method" class="signature"><strong>#persistent_init</strong></a>
         
       </li>
     
@@ -896,37 +917,22 @@
   
     
 
-  <h3>Instance methods inherited from module <code><a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a></code></h3>
+  <h3>Instance methods inherited from class <code><a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a></code></h3>
   
   
     <a href="../Tourmaline/Persistence.html#chat_exists?(chat_id:Int):Bool-instance-method" class="tooltip">
-      <span>chat_exists?(chat_id : Int) : Bool</span>
+      <span>chat_exists?(chat_id : Int) : Bool<br/>chat_exists?(username : String) : Bool</span>
     chat_exists?</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#cleanup_p-instance-method" class="tooltip">
-      <span>cleanup_p</span>
-    cleanup_p</a>, 
-    
-  
     <a href="../Tourmaline/Persistence.html#get_chat(chat_id:Int):Chat?-instance-method" class="tooltip">
-      <span>get_chat(chat_id : Int) : Chat?</span>
+      <span>get_chat(chat_id : Int) : Chat?<br/>get_chat(username : String) : Chat?</span>
     get_chat</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#get_chats_from_update(update:Update)-instance-method" class="tooltip">
-      <span>get_chats_from_update(update : Update)</span>
-    get_chats_from_update</a>, 
-    
-  
     <a href="../Tourmaline/Persistence.html#get_user(user_id:Int):User?-instance-method" class="tooltip">
-      <span>get_user(user_id : Int) : User?</span>
+      <span>get_user(user_id : Int) : User?<br/>get_user(username : String) : User?</span>
     get_user</a>, 
-    
-  
-    <a href="../Tourmaline/Persistence.html#get_users_from_update(update:Update)-instance-method" class="tooltip">
-      <span>get_users_from_update(update : Update)</span>
-    get_users_from_update</a>, 
     
   
     <a href="../Tourmaline/Persistence.html#handle_persistent_update(update:Update)-instance-method" class="tooltip">
@@ -934,14 +940,14 @@
     handle_persistent_update</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#init_p-instance-method" class="tooltip">
-      <span>init_p</span>
-    init_p</a>, 
+    <a href="../Tourmaline/Persistence.html#persistent_cleanup-instance-method" class="tooltip">
+      <span>persistent_cleanup</span>
+    persistent_cleanup</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#insert_user(user:User):User-instance-method" class="tooltip">
-      <span>insert_user(user : User) : User</span>
-    insert_user</a>, 
+    <a href="../Tourmaline/Persistence.html#persistent_init-instance-method" class="tooltip">
+      <span>persistent_init</span>
+    persistent_init</a>, 
     
   
     <a href="../Tourmaline/Persistence.html#update_chat(chat:Chat):Chat-instance-method" class="tooltip">
@@ -954,8 +960,8 @@
     update_user</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#user_exists?(user_id):Bool-instance-method" class="tooltip">
-      <span>user_exists?(user_id) : Bool</span>
+    <a href="../Tourmaline/Persistence.html#user_exists?(user_id:Int):Bool-instance-method" class="tooltip">
+      <span>user_exists?(user_id : Int) : Bool<br/>user_exists?(usename : String) : Bool</span>
     user_exists?</a>
     
   
@@ -968,8 +974,52 @@
 
 
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(filename=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(filename = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new(filename=nil)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1012,26 +1062,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="cleanup_p-instance-method">
+    <div class="entry-detail" id="filename:String-instance-method">
       <div class="signature">
         
-        def <strong>cleanup_p</strong>
+        def <strong>filename</strong> : String
 
-        <a class="method-permalink" href="#cleanup_p-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="get_chat(username:String):User?-instance-method">
-      <div class="signature">
-        
-        def <strong>get_chat</strong>(username : String) : <a href="../Tourmaline/User.html">User</a>?
-
-        <a class="method-permalink" href="#get_chat(username:String):User?-instance-method">#</a>
+        <a class="method-permalink" href="#filename:String-instance-method">#</a>
       </div>
       
       <br/>
@@ -1046,6 +1082,20 @@
         def <strong>get_chat</strong>(chat_id : Int) : <a href="../Tourmaline/Chat.html">Chat</a>?
 
         <a class="method-permalink" href="#get_chat(chat_id:Int):Chat?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_chat(username:String):Chat?-instance-method">
+      <div class="signature">
+        
+        def <strong>get_chat</strong>(username : String) : <a href="../Tourmaline/Chat.html">Chat</a>?
+
+        <a class="method-permalink" href="#get_chat(username:String):Chat?-instance-method">#</a>
       </div>
       
       <br/>
@@ -1096,12 +1146,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="init_p-instance-method">
+    <div class="entry-detail" id="persisted_chat_ids:Hash(String,Int64)-instance-method">
       <div class="signature">
         
-        def <strong>init_p</strong>
+        def <strong>persisted_chat_ids</strong> : Hash(String, Int64)
 
-        <a class="method-permalink" href="#init_p-instance-method">#</a>
+        <a class="method-permalink" href="#persisted_chat_ids:Hash(String,Int64)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1110,12 +1160,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="insert_chat(chat:Chat):Chat-instance-method">
+    <div class="entry-detail" id="persisted_chats:Hash(Int64,Tourmaline::Chat)-instance-method">
       <div class="signature">
         
-        def <strong>insert_chat</strong>(chat : <a href="../Tourmaline/Chat.html">Chat</a>) : <a href="../Tourmaline/Chat.html">Chat</a>
+        def <strong>persisted_chats</strong> : Hash(Int64, <a href="../Tourmaline/Chat.html">Tourmaline::Chat</a>)
 
-        <a class="method-permalink" href="#insert_chat(chat:Chat):Chat-instance-method">#</a>
+        <a class="method-permalink" href="#persisted_chats:Hash(Int64,Tourmaline::Chat)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1124,12 +1174,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="insert_user(user:User):User-instance-method">
+    <div class="entry-detail" id="persisted_user_ids:Hash(String,Int64)-instance-method">
       <div class="signature">
         
-        def <strong>insert_user</strong>(user : <a href="../Tourmaline/User.html">User</a>) : <a href="../Tourmaline/User.html">User</a>
+        def <strong>persisted_user_ids</strong> : Hash(String, Int64)
 
-        <a class="method-permalink" href="#insert_user(user:User):User-instance-method">#</a>
+        <a class="method-permalink" href="#persisted_user_ids:Hash(String,Int64)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1138,12 +1188,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="persisted_chat_ids-instance-method">
+    <div class="entry-detail" id="persisted_users:Hash(Int64,Tourmaline::User)-instance-method">
       <div class="signature">
         
-        def <strong>persisted_chat_ids</strong>
+        def <strong>persisted_users</strong> : Hash(Int64, <a href="../Tourmaline/User.html">Tourmaline::User</a>)
 
-        <a class="method-permalink" href="#persisted_chat_ids-instance-method">#</a>
+        <a class="method-permalink" href="#persisted_users:Hash(Int64,Tourmaline::User)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1152,12 +1202,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="persisted_chats-instance-method">
+    <div class="entry-detail" id="persistent_cleanup-instance-method">
       <div class="signature">
         
-        def <strong>persisted_chats</strong>
+        def <strong>persistent_cleanup</strong>
 
-        <a class="method-permalink" href="#persisted_chats-instance-method">#</a>
+        <a class="method-permalink" href="#persistent_cleanup-instance-method">#</a>
       </div>
       
       <br/>
@@ -1166,26 +1216,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="persisted_user_ids-instance-method">
+    <div class="entry-detail" id="persistent_init-instance-method">
       <div class="signature">
         
-        def <strong>persisted_user_ids</strong>
+        def <strong>persistent_init</strong>
 
-        <a class="method-permalink" href="#persisted_user_ids-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="persisted_users-instance-method">
-      <div class="signature">
-        
-        def <strong>persisted_users</strong>
-
-        <a class="method-permalink" href="#persisted_users-instance-method">#</a>
+        <a class="method-permalink" href="#persistent_init-instance-method">#</a>
       </div>
       
       <br/>

@@ -125,6 +125,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/DBPersistence" data-name="tourmaline::dbpersistence">
+      <a href="../Tourmaline/DBPersistence.html">DBPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Dice" data-name="tourmaline::dice">
       <a href="../Tourmaline/Dice.html">Dice</a>
       
@@ -515,6 +520,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/NilPersistence" data-name="tourmaline::nilpersistence">
+      <a href="../Tourmaline/NilPersistence.html">NilPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
       <a href="../Tourmaline/On.html">On</a>
       
@@ -815,7 +825,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil)-class-method" class="signature"><strong>.new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>)</a>
+        <a href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil,persistence:Persistence=NilPersistence.new)-class-method" class="signature"><strong>.new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>, persistence : Persistence = <span class="t">NilPersistence</span>.<span class="k">new</span>)</a>
         
           <div class="summary"><p>Create a new instance of <code><a href="../Tourmaline/Client.html">Tourmaline::Client</a></code>.</p></div>
         
@@ -1114,6 +1124,11 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     
       <li class="entry-summary">
         <a href="#next_offset:Int64-instance-method" class="signature"><strong>#next_offset</strong> : Int64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#persistence:Persistence-instance-method" class="signature"><strong>#persistence</strong> : Persistence</a>
         
       </li>
     
@@ -1474,12 +1489,12 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil)-class-method">
+    <div class="entry-detail" id="new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil,persistence:Persistence=NilPersistence.new)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>, persistence : <a href="../Tourmaline/Persistence.html">Persistence</a> = <span class="t">NilPersistence</span>.<span class="k">new</span>)
 
-        <a class="method-permalink" href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil,persistence:Persistence=NilPersistence.new)-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -2372,6 +2387,20 @@ Returns <code>true</code> on success.</p>
         def <strong>next_offset</strong> : Int64
 
         <a class="method-permalink" href="#next_offset:Int64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="persistence:Persistence-instance-method">
+      <div class="signature">
+        
+        def <strong>persistence</strong> : <a href="../Tourmaline/Persistence.html">Persistence</a>
+
+        <a class="method-permalink" href="#persistence:Persistence-instance-method">#</a>
       </div>
       
       <br/>

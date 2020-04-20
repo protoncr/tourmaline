@@ -125,6 +125,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/DBPersistence" data-name="tourmaline::dbpersistence">
+      <a href="../Tourmaline/DBPersistence.html">DBPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Dice" data-name="tourmaline::dice">
       <a href="../Tourmaline/Dice.html">Dice</a>
       
@@ -515,6 +520,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/NilPersistence" data-name="tourmaline::nilpersistence">
+      <a href="../Tourmaline/NilPersistence.html">NilPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
       <a href="../Tourmaline/On.html">On</a>
       
@@ -753,6 +763,10 @@
   </h2>
   <ul class="other-types-list">
     
+      <li class="other-type">DB::Mappable</li>
+    
+      <li class="other-type">DB::Serializable</li>
+    
       <li class="other-type">JSON::Serializable</li>
     
   </ul>
@@ -791,6 +805,11 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#new(rs:DB::ResultSet)-class-method" class="signature"><strong>.new</strong>(rs : DB::ResultSet)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
       </li>
@@ -798,6 +817,23 @@
   </ul>
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_rs(rs:DB::ResultSet)-class-method" class="signature"><strong>.from_rs</strong>(rs : DB::ResultSet)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -822,6 +858,20 @@
         <a href="#channel_post:Message?-instance-method" class="signature"><strong>#channel_post</strong> : Message?</a>
         
           <div class="summary"><p>Optional.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chats(&block:Chat-%3E)-instance-method" class="signature"><strong>#chats</strong>(&block : Chat -> )</a>
+        
+          <div class="summary"><p>Yields each unique chat in this update to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chats-instance-method" class="signature"><strong>#chats</strong></a>
+        
+          <div class="summary"><p>Returns all unique chats included in this update</p></div>
         
       </li>
     
@@ -892,17 +942,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#set_context(**kwargs)-instance-method" class="signature"><strong>#set_context</strong>(**kwargs)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#set_context(values:Hash(String,V))forallV-instance-method" class="signature"><strong>#set_context</strong>(values : Hash(String, V)) forall V</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#set_context(values:NamedTuple)-instance-method" class="signature"><strong>#set_context</strong>(values : NamedTuple)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_context(**kwargs)-instance-method" class="signature"><strong>#set_context</strong>(**kwargs)</a>
         
       </li>
     
@@ -972,6 +1022,26 @@
 
 
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
@@ -983,6 +1053,20 @@
 </a>
     Constructor Detail
   </h2>
+  
+    <div class="entry-detail" id="new(rs:DB::ResultSet)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(rs : DB::ResultSet)
+
+        <a class="method-permalink" href="#new(rs:DB::ResultSet)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
@@ -1000,6 +1084,30 @@
   
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="from_rs(rs:DB::ResultSet)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from_rs</strong>(rs : DB::ResultSet)
+
+        <a class="method-permalink" href="#from_rs(rs:DB::ResultSet)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1042,6 +1150,44 @@
         <div class="doc">
           
           <p>Optional. New incoming channel post of any kind — text, photo, sticker, etc.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chats(&amp;block:Chat-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>chats</strong>(&block : <a href="../Tourmaline/Chat.html">Chat</a> -> )
+
+        <a class="method-permalink" href="#chats(&block:Chat-%3E)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Yields each unique chat in this update to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chats-instance-method">
+      <div class="signature">
+        
+        def <strong>chats</strong>
+
+        <a class="method-permalink" href="#chats-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns all unique chats included in this update</p>
         </div>
       
       <br/>
@@ -1234,20 +1380,6 @@ votes only in polls that were sent by the bot itself.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="set_context(**kwargs)-instance-method">
-      <div class="signature">
-        
-        def <strong>set_context</strong>(**kwargs)
-
-        <a class="method-permalink" href="#set_context(**kwargs)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="set_context(values:Hash(String,V))forallV-instance-method">
       <div class="signature">
         
@@ -1268,6 +1400,20 @@ votes only in polls that were sent by the bot itself.</p>
         def <strong>set_context</strong>(values : NamedTuple)
 
         <a class="method-permalink" href="#set_context(values:NamedTuple)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_context(**kwargs)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_context</strong>(**kwargs)
+
+        <a class="method-permalink" href="#set_context(**kwargs)-instance-method">#</a>
       </div>
       
       <br/>

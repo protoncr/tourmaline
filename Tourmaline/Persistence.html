@@ -125,6 +125,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/DBPersistence" data-name="tourmaline::dbpersistence">
+      <a href="../Tourmaline/DBPersistence.html">DBPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Dice" data-name="tourmaline::dice">
       <a href="../Tourmaline/Dice.html">Dice</a>
       
@@ -515,6 +520,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/NilPersistence" data-name="tourmaline::nilpersistence">
+      <a href="../Tourmaline/NilPersistence.html">NilPersistence</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
       <a href="../Tourmaline/On.html">On</a>
       
@@ -714,12 +724,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Tourmaline::Persistence
+  <span class="kind">abstract class</span> Tourmaline::Persistence
 
 </h1>
 
 
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -733,20 +743,24 @@
 
 
   <h2>
-    <a id="direct-including-types" class="anchor" href="#direct-including-types">
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Direct including types
+    Direct Known Subclasses
   </h2>
   <ul class="other-types-list">
     
+      <li class="other-type"><a href="../Tourmaline/DBPersistence.html">Tourmaline::DBPersistence</a></li>
+    
       <li class="other-type"><a href="../Tourmaline/HashPersistence.html">Tourmaline::HashPersistence</a></li>
     
-      <li class="other-type"><a href="../Tourmaline/JsonPersistence.html">Tourmaline::JsonPersistence</a></li>
+      <li class="other-type"><a href="../Tourmaline/NilPersistence.html">Tourmaline::NilPersistence</a></li>
     
   </ul>
+
+
 
 
 
@@ -785,7 +799,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#cleanup_p-instance-method" class="signature"><strong>#cleanup_p</strong></a>
+        <a href="#chat_exists?(username:String):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(username : String) : Bool</a>
         
       </li>
     
@@ -795,7 +809,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#get_chats_from_update(update:Update)-instance-method" class="signature"><strong>#get_chats_from_update</strong>(update : Update)</a>
+        <a href="#get_chat(username:String):Chat?-instance-method" class="signature"><strong>#get_chat</strong>(username : String) : Chat?</a>
         
       </li>
     
@@ -805,7 +819,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#get_users_from_update(update:Update)-instance-method" class="signature"><strong>#get_users_from_update</strong>(update : Update)</a>
+        <a href="#get_user(username:String):User?-instance-method" class="signature"><strong>#get_user</strong>(username : String) : User?</a>
         
       </li>
     
@@ -815,12 +829,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#init_p-instance-method" class="signature"><strong>#init_p</strong></a>
+        <a href="#persistent_cleanup-instance-method" class="signature"><strong>#persistent_cleanup</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#insert_user(user:User):User-instance-method" class="signature"><strong>#insert_user</strong>(user : User) : User</a>
+        <a href="#persistent_init-instance-method" class="signature"><strong>#persistent_init</strong></a>
         
       </li>
     
@@ -835,7 +849,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#user_exists?(user_id):Bool-instance-method" class="signature"><strong>#user_exists?</strong>(user_id) : Bool</a>
+        <a href="#user_exists?(user_id:Int):Bool-instance-method" class="signature"><strong>#user_exists?</strong>(user_id : Int) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_exists?(usename:String):Bool-instance-method" class="signature"><strong>#user_exists?</strong>(usename : String) : Bool</a>
         
       </li>
     
@@ -846,6 +865,26 @@
 
 
 <div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
   
 </div>
 
@@ -877,12 +916,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="cleanup_p-instance-method">
+    <div class="entry-detail" id="chat_exists?(username:String):Bool-instance-method">
       <div class="signature">
         abstract 
-        def <strong>cleanup_p</strong>
+        def <strong>chat_exists?</strong>(username : String) : Bool
 
-        <a class="method-permalink" href="#cleanup_p-instance-method">#</a>
+        <a class="method-permalink" href="#chat_exists?(username:String):Bool-instance-method">#</a>
       </div>
       
       <br/>
@@ -905,12 +944,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="get_chats_from_update(update:Update)-instance-method">
+    <div class="entry-detail" id="get_chat(username:String):Chat?-instance-method">
       <div class="signature">
-        
-        def <strong>get_chats_from_update</strong>(update : <a href="../Tourmaline/Update.html">Update</a>)
+        abstract 
+        def <strong>get_chat</strong>(username : String) : <a href="../Tourmaline/Chat.html">Chat</a>?
 
-        <a class="method-permalink" href="#get_chats_from_update(update:Update)-instance-method">#</a>
+        <a class="method-permalink" href="#get_chat(username:String):Chat?-instance-method">#</a>
       </div>
       
       <br/>
@@ -933,12 +972,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="get_users_from_update(update:Update)-instance-method">
+    <div class="entry-detail" id="get_user(username:String):User?-instance-method">
       <div class="signature">
-        
-        def <strong>get_users_from_update</strong>(update : <a href="../Tourmaline/Update.html">Update</a>)
+        abstract 
+        def <strong>get_user</strong>(username : String) : <a href="../Tourmaline/User.html">User</a>?
 
-        <a class="method-permalink" href="#get_users_from_update(update:Update)-instance-method">#</a>
+        <a class="method-permalink" href="#get_user(username:String):User?-instance-method">#</a>
       </div>
       
       <br/>
@@ -961,12 +1000,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="init_p-instance-method">
+    <div class="entry-detail" id="persistent_cleanup-instance-method">
       <div class="signature">
         abstract 
-        def <strong>init_p</strong>
+        def <strong>persistent_cleanup</strong>
 
-        <a class="method-permalink" href="#init_p-instance-method">#</a>
+        <a class="method-permalink" href="#persistent_cleanup-instance-method">#</a>
       </div>
       
       <br/>
@@ -975,12 +1014,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="insert_user(user:User):User-instance-method">
+    <div class="entry-detail" id="persistent_init-instance-method">
       <div class="signature">
         abstract 
-        def <strong>insert_user</strong>(user : <a href="../Tourmaline/User.html">User</a>) : <a href="../Tourmaline/User.html">User</a>
+        def <strong>persistent_init</strong>
 
-        <a class="method-permalink" href="#insert_user(user:User):User-instance-method">#</a>
+        <a class="method-permalink" href="#persistent_init-instance-method">#</a>
       </div>
       
       <br/>
@@ -1017,12 +1056,26 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="user_exists?(user_id):Bool-instance-method">
+    <div class="entry-detail" id="user_exists?(user_id:Int):Bool-instance-method">
       <div class="signature">
         abstract 
-        def <strong>user_exists?</strong>(user_id) : Bool
+        def <strong>user_exists?</strong>(user_id : Int) : Bool
 
-        <a class="method-permalink" href="#user_exists?(user_id):Bool-instance-method">#</a>
+        <a class="method-permalink" href="#user_exists?(user_id:Int):Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_exists?(usename:String):Bool-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>user_exists?</strong>(usename : String) : Bool
+
+        <a class="method-permalink" href="#user_exists?(usename:String):Bool-instance-method">#</a>
       </div>
       
       <br/>
