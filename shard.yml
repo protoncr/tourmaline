@@ -1,5 +1,5 @@
 name: tourmaline
-version: 0.17.0
+version: 0.16.0
 
 authors:
   - Chris Watson <chris@watzon.me>
@@ -10,6 +10,9 @@ dependencies:
   halite:
     github: icyleaf/halite
     branch: master
+  db:
+    github: crystal-lang/crystal-db
+    version: ~> 0.9.0
 
 development_dependencies:
   ngrok:
