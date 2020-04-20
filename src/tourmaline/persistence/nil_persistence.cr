@@ -48,10 +48,10 @@ module Tourmaline
     def handle_persistent_update(update : Update)
     end
 
-    def persistant_init
+    def persistent_init
     end
 
-    def persistant_cleanup
+    def persistent_cleanup
     end
   end
 end
