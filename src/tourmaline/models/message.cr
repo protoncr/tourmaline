@@ -4,12 +4,14 @@ require "./message_entity"
 module Tourmaline
   # # This object represents a Telegram user or bot.
   class Message
+    include DB::Serializable
     include JSON::Serializable
 
     getter message_id : Int64
 
     getter from : User?
 
+    @[DB::Field(ignore: true)]
     @[JSON::Field(converter: Time::EpochMillisConverter)]
     getter date : Time
 
@@ -23,12 +25,15 @@ module Tourmaline
 
     getter forward_signature : String?
 
+    @[DB::Field(ignore: true)]
     @[JSON::Field(converter: Time::EpochMillisConverter)]
     getter forward_date : Time?
 
+    @[DB::Field(ignore: true)]
     @[JSON::Field(converter: Time::EpochMillisConverter)]
     getter edit_date : Time?
 
+    @[DB::Field(key: "reply_to_message")]
     @[JSON::Field(key: "reply_to_message")]
     getter reply_message : Message?
 
@@ -115,15 +120,29 @@ module Tourmaline
 
     def users
       users = [] of User?
-      users << self.from if self.from
-      users << self.forward_from if self.forward_from
-      users << self.left_chat_member if self.left_chat_member
+      users << self.from
+      users << self.forward_from
+      users << self.left_chat_member
       users.concat(self.new_chat_members)
       users.compact.uniq
     end
 
     def users(&block : User ->)
       self.users.each { |u| block.call(u) }
+    end
+
+    def chats
+      chats = [] of Chat?
+      chats << self.chat
+      chats << self.forward_from_chat
+      if reply_message = self.reply_message
+        chats.concat(reply_message.chats)
+      end
+      chats.compact.uniq
+    end
+
+    def chats(&block : Chat ->)
+      self.chats.each { |c| block.call(c) }
     end
 
     # Delete the message. See `Tourmaline::Client#delete_message`.

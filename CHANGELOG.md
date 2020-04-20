@@ -4,11 +4,21 @@ I will do my best to keep this updated with changes as they happen.
 
 ## 0.17.0 (Unreleased)
 
-- **(breaking change)** Replace `Markup` class with `KeyboardBuilder` abstract class and extend it with `ReplyKeyboardMarkup::Builder` and `InlineKeyboardMarkup::Builder`.
-- Add `.build` methods to `ReplyKeyboardMarkup` and `InlineKeyboardMarkup`
-- **(breaking change)** Replace `QueryResultBuilder` with `InlineQueryResult::Builder`.
-- Add `.build` method to `InlineQueryResult`
-- Update examples with new `Builder` classes being used
++ KeyboardMarkup
+  - **(breaking change)** Replace `Markup` class with `KeyboardBuilder` abstract class and extend it with   `ReplyKeyboardMarkup::Builder` and `InlineKeyboardMarkup::Builder`.
+  - Add `.build` methods to `ReplyKeyboardMarkup` and `InlineKeyboardMarkup`.
+  - **(breaking change)** Replace `QueryResultBuilder` with `InlineQueryResult::Builder`.
+  - Update examples with new `Builder` classes being used.
++ InlineQueryResult
+  - **(breaking change)** Replace `QueryResultBuilder` with `InlineQueryResult::Builder`.
+  - Add `.build` method to `InlineQueryResult`.
+  - Update examples with new `Builder` classes being used.
++ Persistence
+  - **(breaking change)** Made `Persistence` a class rather than a module and updated `HashPersistence`
+    and `JsonPersistence` to use it.
+  - Add `persistence` instance variable to `Client`
+  - Add `NilPersistence` and make it the default persistence for new `Client`s
+  - Add `DBPersistence`
 
 ## 0.16.0
 

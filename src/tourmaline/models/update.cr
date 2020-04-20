@@ -3,6 +3,7 @@ require "json"
 module Tourmaline
   # # This object represents a Telegram user or bot.
   class Update
+    include DB::Serializable
     include JSON::Serializable
 
     # The update‘s unique identifier. Update identifiers start from a certain
@@ -53,6 +54,7 @@ module Tourmaline
 
     # The context is an object similar to JSON::Any. Items can be added to the context
     # by filters or other methods, and then accessed in other methods.
+    @[DB::Field(ignore: true)]
     @[JSON::Field(ignore: true)]
     property context : UpdateContext = UpdateContext.new
 
@@ -99,6 +101,22 @@ module Tourmaline
     # Yields each unique user in this update to the block.
     def users(&block : User ->)
       self.users.each { |u| block.call(u) }
+    end
+
+    # Returns all unique chats included in this update
+    def chats
+      chats = [] of Chat
+      [self.channel_post, self.edited_channel_post, self.edited_message, self.message].compact.each do |message|
+        if message
+          chats.concat(message.chats)
+        end
+      end
+      chats
+    end
+
+    # Yields each unique chat in this update to the block.
+    def chats(&block : Chat ->)
+      self.chats.each { |c| block.call(c) }
     end
   end
 end

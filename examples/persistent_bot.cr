@@ -3,11 +3,9 @@ require "../src/tourmaline/persistence/json_persistence"
 
 
 class PersistentBot < Tourmaline::Client
-  include JsonPersistence
-
   @[Command("seen")]
   def seen_command(client, update)
-    users = persisted_users.map(&.[1].id).join('\n')
+    users = @persistence.persisted_users.map(&.[1].id).join('\n')
     update.message.try &.reply(users)
   end
 
@@ -18,7 +16,7 @@ class PersistentBot < Tourmaline::Client
       uid = i
     end
 
-    if user = get_user(uid)
+    if user = @persistence.get_user(uid)
       message = String.build do |str|
         str.puts user.inline_mention
         str.puts "  id: `#{user.id}`"
@@ -31,5 +29,5 @@ class PersistentBot < Tourmaline::Client
   end
 end
 
-bot = PersistentBot.new(ENV["API_KEY"])
+bot = PersistentBot.new(ENV["API_KEY"], persistence: Tourmaline::JsonPersistence.new)
 bot.poll

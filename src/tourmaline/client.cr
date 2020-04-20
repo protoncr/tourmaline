@@ -1,6 +1,3 @@
-require "halite"
-require "mime/multipart"
-
 require "./helpers"
 require "./error"
 require "./logger"
@@ -36,6 +33,7 @@ module Tourmaline
     # `@bot_name` to `get_me.username.to_s`.
     getter bot_name : String { get_me.username.to_s }
     getter event_handlers : Array(EventHandler)
+    getter persistence : Persistence
 
     property endpoint_url : String
 
@@ -45,7 +43,8 @@ module Tourmaline
     def initialize(
       @api_key : String,
       @updates_timeout : Int32? = nil,
-      @allowed_updates : Array(String)? = nil
+      @allowed_updates : Array(String)? = nil,
+      @persistence : Persistence = NilPersistence.new
     )
       @endpoint_url = Path[API_URL, "bot" + @api_key].to_s
 
@@ -54,11 +53,9 @@ module Tourmaline
 
       Container.client = self
 
-      if self.is_a?(Persistence)
-        self.init_p
-        [Signal::INT, Signal::TERM].each do |sig|
-          sig.trap { self.cleanup_p; exit }
-        end
+      @persistence.persistent_init
+      [Signal::INT, Signal::TERM].each do |sig|
+        sig.trap { @persistence.persistent_cleanup; exit }
       end
     end
 
@@ -69,10 +66,7 @@ module Tourmaline
     def handle_update(update : Update)
       Log.debug { update.to_pretty_json }
 
-      if self.is_a?(Persistence)
-        self.handle_persistent_update(update)
-      end
-
+      @persistence.handle_persistent_update(update)
       @event_handlers.each do |handler|
         handler.handle_update(self, update)
       end

@@ -1,7 +1,9 @@
+require "db"
+require "halite"
+require "mime/multipart"
+
 require "./tourmaline/version"
 require "./tourmaline/client"
-
-# require "./tourmaline/user"
 
 # Tourmaline is a Telegram Bot API library
 # for [Telegram](https://telegram.com). It provides an easy to
