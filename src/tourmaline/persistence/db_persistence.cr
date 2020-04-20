@@ -63,7 +63,7 @@ module Tourmaline
     end
 
     def get_user(username : String) : User?
-      query = "SELECT * FROM #{@chats_table} WHERE username=?"
+      query = "SELECT * FROM #{@users_table} WHERE username=?"
       rs = @db.query(query, username)
       User.from_rs(rs)[0]?
     rescue
