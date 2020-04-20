@@ -2,7 +2,7 @@
 
 I will do my best to keep this updated with changes as they happen.
 
-## 0.17.0 (Unreleased)
+## 0.17.0
 
 + KeyboardMarkup
   - **(breaking change)** Replace `Markup` class with `KeyboardBuilder` abstract class and extend it with   `ReplyKeyboardMarkup::Builder` and `InlineKeyboardMarkup::Builder`.
