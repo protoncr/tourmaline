@@ -2,6 +2,12 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.17.0 (Unreleased)
+
+- **(breaking change)** Replace `Markup` class with `KeyboardBuilder` abstract class and extend it with `ReplyKeyboardMarkup::Builder` and `InlineKeyboardMarkup::Builder`.
+- Add `.build` methods to `ReplyKeyboardMarkup` and `InlineKeyboardMarkup`
+- Update examples with new keyboard builders
+
 ## 0.16.0
 
 - Add CHANGELOG

@@ -16,7 +16,6 @@ require "./annotations"
 require "./filter"
 require "./event_handler"
 require "./client/*"
-require "./markup"
 require "./query_result_builder"
 
 module Tourmaline
@@ -68,7 +67,7 @@ module Tourmaline
       @event_handlers << handler
     end
 
-    private def handle_update(update : Update)
+    def handle_update(update : Update)
       Log.debug { update.to_pretty_json }
 
       if self.is_a?(Persistence)

@@ -20,10 +20,10 @@ class ShopBot < Tourmaline::Client
     ShippingOption.new("slowpoke", "Slowpoke Mail", [LabeledPrice.new(label: "Unicorn", amount: 100)]),
   ]
 
-  REPLY_MARKUP = Markup.inline_buttons([[
-    Markup.pay_button("💸 Buy"),
-    Markup.url_button("❤️", "https://github.com/watzon/tourmaline"),
-  ]]).inline_keyboard
+  REPLY_MARKUP = InlineKeyboardMarkup.build do
+    pay_button "💸 Buy"
+    url_button "❤️", "https://github.com/watzon/tourmaline"
+  end
 
   @[Command("start")]
   def start_command(client, update)

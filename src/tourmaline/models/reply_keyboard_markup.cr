@@ -1,4 +1,5 @@
 require "json"
+require "../keyboard_builder"
 
 module Tourmaline
   alias Button = KeyboardButton | InlineKeyboardButton
@@ -62,6 +63,27 @@ module Tourmaline
 
     def size
       keyboard.size
+    end
+
+    def self.build(*args, columns = nil, **options)
+      builder = Builder.new(*args, **options)
+      with builder yield builder
+      builder.keyboard(columns)
+    end
+
+    class Builder < KeyboardBuilder(Tourmaline::KeyboardButton, Tourmaline::ReplyKeyboardMarkup)
+      def contact_request_button(text)
+        button(text, request_contact: true)
+      end
+
+      def location_request_button(text)
+        button(text, request_location: true)
+      end
+
+      def poll_request_button(text, type : PollType)
+        type = KeyboardButtonPollType.new(type)
+        button(text, request_poll: type)
+      end
     end
   end
 end

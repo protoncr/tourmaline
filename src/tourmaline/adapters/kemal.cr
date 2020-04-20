@@ -21,7 +21,7 @@ module Tourmaline
     # Requires a `bot` instance, a `url`, and an optional `path`.
     # The `url` needs to be the publically accessable URL for the
     # Kemal server. The `path` defines where this will be served on your
-    # kemal instance. By default this is at `/tgbot/{bot_name}`, but
+    # kemal instance. By default this is at `/webhook/{bot_name}`, but
     # it is recommended to use your bot's API key somewhere in the
     # path for security reasons.
     def initialize(
@@ -33,7 +33,7 @@ module Tourmaline
     )
       check_config
 
-      @path = path || "/tgbot/#{bot.bot_name}"
+      @path = path || "/webhook/#{bot.bot_name}"
 
       # Only match on this path
       only([@path], "POST")
@@ -63,11 +63,9 @@ module Tourmaline
       return call_next(context) unless only_match?(context)
 
       if body = context.request.body
-        update = TGUpdate.from_json(body)
+        update = Update.from_json(body)
         @bot.handle_update(update)
       end
-
-      call_next context
     end
   end
 end

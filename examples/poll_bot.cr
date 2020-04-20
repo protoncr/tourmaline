@@ -1,10 +1,17 @@
 require "../src/tourmaline"
 
 class PollBot < Tourmaline::Client
-  KEYBOARD = Markup.buttons([[
-    Markup.poll_request_button("Create poll", "regular"),
-    Markup.poll_request_button("Create quiz", "quiz"),
-  ]]).keyboard
+  KEYBOARD = ReplyKeyboardMarkup.build do
+    poll_request_button "Create poll", :regular
+    poll_request_button "Create quiz", :quiz
+  end
+
+  @[Command("start")]
+  def start_command(client, update)
+    if message = update.message
+      message.reply("Use the command /poll or /quiz to begin", reply_markup: KEYBOARD)
+    end
+  end
 
   @[On(:poll)]
   def on_poll(client, update)
