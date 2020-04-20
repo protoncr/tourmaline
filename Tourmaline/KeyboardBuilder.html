@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="">
-  <title>Tourmaline::ChatPermissions - </title>
+  <title>Tourmaline::KeyboardBuilder(T, G) - </title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -90,7 +90,7 @@
       
     </li>
   
-  <li class=" current" data-id="/Tourmaline/ChatPermissions" data-name="tourmaline::chatpermissions">
+  <li class=" " data-id="/Tourmaline/ChatPermissions" data-name="tourmaline::chatpermissions">
       <a href="../Tourmaline/ChatPermissions.html">ChatPermissions</a>
       
     </li>
@@ -460,7 +460,7 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/KeyboardBuilder" data-name="tourmaline::keyboardbuilder(t, g)">
+  <li class=" current" data-id="/Tourmaline/KeyboardBuilder" data-name="tourmaline::keyboardbuilder(t, g)">
       <a href="../Tourmaline/KeyboardBuilder.html">KeyboardBuilder</a>
       
     </li>
@@ -714,12 +714,16 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::ChatPermissions
+  <span class="kind">class</span> Tourmaline::KeyboardBuilder(T, G)
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/ChatPermissions.html">Tourmaline::ChatPermissions</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/KeyboardBuilder.html">Tourmaline::KeyboardBuilder(T, G)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
 
 
 
@@ -729,22 +733,20 @@
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Direct Known Subclasses
   </h2>
   <ul class="other-types-list">
     
-      <li class="other-type">JSON::Serializable</li>
+      <li class="other-type"><a href="../Tourmaline/InlineKeyboardMarkup/Builder.html">Tourmaline::InlineKeyboardMarkup::Builder</a></li>
+    
+      <li class="other-type"><a href="../Tourmaline/ReplyKeyboardMarkup/Builder.html">Tourmaline::ReplyKeyboardMarkup::Builder</a></li>
     
   </ul>
-
-
-
-
 
 
 
@@ -776,18 +778,70 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new(can_send_messages=true,can_send_media_messages=true,can_send_polls=true,can_send_other_messages=true,can_add_web_page_previews=true,can_change_info=true,can_invite_users=true,can_pin_messages=true)-class-method" class="signature"><strong>.new</strong>(can_send_messages = <span class="n">true</span>, can_send_media_messages = <span class="n">true</span>, can_send_polls = <span class="n">true</span>, can_send_other_messages = <span class="n">true</span>, can_add_web_page_previews = <span class="n">true</span>, can_change_info = <span class="n">true</span>, can_invite_users = <span class="n">true</span>, can_pin_messages = <span class="n">true</span>)</a>
+        <a href="#new(force_reply=false,remove_keyboard=false,selective=false,keyboard=[]ofT,resize=false,one_time=false)-class-method" class="signature"><strong>.new</strong>(force_reply = <span class="n">false</span>, remove_keyboard = <span class="n">false</span>, selective = <span class="n">false</span>, keyboard = <span class="o">[]</span> <span class="k">of</span> <span class="t">T</span>, resize = <span class="n">false</span>, one_time = <span class="n">false</span>)</a>
         
       </li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#build_keyboard(buttons:Array(T),columns=1,wrap=nil)-class-method" class="signature"><strong>.build_keyboard</strong>(buttons : Array(T), columns = <span class="n">1</span>, wrap = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#buttons(buttons,**options)-class-method" class="signature"><strong>.buttons</strong>(buttons, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#force_reply(value:Bool)-class-method" class="signature"><strong>.force_reply</strong>(value : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#format_html(text=&quot;&quot;,entities=[]ofMessageEntity)-class-method" class="signature"><strong>.format_html</strong>(text = <span class="s">&quot;&quot;</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inline_buttons(buttons,**options)-class-method" class="signature"><strong>.inline_buttons</strong>(buttons, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#one_time(value:Bool)-class-method" class="signature"><strong>.one_time</strong>(value : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_keyboard(value:Bool)-class-method" class="signature"><strong>.remove_keyboard</strong>(value : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#resize(value:Bool)-class-method" class="signature"><strong>.resize</strong>(value : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#selective(value:Bool)-class-method" class="signature"><strong>.selective</strong>(value : Bool)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -802,82 +856,87 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#can_add_web_page_previews:Bool-instance-method" class="signature"><strong>#can_add_web_page_previews</strong> : Bool</a>
+        <a href="#button(*args,**options)-instance-method" class="signature"><strong>#button</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_add_web_page_previews=(can_add_web_page_previews:Bool)-instance-method" class="signature"><strong>#can_add_web_page_previews=</strong>(can_add_web_page_previews : Bool)</a>
+        <a href="#force_reply(value)-instance-method" class="signature"><strong>#force_reply</strong>(value)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_change_info:Bool-instance-method" class="signature"><strong>#can_change_info</strong> : Bool</a>
+        <a href="#force_reply:Bool-instance-method" class="signature"><strong>#force_reply</strong> : Bool</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_change_info=(can_change_info:Bool)-instance-method" class="signature"><strong>#can_change_info=</strong>(can_change_info : Bool)</a>
+        <a href="#force_reply=(force_reply:Bool)-instance-method" class="signature"><strong>#force_reply=</strong>(force_reply : Bool)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_invite_users:Bool-instance-method" class="signature"><strong>#can_invite_users</strong> : Bool</a>
+        <a href="#keyboard(columns=nil)-instance-method" class="signature"><strong>#keyboard</strong>(columns = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_invite_users=(can_invite_users:Bool)-instance-method" class="signature"><strong>#can_invite_users=</strong>(can_invite_users : Bool)</a>
+        <a href="#one_time(value)-instance-method" class="signature"><strong>#one_time</strong>(value)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_pin_messages:Bool-instance-method" class="signature"><strong>#can_pin_messages</strong> : Bool</a>
+        <a href="#one_time:Bool-instance-method" class="signature"><strong>#one_time</strong> : Bool</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_pin_messages=(can_pin_messages:Bool)-instance-method" class="signature"><strong>#can_pin_messages=</strong>(can_pin_messages : Bool)</a>
+        <a href="#one_time=(one_time:Bool)-instance-method" class="signature"><strong>#one_time=</strong>(one_time : Bool)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_media_messages:Bool-instance-method" class="signature"><strong>#can_send_media_messages</strong> : Bool</a>
+        <a href="#remove_keyboard(value)-instance-method" class="signature"><strong>#remove_keyboard</strong>(value)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_media_messages=(can_send_media_messages:Bool)-instance-method" class="signature"><strong>#can_send_media_messages=</strong>(can_send_media_messages : Bool)</a>
+        <a href="#remove_keyboard:Bool-instance-method" class="signature"><strong>#remove_keyboard</strong> : Bool</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_messages:Bool-instance-method" class="signature"><strong>#can_send_messages</strong> : Bool</a>
+        <a href="#remove_keyboard=(remove_keyboard:Bool)-instance-method" class="signature"><strong>#remove_keyboard=</strong>(remove_keyboard : Bool)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_messages=(can_send_messages:Bool)-instance-method" class="signature"><strong>#can_send_messages=</strong>(can_send_messages : Bool)</a>
+        <a href="#resize(value)-instance-method" class="signature"><strong>#resize</strong>(value)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_other_messages:Bool-instance-method" class="signature"><strong>#can_send_other_messages</strong> : Bool</a>
+        <a href="#resize:Bool-instance-method" class="signature"><strong>#resize</strong> : Bool</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_other_messages=(can_send_other_messages:Bool)-instance-method" class="signature"><strong>#can_send_other_messages=</strong>(can_send_other_messages : Bool)</a>
+        <a href="#resize=(resize:Bool)-instance-method" class="signature"><strong>#resize=</strong>(resize : Bool)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_polls:Bool-instance-method" class="signature"><strong>#can_send_polls</strong> : Bool</a>
+        <a href="#selective(value)-instance-method" class="signature"><strong>#selective</strong>(value)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#can_send_polls=(can_send_polls:Bool)-instance-method" class="signature"><strong>#can_send_polls=</strong>(can_send_polls : Bool)</a>
+        <a href="#selective:Bool-instance-method" class="signature"><strong>#selective</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#selective=(selective:Bool)-instance-method" class="signature"><strong>#selective=</strong>(selective : Bool)</a>
         
       </li>
     
@@ -888,16 +947,6 @@
 
 
 <div class="methods-inherited">
-  
-    
-
-
-    
-
-
-    
-
-
   
     
 
@@ -931,26 +980,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+    <div class="entry-detail" id="new(force_reply=false,remove_keyboard=false,selective=false,keyboard=[]ofT,resize=false,one_time=false)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pull : JSON::PullParser)
+        def self.<strong>new</strong>(force_reply = <span class="n">false</span>, remove_keyboard = <span class="n">false</span>, selective = <span class="n">false</span>, keyboard = <span class="o">[]</span> <span class="k">of</span> <span class="t">T</span>, resize = <span class="n">false</span>, one_time = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(can_send_messages=true,can_send_media_messages=true,can_send_polls=true,can_send_other_messages=true,can_add_web_page_previews=true,can_change_info=true,can_invite_users=true,can_pin_messages=true)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(can_send_messages = <span class="n">true</span>, can_send_media_messages = <span class="n">true</span>, can_send_polls = <span class="n">true</span>, can_send_other_messages = <span class="n">true</span>, can_add_web_page_previews = <span class="n">true</span>, can_change_info = <span class="n">true</span>, can_invite_users = <span class="n">true</span>, can_pin_messages = <span class="n">true</span>)
-
-        <a class="method-permalink" href="#new(can_send_messages=true,can_send_media_messages=true,can_send_polls=true,can_send_other_messages=true,can_add_web_page_previews=true,can_change_info=true,can_invite_users=true,can_pin_messages=true)-class-method">#</a>
+        <a class="method-permalink" href="#new(force_reply=false,remove_keyboard=false,selective=false,keyboard=[]ofT,resize=false,one_time=false)-class-method">#</a>
       </div>
       
       <br/>
@@ -961,6 +996,142 @@
   
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="build_keyboard(buttons:Array(T),columns=1,wrap=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>build_keyboard</strong>(buttons : Array(T), columns = <span class="n">1</span>, wrap = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#build_keyboard(buttons:Array(T),columns=1,wrap=nil)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="buttons(buttons,**options)-class-method">
+      <div class="signature">
+        
+        def self.<strong>buttons</strong>(buttons, **options)
+
+        <a class="method-permalink" href="#buttons(buttons,**options)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="force_reply(value:Bool)-class-method">
+      <div class="signature">
+        
+        def self.<strong>force_reply</strong>(value : Bool)
+
+        <a class="method-permalink" href="#force_reply(value:Bool)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="format_html(text=&amp;quot;&amp;quot;,entities=[]ofMessageEntity)-class-method">
+      <div class="signature">
+        
+        def self.<strong>format_html</strong>(text = <span class="s">&quot;&quot;</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>)
+
+        <a class="method-permalink" href="#format_html(text=&quot;&quot;,entities=[]ofMessageEntity)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inline_buttons(buttons,**options)-class-method">
+      <div class="signature">
+        
+        def self.<strong>inline_buttons</strong>(buttons, **options)
+
+        <a class="method-permalink" href="#inline_buttons(buttons,**options)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="one_time(value:Bool)-class-method">
+      <div class="signature">
+        
+        def self.<strong>one_time</strong>(value : Bool)
+
+        <a class="method-permalink" href="#one_time(value:Bool)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove_keyboard(value:Bool)-class-method">
+      <div class="signature">
+        
+        def self.<strong>remove_keyboard</strong>(value : Bool)
+
+        <a class="method-permalink" href="#remove_keyboard(value:Bool)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="resize(value:Bool)-class-method">
+      <div class="signature">
+        
+        def self.<strong>resize</strong>(value : Bool)
+
+        <a class="method-permalink" href="#resize(value:Bool)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="selective(value:Bool)-class-method">
+      <div class="signature">
+        
+        def self.<strong>selective</strong>(value : Bool)
+
+        <a class="method-permalink" href="#selective(value:Bool)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
@@ -973,12 +1144,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="can_add_web_page_previews:Bool-instance-method">
+    <div class="entry-detail" id="button(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>can_add_web_page_previews</strong> : Bool
+        def <strong>button</strong>(*args, **options)
 
-        <a class="method-permalink" href="#can_add_web_page_previews:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#button(*args,**options)-instance-method">#</a>
       </div>
       
       <br/>
@@ -987,12 +1158,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_add_web_page_previews=(can_add_web_page_previews:Bool)-instance-method">
+    <div class="entry-detail" id="force_reply(value)-instance-method">
       <div class="signature">
         
-        def <strong>can_add_web_page_previews=</strong>(can_add_web_page_previews : Bool)
+        def <strong>force_reply</strong>(value)
 
-        <a class="method-permalink" href="#can_add_web_page_previews=(can_add_web_page_previews:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#force_reply(value)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1001,12 +1172,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_change_info:Bool-instance-method">
+    <div class="entry-detail" id="force_reply:Bool-instance-method">
       <div class="signature">
         
-        def <strong>can_change_info</strong> : Bool
+        def <strong>force_reply</strong> : Bool
 
-        <a class="method-permalink" href="#can_change_info:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#force_reply:Bool-instance-method">#</a>
       </div>
       
       <br/>
@@ -1015,12 +1186,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_change_info=(can_change_info:Bool)-instance-method">
+    <div class="entry-detail" id="force_reply=(force_reply:Bool)-instance-method">
       <div class="signature">
         
-        def <strong>can_change_info=</strong>(can_change_info : Bool)
+        def <strong>force_reply=</strong>(force_reply : Bool)
 
-        <a class="method-permalink" href="#can_change_info=(can_change_info:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#force_reply=(force_reply:Bool)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1029,12 +1200,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_invite_users:Bool-instance-method">
+    <div class="entry-detail" id="keyboard(columns=nil)-instance-method">
       <div class="signature">
         
-        def <strong>can_invite_users</strong> : Bool
+        def <strong>keyboard</strong>(columns = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#can_invite_users:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#keyboard(columns=nil)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1043,12 +1214,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_invite_users=(can_invite_users:Bool)-instance-method">
+    <div class="entry-detail" id="one_time(value)-instance-method">
       <div class="signature">
         
-        def <strong>can_invite_users=</strong>(can_invite_users : Bool)
+        def <strong>one_time</strong>(value)
 
-        <a class="method-permalink" href="#can_invite_users=(can_invite_users:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#one_time(value)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1057,12 +1228,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_pin_messages:Bool-instance-method">
+    <div class="entry-detail" id="one_time:Bool-instance-method">
       <div class="signature">
         
-        def <strong>can_pin_messages</strong> : Bool
+        def <strong>one_time</strong> : Bool
 
-        <a class="method-permalink" href="#can_pin_messages:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#one_time:Bool-instance-method">#</a>
       </div>
       
       <br/>
@@ -1071,12 +1242,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_pin_messages=(can_pin_messages:Bool)-instance-method">
+    <div class="entry-detail" id="one_time=(one_time:Bool)-instance-method">
       <div class="signature">
         
-        def <strong>can_pin_messages=</strong>(can_pin_messages : Bool)
+        def <strong>one_time=</strong>(one_time : Bool)
 
-        <a class="method-permalink" href="#can_pin_messages=(can_pin_messages:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#one_time=(one_time:Bool)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1085,12 +1256,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_media_messages:Bool-instance-method">
+    <div class="entry-detail" id="remove_keyboard(value)-instance-method">
       <div class="signature">
         
-        def <strong>can_send_media_messages</strong> : Bool
+        def <strong>remove_keyboard</strong>(value)
 
-        <a class="method-permalink" href="#can_send_media_messages:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#remove_keyboard(value)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1099,12 +1270,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_media_messages=(can_send_media_messages:Bool)-instance-method">
+    <div class="entry-detail" id="remove_keyboard:Bool-instance-method">
       <div class="signature">
         
-        def <strong>can_send_media_messages=</strong>(can_send_media_messages : Bool)
+        def <strong>remove_keyboard</strong> : Bool
 
-        <a class="method-permalink" href="#can_send_media_messages=(can_send_media_messages:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#remove_keyboard:Bool-instance-method">#</a>
       </div>
       
       <br/>
@@ -1113,12 +1284,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_messages:Bool-instance-method">
+    <div class="entry-detail" id="remove_keyboard=(remove_keyboard:Bool)-instance-method">
       <div class="signature">
         
-        def <strong>can_send_messages</strong> : Bool
+        def <strong>remove_keyboard=</strong>(remove_keyboard : Bool)
 
-        <a class="method-permalink" href="#can_send_messages:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#remove_keyboard=(remove_keyboard:Bool)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1127,12 +1298,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_messages=(can_send_messages:Bool)-instance-method">
+    <div class="entry-detail" id="resize(value)-instance-method">
       <div class="signature">
         
-        def <strong>can_send_messages=</strong>(can_send_messages : Bool)
+        def <strong>resize</strong>(value)
 
-        <a class="method-permalink" href="#can_send_messages=(can_send_messages:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#resize(value)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1141,12 +1312,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_other_messages:Bool-instance-method">
+    <div class="entry-detail" id="resize:Bool-instance-method">
       <div class="signature">
         
-        def <strong>can_send_other_messages</strong> : Bool
+        def <strong>resize</strong> : Bool
 
-        <a class="method-permalink" href="#can_send_other_messages:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#resize:Bool-instance-method">#</a>
       </div>
       
       <br/>
@@ -1155,12 +1326,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_other_messages=(can_send_other_messages:Bool)-instance-method">
+    <div class="entry-detail" id="resize=(resize:Bool)-instance-method">
       <div class="signature">
         
-        def <strong>can_send_other_messages=</strong>(can_send_other_messages : Bool)
+        def <strong>resize=</strong>(resize : Bool)
 
-        <a class="method-permalink" href="#can_send_other_messages=(can_send_other_messages:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#resize=(resize:Bool)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1169,12 +1340,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_polls:Bool-instance-method">
+    <div class="entry-detail" id="selective(value)-instance-method">
       <div class="signature">
         
-        def <strong>can_send_polls</strong> : Bool
+        def <strong>selective</strong>(value)
 
-        <a class="method-permalink" href="#can_send_polls:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#selective(value)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1183,12 +1354,26 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="can_send_polls=(can_send_polls:Bool)-instance-method">
+    <div class="entry-detail" id="selective:Bool-instance-method">
       <div class="signature">
         
-        def <strong>can_send_polls=</strong>(can_send_polls : Bool)
+        def <strong>selective</strong> : Bool
 
-        <a class="method-permalink" href="#can_send_polls=(can_send_polls:Bool)-instance-method">#</a>
+        <a class="method-permalink" href="#selective:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="selective=(selective:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>selective=</strong>(selective : Bool)
+
+        <a class="method-permalink" href="#selective=(selective:Bool)-instance-method">#</a>
       </div>
       
       <br/>

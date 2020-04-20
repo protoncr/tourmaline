@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="">
-  <title>Tourmaline::Error::NetworkError - </title>
+  <title>Tourmaline::InlineKeyboardMarkup::Builder - </title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../../";
   </script>
@@ -135,7 +135,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="/Tourmaline/Error" data-name="tourmaline::error">
+  <li class="parent " data-id="/Tourmaline/Error" data-name="tourmaline::error">
       <a href="../../Tourmaline/Error.html">Error</a>
       
         <ul>
@@ -160,7 +160,7 @@
       
     </li>
   
-  <li class=" current" data-id="/Tourmaline/Error/NetworkError" data-name="tourmaline::error::networkerror">
+  <li class=" " data-id="/Tourmaline/Error/NetworkError" data-name="tourmaline::error::networkerror">
       <a href="../../Tourmaline/Error/NetworkError.html">NetworkError</a>
       
     </li>
@@ -245,12 +245,12 @@
       
     </li>
   
-  <li class="parent " data-id="/Tourmaline/InlineKeyboardMarkup" data-name="tourmaline::inlinekeyboardmarkup">
+  <li class="parent open current" data-id="/Tourmaline/InlineKeyboardMarkup" data-name="tourmaline::inlinekeyboardmarkup">
       <a href="../../Tourmaline/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>
       
         <ul>
   
-  <li class=" " data-id="/Tourmaline/InlineKeyboardMarkup/Builder" data-name="tourmaline::inlinekeyboardmarkup::builder">
+  <li class=" current" data-id="/Tourmaline/InlineKeyboardMarkup/Builder" data-name="tourmaline::inlinekeyboardmarkup::builder">
       <a href="../../Tourmaline/InlineKeyboardMarkup/Builder.html">Builder</a>
       
     </li>
@@ -714,12 +714,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::Error::NetworkError
+  <span class="kind">class</span> Tourmaline::InlineKeyboardMarkup::Builder
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Tourmaline/Error/NetworkError.html">Tourmaline::Error::NetworkError</a></li><li class="superclass"><a href="../../Tourmaline/Error.html">Tourmaline::Error</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Tourmaline/InlineKeyboardMarkup/Builder.html">Tourmaline::InlineKeyboardMarkup::Builder</a></li><li class="superclass"><a href="../../Tourmaline/KeyboardBuilder.html">Tourmaline::KeyboardBuilder</a>(<a href="../../Tourmaline/InlineKeyboardButton.html">Tourmaline::InlineKeyboardButton</a>, <a href="../../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a>)</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -751,9 +751,73 @@
 
 
 
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(force_reply=false,remove_keyboard=false,selective=false,keyboard=[]ofT,resize=false,one_time=false)-class-method" class="signature"><strong>.new</strong>(force_reply = <span class="n">false</span>, remove_keyboard = <span class="n">false</span>, selective = <span class="n">false</span>, keyboard = <span class="o">[]</span> <span class="k">of</span> <span class="t">T</span>, resize = <span class="n">false</span>, one_time = <span class="n">false</span>)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#callback_button(text,data)-instance-method" class="signature"><strong>#callback_button</strong>(text, data)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#game_button(text)-instance-method" class="signature"><strong>#game_button</strong>(text)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#login_button(text,url,*args,**opts)-instance-method" class="signature"><strong>#login_button</strong>(text, url, *args, **opts)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pay_button(text)-instance-method" class="signature"><strong>#pay_button</strong>(text)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#switch_to_chat_button(text,value)-instance-method" class="signature"><strong>#switch_to_chat_button</strong>(text, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#switch_to_current_chat_button(text,value)-instance-method" class="signature"><strong>#switch_to_current_chat_button</strong>(text, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#url_button(text,url)-instance-method" class="signature"><strong>#url_button</strong>(text, url)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -763,14 +827,78 @@
   
     
 
+  <h3>Instance methods inherited from class <code><a href="../../Tourmaline/KeyboardBuilder.html">Tourmaline::KeyboardBuilder</a>(<a href="../../Tourmaline/InlineKeyboardButton.html">Tourmaline::InlineKeyboardButton</a>, <a href="../../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a>)</code></h3>
+  
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#button(*args,**options)-instance-method" class="tooltip">
+      <span>button(*args, **options)</span>
+    button</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#force_reply(value)-instance-method" class="tooltip">
+      <span>force_reply(value)<br/>force_reply : Bool</span>
+    force_reply</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#force_reply=(force_reply:Bool)-instance-method" class="tooltip">
+      <span>force_reply=(force_reply : Bool)</span>
+    force_reply=</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#keyboard(columns=nil)-instance-method" class="tooltip">
+      <span>keyboard(columns = <span class="n">nil</span>)</span>
+    keyboard</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#one_time(value)-instance-method" class="tooltip">
+      <span>one_time(value)<br/>one_time : Bool</span>
+    one_time</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#one_time=(one_time:Bool)-instance-method" class="tooltip">
+      <span>one_time=(one_time : Bool)</span>
+    one_time=</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#remove_keyboard(value)-instance-method" class="tooltip">
+      <span>remove_keyboard(value)<br/>remove_keyboard : Bool</span>
+    remove_keyboard</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#remove_keyboard=(remove_keyboard:Bool)-instance-method" class="tooltip">
+      <span>remove_keyboard=(remove_keyboard : Bool)</span>
+    remove_keyboard=</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#resize(value)-instance-method" class="tooltip">
+      <span>resize(value)<br/>resize : Bool</span>
+    resize</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#resize=(resize:Bool)-instance-method" class="tooltip">
+      <span>resize=(resize : Bool)</span>
+    resize=</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#selective(value)-instance-method" class="tooltip">
+      <span>selective(value)<br/>selective : Bool</span>
+    selective</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#selective=(selective:Bool)-instance-method" class="tooltip">
+      <span>selective=(selective : Bool)</span>
+    selective=</a>
+    
+  
+
 
     
 
-  <h3>Constructor methods inherited from class <code><a href="../../Tourmaline/Error.html">Tourmaline::Error</a></code></h3>
+  <h3>Constructor methods inherited from class <code><a href="../../Tourmaline/KeyboardBuilder.html">Tourmaline::KeyboardBuilder</a>(<a href="../../Tourmaline/InlineKeyboardButton.html">Tourmaline::InlineKeyboardButton</a>, <a href="../../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a>)</code></h3>
   
   
-    <a href="../../Tourmaline/Error.html#new(message)-class-method" class="tooltip">
-      <span>new(message)</span>
+    <a href="../../Tourmaline/KeyboardBuilder.html#new(force_reply=false,remove_keyboard=false,selective=false,keyboard=[]ofT,resize=false,one_time=false)-class-method" class="tooltip">
+      <span>new(force_reply = <span class="n">false</span>, remove_keyboard = <span class="n">false</span>, selective = <span class="n">false</span>, keyboard = <span class="o">[]</span> <span class="k">of</span> <span class="t">T</span>, resize = <span class="n">false</span>, one_time = <span class="n">false</span>)</span>
     new</a>
     
   
@@ -778,15 +906,54 @@
 
     
 
-
+  <h3>Class methods inherited from class <code><a href="../../Tourmaline/KeyboardBuilder.html">Tourmaline::KeyboardBuilder</a>(<a href="../../Tourmaline/InlineKeyboardButton.html">Tourmaline::InlineKeyboardButton</a>, <a href="../../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a>)</code></h3>
   
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#build_keyboard(buttons:Array(T),columns=1,wrap=nil)-class-method" class="tooltip">
+      <span>build_keyboard(buttons : Array(T), columns = <span class="n">1</span>, wrap = <span class="n">nil</span>)</span>
+    build_keyboard</a>, 
     
-
-
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#buttons(buttons,**options)-class-method" class="tooltip">
+      <span>buttons(buttons, **options)</span>
+    buttons</a>, 
     
-
-
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#force_reply(value:Bool)-class-method" class="tooltip">
+      <span>force_reply(value : Bool)</span>
+    force_reply</a>, 
     
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#format_html(text=&quot;&quot;,entities=[]ofMessageEntity)-class-method" class="tooltip">
+      <span>format_html(text = <span class="s">&quot;&quot;</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>)</span>
+    format_html</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#inline_buttons(buttons,**options)-class-method" class="tooltip">
+      <span>inline_buttons(buttons, **options)</span>
+    inline_buttons</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#one_time(value:Bool)-class-method" class="tooltip">
+      <span>one_time(value : Bool)</span>
+    one_time</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#remove_keyboard(value:Bool)-class-method" class="tooltip">
+      <span>remove_keyboard(value : Bool)</span>
+    remove_keyboard</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#resize(value:Bool)-class-method" class="tooltip">
+      <span>resize(value : Bool)</span>
+    resize</a>, 
+    
+  
+    <a href="../../Tourmaline/KeyboardBuilder.html#selective(value:Bool)-class-method" class="tooltip">
+      <span>selective(value : Bool)</span>
+    selective</a>
+    
+  
 
 
   
@@ -813,9 +980,141 @@
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(force_reply=false,remove_keyboard=false,selective=false,keyboard=[]ofT,resize=false,one_time=false)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(force_reply = <span class="n">false</span>, remove_keyboard = <span class="n">false</span>, selective = <span class="n">false</span>, keyboard = <span class="o">[]</span> <span class="k">of</span> <span class="t">T</span>, resize = <span class="n">false</span>, one_time = <span class="n">false</span>)
+
+        <a class="method-permalink" href="#new(force_reply=false,remove_keyboard=false,selective=false,keyboard=[]ofT,resize=false,one_time=false)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="callback_button(text,data)-instance-method">
+      <div class="signature">
+        
+        def <strong>callback_button</strong>(text, data)
+
+        <a class="method-permalink" href="#callback_button(text,data)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="game_button(text)-instance-method">
+      <div class="signature">
+        
+        def <strong>game_button</strong>(text)
+
+        <a class="method-permalink" href="#game_button(text)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="login_button(text,url,*args,**opts)-instance-method">
+      <div class="signature">
+        
+        def <strong>login_button</strong>(text, url, *args, **opts)
+
+        <a class="method-permalink" href="#login_button(text,url,*args,**opts)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pay_button(text)-instance-method">
+      <div class="signature">
+        
+        def <strong>pay_button</strong>(text)
+
+        <a class="method-permalink" href="#pay_button(text)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="switch_to_chat_button(text,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>switch_to_chat_button</strong>(text, value)
+
+        <a class="method-permalink" href="#switch_to_chat_button(text,value)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="switch_to_current_chat_button(text,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>switch_to_current_chat_button</strong>(text, value)
+
+        <a class="method-permalink" href="#switch_to_current_chat_button(text,value)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="url_button(text,url)-instance-method">
+      <div class="signature">
+        
+        def <strong>url_button</strong>(text, url)
+
+        <a class="method-permalink" href="#url_button(text,url)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
