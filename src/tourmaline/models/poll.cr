@@ -25,15 +25,6 @@ module Tourmaline
 
     getter correct_option_id : Int32?
 
-    getter explanation : String?
-
-    getter explanation_entities : Array(MessageEntity) = [] of MessageEntity
-
-    getter open_period : Int32?
-
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
-    getter close_date : Time?
-
     # :nodoc:
     module PollTypeConverter
       def self.from_json(value : JSON::PullParser)
