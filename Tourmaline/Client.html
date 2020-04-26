@@ -1192,6 +1192,13 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
+        <a href="#send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_dart</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send a dart animation, which works as a random "heads or tails" kind of game.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send a dice, which will have a random value from 1 to 6.</p></div>
@@ -1248,7 +1255,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
-        <a href="#send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_poll</strong>(chat, question : String, options : Array(String), anonymous : Bool = <span class="n">true</span>, type : PollType = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_id : Int32? = <span class="n">nil</span>, closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,open_period:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_poll</strong>(chat, question : String, options : Array(String), anonymous : Bool = <span class="n">true</span>, type : PollType = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_id : Int32? = <span class="n">nil</span>, open_period : Int32? = <span class="n">nil</span>, closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send a native poll.</p></div>
         
@@ -2604,6 +2611,26 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       </div>
     </div>
   
+    <div class="entry-detail" id="send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_dart</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to send a dart animation, which works as a random "heads or tails"
+kind of game.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
       <div class="signature">
         
@@ -2768,12 +2795,12 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       </div>
     </div>
   
-    <div class="entry-detail" id="send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,open_period:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_poll</strong>(chat, question : String, options : Array(String), anonymous : Bool = <span class="n">true</span>, type : <a href="../Tourmaline/PollType.html">PollType</a> = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_id : Int32? = <span class="n">nil</span>, closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_poll</strong>(chat, question : String, options : Array(String), anonymous : Bool = <span class="n">true</span>, type : <a href="../Tourmaline/PollType.html">PollType</a> = <span class="t">PollType</span><span class="t">::</span><span class="t">Regular</span>, allows_multiple_answers : Bool = <span class="n">false</span>, correct_option_id : Int32? = <span class="n">nil</span>, open_period : Int32? = <span class="n">nil</span>, closed : Bool = <span class="n">false</span>, disable_notification : Bool = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_poll(chat,question:String,options:Array(String),anonymous:Bool=true,type:PollType=PollType::Regular,allows_multiple_answers:Bool=false,correct_option_id:Int32?=nil,open_period:Int32?=nil,closed:Bool=false,disable_notification:Bool=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
