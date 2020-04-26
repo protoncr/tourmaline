@@ -51,7 +51,10 @@ module Tourmaline
         actions << UpdateAction::ConnectedWebsite if message.connected_website
         # actions << UpdateAction::PassportData if message.passport_data
         actions << UpdateAction::Poll if message.poll
-        actions << UpdateAction::Dice if message.dice
+        if dice = message.dice
+          actions << UpdateAction::Dice if dice.emoji == "🎲"
+          actions << UpdateAction::Dart if dice.emoji == "🎯"
+        end
       end
 
       actions << UpdateAction::EditedMessage if update.edited_message

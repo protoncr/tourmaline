@@ -41,6 +41,7 @@ module Tourmaline
     Poll
     PollAnswer
     Dice
+    Dart
 
     def to_s
       super.to_s.underscore

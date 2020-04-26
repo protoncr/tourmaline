@@ -26,3 +26,5 @@ module Tourmaline
     abstract def persistent_cleanup
   end
 end
+
+require "./persistence/nil_persistence"

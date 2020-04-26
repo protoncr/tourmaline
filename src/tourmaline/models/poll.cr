@@ -25,7 +25,7 @@ module Tourmaline
 
     getter correct_option_id : Int32?
 
-    getter explanation_entities : Array(MessageEntity) = [] of MessageEntity
+    getter explanation_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
     # :nodoc:
     module PollTypeConverter
       def self.from_json(value : JSON::PullParser)

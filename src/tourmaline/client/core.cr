@@ -745,10 +745,33 @@ module Tourmaline
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendDice", {
-        chat_id: chat_id,
+        chat_id:              chat_id,
+        emoji:                "🎲",
         disable_notification: disable_notification,
-        reply_to_message_id: reply_to_message_id,
-        reply_markup: reply_markup
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup,
+      })
+
+      Message.from_json(response)
+    end
+
+    # Use this method to send a dart animation, which works as a random "heads or tails"
+    # kind of game.
+    def send_dart(
+      chat,
+      disable_notification = false,
+      reply_to_message = nil,
+      reply_markup = nil
+    )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
+      response = request("sendDice", {
+        chat_id:              chat_id,
+        emoji:                "🎯",
+        disable_notification: disable_notification,
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup,
       })
 
       Message.from_json(response)
@@ -1124,7 +1147,7 @@ module Tourmaline
       # commands = commands.map(&.to_h.transform_keys(&.to_s))
 
       response = request("setMyCommands", {
-        commands: commands
+        commands: commands,
       })
 
       response == "true"
