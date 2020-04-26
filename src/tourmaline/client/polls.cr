@@ -10,6 +10,8 @@ module Tourmaline
       type : PollType = PollType::Regular,
       allows_multiple_answers : Bool = false,
       correct_option_id : Int32? = nil, # required for quiz mode
+      explanation : String? = nil,      # quiz mode only
+      explanation_parse_mode : ParseMode = ParseMode::Normal,
       closed : Bool = false,
       disable_notification : Bool = false,
       reply_to_message = nil,
@@ -40,6 +42,8 @@ module Tourmaline
         type:                    type.to_s,
         allows_multiple_answers: allows_multiple_answers,
         correct_option_id:       correct_option_id,
+        explanation:             explanation,
+        explanation_parse_mode:  explanation_parse_mode,
         is_closed:               closed,
         disable_notification:    disable_notification,
         reply_to_message_id:     reply_to_message,
