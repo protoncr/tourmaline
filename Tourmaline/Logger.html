@@ -783,8 +783,8 @@
   
   <dl>
     
-      <dt class="entry-const" id="Formatter">
-        <strong>Formatter</strong> = <code>->(entry : <span class="t">::</span><span class="t">Log</span><span class="t">::</span><span class="t">Entry</span>, io : <span class="t">IO</span>) <span class="k">do</span>
+      <dt class="entry-const" id="FORMATTER">
+        <strong>FORMATTER</strong> = <code>->(entry : <span class="t">::</span><span class="t">Log</span><span class="t">::</span><span class="t">Entry</span>, io : <span class="t">IO</span>) <span class="k">do</span>
   severity <span class="o">=</span> entry.severity
   level <span class="o">=</span> (<span class="s">&quot;[&quot;</span> <span class="o">+</span> (<span class="s">&quot;%-7s&quot;</span> <span class="o">%</span> severity.to_s)) <span class="o">+</span> <span class="s">&quot;]&quot;</span>
   source <span class="o">=</span> (<span class="s">&quot;[&quot;</span> <span class="o">+</span> (<span class="s">&quot;%-10s&quot;</span> <span class="o">%</span> entry.source)) <span class="o">+</span> <span class="s">&quot;]&quot;</span>
@@ -793,9 +793,9 @@
       </dt>
       
     
-      <dt class="entry-const" id="LogBackend">
-        <strong>LogBackend</strong> = <code><span class="t">::</span><span class="t">Log</span><span class="t">::</span><span class="t">IOBackend</span>.<span class="k">new</span>.tap <span class="k">do</span> <span class="o">|</span>l<span class="o">|</span>
-  l.formatter <span class="o">=</span> <span class="t">Logger</span><span class="t">::</span><span class="t">Formatter</span>
+      <dt class="entry-const" id="LOG_BACKEND">
+        <strong>LOG_BACKEND</strong> = <code><span class="t">::</span><span class="t">Log</span><span class="t">::</span><span class="t">IOBackend</span>.<span class="k">new</span>.tap <span class="k">do</span> <span class="o">|</span>l<span class="o">|</span>
+  l.formatter <span class="o">=</span> <span class="t">Logger</span><span class="t">::</span><span class="t">FORMATTER</span>
 <span class="k">end</span></code>
       </dt>
       
