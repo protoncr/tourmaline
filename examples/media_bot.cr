@@ -1,13 +1,13 @@
 require "../src/tourmaline"
 
 class MediaBot < Tourmaline::Client
-  AnimationUrl1 = "https://media.giphy.com/media/ya4eevXU490Iw/giphy.gif"
-  AnimationUrl2 = "https://media.giphy.com/media/LrmU6jXIjwziE/giphy.gif"
-  LocalFile = File.expand_path("./cat.jpg", __DIR__)
+  ANIMATION_URL_1 = "https://media.giphy.com/media/ya4eevXU490Iw/giphy.gif"
+  ANIMATION_URL_2 = "https://media.giphy.com/media/LrmU6jXIjwziE/giphy.gif"
+  LOCAL_FILE = File.expand_path("./cat.jpg", __DIR__)
 
   @[Command("local")]
   def local_command(client, update)
-    update.message.try &.reply_with_photo(LocalFile)
+    update.message.try &.reply_with_photo(LOCAL_FILE)
   end
 
   @[Command("url")]
@@ -17,7 +17,7 @@ class MediaBot < Tourmaline::Client
 
   @[Command("animation")]
   def animation_command(client, update)
-    update.message.try &.reply_with_animation(AnimationUrl1)
+    update.message.try &.reply_with_animation(ANIMATION_URL_1)
   end
 
   @[Command("caption")]
@@ -31,7 +31,7 @@ class MediaBot < Tourmaline::Client
 
   @[Command("document")]
   def document_command(client, update)
-    update.message.try &.reply_with_document(LocalFile)
+    update.message.try &.reply_with_document(LOCAL_FILE)
   end
 
   @[Command("album")]
@@ -51,7 +51,7 @@ class MediaBot < Tourmaline::Client
   @[Command("editmedia")]
   def editmedia_command(client, update)
     update.message.try &.reply_with_animation(
-      AnimationUrl1,
+      ANIMATION_URL_1,
       reply_markup: Markup.inline_buttons([
         Markup.callback_button("Change media", "swap_media"),
       ]).inline_keyboard
@@ -60,7 +60,7 @@ class MediaBot < Tourmaline::Client
 
   @[OnCallbackQuery("swap_media")]
   def on_swap_media(client, update)
-    update.message.try &.edit_media(InputMediaAnimation.new(AnimationUrl2))
+    update.message.try &.edit_media(InputMediaAnimation.new(ANIMATION_URL_2))
   end
 end
 

@@ -5,7 +5,7 @@ verbose = ENV["VERBOSE"]?.try &.downcase == "true"
 Log.builder.bind "*", :warning, Log::IOBackend.new
 Log.builder.bind("tourmaline.client.*",
                  verbose ? Log::Severity::Debug : Log::Severity::Info,
-                 Tourmaline::Logger::LogBackend)
+                 Tourmaline::Logger::LOG_BACKEND)
 
 module Tourmaline
   module Logger
@@ -13,11 +13,11 @@ module Tourmaline
       Log = ::Log.for(self)
     end
 
-    LogBackend = ::Log::IOBackend.new.tap do |l|
-      l.formatter = Logger::Formatter
+    LOG_BACKEND = ::Log::IOBackend.new.tap do |l|
+      l.formatter = Logger::FORMATTER
     end
 
-    Formatter = ->(entry : ::Log::Entry, io : IO) {
+    FORMATTER = ->(entry : ::Log::Entry, io : IO) {
       severity = entry.severity
       level = "[" + ("%-7s" % severity.to_s) + "]"
       source = "[" + ("%-10s" % entry.source) + "]"

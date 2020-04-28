@@ -153,13 +153,11 @@ module Tourmaline
     def set_sticker_set_thumb(name, user, thumb = nil)
       user_id = user.is_a?(Int) ? user : user.id
 
-      response = request("setStickerSetThumb", {
+      request("setStickerSetThumb", {
         name: name,
         user_id: user_id,
         thumb: thumb
-      })
-
-      respose == "true"
+      })  == "true"
     end
   end
 end

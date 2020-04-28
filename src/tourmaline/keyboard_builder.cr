@@ -145,7 +145,7 @@ module Tourmaline
           when "underline"
             result << "</u>"
           when "text_mention"
-            if user = entity.user
+            if entity.user
               result << "</a>"
             end
           when "text_link"
@@ -170,12 +170,12 @@ module Tourmaline
         return buttons.map { |b| [b] }
       end
 
-      result = [] of Array(T)
-      current_row = [] of T
-
-      wrap_fn = wrap ? wrap : ->(btn : T, index : Int32, current_row : Array(T)) {
+      wrap_fn = wrap ? wrap : ->(_btn : T, _index : Int32, current_row : Array(T)) {
         current_row.size >= columns
       }
+
+      result = [] of Array(T)
+      current_row = [] of T
 
       buttons.each_with_index do |btn, index|
         if (wrap_fn.call(btn, index, current_row) && current_row.size > 0)

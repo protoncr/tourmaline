@@ -22,7 +22,7 @@ module Tourmaline
           can_join_groups, can_read_all_group_messages, supports_inline_queries
         ) values (?, ?, ?, ?, ?, ?, ?, ?, ?)
       SQL
-      res = @db.exec(query, user.id, user.is_bot, user.first_name, user.last_name, user.username, user.language_code,
+      @db.exec(query, user.id, user.is_bot, user.first_name, user.last_name, user.username, user.language_code,
         user.can_join_groups, user.can_read_all_group_messages, user.supports_inline_queries)
       user
     end

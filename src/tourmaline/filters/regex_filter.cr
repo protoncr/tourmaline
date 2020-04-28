@@ -23,7 +23,7 @@ module Tourmaline
       if message = update.message
         if (text = message.text) || (text = message.caption)
           @expressions.each do |re|
-            if match = re.match(message.text.to_s)
+            if match = re.match(text.to_s)
               update.set_context({ match: match })
               return true
             end
