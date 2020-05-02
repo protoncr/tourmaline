@@ -810,6 +810,11 @@ is easy to set up for testing.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#cleanup-instance-method" class="signature"><strong>#cleanup</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#filename:String-instance-method" class="signature"><strong>#filename</strong> : String</a>
         
       </li>
@@ -820,12 +825,7 @@ is easy to set up for testing.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#persistent_cleanup-instance-method" class="signature"><strong>#persistent_cleanup</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#persistent_init-instance-method" class="signature"><strong>#persistent_init</strong></a>
+        <a href="#init-instance-method" class="signature"><strong>#init</strong></a>
         
       </li>
     
@@ -845,6 +845,11 @@ is easy to set up for testing.</p>
     <a href="../Tourmaline/HashPersistence.html#chat_exists?(chat_id:Int):Bool-instance-method" class="tooltip">
       <span>chat_exists?(chat_id : Int) : Bool<br/>chat_exists?(username : String) : Bool</span>
     chat_exists?</a>, 
+    
+  
+    <a href="../Tourmaline/HashPersistence.html#cleanup-instance-method" class="tooltip">
+      <span>cleanup</span>
+    cleanup</a>, 
     
   
     <a href="../Tourmaline/HashPersistence.html#filename:String-instance-method" class="tooltip">
@@ -867,6 +872,11 @@ is easy to set up for testing.</p>
     handle_persistent_update</a>, 
     
   
+    <a href="../Tourmaline/HashPersistence.html#init-instance-method" class="tooltip">
+      <span>init</span>
+    init</a>, 
+    
+  
     <a href="../Tourmaline/HashPersistence.html#persisted_chat_ids:Hash(String,Int64)-instance-method" class="tooltip">
       <span>persisted_chat_ids : Hash(String, Int64)</span>
     persisted_chat_ids</a>, 
@@ -885,16 +895,6 @@ is easy to set up for testing.</p>
     <a href="../Tourmaline/HashPersistence.html#persisted_users:Hash(Int64,Tourmaline::User)-instance-method" class="tooltip">
       <span>persisted_users : Hash(Int64, Tourmaline::User)</span>
     persisted_users</a>, 
-    
-  
-    <a href="../Tourmaline/HashPersistence.html#persistent_cleanup-instance-method" class="tooltip">
-      <span>persistent_cleanup</span>
-    persistent_cleanup</a>, 
-    
-  
-    <a href="../Tourmaline/HashPersistence.html#persistent_init-instance-method" class="tooltip">
-      <span>persistent_init</span>
-    persistent_init</a>, 
     
   
     <a href="../Tourmaline/HashPersistence.html#update_chat(chat:Chat):Chat-instance-method" class="tooltip">
@@ -940,6 +940,11 @@ is easy to set up for testing.</p>
     chat_exists?</a>, 
     
   
+    <a href="../Tourmaline/Persistence.html#cleanup-instance-method" class="tooltip">
+      <span>cleanup</span>
+    cleanup</a>, 
+    
+  
     <a href="../Tourmaline/Persistence.html#get_chat(chat_id:Int):Chat?-instance-method" class="tooltip">
       <span>get_chat(chat_id : Int) : Chat?<br/>get_chat(username : String) : Chat?</span>
     get_chat</a>, 
@@ -955,14 +960,9 @@ is easy to set up for testing.</p>
     handle_persistent_update</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#persistent_cleanup-instance-method" class="tooltip">
-      <span>persistent_cleanup</span>
-    persistent_cleanup</a>, 
-    
-  
-    <a href="../Tourmaline/Persistence.html#persistent_init-instance-method" class="tooltip">
-      <span>persistent_init</span>
-    persistent_init</a>, 
+    <a href="../Tourmaline/Persistence.html#init-instance-method" class="tooltip">
+      <span>init</span>
+    init</a>, 
     
   
     <a href="../Tourmaline/Persistence.html#update_chat(chat:Chat):Chat-instance-method" class="tooltip">
@@ -1049,6 +1049,20 @@ is easy to set up for testing.</p>
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="cleanup-instance-method">
+      <div class="signature">
+        
+        def <strong>cleanup</strong>
+
+        <a class="method-permalink" href="#cleanup-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="filename:String-instance-method">
       <div class="signature">
         
@@ -1077,26 +1091,12 @@ is easy to set up for testing.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="persistent_cleanup-instance-method">
+    <div class="entry-detail" id="init-instance-method">
       <div class="signature">
         
-        def <strong>persistent_cleanup</strong>
+        def <strong>init</strong>
 
-        <a class="method-permalink" href="#persistent_cleanup-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="persistent_init-instance-method">
-      <div class="signature">
-        
-        def <strong>persistent_init</strong>
-
-        <a class="method-permalink" href="#persistent_init-instance-method">#</a>
+        <a class="method-permalink" href="#init-instance-method">#</a>
       </div>
       
       <br/>
