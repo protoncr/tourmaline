@@ -72,6 +72,11 @@ module Tourmaline
     end
 
     class Builder < KeyboardBuilder(Tourmaline::KeyboardButton, Tourmaline::ReplyKeyboardMarkup)
+      def keyboard(columns = nil)
+        buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
+        ReplyKeyboardMarkup.new(buttons, @resize, @one_time, @selective)
+      end
+
       def contact_request_button(text)
         button(text, request_contact: true)
       end

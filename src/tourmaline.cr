@@ -1,7 +1,7 @@
 require "db"
-require "halite"
 require "mime/multipart"
 
+require "./ext/*"
 require "./tourmaline/version"
 require "./tourmaline/client"
 

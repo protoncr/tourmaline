@@ -30,6 +30,11 @@ module Tourmaline
     end
 
     class Builder < KeyboardBuilder(Tourmaline::InlineKeyboardButton, Tourmaline::InlineKeyboardMarkup)
+      def keyboard(columns = nil)
+        buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
+        InlineKeyboardMarkup.new(buttons)
+      end
+
       def url_button(text, url)
         button(text, url: url)
       end

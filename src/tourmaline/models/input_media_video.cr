@@ -6,9 +6,9 @@ module Tourmaline
 
     @type = "video"
 
-    property media : String | ::File
+    property media : String | File
 
-    property thumb : (String | ::File)?
+    property thumb : (String | File)?
 
     property caption : String?
 
@@ -22,7 +22,7 @@ module Tourmaline
 
     property supports_streaming : Bool?
 
-    def initialize(@media : String, @thumb : (::File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
+    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
                    @width : Int32? = nil, @height : Int32? = nil, duration : Int32? = nil, @supports_streaming : Bool? = nil)
     end
   end

@@ -8,7 +8,6 @@ require "./chat_action"
 require "./models/*"
 require "./update_action"
 require "./update_context"
-require "./fiber"
 require "./annotations"
 require "./filter"
 require "./event_handler"
@@ -35,18 +34,15 @@ module Tourmaline
     getter event_handlers : Array(EventHandler)
     getter persistence : Persistence
 
-    property endpoint_url : String
-
     # Create a new instance of `Tourmaline::Client`. It is
     # highly recommended to set `@api_key` at an environment
     # variable.
-    def initialize(
-      @api_key : String,
-      @updates_timeout : Int32? = nil,
-      @allowed_updates : Array(String)? = nil,
-      @persistence : Persistence = NilPersistence.new
-    )
-      @endpoint_url = Path[API_URL, "bot" + @api_key].to_s
+    def initialize(@api_key : String,
+                   @updates_timeout : Int32? = nil,
+                   @allowed_updates : Array(String)? = nil,
+                   @persistence : Persistence = NilPersistence.new)
+      endpoint = URI.parse(API_URL)
+      @http_client = HTTP::Client.new(endpoint)
 
       @event_handlers = [] of EventHandler
       register_event_handlers
@@ -74,19 +70,17 @@ module Tourmaline
 
     # Sends a json request to the Telegram Client API.
     private def request(method, params = {} of String => String)
-      method_url = ::File.join(@endpoint_url, method)
+      method = File.join("/bot" + @api_key, method)
       multipart = includes_media(params)
-
       if multipart
         config = build_form_data_config(params)
-        response = Halite.request(**config, uri: method_url)
+        response = @http_client.exec(**config, path: method)
       else
         config = build_json_config(params)
-        response = Halite.request(**config, uri: method_url)
+        response = @http_client.exec(**config, path: method)
       end
 
       result = JSON.parse(response.body)
-
       if res = result["result"]?
         res.to_json
       else
@@ -125,8 +119,8 @@ module Tourmaline
       params.values.any? do |val|
         case val
         when Array
-          val.any? { |v| v.is_a?(::File | InputMedia) }
-        when ::File, InputMedia
+          val.any? { |v| v.is_a?(File | InputMedia) }
+        when File, InputMedia
           true
         else
           false
@@ -136,9 +130,9 @@ module Tourmaline
 
     private def build_json_config(payload)
       {
-        verb:    "POST",
-        headers: {"Content-Type" => "application/json", "Connection" => "keep-alive"},
-        raw:     payload.to_h.compact.to_json, # TODO: Figure out why this is necessary
+        method:    "POST",
+        headers: HTTP::Headers{"Content-Type" => "application/json", "Connection" => "keep-alive"},
+        body:     payload.to_h.to_json,
       }
     end
 
@@ -151,12 +145,12 @@ module Tourmaline
       end
 
       {
-        verb:    "POST",
-        headers: {
+        method:    "POST",
+        headers: HTTP::Headers{
           "Content-Type" => "multipart/form-data; boundary=#{boundary}",
           "Connection"   => "keep-alive",
         },
-        raw: formdata,
+        body: formdata,
       }
     end
 
@@ -177,8 +171,8 @@ module Tourmaline
       when InputMedia
         attach_form_media(form, value)
         form.body_part(headers, value.to_json)
-      when ::File
-        filename = ::File.basename(value.path)
+      when File
+        filename = File.basename(value.path)
         form.body_part(
           HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
           value
@@ -194,9 +188,9 @@ module Tourmaline
 
       {media: media, thumb: thumb}.each do |key, item|
         item = check_open_local_file(item)
-        if item.is_a?(::File)
+        if item.is_a?(File)
           id = Random.new.random_bytes(16).hexstring
-          filename = ::File.basename(item.path)
+          filename = File.basename(item.path)
 
           form.body_part(
             HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
@@ -214,8 +208,8 @@ module Tourmaline
 
     private def check_open_local_file(file)
       if file.is_a?(String)
-        if ::File.file?(file)
-          return ::File.open(file)
+        if File.file?(file)
+          return File.open(file)
         end
       end
       file

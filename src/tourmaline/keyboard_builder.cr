@@ -1,7 +1,7 @@
 require "xml"
 
 module Tourmaline
-  class KeyboardBuilder(T, G)
+  abstract class KeyboardBuilder(T, G)
     property force_reply : Bool
 
     property remove_keyboard : Bool
@@ -22,10 +22,7 @@ module Tourmaline
     )
     end
 
-    def keyboard(columns = nil)
-      buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
-      G.new(buttons, @resize, @one_time, @selective)
-    end
+    abstract def keyboard(columns = nil) : G
 
     def force_reply(value)
       @force_reply = value
@@ -82,81 +79,6 @@ module Tourmaline
 
     def button(*args, **options)
       @keyboard << T.new(*args, **options)
-    end
-
-    def self.format_html(text = "", entities = [] of MessageEntity)
-      available = entities.dup
-      opened = [] of MessageEntity
-      result = [] of String | Char
-
-      text.chars.each_index do |i|
-        loop do
-          index = available.index { |e| e.offset == i }
-          break if index.nil?
-          entity = available[index]
-
-          case entity.type
-          when "bold"
-            result << "<b>"
-          when "italic"
-            result << "<i>"
-          when "code"
-            result << "<code>"
-          when "pre"
-            if entity.language
-              result << "<pre language=\"#{entity.language}\">"
-            else
-              result << "<pre>"
-            end
-          when "strikethrough"
-            result << "<s>"
-          when "underline"
-            result << "<u>"
-          when "text_mention"
-            if user = entity.user
-              result << "<a href=\"tg://user?id=#{user.id}\">"
-            end
-          when "text_link"
-            result << "<a href=\"#{entity.url}\">"
-          end
-
-          opened.unshift(entity)
-          available.delete_at(index)
-        end
-
-        result << text[i]
-
-        loop do
-          index = opened.index { |e| e.offset + e.length - 1 == i }
-          break if index.nil?
-          entity = opened[index]
-
-          case entity.type
-          when "bold"
-            result << "</b>"
-          when "italic"
-            result << "</i>"
-          when "code"
-            result << "</code>"
-          when "pre"
-            result << "</pre>"
-          when "strikethrough"
-            result << "</s>"
-          when "underline"
-            result << "</u>"
-          when "text_mention"
-            if entity.user
-              result << "</a>"
-            end
-          when "text_link"
-            result << "</a>"
-          end
-
-          opened.delete_at(index)
-        end
-      end
-
-      result.join("")
     end
 
     def self.build_keyboard(

@@ -11,8 +11,8 @@ module Tourmaline
     end
 
     def persistent_init
-      if ::File.file?(@filename)
-        json = ::File.read(@filename)
+      if File.file?(@filename)
+        json = File.read(@filename)
         parsed = NamedTuple(
           users: Hash(Int64, User),
           user_ids: Hash(String, Int64),
@@ -34,7 +34,7 @@ module Tourmaline
         chats: @persisted_chats,
         chat_ids: @persisted_chat_ids
       }
-      ::File.write(@filename, json.to_json)
+      File.write(@filename, json.to_json)
     end
   end
 end

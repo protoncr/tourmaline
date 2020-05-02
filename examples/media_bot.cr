@@ -52,9 +52,9 @@ class MediaBot < Tourmaline::Client
   def editmedia_command(client, update)
     update.message.try &.reply_with_animation(
       ANIMATION_URL_1,
-      reply_markup: Markup.inline_buttons([
-        Markup.callback_button("Change media", "swap_media"),
-      ]).inline_keyboard
+      reply_markup: InlineKeyboardMarkup.build do |kb|
+        kb.callback_button("Change media", "swap_media")
+      end
     )
   end
 

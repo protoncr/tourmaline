@@ -316,7 +316,7 @@ module Tourmaline
     # Returns a download link for a `TFile`.
     def get_file_link(file)
       if file_path = file.file_path
-        ::File.join("#{API_URL}/file/bot#{@api_key}", file_path)
+        File.join("#{API_URL}/file/bot#{@api_key}", file_path)
       end
     end
 
@@ -1176,7 +1176,7 @@ module Tourmaline
         begin
           updates = get_updates
           updates.each do |u|
-            handle_update(u)
+            spawn handle_update(u)
           end
         rescue exception
           Log.error { exception.message.to_s }

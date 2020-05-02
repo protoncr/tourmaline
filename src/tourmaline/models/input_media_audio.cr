@@ -6,9 +6,9 @@ module Tourmaline
 
     @type = "audio"
 
-    property media : String | ::File
+    property media : String | File
 
-    property thumb : (String | ::File)?
+    property thumb : (String | File)?
 
     property caption : String?
 
@@ -20,7 +20,7 @@ module Tourmaline
 
     property title : String?
 
-    def initialize(@media : String, @thumb : (::File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
+    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
                    duration : Int32? = nil, @performer : String? = nil, @title : String? = nil)
     end
   end

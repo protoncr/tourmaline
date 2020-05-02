@@ -7,9 +7,6 @@ authors:
 crystal: 0.34.0
 
 dependencies:
-  halite:
-    github: icyleaf/halite
-    branch: master
   db:
     github: crystal-lang/crystal-db
     version: ~> 0.9.0

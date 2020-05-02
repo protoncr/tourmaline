@@ -6,7 +6,7 @@ module Tourmaline
 
     @type = "photo"
 
-    property media : String | ::File
+    property media : String | File
 
     property caption : String?
 
