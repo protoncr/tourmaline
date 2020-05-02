@@ -132,7 +132,7 @@ module Tourmaline
       {
         method:    "POST",
         headers: HTTP::Headers{"Content-Type" => "application/json", "Connection" => "keep-alive"},
-        body:     payload.to_h.to_json,
+        body:     payload.to_h.compact.to_json,
       }
     end
 

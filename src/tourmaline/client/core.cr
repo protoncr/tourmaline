@@ -1176,7 +1176,7 @@ module Tourmaline
         begin
           updates = get_updates
           updates.each do |u|
-            spawn handle_update(u)
+            handle_update(u)
           end
         rescue exception
           Log.error { exception.message.to_s }
