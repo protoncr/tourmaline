@@ -40,6 +40,11 @@
   <div class="types-list">
     <ul>
   
+  <li class=" " data-id="/File" data-name="file">
+      <a href="../File.html">File</a>
+      
+    </li>
+  
   <li class="parent open current" data-id="/Tourmaline" data-name="tourmaline">
       <a href="../Tourmaline.html">Tourmaline</a>
       
@@ -724,7 +729,7 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::KeyboardBuilder(T, G)
+  <span class="kind">abstract class</span> Tourmaline::KeyboardBuilder(T, G)
 
 </h1>
 
@@ -822,11 +827,6 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#format_html(text=&quot;&quot;,entities=[]ofMessageEntity)-class-method" class="signature"><strong>.format_html</strong>(text = <span class="s">&quot;&quot;</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#inline_buttons(buttons,**options)-class-method" class="signature"><strong>.inline_buttons</strong>(buttons, **options)</a>
         
       </li>
@@ -886,7 +886,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#keyboard(columns=nil)-instance-method" class="signature"><strong>#keyboard</strong>(columns = <span class="n">nil</span>)</a>
+        <a href="#keyboard(columns=nil):G-instance-method" class="signature"><strong>#keyboard</strong>(columns = <span class="n">nil</span>) : G</a>
         
       </li>
     
@@ -1058,20 +1058,6 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="format_html(text=&amp;quot;&amp;quot;,entities=[]ofMessageEntity)-class-method">
-      <div class="signature">
-        
-        def self.<strong>format_html</strong>(text = <span class="s">&quot;&quot;</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>)
-
-        <a class="method-permalink" href="#format_html(text=&quot;&quot;,entities=[]ofMessageEntity)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="inline_buttons(buttons,**options)-class-method">
       <div class="signature">
         
@@ -1210,12 +1196,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="keyboard(columns=nil)-instance-method">
+    <div class="entry-detail" id="keyboard(columns=nil):G-instance-method">
       <div class="signature">
-        
-        def <strong>keyboard</strong>(columns = <span class="n">nil</span>)
+        abstract 
+        def <strong>keyboard</strong>(columns = <span class="n">nil</span>) : G
 
-        <a class="method-permalink" href="#keyboard(columns=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#keyboard(columns=nil):G-instance-method">#</a>
       </div>
       
       <br/>
