@@ -71,10 +71,10 @@ module Tourmaline
       update.chats.each &->update_chat(Chat)
     end
 
-    def persistent_init
+    def init
     end
 
-    def persistent_cleanup
+    def cleanup
     end
   end
 end

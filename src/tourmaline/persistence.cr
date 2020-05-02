@@ -22,8 +22,8 @@ module Tourmaline
 
     abstract def handle_persistent_update(update : Update)
 
-    abstract def persistent_init
-    abstract def persistent_cleanup
+    abstract def init
+    abstract def cleanup
   end
 end
 

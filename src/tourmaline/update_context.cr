@@ -9,9 +9,7 @@ module Tourmaline
       f64: Float64,
       s: String,
       time: Time,
-      match_data: Regex::MatchData,
-      # message: Message,
-      # user: User,
+      match_data: Regex::MatchData
     }, hash_key_type: String, immutable: false
 
     # Creates an empty `UpdateContext`.

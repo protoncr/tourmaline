@@ -49,9 +49,9 @@ module Tourmaline
 
       Container.client = self
 
-      @persistence.persistent_init
+      @persistence.init
       [Signal::INT, Signal::TERM].each do |sig|
-        sig.trap { @persistence.persistent_cleanup; exit }
+        sig.trap { @persistence.cleanup; exit }
       end
     end
 
@@ -84,27 +84,7 @@ module Tourmaline
       if res = result["result"]?
         res.to_json
       else
-        handle_error(response.status_code, result["description"].as_s)
-      end
-    end
-
-    # Parses the status code and returns the right error
-    private def handle_error(code, message)
-      case code
-      when 401..403
-        raise Error::Unauthorized.new(message)
-      when 400
-        raise Error::BadRequest.new(message)
-      when 404
-        raise Error::InvalidToken.new
-      when 409
-        raise Error::Conflict.new(message)
-      when 413
-        raise Error::NetworkError.new("File too large. Check telegram api limits https://core.telegram.org/bots/api#senddocument.")
-      when 503
-        raise Error::NetworkError.new("Bad gateway")
-      else
-        raise Error.new("#{message} (#{code})")
+        raise Error.from_code(response.status_code, result["description"].as_s)
       end
     end
 

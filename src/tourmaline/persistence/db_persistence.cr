@@ -88,7 +88,7 @@ module Tourmaline
       update.chats.each &->update_chat(Chat)
     end
 
-    def persistent_init
+    def init
       users_query = <<-SQL
         CREATE TABLE IF NOT EXISTS #{@users_table} (
           id INT(16) NOT NULL PRIMARY KEY,
@@ -123,7 +123,7 @@ module Tourmaline
       @db.exec(chats_query)
     end
 
-    def persistent_cleanup
+    def cleanup
       @db.close
     end
   end

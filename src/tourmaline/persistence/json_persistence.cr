@@ -10,7 +10,7 @@ module Tourmaline
     def initialize(@filename = "tourmaline_persistence.json")
     end
 
-    def persistent_init
+    def init
       if File.file?(@filename)
         json = File.read(@filename)
         parsed = NamedTuple(
@@ -26,7 +26,7 @@ module Tourmaline
       end
     end
 
-    def persistent_cleanup
+    def cleanup
       Log.info { "Persisting data..." }
       json = {
         users: @persisted_users,

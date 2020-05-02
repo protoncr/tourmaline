@@ -2,6 +2,18 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.18.1
+
+- Added ameba checks
+- Replaced Halite with `HTTP::Client`, resulting in a major speed boost
+- Rename `persistent_init` and `persistent_cleanup` to `init` and `cleanup` respectively
+- Remove `handle_error` in favor of `Error.from_code`
+
+## 0.18.0
+
+- Updated polls for Quiz 2.0
+- Added new `send_dart` method
+
 ## 0.17.0
 
 + KeyboardMarkup
