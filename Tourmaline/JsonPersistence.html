@@ -40,11 +40,6 @@
   <div class="types-list">
     <ul>
   
-  <li class=" " data-id="/File" data-name="file">
-      <a href="../File.html">File</a>
-      
-    </li>
-  
   <li class="parent open current" data-id="/Tourmaline" data-name="tourmaline">
       <a href="../Tourmaline.html">Tourmaline</a>
       
@@ -215,18 +210,8 @@
       
     </li>
   
-  <li class="parent " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
+  <li class=" " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
       <a href="../Tourmaline/EventHandler.html">EventHandler</a>
-      
-        <ul>
-  
-  <li class=" " data-id="/Tourmaline/EventHandler/Annotator" data-name="tourmaline::eventhandler::annotator">
-      <a href="../Tourmaline/EventHandler/Annotator.html">Annotator</a>
-      
-    </li>
-  
-</ul>
-
       
     </li>
   
@@ -257,11 +242,6 @@
   
   <li class=" " data-id="/Tourmaline/HashPersistence" data-name="tourmaline::hashpersistence">
       <a href="../Tourmaline/HashPersistence.html">HashPersistence</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/Hears" data-name="tourmaline::hears">
-      <a href="../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -520,11 +500,6 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
-      <a href="../Tourmaline/Logger.html">Logger</a>
-      
-    </li>
-  
   <li class=" " data-id="/Tourmaline/LoginURL" data-name="tourmaline::loginurl">
       <a href="../Tourmaline/LoginURL.html">LoginURL</a>
       
@@ -552,21 +527,6 @@
   
   <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
       <a href="../Tourmaline/On.html">On</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnCallbackQuery" data-name="tourmaline::oncallbackquery">
-      <a href="../Tourmaline/OnCallbackQuery.html">OnCallbackQuery</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnChosenInlineResult" data-name="tourmaline::onchoseninlineresult">
-      <a href="../Tourmaline/OnChosenInlineResult.html">OnChosenInlineResult</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnInlineQuery" data-name="tourmaline::oninlinequery">
-      <a href="../Tourmaline/OnInlineQuery.html">OnInlineQuery</a>
       
     </li>
   
@@ -892,6 +852,8 @@ is easy to set up for testing.</p>
       <li class="entry-summary">
         <a href="#cleanup-instance-method" class="signature"><strong>#cleanup</strong></a>
         
+          <div class="summary"><p>Gets called upon exit.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -906,6 +868,8 @@ is easy to set up for testing.</p>
     
       <li class="entry-summary">
         <a href="#init-instance-method" class="signature"><strong>#init</strong></a>
+        
+          <div class="summary"><p>Gets called when the bot is initialized.</p></div>
         
       </li>
     
@@ -922,8 +886,8 @@ is easy to set up for testing.</p>
   <h3>Instance methods inherited from class <code><a href="../Tourmaline/HashPersistence.html">Tourmaline::HashPersistence</a></code></h3>
   
   
-    <a href="../Tourmaline/HashPersistence.html#chat_exists?(chat_id:Int):Bool-instance-method" class="tooltip">
-      <span>chat_exists?(chat_id : Int) : Bool<br/>chat_exists?(username : String) : Bool</span>
+    <a href="../Tourmaline/HashPersistence.html#chat_exists?(username:String):Bool-instance-method" class="tooltip">
+      <span>chat_exists?(username : String) : Bool<br/>chat_exists?(chat_id : Int) : Bool</span>
     chat_exists?</a>, 
     
   
@@ -945,11 +909,6 @@ is easy to set up for testing.</p>
     <a href="../Tourmaline/HashPersistence.html#get_user(user_id:Int):User?-instance-method" class="tooltip">
       <span>get_user(user_id : Int) : User?<br/>get_user(username : String) : User?</span>
     get_user</a>, 
-    
-  
-    <a href="../Tourmaline/HashPersistence.html#handle_persistent_update(update:Update)-instance-method" class="tooltip">
-      <span>handle_persistent_update(update : Update)</span>
-    handle_persistent_update</a>, 
     
   
     <a href="../Tourmaline/HashPersistence.html#init-instance-method" class="tooltip">
@@ -1035,9 +994,9 @@ is easy to set up for testing.</p>
     get_user</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#handle_persistent_update(update:Update)-instance-method" class="tooltip">
-      <span>handle_persistent_update(update : Update)</span>
-    handle_persistent_update</a>, 
+    <a href="../Tourmaline/Persistence.html#handle_update(update:Update)-instance-method" class="tooltip">
+      <span>handle_update(update : Update)</span>
+    handle_update</a>, 
     
   
     <a href="../Tourmaline/Persistence.html#init-instance-method" class="tooltip">
@@ -1137,6 +1096,15 @@ is easy to set up for testing.</p>
         <a class="method-permalink" href="#cleanup-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Gets called upon exit. It can be used to perform any necessary cleanup.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1178,6 +1146,16 @@ is easy to set up for testing.</p>
 
         <a class="method-permalink" href="#init-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Gets called when the bot is initialized. This can be used for setup if
+you need access to the bot instance.</p>
+        </div>
       
       <br/>
       <div>

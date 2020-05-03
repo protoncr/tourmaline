@@ -40,11 +40,6 @@
   <div class="types-list">
     <ul>
   
-  <li class=" " data-id="/File" data-name="file">
-      <a href="../File.html">File</a>
-      
-    </li>
-  
   <li class="parent open current" data-id="/Tourmaline" data-name="tourmaline">
       <a href="../Tourmaline.html">Tourmaline</a>
       
@@ -215,18 +210,8 @@
       
     </li>
   
-  <li class="parent " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
+  <li class=" " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
       <a href="../Tourmaline/EventHandler.html">EventHandler</a>
-      
-        <ul>
-  
-  <li class=" " data-id="/Tourmaline/EventHandler/Annotator" data-name="tourmaline::eventhandler::annotator">
-      <a href="../Tourmaline/EventHandler/Annotator.html">Annotator</a>
-      
-    </li>
-  
-</ul>
-
       
     </li>
   
@@ -257,11 +242,6 @@
   
   <li class=" " data-id="/Tourmaline/HashPersistence" data-name="tourmaline::hashpersistence">
       <a href="../Tourmaline/HashPersistence.html">HashPersistence</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/Hears" data-name="tourmaline::hears">
-      <a href="../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -520,11 +500,6 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
-      <a href="../Tourmaline/Logger.html">Logger</a>
-      
-    </li>
-  
   <li class=" " data-id="/Tourmaline/LoginURL" data-name="tourmaline::loginurl">
       <a href="../Tourmaline/LoginURL.html">LoginURL</a>
       
@@ -552,21 +527,6 @@
   
   <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
       <a href="../Tourmaline/On.html">On</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnCallbackQuery" data-name="tourmaline::oncallbackquery">
-      <a href="../Tourmaline/OnCallbackQuery.html">OnCallbackQuery</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnChosenInlineResult" data-name="tourmaline::onchoseninlineresult">
-      <a href="../Tourmaline/OnChosenInlineResult.html">OnChosenInlineResult</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnInlineQuery" data-name="tourmaline::oninlinequery">
-      <a href="../Tourmaline/OnInlineQuery.html">OnInlineQuery</a>
       
     </li>
   
@@ -819,6 +779,28 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Abstract class meant to be a base for other persistence classes.
+The point of persistence (currently) is to allow Users and Chats
+to be saved as they're seen, and then provide a way for both
+to be fetched by either id or username.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-crystal">bot <span class="o">=</span> <span class="t">MyBot</span>.<span class="k">new</span>(<span class="t">API_KEY</span>, persistence: <span class="t">Tourmaline</span><span class="t">::</span><span class="t">JsonPersistence</span>.<span class="k">new</span>)
+<span class="c"># ... do some things</span>
+<span class="k">if</span> user <span class="o">=</span> bot.persistence.get_user?(<span class="s">&quot;foobar&quot;</span>)
+  pp user
+<span class="k">end</span></code></pre>
+
 
 
 
@@ -881,65 +863,91 @@
       <li class="entry-summary">
         <a href="#chat_exists?(chat_id:Int):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(chat_id : Int) : Bool</a>
         
+          <div class="summary"><p>Returns true if the chat with the provided <code>chat_id</code> exists.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#chat_exists?(username:String):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(username : String) : Bool</a>
+        
+          <div class="summary"><p>Returns true if the chat with the provided <code>username</code> exists.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#cleanup-instance-method" class="signature"><strong>#cleanup</strong></a>
         
+          <div class="summary"><p>Gets called upon exit.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#get_chat(chat_id:Int):Chat?-instance-method" class="signature"><strong>#get_chat</strong>(chat_id : Int) : Chat?</a>
+        
+          <div class="summary"><p>Fetches a chat by <code>chat_id</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#get_chat(username:String):Chat?-instance-method" class="signature"><strong>#get_chat</strong>(username : String) : Chat?</a>
         
+          <div class="summary"><p>Fetches a chat by <code>username</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#get_user(user_id:Int):User?-instance-method" class="signature"><strong>#get_user</strong>(user_id : Int) : User?</a>
+        
+          <div class="summary"><p>Fetches a user by <code>user_id</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#get_user(username:String):User?-instance-method" class="signature"><strong>#get_user</strong>(username : String) : User?</a>
         
+          <div class="summary"><p>Fetches a user by <code>username</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
-        <a href="#handle_persistent_update(update:Update)-instance-method" class="signature"><strong>#handle_persistent_update</strong>(update : Update)</a>
+        <a href="#handle_update(update:Update)-instance-method" class="signature"><strong>#handle_update</strong>(update : Update)</a>
+        
+          <div class="summary"><p>Takes an <code><a href="../Tourmaline/Update.html">Update</a></code> object, pulls out all unique <code><a href="../Tourmaline/Chat.html">Chat</a></code>s and <code><a href="../Tourmaline/User.html">User</a></code>s, and uses <code><a href="../Tourmaline/Persistence.html#update_user(user:User):User-instance-method">#update_user</a></code> and <code><a href="../Tourmaline/Persistence.html#update_chat(chat:Chat):Chat-instance-method">#update_chat</a></code> on each of them respectively.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#init-instance-method" class="signature"><strong>#init</strong></a>
         
+          <div class="summary"><p>Gets called when the bot is initialized.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#update_chat(chat:Chat):Chat-instance-method" class="signature"><strong>#update_chat</strong>(chat : Chat) : Chat</a>
+        
+          <div class="summary"><p>Create or update the provided <code><a href="../Tourmaline/Chat.html">Chat</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#update_user(user:User):User-instance-method" class="signature"><strong>#update_user</strong>(user : User) : User</a>
         
+          <div class="summary"><p>Create or update the provided <code><a href="../Tourmaline/User.html">User</a></code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#user_exists?(user_id:Int):Bool-instance-method" class="signature"><strong>#user_exists?</strong>(user_id : Int) : Bool</a>
         
+          <div class="summary"><p>Returns true if the user with the provided <code>user_id</code> exists.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#user_exists?(usename:String):Bool-instance-method" class="signature"><strong>#user_exists?</strong>(usename : String) : Bool</a>
+        
+          <div class="summary"><p>Returns true if the user with the provided <code>username</code> exists.</p></div>
         
       </li>
     
@@ -995,6 +1003,11 @@
         <a class="method-permalink" href="#chat_exists?(chat_id:Int):Bool-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns true if the chat with the provided <code>chat_id</code> exists.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1008,6 +1021,11 @@
 
         <a class="method-permalink" href="#chat_exists?(username:String):Bool-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns true if the chat with the provided <code>username</code> exists.</p>
+        </div>
       
       <br/>
       <div>
@@ -1023,6 +1041,11 @@
         <a class="method-permalink" href="#cleanup-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Gets called upon exit. It can be used to perform any necessary cleanup.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1036,6 +1059,11 @@
 
         <a class="method-permalink" href="#get_chat(chat_id:Int):Chat?-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Fetches a chat by <code>chat_id</code>. Returns <code>nil</code> if the chat is not found.</p>
+        </div>
       
       <br/>
       <div>
@@ -1051,6 +1079,11 @@
         <a class="method-permalink" href="#get_chat(username:String):Chat?-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Fetches a chat by <code>username</code>. Returns <code>nil</code> if the chat is not found.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1064,6 +1097,11 @@
 
         <a class="method-permalink" href="#get_user(user_id:Int):User?-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Fetches a user by <code>user_id</code>. Returns <code>nil</code> if the user is not found.</p>
+        </div>
       
       <br/>
       <div>
@@ -1079,19 +1117,30 @@
         <a class="method-permalink" href="#get_user(username:String):User?-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Fetches a user by <code>username</code>. Returns <code>nil</code> if the user is not found.</p>
+        </div>
+      
       <br/>
       <div>
         
       </div>
     </div>
   
-    <div class="entry-detail" id="handle_persistent_update(update:Update)-instance-method">
+    <div class="entry-detail" id="handle_update(update:Update)-instance-method">
       <div class="signature">
-        abstract 
-        def <strong>handle_persistent_update</strong>(update : <a href="../Tourmaline/Update.html">Update</a>)
+        
+        def <strong>handle_update</strong>(update : <a href="../Tourmaline/Update.html">Update</a>)
 
-        <a class="method-permalink" href="#handle_persistent_update(update:Update)-instance-method">#</a>
+        <a class="method-permalink" href="#handle_update(update:Update)-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Takes an <code><a href="../Tourmaline/Update.html">Update</a></code> object, pulls out all unique <code><a href="../Tourmaline/Chat.html">Chat</a></code>s and <code><a href="../Tourmaline/User.html">User</a></code>s,
+and uses <code><a href="../Tourmaline/Persistence.html#update_user(user:User):User-instance-method">#update_user</a></code> and <code><a href="../Tourmaline/Persistence.html#update_chat(chat:Chat):Chat-instance-method">#update_chat</a></code> on each of them respectively.</p>
+        </div>
       
       <br/>
       <div>
@@ -1107,6 +1156,12 @@
         <a class="method-permalink" href="#init-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Gets called when the bot is initialized. This can be used for setup if
+you need access to the bot instance.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1120,6 +1175,11 @@
 
         <a class="method-permalink" href="#update_chat(chat:Chat):Chat-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Create or update the provided <code><a href="../Tourmaline/Chat.html">Chat</a></code>.</p>
+        </div>
       
       <br/>
       <div>
@@ -1135,6 +1195,11 @@
         <a class="method-permalink" href="#update_user(user:User):User-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Create or update the provided <code><a href="../Tourmaline/User.html">User</a></code>.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1149,6 +1214,11 @@
         <a class="method-permalink" href="#user_exists?(user_id:Int):Bool-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns true if the user with the provided <code>user_id</code> exists.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1162,6 +1232,11 @@
 
         <a class="method-permalink" href="#user_exists?(usename:String):Bool-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns true if the user with the provided <code>username</code> exists.</p>
+        </div>
       
       <br/>
       <div>

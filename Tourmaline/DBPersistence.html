@@ -40,11 +40,6 @@
   <div class="types-list">
     <ul>
   
-  <li class=" " data-id="/File" data-name="file">
-      <a href="../File.html">File</a>
-      
-    </li>
-  
   <li class="parent open current" data-id="/Tourmaline" data-name="tourmaline">
       <a href="../Tourmaline.html">Tourmaline</a>
       
@@ -215,18 +210,8 @@
       
     </li>
   
-  <li class="parent " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
+  <li class=" " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
       <a href="../Tourmaline/EventHandler.html">EventHandler</a>
-      
-        <ul>
-  
-  <li class=" " data-id="/Tourmaline/EventHandler/Annotator" data-name="tourmaline::eventhandler::annotator">
-      <a href="../Tourmaline/EventHandler/Annotator.html">Annotator</a>
-      
-    </li>
-  
-</ul>
-
       
     </li>
   
@@ -257,11 +242,6 @@
   
   <li class=" " data-id="/Tourmaline/HashPersistence" data-name="tourmaline::hashpersistence">
       <a href="../Tourmaline/HashPersistence.html">HashPersistence</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/Hears" data-name="tourmaline::hears">
-      <a href="../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -520,11 +500,6 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
-      <a href="../Tourmaline/Logger.html">Logger</a>
-      
-    </li>
-  
   <li class=" " data-id="/Tourmaline/LoginURL" data-name="tourmaline::loginurl">
       <a href="../Tourmaline/LoginURL.html">LoginURL</a>
       
@@ -552,21 +527,6 @@
   
   <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
       <a href="../Tourmaline/On.html">On</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnCallbackQuery" data-name="tourmaline::oncallbackquery">
-      <a href="../Tourmaline/OnCallbackQuery.html">OnCallbackQuery</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnChosenInlineResult" data-name="tourmaline::onchoseninlineresult">
-      <a href="../Tourmaline/OnChosenInlineResult.html">OnChosenInlineResult</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnInlineQuery" data-name="tourmaline::oninlinequery">
-      <a href="../Tourmaline/OnInlineQuery.html">OnInlineQuery</a>
       
     </li>
   
@@ -892,12 +852,16 @@ just make sure to reuqire the appropriate adapter.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#chat_exists?(chat_id:Int):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(chat_id : Int) : Bool</a>
+        <a href="#chat_exists?(username:String):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(username : String) : Bool</a>
+        
+          <div class="summary"><p>Returns true if the chat with the provided <code>username</code> exists.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#chat_exists?(username:String):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(username : String) : Bool</a>
+        <a href="#chat_exists?(chat_id:Int):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(chat_id : Int) : Bool</a>
+        
+          <div class="summary"><p>Returns true if the chat with the provided <code>chat_id</code> exists.</p></div>
         
       </li>
     
@@ -914,6 +878,8 @@ just make sure to reuqire the appropriate adapter.</p>
       <li class="entry-summary">
         <a href="#cleanup-instance-method" class="signature"><strong>#cleanup</strong></a>
         
+          <div class="summary"><p>Gets called upon exit.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -924,50 +890,63 @@ just make sure to reuqire the appropriate adapter.</p>
       <li class="entry-summary">
         <a href="#get_chat(chat_id:Int):Chat?-instance-method" class="signature"><strong>#get_chat</strong>(chat_id : Int) : Chat?</a>
         
+          <div class="summary"><p>Fetches a chat by <code>chat_id</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#get_chat(username:String):Chat?-instance-method" class="signature"><strong>#get_chat</strong>(username : String) : Chat?</a>
+        
+          <div class="summary"><p>Fetches a chat by <code>username</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#get_user(user_id:Int):User?-instance-method" class="signature"><strong>#get_user</strong>(user_id : Int) : User?</a>
         
+          <div class="summary"><p>Fetches a user by <code>user_id</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#get_user(username:String):User?-instance-method" class="signature"><strong>#get_user</strong>(username : String) : User?</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#handle_persistent_update(update:Update)-instance-method" class="signature"><strong>#handle_persistent_update</strong>(update : Update)</a>
+          <div class="summary"><p>Fetches a user by <code>username</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#init-instance-method" class="signature"><strong>#init</strong></a>
         
+          <div class="summary"><p>Gets called when the bot is initialized.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#update_chat(chat:Chat):Chat-instance-method" class="signature"><strong>#update_chat</strong>(chat : Chat) : Chat</a>
+        
+          <div class="summary"><p>Create or update the provided <code><a href="../Tourmaline/Chat.html">Chat</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#update_user(user:User):User-instance-method" class="signature"><strong>#update_user</strong>(user : User) : User</a>
         
+          <div class="summary"><p>Create or update the provided <code><a href="../Tourmaline/User.html">User</a></code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#user_exists?(user_id:Int):Bool-instance-method" class="signature"><strong>#user_exists?</strong>(user_id : Int) : Bool</a>
         
+          <div class="summary"><p>Returns true if the user with the provided <code>user_id</code> exists.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#user_exists?(username:String):Bool-instance-method" class="signature"><strong>#user_exists?</strong>(username : String) : Bool</a>
+        
+          <div class="summary"><p>Returns true if the user with the provided <code>username</code> exists.</p></div>
         
       </li>
     
@@ -1014,9 +993,9 @@ just make sure to reuqire the appropriate adapter.</p>
     get_user</a>, 
     
   
-    <a href="../Tourmaline/Persistence.html#handle_persistent_update(update:Update)-instance-method" class="tooltip">
-      <span>handle_persistent_update(update : Update)</span>
-    handle_persistent_update</a>, 
+    <a href="../Tourmaline/Persistence.html#handle_update(update:Update)-instance-method" class="tooltip">
+      <span>handle_update(update : Update)</span>
+    handle_update</a>, 
     
   
     <a href="../Tourmaline/Persistence.html#init-instance-method" class="tooltip">
@@ -1108,6 +1087,29 @@ just make sure to reuqire the appropriate adapter.</p>
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="chat_exists?(username:String):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>chat_exists?</strong>(username : String) : Bool
+
+        <a class="method-permalink" href="#chat_exists?(username:String):Bool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Returns true if the chat with the provided <code>username</code> exists.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="chat_exists?(chat_id:Int):Bool-instance-method">
       <div class="signature">
         
@@ -1116,19 +1118,14 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#chat_exists?(chat_id:Int):Bool-instance-method">#</a>
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="chat_exists?(username:String):Bool-instance-method">
-      <div class="signature">
-        
-        def <strong>chat_exists?</strong>(username : String) : Bool
-
-        <a class="method-permalink" href="#chat_exists?(username:String):Bool-instance-method">#</a>
-      </div>
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Returns true if the chat with the provided <code>chat_id</code> exists.</p>
+        </div>
       
       <br/>
       <div>
@@ -1172,6 +1169,15 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#cleanup-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Gets called upon exit. It can be used to perform any necessary cleanup.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1200,6 +1206,15 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#get_chat(chat_id:Int):Chat?-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Fetches a chat by <code>chat_id</code>. Returns <code>nil</code> if the chat is not found.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1213,6 +1228,15 @@ just make sure to reuqire the appropriate adapter.</p>
 
         <a class="method-permalink" href="#get_chat(username:String):Chat?-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Fetches a chat by <code>username</code>. Returns <code>nil</code> if the chat is not found.</p>
+        </div>
       
       <br/>
       <div>
@@ -1228,6 +1252,15 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#get_user(user_id:Int):User?-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Fetches a user by <code>user_id</code>. Returns <code>nil</code> if the user is not found.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1242,19 +1275,14 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#get_user(username:String):User?-instance-method">#</a>
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="handle_persistent_update(update:Update)-instance-method">
-      <div class="signature">
-        
-        def <strong>handle_persistent_update</strong>(update : <a href="../Tourmaline/Update.html">Update</a>)
-
-        <a class="method-permalink" href="#handle_persistent_update(update:Update)-instance-method">#</a>
-      </div>
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Fetches a user by <code>username</code>. Returns <code>nil</code> if the user is not found.</p>
+        </div>
       
       <br/>
       <div>
@@ -1270,6 +1298,16 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#init-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Gets called when the bot is initialized. This can be used for setup if
+you need access to the bot instance.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1283,6 +1321,15 @@ just make sure to reuqire the appropriate adapter.</p>
 
         <a class="method-permalink" href="#update_chat(chat:Chat):Chat-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Create or update the provided <code><a href="../Tourmaline/Chat.html">Chat</a></code>.</p>
+        </div>
       
       <br/>
       <div>
@@ -1298,6 +1345,15 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#update_user(user:User):User-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Create or update the provided <code><a href="../Tourmaline/User.html">User</a></code>.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1312,6 +1368,15 @@ just make sure to reuqire the appropriate adapter.</p>
         <a class="method-permalink" href="#user_exists?(user_id:Int):Bool-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Returns true if the user with the provided <code>user_id</code> exists.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -1325,6 +1390,15 @@ just make sure to reuqire the appropriate adapter.</p>
 
         <a class="method-permalink" href="#user_exists?(username:String):Bool-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Returns true if the user with the provided <code>username</code> exists.</p>
+        </div>
       
       <br/>
       <div>
