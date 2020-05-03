@@ -1,4 +1,7 @@
 module Tourmaline
+  # Processes updates. `Update`s first get checked to see if they fit
+  # into the given `UpdateAction` and then checked against the provided
+  # Filter`s (if any).
   class EventHandler
 
     getter action : UpdateAction
@@ -9,7 +12,7 @@ module Tourmaline
     end
 
     def handle_update(client : Client, update : Update)
-      actions = Helpers.actions_from_update(update)
+      actions = UpdateAction.from_update(update)
       if actions.includes?(@action)
         if filter = @filter
           return unless filter.exec(client, update)
@@ -18,6 +21,7 @@ module Tourmaline
       end
     end
 
+    # :nodoc:
     module Annotator
       private def register_event_handlers
         {% begin %}

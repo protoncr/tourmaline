@@ -23,21 +23,6 @@ module Tourmaline
   # The command can be a string or an array of strings.
   annotation Command; end
 
-  # Similar to `Command`, `Hears` is a more general pattern matcher.
-  # Any time a message matches a pattern defined inside of a
-  # `Hears` annotation the annotated method will be fired.
-  #
-  # Example:
-  #
-  # ```crystal
-  # @[Hears(/^Hello/)]
-  # def respond_to_hello(message)
-  #   send_message(message.chat.id, "Hello to you", respond_to_message: message.message_id)
-  # end
-  #
-  # The pattern can be a string, regex, or an array of string/regex.
-  annotation Hears; end
-
   # Run the annotated method every time a particular `UpdateAction`
   # is fired.
   #
@@ -50,43 +35,4 @@ module Tourmaline
   # end
   # ```
   annotation On; end
-
-  # Run the annotated method when a matching callback_query is found, passing
-  # in a `Context` object.
-  #
-  # Example:
-  #
-  # ```crystal
-  # @[OnCallbackQuery("button_click")]
-  # def on_button_click(ctx)
-  #   pp ctx.update_action
-  # end
-  # ```
-  annotation OnCallbackQuery; end
-
-  # Run the annotated method when a matching chosen_inline_result is found, passing
-  # in a `Context` object.
-  #
-  # Example:
-  #
-  # ```crystal
-  # @[OnChosenInlineResult(id: "gif")]
-  # def on_chosen_result(ctx)
-  #   pp ctx.result
-  # end
-  # ```
-  annotation OnChosenInlineResult; end
-
-  # Run the annotated method when a matching inline_query is found, passing
-  # in a `Context` object.
-  #
-  # Example:
-  #
-  # ```crystal
-  # @[OnInlineQuery(id: "foo")]
-  # def on_inline_foo(ctx)
-  #   pp ctx.inline_query
-  # end
-  # ```
-  annotation OnInlineQuery; end
 end

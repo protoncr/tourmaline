@@ -45,9 +45,6 @@ module Tourmaline
       nil
     end
 
-    def handle_persistent_update(update : Update)
-    end
-
     def init
     end
 

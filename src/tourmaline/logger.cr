@@ -8,6 +8,7 @@ Log.builder.bind("tourmaline.client.*",
                  Tourmaline::Logger::LOG_BACKEND)
 
 module Tourmaline
+  # :nodoc:
   module Logger
     macro included
       Log = ::Log.for(self)

@@ -1,4 +1,9 @@
 module Tourmaline
+  # Context provided to each update. This context allows filters
+  # to pass information to the handler without modifying the
+  # `Update` object. It can be accessed with `update.context`
+  # and works in much the same way as `JSON::Any` and
+  # `Log::Context`.
   class UpdateContext
     # https://github.com/crystal-lang/crystal/blob/052903270710a4d0f11333696fdd455559f19d1e/src/crystal/datum.cr#L33
     Crystal.datum types: {

@@ -1,4 +1,11 @@
 module Tourmaline
+  # The base filter class. A filter is very simple, in that all it
+  # needs is an `exec` method, that takes in a `Client` and an
+  # `Update` and returns `true` if the update passes, and
+  # `false` otherwise.
+  #
+  # Filters can be combined with other filters using the `#|` and
+  # `#&` methods, and in doing so become a `FilterGroup`.
   abstract class Filter
     abstract def exec(client : Client, update : Update) : Bool
 
@@ -11,6 +18,7 @@ module Tourmaline
     end
   end
 
+  # A combination of multiple `Filter`s.
   class FilterGroup
     @expressions : Array(Tuple(Symbol, Filter | FilterGroup))
 

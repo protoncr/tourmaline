@@ -1,6 +1,8 @@
 require "xml"
 
 module Tourmaline
+  # Base builder class for `InlineKeyboardMarkup::Builder` and
+  # `ReplyKeyboardMarkup::Builder`.
   abstract class KeyboardBuilder(T, G)
     property force_reply : Bool
 

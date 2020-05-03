@@ -16,7 +16,7 @@ require "./client/*"
 module Tourmaline
   # The `Client` class is the base class for all Tourmaline based bots.
   # Extend this class to create your own bots, or create an
-  # instance of `Client` and add commands and listenters to it.
+  # instance of `Client` and add event handlers to it.
   class Client
     macro inherited
       include Tourmaline
@@ -62,7 +62,7 @@ module Tourmaline
     def handle_update(update : Update)
       Log.debug { update.to_pretty_json }
 
-      @persistence.handle_persistent_update(update)
+      @persistence.handle_update(update)
       @event_handlers.each do |handler|
         handler.handle_update(self, update)
       end

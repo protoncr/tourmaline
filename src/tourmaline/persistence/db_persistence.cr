@@ -83,11 +83,6 @@ module Tourmaline
     rescue
     end
 
-    def handle_persistent_update(update : Update)
-      update.users.each &->update_user(User)
-      update.chats.each &->update_chat(Chat)
-    end
-
     def init
       users_query = <<-SQL
         CREATE TABLE IF NOT EXISTS #{@users_table} (
