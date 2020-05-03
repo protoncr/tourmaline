@@ -12,7 +12,7 @@ module Tourmaline
     getter from : User?
 
     @[DB::Field(ignore: true)]
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter date : Time
 
     getter chat : Chat
@@ -26,11 +26,11 @@ module Tourmaline
     getter forward_signature : String?
 
     @[DB::Field(ignore: true)]
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter forward_date : Time?
 
     @[DB::Field(ignore: true)]
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter edit_date : Time?
 
     @[DB::Field(key: "reply_to_message")]

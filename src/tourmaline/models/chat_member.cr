@@ -12,7 +12,7 @@ module Tourmaline
 
     getter custom_title : String?
 
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter until_date : Time?
 
     getter can_be_edited : Bool?
