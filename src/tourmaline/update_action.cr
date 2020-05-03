@@ -53,7 +53,7 @@ module Tourmaline
       {{ @type.constants.map { |c| c.stringify.id } }}
     end
 
-    def self.from_update(update : Update)
+    def self.from_update(update : Tourmaline::Update)
       actions = [] of UpdateAction
 
       actions << UpdateAction::Update
