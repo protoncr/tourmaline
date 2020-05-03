@@ -27,17 +27,17 @@ module Tourmaline
         actions << UpdateAction::Text if message.text
         actions << UpdateAction::Audio if message.audio
         actions << UpdateAction::Document if message.document
-        actions << UpdateAction::Photo if message.photo
+        actions << UpdateAction::Photo if message.photo.size > 0
         actions << UpdateAction::Sticker if message.sticker
         actions << UpdateAction::Video if message.video
         actions << UpdateAction::Voice if message.voice
         actions << UpdateAction::Contact if message.contact
         actions << UpdateAction::Location if message.location
         actions << UpdateAction::Venue if message.venue
-        actions << UpdateAction::NewChatMembers if message.new_chat_members
+        actions << UpdateAction::NewChatMembers if message.new_chat_members.size > 0
         actions << UpdateAction::LeftChatMember if message.left_chat_member
         actions << UpdateAction::NewChatTitle if message.new_chat_title
-        actions << UpdateAction::NewChatPhoto if message.new_chat_photo
+        actions << UpdateAction::NewChatPhoto if message.new_chat_photo.size > 0
         actions << UpdateAction::DeleteChatPhoto if message.delete_chat_photo
         actions << UpdateAction::GroupChatCreated if message.group_chat_created
         actions << UpdateAction::MigrateToChatId if message.migrate_from_chat_id
