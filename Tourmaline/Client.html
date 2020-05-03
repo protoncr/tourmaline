@@ -145,6 +145,26 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/EncryptedCredentials" data-name="tourmaline::encryptedcredentials">
+      <a href="../Tourmaline/EncryptedCredentials.html">EncryptedCredentials</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Tourmaline/EncryptedPassportElement" data-name="tourmaline::encryptedpassportelement">
+      <a href="../Tourmaline/EncryptedPassportElement.html">EncryptedPassportElement</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/EncryptedPassportElement/Type" data-name="tourmaline::encryptedpassportelement::type">
+      <a href="../Tourmaline/EncryptedPassportElement/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class="parent " data-id="/Tourmaline/Error" data-name="tourmaline::error">
       <a href="../Tourmaline/Error.html">Error</a>
       
@@ -557,6 +577,66 @@
   
   <li class=" " data-id="/Tourmaline/ParseMode" data-name="tourmaline::parsemode">
       <a href="../Tourmaline/ParseMode.html">ParseMode</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportData" data-name="tourmaline::passportdata">
+      <a href="../Tourmaline/PassportData.html">PassportData</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementError" data-name="tourmaline::passportelementerror">
+      <a href="../Tourmaline/PassportElementError.html">PassportElementError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorDataField" data-name="tourmaline::passportelementerrordatafield">
+      <a href="../Tourmaline/PassportElementErrorDataField.html">PassportElementErrorDataField</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorFile" data-name="tourmaline::passportelementerrorfile">
+      <a href="../Tourmaline/PassportElementErrorFile.html">PassportElementErrorFile</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorFiles" data-name="tourmaline::passportelementerrorfiles">
+      <a href="../Tourmaline/PassportElementErrorFiles.html">PassportElementErrorFiles</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorFrontSide" data-name="tourmaline::passportelementerrorfrontside">
+      <a href="../Tourmaline/PassportElementErrorFrontSide.html">PassportElementErrorFrontSide</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorReverseSide" data-name="tourmaline::passportelementerrorreverseside">
+      <a href="../Tourmaline/PassportElementErrorReverseSide.html">PassportElementErrorReverseSide</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorSelfie" data-name="tourmaline::passportelementerrorselfie">
+      <a href="../Tourmaline/PassportElementErrorSelfie.html">PassportElementErrorSelfie</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorTranslationFile" data-name="tourmaline::passportelementerrortranslationfile">
+      <a href="../Tourmaline/PassportElementErrorTranslationFile.html">PassportElementErrorTranslationFile</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorTranslationFiles" data-name="tourmaline::passportelementerrortranslationfiles">
+      <a href="../Tourmaline/PassportElementErrorTranslationFiles.html">PassportElementErrorTranslationFiles</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorUnspecified" data-name="tourmaline::passportelementerrorunspecified">
+      <a href="../Tourmaline/PassportElementErrorUnspecified.html">PassportElementErrorUnspecified</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportFile" data-name="tourmaline::passportfile">
+      <a href="../Tourmaline/PassportFile.html">PassportFile</a>
       
     </li>
   
@@ -1351,6 +1431,13 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
         <a href="#set_my_commands(commands:Array(BotCommand%7CNamedTuple()))-instance-method" class="signature"><strong>#set_my_commands</strong>(commands : Array(BotCommand | NamedTuple()))</a>
         
           <div class="summary"><p>Use this method to change the list of the bot's commands.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_passport_data_errors(user_id:Int32,errors:Array(PassportElementError))-instance-method" class="signature"><strong>#set_passport_data_errors</strong>(user_id : Int32, errors : Array(PassportElementError))</a>
+        
+          <div class="summary"><p>Informs a user that some of the Telegram Passport elements they provided contains errors.</p></div>
         
       </li>
     
@@ -3092,6 +3179,34 @@ score in the chat and force is <code>false</code> (default).</p>
           
           <p>Use this method to change the list of the bot's commands.
 Returns <code>true</code> on success.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_passport_data_errors(user_id:Int32,errors:Array(PassportElementError))-instance-method">
+      <div class="signature">
+        
+        def <strong>set_passport_data_errors</strong>(user_id : Int32, errors : Array(<a href="../Tourmaline/PassportElementError.html">PassportElementError</a>))
+
+        <a class="method-permalink" href="#set_passport_data_errors(user_id:Int32,errors:Array(PassportElementError))-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Informs a user that some of the Telegram Passport elements they provided contains errors.
+The user will not be able to re-submit their Passport to you until the errors are fixed
+(the contents of the field for which you returned the error must change).</p>
+
+<p>Returns True on success.</p>
+
+<p>Use this if the data submitted by the user doesn't satisfy the standards your service requires
+for any reason. For example, if a birthday date seems invalid, a submitted document is blurry,
+a scan shows evidence of tampering, etc. Supply some details in the error message to make
+sure the user knows how to correct the issues.</p>
         </div>
       
       <br/>
