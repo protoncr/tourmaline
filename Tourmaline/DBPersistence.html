@@ -852,16 +852,16 @@ just make sure to reuqire the appropriate adapter.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#chat_exists?(username:String):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(username : String) : Bool</a>
+        <a href="#chat_exists?(chat_id:Int):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(chat_id : Int) : Bool</a>
         
-          <div class="summary"><p>Returns true if the chat with the provided <code>username</code> exists.</p></div>
+          <div class="summary"><p>Returns true if the chat with the provided <code>chat_id</code> exists.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#chat_exists?(chat_id:Int):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(chat_id : Int) : Bool</a>
+        <a href="#chat_exists?(username:String):Bool-instance-method" class="signature"><strong>#chat_exists?</strong>(username : String) : Bool</a>
         
-          <div class="summary"><p>Returns true if the chat with the provided <code>chat_id</code> exists.</p></div>
+          <div class="summary"><p>Returns true if the chat with the provided <code>username</code> exists.</p></div>
         
       </li>
     
@@ -912,6 +912,13 @@ just make sure to reuqire the appropriate adapter.</p>
         <a href="#get_user(username:String):User?-instance-method" class="signature"><strong>#get_user</strong>(username : String) : User?</a>
         
           <div class="summary"><p>Fetches a user by <code>username</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#handle_update(update:Update)-instance-method" class="signature"><strong>#handle_update</strong>(update : Update)</a>
+        
+          <div class="summary"><p>Takes an <code><a href="../Tourmaline/Update.html">Update</a></code> object, pulls out all unique <code><a href="../Tourmaline/Chat.html">Chat</a></code>s and <code><a href="../Tourmaline/User.html">User</a></code>s, and uses <code><a href="../Tourmaline/DBPersistence.html#update_user(user:User):User-instance-method">#update_user</a></code> and <code><a href="../Tourmaline/DBPersistence.html#update_chat(chat:Chat):Chat-instance-method">#update_chat</a></code> on each of them respectively.</p></div>
         
       </li>
     
@@ -1087,29 +1094,6 @@ just make sure to reuqire the appropriate adapter.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="chat_exists?(username:String):Bool-instance-method">
-      <div class="signature">
-        
-        def <strong>chat_exists?</strong>(username : String) : Bool
-
-        <a class="method-permalink" href="#chat_exists?(username:String):Bool-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-            <div class="doc-inherited">
-              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
-            </div>
-          
-          <p>Returns true if the chat with the provided <code>username</code> exists.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="chat_exists?(chat_id:Int):Bool-instance-method">
       <div class="signature">
         
@@ -1125,6 +1109,29 @@ just make sure to reuqire the appropriate adapter.</p>
             </div>
           
           <p>Returns true if the chat with the provided <code>chat_id</code> exists.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chat_exists?(username:String):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>chat_exists?</strong>(username : String) : Bool
+
+        <a class="method-permalink" href="#chat_exists?(username:String):Bool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Returns true if the chat with the provided <code>username</code> exists.</p>
         </div>
       
       <br/>
@@ -1282,6 +1289,30 @@ just make sure to reuqire the appropriate adapter.</p>
             </div>
           
           <p>Fetches a user by <code>username</code>. Returns <code>nil</code> if the user is not found.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="handle_update(update:Update)-instance-method">
+      <div class="signature">
+        
+        def <strong>handle_update</strong>(update : <a href="../Tourmaline/Update.html">Update</a>)
+
+        <a class="method-permalink" href="#handle_update(update:Update)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../Tourmaline/Persistence.html">Tourmaline::Persistence</a>
+            </div>
+          
+          <p>Takes an <code><a href="../Tourmaline/Update.html">Update</a></code> object, pulls out all unique <code><a href="../Tourmaline/Chat.html">Chat</a></code>s and <code><a href="../Tourmaline/User.html">User</a></code>s,
+and uses <code><a href="../Tourmaline/DBPersistence.html#update_user(user:User):User-instance-method">#update_user</a></code> and <code><a href="../Tourmaline/DBPersistence.html#update_chat(chat:Chat):Chat-instance-method">#update_chat</a></code> on each of them respectively.</p>
         </div>
       
       <br/>
