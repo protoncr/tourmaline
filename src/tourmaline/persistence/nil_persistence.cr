@@ -45,6 +45,9 @@ module Tourmaline
       nil
     end
 
+    def handle_update(update : Update)
+    end
+
     def init
     end
 

@@ -46,10 +46,7 @@ module Tourmaline
 
     # Takes an `Update` object, pulls out all unique `Chat`s and `User`s,
     # and uses `update_user` and `update_chat` on each of them respectively.
-    def handle_update(update : Update)
-      update.users.each &->update_user(User)
-      update.chats.each &->update_chat(Chat)
-    end
+    abstract def handle_update(update : Update)
 
     # Gets called when the bot is initialized. This can be used for setup if
     # you need access to the bot instance.

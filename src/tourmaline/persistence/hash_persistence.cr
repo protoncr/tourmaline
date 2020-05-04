@@ -66,6 +66,11 @@ module Tourmaline
       end
     end
 
+    def handle_update(update : Update)
+      update.users.each &->update_user(User)
+      update.chats.each &->update_chat(Chat)
+    end
+
     def init
     end
 
