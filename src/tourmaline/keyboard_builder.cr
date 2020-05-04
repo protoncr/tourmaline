@@ -102,8 +102,8 @@ module Tourmaline
       current_row = [] of T
 
       buttons.each_with_index do |btn, index|
-        if (wrap_fn.call(btn, index, current_row) && current_row.size > 0)
-          result << current_row
+        if wrap_fn.call(btn, index, current_row)
+          result << current_row.dup
           current_row.clear
         end
 
