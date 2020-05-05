@@ -12,6 +12,9 @@ module Tourmaline
 
     getter height : Int32
 
+    @[JSON::Field(key: "is_animated")]
+    getter? animated : Bool
+
     getter thumb : PhotoSize?
 
     getter emoji : String?
