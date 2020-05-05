@@ -1179,7 +1179,7 @@ module Tourmaline
             handle_update(u)
           end
         rescue exception
-          Log.error { exception.message.to_s }
+          Log.error { exception.inspect_with_backtrace }
         end
       end
     end
