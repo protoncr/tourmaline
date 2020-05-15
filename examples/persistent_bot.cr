@@ -5,7 +5,7 @@ require "../src/tourmaline/persistence/json_persistence"
 class PersistentBot < Tourmaline::Client
   @[Command("seen")]
   def seen_command(client, update)
-    users = @persistence.persisted_users.map(&.[1].id).join('\n')
+    users = @persistence.as(JsonPersistence).persisted_users.map(&.[1].id).join('\n')
     update.message.try &.reply(users)
   end
 
