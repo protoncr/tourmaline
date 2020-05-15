@@ -143,7 +143,7 @@ module Tourmaline
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
-      response = request("editMesasageCaption", {
+      response = request("editMessageCaption", {
         chat_id:           chat_id,
         caption:           caption,
         message_id:        message_id,
@@ -173,7 +173,7 @@ module Tourmaline
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
 
-      response = request("editMesasageReplyMarkup", {
+      response = request("editMessageReplyMarkup", {
         chat_id:           chat_id,
         message_id:        message_id,
         inline_message_id: inline_message_id,
