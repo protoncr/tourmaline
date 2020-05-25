@@ -6,9 +6,12 @@ module Tourmaline
 
     getter action : UpdateAction
     getter filter : (Filter | FilterGroup)?
+    getter group  : String
 
-    def initialize(@action : UpdateAction, @filter = nil, &block : Client, Update ->)
+    def initialize(@action : UpdateAction, filter = nil, group = :default, &block : Client, Update ->)
       @proc = block
+      @filter = filter
+      @group = group.to_s.downcase
     end
 
     def handle_update(client : Client, update : Update)
@@ -18,6 +21,7 @@ module Tourmaline
           return unless filter.exec(client, update)
         end
         @proc.call(client, update)
+        return true
       end
     end
 
@@ -30,8 +34,9 @@ module Tourmaline
 
               # Handle `On` annotation
               {% for ann in method.annotations(On) %}
-                %action = {{ ann[0] }}
+                %action = {{ ann[:action] || ann[0] }}
                 %filter = {{ ann[:filter] || ann[1] }}
+                %group = {{ ann[:group]  || ann[2] || :default }}
 
                 if %action.is_a?(Symbol | String)
                   begin
@@ -41,17 +46,22 @@ module Tourmaline
                   end
                 end
 
-                %handler = EventHandler.new(%action, %filter, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
+                %handler = EventHandler.new(%action, %filter, %group, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)
               {% end %}
 
               # Handle `Command` annotation
               {% for ann in method.annotations(Command) %}
-                %filter = CommandFilter.new(\
-                  {% unless ann.args.empty? %}*{{ ann.args }},{% end %}\
-                  {% unless ann.named_args.empty? %}**{{ ann.named_args }}{% end %}\
-                  )
-                %handler = EventHandler.new(:text, %filter, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
+                %group  = {{ ann.named_args[:group] || :default }}
+                %cmd_filter = CommandFilter.new(
+                  {{ ann.named_args[:command] || ann.named_args[:commands] || ann.args[0] }},
+                  {{ ann.named_args[:prefix] }},
+                  {{ ann.named_args[:private_only] || false }},
+                  {{ ann.named_args[:group_only] || false }},
+                  {{ ann.named_args[:admin_only] || false }}
+                )
+                %filter = {% if ann.named_args[:filter] %} %cmd_filter & {{ ann.named_args[:filter] }} {% else %} %cmd_filter {% end %}
+                %handler = EventHandler.new(:text, %filter, %group, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)
               {% end %}
             {% end %}

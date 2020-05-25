@@ -40,9 +40,9 @@ module Tourmaline
     def initialize(@api_key : String,
                    @updates_timeout : Int32? = nil,
                    @allowed_updates : Array(String)? = nil,
-                   @persistence : Persistence = NilPersistence.new)
-      endpoint = URI.parse(API_URL)
-      @http_client = HTTP::Client.new(endpoint)
+                   @persistence : Persistence = NilPersistence.new,
+                   endpoint = API_URL)
+      @http_client = HTTP::Client.new(URI.parse(endpoint))
 
       @event_handlers = [] of EventHandler
       register_event_handlers
@@ -60,24 +60,31 @@ module Tourmaline
     end
 
     def handle_update(update : Update)
-      Log.debug { update.to_pretty_json }
-
-      @persistence.handle_update(update)
+      Log.debug { "Handling update: #{update.to_pretty_json}" }
+      handled = [] of String
       @event_handlers.each do |handler|
-        handler.handle_update(self, update)
+        unless handled.includes?(handler.group)
+          if handler.handle_update(self, update)
+            @persistence.handle_update(update)
+            handled << handler.group
+          end
+        end
       end
     end
 
     # Sends a json request to the Telegram Client API.
     private def request(method, params = {} of String => String)
-      method = File.join("/bot" + @api_key, method)
+      path = File.join("/bot" + @api_key, method)
       multipart = includes_media(params)
+
+      Log.debug { "Sending request: #{method}, #{params.to_pretty_json}" }
+
       if multipart
         config = build_form_data_config(params)
-        response = @http_client.exec(**config, path: method)
+        response = @http_client.exec(**config, path: path)
       else
         config = build_json_config(params)
-        response = @http_client.exec(**config, path: method)
+        response = @http_client.exec(**config, path: path)
       end
 
       result = JSON.parse(response.body)
