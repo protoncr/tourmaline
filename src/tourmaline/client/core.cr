@@ -26,9 +26,9 @@ module Tourmaline
     # An `Array` of `Update` objects is returned.
     def get_updates(
       offset = @next_offset,
-      limit = nil,
-      timeout = @updates_timeout,
-      allowed_updates = @allowed_updates
+      limit = 100,
+      timeout = 0,
+      allowed_updates = [] of String
     )
       response = request("getUpdates", {
         offset:          offset,

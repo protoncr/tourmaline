@@ -25,23 +25,22 @@ module Tourmaline
     include Logger
     include EventHandler::Annotator
 
-    API_URL = "https://api.telegram.org/"
+    DEFAULT_API_URL = "https://api.telegram.org/"
 
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
     # `@bot_name` to `get_me.username.to_s`.
     getter bot_name : String { get_me.username.to_s }
-    getter event_handlers : Array(EventHandler)
-    getter persistence : Persistence
+
+    private getter event_handlers : Array(EventHandler)
+    private getter persistence : Persistence
 
     # Create a new instance of `Tourmaline::Client`. It is
     # highly recommended to set `@api_key` at an environment
     # variable.
     def initialize(@api_key : String,
-                   @updates_timeout : Int32? = nil,
-                   @allowed_updates : Array(String)? = nil,
                    @persistence : Persistence = NilPersistence.new,
-                   endpoint = API_URL)
+                   endpoint = DEFAULT_API_URL)
       @http_client = HTTP::Client.new(URI.parse(endpoint))
 
       @event_handlers = [] of EventHandler
@@ -53,6 +52,10 @@ module Tourmaline
       [Signal::INT, Signal::TERM].each do |sig|
         sig.trap { @persistence.cleanup; exit }
       end
+    end
+
+    def set_state(key, name)
+      @state_map[key.to_s.downcase] = name.to_s.downcase
     end
 
     def add_event_handler(handler : EventHandler)
