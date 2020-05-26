@@ -845,8 +845,8 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
   
   <dl>
     
-      <dt class="entry-const" id="API_URL">
-        <strong>API_URL</strong> = <code><span class="s">&quot;https://api.telegram.org/&quot;</span></code>
+      <dt class="entry-const" id="DEFAULT_API_URL">
+        <strong>DEFAULT_API_URL</strong> = <code><span class="s">&quot;https://api.telegram.org/&quot;</span></code>
       </dt>
       
     
@@ -870,7 +870,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil,persistence:Persistence=NilPersistence.new,endpoint=API_URL)-class-method" class="signature"><strong>.new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>, persistence : Persistence = <span class="t">NilPersistence</span>.<span class="k">new</span>, endpoint = <span class="t">API_URL</span>)</a>
+        <a href="#new(api_key:String,persistence:Persistence=NilPersistence.new,endpoint=DEFAULT_API_URL)-class-method" class="signature"><strong>.new</strong>(api_key : String, persistence : Persistence = <span class="t">NilPersistence</span>.<span class="k">new</span>, endpoint = <span class="t">DEFAULT_API_URL</span>)</a>
         
           <div class="summary"><p>Create a new instance of <code><a href="../Tourmaline/Client.html">Tourmaline::Client</a></code>.</p></div>
         
@@ -1015,11 +1015,6 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
-        <a href="#event_handlers:Array(EventHandler)-instance-method" class="signature"><strong>#event_handlers</strong> : Array(EventHandler)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#export_chat_invite_link(chat)-instance-method" class="signature"><strong>#export_chat_invite_link</strong>(chat)</a>
         
           <div class="summary"><p>Use this method to generate a new invite link for a chat; any previously generated link is revoked.</p></div>
@@ -1104,7 +1099,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
-        <a href="#get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method" class="signature"><strong>#get_updates</strong>(offset = @next_offset, limit = <span class="n">nil</span>, timeout = @updates_timeout, allowed_updates = @allowed_updates)</a>
+        <a href="#get_updates(offset=@next_offset,limit=100,timeout=0,allowed_updates=[]ofString)-instance-method" class="signature"><strong>#get_updates</strong>(offset = @next_offset, limit = <span class="n">100</span>, timeout = <span class="n">0</span>, allowed_updates = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
         
           <div class="summary"><p>Use this method to receive incoming updates using long polling (<a href="http://en.wikipedia.org/wiki/Push_technology#Long_polling" target="_blank">wiki</a>).</p></div>
         
@@ -1159,11 +1154,6 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     
       <li class="entry-summary">
         <a href="#next_offset:Int64-instance-method" class="signature"><strong>#next_offset</strong> : Int64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#persistence:Persistence-instance-method" class="signature"><strong>#persistence</strong> : Persistence</a>
         
       </li>
     
@@ -1402,6 +1392,11 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
+        <a href="#set_state(key,name)-instance-method" class="signature"><strong>#set_state</strong>(key, name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#set_sticker_position_in_set(sticker,position)-instance-method" class="signature"><strong>#set_sticker_position_in_set</strong>(sticker, position)</a>
         
           <div class="summary"><p>Use this method to move a sticker in a set created by the bot to a specific position.</p></div>
@@ -1538,12 +1533,12 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil,persistence:Persistence=NilPersistence.new,endpoint=API_URL)-class-method">
+    <div class="entry-detail" id="new(api_key:String,persistence:Persistence=NilPersistence.new,endpoint=DEFAULT_API_URL)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(api_key : String, updates_timeout : Int32? = <span class="n">nil</span>, allowed_updates : Array(String)? = <span class="n">nil</span>, persistence : <a href="../Tourmaline/Persistence.html">Persistence</a> = <span class="t">NilPersistence</span>.<span class="k">new</span>, endpoint = <span class="t">API_URL</span>)
+        def self.<strong>new</strong>(api_key : String, persistence : <a href="../Tourmaline/Persistence.html">Persistence</a> = <span class="t">NilPersistence</span>.<span class="k">new</span>, endpoint = <span class="t">DEFAULT_API_URL</span>)
 
-        <a class="method-permalink" href="#new(api_key:String,updates_timeout:Int32?=nil,allowed_updates:Array(String)?=nil,persistence:Persistence=NilPersistence.new,endpoint=API_URL)-class-method">#</a>
+        <a class="method-permalink" href="#new(api_key:String,persistence:Persistence=NilPersistence.new,endpoint=DEFAULT_API_URL)-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -1960,20 +1955,6 @@ is returned, otherwise <code>true</code> is returned.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="event_handlers:Array(EventHandler)-instance-method">
-      <div class="signature">
-        
-        def <strong>event_handlers</strong> : Array(<a href="../Tourmaline/EventHandler.html">EventHandler</a>)
-
-        <a class="method-permalink" href="#event_handlers:Array(EventHandler)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="export_chat_invite_link(chat)-instance-method">
       <div class="signature">
         
@@ -2234,12 +2215,12 @@ On success, a <code><a href="../Tourmaline/StickerSet.html">StickerSet</a></code
       </div>
     </div>
   
-    <div class="entry-detail" id="get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method">
+    <div class="entry-detail" id="get_updates(offset=@next_offset,limit=100,timeout=0,allowed_updates=[]ofString)-instance-method">
       <div class="signature">
         
-        def <strong>get_updates</strong>(offset = @next_offset, limit = <span class="n">nil</span>, timeout = @updates_timeout, allowed_updates = @allowed_updates)
+        def <strong>get_updates</strong>(offset = @next_offset, limit = <span class="n">100</span>, timeout = <span class="n">0</span>, allowed_updates = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
 
-        <a class="method-permalink" href="#get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method">#</a>
+        <a class="method-permalink" href="#get_updates(offset=@next_offset,limit=100,timeout=0,allowed_updates=[]ofString)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2416,20 +2397,6 @@ Returns <code>true</code> on success.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="persistence:Persistence-instance-method">
-      <div class="signature">
-        
-        def <strong>persistence</strong> : <a href="../Tourmaline/Persistence.html">Persistence</a>
-
-        <a class="method-permalink" href="#persistence:Persistence-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="pin_chat_message(chat,message,disable_notification=false)-instance-method">
       <div class="signature">
         
@@ -2463,7 +2430,7 @@ Returns <code>true</code> on success.</p>
       
         <div class="doc">
           
-          <p>Start polling for updates. This method uses a combination of <code><a href="../Tourmaline/Client.html#get_updates(offset=@next_offset,limit=nil,timeout=@updates_timeout,allowed_updates=@allowed_updates)-instance-method">#get_updates</a></code>
+          <p>Start polling for updates. This method uses a combination of <code><a href="../Tourmaline/Client.html#get_updates(offset=@next_offset,limit=100,timeout=0,allowed_updates=[]ofString)-instance-method">#get_updates</a></code>
 and <code><a href="../Tourmaline/Client.html#handle_update(update:Update)-instance-method">#handle_update</a></code> to send continuously check Telegram's servers
 for updates.</p>
         </div>
@@ -3168,6 +3135,20 @@ for any reason. For example, if a birthday date seems invalid, a submitted docum
 a scan shows evidence of tampering, etc. Supply some details in the error message to make
 sure the user knows how to correct the issues.</p>
         </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_state(key,name)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_state</strong>(key, name)
+
+        <a class="method-permalink" href="#set_state(key,name)-instance-method">#</a>
+      </div>
       
       <br/>
       <div>
