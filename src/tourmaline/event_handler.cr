@@ -64,6 +64,16 @@ module Tourmaline
                 %handler = EventHandler.new(:text, %filter, %group, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)
               {% end %}
+
+              # Handle `OnCallbackQuery` annotation
+              {% for ann in method.annotations(OnCallbackQuery) %}
+                %pattern = {{ ann[:pattern] || ann[0] }}
+                %group  = {{ ann.named_args[:group] || :default }}
+                %cq_filter = CallbackQueryFilter.new(%pattern)
+                %filter = {% if ann.named_args[:filter] %} %cq_filter & {{ ann.named_args[:filter] }} {% else %} %cq_filter {% end %}
+                %handler = EventHandler.new(:callback_query, %filter, %group, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
+                add_event_handler(%handler)
+              {% end %}
             {% end %}
           {% end %}
         {% end %}
