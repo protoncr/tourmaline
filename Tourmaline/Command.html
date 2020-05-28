@@ -75,6 +75,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/CallbackQueryFilter" data-name="tourmaline::callbackqueryfilter">
+      <a href="../Tourmaline/CallbackQueryFilter.html">CallbackQueryFilter</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Chat" data-name="tourmaline::chat">
       <a href="../Tourmaline/Chat.html">Chat</a>
       
@@ -530,6 +535,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/OnCallbackQuery" data-name="tourmaline::oncallbackquery">
+      <a href="../Tourmaline/OnCallbackQuery.html">OnCallbackQuery</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/OrderInfo" data-name="tourmaline::orderinfo">
       <a href="../Tourmaline/OrderInfo.html">OrderInfo</a>
       
@@ -797,8 +807,8 @@ defaults by supplying named parameters to the annotation.</p>
 <p>Example:</p>
 
 <pre><code class="language-crystal">@[<span class="t">Command</span>(<span class="s">&quot;help&quot;</span>, prefix: <span class="s">&quot;!&quot;</span>, private_only: <span class="n">true</span>)]
-<span class="k">def</span> <span class="m">help_command</span>(message, params)
-  send_message(message.chat.id, <span class="s">&quot;This is a help message&quot;</span>)
+<span class="k">def</span> <span class="m">help_command</span>(client, update)
+  update.message.not_nil!.reply(<span class="s">&quot;This is a help message&quot;</span>)
 <span class="k">end</span></code></pre>
 
 <p>The command can be a string or an array of strings.</p>

@@ -40,11 +40,6 @@
   <div class="types-list">
     <ul>
   
-  <li class=" " data-id="/File" data-name="file">
-      <a href="../File.html">File</a>
-      
-    </li>
-  
   <li class="parent open current" data-id="/Tourmaline" data-name="tourmaline">
       <a href="../Tourmaline.html">Tourmaline</a>
       
@@ -77,6 +72,11 @@
   
   <li class=" " data-id="/Tourmaline/CallbackQuery" data-name="tourmaline::callbackquery">
       <a href="../Tourmaline/CallbackQuery.html">CallbackQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/CallbackQueryFilter" data-name="tourmaline::callbackqueryfilter">
+      <a href="../Tourmaline/CallbackQueryFilter.html">CallbackQueryFilter</a>
       
     </li>
   
@@ -215,18 +215,8 @@
       
     </li>
   
-  <li class="parent " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
+  <li class=" " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
       <a href="../Tourmaline/EventHandler.html">EventHandler</a>
-      
-        <ul>
-  
-  <li class=" " data-id="/Tourmaline/EventHandler/Annotator" data-name="tourmaline::eventhandler::annotator">
-      <a href="../Tourmaline/EventHandler/Annotator.html">Annotator</a>
-      
-    </li>
-  
-</ul>
-
       
     </li>
   
@@ -257,11 +247,6 @@
   
   <li class=" " data-id="/Tourmaline/HashPersistence" data-name="tourmaline::hashpersistence">
       <a href="../Tourmaline/HashPersistence.html">HashPersistence</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/Hears" data-name="tourmaline::hears">
-      <a href="../Tourmaline/Hears.html">Hears</a>
       
     </li>
   
@@ -520,11 +505,6 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/Logger" data-name="tourmaline::logger">
-      <a href="../Tourmaline/Logger.html">Logger</a>
-      
-    </li>
-  
   <li class=" " data-id="/Tourmaline/LoginURL" data-name="tourmaline::loginurl">
       <a href="../Tourmaline/LoginURL.html">LoginURL</a>
       
@@ -557,16 +537,6 @@
   
   <li class=" current" data-id="/Tourmaline/OnCallbackQuery" data-name="tourmaline::oncallbackquery">
       <a href="../Tourmaline/OnCallbackQuery.html">OnCallbackQuery</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnChosenInlineResult" data-name="tourmaline::onchoseninlineresult">
-      <a href="../Tourmaline/OnChosenInlineResult.html">OnChosenInlineResult</a>
-      
-    </li>
-  
-  <li class=" " data-id="/Tourmaline/OnInlineQuery" data-name="tourmaline::oninlinequery">
-      <a href="../Tourmaline/OnInlineQuery.html">OnInlineQuery</a>
       
     </li>
   
@@ -826,15 +796,21 @@
     Overview
   </h2>
 
-  <p>Run the annotated method when a matching callback_query is found, passing
-in a <code>Context</code> object.</p>
+  <p>Add a callback query handler which optionally listens for a specific data value.</p>
+
+<p>Options:</p>
+
+<ul><li><code>pattern</code> - A String or Regex which the data must match.</li></ul>
 
 <p>Example:</p>
 
-<pre><code class="language-crystal">@[<span class="t">OnCallbackQuery</span>(<span class="s">&quot;button_click&quot;</span>)]
-<span class="k">def</span> <span class="m">on_button_click</span>(ctx)
-  pp ctx.update_action
+<pre><code class="language-crystal">@[<span class="t">OnCallbackQuery</span>(<span class="s">&quot;back&quot;</span>)]
+<span class="k">def</span> <span class="m">back_button_pressed</span>(client, update)
+  query <span class="o">=</span> update.callback_query.not_nil!
+  query.answer(<span class="s">&quot;You pressed back!&quot;</span>)
 <span class="k">end</span></code></pre>
+
+<p>The command can be a string or an array of strings.</p>
 
 
 

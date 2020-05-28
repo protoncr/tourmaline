@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="">
-  <title>Tourmaline::InlineKeyboardButton - </title>
+  <title>Tourmaline::CallbackQueryFilter - </title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -75,7 +75,7 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/CallbackQueryFilter" data-name="tourmaline::callbackqueryfilter">
+  <li class=" current" data-id="/Tourmaline/CallbackQueryFilter" data-name="tourmaline::callbackqueryfilter">
       <a href="../Tourmaline/CallbackQueryFilter.html">CallbackQueryFilter</a>
       
     </li>
@@ -255,7 +255,7 @@
       
     </li>
   
-  <li class=" current" data-id="/Tourmaline/InlineKeyboardButton" data-name="tourmaline::inlinekeyboardbutton">
+  <li class=" " data-id="/Tourmaline/InlineKeyboardButton" data-name="tourmaline::inlinekeyboardbutton">
       <a href="../Tourmaline/InlineKeyboardButton.html">InlineKeyboardButton</a>
       
     </li>
@@ -779,33 +779,42 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::InlineKeyboardButton
+  <span class="kind">class</span> Tourmaline::CallbackQueryFilter
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/InlineKeyboardButton.html">Tourmaline::InlineKeyboardButton</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/CallbackQueryFilter.html">Tourmaline::CallbackQueryFilter</a></li><li class="superclass"><a href="../Tourmaline/Filter.html">Tourmaline::Filter</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="overview" class="anchor" href="#overview">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Overview
   </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">JSON::Serializable</li>
-    
-  </ul>
+
+  <p>Filters messages containing a callback query, optionally with a specific pattern.</p>
+
+<p>Options:</p>
+
+<ul><li>`pattern - A String or Regex which the data must match.</li></ul>
+
+<p>Context additions:</p>
+
+<ul><li><code>data : String?</code> - The data that was matched</li><li><code>match : Regex::MatchData</code> - the match data returned by the successful match (if it was a Regex)</li></ul>
+
+<p>Example:</p>
+
+<pre><code class="language-crystal">filter <span class="o">=</span> <span class="t">CallbackQueryFilter</span>.<span class="k">new</span>(<span class="s">/^foo(\d+)/</span>)</code></pre>
+
+
+
+
 
 
 
@@ -841,12 +850,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new(text:String,url:String?=nil,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method" class="signature"><strong>.new</strong>(text : String, url : String? = <span class="n">nil</span>, login_url : LoginURL? = <span class="n">nil</span>, callback_data : String? = <span class="n">nil</span>, switch_inline_query : String? = <span class="n">nil</span>, switch_inline_query_current_chat : String? = <span class="n">nil</span>, callback_game : CallbackGame? = <span class="n">nil</span>, pay : Bool? = <span class="n">nil</span>)</a>
+        <a href="#new(pattern:String%7CRegex?)-class-method" class="signature"><strong>.new</strong>(pattern : String | Regex?)</a>
         
       </li>
     
@@ -867,82 +871,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#callback_data:String?-instance-method" class="signature"><strong>#callback_data</strong> : String?</a>
+        <a href="#exec(client:Client,update:Update):Bool-instance-method" class="signature"><strong>#exec</strong>(client : Client, update : Update) : Bool</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#callback_data=(callback_data:String?)-instance-method" class="signature"><strong>#callback_data=</strong>(callback_data : String?)</a>
+        <a href="#pattern:String%7CRegex%7CNil-instance-method" class="signature"><strong>#pattern</strong> : String | Regex | Nil</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#callback_game:CallbackGame?-instance-method" class="signature"><strong>#callback_game</strong> : CallbackGame?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#callback_game=(callback_game:CallbackGame?)-instance-method" class="signature"><strong>#callback_game=</strong>(callback_game : CallbackGame?)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#login_url:LoginURL?-instance-method" class="signature"><strong>#login_url</strong> : LoginURL?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#login_url=(login_url:LoginURL?)-instance-method" class="signature"><strong>#login_url=</strong>(login_url : LoginURL?)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pay:Bool?-instance-method" class="signature"><strong>#pay</strong> : Bool?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pay=(pay:Bool?)-instance-method" class="signature"><strong>#pay=</strong>(pay : Bool?)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#switch_inline_query:String?-instance-method" class="signature"><strong>#switch_inline_query</strong> : String?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#switch_inline_query=(switch_inline_query:String?)-instance-method" class="signature"><strong>#switch_inline_query=</strong>(switch_inline_query : String?)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#switch_inline_query_current_chat:String?-instance-method" class="signature"><strong>#switch_inline_query_current_chat</strong> : String?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#switch_inline_query_current_chat=(switch_inline_query_current_chat:String?)-instance-method" class="signature"><strong>#switch_inline_query_current_chat=</strong>(switch_inline_query_current_chat : String?)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#text:String-instance-method" class="signature"><strong>#text</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#text=(text:String)-instance-method" class="signature"><strong>#text=</strong>(text : String)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#url:String?-instance-method" class="signature"><strong>#url</strong> : String?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#url=(url:String?)-instance-method" class="signature"><strong>#url=</strong>(url : String?)</a>
+        <a href="#pattern=(pattern:String%7CRegex%7CNil)-instance-method" class="signature"><strong>#pattern=</strong>(pattern : String | Regex | Nil)</a>
         
       </li>
     
@@ -955,6 +894,25 @@
 <div class="methods-inherited">
   
     
+
+  <h3>Instance methods inherited from class <code><a href="../Tourmaline/Filter.html">Tourmaline::Filter</a></code></h3>
+  
+  
+    <a href="../Tourmaline/Filter.html#&(other:Filter%7CFilterGroup)-instance-method" class="tooltip">
+      <span>&(other : Filter | FilterGroup)</span>
+    &</a>, 
+    
+  
+    <a href="../Tourmaline/Filter.html#exec(client:Client,update:Update):Bool-instance-method" class="tooltip">
+      <span>exec(client : Client, update : Update) : Bool</span>
+    exec</a>, 
+    
+  
+    <a href="../Tourmaline/Filter.html#%7C(other:Filter%7CFilterGroup)-instance-method" class="tooltip">
+      <span>|(other : Filter | FilterGroup)</span>
+    |</a>
+    
+  
 
 
     
@@ -996,26 +954,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+    <div class="entry-detail" id="new(pattern:String|Regex?)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pull : JSON::PullParser)
+        def self.<strong>new</strong>(pattern : String | Regex?)
 
-        <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(text:String,url:String?=nil,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(text : String, url : String? = <span class="n">nil</span>, login_url : <a href="../Tourmaline/LoginURL.html">LoginURL</a>? = <span class="n">nil</span>, callback_data : String? = <span class="n">nil</span>, switch_inline_query : String? = <span class="n">nil</span>, switch_inline_query_current_chat : String? = <span class="n">nil</span>, callback_game : <a href="../Tourmaline/CallbackGame.html">CallbackGame</a>? = <span class="n">nil</span>, pay : Bool? = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(text:String,url:String?=nil,login_url:LoginURL?=nil,callback_data:String?=nil,switch_inline_query:String?=nil,switch_inline_query_current_chat:String?=nil,callback_game:CallbackGame?=nil,pay:Bool?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new(pattern:String%7CRegex?)-class-method">#</a>
       </div>
       
       <br/>
@@ -1038,12 +982,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="callback_data:String?-instance-method">
+    <div class="entry-detail" id="exec(client:Client,update:Update):Bool-instance-method">
       <div class="signature">
         
-        def <strong>callback_data</strong> : String?
+        def <strong>exec</strong>(client : <a href="../Tourmaline/Client.html">Client</a>, update : <a href="../Tourmaline/Update.html">Update</a>) : Bool
 
-        <a class="method-permalink" href="#callback_data:String?-instance-method">#</a>
+        <a class="method-permalink" href="#exec(client:Client,update:Update):Bool-instance-method">#</a>
       </div>
       
       <br/>
@@ -1052,12 +996,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="callback_data=(callback_data:String?)-instance-method">
+    <div class="entry-detail" id="pattern:String|Regex|Nil-instance-method">
       <div class="signature">
         
-        def <strong>callback_data=</strong>(callback_data : String?)
+        def <strong>pattern</strong> : String | Regex | Nil
 
-        <a class="method-permalink" href="#callback_data=(callback_data:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#pattern:String%7CRegex%7CNil-instance-method">#</a>
       </div>
       
       <br/>
@@ -1066,194 +1010,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="callback_game:CallbackGame?-instance-method">
+    <div class="entry-detail" id="pattern=(pattern:String|Regex|Nil)-instance-method">
       <div class="signature">
         
-        def <strong>callback_game</strong> : <a href="../Tourmaline/CallbackGame.html">CallbackGame</a>?
+        def <strong>pattern=</strong>(pattern : String | Regex | Nil)
 
-        <a class="method-permalink" href="#callback_game:CallbackGame?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="callback_game=(callback_game:CallbackGame?)-instance-method">
-      <div class="signature">
-        
-        def <strong>callback_game=</strong>(callback_game : <a href="../Tourmaline/CallbackGame.html">CallbackGame</a>?)
-
-        <a class="method-permalink" href="#callback_game=(callback_game:CallbackGame?)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="login_url:LoginURL?-instance-method">
-      <div class="signature">
-        
-        def <strong>login_url</strong> : <a href="../Tourmaline/LoginURL.html">LoginURL</a>?
-
-        <a class="method-permalink" href="#login_url:LoginURL?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="login_url=(login_url:LoginURL?)-instance-method">
-      <div class="signature">
-        
-        def <strong>login_url=</strong>(login_url : <a href="../Tourmaline/LoginURL.html">LoginURL</a>?)
-
-        <a class="method-permalink" href="#login_url=(login_url:LoginURL?)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="pay:Bool?-instance-method">
-      <div class="signature">
-        
-        def <strong>pay</strong> : Bool?
-
-        <a class="method-permalink" href="#pay:Bool?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="pay=(pay:Bool?)-instance-method">
-      <div class="signature">
-        
-        def <strong>pay=</strong>(pay : Bool?)
-
-        <a class="method-permalink" href="#pay=(pay:Bool?)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="switch_inline_query:String?-instance-method">
-      <div class="signature">
-        
-        def <strong>switch_inline_query</strong> : String?
-
-        <a class="method-permalink" href="#switch_inline_query:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="switch_inline_query=(switch_inline_query:String?)-instance-method">
-      <div class="signature">
-        
-        def <strong>switch_inline_query=</strong>(switch_inline_query : String?)
-
-        <a class="method-permalink" href="#switch_inline_query=(switch_inline_query:String?)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="switch_inline_query_current_chat:String?-instance-method">
-      <div class="signature">
-        
-        def <strong>switch_inline_query_current_chat</strong> : String?
-
-        <a class="method-permalink" href="#switch_inline_query_current_chat:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="switch_inline_query_current_chat=(switch_inline_query_current_chat:String?)-instance-method">
-      <div class="signature">
-        
-        def <strong>switch_inline_query_current_chat=</strong>(switch_inline_query_current_chat : String?)
-
-        <a class="method-permalink" href="#switch_inline_query_current_chat=(switch_inline_query_current_chat:String?)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="text:String-instance-method">
-      <div class="signature">
-        
-        def <strong>text</strong> : String
-
-        <a class="method-permalink" href="#text:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="text=(text:String)-instance-method">
-      <div class="signature">
-        
-        def <strong>text=</strong>(text : String)
-
-        <a class="method-permalink" href="#text=(text:String)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="url:String?-instance-method">
-      <div class="signature">
-        
-        def <strong>url</strong> : String?
-
-        <a class="method-permalink" href="#url:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="url=(url:String?)-instance-method">
-      <div class="signature">
-        
-        def <strong>url=</strong>(url : String?)
-
-        <a class="method-permalink" href="#url=(url:String?)-instance-method">#</a>
+        <a class="method-permalink" href="#pattern=(pattern:String%7CRegex%7CNil)-instance-method">#</a>
       </div>
       
       <br/>
