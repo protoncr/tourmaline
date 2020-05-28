@@ -15,8 +15,8 @@ module Tourmaline
   #
   # ```crystal
   # @[Command("help", prefix: "!", private_only: true)]
-  # def help_command(message, params)
-  #   send_message(message.chat.id, "This is a help message")
+  # def help_command(client, update)
+  #   update.message.not_nil!.reply("This is a help message")
   # end
   # ```
   #
@@ -35,4 +35,23 @@ module Tourmaline
   # end
   # ```
   annotation On; end
+
+  # Add a callback query handler which optionally listens for a specific data value.
+  #
+  # Options:
+  #
+  # - `pattern` - A String or Regex which the data must match.
+  #
+  # Example:
+  #
+  # ```crystal
+  # @[OnCallbackQuery("back")]
+  # def back_button_pressed(client, update)
+  #   query = update.callback_query.not_nil!
+  #   query.answer("You pressed back!")
+  # end
+  # ```
+  #
+  # The command can be a string or an array of strings.
+  annotation OnCallbackQuery; end
 end
