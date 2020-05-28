@@ -39,16 +39,16 @@ module Tourmaline
       if message = update.message
         if (text = message.text) || (text = message.caption)
           return false if private_only && message.chat.type != "private"
-          return false if group_only && message.chat == "private"
+          return false if (group_only || admin_only) && message.chat.type == "private"
 
           # TODO: Cache admins so we don't have to call `get_chat_administrators` every time
-          if @admin_only
-            if from = message.from
-              admins = client.get_chat_administrators(message.chat.id)
-              ids = admins.map(&.user.id)
-              return false unless ids.includes?(from.id)
-            end
-          end
+          # if @admin_only
+          #   if from = message.from
+          #     admins = client.get_chat_administrators(message.chat.id)
+          #     ids = admins.map(&.user.id)
+          #     return false unless ids.includes?(from.id)
+          #   end
+          # end
 
           tokens = text.split(/\s+/, 2)
           return false if tokens.empty?

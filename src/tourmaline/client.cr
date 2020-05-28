@@ -27,6 +27,8 @@ module Tourmaline
 
     DEFAULT_API_URL = "https://api.telegram.org/"
 
+    property endpoint : String
+
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
     # `@bot_name` to `get_me.username.to_s`.
@@ -40,9 +42,7 @@ module Tourmaline
     # variable.
     def initialize(@api_key : String,
                    @persistence : Persistence = NilPersistence.new,
-                   endpoint = DEFAULT_API_URL)
-      @http_client = HTTP::Client.new(URI.parse(endpoint))
-
+                   @endpoint = DEFAULT_API_URL)
       @event_handlers = [] of EventHandler
       register_event_handlers
 
@@ -77,17 +77,17 @@ module Tourmaline
 
     # Sends a json request to the Telegram Client API.
     private def request(method, params = {} of String => String)
-      path = File.join("/bot" + @api_key, method)
+      url = File.join(@endpoint, "/bot" + @api_key, method)
       multipart = includes_media(params)
 
       Log.debug { "Sending request: #{method}, #{params.to_pretty_json}" }
 
       if multipart
         config = build_form_data_config(params)
-        response = @http_client.exec(**config, path: path)
+        response = HTTP::Client.exec(**config, url: url)
       else
         config = build_json_config(params)
-        response = @http_client.exec(**config, path: path)
+        response = HTTP::Client.exec(**config, url: url)
       end
 
       result = JSON.parse(response.body)

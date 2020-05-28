@@ -400,7 +400,7 @@ module Tourmaline
     )
       chat_id = chat.is_a?(Int) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
-      until_date = until_date.to_unix unless until_date.is_a?(Int)
+      until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
       permissions = permissions.is_a?(NamedTuple) ? ChatPermissions.new(**permissions) : permissions
 
       response = request("restrictChatMember", {
