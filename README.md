@@ -23,9 +23,9 @@ dependencies:
 
 ## Usage
 
-For usage information please see [the wiki](https://github.com/protoncr/tourmaline/wiki). API documentation is also available [here](https://watzon.github.io/tourmaline/).
+API documentation is also available [here](https://api.tourmaline.dev).
 
-Examples are available in the [examples](./examples) folder.
+Examples are available in the [examples](https://github.com/protoncr/tourmaline/branch/master/examples) folder.
 
 ## Development
 
