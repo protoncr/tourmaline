@@ -46,7 +46,11 @@ module Tourmaline
                   end
                 end
 
-                %handler = EventHandler.new(%action, %filter, %group, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
+                %handler = EventHandler.new(%action, %filter, %group, &->(c : Client, u : Update) { \
+                  {% if ann[:async] %} spawn do {% end %} \
+                    {{ method.name.id }}(c, u) \
+                  {% if ann[:async] %} end {% end %} \
+                })
                 add_event_handler(%handler)
               {% end %}
 
@@ -61,7 +65,11 @@ module Tourmaline
                   {{ ann.named_args[:admin_only] || false }}
                 )
                 %filter = {% if ann.named_args[:filter] %} %cmd_filter & {{ ann.named_args[:filter] }} {% else %} %cmd_filter {% end %}
-                %handler = EventHandler.new(:text, %filter, %group, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
+                %handler = EventHandler.new(:text, %filter, %group, &->(c : Client, u : Update) { \
+                {% if ann[:async] %} spawn do {% end %} \
+                  {{ method.name.id }}(c, u) \
+                {% if ann[:async] %} end {% end %} \
+                })
                 add_event_handler(%handler)
               {% end %}
 
@@ -71,7 +79,11 @@ module Tourmaline
                 %group  = {{ ann.named_args[:group] || :default }}
                 %cq_filter = CallbackQueryFilter.new(%pattern)
                 %filter = {% if ann.named_args[:filter] %} %cq_filter & {{ ann.named_args[:filter] }} {% else %} %cq_filter {% end %}
-                %handler = EventHandler.new(:callback_query, %filter, %group, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
+                %handler = EventHandler.new(:callback_query, %filter, %group, &->(c : Client, u : Update) { \
+                {% if ann[:async] %} spawn do {% end %} \
+                  {{ method.name.id }}(c, u) \
+                {% if ann[:async] %} end {% end %} \
+                })
                 add_event_handler(%handler)
               {% end %}
             {% end %}

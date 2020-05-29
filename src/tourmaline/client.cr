@@ -35,12 +35,18 @@ module Tourmaline
     private getter event_handlers : Array(EventHandler)
     private getter persistence : Persistence
 
+    @pool : ConnectionPool(HTTP::Client)
+
     # Create a new instance of `Tourmaline::Client`. It is
     # highly recommended to set `@api_key` at an environment
     # variable.
     def initialize(@api_key : String,
                    @persistence : Persistence = NilPersistence.new,
                    @endpoint = DEFAULT_API_URL)
+      @pool = ConnectionPool(HTTP::Client).new(capacity: 200, initial: 20, timeout: 0.1) do
+        HTTP::Client.new(URI.parse(@endpoint))
+      end
+
       @event_handlers = [] of EventHandler
       register_event_handlers
 
@@ -75,17 +81,24 @@ module Tourmaline
 
     # Sends a json request to the Telegram Client API.
     private def request(method, params = {} of String => String)
-      url = File.join(@endpoint, "/bot" + @api_key, method)
+      path = File.join("/bot" + @api_key, method)
       multipart = includes_media(params)
 
       Log.debug { "Sending request: #{method}, #{params.to_pretty_json}" }
 
-      if multipart
-        config = build_form_data_config(params)
-        response = HTTP::Client.exec(**config, url: url)
-      else
-        config = build_json_config(params)
-        response = HTTP::Client.exec(**config, url: url)
+      client = @pool.checkout
+      begin
+        if multipart
+          config = build_form_data_config(params)
+          response = client.exec(**config, path: path)
+        else
+          config = build_json_config(params)
+          response = client.exec(**config, path: path)
+        end
+      rescue IO::TimeoutError
+        raise Error::RequestTimeoutError.new
+      ensure
+        @pool.checkin(client)
       end
 
       result = JSON.parse(response.body)

@@ -1,4 +1,5 @@
 require "db"
+require "pool"
 require "mime/multipart"
 
 require "./ext/*"

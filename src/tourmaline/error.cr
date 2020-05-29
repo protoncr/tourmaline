@@ -2,7 +2,7 @@ module Tourmaline
   class Error < Exception
     ERROR_PREFIXES = ["error: ", "[error]: ", "bad request: ", "conflict: ", "not found: "]
 
-    def initialize(message)
+    def initialize(message = "")
       super(clean_message(message))
     end
 
@@ -121,6 +121,33 @@ module Tourmaline
         CantInitiateConversation
       when /bot can't send messages to bots/
         CantTalkWithBots
+      when /message is not modified/
+        text = "Bad request: message is not modified" \
+               "message content and reply markup are exactly the same" \
+               "as a current content and reply markup of the message"
+        MessageNotModified
+      when /MESSAGE_ID_INVALID/
+        MessageIdInvalid
+      when /message to forward not found/
+        MessageToForwardNotFound
+      when /message to delete not found/
+        MessageToDeleteNotFound
+      when /message text is empty/
+        MessageTextIsEmpty
+      when /message can't be edited/
+        MessageCantBeEdited
+      when /message can't be deleted/
+        MessageCantBeDeleted
+      when /message to edit not found/
+        MessageToEditNotFound
+      when /reply message not found/
+        MessageToReplyNotFound
+      when /message identifier is not specified/
+        MessageIdentifierNotSpecified
+      when /message is too long/
+        MessageIsTooLong
+      when /Too much messages to send as an album/
+        TooMuchMessages
       when /The group has been migrated to a supergroup with ID (\-?\d+)/
         match = text.match(/The group has been migrated to a supergroup with ID (\-?\d+)/)
         id = match.try &.[1].to_i
@@ -165,8 +192,10 @@ module Tourmaline
 
     class BadRequest < Error; end
 
+    class RequestTimeoutError < BadRequest; end
     class MessageError < BadRequest; end
     class MessageNotModified < MessageError; end
+    class MessageIdInvalid < MessageError; end
     class MessageToForwardNotFound < MessageError; end
     class MessageToDeleteNotFound < MessageError; end
     class MessageIdentifierNotSpecified < MessageError; end
@@ -175,7 +204,8 @@ module Tourmaline
     class MessageCantBeDeleted < MessageError; end
     class MessageToEditNotFound < MessageError; end
     class MessageToReplyNotFound < MessageError; end
-    class ToMuchMessages < MessageError; end
+    class MessageIsTooLong < MessageError; end
+    class TooMuchMessages < MessageError; end
 
     class PollError < BadRequest; end
     class PollCantBeStopped < MessageError; end
