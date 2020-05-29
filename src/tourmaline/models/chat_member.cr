@@ -29,11 +29,15 @@ module Tourmaline
 
     getter can_restrict_members : Bool?
 
+    getter can_pin_messages : Bool?
+
     getter can_promote_members : Bool?
 
     getter can_send_messages : Bool?
 
     getter can_send_media_messages : Bool?
+
+    getter can_send_polls : Bool?
 
     getter can_send_other_messages : Bool?
 

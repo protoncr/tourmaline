@@ -23,5 +23,8 @@ development_dependencies:
   spectator:
     github: icy-arctic-fox/spectator
     branch: master
+  pool:
+    github: ysbaddaden/pool
+    branch: master
 
 license: MIT
