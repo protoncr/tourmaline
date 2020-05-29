@@ -11,6 +11,7 @@ module Tourmaline
   # Context additions:
   # - `command : String` - the matched command
   # - `text : String` - the raw text without the command
+  # - `botname : Bool?` - true if the bot name was included in the command
   #
   # Example:
   # ```crystal
@@ -65,7 +66,7 @@ module Tourmaline
           command = command.sub(/^#{@prefix}/, "")
           return false unless @commands.includes?(command)
 
-          update.set_context({ command: command, text: text })
+          update.set_context({ command: command, text: text, botname: !!botname })
           return true
         end
       end
