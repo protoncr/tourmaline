@@ -42,9 +42,12 @@ module Tourmaline
     # variable.
     def initialize(@api_key : String,
                    @persistence : Persistence = NilPersistence.new,
-                   @endpoint = DEFAULT_API_URL)
-      @pool = ConnectionPool(HTTP::Client).new(capacity: 200, initial: 20, timeout: 0.1) do
-        HTTP::Client.new(URI.parse(@endpoint))
+                   endpoint = DEFAULT_API_URL,
+                   pool_capacity = 200,
+                   initial_pool_size = 20,
+                   pool_timeout = 0.1)
+      @pool = ConnectionPool(HTTP::Client).new(capacity: pool_capacity, initial: initial_pool_size, timeout: pool_timeout) do
+        HTTP::Client.new(URI.parse(endpoint))
       end
 
       @event_handlers = [] of EventHandler
