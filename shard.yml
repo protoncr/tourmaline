@@ -10,6 +10,9 @@ dependencies:
   db:
     github: crystal-lang/crystal-db
     version: ~> 0.9.0
+  pool:
+    github: watzon/pool
+    branch: master
 
 development_dependencies:
   ngrok:
@@ -22,9 +25,6 @@ development_dependencies:
     version: ~> 0.10.0
   spectator:
     github: icy-arctic-fox/spectator
-    branch: master
-  pool:
-    github: watzon/pool
     branch: master
 
 license: MIT
