@@ -71,7 +71,6 @@ module Tourmaline
     end
 
     def handle_update(update : Update)
-      Log.debug { "Handling update: #{update.to_pretty_json}" }
       handled = [] of String
       @event_handlers.each do |handler|
         unless handled.includes?(handler.group)
@@ -88,7 +87,7 @@ module Tourmaline
       path = File.join("/bot" + @api_key, method)
       multipart = includes_media(params)
 
-      Log.debug { "Sending request: #{method}, #{params.to_pretty_json}" }
+      Log.debug { "sending ►► #{method}(#{params.to_pretty_json})" }
 
       client = @pool.checkout
       begin
@@ -106,6 +105,9 @@ module Tourmaline
       end
 
       result = JSON.parse(response.body)
+
+      Log.debug { "receiving ◄◄ #{result.to_pretty_json}" }
+
       if result["ok"].as_bool
         result["result"].to_json
       else
