@@ -12,6 +12,7 @@ require "./annotations"
 require "./filter"
 require "./event_handler"
 require "./client/*"
+require "pool/connection"
 
 module Tourmaline
   # The `Client` class is the base class for all Tourmaline based bots.
