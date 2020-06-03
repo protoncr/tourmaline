@@ -22,6 +22,9 @@ module Tourmaline
       when /PEER_ID_INVALID/
         text = "Invalid peer ID"
         InvalidPeerID
+      when /RESULT_ID_INVALID/
+        text = "Invalid result ID"
+        InvalidResultID
       when /Failed to get HTTP URL content/
         InvalidHTTPUrlContent
       when /BUTTON_URL_INVALID/
@@ -122,8 +125,8 @@ module Tourmaline
       when /bot can't send messages to bots/
         CantTalkWithBots
       when /message is not modified/
-        text = "Bad request: message is not modified" \
-               "message content and reply markup are exactly the same" \
+        text = "Bad request: message is not modified " \
+               "message content and reply markup are exactly the same " \
                "as a current content and reply markup of the message"
         MessageNotModified
       when /MESSAGE_ID_INVALID/
@@ -148,13 +151,15 @@ module Tourmaline
         MessageIsTooLong
       when /Too much messages to send as an album/
         TooMuchMessages
+      when /wrong live location period specified/
+        WrongLiveLocationPeriod
       when /The group has been migrated to a supergroup with ID (\-?\d+)/
         match = text.match(/The group has been migrated to a supergroup with ID (\-?\d+)/)
-        id = match.try &.[1].to_i
+        id = match.not_nil![1].to_i64
         return MigrateToChat.new(id)
-      when /Retry after (\d+) seconds/
-        match = text.match(/Retry after (\d+) seconds/)
-        seconds = match.try &.[1].to_i
+      when /retry after (\d+)/
+        match = text.match(/retry after (\d+)/)
+        seconds = match.not_nil![1].to_i
         return RetryAfter.new(seconds)
       else
         Error
@@ -179,14 +184,20 @@ module Tourmaline
     end
 
     class RetryAfter < Error
+      getter seconds : Int32
+
       def initialize(seconds)
-        super("Flood control exceeded. Retry in #{seconds} seconds.")
+        @seconds = seconds.to_i
+        super("Flood control exceeded. Retry in #{@seconds} seconds.")
       end
     end
 
     class MigrateToChat < Error
+      getter chat_id : Int64
+
       def initialize(chat_id)
-        super("The group has been migrated to a supergroup. New id: #{chat_id}.")
+        @chat_id = chat_id.to_i64
+        super("The group has been migrated to a supergroup. New id: #{@chat_id}.")
       end
     end
 
@@ -227,6 +238,7 @@ module Tourmaline
     class ChatDescriptionIsNotModified < BadRequest; end
     class InvalidQueryID < BadRequest; end
     class InvalidPeerID < BadRequest; end
+    class InvalidResultID < BadRequest; end
     class InvalidHTTPUrlContent < BadRequest; end
     class ButtonURLInvalid < BadRequest; end
     class URLHostIsEmpty < BadRequest; end
@@ -234,6 +246,7 @@ module Tourmaline
     class ButtonDataInvalid < BadRequest; end
     class WrongFileIdentifier < BadRequest; end
     class GroupDeactivated < BadRequest; end
+    class WrongLiveLocationPeriod < BadRequest; end
 
     class BadWebhook < BadRequest; end
     class WebhookRequireHTTPS < BadWebhook; end
