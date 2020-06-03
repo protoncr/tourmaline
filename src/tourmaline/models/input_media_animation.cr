@@ -12,7 +12,7 @@ module Tourmaline
 
     property caption : String?
 
-    property parse_mode : String?
+    property parse_mode : ParseMode?
 
     property width : Int32?
 
@@ -20,7 +20,7 @@ module Tourmaline
 
     property duration : Int32?
 
-    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil,
+    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : ParseMode? = nil,
                    @width : Int32? = nil, @height : Int32? = nil, duration : Int32? = nil)
     end
   end

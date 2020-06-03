@@ -12,9 +12,9 @@ module Tourmaline
 
     property caption : String?
 
-    property parse_mode : String?
+    property parse_mode : ParseMode?
 
-    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : String? = nil)
+    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : ParseMode? = nil)
     end
   end
 end
