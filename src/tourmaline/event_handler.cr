@@ -7,11 +7,13 @@ module Tourmaline
     getter action : UpdateAction
     getter filter : (Filter | FilterGroup)?
     getter group  : String
+    getter async  : Bool
 
-    def initialize(@action : UpdateAction, filter = nil, group = :default, &block : Client, Update ->)
+    def initialize(@action : UpdateAction, filter = nil, group = :default, async = true, &block : Client, Update ->)
       @proc = block
       @filter = filter
       @group = group.to_s.downcase
+      @async = async
     end
 
     def handle_update(client : Client, update : Update)
@@ -20,8 +22,14 @@ module Tourmaline
         if filter = @filter
           return unless filter.exec(client, update)
         end
-        @proc.call(client, update)
-        return true
+
+        if @async
+          spawn @proc.call(client, update)
+        else
+          @proc.call(client, update)
+        end
+
+        true
       end
     end
 
@@ -36,7 +44,8 @@ module Tourmaline
               {% for ann in method.annotations(On) %}
                 %action = {{ ann[:action] || ann[0] }}
                 %filter = {{ ann[:filter] || ann[1] }}
-                %group = {{ ann[:group]  || ann[2] || :default }}
+                %group = {{ ann[:group] || :default }}
+                %async = {{ ann[:async].nil? ? true : !!ann[:async] }}
 
                 if %action.is_a?(Symbol | String)
                   begin
@@ -46,11 +55,7 @@ module Tourmaline
                   end
                 end
 
-                %handler = EventHandler.new(%action, %filter, %group, &->(c : Client, u : Update) { \
-                  {% if ann[:async] %} spawn do {% end %} \
-                    {{ method.name.id }}(c, u) \
-                  {% if ann[:async] %} end {% end %} \
-                })
+                %handler = EventHandler.new(%action, %filter, %group, %async, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)
               {% end %}
 
@@ -65,11 +70,8 @@ module Tourmaline
                   {{ ann.named_args[:admin_only] || false }}
                 )
                 %filter = {% if ann.named_args[:filter] %} %cmd_filter & {{ ann.named_args[:filter] }} {% else %} %cmd_filter {% end %}
-                %handler = EventHandler.new(:text, %filter, %group, &->(c : Client, u : Update) { \
-                {% if ann[:async] %} spawn do {% end %} \
-                  {{ method.name.id }}(c, u) \
-                {% if ann[:async] %} end {% end %} \
-                })
+                %async = {{ ann[:async].nil? ? true : !!ann[:async] }}
+                %handler = EventHandler.new(:text, %filter, %group, %async, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)
               {% end %}
 
@@ -78,12 +80,9 @@ module Tourmaline
                 %pattern = {{ ann[:pattern] || ann[0] }}
                 %group  = {{ ann.named_args[:group] || :default }}
                 %cq_filter = CallbackQueryFilter.new(%pattern)
+                %async = {{ ann[:async].nil? ? true : !!ann[:async] }}
                 %filter = {% if ann.named_args[:filter] %} %cq_filter & {{ ann.named_args[:filter] }} {% else %} %cq_filter {% end %}
-                %handler = EventHandler.new(:callback_query, %filter, %group, &->(c : Client, u : Update) { \
-                {% if ann[:async] %} spawn do {% end %} \
-                  {{ method.name.id }}(c, u) \
-                {% if ann[:async] %} end {% end %} \
-                })
+                %handler = EventHandler.new(:callback_query, %filter, %group, %async, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)
               {% end %}
             {% end %}
