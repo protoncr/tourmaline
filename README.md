@@ -34,7 +34,7 @@ This currently supports the following features:
 - [x] Client API
   - [x] Implementation examples
   - [x] Easy command syntax
-  - [x] Robust middleware system
+  - [ ] Robust middleware system
   - [x] Standard API queries
   - [x] Stickers
   - [x] Inline mode
@@ -44,6 +44,7 @@ This currently supports the following features:
   - [x] Games
   - [x] Polls
   - [x] Telegram Passport
+- [x] HTTP/HTTP Proxies
 
 If you want a new feature feel free to submit an issue or open a pull request.
 
@@ -51,8 +52,8 @@ If you want a new feature feel free to submit an issue or open a pull request.
 
 If you're using Tourmaline and would like to have your bot added to this list, just submit a PR!
 
-- [fckeverywordbot](https://t.me/fckeverywordbot)
 - [PixieImageBot](https://t.me/pixieimagebot)
+- [Utilibot](https://t.me/watzonutilitbot)
 
 ## Contributing
 
