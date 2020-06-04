@@ -110,6 +110,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/ChosenInlineResultFilter" data-name="tourmaline::choseninlineresultfilter">
+      <a href="../Tourmaline/ChosenInlineResultFilter.html">ChosenInlineResultFilter</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Client" data-name="tourmaline::client">
       <a href="../Tourmaline/Client.html">Client</a>
       
@@ -1202,7 +1207,11 @@
 
 <p>Options:</p>
 
-<ul><li><code>commands : String | Array(String)</code> - the command(s) to match (without the prefix)</li><li><code>prefix : String</code> - the prefix that should preceed the command(s)</li><li><code>private_only : Bool</code> - if true, command(s) will only be available in private chats</li><li><code>group_only : Bool</code> - if true, command(s) will only be available in group chats</li><li><code>admin_only : Bool</code> if true, command(s) will only work for group admins</li></ul>
+<ul><li><code>commands : String | Array(String)</code> - the command(s) to match (without the prefix)</li><li><code>prefix : String | Array(String)</code> - the prefix that should preceed the command(s); keep in mind that
+   with group privacy mode enabled, only <code>/</code> will work as a prefix unless your bot is an admin</li><li><code>private_only : Bool</code> - if true, command(s) will only be available in private chats</li><li><code>group_only : Bool</code> - if true, command(s) will only be available in group chats</li><li><code>admin_only : Bool</code> if true, command(s) will only work for group admins</li></ul>
+
+<p>Note: It's only recommended to use <code><a href="../Tourmaline/CommandFilter.html#admin_only:Bool-instance-method">#admin_only</a></code> in smaller bots. It makes a call to <code>getChatAdministrators</code>
+every time. For more popular bots it is recommended to implement your own admin caching.</p>
 
 <p>Context additions:</p>
 
@@ -1236,6 +1245,25 @@
   
 
 
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="DEFAULT_PREFIXES">
+        <strong>DEFAULT_PREFIXES</strong> = <code>[<span class="s">&quot;/&quot;</span>]</code>
+      </dt>
+      
+    
+  </dl>
 
 
 
@@ -1306,12 +1334,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#prefix:String-instance-method" class="signature"><strong>#prefix</strong> : String</a>
+        <a href="#prefixes:Array(String)-instance-method" class="signature"><strong>#prefixes</strong> : Array(String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#prefix=(prefix:String)-instance-method" class="signature"><strong>#prefix=</strong>(prefix : String)</a>
+        <a href="#prefixes=(prefixes:Array(String))-instance-method" class="signature"><strong>#prefixes=</strong>(prefixes : Array(String))</a>
         
       </li>
     
@@ -1520,12 +1548,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="prefix:String-instance-method">
+    <div class="entry-detail" id="prefixes:Array(String)-instance-method">
       <div class="signature">
         
-        def <strong>prefix</strong> : String
+        def <strong>prefixes</strong> : Array(String)
 
-        <a class="method-permalink" href="#prefix:String-instance-method">#</a>
+        <a class="method-permalink" href="#prefixes:Array(String)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1534,12 +1562,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="prefix=(prefix:String)-instance-method">
+    <div class="entry-detail" id="prefixes=(prefixes:Array(String))-instance-method">
       <div class="signature">
         
-        def <strong>prefix=</strong>(prefix : String)
+        def <strong>prefixes=</strong>(prefixes : Array(String))
 
-        <a class="method-permalink" href="#prefix=(prefix:String)-instance-method">#</a>
+        <a class="method-permalink" href="#prefixes=(prefixes:Array(String))-instance-method">#</a>
       </div>
       
       <br/>

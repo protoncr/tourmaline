@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="">
-  <title>Tourmaline::InlineQueryResultVideo - </title>
+  <title>Tourmaline::ChosenInlineResultFilter - </title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -110,7 +110,7 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/ChosenInlineResultFilter" data-name="tourmaline::choseninlineresultfilter">
+  <li class=" current" data-id="/Tourmaline/ChosenInlineResultFilter" data-name="tourmaline::choseninlineresultfilter">
       <a href="../Tourmaline/ChosenInlineResultFilter.html">ChosenInlineResultFilter</a>
       
     </li>
@@ -785,7 +785,7 @@
       
     </li>
   
-  <li class=" current" data-id="/Tourmaline/InlineQueryResultVideo" data-name="tourmaline::inlinequeryresultvideo">
+  <li class=" " data-id="/Tourmaline/InlineQueryResultVideo" data-name="tourmaline::inlinequeryresultvideo">
       <a href="../Tourmaline/InlineQueryResultVideo.html">InlineQueryResultVideo</a>
       
     </li>
@@ -1184,33 +1184,42 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::InlineQueryResultVideo
+  <span class="kind">class</span> Tourmaline::ChosenInlineResultFilter
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/InlineQueryResultVideo.html">Tourmaline::InlineQueryResultVideo</a></li><li class="superclass"><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/ChosenInlineResultFilter.html">Tourmaline::ChosenInlineResultFilter</a></li><li class="superclass"><a href="../Tourmaline/Filter.html">Tourmaline::Filter</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="overview" class="anchor" href="#overview">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Overview
   </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">JSON::Serializable</li>
-    
-  </ul>
+
+  <p>Filters messages containing a chosen inline result, optionally with a specific pattern.</p>
+
+<p>Options:</p>
+
+<ul><li><code>pattern : (String | Regex)?</code> - string or regex to match</li></ul>
+
+<p>Context additions:</p>
+
+<ul><li><code>query : String?</code> - The query that was matched</li><li><code>match : Regex::MatchData</code> - the match data returned by the successful match</li></ul>
+
+<p>Example:</p>
+
+<pre><code class="language-crystal">filter <span class="o">=</span> <span class="t">ChosenInlineResultFilter</span>.<span class="k">new</span>(<span class="s">/^foo(\d+)/</span>)</code></pre>
+
+
+
+
 
 
 
@@ -1246,12 +1255,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(id,video_url,mime_type,thumb_url,title,caption=nil,video_width=nil,video_height=nil,video_duration=nil,description=nil,reply_markup=nil,input_message_content=nil)-class-method" class="signature"><strong>.new</strong>(id, video_url, mime_type, thumb_url, title, caption = <span class="n">nil</span>, video_width = <span class="n">nil</span>, video_height = <span class="n">nil</span>, video_duration = <span class="n">nil</span>, description = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new(pattern:String%7CRegex?=nil)-class-method" class="signature"><strong>.new</strong>(pattern : String | Regex? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1272,67 +1276,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#caption:String?-instance-method" class="signature"><strong>#caption</strong> : String?</a>
+        <a href="#exec(client:Client,update:Update):Bool-instance-method" class="signature"><strong>#exec</strong>(client : Client, update : Update) : Bool</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#description:String?-instance-method" class="signature"><strong>#description</strong> : String?</a>
+        <a href="#pattern:Regex?-instance-method" class="signature"><strong>#pattern</strong> : Regex?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#id:String-instance-method" class="signature"><strong>#id</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#input_message_content:InputMessageContent?-instance-method" class="signature"><strong>#input_message_content</strong> : InputMessageContent?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#mime_type:String-instance-method" class="signature"><strong>#mime_type</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#reply_markup:InlineKeyboardMarkup?-instance-method" class="signature"><strong>#reply_markup</strong> : InlineKeyboardMarkup?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#thumb_url:String-instance-method" class="signature"><strong>#thumb_url</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#title:String-instance-method" class="signature"><strong>#title</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#type:String-instance-method" class="signature"><strong>#type</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#video_duration:Int32?-instance-method" class="signature"><strong>#video_duration</strong> : Int32?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#video_height:Int32?-instance-method" class="signature"><strong>#video_height</strong> : Int32?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#video_url:String-instance-method" class="signature"><strong>#video_url</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#video_width:Int32?-instance-method" class="signature"><strong>#video_width</strong> : Int32?</a>
+        <a href="#pattern=(pattern:Regex?)-instance-method" class="signature"><strong>#pattern=</strong>(pattern : Regex?)</a>
         
       </li>
     
@@ -1346,43 +1300,24 @@
   
     
 
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-  <h3>Constructor methods inherited from class <code><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></code></h3>
+  <h3>Instance methods inherited from class <code><a href="../Tourmaline/Filter.html">Tourmaline::Filter</a></code></h3>
   
   
-    <a href="../Tourmaline/InlineQueryResult.html#new(pull:JSON::PullParser)-class-method" class="tooltip">
-      <span>new(pull : JSON::PullParser)</span>
-    new</a>
+    <a href="../Tourmaline/Filter.html#&(other:Filter%7CFilterGroup)-instance-method" class="tooltip">
+      <span>&(other : Filter | FilterGroup)</span>
+    &</a>, 
     
   
-
-
-    
-
-  <h3>Class methods inherited from class <code><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></code></h3>
-  
-  
-    <a href="../Tourmaline/InlineQueryResult.html#build(&)-class-method" class="tooltip">
-      <span>build(&)</span>
-    build</a>
+    <a href="../Tourmaline/Filter.html#exec(client:Client,update:Update):Bool-instance-method" class="tooltip">
+      <span>exec(client : Client, update : Update) : Bool</span>
+    exec</a>, 
     
   
-
-
-  
+    <a href="../Tourmaline/Filter.html#%7C(other:Filter%7CFilterGroup)-instance-method" class="tooltip">
+      <span>|(other : Filter | FilterGroup)</span>
+    |</a>
     
+  
 
 
     
@@ -1424,26 +1359,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(id,video_url,mime_type,thumb_url,title,caption=nil,video_width=nil,video_height=nil,video_duration=nil,description=nil,reply_markup=nil,input_message_content=nil)-class-method">
+    <div class="entry-detail" id="new(pattern:String|Regex?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(id, video_url, mime_type, thumb_url, title, caption = <span class="n">nil</span>, video_width = <span class="n">nil</span>, video_height = <span class="n">nil</span>, video_duration = <span class="n">nil</span>, description = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)
+        def self.<strong>new</strong>(pattern : String | Regex? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(id,video_url,mime_type,thumb_url,title,caption=nil,video_width=nil,video_height=nil,video_duration=nil,description=nil,reply_markup=nil,input_message_content=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(pull : JSON::PullParser)
-
-        <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
+        <a class="method-permalink" href="#new(pattern:String%7CRegex?=nil)-class-method">#</a>
       </div>
       
       <br/>
@@ -1466,12 +1387,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="caption:String?-instance-method">
+    <div class="entry-detail" id="exec(client:Client,update:Update):Bool-instance-method">
       <div class="signature">
         
-        def <strong>caption</strong> : String?
+        def <strong>exec</strong>(client : <a href="../Tourmaline/Client.html">Client</a>, update : <a href="../Tourmaline/Update.html">Update</a>) : Bool
 
-        <a class="method-permalink" href="#caption:String?-instance-method">#</a>
+        <a class="method-permalink" href="#exec(client:Client,update:Update):Bool-instance-method">#</a>
       </div>
       
       <br/>
@@ -1480,12 +1401,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="description:String?-instance-method">
+    <div class="entry-detail" id="pattern:Regex?-instance-method">
       <div class="signature">
         
-        def <strong>description</strong> : String?
+        def <strong>pattern</strong> : Regex?
 
-        <a class="method-permalink" href="#description:String?-instance-method">#</a>
+        <a class="method-permalink" href="#pattern:Regex?-instance-method">#</a>
       </div>
       
       <br/>
@@ -1494,152 +1415,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="id:String-instance-method">
+    <div class="entry-detail" id="pattern=(pattern:Regex?)-instance-method">
       <div class="signature">
         
-        def <strong>id</strong> : String
+        def <strong>pattern=</strong>(pattern : Regex?)
 
-        <a class="method-permalink" href="#id:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="input_message_content:InputMessageContent?-instance-method">
-      <div class="signature">
-        
-        def <strong>input_message_content</strong> : <a href="../Tourmaline/InputMessageContent.html">InputMessageContent</a>?
-
-        <a class="method-permalink" href="#input_message_content:InputMessageContent?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="mime_type:String-instance-method">
-      <div class="signature">
-        
-        def <strong>mime_type</strong> : String
-
-        <a class="method-permalink" href="#mime_type:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="reply_markup:InlineKeyboardMarkup?-instance-method">
-      <div class="signature">
-        
-        def <strong>reply_markup</strong> : <a href="../Tourmaline/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>?
-
-        <a class="method-permalink" href="#reply_markup:InlineKeyboardMarkup?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="thumb_url:String-instance-method">
-      <div class="signature">
-        
-        def <strong>thumb_url</strong> : String
-
-        <a class="method-permalink" href="#thumb_url:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="title:String-instance-method">
-      <div class="signature">
-        
-        def <strong>title</strong> : String
-
-        <a class="method-permalink" href="#title:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="type:String-instance-method">
-      <div class="signature">
-        
-        def <strong>type</strong> : String
-
-        <a class="method-permalink" href="#type:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="video_duration:Int32?-instance-method">
-      <div class="signature">
-        
-        def <strong>video_duration</strong> : Int32?
-
-        <a class="method-permalink" href="#video_duration:Int32?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="video_height:Int32?-instance-method">
-      <div class="signature">
-        
-        def <strong>video_height</strong> : Int32?
-
-        <a class="method-permalink" href="#video_height:Int32?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="video_url:String-instance-method">
-      <div class="signature">
-        
-        def <strong>video_url</strong> : String
-
-        <a class="method-permalink" href="#video_url:String-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="video_width:Int32?-instance-method">
-      <div class="signature">
-        
-        def <strong>video_width</strong> : Int32?
-
-        <a class="method-permalink" href="#video_width:Int32?-instance-method">#</a>
+        <a class="method-permalink" href="#pattern=(pattern:Regex?)-instance-method">#</a>
       </div>
       
       <br/>

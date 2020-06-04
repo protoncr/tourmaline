@@ -110,6 +110,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/ChosenInlineResultFilter" data-name="tourmaline::choseninlineresultfilter">
+      <a href="Tourmaline/ChosenInlineResultFilter.html">ChosenInlineResultFilter</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Client" data-name="tourmaline::client">
       <a href="Tourmaline/Client.html">Client</a>
       
@@ -1216,6 +1221,23 @@
 
 <p>Examples are available in the <a href="https://github.com/protoncr/tourmaline/branch/master/examples" target="_blank">examples</a> folder.</p>
 
+<p>Just for README purposes though, let's look at the echo bot example:</p>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;tourmaline&quot;</span>
+
+<span class="k">class</span> <span class="t">EchoBot</span> <span class="o">&lt;</span> <span class="t">Tourmaline</span><span class="t">::</span><span class="t">Client</span>
+  @[<span class="t">Command</span>(<span class="s">&quot;echo&quot;</span>)]
+  <span class="k">def</span> <span class="m">echo_command</span>(client, update)
+    <span class="k">if</span> message <span class="o">=</span> update.message
+      text <span class="o">=</span> update.context[<span class="s">&quot;text&quot;</span>].as_s
+      message.reply(text)
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+bot <span class="o">=</span> <span class="t">EchoBot</span>.<span class="k">new</span>(<span class="t">ENV</span>[<span class="s">&quot;API_KEY&quot;</span>])
+bot.poll</code></pre>
+
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -1224,7 +1246,7 @@
 
 <p>This currently supports the following features:</p>
 
-<ul><li>[x] Client API</li><ul><li>[x] Implementation examples</li><li>[x] Easy command syntax</li><li>[x] Robust middleware system</li><li>[x] Standard API queries</li><li>[x] Stickers</li><li>[x] Inline mode</li><li>[x] Long polling</li><li>[x] Webhooks</li><li>[x] Payments</li><li>[x] Games</li><li>[x] Polls</li><li>[x] Telegram Passport</li></ul></ul>
+<ul><li>[x] Client API</li><ul><li>[x] Implementation examples</li><li>[x] Easy command syntax</li><li>[ ] Robust middleware system</li><li>[x] Standard API queries</li><li>[x] Stickers</li><li>[x] Inline mode</li><li>[x] Long polling</li><li>[x] Webhooks</li><li>[x] Payments</li><li>[x] Games</li><li>[x] Polls</li><li>[x] Telegram Passport</li></ul><li>[x] HTTP/HTTP Proxies</li></ul>
 
 <p>If you want a new feature feel free to submit an issue or open a pull request.</p>
 
@@ -1236,7 +1258,7 @@
 
 <p>If you're using Tourmaline and would like to have your bot added to this list, just submit a PR!</p>
 
-<ul><li><a href="https://t.me/fckeverywordbot" target="_blank">fckeverywordbot</a></li><li><a href="https://t.me/pixieimagebot" target="_blank">PixieImageBot</a></li></ul>
+<ul><li><a href="https://t.me/pixieimagebot" target="_blank">PixieImageBot</a></li><li><a href="https://t.me/watzonutilitbot" target="_blank">Utilibot</a></li></ul>
 
 <h2><a id="contributing" class="anchor" href="#contributing">
   <svg class="octicon-link" aria-hidden="true">

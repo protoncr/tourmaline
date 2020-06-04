@@ -110,6 +110,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/ChosenInlineResultFilter" data-name="tourmaline::choseninlineresultfilter">
+      <a href="../Tourmaline/ChosenInlineResultFilter.html">ChosenInlineResultFilter</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Client" data-name="tourmaline::client">
       <a href="../Tourmaline/Client.html">Client</a>
       
@@ -1198,15 +1203,15 @@
     Overview
   </h2>
 
-  <p>Filters messages containing a specfic inline query callback.</p>
+  <p>Filters messages containing a specfic inline query pattern.</p>
 
 <p>Options:</p>
 
-<ul><li><code>callback : String | Regex</code> - string or regex to match</li></ul>
+<ul><li><code>pattern : (String | Regex)?</code> - string or regex to match</li></ul>
 
 <p>Context additions:</p>
 
-<ul><li><code>match : Regex::MatchData</code> - the match data returned by the successful match</li></ul>
+<ul><li><code>query : String?</code> - The query that was matched</li><li><code>match : Regex::MatchData</code> - the match data returned by the successful match</li></ul>
 
 <p>Example:</p>
 
@@ -1250,7 +1255,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(callback:String%7CRegex?=nil)-class-method" class="signature"><strong>.new</strong>(callback : String | Regex? = <span class="n">nil</span>)</a>
+        <a href="#new(pattern:String%7CRegex?=nil)-class-method" class="signature"><strong>.new</strong>(pattern : String | Regex? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1271,17 +1276,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#callback:Regex?-instance-method" class="signature"><strong>#callback</strong> : Regex?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#callback=(callback:Regex?)-instance-method" class="signature"><strong>#callback=</strong>(callback : Regex?)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#exec(client:Client,update:Update):Bool-instance-method" class="signature"><strong>#exec</strong>(client : Client, update : Update) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pattern:Regex?-instance-method" class="signature"><strong>#pattern</strong> : Regex?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pattern=(pattern:Regex?)-instance-method" class="signature"><strong>#pattern=</strong>(pattern : Regex?)</a>
         
       </li>
     
@@ -1354,12 +1359,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(callback:String|Regex?=nil)-class-method">
+    <div class="entry-detail" id="new(pattern:String|Regex?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(callback : String | Regex? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(pattern : String | Regex? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(callback:String%7CRegex?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new(pattern:String%7CRegex?=nil)-class-method">#</a>
       </div>
       
       <br/>
@@ -1382,40 +1387,40 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="callback:Regex?-instance-method">
-      <div class="signature">
-        
-        def <strong>callback</strong> : Regex?
-
-        <a class="method-permalink" href="#callback:Regex?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="callback=(callback:Regex?)-instance-method">
-      <div class="signature">
-        
-        def <strong>callback=</strong>(callback : Regex?)
-
-        <a class="method-permalink" href="#callback=(callback:Regex?)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="exec(client:Client,update:Update):Bool-instance-method">
       <div class="signature">
         
         def <strong>exec</strong>(client : <a href="../Tourmaline/Client.html">Client</a>, update : <a href="../Tourmaline/Update.html">Update</a>) : Bool
 
         <a class="method-permalink" href="#exec(client:Client,update:Update):Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pattern:Regex?-instance-method">
+      <div class="signature">
+        
+        def <strong>pattern</strong> : Regex?
+
+        <a class="method-permalink" href="#pattern:Regex?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pattern=(pattern:Regex?)-instance-method">
+      <div class="signature">
+        
+        def <strong>pattern=</strong>(pattern : Regex?)
+
+        <a class="method-permalink" href="#pattern=(pattern:Regex?)-instance-method">#</a>
       </div>
       
       <br/>

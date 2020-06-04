@@ -110,6 +110,11 @@
       
     </li>
   
+  <li class=" " data-id="/Tourmaline/ChosenInlineResultFilter" data-name="tourmaline::choseninlineresultfilter">
+      <a href="../Tourmaline/ChosenInlineResultFilter.html">ChosenInlineResultFilter</a>
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Client" data-name="tourmaline::client">
       <a href="../Tourmaline/Client.html">Client</a>
       
@@ -1202,11 +1207,11 @@
 
 <p>Options:</p>
 
-<ul><li>`pattern - A String or Regex which the data must match.</li></ul>
+<ul><li><code>pattern : (String | Regex)?</code> - string or regex to match</li></ul>
 
 <p>Context additions:</p>
 
-<ul><li><code>data : String?</code> - The data that was matched</li><li><code>match : Regex::MatchData</code> - the match data returned by the successful match (if it was a Regex)</li></ul>
+<ul><li><code>data : String?</code> - The data that was matched</li><li><code>match : Regex::MatchData</code> - the match data returned by the successful match</li></ul>
 
 <p>Example:</p>
 
@@ -1250,7 +1255,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(pattern:String%7CRegex?)-class-method" class="signature"><strong>.new</strong>(pattern : String | Regex?)</a>
+        <a href="#new(pattern:String%7CRegex?=nil)-class-method" class="signature"><strong>.new</strong>(pattern : String | Regex? = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1276,12 +1281,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#pattern:String%7CRegex%7CNil-instance-method" class="signature"><strong>#pattern</strong> : String | Regex | Nil</a>
+        <a href="#pattern:Regex?-instance-method" class="signature"><strong>#pattern</strong> : Regex?</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#pattern=(pattern:String%7CRegex%7CNil)-instance-method" class="signature"><strong>#pattern=</strong>(pattern : String | Regex | Nil)</a>
+        <a href="#pattern=(pattern:Regex?)-instance-method" class="signature"><strong>#pattern=</strong>(pattern : Regex?)</a>
         
       </li>
     
@@ -1354,12 +1359,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pattern:String|Regex?)-class-method">
+    <div class="entry-detail" id="new(pattern:String|Regex?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pattern : String | Regex?)
+        def self.<strong>new</strong>(pattern : String | Regex? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(pattern:String%7CRegex?)-class-method">#</a>
+        <a class="method-permalink" href="#new(pattern:String%7CRegex?=nil)-class-method">#</a>
       </div>
       
       <br/>
@@ -1396,12 +1401,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="pattern:String|Regex|Nil-instance-method">
+    <div class="entry-detail" id="pattern:Regex?-instance-method">
       <div class="signature">
         
-        def <strong>pattern</strong> : String | Regex | Nil
+        def <strong>pattern</strong> : Regex?
 
-        <a class="method-permalink" href="#pattern:String%7CRegex%7CNil-instance-method">#</a>
+        <a class="method-permalink" href="#pattern:Regex?-instance-method">#</a>
       </div>
       
       <br/>
@@ -1410,12 +1415,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="pattern=(pattern:String|Regex|Nil)-instance-method">
+    <div class="entry-detail" id="pattern=(pattern:Regex?)-instance-method">
       <div class="signature">
         
-        def <strong>pattern=</strong>(pattern : String | Regex | Nil)
+        def <strong>pattern=</strong>(pattern : Regex?)
 
-        <a class="method-permalink" href="#pattern=(pattern:String%7CRegex%7CNil)-instance-method">#</a>
+        <a class="method-permalink" href="#pattern=(pattern:Regex?)-instance-method">#</a>
       </div>
       
       <br/>
