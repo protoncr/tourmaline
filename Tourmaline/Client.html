@@ -1280,7 +1280,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(api_key:String,persistence:Persistence=NilPersistence.new,endpoint=DEFAULT_API_URL,pool_capacity=200,initial_pool_size=20,pool_timeout=0.1)-class-method" class="signature"><strong>.new</strong>(api_key : String, persistence : Persistence = <span class="t">NilPersistence</span>.<span class="k">new</span>, endpoint = <span class="t">DEFAULT_API_URL</span>, pool_capacity = <span class="n">200</span>, initial_pool_size = <span class="n">20</span>, pool_timeout = <span class="n">0.1</span>)</a>
+        <a href="#new(api_key:String,endpoint=DEFAULT_API_URL,*,persistence:Persistence=NilPersistence.new,pool_capacity=200,initial_pool_size=20,pool_timeout=0.1,proxy=nil,proxy_uri=nil,proxy_host=nil,proxy_port=nil,proxy_user=nil,proxy_pass=nil)-class-method" class="signature"><strong>.new</strong>(api_key : String, endpoint = <span class="t">DEFAULT_API_URL</span>, *, persistence : Persistence = <span class="t">NilPersistence</span>.<span class="k">new</span>, pool_capacity = <span class="n">200</span>, initial_pool_size = <span class="n">20</span>, pool_timeout = <span class="n">0.1</span>, proxy = <span class="n">nil</span>, proxy_uri = <span class="n">nil</span>, proxy_host = <span class="n">nil</span>, proxy_port = <span class="n">nil</span>, proxy_user = <span class="n">nil</span>, proxy_pass = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Create a new instance of <code><a href="../Tourmaline/Client.html">Tourmaline::Client</a></code>.</p></div>
         
@@ -1943,19 +1943,39 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(api_key:String,persistence:Persistence=NilPersistence.new,endpoint=DEFAULT_API_URL,pool_capacity=200,initial_pool_size=20,pool_timeout=0.1)-class-method">
+    <div class="entry-detail" id="new(api_key:String,endpoint=DEFAULT_API_URL,*,persistence:Persistence=NilPersistence.new,pool_capacity=200,initial_pool_size=20,pool_timeout=0.1,proxy=nil,proxy_uri=nil,proxy_host=nil,proxy_port=nil,proxy_user=nil,proxy_pass=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(api_key : String, persistence : <a href="../Tourmaline/Persistence.html">Persistence</a> = <span class="t">NilPersistence</span>.<span class="k">new</span>, endpoint = <span class="t">DEFAULT_API_URL</span>, pool_capacity = <span class="n">200</span>, initial_pool_size = <span class="n">20</span>, pool_timeout = <span class="n">0.1</span>)
+        def self.<strong>new</strong>(api_key : String, endpoint = <span class="t">DEFAULT_API_URL</span>, *, persistence : <a href="../Tourmaline/Persistence.html">Persistence</a> = <span class="t">NilPersistence</span>.<span class="k">new</span>, pool_capacity = <span class="n">200</span>, initial_pool_size = <span class="n">20</span>, pool_timeout = <span class="n">0.1</span>, proxy = <span class="n">nil</span>, proxy_uri = <span class="n">nil</span>, proxy_host = <span class="n">nil</span>, proxy_port = <span class="n">nil</span>, proxy_user = <span class="n">nil</span>, proxy_pass = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(api_key:String,persistence:Persistence=NilPersistence.new,endpoint=DEFAULT_API_URL,pool_capacity=200,initial_pool_size=20,pool_timeout=0.1)-class-method">#</a>
+        <a class="method-permalink" href="#new(api_key:String,endpoint=DEFAULT_API_URL,*,persistence:Persistence=NilPersistence.new,pool_capacity=200,initial_pool_size=20,pool_timeout=0.1,proxy=nil,proxy_uri=nil,proxy_host=nil,proxy_port=nil,proxy_user=nil,proxy_pass=nil)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Create a new instance of <code><a href="../Tourmaline/Client.html">Tourmaline::Client</a></code>. It is
-highly recommended to set <code>@api_key</code> at an environment
-variable.</p>
+          <p>Create a new instance of <code><a href="../Tourmaline/Client.html">Tourmaline::Client</a></code>.</p>
+
+<h2><a id="arguments" class="anchor" href="#arguments">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Arguments</h2>
+
+<h3><a id="positional" class="anchor" href="#positional">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Positional</h3>
+
+<ul><li><code>api_key</code> - required; the bot token you were provided with by <code>@BotFather</code></li><li><code>endpoint</code> - the Telegram bot API endpoint to use; defaults to <code>https://api.telegram.org</code></li></ul>
+
+<h3><a id="named" class="anchor" href="#named">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Named</h3>
+
+<ul><li><code>persistence</code> - the persistence strategy to use</li><li><code>pool_capacity</code> - the maximum number of concurrent HTTP connections to use</li><li><code>initial_pool_size</code> - the number of HTTP::Client instances to create on init</li><li><code>pool_timeout</code> - How long to wait for a new client to be available if the pool is full before throwing a <code>TimeoutError</code></li><li><code>proxy</code> - an instance of <code>HTTP::Proxy::Client</code> to use; if set, overrides the following <code>proxy_</code> args</li><li><code>proxy_uri</code> - a URI to use when connecting to the proxy; can be a <code>URI</code> instance or a String</li><li><code>proxy_host</code> - if no <code>proxy_uri</code> is provided, this will be the host for the URI</li><li><code>proxy_port</code> - if no <code>proxy_uri</code> is provided, this will be the port for the URI</li><li><code>proxy_user</code> - a username to use for a proxy that requires authentication</li><li><code>proxy_pass</code> - a password to use for a proxy that requires authentication</li></ul>
         </div>
       
       <br/>

@@ -1201,20 +1201,6 @@
   <p>Convenience class for creating an <code>InlineKeyboard</code> with built in pagination.
 It is designed to be customizable so as not to get in your way.</p>
 
-<p><strong>Initialization Params:</strong></p>
-
-<ul><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#results:Array(String)-instance-method">#results</a></code> - the initial set of results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#per_page:Int32-instance-method">#per_page</a></code> - the number of results to show on each page</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#header:String?-instance-method">#header</a></code> - text to be displayed above the results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#footer:String?-instance-method">#footer</a></code> - text to be displayed below the results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> - a string to be added to the beginning of each item</li><li><code>back_text</code> - text to use for the back button</li><li><code>next_text</code> - text to use for the next button</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#id:String-instance-method">#id</a></code> - an id to be used both as the <code>group</code> name, and the prefix for the callback query data</li></ul>
-
-<p><strong>Formatting:</strong>
-The params <code><a href="../Tourmaline/PagedInlineKeyboard.html#header:String?-instance-method">#header</a></code>, <code><a href="../Tourmaline/PagedInlineKeyboard.html#footer:String?-instance-method">#footer</a></code>, and <code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> are formatted prior to being injected into the message.</p>
-
-<ul><li><code>{page}</code> - will be replaced with the current page number, starting at 1</li><li><code>{page count}</code> - will be replaced with the total number of pages</li><li><code>{index}</code> - for <code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> only, gets replaced with the index of the current item, starting at 1</li></ul>
-
-<p><strong>Events:</strong>
-If you want to subscribe to the back/next button clicks you can do that too, using the methods
-<code><a href="../Tourmaline/PagedInlineKeyboard.html#on_back(&block:self-%3E)-instance-method">#on_back</a></code> and <code><a href="../Tourmaline/PagedInlineKeyboard.html#on_next(&block:self-%3E)-instance-method">#on_next</a></code>. Each takes a block that returns the keyboard right after incrementing
-the current page number.</p>
-
 
 
 
@@ -1551,20 +1537,6 @@ the current page number.</p>
           
           <p>Convenience class for creating an <code>InlineKeyboard</code> with built in pagination.
 It is designed to be customizable so as not to get in your way.</p>
-
-<p><strong>Initialization Params:</strong></p>
-
-<ul><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#results:Array(String)-instance-method">#results</a></code> - the initial set of results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#per_page:Int32-instance-method">#per_page</a></code> - the number of results to show on each page</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#header:String?-instance-method">#header</a></code> - text to be displayed above the results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#footer:String?-instance-method">#footer</a></code> - text to be displayed below the results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> - a string to be added to the beginning of each item</li><li><code>back_text</code> - text to use for the back button</li><li><code>next_text</code> - text to use for the next button</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#id:String-instance-method">#id</a></code> - an id to be used both as the <code>group</code> name, and the prefix for the callback query data</li></ul>
-
-<p><strong>Formatting:</strong>
-The params <code><a href="../Tourmaline/PagedInlineKeyboard.html#header:String?-instance-method">#header</a></code>, <code><a href="../Tourmaline/PagedInlineKeyboard.html#footer:String?-instance-method">#footer</a></code>, and <code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> are formatted prior to being injected into the message.</p>
-
-<ul><li><code>{page}</code> - will be replaced with the current page number, starting at 1</li><li><code>{page count}</code> - will be replaced with the total number of pages</li><li><code>{index}</code> - for <code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> only, gets replaced with the index of the current item, starting at 1</li></ul>
-
-<p><strong>Events:</strong>
-If you want to subscribe to the back/next button clicks you can do that too, using the methods
-<code><a href="../Tourmaline/PagedInlineKeyboard.html#on_back(&block:self-%3E)-instance-method">#on_back</a></code> and <code><a href="../Tourmaline/PagedInlineKeyboard.html#on_next(&block:self-%3E)-instance-method">#on_next</a></code>. Each takes a block that returns the keyboard right after incrementing
-the current page number.</p>
         </div>
       
       <br/>
@@ -1603,6 +1575,24 @@ the current page number.</p>
         <div class="doc">
           
           <p>Creates a new <code><a href="../Tourmaline/PagedInlineKeyboard.html">PagedInlineKeyboard</a></code>, yielding the newly created keyboard to the block</p>
+
+<h2><a id="arguments" class="anchor" href="#arguments">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Arguments</h2>
+
+<ul><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#results:Array(String)-instance-method">#results</a></code> - the initial set of results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#per_page:Int32-instance-method">#per_page</a></code> - the number of results to show on each page</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#header:String?-instance-method">#header</a></code> - text to be displayed above the results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#footer:String?-instance-method">#footer</a></code> - text to be displayed below the results</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> - a string to be added to the beginning of each item</li><li><code>back_text</code> - text to use for the back button</li><li><code>next_text</code> - text to use for the next button</li><li><code><a href="../Tourmaline/PagedInlineKeyboard.html#id:String-instance-method">#id</a></code> - an id to be used both as the <code>group</code> name, and the prefix for the callback query data</li></ul>
+
+<h1><a id="formatting" class="anchor" href="#formatting">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Formatting</h1>
+
+<p>The params <code><a href="../Tourmaline/PagedInlineKeyboard.html#header:String?-instance-method">#header</a></code>, <code><a href="../Tourmaline/PagedInlineKeyboard.html#footer:String?-instance-method">#footer</a></code>, and <code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> are formatted prior to being injected into the message.</p>
+
+<ul><li><code>{page}</code> - will be replaced with the current page number, starting at 1</li><li><code>{page count}</code> - will be replaced with the total number of pages</li><li><code>{index}</code> - for <code><a href="../Tourmaline/PagedInlineKeyboard.html#prefix:String?-instance-method">#prefix</a></code> only, gets replaced with the index of the current item, starting at 1</li></ul>
         </div>
       
       <br/>
