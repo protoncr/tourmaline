@@ -3,33 +3,31 @@ require "../src/tourmaline/persistence/json_persistence"
 
 
 class PersistentBot < Tourmaline::Client
-  include JsonPersistence
-
   @[Command("seen")]
-  def seen_command(ctx)
-    users = persisted_users.map(&.[1].id).join('\n')
-    ctx.reply(users)
+  def seen_command(client, update)
+    users = @persistence.as(JsonPersistence).persisted_users.map(&.[1].id).join('\n')
+    update.message.try &.reply(users)
   end
 
   @[Command("info")]
-  def info_command(ctx)
-    uid = ctx.text.lstrip('@')
+  def info_command(client, update)
+    uid = update.context["text"].as_s.lstrip('@')
     if i = uid.to_i64?
       uid = i
     end
 
-    if user = get_user(uid)
+    if user = @persistence.get_user(uid)
       message = String.build do |str|
         str.puts user.inline_mention
         str.puts "  id: `#{user.id}`"
         str.puts "  username: `#{user.username}`"
       end
-      ctx.reply(message, parse_mode: :markdown)
+      update.message.try &.reply(message, parse_mode: :markdown)
     else
-      ctx.reply("User not found")
+      update.message.try &.reply("User not found")
     end
   end
 end
 
-bot = PersistentBot.new(ENV["API_KEY"])
+bot = PersistentBot.new(ENV["API_KEY"], persistence: Tourmaline::JsonPersistence.new)
 bot.poll

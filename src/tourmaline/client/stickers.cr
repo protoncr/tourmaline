@@ -49,11 +49,21 @@ module Tourmaline
 
     # Use this method to add a new sticker to a set created by the bot.
     # Returns `true` on success.
-    def add_sticker_to_set(user_id, name, png_sticker, emojis, mask_position = nil)
+    def add_sticker_to_set(
+      user_id,
+      name,
+      emojis,
+      png_sticker = nil,
+      tgs_sticker = nil,
+      mask_position = nil
+    )
+      raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker
+
       response = request("addStickerToSet", {
         user_id:       user_id,
         name:          name,
         png_sticker:   png_sticker,
+        tgs_sticker:   tgs_sticker,
         emojis:        emojis,
         mask_position: mask_position,
       })
@@ -62,22 +72,26 @@ module Tourmaline
     end
 
     # Use this method to create new sticker set owned by a user. The bot will be able to
-    # edit the created sticker set.
+    # edit the created sticker set. You must use exactly one of the fields `png_sticker` or `tgs_sticker`.
     # Returns `true` on success.
     def create_new_sticker_set(
       user_id,
       name,
       title,
-      png_sticker,
       emojis,
+      png_sticker = nil,
+      tgs_sticker = nil,
       contains_masks = nil,
       mask_position = nil
     )
+      raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker
+
       response = request("createNewStickerSet", {
         user_id:        user_id,
         name:           name,
         title:          title,
         png_sticker:    png_sticker,
+        tgs_sticker:    tgs_sticker,
         emojis:         emojis,
         contains_masks: contains_masks,
         mask_position:  mask_position,
@@ -123,14 +137,27 @@ module Tourmaline
     # Use this method to upload a .png file with a sticker for later use in
     # `#create_new_sticker_set` and `#add_sticker_to_set` methods (can be
     # used multiple times).
-    # Returns the uploaded `File` on success.
+    # Returns the uploaded `TFile` on success.
     def upload_sticker_file(user_id, png_sticker)
       response = request("uploadStickerFile", {
         user_id:     user_id,
         png_sticker: png_sticker,
       })
 
-      File.from_json(response)
+      TFile.from_json(response)
+    end
+
+    # Use this method to set the thumbnail of a sticker set. Animated thumbnails can be
+    # set for animated sticker sets only.
+    # Returns `true` on success.
+    def set_sticker_set_thumb(name, user, thumb = nil)
+      user_id = user.is_a?(Int) ? user : user.id
+
+      request("setStickerSetThumb", {
+        name: name,
+        user_id: user_id,
+        thumb: thumb
+      })  == "true"
     end
   end
 end

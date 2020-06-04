@@ -1,4 +1,7 @@
 # :nodoc:
-module Tourmaline::Container
-  class_property! client : Tourmaline::Client
+module Tourmaline
+  # :nodoc:
+  module Container
+    class_property! client : Tourmaline::Client
+  end
 end

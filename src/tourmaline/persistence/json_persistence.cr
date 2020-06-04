@@ -2,17 +2,17 @@ require "json"
 require "./hash_persistence"
 
 module Tourmaline
-  module JsonPersistence
-    include Persistence
-    include HashPersistence
+  # Persists users and chats in a json file. This isn't the most efficient, but it
+  # is easy to set up for testing.
+  class JsonPersistence < HashPersistence
+    property filename : String
 
-    macro included
-      getter filename : String = {{ @type.stringify }}.underscore + ".json"
+    def initialize(@filename = "tourmaline_persistence.json")
     end
 
-    def init_p
-      if ::File.file?(@filename)
-        json = ::File.read(@filename)
+    def init
+      if File.file?(@filename)
+        json = File.read(@filename)
         parsed = NamedTuple(
           users: Hash(Int64, User),
           user_ids: Hash(String, Int64),
@@ -26,15 +26,15 @@ module Tourmaline
       end
     end
 
-    def cleanup_p
-      @@logger.info("Persisting data...")
+    def cleanup
+      Log.info { "Persisting data..." }
       json = {
         users: @persisted_users,
         user_ids: @persisted_user_ids,
         chats: @persisted_chats,
         chat_ids: @persisted_chat_ids
       }
-      ::File.write(@filename, json.to_json)
+      File.write(@filename, json.to_json)
     end
   end
 end

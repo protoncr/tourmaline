@@ -26,9 +26,9 @@ module Tourmaline
     # An `Array` of `Update` objects is returned.
     def get_updates(
       offset = @next_offset,
-      limit = nil,
-      timeout = @updates_timeout,
-      allowed_updates = @allowed_updates
+      limit = 100,
+      timeout = 0,
+      allowed_updates = [] of String
     )
       response = request("getUpdates", {
         offset:          offset,
@@ -143,7 +143,7 @@ module Tourmaline
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
-      response = request("editMesasageCaption", {
+      response = request("editMessageCaption", {
         chat_id:           chat_id,
         caption:           caption,
         message_id:        message_id,
@@ -173,7 +173,7 @@ module Tourmaline
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
 
-      response = request("editMesasageReplyMarkup", {
+      response = request("editMessageReplyMarkup", {
         chat_id:           chat_id,
         message_id:        message_id,
         inline_message_id: inline_message_id,
@@ -265,8 +265,7 @@ module Tourmaline
         chat_id: chat_id,
       })
 
-      admins = Array(ChatMember).from_json(response)
-      admins.map { |admin| admin.chat_id = chat_id }
+      Array(ChatMember).from_json(response)
     end
 
     # Use this method to get information about a member of a chat. Returns a
@@ -299,7 +298,7 @@ module Tourmaline
 
     # Use this method to get basic info about a file and prepare it for downloading.
     # For the moment, bots can download files of up to **20MB** in size. On success,
-    # a `File` object is returned. The file can then be downloaded via the
+    # a `TFile` object is returned. The file can then be downloaded via the
     # link `https://api.telegram.org/file/bot<token>/<file_path>`, where
     # `<file_path>` is taken from the response. It is guaranteed that
     # the link will be valid for at least 1 hour. When the link
@@ -311,13 +310,13 @@ module Tourmaline
         file_id: file_id,
       })
 
-      File.from_json(response)
+      TFile.from_json(response)
     end
 
-    # Returns a download link for a `File`.
+    # Returns a download link for a `TFile`.
     def get_file_link(file)
       if file_path = file.file_path
-        ::File.join("#{API_URL}/file/bot#{@api_key}", file_path)
+        File.join("#{API_URL}/file/bot#{@api_key}", file_path)
       end
     end
 
@@ -401,7 +400,7 @@ module Tourmaline
     )
       chat_id = chat.is_a?(Int) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
-      until_date = until_date.to_unix unless until_date.is_a?(Int)
+      until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
       permissions = permissions.is_a?(NamedTuple) ? ChatPermissions.new(**permissions) : permissions
 
       response = request("restrictChatMember", {
@@ -528,7 +527,7 @@ module Tourmaline
         permissions: permissions.to_json,
       })
 
-      response == true
+      response == "true"
     end
 
     # Use this method to change the title of a chat. Titles can't be changed for
@@ -729,6 +728,50 @@ module Tourmaline
         disable_notification: disable_notification,
         reply_to_message_id:  reply_to_message_id,
         reply_markup:         reply_markup ? reply_markup.to_json : nil,
+      })
+
+      Message.from_json(response)
+    end
+
+    # Use this method to send a dice, which will have a random value from 1 to 6.
+    # On success, the sent Message is returned.
+    def send_dice(
+      chat,
+      disable_notification = false,
+      reply_to_message = nil,
+      reply_markup = nil
+    )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
+      response = request("sendDice", {
+        chat_id:              chat_id,
+        emoji:                "🎲",
+        disable_notification: disable_notification,
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup,
+      })
+
+      Message.from_json(response)
+    end
+
+    # Use this method to send a dart animation, which works as a random "heads or tails"
+    # kind of game.
+    def send_dart(
+      chat,
+      disable_notification = false,
+      reply_to_message = nil,
+      reply_markup = nil
+    )
+      chat_id = chat.is_a?(Int) ? chat : chat.id
+      reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+
+      response = request("sendDice", {
+        chat_id:              chat_id,
+        emoji:                "🎯",
+        disable_notification: disable_notification,
+        reply_to_message_id:  reply_to_message_id,
+        reply_markup:         reply_markup,
       })
 
       Message.from_json(response)
@@ -1096,6 +1139,27 @@ module Tourmaline
       Message.from_json(response)
     end
 
+    # Use this method to change the list of the bot's commands.
+    # Returns `true` on success.
+    def set_my_commands(
+      commands : Array(BotCommand | NamedTuple(command: String, description: String))
+    )
+      # commands = commands.map(&.to_h.transform_keys(&.to_s))
+
+      response = request("setMyCommands", {
+        commands: commands,
+      })
+
+      response == "true"
+    end
+
+    # Use this method to get the current list of the bot's commands. Requires no parameters.
+    # Returns Array of BotCommand on success.
+    def get_my_commands
+      response = request("getMyCommands")
+      Array(BotCommand).from_json(response)
+    end
+
     ##########################
     #        POLLING         #
     ##########################
@@ -1107,7 +1171,7 @@ module Tourmaline
       unset_webhook
       @polling = true
 
-      @@logger.info("Polling for updates")
+      Log.info { "Polling for updates" }
       while @polling
         begin
           updates = get_updates
@@ -1115,7 +1179,7 @@ module Tourmaline
             handle_update(u)
           end
         rescue exception
-          @@logger.error(exception.message.to_s)
+          Log.error { exception.inspect_with_backtrace }
         end
       end
     end

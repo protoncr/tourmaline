@@ -20,37 +20,37 @@ class ShopBot < Tourmaline::Client
     ShippingOption.new("slowpoke", "Slowpoke Mail", [LabeledPrice.new(label: "Unicorn", amount: 100)]),
   ]
 
-  REPLY_MARKUP = Markup.inline_buttons([[
-    Markup.pay_button("💸 Buy"),
-    Markup.url_button("❤️", "https://github.com/watzon/tourmaline"),
-  ]]).inline_keyboard
+  REPLY_MARKUP = InlineKeyboardMarkup.build do
+    pay_button "💸 Buy"
+    url_button "❤️", "https://github.com/watzon/tourmaline"
+  end
 
   @[Command("start")]
-  def start_command(ctx)
-    ctx.reply_with_invoice(**INVOICE)
+  def start_command(client, update)
+    update.message.try &.reply_with_invoice(**INVOICE)
   end
 
   @[Command("buy")]
-  def buy_command(ctx)
-    ctx.reply_with_invoice(**INVOICE, reply_markup: REPLY_MARKUP)
+  def buy_command(client, update)
+    update.message.try &.reply_with_invoice(**INVOICE, reply_markup: REPLY_MARKUP)
   end
 
   @[On(:shipping_query)]
-  def on_shipping_query(ctx)
-    if query = ctx.shipping_query
+  def on_shipping_query(client, update)
+    if query = update.shipping_query
       query.answer(true, shipping_options: SHIPPING_OPTIONS)
     end
   end
 
   @[On(:pre_checkout_query)]
-  def on_pre_checkout_query(ctx)
-    if query = ctx.pre_checkout_query
+  def on_pre_checkout_query(client, update)
+    if query = update.pre_checkout_query
       query.answer(true)
     end
   end
 
   @[On(:successful_payment)]
-  def on_successful_payment(ctx)
+  def on_successful_payment(client, update)
     puts "Wooooo"
   end
 end

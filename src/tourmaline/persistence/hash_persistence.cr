@@ -1,32 +1,17 @@
 require "json"
 
 module Tourmaline
-  module HashPersistence
-    include Persistence
-
-    macro included
-      getter filename : String = {{ @type.stringify }}.underscore + ".json"
-    end
+  # Stores all persisted data in memory using a collection of hash tables.
+  class HashPersistence < Persistence
+    getter filename : String
 
     getter persisted_users = {} of Int64 => User
     getter persisted_chats = {} of Int64 => Chat
     getter persisted_user_ids = {} of String => Int64
     getter persisted_chat_ids = {} of String => Int64
 
-    def insert_user(user : User) : User
-      @persisted_users[user.id] ||= user
-      if username = user.username
-        @persisted_user_ids[username] ||= user.id
-      end
-      user
-    end
-
-    def insert_chat(chat : Chat) : Chat
-      @persisted_chats[chat.id] ||= chat
-      if username = chat.username
-        @persisted_chat_ids[username] ||= chat.id
-      end
-      chat
+    def initialize(filename = nil)
+      @filename = filename || "tourmaline_persistence.json"
     end
 
     def update_user(user : User) : User
@@ -75,24 +60,21 @@ module Tourmaline
       @persisted_chats[chat_id.to_i64]?
     end
 
-    def get_chat(username : String) : User?
+    def get_chat(username : String) : Chat?
       if id = @persisted_chat_ids[username]?
         @persisted_chats[id]?
       end
     end
 
-    def handle_persistent_update(update : Update)
-      persisted_users = get_users_from_update(update)
-      persisted_chats = get_chats_from_update(update)
-
-      persisted_users.each &->update_user(User)
-      persisted_chats.each &->update_chat(Chat)
+    def handle_update(update : Update)
+      update.users.each &->update_user(User)
+      update.chats.each &->update_chat(Chat)
     end
 
-    def init_p
+    def init
     end
 
-    def cleanup_p
+    def cleanup
     end
   end
 end

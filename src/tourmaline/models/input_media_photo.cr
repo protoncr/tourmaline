@@ -6,13 +6,13 @@ module Tourmaline
 
     @type = "photo"
 
-    property media : String | ::File
+    property media : String | File
 
     property caption : String?
 
-    property parse_mode : String?
+    property parse_mode : ParseMode?
 
-    def initialize(@media : String, @caption : String? = nil, @parse_mode : String? = nil)
+    def initialize(@media : String, @caption : String? = nil, @parse_mode : ParseMode? = nil)
     end
   end
 end

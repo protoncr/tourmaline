@@ -33,6 +33,30 @@ module Tourmaline
 
     getter can_set_sticker_set : Bool?
 
+    def name
+      if first_name || last_name
+        [first_name, last_name].compact.join(" ")
+      else
+        title.to_s
+      end
+    end
+
+    def supergroup?
+      type == "supergroup"
+    end
+
+    def private?
+      type == "private"
+    end
+
+    def group?
+      type == "group"
+    end
+
+    def channel?
+      type == "channel"
+    end
+
     def invite_link
       Container.client.export_chat_invite_link(id)
     end

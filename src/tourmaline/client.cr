@@ -1,6 +1,3 @@
-require "halite"
-require "mime/multipart"
-
 require "./helpers"
 require "./error"
 require "./logger"
@@ -8,125 +5,152 @@ require "./persistence"
 require "./parse_mode"
 require "./container"
 require "./chat_action"
-require "./update_action"
 require "./models/*"
-require "./fiber"
+require "./update_action"
+require "./update_context"
 require "./annotations"
-require "./handler"
+require "./filter"
+require "./event_handler"
 require "./client/*"
-require "./markup"
-require "./query_result_builder"
+require "pool/connection"
 
 module Tourmaline
   # The `Client` class is the base class for all Tourmaline based bots.
   # Extend this class to create your own bots, or create an
-  # instance of `Client` and add commands and listenters to it.
+  # instance of `Client` and add event handlers to it.
   class Client
     macro inherited
       include Tourmaline
     end
 
     include Logger
-    include Handler::Annotator
+    include EventHandler::Annotator
 
-    API_URL = "https://api.telegram.org/"
+    DEFAULT_API_URL = "https://api.telegram.org/"
 
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
     # `@bot_name` to `get_me.username.to_s`.
     getter bot_name : String { get_me.username.to_s }
-    getter handlers : Hash(UpdateAction, Array(Handler))
 
-    property endpoint_url : String
+    private getter event_handlers : Array(EventHandler)
+    private getter persistence : Persistence
 
-    # Create a new instance of `Tourmaline::Client`. It is
-    # highly recommended to set `@api_key` at an environment
-    # variable. `@logger` can be any logger that extends
-    # Crystal's built in Logger.
-    def initialize(
-      @api_key : String,
-      @updates_timeout : Int32? = nil,
-      @allowed_updates : Array(String)? = nil
-    )
-      @endpoint_url = Path[API_URL, "bot" + @api_key].to_s
-      @handlers = {} of UpdateAction => Array(Handler)
+    @pool : ConnectionPool(HTTP::Client)
 
-      register_annotated_methods
-      Container.client = self
+    # Create a new instance of `Tourmaline::Client`.
+    #
+    # ## Arguments
+    #
+    # ### Positional
+    # - `api_key` - required; the bot token you were provided with by `@BotFather`
+    # - `endpoint` - the Telegram bot API endpoint to use; defaults to `https://api.telegram.org`
+    #
+    # ### Named
+    # - `persistence` - the persistence strategy to use
+    # - `pool_capacity` - the maximum number of concurrent HTTP connections to use
+    # - `initial_pool_size` - the number of HTTP::Client instances to create on init
+    # - `pool_timeout` - How long to wait for a new client to be available if the pool is full before throwing a `TimeoutError`
+    # - `proxy` - an instance of `HTTP::Proxy::Client` to use; if set, overrides the following `proxy_` args
+    # - `proxy_uri` - a URI to use when connecting to the proxy; can be a `URI` instance or a String
+    # - `proxy_host` - if no `proxy_uri` is provided, this will be the host for the URI
+    # - `proxy_port` - if no `proxy_uri` is provided, this will be the port for the URI
+    # - `proxy_user` - a username to use for a proxy that requires authentication
+    # - `proxy_pass` - a password to use for a proxy that requires authentication
+    def initialize(@api_key : String,
+                   endpoint = DEFAULT_API_URL,
+                   *,
+                   @persistence : Persistence = NilPersistence.new,
+                   pool_capacity = 200,
+                   initial_pool_size = 20,
+                   pool_timeout = 0.1,
+                   proxy = nil,
+                   proxy_uri = nil,
+                   proxy_host = nil,
+                   proxy_port = nil,
+                   proxy_user = nil,
+                   proxy_pass = nil)
+      if !proxy
+        if proxy_uri
+          proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")
+          proxy_host = proxy_uri.host
+          proxy_port = proxy_uri.port
+          proxy_user = proxy_uri.user if proxy_uri.user
+          proxy_pass = proxy_uri.password if proxy_uri.password
+        end
 
-      if self.is_a?(Persistence)
-        self.init_p
-        [Signal::INT, Signal::TERM].each do |sig|
-          sig.trap { self.cleanup_p; exit }
+        if proxy_host && proxy_port
+          proxy = HTTP::Proxy::Client.new(proxy_host, proxy_port, username: proxy_user, password: proxy_pass)
         end
       end
-    end
 
-    def add_handler(handler : Handler)
-      handler.actions.each do |action|
-        @handlers[action] ||= [] of Handler
-        @handlers[action] << handler
+      @pool = ConnectionPool(HTTP::Client).new(capacity: pool_capacity, initial: initial_pool_size, timeout: pool_timeout) do
+        client = HTTP::Client.new(URI.parse(endpoint))
+        client.set_proxy(proxy.dup) if proxy
+        client
+      end
+
+      @event_handlers = [] of EventHandler
+      register_event_handlers
+
+      Container.client = self
+
+      @persistence.init
+      [Signal::INT, Signal::TERM].each do |sig|
+        sig.trap { @persistence.cleanup; exit }
       end
     end
 
-    private def handle_update(update : Update)
-      if self.is_a?(Persistence)
-        self.handle_persistent_update(update)
-      end
-
-      actions = Helpers.actions_from_update(update)
-      actions.each do |action|
-        trigger_handlers(action, update)
-      end
+    def set_state(key, name)
+      @state_map[key.to_s.downcase] = name.to_s.downcase
     end
 
-    def trigger_handlers(action : UpdateAction, update : Update)
-      if handlers = @handlers[action]?
-        handlers.each do |handler|
-          handler.handle_update(self, update)
+    def add_event_handler(handler : EventHandler)
+      @event_handlers << handler
+    end
+
+    def handle_update(update : Update)
+      handled = [] of String
+      @event_handlers.each do |handler|
+        unless handled.includes?(handler.group)
+          if handler.handle_update(self, update)
+            @persistence.handle_update(update)
+            handled << handler.group
+          end
         end
       end
     end
 
     # Sends a json request to the Telegram Client API.
     private def request(method, params = {} of String => String)
-      method_url = ::File.join(@endpoint_url, method)
+      path = File.join("/bot" + @api_key, method)
       multipart = includes_media(params)
+      client = @pool.checkout
 
-      if multipart
-        config = build_form_data_config(params)
-        response = Halite.request(**config, uri: method_url)
-      else
-        config = build_json_config(params)
-        response = Halite.request(**config, uri: method_url)
+      Log.debug { "sending ►► #{method}(#{params.to_pretty_json})" }
+
+      begin
+        if multipart
+          config = build_form_data_config(params)
+          response = client.exec(**config, path: path)
+        else
+          config = build_json_config(params)
+          response = client.exec(**config, path: path)
+        end
+      rescue IO::TimeoutError
+        raise Error::RequestTimeoutError.new
+      ensure
+        @pool.checkin(client)
       end
 
       result = JSON.parse(response.body)
 
-      if res = result["result"]?
-        res.to_json
-      else
-        handle_error(response.status_code, result["description"].as_s)
-      end
-    end
+      Log.debug { "receiving ◄◄ #{result.to_pretty_json}" }
 
-    # Parses the status code and returns the right error
-    private def handle_error(code, message)
-      case code
-      when 401..403
-        raise Error::Unauthorized.new(message)
-      when 400
-        raise Error::BadRequest.new(message)
-      when 404
-        raise Error::InvalidToken.new
-      when 409
-        raise Error::Conflict.new(message)
-      when 413
-        raise Error::NetworkError.new("File too large. Check telegram api limits https://core.telegram.org/bots/api#senddocument.")
-      when 503
-        raise Error::NetworkError.new("Bad gateway")
+      if result["ok"].as_bool
+        result["result"].to_json
       else
-        raise Error.new("#{message} (#{code})")
+        raise Error.from_message(result["description"].as_s)
       end
     end
 
@@ -141,8 +165,8 @@ module Tourmaline
       params.values.any? do |val|
         case val
         when Array
-          val.any? { |v| v.is_a?(::File | InputMedia) }
-        when ::File, InputMedia
+          val.any? { |v| v.is_a?(File | InputMedia) }
+        when File, InputMedia
           true
         else
           false
@@ -152,9 +176,9 @@ module Tourmaline
 
     private def build_json_config(payload)
       {
-        verb:    "POST",
-        headers: {"Content-Type" => "application/json", "Connection" => "keep-alive"},
-        raw:     payload.to_h.compact.to_json, # TODO: Figure out why this is necessary
+        method:    "POST",
+        headers: HTTP::Headers{"Content-Type" => "application/json", "Connection" => "keep-alive"},
+        body:     payload.to_h.compact.to_json,
       }
     end
 
@@ -167,12 +191,12 @@ module Tourmaline
       end
 
       {
-        verb:    "POST",
-        headers: {
+        method:    "POST",
+        headers: HTTP::Headers{
           "Content-Type" => "multipart/form-data; boundary=#{boundary}",
           "Connection"   => "keep-alive",
         },
-        raw: formdata,
+        body: formdata,
       }
     end
 
@@ -193,8 +217,8 @@ module Tourmaline
       when InputMedia
         attach_form_media(form, value)
         form.body_part(headers, value.to_json)
-      when ::File
-        filename = ::File.basename(value.path)
+      when File
+        filename = File.basename(value.path)
         form.body_part(
           HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
           value
@@ -210,9 +234,9 @@ module Tourmaline
 
       {media: media, thumb: thumb}.each do |key, item|
         item = check_open_local_file(item)
-        if item.is_a?(::File)
+        if item.is_a?(File)
           id = Random.new.random_bytes(16).hexstring
-          filename = ::File.basename(item.path)
+          filename = File.basename(item.path)
 
           form.body_part(
             HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
@@ -230,8 +254,8 @@ module Tourmaline
 
     private def check_open_local_file(file)
       if file.is_a?(String)
-        if ::File.file?(file)
-          return ::File.open(file)
+        if File.file?(file)
+          return File.open(file)
         end
       end
       file

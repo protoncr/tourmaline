@@ -10,7 +10,7 @@ module Tourmaline
 
     getter from : User?
 
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter date : Time
 
     getter chat : Chat
@@ -23,14 +23,16 @@ module Tourmaline
 
     getter forward_signature : String?
 
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter forward_date : Time?
 
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter edit_date : Time?
 
     @[JSON::Field(key: "reply_to_message")]
     getter reply_message : Message?
+
+    getter via_bot : User?
 
     getter media_group_id : String?
 
@@ -66,6 +68,10 @@ module Tourmaline
 
     getter venue : Venue?
 
+    getter poll : Poll?
+
+    getter dice : Dice?
+
     getter new_chat_members : Array(User) = [] of Tourmaline::User
 
     getter left_chat_member : User?
@@ -92,6 +98,8 @@ module Tourmaline
 
     getter connected_website : String?
 
+    getter passport_data : PassportData?
+
     getter reply_markup : InlineKeyboardMarkup?
 
     def link
@@ -107,6 +115,33 @@ module Tourmaline
       entities.map do |item|
         {type: item.type, text: text[item.offset..item.size]}
       end
+    end
+
+    def users
+      users = [] of User?
+      users << self.from
+      users << self.forward_from
+      users << self.left_chat_member
+      users.concat(self.new_chat_members)
+      users.compact.uniq
+    end
+
+    def users(&block : User ->)
+      self.users.each { |u| block.call(u) }
+    end
+
+    def chats
+      chats = [] of Chat?
+      chats << self.chat
+      chats << self.forward_from_chat
+      if reply_message = self.reply_message
+        chats.concat(reply_message.chats)
+      end
+      chats.compact.uniq
+    end
+
+    def chats(&block : Chat ->)
+      self.chats.each { |c| block.call(c) }
     end
 
     # Delete the message. See `Tourmaline::Client#delete_message`.
@@ -159,7 +194,7 @@ module Tourmaline
       Container.client.send_message(chat, message, **kwargs, reply_to_message: nil)
     end
 
-    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll] %}
+    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll dice dart] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         Container.client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end

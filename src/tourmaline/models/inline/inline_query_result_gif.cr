@@ -18,6 +18,8 @@ module Tourmaline
 
     getter thumb_url : String
 
+    getter thumb_mime_type : String?
+
     getter title : String?
 
     getter caption : String?

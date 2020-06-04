@@ -2,16 +2,19 @@ require "../src/tourmaline"
 
 class LiveLocationBot < Tourmaline::Client
   @[Command("start")]
-  def send_live_location(ctx)
-    lat = 40.7608
-    lon = 111.8910
-    message = ctx.reply_with_location(lat, lon, live_period: 60)
-    60.times do
-      lat += rand * 0.001
-      lon += rand * 0.001
-      message.edit_live_location(lat, lon)
-      sleep(1)
+  def send_live_location(client, update)
+    if message = update.message
+      lat = 40.7608
+      lon = 111.8910
+      loc = message.reply_with_location(lat, lon, live_period: 60)
+      loop do
+        lat += rand * 0.0001
+        lon += rand * 0.0001
+        loc.edit_live_location(lat, lon)
+        sleep(5)
+      end
     end
+  rescue Error::MessageCantBeEdited
   end
 end
 

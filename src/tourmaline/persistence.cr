@@ -1,63 +1,60 @@
 module Tourmaline
-  module Persistence
-    abstract def insert_user(user : User) : User
-
-    abstract def update_chat(chat : Chat) : Chat
-
+  # Abstract class meant to be a base for other persistence classes.
+  # The point of persistence (currently) is to allow Users and Chats
+  # to be saved as they're seen, and then provide a way for both
+  # to be fetched by either id or username.
+  #
+  # Example:
+  # ```crystal
+  # bot = MyBot.new(API_KEY, persistence: Tourmaline::JsonPersistence.new)
+  # # ... do some things
+  # if user = bot.persistence.get_user?("foobar")
+  #   pp user
+  # end
+  # ```
+  #
+  abstract class Persistence
+    # Create or update the provided `User`.
     abstract def update_user(user : User) : User
 
+    # Create or update the provided `Chat`.
     abstract def update_chat(chat : Chat) : Chat
 
-    abstract def user_exists?(user_id) : Bool
+    # Returns true if the user with the provided `user_id` exists.
+    abstract def user_exists?(user_id : Int) : Bool
 
+    # Returns true if the user with the provided `username` exists.
+    abstract def user_exists?(usename : String) : Bool
+
+    # Returns true if the chat with the provided `chat_id` exists.
     abstract def chat_exists?(chat_id : Int) : Bool
 
+    # Returns true if the chat with the provided `username` exists.
+    abstract def chat_exists?(username : String) : Bool
+
+    # Fetches a user by `user_id`. Returns `nil` if the user is not found.
     abstract def get_user(user_id : Int) : User?
 
+    # Fetches a user by `username`. Returns `nil` if the user is not found.
+    abstract def get_user(username : String) : User?
+
+    # Fetches a chat by `chat_id`. Returns `nil` if the chat is not found.
     abstract def get_chat(chat_id : Int) : Chat?
 
-    abstract def handle_persistent_update(update : Update)
+    # Fetches a chat by `username`. Returns `nil` if the chat is not found.
+    abstract def get_chat(username : String) : Chat?
 
-    abstract def init_p
-    abstract def cleanup_p
+    # Takes an `Update` object, pulls out all unique `Chat`s and `User`s,
+    # and uses `update_user` and `update_chat` on each of them respectively.
+    abstract def handle_update(update : Update)
 
-    def get_users_from_update(update : Update)
-      users = [] of User?
+    # Gets called when the bot is initialized. This can be used for setup if
+    # you need access to the bot instance.
+    abstract def init
 
-      {% for msg in %w(message edited_message channel_post edited_channel_post) %}
-        if msg = update.{{msg.id}}
-          users << msg.from
-          users << msg.forward_from
-          users << msg.left_chat_member
-
-          users.concat msg.new_chat_members
-        end
-      {% end %}
-
-      {% for query in %w(inline_query chosen_inline_result callback_query shipping_query pre_checkout_query) %}
-        if query = update.{{query.id}}
-          users << query.from
-        end
-      {% end %}
-
-      if poll_answer = update.poll_answer
-        users << poll_answer.user
-      end
-
-      users.compact
-    end
-
-    def get_chats_from_update(update : Update)
-      chats = [] of Chat?
-
-      {% for msg in %w(message edited_message channel_post edited_channel_post) %}
-        if msg = update.{{msg.id}}
-          chats << msg.chat
-          chats << msg.forward_from_chat
-        end
-      {% end %}
-
-      chats.compact
-    end
+    # Gets called upon exit. It can be used to perform any necessary cleanup.
+    abstract def cleanup
   end
 end
+
+require "./persistence/nil_persistence"

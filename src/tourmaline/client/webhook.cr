@@ -9,7 +9,7 @@ module Tourmaline
           Fiber.current.telegram_bot_server_http_context = context
           handle_update(Update.from_json(context.request.body.not_nil!))
         rescue exception
-          @@logger.error(exception.message.to_s)
+          Log.error { exception.message.to_s }
         ensure
           Fiber.current.telegram_bot_server_http_context = nil
         end
@@ -27,7 +27,7 @@ module Tourmaline
         server.bind_tcp address, port
       end
 
-      @@logger.info("Listening for Telegram requests at #{address}:#{port}#{" with tls" if fl_use_ssl}")
+      Log.info { "Listening for Telegram requests at #{address}:#{port}#{" with tls" if fl_use_ssl}" }
       server.listen
     end
 
@@ -42,7 +42,7 @@ module Tourmaline
     # else knows your bot‘s token, you can be pretty sure it’s us.
     def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
       params = {url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate}
-      @@logger.info("Setting webhook to '#{url}'#{" with certificate" if certificate}")
+      Log.info { "Setting webhook to '#{url}'#{" with certificate" if certificate}" }
       request("setWebhook", params)
     end
 

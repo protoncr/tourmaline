@@ -1,7 +1,7 @@
 require "json"
 
 module Tourmaline
-  class File
+  class TFile
     include JSON::Serializable
 
     getter file_id : String

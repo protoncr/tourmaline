@@ -10,7 +10,7 @@ module Tourmaline
 
     getter pending_update_count : Int32
 
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter last_error_date : Time?
 
     getter last_error_message : String?

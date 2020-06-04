@@ -12,7 +12,7 @@ module Tourmaline
 
     getter custom_title : String?
 
-    @[JSON::Field(converter: Time::EpochMillisConverter)]
+    @[JSON::Field(converter: Time::EpochConverter)]
     getter until_date : Time?
 
     getter can_be_edited : Bool?
@@ -29,11 +29,15 @@ module Tourmaline
 
     getter can_restrict_members : Bool?
 
+    getter can_pin_messages : Bool?
+
     getter can_promote_members : Bool?
 
     getter can_send_messages : Bool?
 
     getter can_send_media_messages : Bool?
+
+    getter can_send_polls : Bool?
 
     getter can_send_other_messages : Bool?
 
