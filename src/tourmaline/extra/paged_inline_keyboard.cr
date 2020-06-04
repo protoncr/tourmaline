@@ -1,28 +1,6 @@
 module Tourmaline
   # Convenience class for creating an `InlineKeyboard` with built in pagination.
   # It is designed to be customizable so as not to get in your way.
-  #
-  # **Initialization Params:**
-  # - `results` - the initial set of results
-  # - `per_page` - the number of results to show on each page
-  # - `header` - text to be displayed above the results
-  # - `footer` - text to be displayed below the results
-  # - `prefix` - a string to be added to the beginning of each item
-  # - `back_text` - text to use for the back button
-  # - `next_text` - text to use for the next button
-  # - `id` - an id to be used both as the `group` name, and the prefix for the callback query data
-  #
-  # **Formatting:**
-  # The params `header`, `footer`, and `prefix` are formatted prior to being injected into the message.
-  # - `{page}` - will be replaced with the current page number, starting at 1
-  # - `{page count}` - will be replaced with the total number of pages
-  # - `{index}` - for `prefix` only, gets replaced with the index of the current item, starting at 1
-  #
-  # **Events:**
-  # If you want to subscribe to the back/next button clicks you can do that too, using the methods
-  # `#on_back` and `#on_next`. Each takes a block that returns the keyboard right after incrementing
-  # the current page number.
-  #
   class PagedInlineKeyboard < InlineKeyboardMarkup
     @[JSON::Field(ignore: true)]
     @current_page : Int32
@@ -75,6 +53,22 @@ module Tourmaline
     end
 
     # Creates a new `PagedInlineKeyboard`, yielding the newly created keyboard to the block
+    #
+    # ## Arguments
+    # - `results` - the initial set of results
+    # - `per_page` - the number of results to show on each page
+    # - `header` - text to be displayed above the results
+    # - `footer` - text to be displayed below the results
+    # - `prefix` - a string to be added to the beginning of each item
+    # - `back_text` - text to use for the back button
+    # - `next_text` - text to use for the next button
+    # - `id` - an id to be used both as the `group` name, and the prefix for the callback query data
+    #
+    # # Formatting
+    # The params `header`, `footer`, and `prefix` are formatted prior to being injected into the message.
+    # - `{page}` - will be replaced with the current page number, starting at 1
+    # - `{page count}` - will be replaced with the total number of pages
+    # - `{index}` - for `prefix` only, gets replaced with the index of the current item, starting at 1
     def self.new(results = [] of String, per_page = 10, &block : self ->)
       instance = new(results, per_page)
       yield instance
