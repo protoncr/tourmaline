@@ -3,7 +3,6 @@ require "json"
 module Tourmaline
   # # This object represents a Telegram user or bot.
   class Chat
-    include DB::Serializable
     include JSON::Serializable
 
     getter id : Int64
@@ -18,17 +17,14 @@ module Tourmaline
 
     getter last_name : String?
 
-    @[DB::Field(ignore: true)]
     getter chat_photo : ChatPhoto?
 
     getter description : String?
 
     getter invite_link : String?
 
-    @[DB::Field(ignore: true)]
     getter pinned_message : Message?
 
-    @[DB::Field(ignore: true)]
     getter permissions : ChatPermissions?
 
     getter slow_mode_delay : Int32?

@@ -3,7 +3,6 @@ require "json"
 module Tourmaline
   # # This object represents a Telegram user or bot.
   class User
-    include DB::Serializable
     include JSON::Serializable
 
     getter id : Int64

@@ -4,6 +4,7 @@ module Tourmaline
   enum UpdateAction
     Update
     Message
+    ReplyMessage
     EditedMessage
     CallbackQuery
     InlineQuery
@@ -42,8 +43,11 @@ module Tourmaline
     PassportData
     Poll
     PollAnswer
+    ViaBot
+
     Dice
     Dart
+    Basketball
 
     def to_s
       super.to_s.underscore
@@ -60,6 +64,7 @@ module Tourmaline
 
       if message = update.message
         actions << UpdateAction::Message
+        actions << UpdateAction::ReplyMessage if message.reply_message
 
         if chat = message.chat
           actions << UpdateAction::PinnedMessage if chat.pinned_message
@@ -90,11 +95,13 @@ module Tourmaline
         actions << UpdateAction::Invoice if message.invoice
         actions << UpdateAction::SuccessfulPayment if message.successful_payment
         actions << UpdateAction::ConnectedWebsite if message.connected_website
-        # actions << UpdateAction::PassportData if message.passport_data
+        actions << UpdateAction::PassportData if message.passport_data
         actions << UpdateAction::Poll if message.poll
+        actions << UpdateAction::ViaBot if message.via_bot
         if dice = message.dice
           actions << UpdateAction::Dice if dice.emoji == "🎲"
           actions << UpdateAction::Dart if dice.emoji == "🎯"
+          actions << UpdateAction::Basketball if dice.emoji == "🏀"
         end
       end
 

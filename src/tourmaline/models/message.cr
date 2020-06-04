@@ -4,14 +4,12 @@ require "./message_entity"
 module Tourmaline
   # # This object represents a Telegram user or bot.
   class Message
-    include DB::Serializable
     include JSON::Serializable
 
     getter message_id : Int64
 
     getter from : User?
 
-    @[DB::Field(ignore: true)]
     @[JSON::Field(converter: Time::EpochConverter)]
     getter date : Time
 
@@ -25,17 +23,16 @@ module Tourmaline
 
     getter forward_signature : String?
 
-    @[DB::Field(ignore: true)]
     @[JSON::Field(converter: Time::EpochConverter)]
     getter forward_date : Time?
 
-    @[DB::Field(ignore: true)]
     @[JSON::Field(converter: Time::EpochConverter)]
     getter edit_date : Time?
 
-    @[DB::Field(key: "reply_to_message")]
     @[JSON::Field(key: "reply_to_message")]
     getter reply_message : Message?
+
+    getter via_bot : User?
 
     getter media_group_id : String?
 
@@ -100,6 +97,8 @@ module Tourmaline
     getter successful_payment : SuccessfulPayment?
 
     getter connected_website : String?
+
+    getter passport_data : PassportData?
 
     getter reply_markup : InlineKeyboardMarkup?
 

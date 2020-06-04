@@ -3,7 +3,6 @@ require "json"
 module Tourmaline
   # # This object represents a Telegram user or bot.
   class Update
-    include DB::Serializable
     include JSON::Serializable
 
     # The update‘s unique identifier. Update identifiers start from a certain
@@ -54,7 +53,6 @@ module Tourmaline
 
     # The context is an object similar to JSON::Any. Items can be added to the context
     # by filters or other methods, and then accessed in other methods.
-    @[DB::Field(ignore: true)]
     @[JSON::Field(ignore: true)]
     property context : UpdateContext = UpdateContext.new
 
