@@ -13,6 +13,9 @@ dependencies:
   pool:
     github: watzon/pool
     branch: master
+  http_proxy:
+    github: mamantoha/http_proxy
+    branch: master
 
 development_dependencies:
   ngrok:

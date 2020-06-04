@@ -38,17 +38,56 @@ module Tourmaline
 
     @pool : ConnectionPool(HTTP::Client)
 
-    # Create a new instance of `Tourmaline::Client`. It is
-    # highly recommended to set `@api_key` at an environment
-    # variable.
+    # Create a new instance of `Tourmaline::Client`.
+    #
+    # ## Arguments
+    #
+    # ### Positional
+    # - `api_key` - required; the bot token you were provided with by `@BotFather`
+    # - `endpoint` - the Telegram bot API endpoint to use; defaults to `https://api.telegram.org`
+    #
+    # ### Named
+    # - `persistence` - the persistence strategy to use
+    # - `pool_capacity` - the maximum number of concurrent HTTP connections to use
+    # - `initial_pool_size` - the number of HTTP::Client instances to create on init
+    # - `pool_timeout` - How long to wait for a new client to be available if the pool is full before throwing a `TimeoutError`
+    # - `proxy` - an instance of `HTTP::Proxy::Client` to use; if set, overrides the following `proxy_` args
+    # - `proxy_uri` - a URI to use when connecting to the proxy; can be a `URI` instance or a String
+    # - `proxy_host` - if no `proxy_uri` is provided, this will be the host for the URI
+    # - `proxy_port` - if no `proxy_uri` is provided, this will be the port for the URI
+    # - `proxy_user` - a username to use for a proxy that requires authentication
+    # - `proxy_pass` - a password to use for a proxy that requires authentication
     def initialize(@api_key : String,
-                   @persistence : Persistence = NilPersistence.new,
                    endpoint = DEFAULT_API_URL,
+                   *,
+                   @persistence : Persistence = NilPersistence.new,
                    pool_capacity = 200,
                    initial_pool_size = 20,
-                   pool_timeout = 0.1)
+                   pool_timeout = 0.1,
+                   proxy = nil,
+                   proxy_uri = nil,
+                   proxy_host = nil,
+                   proxy_port = nil,
+                   proxy_user = nil,
+                   proxy_pass = nil)
+      if !proxy
+        if proxy_uri
+          proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")
+          proxy_host = proxy_uri.host
+          proxy_port = proxy_uri.port
+          proxy_user = proxy_uri.user if proxy_uri.user
+          proxy_pass = proxy_uri.password if proxy_uri.password
+        end
+
+        if proxy_host && proxy_port
+          proxy = HTTP::Proxy::Client.new(proxy_host, proxy_port, username: proxy_user, password: proxy_pass)
+        end
+      end
+
       @pool = ConnectionPool(HTTP::Client).new(capacity: pool_capacity, initial: initial_pool_size, timeout: pool_timeout) do
-        HTTP::Client.new(URI.parse(endpoint))
+        client = HTTP::Client.new(URI.parse(endpoint))
+        client.set_proxy(proxy.dup) if proxy
+        client
       end
 
       @event_handlers = [] of EventHandler
@@ -86,10 +125,10 @@ module Tourmaline
     private def request(method, params = {} of String => String)
       path = File.join("/bot" + @api_key, method)
       multipart = includes_media(params)
+      client = @pool.checkout
 
       Log.debug { "sending ►► #{method}(#{params.to_pretty_json})" }
 
-      client = @pool.checkout
       begin
         if multipart
           config = build_form_data_config(params)
