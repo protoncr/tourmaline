@@ -1,11 +1,8 @@
 require "log"
 require "colorize"
 
-verbose = ENV["VERBOSE"]?.try &.downcase == "true"
-Log.builder.bind "*", :warning, Log::IOBackend.new
-Log.builder.bind("tourmaline.client.*",
-                 verbose ? Log::Severity::Debug : Log::Severity::Info,
-                 Tourmaline::Logger::LOG_BACKEND)
+severity = Log::Severity.parse(ENV["LOG"]? || "Info")
+Log.builder.bind("tourmaline.client.*", severity, Tourmaline::Logger::LOG_BACKEND)
 
 module Tourmaline
   # :nodoc:
