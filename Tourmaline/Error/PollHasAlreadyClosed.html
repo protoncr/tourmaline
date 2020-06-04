@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.33.0">
+
+<link href="../../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="">
+  <title>Tourmaline::Error::PollHasAlreadyClosed - </title>
+  <script type="text/javascript">
+    CrystalDoc.base_path = "../../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="/Tourmaline" data-name="tourmaline">
+      <a href="../../Tourmaline.html">Tourmaline</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/Animation" data-name="tourmaline::animation">
+      <a href="../../Tourmaline/Animation.html">Animation</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Audio" data-name="tourmaline::audio">
+      <a href="../../Tourmaline/Audio.html">Audio</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/BotCommand" data-name="tourmaline::botcommand">
+      <a href="../../Tourmaline/BotCommand.html">BotCommand</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Button" data-name="tourmaline::button">
+      <a href="../../Tourmaline/Button.html">Button</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/CallbackGame" data-name="tourmaline::callbackgame">
+      <a href="../../Tourmaline/CallbackGame.html">CallbackGame</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/CallbackQuery" data-name="tourmaline::callbackquery">
+      <a href="../../Tourmaline/CallbackQuery.html">CallbackQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/CallbackQueryFilter" data-name="tourmaline::callbackqueryfilter">
+      <a href="../../Tourmaline/CallbackQueryFilter.html">CallbackQueryFilter</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Chat" data-name="tourmaline::chat">
+      <a href="../../Tourmaline/Chat.html">Chat</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ChatAction" data-name="tourmaline::chataction">
+      <a href="../../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ChatMember" data-name="tourmaline::chatmember">
+      <a href="../../Tourmaline/ChatMember.html">ChatMember</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ChatPermissions" data-name="tourmaline::chatpermissions">
+      <a href="../../Tourmaline/ChatPermissions.html">ChatPermissions</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ChatPhoto" data-name="tourmaline::chatphoto">
+      <a href="../../Tourmaline/ChatPhoto.html">ChatPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ChosenInlineResult" data-name="tourmaline::choseninlineresult">
+      <a href="../../Tourmaline/ChosenInlineResult.html">ChosenInlineResult</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Client" data-name="tourmaline::client">
+      <a href="../../Tourmaline/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Command" data-name="tourmaline::command">
+      <a href="../../Tourmaline/Command.html">Command</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/CommandFilter" data-name="tourmaline::commandfilter">
+      <a href="../../Tourmaline/CommandFilter.html">CommandFilter</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Contact" data-name="tourmaline::contact">
+      <a href="../../Tourmaline/Contact.html">Contact</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/DBPersistence" data-name="tourmaline::dbpersistence">
+      <a href="../../Tourmaline/DBPersistence.html">DBPersistence</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Dice" data-name="tourmaline::dice">
+      <a href="../../Tourmaline/Dice.html">Dice</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Document" data-name="tourmaline::document">
+      <a href="../../Tourmaline/Document.html">Document</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/EncryptedCredentials" data-name="tourmaline::encryptedcredentials">
+      <a href="../../Tourmaline/EncryptedCredentials.html">EncryptedCredentials</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Tourmaline/EncryptedPassportElement" data-name="tourmaline::encryptedpassportelement">
+      <a href="../../Tourmaline/EncryptedPassportElement.html">EncryptedPassportElement</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/EncryptedPassportElement/Type" data-name="tourmaline::encryptedpassportelement::type">
+      <a href="../../Tourmaline/EncryptedPassportElement/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="/Tourmaline/Error" data-name="tourmaline::error">
+      <a href="../../Tourmaline/Error.html">Error</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/Error/BadRequest" data-name="tourmaline::error::badrequest">
+      <a href="../../Tourmaline/Error/BadRequest.html">BadRequest</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/BadWebhook" data-name="tourmaline::error::badwebhook">
+      <a href="../../Tourmaline/Error/BadWebhook.html">BadWebhook</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/BadWebhookAddrInfo" data-name="tourmaline::error::badwebhookaddrinfo">
+      <a href="../../Tourmaline/Error/BadWebhookAddrInfo.html">BadWebhookAddrInfo</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/BadWebhookNoAddressAssociatedWithHostname" data-name="tourmaline::error::badwebhooknoaddressassociatedwithhostname">
+      <a href="../../Tourmaline/Error/BadWebhookNoAddressAssociatedWithHostname.html">BadWebhookNoAddressAssociatedWithHostname</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/BadWebhookPort" data-name="tourmaline::error::badwebhookport">
+      <a href="../../Tourmaline/Error/BadWebhookPort.html">BadWebhookPort</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/BotBlocked" data-name="tourmaline::error::botblocked">
+      <a href="../../Tourmaline/Error/BotBlocked.html">BotBlocked</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/BotDomainInvalid" data-name="tourmaline::error::botdomaininvalid">
+      <a href="../../Tourmaline/Error/BotDomainInvalid.html">BotDomainInvalid</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/BotKicked" data-name="tourmaline::error::botkicked">
+      <a href="../../Tourmaline/Error/BotKicked.html">BotKicked</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ButtonDataInvalid" data-name="tourmaline::error::buttondatainvalid">
+      <a href="../../Tourmaline/Error/ButtonDataInvalid.html">ButtonDataInvalid</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ButtonURLInvalid" data-name="tourmaline::error::buttonurlinvalid">
+      <a href="../../Tourmaline/Error/ButtonURLInvalid.html">ButtonURLInvalid</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CantDemoteChatCreator" data-name="tourmaline::error::cantdemotechatcreator">
+      <a href="../../Tourmaline/Error/CantDemoteChatCreator.html">CantDemoteChatCreator</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CantGetUpdates" data-name="tourmaline::error::cantgetupdates">
+      <a href="../../Tourmaline/Error/CantGetUpdates.html">CantGetUpdates</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CantInitiateConversation" data-name="tourmaline::error::cantinitiateconversation">
+      <a href="../../Tourmaline/Error/CantInitiateConversation.html">CantInitiateConversation</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CantParseEntities" data-name="tourmaline::error::cantparseentities">
+      <a href="../../Tourmaline/Error/CantParseEntities.html">CantParseEntities</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CantParseUrl" data-name="tourmaline::error::cantparseurl">
+      <a href="../../Tourmaline/Error/CantParseUrl.html">CantParseUrl</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CantRestrictSelf" data-name="tourmaline::error::cantrestrictself">
+      <a href="../../Tourmaline/Error/CantRestrictSelf.html">CantRestrictSelf</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CantTalkWithBots" data-name="tourmaline::error::canttalkwithbots">
+      <a href="../../Tourmaline/Error/CantTalkWithBots.html">CantTalkWithBots</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ChatAdminRequired" data-name="tourmaline::error::chatadminrequired">
+      <a href="../../Tourmaline/Error/ChatAdminRequired.html">ChatAdminRequired</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ChatDescriptionIsNotModified" data-name="tourmaline::error::chatdescriptionisnotmodified">
+      <a href="../../Tourmaline/Error/ChatDescriptionIsNotModified.html">ChatDescriptionIsNotModified</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ChatIdIsEmpty" data-name="tourmaline::error::chatidisempty">
+      <a href="../../Tourmaline/Error/ChatIdIsEmpty.html">ChatIdIsEmpty</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ChatNotFound" data-name="tourmaline::error::chatnotfound">
+      <a href="../../Tourmaline/Error/ChatNotFound.html">ChatNotFound</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ConflictError" data-name="tourmaline::error::conflicterror">
+      <a href="../../Tourmaline/Error/ConflictError.html">ConflictError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/CurrencyTotalAmountInvalid" data-name="tourmaline::error::currencytotalamountinvalid">
+      <a href="../../Tourmaline/Error/CurrencyTotalAmountInvalid.html">CurrencyTotalAmountInvalid</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/GroupDeactivated" data-name="tourmaline::error::groupdeactivated">
+      <a href="../../Tourmaline/Error/GroupDeactivated.html">GroupDeactivated</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/InlineKeyboardExpected" data-name="tourmaline::error::inlinekeyboardexpected">
+      <a href="../../Tourmaline/Error/InlineKeyboardExpected.html">InlineKeyboardExpected</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/InvalidHTTPUrlContent" data-name="tourmaline::error::invalidhttpurlcontent">
+      <a href="../../Tourmaline/Error/InvalidHTTPUrlContent.html">InvalidHTTPUrlContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/InvalidPeerID" data-name="tourmaline::error::invalidpeerid">
+      <a href="../../Tourmaline/Error/InvalidPeerID.html">InvalidPeerID</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/InvalidQueryID" data-name="tourmaline::error::invalidqueryid">
+      <a href="../../Tourmaline/Error/InvalidQueryID.html">InvalidQueryID</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/InvalidResultID" data-name="tourmaline::error::invalidresultid">
+      <a href="../../Tourmaline/Error/InvalidResultID.html">InvalidResultID</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/InvalidStickersSet" data-name="tourmaline::error::invalidstickersset">
+      <a href="../../Tourmaline/Error/InvalidStickersSet.html">InvalidStickersSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/InvalidUserId" data-name="tourmaline::error::invaliduserid">
+      <a href="../../Tourmaline/Error/InvalidUserId.html">InvalidUserId</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageCantBeDeleted" data-name="tourmaline::error::messagecantbedeleted">
+      <a href="../../Tourmaline/Error/MessageCantBeDeleted.html">MessageCantBeDeleted</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageCantBeEdited" data-name="tourmaline::error::messagecantbeedited">
+      <a href="../../Tourmaline/Error/MessageCantBeEdited.html">MessageCantBeEdited</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageError" data-name="tourmaline::error::messageerror">
+      <a href="../../Tourmaline/Error/MessageError.html">MessageError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageIdentifierNotSpecified" data-name="tourmaline::error::messageidentifiernotspecified">
+      <a href="../../Tourmaline/Error/MessageIdentifierNotSpecified.html">MessageIdentifierNotSpecified</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageIdInvalid" data-name="tourmaline::error::messageidinvalid">
+      <a href="../../Tourmaline/Error/MessageIdInvalid.html">MessageIdInvalid</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageIsNotAPoll" data-name="tourmaline::error::messageisnotapoll">
+      <a href="../../Tourmaline/Error/MessageIsNotAPoll.html">MessageIsNotAPoll</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageIsTooLong" data-name="tourmaline::error::messageistoolong">
+      <a href="../../Tourmaline/Error/MessageIsTooLong.html">MessageIsTooLong</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageNotModified" data-name="tourmaline::error::messagenotmodified">
+      <a href="../../Tourmaline/Error/MessageNotModified.html">MessageNotModified</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageTextIsEmpty" data-name="tourmaline::error::messagetextisempty">
+      <a href="../../Tourmaline/Error/MessageTextIsEmpty.html">MessageTextIsEmpty</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageToDeleteNotFound" data-name="tourmaline::error::messagetodeletenotfound">
+      <a href="../../Tourmaline/Error/MessageToDeleteNotFound.html">MessageToDeleteNotFound</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageToEditNotFound" data-name="tourmaline::error::messagetoeditnotfound">
+      <a href="../../Tourmaline/Error/MessageToEditNotFound.html">MessageToEditNotFound</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageToForwardNotFound" data-name="tourmaline::error::messagetoforwardnotfound">
+      <a href="../../Tourmaline/Error/MessageToForwardNotFound.html">MessageToForwardNotFound</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageToReplyNotFound" data-name="tourmaline::error::messagetoreplynotfound">
+      <a href="../../Tourmaline/Error/MessageToReplyNotFound.html">MessageToReplyNotFound</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MessageWithPollNotFound" data-name="tourmaline::error::messagewithpollnotfound">
+      <a href="../../Tourmaline/Error/MessageWithPollNotFound.html">MessageWithPollNotFound</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MethodIsNotAvailable" data-name="tourmaline::error::methodisnotavailable">
+      <a href="../../Tourmaline/Error/MethodIsNotAvailable.html">MethodIsNotAvailable</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MethodNotAvailableInPrivateChats" data-name="tourmaline::error::methodnotavailableinprivatechats">
+      <a href="../../Tourmaline/Error/MethodNotAvailableInPrivateChats.html">MethodNotAvailableInPrivateChats</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MethodNotKnown" data-name="tourmaline::error::methodnotknown">
+      <a href="../../Tourmaline/Error/MethodNotKnown.html">MethodNotKnown</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/MigrateToChat" data-name="tourmaline::error::migratetochat">
+      <a href="../../Tourmaline/Error/MigrateToChat.html">MigrateToChat</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/NeedAdministratorRightsInTheChannel" data-name="tourmaline::error::needadministratorrightsinthechannel">
+      <a href="../../Tourmaline/Error/NeedAdministratorRightsInTheChannel.html">NeedAdministratorRightsInTheChannel</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/NetworkError" data-name="tourmaline::error::networkerror">
+      <a href="../../Tourmaline/Error/NetworkError.html">NetworkError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/NoStickerInRequest" data-name="tourmaline::error::nostickerinrequest">
+      <a href="../../Tourmaline/Error/NoStickerInRequest.html">NoStickerInRequest</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/NotEnoughRightsToPinMessage" data-name="tourmaline::error::notenoughrightstopinmessage">
+      <a href="../../Tourmaline/Error/NotEnoughRightsToPinMessage.html">NotEnoughRightsToPinMessage</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/NotEnoughRightsToRestrict" data-name="tourmaline::error::notenoughrightstorestrict">
+      <a href="../../Tourmaline/Error/NotEnoughRightsToRestrict.html">NotEnoughRightsToRestrict</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/NotFound" data-name="tourmaline::error::notfound">
+      <a href="../../Tourmaline/Error/NotFound.html">NotFound</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ObjectExpectedAsReplyMarkup" data-name="tourmaline::error::objectexpectedasreplymarkup">
+      <a href="../../Tourmaline/Error/ObjectExpectedAsReplyMarkup.html">ObjectExpectedAsReplyMarkup</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PaymentProviderInvalid" data-name="tourmaline::error::paymentproviderinvalid">
+      <a href="../../Tourmaline/Error/PaymentProviderInvalid.html">PaymentProviderInvalid</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PhotoAsInputFileRequired" data-name="tourmaline::error::photoasinputfilerequired">
+      <a href="../../Tourmaline/Error/PhotoAsInputFileRequired.html">PhotoAsInputFileRequired</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PhotoDimensions" data-name="tourmaline::error::photodimensions">
+      <a href="../../Tourmaline/Error/PhotoDimensions.html">PhotoDimensions</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollCantBeStopped" data-name="tourmaline::error::pollcantbestopped">
+      <a href="../../Tourmaline/Error/PollCantBeStopped.html">PollCantBeStopped</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollCantHaveMoreOptions" data-name="tourmaline::error::pollcanthavemoreoptions">
+      <a href="../../Tourmaline/Error/PollCantHaveMoreOptions.html">PollCantHaveMoreOptions</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollError" data-name="tourmaline::error::pollerror">
+      <a href="../../Tourmaline/Error/PollError.html">PollError</a>
+      
+    </li>
+  
+  <li class=" current" data-id="/Tourmaline/Error/PollHasAlreadyClosed" data-name="tourmaline::error::pollhasalreadyclosed">
+      <a href="../../Tourmaline/Error/PollHasAlreadyClosed.html">PollHasAlreadyClosed</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollMustHaveMoreOptions" data-name="tourmaline::error::pollmusthavemoreoptions">
+      <a href="../../Tourmaline/Error/PollMustHaveMoreOptions.html">PollMustHaveMoreOptions</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollOptionsMustBeNonEmpty" data-name="tourmaline::error::polloptionsmustbenonempty">
+      <a href="../../Tourmaline/Error/PollOptionsMustBeNonEmpty.html">PollOptionsMustBeNonEmpty</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollQuestionMustBeNonEmpty" data-name="tourmaline::error::pollquestionmustbenonempty">
+      <a href="../../Tourmaline/Error/PollQuestionMustBeNonEmpty.html">PollQuestionMustBeNonEmpty</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollsCantBeSentToPrivateChats" data-name="tourmaline::error::pollscantbesenttoprivatechats">
+      <a href="../../Tourmaline/Error/PollsCantBeSentToPrivateChats.html">PollsCantBeSentToPrivateChats</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollSizeError" data-name="tourmaline::error::pollsizeerror">
+      <a href="../../Tourmaline/Error/PollSizeError.html">PollSizeError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/PollsOptionsLengthTooLong" data-name="tourmaline::error::pollsoptionslengthtoolong">
+      <a href="../../Tourmaline/Error/PollsOptionsLengthTooLong.html">PollsOptionsLengthTooLong</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/RequestTimeoutError" data-name="tourmaline::error::requesttimeouterror">
+      <a href="../../Tourmaline/Error/RequestTimeoutError.html">RequestTimeoutError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ResultIdDuplicate" data-name="tourmaline::error::resultidduplicate">
+      <a href="../../Tourmaline/Error/ResultIdDuplicate.html">ResultIdDuplicate</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/RetryAfter" data-name="tourmaline::error::retryafter">
+      <a href="../../Tourmaline/Error/RetryAfter.html">RetryAfter</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/StartParamInvalid" data-name="tourmaline::error::startparaminvalid">
+      <a href="../../Tourmaline/Error/StartParamInvalid.html">StartParamInvalid</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/TerminatedByOtherGetUpdates" data-name="tourmaline::error::terminatedbyothergetupdates">
+      <a href="../../Tourmaline/Error/TerminatedByOtherGetUpdates.html">TerminatedByOtherGetUpdates</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/Throttled" data-name="tourmaline::error::throttled">
+      <a href="../../Tourmaline/Error/Throttled.html">Throttled</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/TooMuchMessages" data-name="tourmaline::error::toomuchmessages">
+      <a href="../../Tourmaline/Error/TooMuchMessages.html">TooMuchMessages</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/TypeOfFileMismatch" data-name="tourmaline::error::typeoffilemismatch">
+      <a href="../../Tourmaline/Error/TypeOfFileMismatch.html">TypeOfFileMismatch</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/Unauthorized" data-name="tourmaline::error::unauthorized">
+      <a href="../../Tourmaline/Error/Unauthorized.html">Unauthorized</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/UnavailableMembers" data-name="tourmaline::error::unavailablemembers">
+      <a href="../../Tourmaline/Error/UnavailableMembers.html">UnavailableMembers</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/UnsupportedUrlProtocol" data-name="tourmaline::error::unsupportedurlprotocol">
+      <a href="../../Tourmaline/Error/UnsupportedUrlProtocol.html">UnsupportedUrlProtocol</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/URLHostIsEmpty" data-name="tourmaline::error::urlhostisempty">
+      <a href="../../Tourmaline/Error/URLHostIsEmpty.html">URLHostIsEmpty</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/UserDeactivated" data-name="tourmaline::error::userdeactivated">
+      <a href="../../Tourmaline/Error/UserDeactivated.html">UserDeactivated</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/ValidationError" data-name="tourmaline::error::validationerror">
+      <a href="../../Tourmaline/Error/ValidationError.html">ValidationError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/WebhookRequireHTTPS" data-name="tourmaline::error::webhookrequirehttps">
+      <a href="../../Tourmaline/Error/WebhookRequireHTTPS.html">WebhookRequireHTTPS</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/WrongFileIdentifier" data-name="tourmaline::error::wrongfileidentifier">
+      <a href="../../Tourmaline/Error/WrongFileIdentifier.html">WrongFileIdentifier</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/WrongLiveLocationPeriod" data-name="tourmaline::error::wronglivelocationperiod">
+      <a href="../../Tourmaline/Error/WrongLiveLocationPeriod.html">WrongLiveLocationPeriod</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Error/WrongRemoteFileIdSpecified" data-name="tourmaline::error::wrongremotefileidspecified">
+      <a href="../../Tourmaline/Error/WrongRemoteFileIdSpecified.html">WrongRemoteFileIdSpecified</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/EventHandler" data-name="tourmaline::eventhandler">
+      <a href="../../Tourmaline/EventHandler.html">EventHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Filter" data-name="tourmaline::filter">
+      <a href="../../Tourmaline/Filter.html">Filter</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/FilterGroup" data-name="tourmaline::filtergroup">
+      <a href="../../Tourmaline/FilterGroup.html">FilterGroup</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ForceReply" data-name="tourmaline::forcereply">
+      <a href="../../Tourmaline/ForceReply.html">ForceReply</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Game" data-name="tourmaline::game">
+      <a href="../../Tourmaline/Game.html">Game</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/GameHighScore" data-name="tourmaline::gamehighscore">
+      <a href="../../Tourmaline/GameHighScore.html">GameHighScore</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/HashPersistence" data-name="tourmaline::hashpersistence">
+      <a href="../../Tourmaline/HashPersistence.html">HashPersistence</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Helpers" data-name="tourmaline::helpers">
+      <a href="../../Tourmaline/Helpers.html">Helpers</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineKeyboardButton" data-name="tourmaline::inlinekeyboardbutton">
+      <a href="../../Tourmaline/InlineKeyboardButton.html">InlineKeyboardButton</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Tourmaline/InlineKeyboardMarkup" data-name="tourmaline::inlinekeyboardmarkup">
+      <a href="../../Tourmaline/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/InlineKeyboardMarkup/Builder" data-name="tourmaline::inlinekeyboardmarkup::builder">
+      <a href="../../Tourmaline/InlineKeyboardMarkup/Builder.html">Builder</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQuery" data-name="tourmaline::inlinequery">
+      <a href="../../Tourmaline/InlineQuery.html">InlineQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryFilter" data-name="tourmaline::inlinequeryfilter">
+      <a href="../../Tourmaline/InlineQueryFilter.html">InlineQueryFilter</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Tourmaline/InlineQueryResult" data-name="tourmaline::inlinequeryresult">
+      <a href="../../Tourmaline/InlineQueryResult.html">InlineQueryResult</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResult/Builder" data-name="tourmaline::inlinequeryresult::builder">
+      <a href="../../Tourmaline/InlineQueryResult/Builder.html">Builder</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultArticle" data-name="tourmaline::inlinequeryresultarticle">
+      <a href="../../Tourmaline/InlineQueryResultArticle.html">InlineQueryResultArticle</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultAudio" data-name="tourmaline::inlinequeryresultaudio">
+      <a href="../../Tourmaline/InlineQueryResultAudio.html">InlineQueryResultAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedAudio" data-name="tourmaline::inlinequeryresultcachedaudio">
+      <a href="../../Tourmaline/InlineQueryResultCachedAudio.html">InlineQueryResultCachedAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedDocument" data-name="tourmaline::inlinequeryresultcacheddocument">
+      <a href="../../Tourmaline/InlineQueryResultCachedDocument.html">InlineQueryResultCachedDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedGif" data-name="tourmaline::inlinequeryresultcachedgif">
+      <a href="../../Tourmaline/InlineQueryResultCachedGif.html">InlineQueryResultCachedGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedMpeg4Gif" data-name="tourmaline::inlinequeryresultcachedmpeg4gif">
+      <a href="../../Tourmaline/InlineQueryResultCachedMpeg4Gif.html">InlineQueryResultCachedMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedPhoto" data-name="tourmaline::inlinequeryresultcachedphoto">
+      <a href="../../Tourmaline/InlineQueryResultCachedPhoto.html">InlineQueryResultCachedPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedSticker" data-name="tourmaline::inlinequeryresultcachedsticker">
+      <a href="../../Tourmaline/InlineQueryResultCachedSticker.html">InlineQueryResultCachedSticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedVideo" data-name="tourmaline::inlinequeryresultcachedvideo">
+      <a href="../../Tourmaline/InlineQueryResultCachedVideo.html">InlineQueryResultCachedVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultCachedVoice" data-name="tourmaline::inlinequeryresultcachedvoice">
+      <a href="../../Tourmaline/InlineQueryResultCachedVoice.html">InlineQueryResultCachedVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultContact" data-name="tourmaline::inlinequeryresultcontact">
+      <a href="../../Tourmaline/InlineQueryResultContact.html">InlineQueryResultContact</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultDocument" data-name="tourmaline::inlinequeryresultdocument">
+      <a href="../../Tourmaline/InlineQueryResultDocument.html">InlineQueryResultDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultGif" data-name="tourmaline::inlinequeryresultgif">
+      <a href="../../Tourmaline/InlineQueryResultGif.html">InlineQueryResultGif</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultLocation" data-name="tourmaline::inlinequeryresultlocation">
+      <a href="../../Tourmaline/InlineQueryResultLocation.html">InlineQueryResultLocation</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultMpeg4Gif" data-name="tourmaline::inlinequeryresultmpeg4gif">
+      <a href="../../Tourmaline/InlineQueryResultMpeg4Gif.html">InlineQueryResultMpeg4Gif</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultPhoto" data-name="tourmaline::inlinequeryresultphoto">
+      <a href="../../Tourmaline/InlineQueryResultPhoto.html">InlineQueryResultPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultVenue" data-name="tourmaline::inlinequeryresultvenue">
+      <a href="../../Tourmaline/InlineQueryResultVenue.html">InlineQueryResultVenue</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultVideo" data-name="tourmaline::inlinequeryresultvideo">
+      <a href="../../Tourmaline/InlineQueryResultVideo.html">InlineQueryResultVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InlineQueryResultVoice" data-name="tourmaline::inlinequeryresultvoice">
+      <a href="../../Tourmaline/InlineQueryResultVoice.html">InlineQueryResultVoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputContactMessageContent" data-name="tourmaline::inputcontactmessagecontent">
+      <a href="../../Tourmaline/InputContactMessageContent.html">InputContactMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputLocationMessageContent" data-name="tourmaline::inputlocationmessagecontent">
+      <a href="../../Tourmaline/InputLocationMessageContent.html">InputLocationMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputMedia" data-name="tourmaline::inputmedia">
+      <a href="../../Tourmaline/InputMedia.html">InputMedia</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputMediaAnimation" data-name="tourmaline::inputmediaanimation">
+      <a href="../../Tourmaline/InputMediaAnimation.html">InputMediaAnimation</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputMediaAudio" data-name="tourmaline::inputmediaaudio">
+      <a href="../../Tourmaline/InputMediaAudio.html">InputMediaAudio</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputMediaDocument" data-name="tourmaline::inputmediadocument">
+      <a href="../../Tourmaline/InputMediaDocument.html">InputMediaDocument</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputMediaPhoto" data-name="tourmaline::inputmediaphoto">
+      <a href="../../Tourmaline/InputMediaPhoto.html">InputMediaPhoto</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputMediaVideo" data-name="tourmaline::inputmediavideo">
+      <a href="../../Tourmaline/InputMediaVideo.html">InputMediaVideo</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputMessageContent" data-name="tourmaline::inputmessagecontent">
+      <a href="../../Tourmaline/InputMessageContent.html">InputMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputTextMessageContent" data-name="tourmaline::inputtextmessagecontent">
+      <a href="../../Tourmaline/InputTextMessageContent.html">InputTextMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/InputVenueMessageContent" data-name="tourmaline::inputvenuemessagecontent">
+      <a href="../../Tourmaline/InputVenueMessageContent.html">InputVenueMessageContent</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Invoice" data-name="tourmaline::invoice">
+      <a href="../../Tourmaline/Invoice.html">Invoice</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/JsonPersistence" data-name="tourmaline::jsonpersistence">
+      <a href="../../Tourmaline/JsonPersistence.html">JsonPersistence</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Tourmaline/KemalAdapter" data-name="tourmaline::kemaladapter">
+      <a href="../../Tourmaline/KemalAdapter.html">KemalAdapter</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/KemalAdapter/TGModel" data-name="tourmaline::kemaladapter::tgmodel">
+      <a href="../../Tourmaline/KemalAdapter/TGModel.html">TGModel</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/KeyboardBuilder" data-name="tourmaline::keyboardbuilder(t, g)">
+      <a href="../../Tourmaline/KeyboardBuilder.html">KeyboardBuilder</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/KeyboardButton" data-name="tourmaline::keyboardbutton">
+      <a href="../../Tourmaline/KeyboardButton.html">KeyboardButton</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/KeyboardButtonPollType" data-name="tourmaline::keyboardbuttonpolltype">
+      <a href="../../Tourmaline/KeyboardButtonPollType.html">KeyboardButtonPollType</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/LabeledPrice" data-name="tourmaline::labeledprice">
+      <a href="../../Tourmaline/LabeledPrice.html">LabeledPrice</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/LocaleFilter" data-name="tourmaline::localefilter">
+      <a href="../../Tourmaline/LocaleFilter.html">LocaleFilter</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Location" data-name="tourmaline::location">
+      <a href="../../Tourmaline/Location.html">Location</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/LoginURL" data-name="tourmaline::loginurl">
+      <a href="../../Tourmaline/LoginURL.html">LoginURL</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/MaskPosition" data-name="tourmaline::maskposition">
+      <a href="../../Tourmaline/MaskPosition.html">MaskPosition</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Message" data-name="tourmaline::message">
+      <a href="../../Tourmaline/Message.html">Message</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/MessageEntity" data-name="tourmaline::messageentity">
+      <a href="../../Tourmaline/MessageEntity.html">MessageEntity</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/NilPersistence" data-name="tourmaline::nilpersistence">
+      <a href="../../Tourmaline/NilPersistence.html">NilPersistence</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/On" data-name="tourmaline::on">
+      <a href="../../Tourmaline/On.html">On</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/OnCallbackQuery" data-name="tourmaline::oncallbackquery">
+      <a href="../../Tourmaline/OnCallbackQuery.html">OnCallbackQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/OrderInfo" data-name="tourmaline::orderinfo">
+      <a href="../../Tourmaline/OrderInfo.html">OrderInfo</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PagedInlineKeyboard" data-name="tourmaline::pagedinlinekeyboard">
+      <a href="../../Tourmaline/PagedInlineKeyboard.html">PagedInlineKeyboard</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ParseMode" data-name="tourmaline::parsemode">
+      <a href="../../Tourmaline/ParseMode.html">ParseMode</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportData" data-name="tourmaline::passportdata">
+      <a href="../../Tourmaline/PassportData.html">PassportData</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementError" data-name="tourmaline::passportelementerror">
+      <a href="../../Tourmaline/PassportElementError.html">PassportElementError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorDataField" data-name="tourmaline::passportelementerrordatafield">
+      <a href="../../Tourmaline/PassportElementErrorDataField.html">PassportElementErrorDataField</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorFile" data-name="tourmaline::passportelementerrorfile">
+      <a href="../../Tourmaline/PassportElementErrorFile.html">PassportElementErrorFile</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorFiles" data-name="tourmaline::passportelementerrorfiles">
+      <a href="../../Tourmaline/PassportElementErrorFiles.html">PassportElementErrorFiles</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorFrontSide" data-name="tourmaline::passportelementerrorfrontside">
+      <a href="../../Tourmaline/PassportElementErrorFrontSide.html">PassportElementErrorFrontSide</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorReverseSide" data-name="tourmaline::passportelementerrorreverseside">
+      <a href="../../Tourmaline/PassportElementErrorReverseSide.html">PassportElementErrorReverseSide</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorSelfie" data-name="tourmaline::passportelementerrorselfie">
+      <a href="../../Tourmaline/PassportElementErrorSelfie.html">PassportElementErrorSelfie</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorTranslationFile" data-name="tourmaline::passportelementerrortranslationfile">
+      <a href="../../Tourmaline/PassportElementErrorTranslationFile.html">PassportElementErrorTranslationFile</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorTranslationFiles" data-name="tourmaline::passportelementerrortranslationfiles">
+      <a href="../../Tourmaline/PassportElementErrorTranslationFiles.html">PassportElementErrorTranslationFiles</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportElementErrorUnspecified" data-name="tourmaline::passportelementerrorunspecified">
+      <a href="../../Tourmaline/PassportElementErrorUnspecified.html">PassportElementErrorUnspecified</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PassportFile" data-name="tourmaline::passportfile">
+      <a href="../../Tourmaline/PassportFile.html">PassportFile</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Persistence" data-name="tourmaline::persistence">
+      <a href="../../Tourmaline/Persistence.html">Persistence</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PhotoSize" data-name="tourmaline::photosize">
+      <a href="../../Tourmaline/PhotoSize.html">PhotoSize</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Poll" data-name="tourmaline::poll">
+      <a href="../../Tourmaline/Poll.html">Poll</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PollAnswer" data-name="tourmaline::pollanswer">
+      <a href="../../Tourmaline/PollAnswer.html">PollAnswer</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PollOption" data-name="tourmaline::polloption">
+      <a href="../../Tourmaline/PollOption.html">PollOption</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PollType" data-name="tourmaline::polltype">
+      <a href="../../Tourmaline/PollType.html">PollType</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/PreCheckoutQuery" data-name="tourmaline::precheckoutquery">
+      <a href="../../Tourmaline/PreCheckoutQuery.html">PreCheckoutQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/RegexFilter" data-name="tourmaline::regexfilter">
+      <a href="../../Tourmaline/RegexFilter.html">RegexFilter</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
+      <a href="../../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/ReplyKeyboardMarkup/Builder" data-name="tourmaline::replykeyboardmarkup::builder">
+      <a href="../../Tourmaline/ReplyKeyboardMarkup/Builder.html">Builder</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ReplyKeyboardRemove" data-name="tourmaline::replykeyboardremove">
+      <a href="../../Tourmaline/ReplyKeyboardRemove.html">ReplyKeyboardRemove</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ShippingAddress" data-name="tourmaline::shippingaddress">
+      <a href="../../Tourmaline/ShippingAddress.html">ShippingAddress</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ShippingOption" data-name="tourmaline::shippingoption">
+      <a href="../../Tourmaline/ShippingOption.html">ShippingOption</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/ShippingQuery" data-name="tourmaline::shippingquery">
+      <a href="../../Tourmaline/ShippingQuery.html">ShippingQuery</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Sticker" data-name="tourmaline::sticker">
+      <a href="../../Tourmaline/Sticker.html">Sticker</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/StickerSet" data-name="tourmaline::stickerset">
+      <a href="../../Tourmaline/StickerSet.html">StickerSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/SuccessfulPayment" data-name="tourmaline::successfulpayment">
+      <a href="../../Tourmaline/SuccessfulPayment.html">SuccessfulPayment</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/TFile" data-name="tourmaline::tfile">
+      <a href="../../Tourmaline/TFile.html">TFile</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Update" data-name="tourmaline::update">
+      <a href="../../Tourmaline/Update.html">Update</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/UpdateAction" data-name="tourmaline::updateaction">
+      <a href="../../Tourmaline/UpdateAction.html">UpdateAction</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Tourmaline/UpdateContext" data-name="tourmaline::updatecontext">
+      <a href="../../Tourmaline/UpdateContext.html">UpdateContext</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/UpdateContext/Type" data-name="tourmaline::updatecontext::type">
+      <a href="../../Tourmaline/UpdateContext/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/User" data-name="tourmaline::user">
+      <a href="../../Tourmaline/User.html">User</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/UserProfilePhotos" data-name="tourmaline::userprofilephotos">
+      <a href="../../Tourmaline/UserProfilePhotos.html">UserProfilePhotos</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Venue" data-name="tourmaline::venue">
+      <a href="../../Tourmaline/Venue.html">Venue</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Video" data-name="tourmaline::video">
+      <a href="../../Tourmaline/Video.html">Video</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/VideoNote" data-name="tourmaline::videonote">
+      <a href="../../Tourmaline/VideoNote.html">VideoNote</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/Voice" data-name="tourmaline::voice">
+      <a href="../../Tourmaline/Voice.html">Voice</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Tourmaline/WebhookInfo" data-name="tourmaline::webhookinfo">
+      <a href="../../Tourmaline/WebhookInfo.html">WebhookInfo</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Tourmaline::Error::PollHasAlreadyClosed
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Tourmaline/Error/PollHasAlreadyClosed.html">Tourmaline::Error::PollHasAlreadyClosed</a></li><li class="superclass"><a href="../../Tourmaline/Error/MessageError.html">Tourmaline::Error::MessageError</a></li><li class="superclass"><a href="../../Tourmaline/Error/BadRequest.html">Tourmaline::Error::BadRequest</a></li><li class="superclass"><a href="../../Tourmaline/Error.html">Tourmaline::Error</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+  <h3>Constructor methods inherited from class <code><a href="../../Tourmaline/Error.html">Tourmaline::Error</a></code></h3>
+  
+  
+    <a href="../../Tourmaline/Error.html#new(message=&quot;&quot;)-class-method" class="tooltip">
+      <span>new(message = <span class="s">&quot;&quot;</span>)</span>
+    new</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Tourmaline/Error.html">Tourmaline::Error</a></code></h3>
+  
+  
+    <a href="../../Tourmaline/Error.html#from_message(text)-class-method" class="tooltip">
+      <span>from_message(text)</span>
+    from_message</a>
+    
+  
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
