@@ -1,10 +1,11 @@
 module Tourmaline
-  # Filters messages containing a specfic inline query callback.
+  # Filters messages containing a specfic inline query pattern.
   #
   # Options:
-  # - `callback : String | Regex` - string or regex to match
+  # - `pattern : (String | Regex)?` - string or regex to match
   #
   # Context additions:
+  # - `query : String?` - The query that was matched
   # - `match : Regex::MatchData` - the match data returned by the successful match
   #
   # Example:
@@ -12,24 +13,25 @@ module Tourmaline
   # filter = InlineQueryFilter.new(/^foo(\d+)/)
   # ```
   class InlineQueryFilter < Filter
-    property callback : Regex?
+    property pattern : Regex?
 
-    def initialize(callback : (String | Regex)? = nil)
-      case callback
+    def initialize(pattern : (String | Regex)? = nil)
+      case pattern
       when Regex
-        @callback = callback
+        @pattern = pattern
       when String
-        @callback = Regex.new("^#{Regex.escape(callback)}$")
+        @pattern = Regex.new("^#{Regex.escape(pattern)}$")
       else
-        @callback = nil
+        @pattern = nil
       end
     end
 
     def exec(client : Client, update : Update) : Bool
       if inline_query = update.inline_query
-        return true unless @callback
-        if inline_query.query.match(@callback.not_nil!)
-          update.set_context({ query: inline_query.query })
+        return true unless @pattern
+        query = inline_query.query.to_s
+        if match = query.match(@pattern.not_nil!)
+          update.set_context({ query: query, match: match })
           return true
         end
       end

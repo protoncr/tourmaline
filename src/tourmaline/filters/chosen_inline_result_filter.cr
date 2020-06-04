@@ -1,18 +1,18 @@
 module Tourmaline
-  # Filters messages containing a callback query, optionally with a specific pattern.
+  # Filters messages containing a chosen inline result, optionally with a specific pattern.
   #
   # Options:
   # - `pattern : (String | Regex)?` - string or regex to match
   #
   # Context additions:
-  # - `data : String?` - The data that was matched
+  # - `query : String?` - The query that was matched
   # - `match : Regex::MatchData` - the match data returned by the successful match
   #
   # Example:
   # ```crystal
-  # filter = CallbackQueryFilter.new(/^foo(\d+)/)
+  # filter = ChosenInlineResultFilter.new(/^foo(\d+)/)
   # ```
-  class CallbackQueryFilter < Filter
+  class ChosenInlineResultFilter < Filter
     property pattern : Regex?
 
     def initialize(pattern : (String | Regex)? = nil)
@@ -27,11 +27,11 @@ module Tourmaline
     end
 
     def exec(client : Client, update : Update) : Bool
-      if callback_query = update.callback_query
+      if result = update.chosen_inline_result
         return true unless @pattern
-        data = callback_query.data.to_s
-        if match = data.match(@pattern.not_nil!)
-          update.set_context({ data: data, match: match })
+        query = result.query.to_s
+        if match = query.match(@pattern.not_nil!)
+          update.set_context({ query: query, match: match })
           return true
         end
       end
