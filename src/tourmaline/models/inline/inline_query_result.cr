@@ -17,76 +17,76 @@ module Tourmaline
         @results = [] of Tourmaline::InlineQueryResult
       end
 
-      def article(**opts)
-        results << InlineQueryResultArticle.new(**opts)
+      def article(*args, **opts)
+        results << InlineQueryResultArticle.new(*args, **opts)
       end
 
-      def audio(**opts)
-        results << InlineQueryResultAudio.new(**opts)
+      def audio(*args, **opts)
+        results << InlineQueryResultAudio.new(*args, **opts)
       end
 
-      def cached_audio(**opts)
-        results << InlineQueryResultCachedAudio.new(**opts)
+      def cached_audio(*args, **opts)
+        results << InlineQueryResultCachedAudio.new(*args, **opts)
       end
 
-      def cached_document(**opts)
-        results << InlineQueryResultCachedDocument.new(**opts)
+      def cached_document(*args, **opts)
+        results << InlineQueryResultCachedDocument.new(*args, **opts)
       end
 
-      def cached_gif(**opts)
-        results << InlineQueryResultCachedGif.new(**opts)
+      def cached_gif(*args, **opts)
+        results << InlineQueryResultCachedGif.new(*args, **opts)
       end
 
-      def cached_mpeg4_gif(**opts)
-        results << InlineQueryResultCachedMpeg4Gif.new(**opts)
+      def cached_mpeg4_gif(*args, **opts)
+        results << InlineQueryResultCachedMpeg4Gif.new(*args, **opts)
       end
 
-      def cached_photo(**opts)
-        results << InlineQueryResultCachedPhoto.new(**opts)
+      def cached_photo(*args, **opts)
+        results << InlineQueryResultCachedPhoto.new(*args, **opts)
       end
 
-      def cached_sticker(**opts)
-        results << InlineQueryResultCachedSticker.new(**opts)
+      def cached_sticker(*args, **opts)
+        results << InlineQueryResultCachedSticker.new(*args, **opts)
       end
 
-      def cached_video(**opts)
-        results << InlineQueryResultCachedVideo.new(**opts)
+      def cached_video(*args, **opts)
+        results << InlineQueryResultCachedVideo.new(*args, **opts)
       end
 
-      def cached_voice(**opts)
-        results << InlineQueryResultCachedVoice.new(**opts)
+      def cached_voice(*args, **opts)
+        results << InlineQueryResultCachedVoice.new(*args, **opts)
       end
 
-      def contact(**opts)
-        results << InlineQueryResultContact.new(**opts)
+      def contact(*args, **opts)
+        results << InlineQueryResultContact.new(*args, **opts)
       end
 
-      def document(**opts)
-        results << InlineQueryResultDocument.new(**opts)
+      def document(*args, **opts)
+        results << InlineQueryResultDocument.new(*args, **opts)
       end
 
-      def gif(**opts)
-        results << InlineQueryResultGif.new(**opts)
+      def gif(*args, **opts)
+        results << InlineQueryResultGif.new(*args, **opts)
       end
 
-      def location(**opts)
-        results << InlineQueryResultLocation.new(**opts)
+      def location(*args, **opts)
+        results << InlineQueryResultLocation.new(*args, **opts)
       end
 
-      def mpeg4_gif(**opts)
-        results << InlineQueryResultMpeg4Gif.new(**opts)
+      def mpeg4_gif(*args, **opts)
+        results << InlineQueryResultMpeg4Gif.new(*args, **opts)
       end
 
-      def photo(**opts)
-        results << InlineQueryResultPhoto.new(**opts)
+      def photo(*args, **opts)
+        results << InlineQueryResultPhoto.new(*args, **opts)
       end
 
-      def venue(**opts)
-        results << InlineQueryResultVenue.new(**opts)
+      def venue(*args, **opts)
+        results << InlineQueryResultVenue.new(*args, **opts)
       end
 
-      def video(**opts)
-        results << InlineQueryResultVideo.new(**opts)
+      def video(*args, **opts)
+        results << InlineQueryResultVideo.new(*args, **opts)
       end
     end
   end
