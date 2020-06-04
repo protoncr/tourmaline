@@ -2,7 +2,7 @@ require "kemal"
 require "ngrok"
 
 require "../src/tourmaline"
-require "../src/tourmaline/adapters/kemal"
+require "../src/tourmaline/extra/kemal"
 
 class EchoBot < Tourmaline::Client
   @[Command("echo")]
