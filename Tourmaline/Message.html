@@ -135,11 +135,6 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/DBPersistence" data-name="tourmaline::dbpersistence">
-      <a href="../Tourmaline/DBPersistence.html">DBPersistence</a>
-      
-    </li>
-  
   <li class=" " data-id="/Tourmaline/Dice" data-name="tourmaline::dice">
       <a href="../Tourmaline/Dice.html">Dice</a>
       
@@ -1223,10 +1218,6 @@
   </h2>
   <ul class="other-types-list">
     
-      <li class="other-type">DB::Mappable</li>
-    
-      <li class="other-type">DB::Serializable</li>
-    
       <li class="other-type">JSON::Serializable</li>
     
   </ul>
@@ -1265,11 +1256,6 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(rs:DB::ResultSet)-class-method" class="signature"><strong>.new</strong>(rs : DB::ResultSet)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
       </li>
@@ -1277,23 +1263,6 @@
   </ul>
 
 
-
-  <h2>
-    <a id="class-method-summary" class="anchor" href="#class-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Class Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#from_rs(rs:DB::ResultSet)-class-method" class="signature"><strong>.from_rs</strong>(rs : DB::ResultSet)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -1338,12 +1307,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#chats(&block:Chat-%3E)-instance-method" class="signature"><strong>#chats</strong>(&block : Chat -> )</a>
+        <a href="#chats-instance-method" class="signature"><strong>#chats</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#chats-instance-method" class="signature"><strong>#chats</strong></a>
+        <a href="#chats(&block:Chat-%3E)-instance-method" class="signature"><strong>#chats</strong>(&block : Chat -> )</a>
         
       </li>
     
@@ -1528,6 +1497,11 @@
     
       <li class="entry-summary">
         <a href="#new_chat_title:String?-instance-method" class="signature"><strong>#new_chat_title</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#passport_data:PassportData?-instance-method" class="signature"><strong>#passport_data</strong> : PassportData?</a>
         
       </li>
     
@@ -1768,6 +1742,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#via_bot:User?-instance-method" class="signature"><strong>#via_bot</strong> : User?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#video:Video?-instance-method" class="signature"><strong>#video</strong> : Video?</a>
         
       </li>
@@ -1820,26 +1799,6 @@
 
 
   
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
 
@@ -1851,20 +1810,6 @@
 </a>
     Constructor Detail
   </h2>
-  
-    <div class="entry-detail" id="new(rs:DB::ResultSet)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(rs : DB::ResultSet)
-
-        <a class="method-permalink" href="#new(rs:DB::ResultSet)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
   
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
@@ -1882,30 +1827,6 @@
   
 
 
-
-  <h2>
-    <a id="class-method-detail" class="anchor" href="#class-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Class Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="from_rs(rs:DB::ResultSet)-class-method">
-      <div class="signature">
-        
-        def self.<strong>from_rs</strong>(rs : DB::ResultSet)
-
-        <a class="method-permalink" href="#from_rs(rs:DB::ResultSet)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 
@@ -2002,12 +1923,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="chats(&amp;block:Chat-&gt;)-instance-method">
+    <div class="entry-detail" id="chats-instance-method">
       <div class="signature">
         
-        def <strong>chats</strong>(&block : <a href="../Tourmaline/Chat.html">Chat</a> -> )
+        def <strong>chats</strong>
 
-        <a class="method-permalink" href="#chats(&block:Chat-%3E)-instance-method">#</a>
+        <a class="method-permalink" href="#chats-instance-method">#</a>
       </div>
       
       <br/>
@@ -2016,12 +1937,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="chats-instance-method">
+    <div class="entry-detail" id="chats(&amp;block:Chat-&gt;)-instance-method">
       <div class="signature">
         
-        def <strong>chats</strong>
+        def <strong>chats</strong>(&block : <a href="../Tourmaline/Chat.html">Chat</a> -> )
 
-        <a class="method-permalink" href="#chats-instance-method">#</a>
+        <a class="method-permalink" href="#chats(&block:Chat-%3E)-instance-method">#</a>
       </div>
       
       <br/>
@@ -2533,6 +2454,20 @@
         def <strong>new_chat_title</strong> : String?
 
         <a class="method-permalink" href="#new_chat_title:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="passport_data:PassportData?-instance-method">
+      <div class="signature">
+        
+        def <strong>passport_data</strong> : <a href="../Tourmaline/PassportData.html">PassportData</a>?
+
+        <a class="method-permalink" href="#passport_data:PassportData?-instance-method">#</a>
       </div>
       
       <br/>
@@ -3192,6 +3127,20 @@
         def <strong>venue</strong> : <a href="../Tourmaline/Venue.html">Venue</a>?
 
         <a class="method-permalink" href="#venue:Venue?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="via_bot:User?-instance-method">
+      <div class="signature">
+        
+        def <strong>via_bot</strong> : <a href="../Tourmaline/User.html">User</a>?
+
+        <a class="method-permalink" href="#via_bot:User?-instance-method">#</a>
       </div>
       
       <br/>
