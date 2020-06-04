@@ -12,20 +12,23 @@ module Tourmaline
   # filter = InlineQueryFilter.new(/^foo(\d+)/)
   # ```
   class InlineQueryFilter < Filter
-    property callback : Regex
+    property callback : Regex?
 
-    def initialize(callback : String | Regex)
+    def initialize(callback : (String | Regex)? = nil)
       case callback
       when Regex
         @callback = callback
       when String
         @callback = Regex.new("^#{Regex.escape(callback)}$")
+      else
+        @callback = nil
       end
     end
 
     def exec(client : Client, update : Update) : Bool
       if inline_query = update.inline_query
-        if inline_query.query.match(@callback)
+        return true unless @callback
+        if inline_query.query.match(@callback.not_nil!)
           update.set_context({ query: inline_query.query })
           return true
         end
