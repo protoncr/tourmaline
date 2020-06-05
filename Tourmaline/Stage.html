@@ -1257,7 +1257,7 @@ for a particular user and/or chat.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,**handler_options)-class-method" class="signature"><strong>.new</strong>(client : Client, *, context : T, chat_id = <span class="n">nil</span>, user_id = <span class="n">nil</span>, group = <span class="n">nil</span>, **handler_options)</a>
+        <a href="#new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,history=true,**handler_options)-class-method" class="signature"><strong>.new</strong>(client : Client, *, context : T, chat_id = <span class="n">nil</span>, user_id = <span class="n">nil</span>, group = <span class="n">nil</span>, history = <span class="n">true</span>, **handler_options)</a>
         
           <div class="summary"><p>Create a new Stage instance</p></div>
         
@@ -1299,7 +1299,7 @@ for a particular user and/or chat.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#active:Bool-instance-method" class="signature"><strong>#active</strong> : Bool</a>
+        <a href="#active?:Bool-instance-method" class="signature"><strong>#active?</strong> : Bool</a>
         
           <div class="summary"><p>True if this Stage is currently active</p></div>
         
@@ -1313,21 +1313,21 @@ for a particular user and/or chat.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#chat_id:Int64?-instance-method" class="signature"><strong>#chat_id</strong> : Int64?</a>
+        <a href="#chat_id:Int::Primitive?-instance-method" class="signature"><strong>#chat_id</strong> : Int::Primitive?</a>
         
           <div class="summary"><p>The chat id that this stage applies to If nil, this stage will be usable across all chats</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#chat_id=(chat_id:Int64?)-instance-method" class="signature"><strong>#chat_id=</strong>(chat_id : Int64?)</a>
+        <a href="#chat_id=(chat_id:Int::Primitive?)-instance-method" class="signature"><strong>#chat_id=</strong>(chat_id : Int::Primitive?)</a>
         
           <div class="summary"><p>The chat id that this stage applies to If nil, this stage will be usable across all chats</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#chat_id?:Int64%7CNil?-instance-method" class="signature"><strong>#chat_id?</strong> : Int64 | Nil?</a>
+        <a href="#chat_id?:Int::Primitive%7CNil?-instance-method" class="signature"><strong>#chat_id?</strong> : Int::Primitive | Nil?</a>
         
           <div class="summary"><p>The chat id that this stage applies to If nil, this stage will be usable across all chats</p></div>
         
@@ -1365,6 +1365,13 @@ for a particular user and/or chat.</p>
         <a href="#exit-instance-method" class="signature"><strong>#exit</strong></a>
         
           <div class="summary"><p>Stop the current Stage and remove the event handler from the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#history?:Bool-instance-method" class="signature"><strong>#history?</strong> : Bool</a>
+        
+          <div class="summary"><p>True if update history is being recorded</p></div>
         
       </li>
     
@@ -1425,21 +1432,28 @@ for a particular user and/or chat.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#user_id:Int64?-instance-method" class="signature"><strong>#user_id</strong> : Int64?</a>
+        <a href="#update_history:Array(Update)-instance-method" class="signature"><strong>#update_history</strong> : Array(Update)</a>
+        
+          <div class="summary"><p>Maintains a history of updates that match the given chat_id and/or user_id.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_id:Int::Primitive?-instance-method" class="signature"><strong>#user_id</strong> : Int::Primitive?</a>
         
           <div class="summary"><p>The user id that this stage applies to If nil, this stage will be usable across all users</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#user_id=(user_id:Int64?)-instance-method" class="signature"><strong>#user_id=</strong>(user_id : Int64?)</a>
+        <a href="#user_id=(user_id:Int::Primitive?)-instance-method" class="signature"><strong>#user_id=</strong>(user_id : Int::Primitive?)</a>
         
           <div class="summary"><p>The user id that this stage applies to If nil, this stage will be usable across all users</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#user_id?:Int64%7CNil?-instance-method" class="signature"><strong>#user_id?</strong> : Int64 | Nil?</a>
+        <a href="#user_id?:Int::Primitive%7CNil?-instance-method" class="signature"><strong>#user_id?</strong> : Int::Primitive | Nil?</a>
         
           <div class="summary"><p>The user id that this stage applies to If nil, this stage will be usable across all users</p></div>
         
@@ -1485,12 +1499,12 @@ for a particular user and/or chat.</p>
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,**handler_options)-class-method">
+    <div class="entry-detail" id="new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,history=true,**handler_options)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(client : <a href="../Tourmaline/Client.html">Client</a>, *, context : T, chat_id = <span class="n">nil</span>, user_id = <span class="n">nil</span>, group = <span class="n">nil</span>, **handler_options)
+        def self.<strong>new</strong>(client : <a href="../Tourmaline/Client.html">Client</a>, *, context : T, chat_id = <span class="n">nil</span>, user_id = <span class="n">nil</span>, group = <span class="n">nil</span>, history = <span class="n">true</span>, **handler_options)
 
-        <a class="method-permalink" href="#new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,**handler_options)-class-method">#</a>
+        <a class="method-permalink" href="#new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,history=true,**handler_options)-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -1547,12 +1561,12 @@ for a particular user and/or chat.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="active:Bool-instance-method">
+    <div class="entry-detail" id="active?:Bool-instance-method">
       <div class="signature">
         
-        def <strong>active</strong> : Bool
+        def <strong>active?</strong> : Bool
 
-        <a class="method-permalink" href="#active:Bool-instance-method">#</a>
+        <a class="method-permalink" href="#active?:Bool-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1586,12 +1600,12 @@ update to the block.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chat_id:Int64?-instance-method">
+    <div class="entry-detail" id="chat_id:Int::Primitive?-instance-method">
       <div class="signature">
         
-        def <strong>chat_id</strong> : Int64?
+        def <strong>chat_id</strong> : Int::Primitive?
 
-        <a class="method-permalink" href="#chat_id:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#chat_id:Int::Primitive?-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1606,12 +1620,12 @@ will be usable across all chats</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chat_id=(chat_id:Int64?)-instance-method">
+    <div class="entry-detail" id="chat_id=(chat_id:Int::Primitive?)-instance-method">
       <div class="signature">
         
-        def <strong>chat_id=</strong>(chat_id : Int64?)
+        def <strong>chat_id=</strong>(chat_id : Int::Primitive?)
 
-        <a class="method-permalink" href="#chat_id=(chat_id:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#chat_id=(chat_id:Int::Primitive?)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1626,12 +1640,12 @@ will be usable across all chats</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="chat_id?:Int64|Nil?-instance-method">
+    <div class="entry-detail" id="chat_id?:Int::Primitive|Nil?-instance-method">
       <div class="signature">
         
-        def <strong>chat_id?</strong> : Int64 | Nil?
+        def <strong>chat_id?</strong> : Int::Primitive | Nil?
 
-        <a class="method-permalink" href="#chat_id?:Int64%7CNil?-instance-method">#</a>
+        <a class="method-permalink" href="#chat_id?:Int::Primitive%7CNil?-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1733,6 +1747,25 @@ will be usable across all chats</p>
         <div class="doc">
           
           <p>Stop the current Stage and remove the event handler from the client.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="history?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>history?</strong> : Bool
+
+        <a class="method-permalink" href="#history?:Bool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>True if update history is being recorded</p>
         </div>
       
       <br/>
@@ -1894,12 +1927,32 @@ and adding an event handler to the client.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="user_id:Int64?-instance-method">
+    <div class="entry-detail" id="update_history:Array(Update)-instance-method">
       <div class="signature">
         
-        def <strong>user_id</strong> : Int64?
+        def <strong>update_history</strong> : Array(<a href="../Tourmaline/Update.html">Update</a>)
 
-        <a class="method-permalink" href="#user_id:Int64?-instance-method">#</a>
+        <a class="method-permalink" href="#update_history:Array(Update)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Maintains a history of updates that match the given chat_id and/or user_id.
+The first update will be the one that initiated this Stage.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_id:Int::Primitive?-instance-method">
+      <div class="signature">
+        
+        def <strong>user_id</strong> : Int::Primitive?
+
+        <a class="method-permalink" href="#user_id:Int::Primitive?-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1914,12 +1967,12 @@ will be usable across all users</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="user_id=(user_id:Int64?)-instance-method">
+    <div class="entry-detail" id="user_id=(user_id:Int::Primitive?)-instance-method">
       <div class="signature">
         
-        def <strong>user_id=</strong>(user_id : Int64?)
+        def <strong>user_id=</strong>(user_id : Int::Primitive?)
 
-        <a class="method-permalink" href="#user_id=(user_id:Int64?)-instance-method">#</a>
+        <a class="method-permalink" href="#user_id=(user_id:Int::Primitive?)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1934,12 +1987,12 @@ will be usable across all users</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="user_id?:Int64|Nil?-instance-method">
+    <div class="entry-detail" id="user_id?:Int::Primitive|Nil?-instance-method">
       <div class="signature">
         
-        def <strong>user_id?</strong> : Int64 | Nil?
+        def <strong>user_id?</strong> : Int::Primitive | Nil?
 
-        <a class="method-permalink" href="#user_id?:Int64%7CNil?-instance-method">#</a>
+        <a class="method-permalink" href="#user_id?:Int::Primitive%7CNil?-instance-method">#</a>
       </div>
       
         <div class="doc">
