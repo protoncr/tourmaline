@@ -88,7 +88,7 @@ module Tourmaline
     end
 
     def random_string(length)
-      chars = ('0'..'9').to_a + ('a'..'Z').to_a
+      chars = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a
       rands = chars.sample(length)
       rands.join
     end
