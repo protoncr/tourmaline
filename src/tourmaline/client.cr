@@ -30,8 +30,8 @@ module Tourmaline
 
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
-    # `@bot_name` to `get_me.username.to_s`.
-    getter bot_name : String { get_me.username.to_s }
+    # `@bot` to `get_me`.
+    getter bot : User { get_me }
 
     private getter event_handlers : Array(EventHandler)
     private getter persistence : Persistence
@@ -107,6 +107,10 @@ module Tourmaline
 
     def add_event_handler(handler : EventHandler)
       @event_handlers << handler
+    end
+
+    def remove_event_handler(handler : EventHandler)
+      @event_handlers.delete(handler)
     end
 
     def handle_update(update : Update)

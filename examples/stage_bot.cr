@@ -4,74 +4,80 @@ require "../src/tourmaline/extra/stage"
 class StageBot < Tourmaline::Client
   @[Command("start")]
   def start_command(client, update)
-    if message = update.message
-      # This hash will hold the answers gathered during the conversation
-      initial_state = {} of String => String | Int32
+    message = update.message.not_nil!
 
-      # Create an instance of our Conversation stage, and enter it for this chat. A
-      # stage requires a chat_id, and can also include an optional `user_id` if
-      # you want the stage to be user specific.
-      stage = Conversation.enter(chat_id: message.chat.id, state: initial_state)
+    # This hash will hold the answers gathered during the conversation
+    initial_context = {} of String => String | Int32
 
-      # Once `stage.exit` is called, this callback will be called with the answers
-      stage.on_finish do |answers|
-        response = answers.map { |k, v| "#{k}: `#{v}`" }.join("\n")
-        message.respond(response, parse_mode: :markdown)
-      end
+    # Create an instance of our Conversation stage, and enter it for this chat. A
+    # stage requires a chat_id, and can also include an optional `user_id` if
+    # you want the stage to be user specific.
+    stage = Conversation.enter(client, chat_id: message.chat.id, context: initial_context)
+
+    # Once `stage.exit` is called, this callback will be called with the answers
+    stage.on_exit do |answers|
+      response = answers.map { |k, v| "#{k}: `#{v}`" }.join("\n")
+      send_message(message.chat.id, response, parse_mode: :markdown)
     end
   end
 
   # The conversation stage. The generic represents our context.
   class Conversation < Stage(Hash(String, String | Int32))
 
-    # An event is a proc that takes a client. It doesn't include any update information
+    # A step is a proc that takes a client. It doesn't include any update information
     # because it's not being called in response to an update.
-    @[Event(:name)]
+    #
+    # Setting `initial` to true means that this will be the first step called
+    # when the Stage is started.
+    @[Step(:name, initial: true)]
     def ask_name(client)
-      client.send_message(stage.chat_id, "What is your name?")
+      client.send_message(self.chat_id, "What is your name?")
 
-      # Responses to events can be awaited. The next update that comes
+      # Responses to steps can be awaited. The next update that comes
       # in will be passed to this block.
-      stage.await_response do |update|
-        text = update.context["text"].as_s?
-        if (message = update.message) && text
-          stage.contex["name"] = text
+      self.await_response do |update|
+        text = update.message.try &.text
+        if message = update.message
+          self.context["name"] = text.to_s
 
-          # `stage.transition` sets the state to the next event and calls that event
-          stage.transition :age
+          # `self.transition` sets the state to the next step and calls the associated method
+          self.transition :age
         end
       end
 
-      # If `stage.transition` is not called, updates will continue to be passed
-      # to the `await_response` block until either `stage.transition` or `stage.exit`
-      # is called.
+      # If `self.transition` is not called, the Stage will be stuck in the current state, so
+      # be sure to call `transition`, even if you're only transitioning back to the
+      # same step.
     end
 
-    @[Event(:age)]
+    @[Step(:age)]
     def ask_age(client)
-      client.send_message(stage.chat_id, "What is your age?")
-      stage.await_response do |update|
-        text = update.context["text"].as_s?
-        if (message = update.message) && (age = text.to_i?)
-          stage.context["age"] = age
-          stage.transition :gender
+      client.send_message(self.chat_id, "What is your age?")
+      self.await_response do |update|
+        text = update.message.try &.text
+        if (message = update.message) && (age = text.to_s.to_i?)
+          self.context["age"] = age
+          self.transition :gender
         end
       end
     end
 
-    @[Event(:gender)]
+    @[Step(:gender)]
     def ask_gender(client)
       valid_responses = {"male", "female", "other"}
-      client.send_message(stage.chat_id, "What is your gender? (male, female, other)")
-      stage.await_response do |update|
-        text = update.context["text"].as_s?
+      client.send_message(self.chat_id, "What is your gender? (male, female, other)")
+      self.await_response do |update|
+        text = update.message.try &.text
         if (message = update.message) && (valid_responses.includes?(text.to_s.downcase))
-          stage.context["gender"] = text.to_s
+          self.context["gender"] = text.to_s
 
-          # `stage.exit` exits the current stage, returning to the normal bot context
-          stage.exit
+          # `self.exit` exits the current stage, returning to the normal bot context
+          self.exit
         end
       end
     end
   end
 end
+
+bot = StageBot.new(ENV["API_KEY"])
+bot.poll
