@@ -1613,6 +1613,13 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
+        <a href="#send_basket(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_basket</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send a basket (🏀 emoji), which will have a random value from 1 to 6.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#send_chat_action(chat,action:ChatAction)-instance-method" class="signature"><strong>#send_chat_action</strong>(chat, action : ChatAction)</a>
         
           <div class="summary"><p>Use this method when you need to tell the user that something is happening on the bot's side.</p></div>
@@ -1629,14 +1636,14 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       <li class="entry-summary">
         <a href="#send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_dart</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Use this method to send a dart animation, which works as a random "heads or tails" kind of game.</p></div>
+          <div class="summary"><p>Use this method to send a dart (🎯 emoji), which will have a random value from 1 to 6.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Use this method to send a dice, which will have a random value from 1 to 6.</p></div>
+          <div class="summary"><p>Use this method to send a dice (🎲 emoji), which will have a random value from 1 to 6.</p></div>
         
       </li>
     
@@ -2972,6 +2979,26 @@ changed in the future.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="send_basket(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_basket</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_basket(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to send a basket (🏀 emoji), which will have a random value from 1 to 6.
+On success, the sent Message is returned.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="send_chat_action(chat,action:ChatAction)-instance-method">
       <div class="signature">
         
@@ -3032,8 +3059,8 @@ On success, the sent <code><a href="../Tourmaline/Message.html">Message</a></cod
       
         <div class="doc">
           
-          <p>Use this method to send a dart animation, which works as a random "heads or tails"
-kind of game.</p>
+          <p>Use this method to send a dart (🎯 emoji), which will have a random value from 1 to 6.
+On success, the sent Message is returned.</p>
         </div>
       
       <br/>
@@ -3052,7 +3079,7 @@ kind of game.</p>
       
         <div class="doc">
           
-          <p>Use this method to send a dice, which will have a random value from 1 to 6.
+          <p>Use this method to send a dice (🎲 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>
         </div>
       
