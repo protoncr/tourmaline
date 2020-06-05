@@ -45,7 +45,7 @@ module Tourmaline
                 %action = {{ ann[:action] || ann[0] }}
                 %filter = {{ ann[:filter] || ann[1] }}
                 %group = {{ ann[:group] || :default }}
-                %async = {{ ann[:async].nil? ? true : !!ann[:async] }}
+                %async = {{ !!ann[:async] }}
 
                 if %action.is_a?(Symbol | String)
                   begin
@@ -70,7 +70,7 @@ module Tourmaline
                   {{ ann.named_args[:admin_only] || false }}
                 )
                 %filter = {% if ann.named_args[:filter] %} %cmd_filter & {{ ann.named_args[:filter] }} {% else %} %cmd_filter {% end %}
-                %async = {{ ann[:async].nil? ? true : !!ann[:async] }}
+                %async = {{ !!ann[:async] }}
                 %handler = EventHandler.new(:text, %filter, %group, %async, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)
               {% end %}
@@ -80,7 +80,7 @@ module Tourmaline
                 %pattern = {{ ann[:pattern] || ann[0] }}
                 %group  = {{ ann.named_args[:group] || :default }}
                 %cq_filter = CallbackQueryFilter.new(%pattern)
-                %async = {{ ann[:async].nil? ? true : !!ann[:async] }}
+                %async = {{ !!ann[:async] }}
                 %filter = {% if ann.named_args[:filter] %} %cq_filter & {{ ann.named_args[:filter] }} {% else %} %cq_filter {% end %}
                 %handler = EventHandler.new(:callback_query, %filter, %group, %async, &->(c : Client, u : Update) { {{ method.name.id }}(c, u) })
                 add_event_handler(%handler)

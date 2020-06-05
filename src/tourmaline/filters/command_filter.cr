@@ -62,7 +62,7 @@ module Tourmaline
 
           if command.includes?("@")
             command, botname = command.split("@", 2)
-            return false unless botname == client.bot_name
+            return false unless botname == client.bot.username.to_s
           end
 
           prefix_re = /^#{@prefixes.join('|')}/
