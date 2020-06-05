@@ -2,6 +2,25 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.19.0
+
+- Added support for `Passport` 46f189b 
+- Added `animated?` to `Sticker` a641078
+- Added several new filters including `InlineQueryFilter` and `CallbackQueryFilter`
+- Added connection pooling to fix concurrency errors c5fcd1e
+- Events are now async by default
+- Added a new helper class `PagedInlineKeyboard` e5b91c9
+- **(breaking change)** Moved KemalAdapter to `tourmaline/extra` b9b756f
+- Added proxy support based on [mamantoha/http_proxy](https://github.com/mamantoha/http_proxy) aa8e089
+- Added support for multiple prefixes with commands af0cf5f
+- Allow changing the log level using the `LOG` environment variable 6be2df6
+- Added an `InstaBot` example 47e2f7d
+- **(breaking change)** Disabled (commented out) DBPersistence for now cc84132
+- Updated for bot API 4.9
+  - Added support for the 🏀 emoji, including methods `Client#send_basket`, `Message#reply_with_basket`, and `Message#respond_with_basket`
+  - Added `via_bot` field to `Message`
+- Added `Stage` (importable from `tourmaline/extra`) for conversation handling a505a8f
+
 ## 0.18.1
 
 - Added ameba checks
