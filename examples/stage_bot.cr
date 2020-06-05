@@ -22,7 +22,7 @@ class StageBot < Tourmaline::Client
   end
 
   # The conversation stage. The generic represents our context.
-  class Conversation < Stage(Hash(String, String | Int32))
+  class Conversation(T) < Stage(T)
 
     # A step is a proc that takes a client. It doesn't include any update information
     # because it's not being called in response to an update.

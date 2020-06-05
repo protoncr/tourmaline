@@ -1,4 +1,9 @@
 module Tourmaline
+  # FSM (Finite-state machine) like functionality for Tourmaline in the form of a Stage.
+  # Stage allows you to create conversations/wizards which maintain their own state
+  # for a particular user and/or chat.
+  #
+  # For an example of a stage bot, check out [examples/stage_bot.cr](https://github.com/protoncr/tourmaline/blob/master/examples/stage_bot.cr)
   class Stage(T)
     # Annotation for creating a step from a method.
     #
@@ -106,14 +111,18 @@ module Tourmaline
       self
     end
 
+    # Add a handler that's called when this Stage is started
     def on_start(&block : ->)
       @on_start_handlers << block
     end
 
+    # Add a handler that's called when this Stage is exited
     def on_exit(&block : T ->)
       @on_exit_handlers << block
     end
 
+    # Allows you to await a response to a step, yielding the awaited
+    # update to the block.
     def await_response(&block : Update ->)
       @response_awaiter = block
     end
