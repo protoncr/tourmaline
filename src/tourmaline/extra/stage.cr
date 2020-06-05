@@ -29,18 +29,25 @@ module Tourmaline
     getter initial_step : String?
 
     # True if this Stage is currently active
-    getter active : Bool
+    getter? active : Bool
+
+    # True if update history is being recorded
+    getter? history : Bool
+
+    # Maintains a history of updates that match the given chat_id and/or user_id.
+    # The first update will be the one that initiated this Stage.
+    getter update_history : Array(Update)
 
     # The context for this stage
     property context : T
 
     # The chat id that this stage applies to If nil, this stage
     # will be usable across all chats
-    property! chat_id : Int64?
+    property! chat_id : Int::Primitive?
 
     # The user id that this stage applies to If nil, this stage
     # will be usable across all users
-    property! user_id : Int64?
+    property! user_id : Int::Primitive?
 
     @first_run : Bool
     @event_handler : EventHandler
@@ -49,12 +56,20 @@ module Tourmaline
     @response_awaiter  : Proc(Update, Nil)?
 
     # Create a new Stage instance
-    def initialize(@client : Client, *, @context : T, chat_id = nil, user_id = nil, group = nil, **handler_options)
-      @chat_id = chat_id.try &.to_i64
-      @user_id = user_id.try &.to_i64
+    def initialize(@client : Client,
+                   *,
+                   @context : T,
+                   chat_id = nil,
+                   user_id = nil,
+                   group = nil,
+                   @history = true,
+                   **handler_options)
+      @chat_id = chat_id
+      @user_id = user_id
       @active  = false
       @first_run  = true
 
+      @update_history  = [] of Update
       @on_start_handlers = [] of Proc(Nil)
       @on_exit_handlers  = [] of Proc(T, Nil)
 
@@ -140,6 +155,12 @@ module Tourmaline
     private def handle_update(update)
       return unless @active
 
+      if @first_run
+        @update_history << update if history?
+        @first_run = false
+        return
+      end
+
       if awaiter = @response_awaiter
         # Get the returned messages from the chat, but not nested ones
         messages = [update.channel_post, update.edited_channel_post, update.edited_message, update.message].compact
@@ -159,10 +180,8 @@ module Tourmaline
           return unless user_id == message.from.try &.id
         end
 
-        puts [@chat_id, @user_id, @client.bot.id, awaiter]
-
-        awaiter.call(update) unless @first_run
-        @first_run = false
+        @update_history << update if history?
+        awaiter.call(update)
       end
     end
 
