@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="">
-  <title>Tourmaline::CallbackQueryFilter - </title>
+  <title>Tourmaline::Stage(T) - </title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -75,7 +75,7 @@
       
     </li>
   
-  <li class=" current" data-id="/Tourmaline/CallbackQueryFilter" data-name="tourmaline::callbackqueryfilter">
+  <li class=" " data-id="/Tourmaline/CallbackQueryFilter" data-name="tourmaline::callbackqueryfilter">
       <a href="../Tourmaline/CallbackQueryFilter.html">CallbackQueryFilter</a>
       
     </li>
@@ -1085,7 +1085,7 @@
       
     </li>
   
-  <li class="parent " data-id="/Tourmaline/Stage" data-name="tourmaline::stage(t)">
+  <li class="parent open current" data-id="/Tourmaline/Stage" data-name="tourmaline::stage(t)">
       <a href="../Tourmaline/Stage.html">Stage</a>
       
         <ul>
@@ -1194,12 +1194,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::CallbackQueryFilter
+  <span class="kind">class</span> Tourmaline::Stage(T)
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/CallbackQueryFilter.html">Tourmaline::CallbackQueryFilter</a></li><li class="superclass"><a href="../Tourmaline/Filter.html">Tourmaline::Filter</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/Stage.html">Tourmaline::Stage(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -1213,19 +1213,11 @@
     Overview
   </h2>
 
-  <p>Filters messages containing a callback query, optionally with a specific pattern.</p>
+  <p>FSM (Finite-state machine) like functionality for Tourmaline in the form of a Stage.
+Stage allows you to create conversations/wizards which maintain their own state
+for a particular user and/or chat.</p>
 
-<p>Options:</p>
-
-<ul><li><code>pattern : (String | Regex)?</code> - string or regex to match</li></ul>
-
-<p>Context additions:</p>
-
-<ul><li><code>data : String?</code> - The data that was matched</li><li><code>match : Regex::MatchData</code> - the match data returned by the successful match</li></ul>
-
-<p>Example:</p>
-
-<pre><code class="language-crystal">filter <span class="o">=</span> <span class="t">CallbackQueryFilter</span>.<span class="k">new</span>(<span class="s">/^foo(\d+)/</span>)</code></pre>
+<p>For an example of a stage bot, check out <a href="https://github.com/protoncr/tourmaline/blob/master/examples/stage_bot.cr" target="_blank">examples/stage_bot.cr</a></p>
 
 
 
@@ -1265,13 +1257,34 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(pattern:String%7CRegex?=nil)-class-method" class="signature"><strong>.new</strong>(pattern : String | Regex? = <span class="n">nil</span>)</a>
+        <a href="#new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,**handler_options)-class-method" class="signature"><strong>.new</strong>(client : Client, *, context : T, chat_id = <span class="n">nil</span>, user_id = <span class="n">nil</span>, group = <span class="n">nil</span>, **handler_options)</a>
+        
+          <div class="summary"><p>Create a new Stage instance</p></div>
         
       </li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#enter(*args,**options)-class-method" class="signature"><strong>.enter</strong>(*args, **options)</a>
+        
+          <div class="summary"><p>Create a new Stage instance and start it immediately</p></div>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -1286,17 +1299,149 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#exec(client:Client,update:Update):Bool-instance-method" class="signature"><strong>#exec</strong>(client : Client, update : Update) : Bool</a>
+        <a href="#active:Bool-instance-method" class="signature"><strong>#active</strong> : Bool</a>
+        
+          <div class="summary"><p>True if this Stage is currently active</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#pattern:Regex?-instance-method" class="signature"><strong>#pattern</strong> : Regex?</a>
+        <a href="#await_response(&block:Update-%3E)-instance-method" class="signature"><strong>#await_response</strong>(&block : Update -> )</a>
+        
+          <div class="summary"><p>Allows you to await a response to a step, yielding the awaited update to the block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#pattern=(pattern:Regex?)-instance-method" class="signature"><strong>#pattern=</strong>(pattern : Regex?)</a>
+        <a href="#chat_id:Int64?-instance-method" class="signature"><strong>#chat_id</strong> : Int64?</a>
+        
+          <div class="summary"><p>The chat id that this stage applies to If nil, this stage will be usable across all chats</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chat_id=(chat_id:Int64?)-instance-method" class="signature"><strong>#chat_id=</strong>(chat_id : Int64?)</a>
+        
+          <div class="summary"><p>The chat id that this stage applies to If nil, this stage will be usable across all chats</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chat_id?:Int64%7CNil?-instance-method" class="signature"><strong>#chat_id?</strong> : Int64 | Nil?</a>
+        
+          <div class="summary"><p>The chat id that this stage applies to If nil, this stage will be usable across all chats</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#client:Client-instance-method" class="signature"><strong>#client</strong> : Client</a>
+        
+          <div class="summary"><p>The client instance this stage is attached to</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#context:T-instance-method" class="signature"><strong>#context</strong> : T</a>
+        
+          <div class="summary"><p>The context for this stage</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#context=(context:T)-instance-method" class="signature"><strong>#context=</strong>(context : T)</a>
+        
+          <div class="summary"><p>The context for this stage</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#current_step:String?-instance-method" class="signature"><strong>#current_step</strong> : String?</a>
+        
+          <div class="summary"><p>The key for the currently active step</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exit-instance-method" class="signature"><strong>#exit</strong></a>
+        
+          <div class="summary"><p>Stop the current Stage and remove the event handler from the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#initial_step:String?-instance-method" class="signature"><strong>#initial_step</strong> : String?</a>
+        
+          <div class="summary"><p>The key to use for the initial step</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on(step,initial=false,&block:Client-%3E)-instance-method" class="signature"><strong>#on</strong>(step, initial = <span class="n">false</span>, &block : Client -> )</a>
+        
+          <div class="summary"><p>Add an event handler for the given step name using the supplied block</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on(step,proc:Client-%3E,initial=false)-instance-method" class="signature"><strong>#on</strong>(step, proc : Client -> , initial = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Add an event handler for the given event name using the supplied proc</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_exit(&block:T-%3E)-instance-method" class="signature"><strong>#on_exit</strong>(&block : T -> )</a>
+        
+          <div class="summary"><p>Add a handler that's called when this Stage is exited</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_start(&block:-%3E)-instance-method" class="signature"><strong>#on_start</strong>(&block :  -> )</a>
+        
+          <div class="summary"><p>Add a handler that's called when this Stage is started</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start-instance-method" class="signature"><strong>#start</strong></a>
+        
+          <div class="summary"><p>Start the current Stage, setting the given initial step as the current step and adding an event handler to the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#steps-instance-method" class="signature"><strong>#steps</strong></a>
+        
+          <div class="summary"><p>A hash containing the steps in this stage</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#transition(event)-instance-method" class="signature"><strong>#transition</strong>(event)</a>
+        
+          <div class="summary"><p>Set the current step to the given value</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_id:Int64?-instance-method" class="signature"><strong>#user_id</strong> : Int64?</a>
+        
+          <div class="summary"><p>The user id that this stage applies to If nil, this stage will be usable across all users</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_id=(user_id:Int64?)-instance-method" class="signature"><strong>#user_id=</strong>(user_id : Int64?)</a>
+        
+          <div class="summary"><p>The user id that this stage applies to If nil, this stage will be usable across all users</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_id?:Int64%7CNil?-instance-method" class="signature"><strong>#user_id?</strong> : Int64 | Nil?</a>
+        
+          <div class="summary"><p>The user id that this stage applies to If nil, this stage will be usable across all users</p></div>
         
       </li>
     
@@ -1307,35 +1452,6 @@
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from class <code><a href="../Tourmaline/Filter.html">Tourmaline::Filter</a></code></h3>
-  
-  
-    <a href="../Tourmaline/Filter.html#&(other:Filter%7CFilterGroup)-instance-method" class="tooltip">
-      <span>&(other : Filter | FilterGroup)</span>
-    &</a>, 
-    
-  
-    <a href="../Tourmaline/Filter.html#exec(client:Client,update:Update):Bool-instance-method" class="tooltip">
-      <span>exec(client : Client, update : Update) : Bool</span>
-    exec</a>, 
-    
-  
-    <a href="../Tourmaline/Filter.html#%7C(other:Filter%7CFilterGroup)-instance-method" class="tooltip">
-      <span>|(other : Filter | FilterGroup)</span>
-    |</a>
-    
-  
-
-
-    
-
-
-    
-
-
   
     
 
@@ -1369,13 +1485,18 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pattern:String|Regex?=nil)-class-method">
+    <div class="entry-detail" id="new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,**handler_options)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pattern : String | Regex? = <span class="n">nil</span>)
+        def self.<strong>new</strong>(client : <a href="../Tourmaline/Client.html">Client</a>, *, context : T, chat_id = <span class="n">nil</span>, user_id = <span class="n">nil</span>, group = <span class="n">nil</span>, **handler_options)
 
-        <a class="method-permalink" href="#new(pattern:String%7CRegex?=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new(client:Client,*,context:T,chat_id=nil,user_id=nil,group=nil,**handler_options)-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Create a new Stage instance</p>
+        </div>
       
       <br/>
       <div>
@@ -1385,6 +1506,35 @@
   
 
 
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="enter(*args,**options)-class-method">
+      <div class="signature">
+        
+        def self.<strong>enter</strong>(*args, **options)
+
+        <a class="method-permalink" href="#enter(*args,**options)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Create a new Stage instance and start it immediately</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
@@ -1397,13 +1547,18 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="exec(client:Client,update:Update):Bool-instance-method">
+    <div class="entry-detail" id="active:Bool-instance-method">
       <div class="signature">
         
-        def <strong>exec</strong>(client : <a href="../Tourmaline/Client.html">Client</a>, update : <a href="../Tourmaline/Update.html">Update</a>) : Bool
+        def <strong>active</strong> : Bool
 
-        <a class="method-permalink" href="#exec(client:Client,update:Update):Bool-instance-method">#</a>
+        <a class="method-permalink" href="#active:Bool-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>True if this Stage is currently active</p>
+        </div>
       
       <br/>
       <div>
@@ -1411,13 +1566,19 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="pattern:Regex?-instance-method">
+    <div class="entry-detail" id="await_response(&amp;block:Update-&gt;)-instance-method">
       <div class="signature">
         
-        def <strong>pattern</strong> : Regex?
+        def <strong>await_response</strong>(&block : <a href="../Tourmaline/Update.html">Update</a> -> )
 
-        <a class="method-permalink" href="#pattern:Regex?-instance-method">#</a>
+        <a class="method-permalink" href="#await_response(&block:Update-%3E)-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Allows you to await a response to a step, yielding the awaited
+update to the block.</p>
+        </div>
       
       <br/>
       <div>
@@ -1425,13 +1586,367 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="pattern=(pattern:Regex?)-instance-method">
+    <div class="entry-detail" id="chat_id:Int64?-instance-method">
       <div class="signature">
         
-        def <strong>pattern=</strong>(pattern : Regex?)
+        def <strong>chat_id</strong> : Int64?
 
-        <a class="method-permalink" href="#pattern=(pattern:Regex?)-instance-method">#</a>
+        <a class="method-permalink" href="#chat_id:Int64?-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The chat id that this stage applies to If nil, this stage
+will be usable across all chats</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chat_id=(chat_id:Int64?)-instance-method">
+      <div class="signature">
+        
+        def <strong>chat_id=</strong>(chat_id : Int64?)
+
+        <a class="method-permalink" href="#chat_id=(chat_id:Int64?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The chat id that this stage applies to If nil, this stage
+will be usable across all chats</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chat_id?:Int64|Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>chat_id?</strong> : Int64 | Nil?
+
+        <a class="method-permalink" href="#chat_id?:Int64%7CNil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The chat id that this stage applies to If nil, this stage
+will be usable across all chats</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="client:Client-instance-method">
+      <div class="signature">
+        
+        def <strong>client</strong> : <a href="../Tourmaline/Client.html">Client</a>
+
+        <a class="method-permalink" href="#client:Client-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The client instance this stage is attached to</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="context:T-instance-method">
+      <div class="signature">
+        
+        def <strong>context</strong> : T
+
+        <a class="method-permalink" href="#context:T-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The context for this stage</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="context=(context:T)-instance-method">
+      <div class="signature">
+        
+        def <strong>context=</strong>(context : T)
+
+        <a class="method-permalink" href="#context=(context:T)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The context for this stage</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="current_step:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>current_step</strong> : String?
+
+        <a class="method-permalink" href="#current_step:String?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The key for the currently active step</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="exit-instance-method">
+      <div class="signature">
+        
+        def <strong>exit</strong>
+
+        <a class="method-permalink" href="#exit-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Stop the current Stage and remove the event handler from the client.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="initial_step:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>initial_step</strong> : String?
+
+        <a class="method-permalink" href="#initial_step:String?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The key to use for the initial step</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on(step,initial=false,&amp;block:Client-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on</strong>(step, initial = <span class="n">false</span>, &block : <a href="../Tourmaline/Client.html">Client</a> -> )
+
+        <a class="method-permalink" href="#on(step,initial=false,&block:Client-%3E)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add an event handler for the given step name using the supplied block</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on(step,proc:Client-&gt;,initial=false)-instance-method">
+      <div class="signature">
+        
+        def <strong>on</strong>(step, proc : <a href="../Tourmaline/Client.html">Client</a> -> , initial = <span class="n">false</span>)
+
+        <a class="method-permalink" href="#on(step,proc:Client-%3E,initial=false)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add an event handler for the given event name using the supplied proc</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_exit(&amp;block:T-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_exit</strong>(&block : T -> )
+
+        <a class="method-permalink" href="#on_exit(&block:T-%3E)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a handler that's called when this Stage is exited</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_start(&amp;block:-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_start</strong>(&block :  -> )
+
+        <a class="method-permalink" href="#on_start(&block:-%3E)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a handler that's called when this Stage is started</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start-instance-method">
+      <div class="signature">
+        
+        def <strong>start</strong>
+
+        <a class="method-permalink" href="#start-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Start the current Stage, setting the given initial step as the current step
+and adding an event handler to the client.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="steps-instance-method">
+      <div class="signature">
+        
+        def <strong>steps</strong>
+
+        <a class="method-permalink" href="#steps-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>A hash containing the steps in this stage</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="transition(event)-instance-method">
+      <div class="signature">
+        
+        def <strong>transition</strong>(event)
+
+        <a class="method-permalink" href="#transition(event)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set the current step to the given value</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_id:Int64?-instance-method">
+      <div class="signature">
+        
+        def <strong>user_id</strong> : Int64?
+
+        <a class="method-permalink" href="#user_id:Int64?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The user id that this stage applies to If nil, this stage
+will be usable across all users</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_id=(user_id:Int64?)-instance-method">
+      <div class="signature">
+        
+        def <strong>user_id=</strong>(user_id : Int64?)
+
+        <a class="method-permalink" href="#user_id=(user_id:Int64?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The user id that this stage applies to If nil, this stage
+will be usable across all users</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_id?:Int64|Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>user_id?</strong> : Int64 | Nil?
+
+        <a class="method-permalink" href="#user_id?:Int64%7CNil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The user id that this stage applies to If nil, this stage
+will be usable across all users</p>
+        </div>
       
       <br/>
       <div>

@@ -1085,6 +1085,21 @@
       
     </li>
   
+  <li class="parent " data-id="/Tourmaline/Stage" data-name="tourmaline::stage(t)">
+      <a href="../Tourmaline/Stage.html">Stage</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Tourmaline/Stage/Step" data-name="tourmaline::stage::step">
+      <a href="../Tourmaline/Stage/Step.html">Step</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="/Tourmaline/Sticker" data-name="tourmaline::sticker">
       <a href="../Tourmaline/Sticker.html">Sticker</a>
       
@@ -1343,7 +1358,7 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
       </li>
     
       <li class="entry-summary">
-        <a href="#bot_name-instance-method" class="signature"><strong>#bot_name</strong></a>
+        <a href="#bot-instance-method" class="signature"><strong>#bot</strong></a>
         
           <div class="summary"><p>Gets the name of the Client at the time the Client was started.</p></div>
         
@@ -1590,6 +1605,11 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
         <a href="#promote_chat_member(chat,user,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method" class="signature"><strong>#promote_chat_member</strong>(chat, user, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to promote or demote a user in a supergroup or a channel.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove_event_handler(handler:EventHandler)-instance-method" class="signature"><strong>#remove_event_handler</strong>(handler : EventHandler)</a>
         
       </li>
     
@@ -2136,19 +2156,19 @@ On success, <code>true</code> is returned.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="bot_name-instance-method">
+    <div class="entry-detail" id="bot-instance-method">
       <div class="signature">
         
-        def <strong>bot_name</strong>
+        def <strong>bot</strong>
 
-        <a class="method-permalink" href="#bot_name-instance-method">#</a>
+        <a class="method-permalink" href="#bot-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Gets the name of the Client at the time the Client was
 started. Refreshing can be done by setting
-<code>@bot_name</code> to <code>get_me.username.to_s</code>.</p>
+<code>@bot</code> to <code><a href="../Tourmaline/Client.html#get_me-instance-method">#get_me</a></code>.</p>
         </div>
       
       <br/>
@@ -2908,6 +2928,20 @@ have the appropriate admin rights. Pass False for all boolean
 parameters to demote a user.
 Returns <code>true</code> on success.</p>
         </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove_event_handler(handler:EventHandler)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove_event_handler</strong>(handler : <a href="../Tourmaline/EventHandler.html">EventHandler</a>)
+
+        <a class="method-permalink" href="#remove_event_handler(handler:EventHandler)-instance-method">#</a>
+      </div>
       
       <br/>
       <div>
