@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class ChatPermissions
     include JSON::Serializable

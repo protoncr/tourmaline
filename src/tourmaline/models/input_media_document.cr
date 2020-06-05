@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InputMediaDocument
     include JSON::Serializable

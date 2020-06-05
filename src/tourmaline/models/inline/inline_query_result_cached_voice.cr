@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineQueryResultCachedVoice < InlineQueryResult
     include JSON::Serializable

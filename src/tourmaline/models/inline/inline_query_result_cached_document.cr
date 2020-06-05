@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineQueryResultCachedDocument < InlineQueryResult
     include JSON::Serializable

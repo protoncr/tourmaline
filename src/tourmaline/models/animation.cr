@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class Animation
     include JSON::Serializable

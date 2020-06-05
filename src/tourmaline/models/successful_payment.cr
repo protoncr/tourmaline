@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class SuccessfulPayment
     include JSON::Serializable

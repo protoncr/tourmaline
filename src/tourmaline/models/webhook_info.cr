@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class WebhookInfo
     include JSON::Serializable

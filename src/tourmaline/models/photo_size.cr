@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class PhotoSize
     include JSON::Serializable

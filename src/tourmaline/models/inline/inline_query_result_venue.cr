@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineQueryResultVenue < InlineQueryResult
     include JSON::Serializable

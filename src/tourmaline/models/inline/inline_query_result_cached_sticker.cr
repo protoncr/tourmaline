@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineQueryResultCachedSticker < InlineQueryResult
     include JSON::Serializable

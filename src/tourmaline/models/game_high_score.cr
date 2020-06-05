@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class GameHighScore
     include JSON::Serializable

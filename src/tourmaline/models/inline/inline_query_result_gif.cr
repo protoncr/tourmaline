@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineQueryResultGif < InlineQueryResult
     include JSON::Serializable

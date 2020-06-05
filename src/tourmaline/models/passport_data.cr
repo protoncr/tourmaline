@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class PassportData
     include JSON::Serializable

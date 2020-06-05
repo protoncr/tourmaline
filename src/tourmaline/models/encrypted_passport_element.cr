@@ -1,10 +1,8 @@
-require "json"
-
 module Tourmaline
   class EncryptedPassportElement
     include JSON::Serializable
 
-    getter type : String # TODO: Make EncryptedPassportElement::Type
+    getter type : EncryptedPassportElement::Type
 
     getter data : String?
 
@@ -38,6 +36,14 @@ module Tourmaline
       TemporaryRegistration
       PhoneNumber
       Email
+
+      def to_json(json : JSON::Builder)
+        json.string(to_s)
+      end
+
+      def self.from_json(pull : JSON::PullParser)
+        parse(pull.read_string)
+      end
     end
   end
 end

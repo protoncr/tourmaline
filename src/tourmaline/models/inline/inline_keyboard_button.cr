@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineKeyboardButton
     include JSON::Serializable

@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineQueryResultVideo < InlineQueryResult
     include JSON::Serializable

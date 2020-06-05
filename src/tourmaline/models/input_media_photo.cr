@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InputMediaPhoto
     include JSON::Serializable

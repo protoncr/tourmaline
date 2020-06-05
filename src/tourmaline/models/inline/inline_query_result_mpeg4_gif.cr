@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InlineQueryResultMpeg4Gif < InlineQueryResult
     include JSON::Serializable

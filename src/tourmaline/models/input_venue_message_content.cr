@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   class InputVenueMessageContent
     include JSON::Serializable

@@ -1,5 +1,3 @@
-require "json"
-
 module Tourmaline
   # # This object represents a Telegram user or bot.
   class Chat
