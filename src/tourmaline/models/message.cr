@@ -194,7 +194,7 @@ module Tourmaline
       Container.client.send_message(chat, message, **kwargs, reply_to_message: nil)
     end
 
-    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll dice dart] %}
+    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll dice dart basket] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         Container.client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end

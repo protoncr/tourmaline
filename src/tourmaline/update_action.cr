@@ -47,7 +47,7 @@ module Tourmaline
 
     Dice
     Dart
-    Basketball
+    Basket
 
     def to_s
       super.to_s.underscore
@@ -101,7 +101,7 @@ module Tourmaline
         if dice = message.dice
           actions << UpdateAction::Dice if dice.emoji == "🎲"
           actions << UpdateAction::Dart if dice.emoji == "🎯"
-          actions << UpdateAction::Basketball if dice.emoji == "🏀"
+          actions << UpdateAction::Basket if dice.emoji == "🏀"
         end
       end
 
