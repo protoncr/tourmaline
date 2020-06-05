@@ -111,7 +111,7 @@ module Tourmaline
     #   channel, it can delete any message there.
     # Returns `true` on success.
     def delete_message(chat, message)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
 
       response = request("deleteMessage", {
@@ -138,7 +138,7 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
@@ -169,7 +169,7 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
 
@@ -199,7 +199,7 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
@@ -225,7 +225,7 @@ module Tourmaline
       message,
       disable_notification = false
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       message_id = message.is_a?(Int) ? message : message.id
       from_chat_id = from_chat.is_a?(Int) ? from_chat : from_chat.id
 
@@ -244,7 +244,7 @@ module Tourmaline
     # current username of a user, group or channel, etc.).
     # Returns a `Chat` object on success.
     def get_chat(chat)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("getChat", {
         chat_id: chat_id,
@@ -259,7 +259,7 @@ module Tourmaline
     # group or a supergroup and no administrators were appointed,
     # only the creator will be returned.
     def get_chat_administrators(chat)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("getChatAdministrators", {
         chat_id: chat_id,
@@ -271,7 +271,7 @@ module Tourmaline
     # Use this method to get information about a member of a chat. Returns a
     # `ChatMember` object on success.
     def get_chat_member(chat, user)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
 
       response = request("getChatMember", {
@@ -287,7 +287,7 @@ module Tourmaline
     # Use this method to get the number of members in a chat.
     # Returns `Int32` on success.
     def get_chat_members_count(chat)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("getChatMembersCount", {
         chat_id: chat_id,
@@ -354,7 +354,7 @@ module Tourmaline
       user,
       until_date = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
       until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
 
@@ -376,7 +376,7 @@ module Tourmaline
       chat,
       user
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
 
       response = request("unbanChatMember", {
@@ -398,7 +398,7 @@ module Tourmaline
       permissions,
       until_date = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
       until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
       permissions = permissions.is_a?(NamedTuple) ? ChatPermissions.new(**permissions) : permissions
@@ -431,7 +431,7 @@ module Tourmaline
       can_pin_messages = nil,
       can_promote_members = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
 
       response = request("promoteChatMember", {
@@ -456,7 +456,7 @@ module Tourmaline
     # for this to work and must have the appropriate admin rights.
     # Returns the new invite link as `String` on success.
     def export_chat_invite_link(chat)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("exportChatInviteLink", {
         chat_id: chat_id,
@@ -473,7 +473,7 @@ module Tourmaline
     # > **Note:** In regular groups (non-supergroups), this method will only work if the
     # > `All Members Are Admins` setting is off in the target group.
     def set_chat_photo(chat, photo)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("setChatPhoto", {
         chat_id: chat_id,
@@ -491,7 +491,7 @@ module Tourmaline
     # > **Note:** In regular groups (non-supergroups), this method will only work if the
     # `All Members Are Admins` setting is off in the target group.
     def delete_chat_photo(chat)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("deleteChatPhoto", {
         chat_id: chat_id,
@@ -503,7 +503,7 @@ module Tourmaline
     # Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
     # Returns True on success.
     def set_chat_admininstrator_custom_title(chat, user, custom_title)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       user_id = user.is_a?(Int) ? user : user.id
 
       response = request("setChatAdministratorCustomTitle", {
@@ -520,7 +520,7 @@ module Tourmaline
     # the can_restrict_members admin rights.
     # Returns True on success.
     def set_chat_permissions(chat, permissions)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("setChatPermissions", {
         chat_id:     chat_id,
@@ -538,7 +538,7 @@ module Tourmaline
     # > **Note:** In regular groups (non-supergroups), this method will only
     # > work if the `All Members Are Admins` setting is off in the target group.
     def set_chat_title(chat, title)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("setchatTitle", {
         chat_id: chat_id,
@@ -553,7 +553,7 @@ module Tourmaline
     # must have the appropriate admin rights.
     # Returns `true` on success.
     def set_chat_description(chat, description)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("setchatDescription", {
         chat_id:     chat_id,
@@ -569,7 +569,7 @@ module Tourmaline
     # `can_edit_messages` admin right in the channel.
     # Returns `true` on success.
     def pin_chat_message(chat, message, disable_notification = false)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       message_id = message.is_a?(Int) ? message : message.id
 
       response = request("pinChatMessage", {
@@ -587,7 +587,7 @@ module Tourmaline
     # ‘can_edit_messages’ admin right in the channel.
     # Returns `true` on success.
     def unpin_chat_message(chat)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("unpinChatMessage", {
         chat_id: chat_id,
@@ -600,7 +600,7 @@ module Tourmaline
     # supergroup, or channel.
     # Returns `true` on success.
     def leave_chat(chat)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("leaveChat", {
         chat_id: chat_id,
@@ -628,7 +628,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendAudio", {
@@ -659,7 +659,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
@@ -696,7 +696,7 @@ module Tourmaline
       chat,
       action : ChatAction
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
 
       response = request("sendChatAction", {
         chat_id: chat_id,
@@ -717,7 +717,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendContact", {
@@ -742,7 +742,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendDice", {
@@ -771,7 +771,7 @@ module Tourmaline
       reply_markup = nil
     )
       document = check_open_local_file(document)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendDocument", {
@@ -797,7 +797,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendLocation", {
@@ -824,7 +824,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
@@ -853,7 +853,7 @@ module Tourmaline
       reply_markup = nil
     )
       photo = check_open_local_file(photo)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
       reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.id
 
@@ -877,7 +877,7 @@ module Tourmaline
       inline_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       media = check_open_local_file(media)
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
@@ -905,7 +905,7 @@ module Tourmaline
       disable_notification = false,
       reply_to_message = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendMediaGroup", {
@@ -931,7 +931,7 @@ module Tourmaline
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendVenue", {
@@ -967,7 +967,7 @@ module Tourmaline
       reply_markup = nil
     )
       video = check_open_local_file(video)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendVideo", {
@@ -1001,7 +1001,7 @@ module Tourmaline
       reply_markup = nil
     )
       video_note = check_open_local_file(video_note)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendVideoNote", {
@@ -1038,7 +1038,7 @@ module Tourmaline
       reply_markup = nil
     )
       voice = check_open_local_file(voice)
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
 
       response = request("sendVoice", {
@@ -1071,7 +1071,7 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int) ? chat : chat.id
+      chat_id = chat.is_a?(Int | String) ? chat : chat.id
       message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
       inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
 
