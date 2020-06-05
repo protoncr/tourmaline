@@ -7,9 +7,6 @@ authors:
 crystal: 0.34.0
 
 dependencies:
-  db:
-    github: crystal-lang/crystal-db
-    version: ~> 0.9.0
   pool:
     github: watzon/pool
     branch: master

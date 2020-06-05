@@ -1,5 +1,3 @@
-require "db"
-
 module Tourmaline
   # The default persistence, which is no persistence. This is basically just
   # a placeholder class that does absolutely nothing, but still allows
