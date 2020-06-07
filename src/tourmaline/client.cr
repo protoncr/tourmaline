@@ -3,7 +3,6 @@ require "./error"
 require "./logger"
 require "./persistence"
 require "./parse_mode"
-require "./container"
 require "./chat_action"
 require "./models/*"
 require "./update_action"
@@ -91,8 +90,6 @@ module Tourmaline
       @event_handlers = [] of EventHandler
       register_event_handler_annotations
 
-      Container.client = self
-
       @persistence.init
       [Signal::INT, Signal::TERM].each do |sig|
         sig.trap { @persistence.cleanup; exit }
@@ -121,6 +118,17 @@ module Tourmaline
           end
         end
       end
+    end
+
+    private def request(type : U.class, method, params = {} of String => String) forall U
+      response = request(method, params)
+      cls = type.from_json(response)
+
+      if cls.responds_to?(:client=)
+        cls.client = self
+      end
+
+      cls
     end
 
     # Sends a json request to the Telegram Client API.

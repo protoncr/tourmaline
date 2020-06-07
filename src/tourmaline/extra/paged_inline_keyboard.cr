@@ -2,6 +2,8 @@ module Tourmaline
   # Convenience class for creating an `InlineKeyboard` with built in pagination.
   # It is designed to be customizable so as not to get in your way.
   class PagedInlineKeyboard < InlineKeyboardMarkup
+    @client : Tourmaline::Client
+
     @[JSON::Field(ignore: true)]
     @current_page : Int32
 
@@ -32,7 +34,8 @@ module Tourmaline
     delegate :<<, :push, :each, :index, :delete, to: @results
 
     # Creates a new `PagedInlineKeyboard`
-    def initialize(@results = [] of String,
+    def initialize(@client : Tourmaline::Client,
+                   @results = [] of String,
                    @per_page = 10,
                    @header = nil,
                    @footer = nil,
@@ -49,7 +52,7 @@ module Tourmaline
         on_button_press(ctx)
       end
 
-      Container.client.add_event_handler(handler)
+      @client.add_event_handler(handler)
     end
 
     # Creates a new `PagedInlineKeyboard`, yielding the newly created keyboard to the block

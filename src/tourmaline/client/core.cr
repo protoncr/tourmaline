@@ -30,14 +30,12 @@ module Tourmaline
       timeout = 0,
       allowed_updates = [] of String
     )
-      response = request("getUpdates", {
+      updates = request(Array(Update), "getUpdates", {
         offset:          offset,
         limit:           limit,
         timeout:         timeout,
         allowed_updates: allowed_updates,
       })
-
-      updates = Array(Update).from_json(response)
 
       if !updates.empty?
         @next_offset = updates.last.update_id + 1
