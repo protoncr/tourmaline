@@ -7,7 +7,7 @@ module Tourmaline
 
     property inline_keyboard : Array(Array(InlineKeyboardButton))
 
-    def initialize(@inline_keyboard = [] of Array(InlineKeyboard))
+    def initialize(@inline_keyboard = [] of Array(InlineKeyboardButton))
     end
 
     def initialize(*lines : Array(InlineKeyboardButton))
