@@ -44,9 +44,8 @@ class MenuBot < Tourmaline::Client
   end
 
   @[Command("start")]
-  def start_command(client, update)
-    message = update.message.not_nil!
-    send_menu(message.chat.id, MY_MENU)
+  def start_command(ctx)
+    ctx.message.respond_with_menu(MY_MENU)
   end
 end
 

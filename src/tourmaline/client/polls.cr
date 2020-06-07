@@ -10,6 +10,7 @@ module Tourmaline
       type : PollType = PollType::Regular,
       allows_multiple_answers : Bool = false,
       correct_option_id : Int32? = nil, # required for quiz mode
+      close_date : Time? = nil,
       open_period : Int32? = nil,
       closed : Bool = false,
       disable_notification : Bool = false,

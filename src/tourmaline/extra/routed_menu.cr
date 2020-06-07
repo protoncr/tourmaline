@@ -40,8 +40,8 @@ module Tourmaline
     def initialize(@routes = {} of String => Page, start_route = "/")
       @current_route = self.class.hash_route(start_route)
       @route_history = [@current_route]
-      @event_handler = EventHandler.new(:callback_query, filter: CallbackQueryFilter.new(/route:(\S+)/)) do |client, update|
-        handle_button_click(client, update)
+      @event_handler = CallbackQueryHandler.new(/route:(\S+)/) do |ctx|
+        handle_button_click(ctx)
       end
     end
 
@@ -68,9 +68,8 @@ module Tourmaline
       hash.to_slice[..min_len].hexstring
     end
 
-    def handle_button_click(client, update)
-      if (query = update.callback_query) && (message = query.message)
-        match = update.context["match"].as_match_data
+    def handle_button_click(ctx)
+      if (message = ctx.query.message) && (match = ctx.match)
         route = match[1]
 
         # Check for a back link
@@ -79,7 +78,7 @@ module Tourmaline
             route_history.pop
             route = route_history.pop
           else
-            return query.answer("No page to go back to")
+            return ctx.query.answer("No page to go back to")
           end
         end
 
@@ -87,9 +86,9 @@ module Tourmaline
           @current_route = route
           route_history << route
           message.edit_text(page.content, reply_markup: page.buttons, parse_mode: page.parse_mode)
-          query.answer
+          ctx.query.answer
         else
-          query.answer("Route not found")
+          ctx.query.answer("Route not found")
         end
       end
     end
@@ -169,11 +168,11 @@ module Tourmaline
 
   class Message
     def reply_with_menu(menu : RoutedMenu, **kwargs)
-      Container.client.send_menu(chat, **kwargs, reply_to_message: message_id)
+      Container.client.send_menu(chat, menu, **kwargs, reply_to_message: message_id)
     end
 
     def respond_with_menu(menu : RoutedMenu, **kwargs)
-      Container.client.send_menu(chat, **kwargs, reply_to_message: nil)
+      Container.client.send_menu(chat, menu, **kwargs, reply_to_message: nil)
     end
   end
 end

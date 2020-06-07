@@ -3,21 +3,19 @@ require "../src/tourmaline/extra/stage"
 
 class StageBot < Tourmaline::Client
   @[Command("start")]
-  def start_command(client, update)
-    message = update.message.not_nil!
-
+  def start_command(ctx)
     # This hash will hold the answers gathered during the conversation
     initial_context = {} of String => String | Int32
 
     # Create an instance of our Conversation stage, and enter it for this chat. A
     # stage requires a chat_id, and can also include an optional `user_id` if
     # you want the stage to be user specific.
-    stage = Conversation.enter(client, chat_id: message.chat.id, context: initial_context)
+    stage = Conversation.enter(self, chat_id: ctx.message.chat.id, context: initial_context)
 
     # Once `stage.exit` is called, this callback will be called with the answers
     stage.on_exit do |answers|
       response = answers.map { |k, v| "#{k}: `#{v}`" }.join("\n")
-      send_message(message.chat.id, response, parse_mode: :markdown)
+      ctx.message.chat.send_message(response, parse_mode: :markdown)
     end
   end
 

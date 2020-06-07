@@ -8,8 +8,6 @@ require "./chat_action"
 require "./models/*"
 require "./update_action"
 require "./update_context"
-require "./annotations"
-require "./filter"
 require "./event_handler"
 require "./client/*"
 require "pool/connection"
@@ -91,7 +89,7 @@ module Tourmaline
       end
 
       @event_handlers = [] of EventHandler
-      register_event_handlers
+      register_event_handler_annotations
 
       Container.client = self
 
@@ -117,7 +115,7 @@ module Tourmaline
       handled = [] of String
       @event_handlers.each do |handler|
         unless handled.includes?(handler.group)
-          if handler.handle_update(self, update)
+          if handler.call(self, update)
             @persistence.handle_update(update)
             handled << handler.group
           end

@@ -2,18 +2,18 @@ require "../src/tourmaline"
 
 class DiceBot < Tourmaline::Client
   @[Command("roll")]
-  def roll_command(client, update)
-    update.message.try &.reply_with_dice
+  def roll_command(ctx)
+    ctx.message.reply_with_dice
   end
 
   @[Command("throw")]
-  def throw_command(client, update)
-    update.message.try &.reply_with_dart
+  def throw_command(ctx)
+    ctx.message.reply_with_dart
   end
 
   @[Command("shoot")]
-  def shoot_command(client, update)
-    update.message.try &.reply_with_basket
+  def shoot_command(ctx)
+    ctx.message.reply_with_basket
   end
 end
 

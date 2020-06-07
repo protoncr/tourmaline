@@ -45,8 +45,8 @@ module Tourmaline
       @back_button_procs = [] of Proc(PagedInlineKeyboard, Nil)
       @next_button_procs = [] of Proc(PagedInlineKeyboard, Nil)
 
-      handler = EventHandler.new(:callback_query, group: @id) do |c, u|
-        on_button_press(c, u)
+      handler = CallbackQueryHandler.new(group: @id) do |ctx|
+        on_button_press(ctx)
       end
 
       Container.client.add_event_handler(handler)
@@ -102,24 +102,22 @@ module Tourmaline
       results.in_groups_of(@per_page).map(&.compact)
     end
 
-    private def on_button_press(client, update)
-      if query = update.callback_query
-        query.answer
-        if match = query.data.to_s.match(/#{@id}:(back|next)/)
-          case match[1]
-          when "back"
-            @current_page -= 1 unless @current_page <= 0
-            @back_button_procs.each(&.call(self))
-          when "next"
-            @current_page += 1 unless @current_page >= (pages.size - 1)
-            @next_button_procs.each(&.call(self))
-          else
-          end
+    private def on_button_press(ctx)
+      ctx.query.answer
+      if match = ctx.query.data.to_s.match(/#{@id}:(back|next)/)
+        case match[1]
+        when "back"
+          @current_page -= 1 unless @current_page <= 0
+          @back_button_procs.each(&.call(self))
+        when "next"
+          @current_page += 1 unless @current_page >= (pages.size - 1)
+          @next_button_procs.each(&.call(self))
+        else
+        end
 
-          @inline_keyboard = make_keyboard
-          if message = query.message
-            message.edit_text(current_page, reply_markup: self, parse_mode: :markdown)
-          end
+        @inline_keyboard = make_keyboard
+        if message = ctx.query.message
+          message.edit_text(current_page, reply_markup: self, parse_mode: :markdown)
         end
       end
     end

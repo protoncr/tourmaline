@@ -74,7 +74,7 @@ module Tourmaline
       @on_exit_handlers  = [] of Proc(T, Nil)
 
       group = group ? group.to_s : Helpers.random_string(8)
-      @event_handler = EventHandler.new(:update, **handler_options, group: group) do |_, update|
+      @event_handler = UpdateHandler.new(:update, **handler_options, group: group) do |update|
         handle_update(update)
       end
 
