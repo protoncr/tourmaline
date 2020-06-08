@@ -1393,6 +1393,21 @@
       </dt>
       
     
+      <dt class="entry-const" id="HTML_ENTITY_MAP">
+        <strong>HTML_ENTITY_MAP</strong> = <code>{<span class="s">&quot;bold&quot;</span> => {<span class="s">&quot;&lt;b&gt;&quot;</span>, <span class="s">&quot;&lt;/b&gt;&quot;</span>}, <span class="s">&quot;italic&quot;</span> => {<span class="s">&quot;&lt;i&gt;&quot;</span>, <span class="s">&quot;&lt;/i&gt;&quot;</span>}, <span class="s">&quot;underline&quot;</span> => {<span class="s">&quot;&lt;u&gt;&quot;</span>, <span class="s">&quot;&lt;/u&gt;&quot;</span>}, <span class="s">&quot;code&quot;</span> => {<span class="s">&quot;&lt;code&gt;&quot;</span>, <span class="s">&quot;&lt;/code&gt;&quot;</span>}, <span class="s">&quot;pre&quot;</span> => {<span class="s">&quot;&lt;pre&gt;\n&quot;</span>, <span class="s">&quot;\n&lt;/pre&gt;&quot;</span>}, <span class="s">&quot;pre_language&quot;</span> => {<span class="s">&quot;&lt;pre&gt;&lt;code class=\&quot;language-{language}\&quot;&gt;\n&quot;</span>, <span class="s">&quot;\n&lt;/code&gt;&lt;/pre&gt;&quot;</span>}, <span class="s">&quot;strikethrough&quot;</span> => {<span class="s">&quot;&lt;s&gt;&quot;</span>, <span class="s">&quot;&lt;/s&gt;&quot;</span>}, <span class="s">&quot;text_mention&quot;</span> => {<span class="s">&quot;&lt;a href=\&quot;tg://user?id={id}\&quot;&gt;&quot;</span>, <span class="s">&quot;&lt;/a&gt;&quot;</span>}, <span class="s">&quot;text_link&quot;</span> => {<span class="s">&quot;&lt;a href=\&quot;{url}\&quot;&gt;&quot;</span>, <span class="s">&quot;&lt;/a&gt;&quot;</span>}}</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="MD_ENTITY_MAP">
+        <strong>MD_ENTITY_MAP</strong> = <code>{<span class="s">&quot;bold&quot;</span> => {<span class="s">&quot;*&quot;</span>, <span class="s">&quot;*&quot;</span>}, <span class="s">&quot;italic&quot;</span> => {<span class="s">&quot;_&quot;</span>, <span class="s">&quot;_&quot;</span>}, <span class="s">&quot;underline&quot;</span> => {<span class="s">&quot;&quot;</span>, <span class="s">&quot;&quot;</span>}, <span class="s">&quot;code&quot;</span> => {<span class="s">&quot;`&quot;</span>, <span class="s">&quot;`&quot;</span>}, <span class="s">&quot;pre&quot;</span> => {<span class="s">&quot;```\n&quot;</span>, <span class="s">&quot;\n```&quot;</span>}, <span class="s">&quot;pre_language&quot;</span> => {<span class="s">&quot;```{language}\n&quot;</span>, <span class="s">&quot;\n```&quot;</span>}, <span class="s">&quot;strikethrough&quot;</span> => {<span class="s">&quot;&quot;</span>, <span class="s">&quot;&quot;</span>}, <span class="s">&quot;text_mention&quot;</span> => {<span class="s">&quot;[&quot;</span>, <span class="s">&quot;](tg://user?id={id})&quot;</span>}, <span class="s">&quot;text_link&quot;</span> => {<span class="s">&quot;[&quot;</span>, <span class="s">&quot;]({url})&quot;</span>}}</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="MDV2_ENTITY_MAP">
+        <strong>MDV2_ENTITY_MAP</strong> = <code>{<span class="s">&quot;bold&quot;</span> => {<span class="s">&quot;*&quot;</span>, <span class="s">&quot;*&quot;</span>}, <span class="s">&quot;italic&quot;</span> => {<span class="s">&quot;_&quot;</span>, <span class="s">&quot;_&quot;</span>}, <span class="s">&quot;underline&quot;</span> => {<span class="s">&quot;__&quot;</span>, <span class="s">&quot;__&quot;</span>}, <span class="s">&quot;code&quot;</span> => {<span class="s">&quot;`&quot;</span>, <span class="s">&quot;`&quot;</span>}, <span class="s">&quot;pre&quot;</span> => {<span class="s">&quot;```\n&quot;</span>, <span class="s">&quot;\n```&quot;</span>}, <span class="s">&quot;pre_language&quot;</span> => {<span class="s">&quot;```{language}\n&quot;</span>, <span class="s">&quot;\n```&quot;</span>}, <span class="s">&quot;strikethrough&quot;</span> => {<span class="s">&quot;~&quot;</span>, <span class="s">&quot;~&quot;</span>}, <span class="s">&quot;text_mention&quot;</span> => {<span class="s">&quot;[&quot;</span>, <span class="s">&quot;](tg://user?id={id})&quot;</span>}, <span class="s">&quot;text_link&quot;</span> => {<span class="s">&quot;[&quot;</span>, <span class="s">&quot;]({url})&quot;</span>}}</code>
+      </dt>
+      
+    
   </dl>
 
 
@@ -1412,12 +1427,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#format_html(text=&quot;&quot;,entities=[]ofMessageEntity)-instance-method" class="signature"><strong>#format_html</strong>(text = <span class="s">&quot;&quot;</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>)</a>
+        <a href="#escape_md(text,version=1)-instance-method" class="signature"><strong>#escape_md</strong>(text, version = <span class="n">1</span>)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#random_string(length)-instance-method" class="signature"><strong>#random_string</strong>(length)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unparse_text(text:String,entitiesents:Array(MessageEntity),parse_mode:ParseMode=:markdown)-instance-method" class="signature"><strong>#unparse_text</strong>(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = <span class="n">:markdown</span>)</a>
         
       </li>
     
@@ -1445,12 +1465,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="format_html(text=&amp;quot;&amp;quot;,entities=[]ofMessageEntity)-instance-method">
+    <div class="entry-detail" id="escape_md(text,version=1)-instance-method">
       <div class="signature">
         
-        def <strong>format_html</strong>(text = <span class="s">&quot;&quot;</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>)
+        def <strong>escape_md</strong>(text, version = <span class="n">1</span>)
 
-        <a class="method-permalink" href="#format_html(text=&quot;&quot;,entities=[]ofMessageEntity)-instance-method">#</a>
+        <a class="method-permalink" href="#escape_md(text,version=1)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1465,6 +1485,20 @@
         def <strong>random_string</strong>(length)
 
         <a class="method-permalink" href="#random_string(length)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unparse_text(text:String,entitiesents:Array(MessageEntity),parse_mode:ParseMode=:markdown)-instance-method">
+      <div class="signature">
+        
+        def <strong>unparse_text</strong>(text : String, entities ents : Array(<a href="../Tourmaline/MessageEntity.html">MessageEntity</a>), parse_mode : <a href="../Tourmaline/ParseMode.html">ParseMode</a> = <span class="n">:markdown</span>)
+
+        <a class="method-permalink" href="#unparse_text(text:String,entitiesents:Array(MessageEntity),parse_mode:ParseMode=:markdown)-instance-method">#</a>
       </div>
       
       <br/>
