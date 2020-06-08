@@ -3,35 +3,47 @@ module Tourmaline
     module WebhookMethods
       include Logger
 
-      # Start an HTTP server at the specified `address` and `port` that listens for
+      # Start an HTTP server at the specified `host` and `port` that listens for
       # updates using Telegram's webhooks. This is the reccommended way to handle
       # bots in production.
-      def serve(address = "127.0.0.1", port = 8080, ssl_certificate_path = nil, ssl_key_path = nil)
+      #
+      # Note: Don't forget to call `set_webhook` first! This method does not do it for you.
+      def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, &block : HTTP::Server::Context ->)
         server = HTTP::Server.new do |context|
+          Fiber.current.telegram_bot_server_http_context = context
           begin
-            Fiber.current.telegram_bot_server_http_context = context
-            handle_update(Update.from_json(context.request.body.not_nil!))
-          rescue exception
-            Log.error { exception.message.to_s }
+            block.call(context)
+          rescue ex
+            Log.error(exception: ex) { "Server error" }
           ensure
             Fiber.current.telegram_bot_server_http_context = nil
           end
         end
-
-        server.bind_tcp address, port
 
         if ssl_certificate_path && ssl_key_path
           fl_use_ssl = true
           ssl = OpenSSL::SSL::Context::Server.new
           ssl.certificate_chain = ssl_certificate_path.not_nil!
           ssl.private_key = ssl_key_path.not_nil!
-          server.bind_tls address, port, ssl
+          server.bind_tls(host: host, port: port, context: ssl)
         else
-          server.bind_tcp address, port
+          server.bind_tcp(host: host, port: port)
         end
 
-        Log.info { "Listening for Telegram requests at #{address}:#{port}" }
+        Log.info { "Listening for requests at #{host}:#{port}" }
         server.listen
+      end
+
+      # ditto
+      def serve(path = "/", host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil)
+        serve(host, port, ssl_certificate_path, ssl_key_path) do |context|
+          next unless context.request.method == "POST"
+          next unless context.request.path == path
+          if body = context.request.body
+            update = Update.from_json(body)
+            handle_update(update)
+          end
+        end
       end
 
       # Use this method to specify a url and receive incoming updates via an outgoing webhook.

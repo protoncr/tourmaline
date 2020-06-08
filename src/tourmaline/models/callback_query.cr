@@ -20,7 +20,7 @@ module Tourmaline
     getter game_short_name : String?
 
     def answer(*args, **kwargs)
-      client.answer_callback_query(id, *args, **kwargs)
+      Container.client.answer_callback_query(id, *args, **kwargs)
     end
   end
 end

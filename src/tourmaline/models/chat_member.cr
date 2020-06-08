@@ -45,17 +45,17 @@ module Tourmaline
     getter can_add_web_page_previews : Bool?
 
     def kick(until_date = nil)
-      client.kick_chat_member(chat_id, user.id, until_date)
+      Container.client.kick_chat_member(chat_id, user.id, until_date)
     end
 
     def unban
-      client.unban_chat_member(chat_id, user.id)
+      Container.client.unban_chat_member(chat_id, user.id)
     end
 
     def restrict(permissions, until_date = nil)
       case permissions
       when true
-        client.restrict_chat_member(chat_id, user.id, {
+        Container.client.restrict_chat_member(chat_id, user.id, {
           can_send_messages:         true,
           can_send_media_messages:   true,
           can_send_polls:            true,
@@ -66,7 +66,7 @@ module Tourmaline
           can_pin_messages:          true,
         }, until_date)
       when false
-        client.restrict_chat_member(chat_id, user.id, {
+        Container.client.restrict_chat_member(chat_id, user.id, {
           can_send_messages:         false,
           can_send_media_messages:   false,
           can_send_polls:            false,
@@ -77,12 +77,12 @@ module Tourmaline
           can_pin_messages:          false,
         }, until_date)
       else
-        client.restrict_chat_member(chat_id, user.id, permissions, until_date)
+        Container.client.restrict_chat_member(chat_id, user.id, permissions, until_date)
       end
     end
 
     def promote(**permissions)
-      client.promote_chat_member(chat_id, user.id, **permissions)
+      Container.client.promote_chat_member(chat_id, user.id, **permissions)
     end
 
     def self.from_user(user)

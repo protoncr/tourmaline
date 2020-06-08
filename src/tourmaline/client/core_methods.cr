@@ -1051,7 +1051,7 @@ module Tourmaline
       # and `#handle_update` to send continuously check Telegram's servers
       # for updates.
       def poll(delete_webhook = false)
-        self.delete_webhook if delete_webhook
+        self.delete_webhook
 
         Log.info { "Polling for updates" }
 
@@ -1063,6 +1063,7 @@ module Tourmaline
               handle_update(u)
             end
           rescue ex
+            puts ex.inspect_with_backtrace
             Log.error(exception: ex) { "Error during polling" }
           end
         end
