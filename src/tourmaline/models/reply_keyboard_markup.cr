@@ -25,7 +25,7 @@ module Tourmaline
     include JSON::Serializable
 
     @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
-    getter type : PollType
+    getter type : Poll::Type
 
     def initialize(@type)
     end
@@ -85,7 +85,7 @@ module Tourmaline
         button(text, request_location: true)
       end
 
-      def poll_request_button(text, type : PollType)
+      def poll_request_button(text, type : Poll::Type)
         type = KeyboardButtonPollType.new(type)
         button(text, request_poll: type)
       end

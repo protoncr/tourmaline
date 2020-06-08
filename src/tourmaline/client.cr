@@ -21,6 +21,15 @@ module Tourmaline
     end
 
     include Logger
+
+    include CoreMethods
+    include GameMethods
+    include PassportMethods
+    include PaymentMethods
+    include PollMethods
+    include StickerMethods
+    include WebhookMethods
+
     include EventHandler::Annotator
 
     DEFAULT_API_URL = "https://api.telegram.org/"
@@ -66,7 +75,10 @@ module Tourmaline
                    proxy_host = nil,
                    proxy_port = nil,
                    proxy_user = nil,
-                   proxy_pass = nil)
+                   proxy_pass = nil,
+                   log_level : ::Log::Severity = :info)
+      ::Log.builder.bind("tourmaline.*", log_level, Logger::LOG_BACKEND)
+
       if !proxy
         if proxy_uri
           proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")

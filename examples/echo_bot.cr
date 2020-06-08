@@ -8,4 +8,4 @@ class EchoBot < Tourmaline::Client
 end
 
 bot = EchoBot.new(ENV["API_KEY"])
-bot.poll
+bot.serve

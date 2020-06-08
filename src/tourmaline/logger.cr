@@ -1,14 +1,14 @@
 require "log"
 require "colorize"
 
-severity = Log::Severity.parse(ENV["LOG"]? || "Info")
-Log.builder.bind("tourmaline.client.*", severity, Tourmaline::Logger::LOG_BACKEND)
-
 module Tourmaline
   # :nodoc:
   module Logger
     macro included
-      Log = ::Log.for(self)
+      {% begin %}
+        {% tname = @type.name.stringify.split("::").map(&.underscore).join(".") %}
+        Log = ::Log.for({{ tname }})
+      {% end %}
     end
 
     LOG_BACKEND = ::Log::IOBackend.new.tap do |l|

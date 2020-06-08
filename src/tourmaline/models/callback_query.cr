@@ -3,7 +3,7 @@ module Tourmaline
     include JSON::Serializable
 
     @[JSON::Field(ignore: true)]
-    private property! client : Tourmaline::Client
+    property! client : Tourmaline::Client
 
     getter id : String
 

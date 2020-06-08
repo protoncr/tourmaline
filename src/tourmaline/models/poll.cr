@@ -1,5 +1,4 @@
 require "json"
-require "../client/polls"
 
 module Tourmaline
   # This object contains information about a poll.
@@ -19,20 +18,30 @@ module Tourmaline
     getter is_anonymous : Bool
 
     @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
-    getter type : PollType
+    getter type : Type
 
     getter allows_multiple_answers : Bool
 
     getter correct_option_id : Int32?
 
     getter explanation_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
+
+    enum Type
+      Quiz
+      Regular
+
+      def to_s
+        super.to_s.downcase
+      end
+    end
+
     # :nodoc:
     module PollTypeConverter
       def self.from_json(value : JSON::PullParser)
-        PollType.parse(value.read_string)
+        Type.parse(value.read_string)
       end
 
-      def self.to_json(value : PollType, json : JSON::Builder)
+      def self.to_json(value : Type, json : JSON::Builder)
         json.string(value.to_s)
       end
     end
