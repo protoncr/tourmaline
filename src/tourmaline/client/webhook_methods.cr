@@ -34,7 +34,7 @@ module Tourmaline
         server.listen
       end
 
-      # ditto
+      # :ditto:
       def serve(path = "/", host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil)
         serve(host, port, ssl_certificate_path, ssl_key_path) do |context|
           next unless context.request.method == "POST"
