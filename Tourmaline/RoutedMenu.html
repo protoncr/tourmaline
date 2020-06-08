@@ -1414,7 +1414,7 @@ send_menu(chat_id, <span class="t">MENU</span>)</code></pre>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(routes=%7B%7DofString=%3EPage,start_route=&quot;/&quot;)-class-method" class="signature"><strong>.new</strong>(routes = {} <span class="k">of</span> <span class="t">String</span> => <span class="t">Page</span>, start_route = <span class="s">&quot;/&quot;</span>)</a>
+        <a href="#new(routes=%7B%7DofString=%3EPage,start_route=&quot;/&quot;,group=Helpers.random_string(8))-class-method" class="signature"><strong>.new</strong>(routes = {} <span class="k">of</span> <span class="t">String</span> => <span class="t">Page</span>, start_route = <span class="s">&quot;/&quot;</span>, group = <span class="t">Helpers</span>.random_string(<span class="n">8</span>))</a>
         
       </li>
     
@@ -1433,7 +1433,7 @@ send_menu(chat_id, <span class="t">MENU</span>)</code></pre>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#build(starting_route=&quot;/&quot;,&)-class-method" class="signature"><strong>.build</strong>(starting_route = <span class="s">&quot;/&quot;</span>, &)</a>
+        <a href="#build(starting_route=&quot;/&quot;,**options,&)-class-method" class="signature"><strong>.build</strong>(starting_route = <span class="s">&quot;/&quot;</span>, **options, &)</a>
         
       </li>
     
@@ -1531,12 +1531,12 @@ send_menu(chat_id, <span class="t">MENU</span>)</code></pre>
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(routes={}ofString=&gt;Page,start_route=&amp;quot;/&amp;quot;)-class-method">
+    <div class="entry-detail" id="new(routes={}ofString=&gt;Page,start_route=&amp;quot;/&amp;quot;,group=Helpers.random_string(8))-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(routes = {} <span class="k">of</span> <span class="t">String</span> => <span class="t">Page</span>, start_route = <span class="s">&quot;/&quot;</span>)
+        def self.<strong>new</strong>(routes = {} <span class="k">of</span> <span class="t">String</span> => <span class="t">Page</span>, start_route = <span class="s">&quot;/&quot;</span>, group = <span class="t">Helpers</span>.random_string(<span class="n">8</span>))
 
-        <a class="method-permalink" href="#new(routes=%7B%7DofString=%3EPage,start_route=&quot;/&quot;)-class-method">#</a>
+        <a class="method-permalink" href="#new(routes=%7B%7DofString=%3EPage,start_route=&quot;/&quot;,group=Helpers.random_string(8))-class-method">#</a>
       </div>
       
       <br/>
@@ -1557,12 +1557,12 @@ send_menu(chat_id, <span class="t">MENU</span>)</code></pre>
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="build(starting_route=&amp;quot;/&amp;quot;,&amp;)-class-method">
+    <div class="entry-detail" id="build(starting_route=&amp;quot;/&amp;quot;,**options,&amp;)-class-method">
       <div class="signature">
         
-        def self.<strong>build</strong>(starting_route = <span class="s">&quot;/&quot;</span>, &)
+        def self.<strong>build</strong>(starting_route = <span class="s">&quot;/&quot;</span>, **options, &)
 
-        <a class="method-permalink" href="#build(starting_route=&quot;/&quot;,&)-class-method">#</a>
+        <a class="method-permalink" href="#build(starting_route=&quot;/&quot;,**options,&)-class-method">#</a>
       </div>
       
       <br/>
