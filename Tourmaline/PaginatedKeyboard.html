@@ -15,7 +15,7 @@
 </svg>
 
   <meta id="repository-name" content="">
-  <title>Tourmaline::InlineQueryResultArticle - </title>
+  <title>Tourmaline::PaginatedKeyboard - </title>
   <script type="text/javascript">
     CrystalDoc.base_path = "../";
   </script>
@@ -785,7 +785,7 @@
       
     </li>
   
-  <li class=" current" data-id="/Tourmaline/InlineQueryResultArticle" data-name="tourmaline::inlinequeryresultarticle">
+  <li class=" " data-id="/Tourmaline/InlineQueryResultArticle" data-name="tourmaline::inlinequeryresultarticle">
       <a href="../Tourmaline/InlineQueryResultArticle.html">InlineQueryResultArticle</a>
       
     </li>
@@ -1035,7 +1035,7 @@
       
     </li>
   
-  <li class=" " data-id="/Tourmaline/PaginatedKeyboard" data-name="tourmaline::paginatedkeyboard">
+  <li class=" current" data-id="/Tourmaline/PaginatedKeyboard" data-name="tourmaline::paginatedkeyboard">
       <a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a>
       
     </li>
@@ -1329,33 +1329,31 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::InlineQueryResultArticle
+  <span class="kind">class</span> Tourmaline::PaginatedKeyboard
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/InlineQueryResultArticle.html">Tourmaline::InlineQueryResultArticle</a></li><li class="superclass"><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/PaginatedKeyboard.html">Tourmaline::PaginatedKeyboard</a></li><li class="superclass"><a href="../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="overview" class="anchor" href="#overview">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Overview
   </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">JSON::Serializable</li>
-    
-  </ul>
+
+  <p>Convenience class for creating an <code>InlineKeyboard</code> with built in pagination.
+It is designed to be customizable so as not to get in your way.</p>
+
+
+
+
 
 
 
@@ -1391,12 +1389,23 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(id,title,input_message_content,reply_markup=nil,url=nil,hide_url=nil,description=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method" class="signature"><strong>.new</strong>(id, title, input_message_content, reply_markup = <span class="n">nil</span>, url = <span class="n">nil</span>, hide_url = <span class="n">nil</span>, description = <span class="n">nil</span>, thumb_url = <span class="n">nil</span>, thumb_width = <span class="n">nil</span>, thumb_height = <span class="n">nil</span>)</a>
+        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        
+          <div class="summary"><p>Convenience class for creating an <code>InlineKeyboard</code> with built in pagination.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new(client:Tourmaline::Client,results=[]ofString,per_page=10,header=nil,footer=nil,prefix=nil,back_text=&quot;Back&quot;,next_text=&quot;Next&quot;,id=Helpers.random_string(8))-class-method" class="signature"><strong>.new</strong>(client : Tourmaline::Client, results = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, per_page = <span class="n">10</span>, header = <span class="n">nil</span>, footer = <span class="n">nil</span>, prefix = <span class="n">nil</span>, back_text = <span class="s">&quot;Back&quot;</span>, next_text = <span class="s">&quot;Next&quot;</span>, id = <span class="t">Helpers</span>.random_string(<span class="n">8</span>))</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new(results=[]ofString,per_page=10,&block:self-%3E)-class-method" class="signature"><strong>.new</strong>(results = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, per_page = <span class="n">10</span>, &block : <span class="k">self</span> -> )</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a></code>, yielding the newly created keyboard to the block</p></div>
         
       </li>
     
@@ -1417,12 +1426,69 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#description:String?-instance-method" class="signature"><strong>#description</strong> : String?</a>
+        <a href="#%3C%3C(*args,**options,&)-instance-method" class="signature"><strong>#<<</strong>(*args, **options, &)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hide_url:Bool?-instance-method" class="signature"><strong>#hide_url</strong> : Bool?</a>
+        <a href="#%3C%3C(*args,**options)-instance-method" class="signature"><strong>#<<</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#back_button_procs:Array(Proc(PaginatedKeyboard,Nil))-instance-method" class="signature"><strong>#back_button_procs</strong> : Array(Proc(PaginatedKeyboard, Nil))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#back_button_procs=(back_button_procs:Array(Proc(PaginatedKeyboard,Nil)))-instance-method" class="signature"><strong>#back_button_procs=</strong>(back_button_procs : Array(Proc(PaginatedKeyboard, Nil)))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#current_page-instance-method" class="signature"><strong>#current_page</strong></a>
+        
+          <div class="summary"><p>Returns the content for the current page</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(*args,**options,&)-instance-method" class="signature"><strong>#delete</strong>(*args, **options, &)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(*args,**options)-instance-method" class="signature"><strong>#delete</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each(*args,**options)-instance-method" class="signature"><strong>#each</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each(*args,**options,&)-instance-method" class="signature"><strong>#each</strong>(*args, **options, &)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footer:String?-instance-method" class="signature"><strong>#footer</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footer=(footer:String?)-instance-method" class="signature"><strong>#footer=</strong>(footer : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#header:String?-instance-method" class="signature"><strong>#header</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#header=(header:String?)-instance-method" class="signature"><strong>#header=</strong>(header : String?)</a>
         
       </li>
     
@@ -1432,42 +1498,83 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#input_message_content:InputMessageContent-instance-method" class="signature"><strong>#input_message_content</strong> : InputMessageContent</a>
+        <a href="#index(*args,**options)-instance-method" class="signature"><strong>#index</strong>(*args, **options)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#reply_markup:InlineKeyboardMarkup?-instance-method" class="signature"><strong>#reply_markup</strong> : InlineKeyboardMarkup?</a>
+        <a href="#index(*args,**options,&)-instance-method" class="signature"><strong>#index</strong>(*args, **options, &)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#thumb_height:Int32?-instance-method" class="signature"><strong>#thumb_height</strong> : Int32?</a>
+        <a href="#next_button_procs:Array(Proc(PaginatedKeyboard,Nil))-instance-method" class="signature"><strong>#next_button_procs</strong> : Array(Proc(PaginatedKeyboard, Nil))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#thumb_url:String?-instance-method" class="signature"><strong>#thumb_url</strong> : String?</a>
+        <a href="#next_button_procs=(next_button_procs:Array(Proc(PaginatedKeyboard,Nil)))-instance-method" class="signature"><strong>#next_button_procs=</strong>(next_button_procs : Array(Proc(PaginatedKeyboard, Nil)))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#thumb_width:Int32?-instance-method" class="signature"><strong>#thumb_width</strong> : Int32?</a>
+        <a href="#on_back(&block:self-%3E)-instance-method" class="signature"><strong>#on_back</strong>(&block : <span class="k">self</span> -> )</a>
+        
+          <div class="summary"><p>Adds a back button callback handler</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#title:String-instance-method" class="signature"><strong>#title</strong> : String</a>
+        <a href="#on_next(&block:self-%3E)-instance-method" class="signature"><strong>#on_next</strong>(&block : <span class="k">self</span> -> )</a>
+        
+          <div class="summary"><p>Adds a next button callback handler</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#type:String-instance-method" class="signature"><strong>#type</strong> : String</a>
+        <a href="#pages-instance-method" class="signature"><strong>#pages</strong></a>
+        
+          <div class="summary"><p>Returns each page, with it's items</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#url:String?-instance-method" class="signature"><strong>#url</strong> : String?</a>
+        <a href="#per_page:Int32-instance-method" class="signature"><strong>#per_page</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#per_page=(per_page:Int32)-instance-method" class="signature"><strong>#per_page=</strong>(per_page : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#prefix:String?-instance-method" class="signature"><strong>#prefix</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#prefix=(prefix:String?)-instance-method" class="signature"><strong>#prefix=</strong>(prefix : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#push(*args,**options)-instance-method" class="signature"><strong>#push</strong>(*args, **options)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#push(*args,**options,&)-instance-method" class="signature"><strong>#push</strong>(*args, **options, &)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#results:Array(String)-instance-method" class="signature"><strong>#results</strong> : Array(String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#results=(results:Array(String))-instance-method" class="signature"><strong>#results=</strong>(results : Array(String))</a>
         
       </li>
     
@@ -1481,24 +1588,33 @@
   
     
 
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-  <h3>Constructor methods inherited from class <code><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></code></h3>
+  <h3>Instance methods inherited from class <code><a href="../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a></code></h3>
   
   
-    <a href="../Tourmaline/InlineQueryResult.html#new(pull:JSON::PullParser)-class-method" class="tooltip">
-      <span>new(pull : JSON::PullParser)</span>
+    <a href="../Tourmaline/InlineKeyboardMarkup.html#%3C%3C(row,btn:InlineKeyboardButton)-instance-method" class="tooltip">
+      <span><<(row, btn : InlineKeyboardButton)<br/><<(btns : Array(InlineKeyboardButton))</span>
+    <<</a>, 
+    
+  
+    <a href="../Tourmaline/InlineKeyboardMarkup.html#inline_keyboard:Array(Array(InlineKeyboardButton))-instance-method" class="tooltip">
+      <span>inline_keyboard : Array(Array(InlineKeyboardButton))</span>
+    inline_keyboard</a>, 
+    
+  
+    <a href="../Tourmaline/InlineKeyboardMarkup.html#inline_keyboard=(inline_keyboard:Array(Array(InlineKeyboardButton)))-instance-method" class="tooltip">
+      <span>inline_keyboard=(inline_keyboard : Array(Array(InlineKeyboardButton)))</span>
+    inline_keyboard=</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from class <code><a href="../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a></code></h3>
+  
+  
+    <a href="../Tourmaline/InlineKeyboardMarkup.html#new(pull:JSON::PullParser)-class-method" class="tooltip">
+      <span>new(pull : JSON::PullParser)<br/>new(inline_keyboard = <span class="o">[]</span> <span class="k">of</span> <span class="t">Array</span>(<span class="t">InlineKeyboardButton</span>))<br/>new(*lines : Array(InlineKeyboardButton))</span>
     new</a>
     
   
@@ -1506,11 +1622,11 @@
 
     
 
-  <h3>Class methods inherited from class <code><a href="../Tourmaline/InlineQueryResult.html">Tourmaline::InlineQueryResult</a></code></h3>
+  <h3>Class methods inherited from class <code><a href="../Tourmaline/InlineKeyboardMarkup.html">Tourmaline::InlineKeyboardMarkup</a></code></h3>
   
   
-    <a href="../Tourmaline/InlineQueryResult.html#build(&)-class-method" class="tooltip">
-      <span>build(&)</span>
+    <a href="../Tourmaline/InlineKeyboardMarkup.html#build(*args,columns=nil,**options,&)-class-method" class="tooltip">
+      <span>build(*args, columns = <span class="n">nil</span>, **options, &)</span>
     build</a>
     
   
@@ -1559,20 +1675,6 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(id,title,input_message_content,reply_markup=nil,url=nil,hide_url=nil,description=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(id, title, input_message_content, reply_markup = <span class="n">nil</span>, url = <span class="n">nil</span>, hide_url = <span class="n">nil</span>, description = <span class="n">nil</span>, thumb_url = <span class="n">nil</span>, thumb_width = <span class="n">nil</span>, thumb_height = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(id,title,input_message_content,reply_markup=nil,url=nil,hide_url=nil,description=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
         
@@ -1580,6 +1682,68 @@
 
         <a class="method-permalink" href="#new(pull:JSON::PullParser)-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Convenience class for creating an <code>InlineKeyboard</code> with built in pagination.
+It is designed to be customizable so as not to get in your way.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(client:Tourmaline::Client,results=[]ofString,per_page=10,header=nil,footer=nil,prefix=nil,back_text=&amp;quot;Back&amp;quot;,next_text=&amp;quot;Next&amp;quot;,id=Helpers.random_string(8))-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(client : <a href="../Tourmaline/Client.html">Tourmaline::Client</a>, results = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, per_page = <span class="n">10</span>, header = <span class="n">nil</span>, footer = <span class="n">nil</span>, prefix = <span class="n">nil</span>, back_text = <span class="s">&quot;Back&quot;</span>, next_text = <span class="s">&quot;Next&quot;</span>, id = <span class="t">Helpers</span>.random_string(<span class="n">8</span>))
+
+        <a class="method-permalink" href="#new(client:Tourmaline::Client,results=[]ofString,per_page=10,header=nil,footer=nil,prefix=nil,back_text=&quot;Back&quot;,next_text=&quot;Next&quot;,id=Helpers.random_string(8))-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a new <code><a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a></code></p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(results=[]ofString,per_page=10,&amp;block:self-&gt;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(results = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>, per_page = <span class="n">10</span>, &block : <span class="k">self</span> -> )
+
+        <a class="method-permalink" href="#new(results=[]ofString,per_page=10,&block:self-%3E)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a new <code><a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a></code>, yielding the newly created keyboard to the block</p>
+
+<h2><a id="arguments" class="anchor" href="#arguments">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Arguments</h2>
+
+<ul><li><code><a href="../Tourmaline/PaginatedKeyboard.html#results:Array(String)-instance-method">#results</a></code> - the initial set of results</li><li><code><a href="../Tourmaline/PaginatedKeyboard.html#per_page:Int32-instance-method">#per_page</a></code> - the number of results to show on each page</li><li><code><a href="../Tourmaline/PaginatedKeyboard.html#header:String?-instance-method">#header</a></code> - text to be displayed above the results</li><li><code><a href="../Tourmaline/PaginatedKeyboard.html#footer:String?-instance-method">#footer</a></code> - text to be displayed below the results</li><li><code><a href="../Tourmaline/PaginatedKeyboard.html#prefix:String?-instance-method">#prefix</a></code> - a string to be added to the beginning of each item</li><li><code>back_text</code> - text to use for the back button</li><li><code>next_text</code> - text to use for the next button</li><li><code><a href="../Tourmaline/PaginatedKeyboard.html#id:String-instance-method">#id</a></code> - an id to be used both as the <code>group</code> name, and the prefix for the callback query data</li></ul>
+
+<h1><a id="formatting" class="anchor" href="#formatting">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Formatting</h1>
+
+<p>The params <code><a href="../Tourmaline/PaginatedKeyboard.html#header:String?-instance-method">#header</a></code>, <code><a href="../Tourmaline/PaginatedKeyboard.html#footer:String?-instance-method">#footer</a></code>, and <code><a href="../Tourmaline/PaginatedKeyboard.html#prefix:String?-instance-method">#prefix</a></code> are formatted prior to being injected into the message.</p>
+
+<ul><li><code>{page}</code> - will be replaced with the current page number, starting at 1</li><li><code>{page count}</code> - will be replaced with the total number of pages</li><li><code>{index}</code> - for <code><a href="../Tourmaline/PaginatedKeyboard.html#prefix:String?-instance-method">#prefix</a></code> only, gets replaced with the index of the current item, starting at 1</li></ul>
+        </div>
       
       <br/>
       <div>
@@ -1601,12 +1765,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="description:String?-instance-method">
+    <div class="entry-detail" id="&lt;&lt;(*args,**options,&amp;)-instance-method">
       <div class="signature">
         
-        def <strong>description</strong> : String?
+        def <strong><<</strong>(*args, **options, &)
 
-        <a class="method-permalink" href="#description:String?-instance-method">#</a>
+        <a class="method-permalink" href="#%3C%3C(*args,**options,&)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1615,12 +1779,171 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="hide_url:Bool?-instance-method">
+    <div class="entry-detail" id="&lt;&lt;(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>hide_url</strong> : Bool?
+        def <strong><<</strong>(*args, **options)
 
-        <a class="method-permalink" href="#hide_url:Bool?-instance-method">#</a>
+        <a class="method-permalink" href="#%3C%3C(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="back_button_procs:Array(Proc(PaginatedKeyboard,Nil))-instance-method">
+      <div class="signature">
+        
+        def <strong>back_button_procs</strong> : Array(Proc(<a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a>, Nil))
+
+        <a class="method-permalink" href="#back_button_procs:Array(Proc(PaginatedKeyboard,Nil))-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="back_button_procs=(back_button_procs:Array(Proc(PaginatedKeyboard,Nil)))-instance-method">
+      <div class="signature">
+        
+        def <strong>back_button_procs=</strong>(back_button_procs : Array(Proc(<a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a>, Nil)))
+
+        <a class="method-permalink" href="#back_button_procs=(back_button_procs:Array(Proc(PaginatedKeyboard,Nil)))-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="current_page-instance-method">
+      <div class="signature">
+        
+        def <strong>current_page</strong>
+
+        <a class="method-permalink" href="#current_page-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the content for the current page</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#delete(*args,**options,&)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(*args, **options)
+
+        <a class="method-permalink" href="#delete(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(*args, **options)
+
+        <a class="method-permalink" href="#each(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#each(*args,**options,&)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footer:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>footer</strong> : String?
+
+        <a class="method-permalink" href="#footer:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footer=(footer:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>footer=</strong>(footer : String?)
+
+        <a class="method-permalink" href="#footer=(footer:String?)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="header:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>header</strong> : String?
+
+        <a class="method-permalink" href="#header:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="header=(header:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>header=</strong>(header : String?)
+
+        <a class="method-permalink" href="#header=(header:String?)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1643,12 +1966,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="input_message_content:InputMessageContent-instance-method">
+    <div class="entry-detail" id="index(*args,**options)-instance-method">
       <div class="signature">
         
-        def <strong>input_message_content</strong> : <a href="../Tourmaline/InputMessageContent.html">InputMessageContent</a>
+        def <strong>index</strong>(*args, **options)
 
-        <a class="method-permalink" href="#input_message_content:InputMessageContent-instance-method">#</a>
+        <a class="method-permalink" href="#index(*args,**options)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1657,12 +1980,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="reply_markup:InlineKeyboardMarkup?-instance-method">
+    <div class="entry-detail" id="index(*args,**options,&amp;)-instance-method">
       <div class="signature">
         
-        def <strong>reply_markup</strong> : <a href="../Tourmaline/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a>?
+        def <strong>index</strong>(*args, **options, &)
 
-        <a class="method-permalink" href="#reply_markup:InlineKeyboardMarkup?-instance-method">#</a>
+        <a class="method-permalink" href="#index(*args,**options,&)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1671,12 +1994,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="thumb_height:Int32?-instance-method">
+    <div class="entry-detail" id="next_button_procs:Array(Proc(PaginatedKeyboard,Nil))-instance-method">
       <div class="signature">
         
-        def <strong>thumb_height</strong> : Int32?
+        def <strong>next_button_procs</strong> : Array(Proc(<a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a>, Nil))
 
-        <a class="method-permalink" href="#thumb_height:Int32?-instance-method">#</a>
+        <a class="method-permalink" href="#next_button_procs:Array(Proc(PaginatedKeyboard,Nil))-instance-method">#</a>
       </div>
       
       <br/>
@@ -1685,12 +2008,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="thumb_url:String?-instance-method">
+    <div class="entry-detail" id="next_button_procs=(next_button_procs:Array(Proc(PaginatedKeyboard,Nil)))-instance-method">
       <div class="signature">
         
-        def <strong>thumb_url</strong> : String?
+        def <strong>next_button_procs=</strong>(next_button_procs : Array(Proc(<a href="../Tourmaline/PaginatedKeyboard.html">PaginatedKeyboard</a>, Nil)))
 
-        <a class="method-permalink" href="#thumb_url:String?-instance-method">#</a>
+        <a class="method-permalink" href="#next_button_procs=(next_button_procs:Array(Proc(PaginatedKeyboard,Nil)))-instance-method">#</a>
       </div>
       
       <br/>
@@ -1699,12 +2022,69 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="thumb_width:Int32?-instance-method">
+    <div class="entry-detail" id="on_back(&amp;block:self-&gt;)-instance-method">
       <div class="signature">
         
-        def <strong>thumb_width</strong> : Int32?
+        def <strong>on_back</strong>(&block : <span class="k">self</span> -> )
 
-        <a class="method-permalink" href="#thumb_width:Int32?-instance-method">#</a>
+        <a class="method-permalink" href="#on_back(&block:self-%3E)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Adds a back button callback handler</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_next(&amp;block:self-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_next</strong>(&block : <span class="k">self</span> -> )
+
+        <a class="method-permalink" href="#on_next(&block:self-%3E)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Adds a next button callback handler</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pages-instance-method">
+      <div class="signature">
+        
+        def <strong>pages</strong>
+
+        <a class="method-permalink" href="#pages-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns each page, with it's items</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="per_page:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>per_page</strong> : Int32
+
+        <a class="method-permalink" href="#per_page:Int32-instance-method">#</a>
       </div>
       
       <br/>
@@ -1713,12 +2093,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="title:String-instance-method">
+    <div class="entry-detail" id="per_page=(per_page:Int32)-instance-method">
       <div class="signature">
         
-        def <strong>title</strong> : String
+        def <strong>per_page=</strong>(per_page : Int32)
 
-        <a class="method-permalink" href="#title:String-instance-method">#</a>
+        <a class="method-permalink" href="#per_page=(per_page:Int32)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1727,12 +2107,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="type:String-instance-method">
+    <div class="entry-detail" id="prefix:String?-instance-method">
       <div class="signature">
         
-        def <strong>type</strong> : String
+        def <strong>prefix</strong> : String?
 
-        <a class="method-permalink" href="#type:String-instance-method">#</a>
+        <a class="method-permalink" href="#prefix:String?-instance-method">#</a>
       </div>
       
       <br/>
@@ -1741,12 +2121,68 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="url:String?-instance-method">
+    <div class="entry-detail" id="prefix=(prefix:String?)-instance-method">
       <div class="signature">
         
-        def <strong>url</strong> : String?
+        def <strong>prefix=</strong>(prefix : String?)
 
-        <a class="method-permalink" href="#url:String?-instance-method">#</a>
+        <a class="method-permalink" href="#prefix=(prefix:String?)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="push(*args,**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>push</strong>(*args, **options)
+
+        <a class="method-permalink" href="#push(*args,**options)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="push(*args,**options,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>push</strong>(*args, **options, &)
+
+        <a class="method-permalink" href="#push(*args,**options,&)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="results:Array(String)-instance-method">
+      <div class="signature">
+        
+        def <strong>results</strong> : Array(String)
+
+        <a class="method-permalink" href="#results:Array(String)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="results=(results:Array(String))-instance-method">
+      <div class="signature">
+        
+        def <strong>results=</strong>(results : Array(String))
+
+        <a class="method-permalink" href="#results=(results:Array(String))-instance-method">#</a>
       </div>
       
       <br/>
