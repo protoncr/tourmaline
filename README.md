@@ -34,10 +34,8 @@ require "tourmaline"
 
 class EchoBot < Tourmaline::Client
   @[Command("echo")]
-  def echo_command(client, update)
-    if message = update.message
-      text = update.context["text"].as_s
-      message.reply(text)
+  def echo_command(ctx)
+      ctx.message.reply(ctx.text)
     end
   end
 end
