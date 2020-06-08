@@ -2,6 +2,13 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.20.0
+
+- **(breaking change)** Removed the filters, replaced with new handlers
+- **(breaking change)** Removed Granite specific DB includes from models (also commented out `db_persistence.cr`; next update should make persistence better)
+- **(breaking change)** Renamed `PagedInlineKeyboard` to `PagedKeyboard`
+- Added `RoutedMenu` class for easy menu building
+
 ## 0.19.1
 
 - Replace broken `Int` in unions with `Int::Primitive`
