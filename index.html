@@ -1372,10 +1372,8 @@
 
 <span class="k">class</span> <span class="t">EchoBot</span> <span class="o">&lt;</span> <span class="t">Tourmaline</span><span class="t">::</span><span class="t">Client</span>
   @[<span class="t">Command</span>(<span class="s">&quot;echo&quot;</span>)]
-  <span class="k">def</span> <span class="m">echo_command</span>(client, update)
-    <span class="k">if</span> message <span class="o">=</span> update.message
-      text <span class="o">=</span> update.context[<span class="s">&quot;text&quot;</span>].as_s
-      message.reply(text)
+  <span class="k">def</span> <span class="m">echo_command</span>(ctx)
+      ctx.message.reply(ctx.text)
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
