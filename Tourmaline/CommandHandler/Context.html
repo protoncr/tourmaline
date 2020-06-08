@@ -1377,7 +1377,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(update:Update,message:Message,command:String,text:String,botname:Bool)-class-method" class="signature"><strong>.new</strong>(update : Update, message : Message, command : String, text : String, botname : Bool)</a>
+        <a href="#new(update:Update,message:Message,command:String,text:String,raw_text:String,botname:Bool)-class-method" class="signature"><strong>.new</strong>(update : Update, message : Message, command : String, text : String, raw_text : String, botname : Bool)</a>
         
       </li>
     
@@ -1418,12 +1418,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_with(update_update=@update,message_message=@message,command_command=@command,text_text=@text,botname_botname=@botname)-instance-method" class="signature"><strong>#copy_with</strong>(update _update = @update, message _message = @message, command _command = @command, text _text = @text, botname _botname = @botname)</a>
+        <a href="#copy_with(update_update=@update,message_message=@message,command_command=@command,text_text=@text,raw_text_raw_text=@raw_text,botname_botname=@botname)-instance-method" class="signature"><strong>#copy_with</strong>(update _update = @update, message _message = @message, command _command = @command, text _text = @text, raw_text _raw_text = @raw_text, botname _botname = @botname)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#message:Message-instance-method" class="signature"><strong>#message</strong> : Message</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raw_text:String-instance-method" class="signature"><strong>#raw_text</strong> : String</a>
         
       </li>
     
@@ -1487,12 +1492,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(update:Update,message:Message,command:String,text:String,botname:Bool)-class-method">
+    <div class="entry-detail" id="new(update:Update,message:Message,command:String,text:String,raw_text:String,botname:Bool)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(update : <a href="../../Tourmaline/Update.html">Update</a>, message : <a href="../../Tourmaline/Message.html">Message</a>, command : String, text : String, botname : Bool)
+        def self.<strong>new</strong>(update : <a href="../../Tourmaline/Update.html">Update</a>, message : <a href="../../Tourmaline/Message.html">Message</a>, command : String, text : String, raw_text : String, botname : Bool)
 
-        <a class="method-permalink" href="#new(update:Update,message:Message,command:String,text:String,botname:Bool)-class-method">#</a>
+        <a class="method-permalink" href="#new(update:Update,message:Message,command:String,text:String,raw_text:String,botname:Bool)-class-method">#</a>
       </div>
       
       <br/>
@@ -1571,12 +1576,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="copy_with(update_update=@update,message_message=@message,command_command=@command,text_text=@text,botname_botname=@botname)-instance-method">
+    <div class="entry-detail" id="copy_with(update_update=@update,message_message=@message,command_command=@command,text_text=@text,raw_text_raw_text=@raw_text,botname_botname=@botname)-instance-method">
       <div class="signature">
         
-        def <strong>copy_with</strong>(update _update = @update, message _message = @message, command _command = @command, text _text = @text, botname _botname = @botname)
+        def <strong>copy_with</strong>(update _update = @update, message _message = @message, command _command = @command, text _text = @text, raw_text _raw_text = @raw_text, botname _botname = @botname)
 
-        <a class="method-permalink" href="#copy_with(update_update=@update,message_message=@message,command_command=@command,text_text=@text,botname_botname=@botname)-instance-method">#</a>
+        <a class="method-permalink" href="#copy_with(update_update=@update,message_message=@message,command_command=@command,text_text=@text,raw_text_raw_text=@raw_text,botname_botname=@botname)-instance-method">#</a>
       </div>
       
       <br/>
@@ -1591,6 +1596,20 @@
         def <strong>message</strong> : <a href="../../Tourmaline/Message.html">Message</a>
 
         <a class="method-permalink" href="#message:Message-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw_text:String-instance-method">
+      <div class="signature">
+        
+        def <strong>raw_text</strong> : String
+
+        <a class="method-permalink" href="#raw_text:String-instance-method">#</a>
       </div>
       
       <br/>
