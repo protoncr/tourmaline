@@ -18,6 +18,8 @@ development_dependencies:
   ngrok:
     github: watzon/ngrok.cr
     version: 0.2.0
+  kemal:
+    github: kemalcr/kemal
   ameba:
     github: veelenga/ameba
     version: ~> 0.10.0
