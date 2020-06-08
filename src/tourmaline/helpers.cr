@@ -80,7 +80,7 @@ module Tourmaline
               .sub("{url}", entity.url.to_s)
           end
 
-          str << char
+          str << char unless (i == chars.size - 1)
         end
       end
     end

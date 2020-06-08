@@ -126,6 +126,12 @@ module Tourmaline
       end
     end
 
+    def raw_caption(parse_mode : ParseMode = :markdown)
+      if txt = caption
+        Helpers.unparse_text(txt, entities, parse_mode)
+      end
+    end
+
     def users
       users = [] of User?
       users << self.from

@@ -49,7 +49,8 @@ module Tourmaline
 
     def call(client : Client, update : Update)
       if message = update.message
-        if (text = message.text) || (text = message.caption)
+        if ((raw_text = message.raw_text) && (text = message.text)) ||
+            (raw_text = message.raw_caption && (text = message.caption))
           return if private_only && message.chat.type != "private"
           return if (group_only || admin_only) && message.chat.type == "private"
 
@@ -61,15 +62,19 @@ module Tourmaline
             end
           end
 
+          text = text.to_s
+          raw_text = raw_text.to_s
+
           tokens = text.split(/\s+/, 2)
+          raw_tokens = raw_text.split(/\s+/, 2)
           return if tokens.empty?
 
-          command = tokens[0]
-          text = tokens[1]? || ""
+          command = raw_tokens[0]
+          text = tokens[1]
 
           if command.includes?("@")
             command, botname = command.split("@", 2)
-            return unless botname == client.bot.username.to_s
+            return unless botname.downcase == client.bot.username.to_s.downcase
           end
 
           prefix_re = /^#{@prefixes.join('|')}/
@@ -78,7 +83,7 @@ module Tourmaline
           command = command.sub(prefix_re, "")
           return unless @commands.includes?(command)
 
-          context = Context.new(update, message, command, text, !!botname)
+          context = Context.new(update, message, command, text, raw_text, !!botname)
           @proc.call(context)
           return true
         end
@@ -118,7 +123,7 @@ module Tourmaline
       {% end %}
     end
 
-    record Context, update : Update, message : Message, command : String, text : String, botname : Bool do
+    record Context, update : Update, message : Message, command : String, text : String, raw_text : String, botname : Bool do
       def botname?
         @botname
       end
