@@ -29,7 +29,9 @@ module Tourmaline
     end
 
     def inline_mention
-      "[#{full_name}](tg://user?id=#{id})"
+      name = full_name
+      name = name.strip.empty? ? id : name
+      "[#{Helpers.escape_md(name)}](tg://user?id=#{id})"
     end
 
     def profile_photos(offset = nil, limit = nil)

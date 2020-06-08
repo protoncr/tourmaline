@@ -12,85 +12,102 @@ module Tourmaline
       voice:      "ogg",
     }
 
-    def format_html(text = "", entities = [] of MessageEntity)
-      available = entities.dup
-      opened = [] of MessageEntity
-      result = [] of String | Char
+    MD_ENTITY_MAP = {
+      "bold" => {"*", "*"},
+      "italic" => {"_", "_"},
+      "underline" => {"", ""},
+      "code" => {"`", "`"},
+      "pre" => {"```\n", "\n```"},
+      "pre_language" => {"```{language}\n", "\n```"},
+      "strikethrough" => {"", ""},
+      "text_mention" => {"[", "](tg://user?id={id})"},
+      "text_link" => {"[", "]({url})"}
+    }
 
-      text.chars.each_index do |i|
-        loop do
-          index = available.index { |e| e.offset == i }
-          break if index.nil?
-          entity = available[index]
+    MDV2_ENTITY_MAP = {
+      "bold" => {"*", "*"},
+      "italic" => {"_", "_"},
+      "underline" => {"__", "__"},
+      "code" => {"`", "`"},
+      "pre" => {"```\n", "\n```"},
+      "pre_language" => {"```{language}\n", "\n```"},
+      "strikethrough" => {"~", "~"},
+      "text_mention" => {"[", "](tg://user?id={id})"},
+      "text_link" => {"[", "]({url})"}
+    }
 
-          case entity.type
-          when "bold"
-            result << "<b>"
-          when "italic"
-            result << "<i>"
-          when "code"
-            result << "<code>"
-          when "pre"
-            if entity.language
-              result << "<pre language=\"#{entity.language}\">"
-            else
-              result << "<pre>"
-            end
-          when "strikethrough"
-            result << "<s>"
-          when "underline"
-            result << "<u>"
-          when "text_mention"
-            if user = entity.user
-              result << "<a href=\"tg://user?id=#{user.id}\">"
-            end
-          when "text_link"
-            result << "<a href=\"#{entity.url}\">"
-          end
+    HTML_ENTITY_MAP = {
+      "bold" => {"<b>", "</b>"},
+      "italic" => {"<i>", "</i>"},
+      "underline" => {"<u>", "</u>"},
+      "code" => {"<code>", "</code>"},
+      "pre" => {"<pre>\n", "\n</pre>"},
+      "pre_language" => {"<pre><code class=\"language-{language}\">\n", "\n</code></pre>"},
+      "strikethrough" => {"<s>", "</s>"},
+      "text_mention" => {"<a href=\"tg://user?id={id}\">", "</a>"},
+      "text_link" => {"<a href=\"{url}\">", "</a>"}
+    }
 
-          opened.unshift(entity)
-          available.delete_at(index)
-        end
+    def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown)
+      start_entities = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset] = e; acc }
+      end_entities   = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset + e.length] = e; acc }
 
-        result << text[i]
+      chars = text.chars
+      chars << ' ' # The last entity doesn't complete without this
 
-        loop do
-          index = opened.index { |e| e.offset + e.length - 1 == i }
-          break if index.nil?
-          entity = opened[index]
-
-          case entity.type
-          when "bold"
-            result << "</b>"
-          when "italic"
-            result << "</i>"
-          when "code"
-            result << "</code>"
-          when "pre"
-            result << "</pre>"
-          when "strikethrough"
-            result << "</s>"
-          when "underline"
-            result << "</u>"
-          when "text_mention"
-            if entity.user
-              result << "</a>"
-            end
-          when "text_link"
-            result << "</a>"
-          end
-
-          opened.delete_at(index)
-        end
+      entity_map = case parse_mode
+      when ParseMode::Markdown
+        MD_ENTITY_MAP
+      when ParseMode::MarkdownV2
+        MDV2_ENTITY_MAP
+      when ParseMode::HTML
+        HTML_ENTITY_MAP
+      else
+        raise "Unreachable"
       end
 
-      result.join("")
+      String.build do |str|
+        chars.each_with_index do |char, i|
+          if (entity = start_entities[i]?) && (pieces = entity_map[entity.type]?)
+            str << pieces[0]
+              .sub("{language}", entity.language.to_s)
+              .sub("{id}", entity.user.try &.id.to_s)
+              .sub("{url}", entity.url.to_s)
+          elsif (entity = end_entities[i]?) && (pieces = entity_map[entity.type]?)
+            str << pieces[1]
+              .sub("{language}", entity.language.to_s)
+              .sub("{id}", entity.user.try &.id.to_s)
+              .sub("{url}", entity.url.to_s)
+          end
+
+          str << char
+        end
+      end
     end
 
     def random_string(length)
       chars = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a
       rands = chars.sample(length)
       rands.join
+    end
+
+    def escape_md(text, version = 1)
+      text = text.to_s
+
+      case version
+      when 0, 1
+        chars = ['_', '*', '`', '[', ']', '(', ')']
+      when 2
+        chars = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
+      else
+        raise "Invalid version #{version} for `escape_md`"
+      end
+
+      chars.each do |char|
+        text = text.gsub(char, "\\#{char}")
+      end
+
+      text
     end
   end
 end

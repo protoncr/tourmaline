@@ -114,9 +114,15 @@ module Tourmaline
     end
 
     def text_entities
-      return {} of MessageEntity => String unless text
-      entities.map do |item|
-        {type: item.type, text: text[item.offset..item.size]}
+      [entities, caption_entities].flatten.reduce({} of MessageEntity => String) do |acc, ent|
+        acc[ent] = text.to_s[ent.offset..ent.length]
+        acc
+      end
+    end
+
+    def raw_text(parse_mode : ParseMode = :markdown)
+      if txt = text
+        Helpers.unparse_text(txt, entities, parse_mode)
       end
     end
 
