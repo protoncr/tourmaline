@@ -1,7 +1,7 @@
 module Tourmaline
   # Convenience class for creating an `InlineKeyboard` with built in pagination.
   # It is designed to be customizable so as not to get in your way.
-  class PagedInlineKeyboard < InlineKeyboardMarkup
+  class PaginatedKeyboard < InlineKeyboardMarkup
     @client : Tourmaline::Client
 
     @[JSON::Field(ignore: true)]
@@ -26,14 +26,14 @@ module Tourmaline
     property prefix : String?
 
     @[JSON::Field(ignore: true)]
-    property back_button_procs : Array(Proc(PagedInlineKeyboard, Nil))
+    property back_button_procs : Array(Proc(PaginatedKeyboard, Nil))
 
     @[JSON::Field(ignore: true)]
-    property next_button_procs : Array(Proc(PagedInlineKeyboard, Nil))
+    property next_button_procs : Array(Proc(PaginatedKeyboard, Nil))
 
     delegate :<<, :push, :each, :index, :delete, to: @results
 
-    # Creates a new `PagedInlineKeyboard`
+    # Creates a new `PaginatedKeyboard`
     def initialize(@client : Tourmaline::Client,
                    @results = [] of String,
                    @per_page = 10,
@@ -45,8 +45,8 @@ module Tourmaline
                    @id = Helpers.random_string(8))
       @current_page = 0
       @inline_keyboard = make_keyboard
-      @back_button_procs = [] of Proc(PagedInlineKeyboard, Nil)
-      @next_button_procs = [] of Proc(PagedInlineKeyboard, Nil)
+      @back_button_procs = [] of Proc(PaginatedKeyboard, Nil)
+      @next_button_procs = [] of Proc(PaginatedKeyboard, Nil)
 
       handler = CallbackQueryHandler.new(group: @id) do |ctx|
         on_button_press(ctx)
@@ -55,7 +55,7 @@ module Tourmaline
       @client.add_event_handler(handler)
     end
 
-    # Creates a new `PagedInlineKeyboard`, yielding the newly created keyboard to the block
+    # Creates a new `PaginatedKeyboard`, yielding the newly created keyboard to the block
     #
     # ## Arguments
     # - `results` - the initial set of results

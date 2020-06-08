@@ -6,7 +6,7 @@ class PaginationBot < Tourmaline::Client
   def start_command(ctx)
     results = ('a'..'z').to_a.map(&.to_s)
 
-    keyboard = PagedInlineKeyboard.new(
+    keyboard = PaginatedKeyboard.new(
       results,
       per_page: 5,
       prefix: "{index}. ",

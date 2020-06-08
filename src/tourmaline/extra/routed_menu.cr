@@ -11,19 +11,17 @@ module Tourmaline
   # Example:
   # ```
   # MENU = RoutedMenu.build do
-  #   routes do
-  #     route "/" do
-  #       content "Some content to go in the home route"
-  #       buttons do
-  #         route_button "Next page", "/page_2"
-  #       end
+  #   route "/" do
+  #     content "Some content to go in the home route"
+  #     buttons do
+  #       route_button "Next page", "/page_2"
   #     end
+  #   end
   #
-  #     route "/page_2" do
-  #       content "..."
-  #       buttons do
-  #         back_button "Back"
-  #       end
+  #   route "/page_2" do
+  #     content "..."
+  #     buttons do
+  #       back_button "Back"
   #     end
   #   end
   # end
