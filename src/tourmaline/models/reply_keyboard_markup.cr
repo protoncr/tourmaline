@@ -77,6 +77,10 @@ module Tourmaline
         ReplyKeyboardMarkup.new(buttons, @resize, @one_time, @selective)
       end
 
+      def text_button(text)
+        button(text)
+      end
+
       def contact_request_button(text)
         button(text, request_contact: true)
       end
