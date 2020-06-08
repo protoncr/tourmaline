@@ -65,8 +65,10 @@ module Tourmaline
           text = text.to_s
           raw_text = raw_text.to_s
 
-          tokens = text.split(/\s+/, 2)
-          raw_tokens = raw_text.split(/\s+/, 2)
+          tokens = text.split(/\s+/)
+          tokens = tokens.size > 1 ? text.split(/\s+/, 2) : [tokens[0], ""]
+
+          raw_tokens = raw_text.split(/\s+/)
           return if tokens.empty?
 
           command = raw_tokens[0]

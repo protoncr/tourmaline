@@ -35,10 +35,12 @@ module Tourmaline
     getter route_history : Array(String)
     getter event_handler : EventHandler
 
-    def initialize(@routes = {} of String => Page, start_route = "/")
+    def initialize(@routes = {} of String => Page,
+                   start_route = "/",
+                   group = Helpers.random_string(8))
       @current_route = self.class.hash_route(start_route)
       @route_history = [@current_route]
-      @event_handler = CallbackQueryHandler.new(/route:(\S+)/) do |ctx|
+      @event_handler = CallbackQueryHandler.new(/route:(\S+)/, group: group) do |ctx|
         handle_button_click(ctx)
       end
     end
@@ -51,10 +53,10 @@ module Tourmaline
       @routes[self.class.hash_route(route)] = page
     end
 
-    def self.build(starting_route = "/", &block)
+    def self.build(starting_route = "/", **options, &block)
       builder = Builder.new
       with builder yield builder
-      new(builder.routes, starting_route)
+      new(builder.routes, starting_route, **options)
     end
 
     def self.hash_route(route : String)
