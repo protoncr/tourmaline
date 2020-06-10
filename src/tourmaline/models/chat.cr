@@ -8,7 +8,7 @@ module Tourmaline
 
     getter id : Int64
 
-    getter type : String
+    getter type : Type
 
     getter title : String?
 
@@ -43,19 +43,19 @@ module Tourmaline
     end
 
     def supergroup?
-      type == "supergroup"
+      type == Type::Supergroup
     end
 
     def private?
-      type == "private"
+      type == Type::Private
     end
 
     def group?
-      type == "group"
+      type == Type::Group
     end
 
     def channel?
-      type == "channel"
+      type == Type::Channel
     end
 
     def invite_link
@@ -178,6 +178,21 @@ module Tourmaline
     def set_permissions(permissions)
       Container.client.set_chat_permissions(id, permissions)
       @permissions = permissions.is_a?(ChatPermissions) ? permissions : ChatPermissions.new(permissions)
+    end
+
+    enum Type
+      Private
+      Group
+      Supergroup
+      Channel
+
+      def self.new(pull : JSON::PullParser)
+        parse(pull.read_string)
+      end
+
+      def to_json(json : JSON::Builder)
+        json.string(to_s)
+      end
     end
   end
 end

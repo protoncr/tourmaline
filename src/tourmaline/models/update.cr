@@ -49,23 +49,6 @@ module Tourmaline
     # votes only in polls that were sent by the bot itself.
     getter poll_answer : PollAnswer?
 
-    # The context is an object similar to JSON::Any. Items can be added to the context
-    # by filters or other methods, and then accessed in other methods.
-    @[JSON::Field(ignore: true)]
-    property context : UpdateContext = UpdateContext.new
-
-    def set_context(**kwargs)
-      @context = @context.set(**kwargs)
-    end
-
-    def set_context(values : Hash(String, V)) forall V
-      @context = @context.set(values)
-    end
-
-    def set_context(values : NamedTuple)
-      @context = @context.set(values)
-    end
-
     # Returns all users included in this update as a Set
     def users
       users = [] of User?

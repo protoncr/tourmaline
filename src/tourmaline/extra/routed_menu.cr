@@ -85,7 +85,10 @@ module Tourmaline
         if page = @routes[route]?
           @current_route = route
           route_history << route
-          message.edit_text(page.content, reply_markup: page.buttons, parse_mode: page.parse_mode)
+          message.edit_text(page.content,
+                            reply_markup: page.buttons,
+                            parse_mode: page.parse_mode,
+                            disable_link_preview: !page.link_preview)
           ctx.query.answer
         else
           ctx.query.answer("Route not found")
@@ -110,9 +113,10 @@ module Tourmaline
     class Page
       property content : String
       property parse_mode : ParseMode?
+      property link_preview : Bool
       property buttons : InlineKeyboardMarkup
 
-      def initialize(@content = "", @buttons = InlineKeyboardMarkup.new)
+      def initialize(@content = "", @buttons = InlineKeyboardMarkup.new, @parse_mode = nil, @link_preview = false)
       end
 
       class Builder
@@ -128,6 +132,10 @@ module Tourmaline
 
         def parse_mode(parse_mode : ParseMode)
           @page.parse_mode = parse_mode
+        end
+
+        def link_preview(link_preview : Bool)
+          @link_preview = link_preview
         end
 
         def buttons(*args, columns = nil, **options, &block)

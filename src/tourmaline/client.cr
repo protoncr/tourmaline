@@ -7,7 +7,6 @@ require "./container"
 require "./chat_action"
 require "./models/*"
 require "./update_action"
-require "./update_context"
 require "./event_handler"
 require "./client/*"
 require "pool/connection"
@@ -79,10 +78,7 @@ module Tourmaline
                    proxy_host = nil,
                    proxy_port = nil,
                    proxy_user = nil,
-                   proxy_pass = nil,
-                   log_level : ::Log::Severity = :info)
-      ::Log.builder.bind("tourmaline.*", log_level, Logger::LOG_BACKEND)
-
+                   proxy_pass = nil)
       if !proxy
         if proxy_uri
           proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")

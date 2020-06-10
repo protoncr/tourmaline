@@ -28,6 +28,7 @@ module Tourmaline
     property private_only : Bool
     property group_only : Bool
     property admin_only : Bool
+    property on_edit : Bool
 
     def initialize(commands,
                    prefix = nil,
@@ -36,6 +37,7 @@ module Tourmaline
                    @private_only = false,
                    @group_only = false,
                    @admin_only = false,
+                   @on_edit = false,
                    &block : Context ->)
       super(group, async)
       prefix ||= DEFAULT_PREFIXES
@@ -48,11 +50,11 @@ module Tourmaline
     end
 
     def call(client : Client, update : Update)
-      if message = update.message
+      if (message = update.message) || (@on_edit && (message = update.edited_message))
         if ((raw_text = message.raw_text) && (text = message.text)) ||
             (raw_text = message.raw_caption && (text = message.caption))
-          return if private_only && message.chat.type != "private"
-          return if (group_only || admin_only) && message.chat.type == "private"
+          return if private_only && message.chat.type != Chat::Type::Private
+          return if (group_only || admin_only) && message.chat.type == Chat::Type::Private
 
           if @admin_only
             if from = message.from
@@ -85,7 +87,7 @@ module Tourmaline
           command = command.sub(prefix_re, "")
           return unless @commands.includes?(command)
 
-          context = Context.new(update, message, command, text, raw_text, !!botname)
+          context = Context.new(update, message, command, text, raw_text, !!botname, !!update.edited_message)
           @proc.call(context)
           return true
         end
@@ -106,6 +108,7 @@ module Tourmaline
               %private_only = {{ ann.named_args[:private_only] || false }}
               %group_only = {{ ann.named_args[:group_only] || false }}
               %admin_only = {{ ann.named_args[:admin_only] || false }}
+              %on_edit = {{ ann.named_args[:on_edit] || false }}
 
               %handler = CommandHandler.new(
                 %command,
@@ -115,7 +118,8 @@ module Tourmaline
                 %private_only,
                 %group_only,
                 %admin_only,
-                &->(ctx : Context) { client.{{ method.name.id }}(ctx) }
+                %on_edit,
+                &->(ctx : Context) { client.{{ method.name.id }}(ctx); nil }
               )
 
               client.add_event_handler(%handler)
@@ -125,10 +129,6 @@ module Tourmaline
       {% end %}
     end
 
-    record Context, update : Update, message : Message, command : String, text : String, raw_text : String, botname : Bool do
-      def botname?
-        @botname
-      end
-    end
+    record Context, update : Update, message : Message, command : String, text : String, raw_text : String, botname : Bool, edit : Bool
   end
 end

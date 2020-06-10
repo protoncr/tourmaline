@@ -34,7 +34,7 @@ module Tourmaline
               %group = {{ ann[:group] || :default }}
               %async = {{ !!ann[:async] }}
 
-              %handler = HearsHandler.new(%pattern, %group, %async, &->(c : Context) { client.{{ method.name.id }}(c) })
+              %handler = HearsHandler.new(%pattern, %group, %async, &->(c : Context) { client.{{ method.name.id }}(c); nil })
               client.add_event_handler(%handler)
             {% end %}
           {% end %}

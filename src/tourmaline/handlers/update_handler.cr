@@ -42,7 +42,7 @@ module Tourmaline
                 end
               end
 
-              %handler = UpdateHandler.new(%action, %group, %async, &->(u : Update) { client.{{ method.name.id }}(u) })
+              %handler = UpdateHandler.new(%action, %group, %async, &->(u : Update) { client.{{ method.name.id }}(u); nil })
               client.add_event_handler(%handler)
             {% end %}
           {% end %}

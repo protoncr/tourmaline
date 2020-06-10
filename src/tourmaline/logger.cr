@@ -2,7 +2,6 @@ require "log"
 require "colorize"
 
 module Tourmaline
-  # :nodoc:
   module Logger
     macro included
       {% begin %}
@@ -11,33 +10,53 @@ module Tourmaline
       {% end %}
     end
 
-    LOG_BACKEND = ::Log::IOBackend.new.tap do |l|
-      l.formatter = Logger::FORMATTER
+    Backend = ::Log::IOBackend.new.tap do |l|
+      l.formatter = Tourmaline::Logger::Formatter
     end
 
-    FORMATTER = ->(entry : ::Log::Entry, io : IO) {
-      severity = entry.severity
-      level = "[" + ("%-7s" % severity.to_s) + "]"
-      source = "[" + ("%-10s" % entry.source) + "]"
-      io << color_message("#{level} #{source} - #{entry.message}", severity)
-    }
+    struct Formatter
+      extend Log::Formatter
 
-    private class_property colors = {
-      none:    :white,
-      fatal:   :light_red,
-      error:   :red,
-      warning: :yellow,
-      info:    :blue,
-      verbose: :cyan,
-      debug:   :green,
-    }
+      class_property colors = {
+        none:    {:white, nil},
+        fatal:   {:red, :bold},
+        error:   {:red, nil},
+        warn:    {:yellow, nil},
+        warning: {:yellow, nil},
+        info:    {:cyan, nil},
+        notice:  {:cyan, :underline},
+        debug:   {:green, nil},
+        trace:   {:green, :bold}
+      }
 
-    private def self.color_message(message, level)
-      {% for const in ::Log::Severity.constants %}
-        if level == ::Log::Severity::{{ const.id }}
-          return message.colorize(self.colors[{{ const.id.stringify.downcase.id.symbolize }}])
-        end
-      {% end %}
+      def initialize(@entry : Log::Entry, @io : IO)
+      end
+
+      def self.format(entry, io)
+        new(entry, io).run
+      end
+
+      def run
+        severity = @entry.severity
+        level = "[" + ("%-7s" % severity.to_s) + "]"
+        source = "[" + ("%-10s" % @entry.source) + "]"
+        @io << color_message("#{level} #{source} - #{@entry.message}", severity)
+      end
+
+      private def color_message(message, level)
+        {% begin %}
+          color, decoration = case level
+            {% for const in ::Log::Severity.constants %}
+              in ::Log::Severity::{{ const.id }}
+                @@colors[{{ const.id.stringify.downcase.id.symbolize }}]
+            {% end %}
+          end
+
+          colored = message.colorize.fore(color)
+          colored = colored.colorize.mode(decoration) if decoration
+          colored
+        {% end %}
+      end
     end
   end
 end
