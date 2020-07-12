@@ -35,8 +35,7 @@ require "tourmaline"
 class EchoBot < Tourmaline::Client
   @[Command("echo")]
   def echo_command(ctx)
-      ctx.message.reply(ctx.text)
-    end
+    ctx.message.reply(ctx.text)
   end
 end
 
