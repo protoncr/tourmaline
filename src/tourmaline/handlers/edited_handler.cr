@@ -22,7 +22,7 @@ module Tourmaline
           {% for method in command_class.methods %}
 
             # Handle `Hears` annotation
-            {% for ann in method.annotations(Hears) %}
+            {% for ann in method.annotations(Edited) %}
               %group = {{ ann[:group] || :default }}
               %async = {{ !!ann[:async] }}
 

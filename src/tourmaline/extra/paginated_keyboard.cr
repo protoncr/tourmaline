@@ -2,6 +2,7 @@ module Tourmaline
   # Convenience class for creating an `InlineKeyboard` with built in pagination.
   # It is designed to be customizable so as not to get in your way.
   class PaginatedKeyboard < InlineKeyboardMarkup
+    @[JSON::Field(ignore: true)]
     @client : Tourmaline::Client
 
     @[JSON::Field(ignore: true)]
