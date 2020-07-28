@@ -187,13 +187,11 @@ module Tourmaline
 
     private def register_annotations
       {% begin %}
-        {% for cls in Stage.subclasses %}
-          {% for method in cls.methods %}
-            {% for ann in method.annotations(Step) %}
-              %name = {{ ann[:name] || ann[0] }}
-              %initial = {{ !!ann[:initial] }}
-              on(%name, initial: %initial, &->{{ method.name.id }}(Client))
-            {% end %}
+        {% for method in @type.methods %}
+          {% for ann in method.annotations(Step) %}
+            %name = {{ ann[:name] || ann[0] }}
+            %initial = {{ !!ann[:initial] }}
+            on(%name, initial: %initial, &->{{ method.name.id }}(Client))
           {% end %}
         {% end %}
       {% end %}
