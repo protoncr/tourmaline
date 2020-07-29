@@ -238,7 +238,7 @@ module Tourmaline
           value
         )
       else
-        form.body_part(headers, value.to_json)
+        form.body_part(headers, value.to_s)
       end
     end
 
@@ -268,8 +268,11 @@ module Tourmaline
 
     private def check_open_local_file(file)
       if file.is_a?(String)
-        if File.file?(file)
-          return File.open(file)
+        begin
+          if File.file?(file)
+            return File.open(file)
+          end
+        rescue ex
         end
       end
       file

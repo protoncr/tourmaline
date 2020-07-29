@@ -1,281 +1,200 @@
-require "./helpers"
-require "./error"
-require "./logger"
-require "./persistence"
-require "./parse_mode"
-require "./container"
-require "./chat_action"
-require "./models/*"
-require "./update_action"
-require "./event_handler"
-require "./client/*"
-require "pool/connection"
-
 module Tourmaline
-  # The `Client` class is the base class for all Tourmaline based bots.
-  # Extend this class to create your own bots, or create an
-  # instance of `Client` and add event handlers to it.
-  class Client
-    macro inherited
-      include Tourmaline
-    end
-
-    include Logger
-
-    include CoreMethods
-    include GameMethods
-    include PassportMethods
-    include PaymentMethods
-    include PollMethods
-    include StickerMethods
-    include WebhookMethods
-
-    include EventHandler::Annotator
-
-    DEFAULT_API_URL = "https://api.telegram.org/"
-
-    # Gets the name of the Client at the time the Client was
-    # started. Refreshing can be done by setting
-    # `@bot` to `get_me`.
-    getter bot : User { get_me }
-
-    property allowed_updates : Array(String)
-
-    private getter event_handlers : Array(EventHandler)
-    private getter persistence : Persistence
-
-    @pool : ConnectionPool(HTTP::Client)
-
-    # Create a new instance of `Tourmaline::Client`.
+  # FSM (Finite-state machine) like functionality for Tourmaline in the form of a Stage.
+  # Stage allows you to create conversations/wizards which maintain their own state
+  # for a particular user and/or chat.
+  #
+  # For an example of a stage bot, check out [examples/stage_bot.cr](https://github.com/protoncr/tourmaline/blob/master/examples/stage_bot.cr)
+  class Stage(T)
+    # Annotation for creating a step from a method.
     #
-    # ## Arguments
-    #
-    # ### Positional
-    # - `api_key` - required; the bot token you were provided with by `@BotFather`
-    # - `endpoint` - the Telegram bot API endpoint to use; defaults to `https://api.telegram.org`
-    #
-    # ### Named
-    # - `persistence` - the persistence strategy to use
-    # - `pool_capacity` - the maximum number of concurrent HTTP connections to use
-    # - `initial_pool_size` - the number of HTTP::Client instances to create on init
-    # - `pool_timeout` - How long to wait for a new client to be available if the pool is full before throwing a `TimeoutError`
-    # - `proxy` - an instance of `HTTP::Proxy::Client` to use; if set, overrides the following `proxy_` args
-    # - `proxy_uri` - a URI to use when connecting to the proxy; can be a `URI` instance or a String
-    # - `proxy_host` - if no `proxy_uri` is provided, this will be the host for the URI
-    # - `proxy_port` - if no `proxy_uri` is provided, this will be the port for the URI
-    # - `proxy_user` - a username to use for a proxy that requires authentication
-    # - `proxy_pass` - a password to use for a proxy that requires authentication
-    def initialize(@api_key : String,
-                   endpoint = DEFAULT_API_URL,
+    # **Example:**
+    # ```
+    # @[Step(:foo, initial: true)]
+    # def foo_step(update)
+    #   ...
+    # end
+    # ```
+    annotation Step; end
+
+    # The client instance this stage is attached to
+    getter client : Client
+
+    # A hash containing the steps in this stage
+    getter steps = {} of String => Proc(Client, Nil)
+
+    # The key for the currently active step
+    getter current_step : String?
+
+    # The key to use for the initial step
+    getter initial_step : String?
+
+    # True if this Stage is currently active
+    getter? active : Bool
+
+    # True if update history is being recorded
+    getter? history : Bool
+
+    # Maintains a history of updates that match the given chat_id and/or user_id.
+    # The first update will be the one that initiated this Stage.
+    getter update_history : Array(Update)
+
+    # The context for this stage
+    property context : T
+
+    # The chat id that this stage applies to If nil, this stage
+    # will be usable across all chats
+    property! chat_id : Int::Primitive?
+
+    # The user id that this stage applies to If nil, this stage
+    # will be usable across all users
+    property! user_id : Int::Primitive?
+
+    @first_run : Bool
+    @event_handler : EventHandler
+    @on_start_handlers : Array(Proc(Nil))
+    @on_exit_handlers  : Array(Proc(T, Nil))
+    @response_awaiter  : Proc(Update, Nil)?
+
+    # Create a new Stage instance
+    def initialize(@client : Client,
                    *,
-                   @persistence : Persistence = NilPersistence.new,
-                   @allowed_updates = [] of String,
-                   pool_capacity = 200,
-                   initial_pool_size = 20,
-                   pool_timeout = 0.1,
-                   proxy = nil,
-                   proxy_uri = nil,
-                   proxy_host = nil,
-                   proxy_port = nil,
-                   proxy_user = nil,
-                   proxy_pass = nil)
-      if !proxy
-        if proxy_uri
-          proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")
-          proxy_host = proxy_uri.host
-          proxy_port = proxy_uri.port
-          proxy_user = proxy_uri.user if proxy_uri.user
-          proxy_pass = proxy_uri.password if proxy_uri.password
+                   @context : T,
+                   chat_id = nil,
+                   user_id = nil,
+                   group = nil,
+                   @history = true,
+                   **handler_options)
+      @chat_id = chat_id
+      @user_id = user_id
+      @active  = false
+      @first_run  = true
+
+      @update_history  = [] of Update
+      @on_start_handlers = [] of Proc(Nil)
+      @on_exit_handlers  = [] of Proc(T, Nil)
+
+      group = group ? group.to_s : Helpers.random_string(8)
+      @event_handler = UpdateHandler.new(:update, **handler_options, group: group) do |update|
+        handle_update(update)
+      end
+
+      register_annotations
+    end
+
+    # Create a new Stage instance and start it immediately
+    def self.enter(*args, **options)
+      stage = new(*args, **options)
+      stage.start
+    end
+
+    # Start the current Stage, setting the given initial step as the current step
+    # and adding an event handler to the client.
+    def start
+      raise "No steps for this stage" if @steps.empty?
+      @active = true
+      @client.add_event_handler(@event_handler)
+      @on_start_handlers.each(&.call)
+      transition(@initial_step.to_s) if @initial_step
+      self
+    end
+
+    # Stop the current Stage and remove the event handler from the client.
+    def exit
+      @active = false
+      @response_awaiter = nil
+      @client.remove_event_handler(@event_handler)
+      @on_exit_handlers.each(&.call(@context))
+      self
+    end
+
+    # Add an event handler for the given step name using the supplied block
+    def on(step, initial = false, &block : Client ->)
+      on(step, block, initial)
+    end
+
+    # Add an event handler for the given event name using the supplied proc
+    def on(step, proc : Client ->, initial = false)
+      step = step.to_s
+      if initial
+        Log.warn do
+          "The step has already been defined as #{@initial_step} and is now being redefined " \
+          "as #{step}. This is most likely unintentional."
+        end if @initial_step
+        @initial_step = step
+      end
+      @steps[step] = proc
+      self
+    end
+
+    # Add a handler that's called when this Stage is started
+    def on_start(&block : ->)
+      @on_start_handlers << block
+    end
+
+    # Add a handler that's called when this Stage is exited
+    def on_exit(&block : T ->)
+      @on_exit_handlers << block
+    end
+
+    # Allows you to await a response to a step, yielding the awaited
+    # update to the block.
+    def await_response(&block : Update ->)
+      @response_awaiter = block
+    end
+
+    # Set the current step to the given value
+    def transition(event)
+      event = event.to_s
+      raise "Event does not exist" unless @steps.has_key?(event)
+      @current_step = event
+      @response_awaiter = nil
+      @steps[@current_step].call(@client)
+      self
+    end
+
+    private def handle_update(update)
+      return unless @active
+
+      if @first_run
+        @update_history << update if history?
+        @first_run = false
+        return
+      end
+
+      if awaiter = @response_awaiter
+        # Get the returned messages from the chat, but not nested ones
+        messages = [update.channel_post, update.edited_channel_post, update.edited_message, update.message].compact
+        return if messages.empty?
+        message = messages.first
+
+        # Ignore updates coming from this client
+        return if message.from.try &.id == @client.bot.id
+
+        # If chat_id is set, check the message chat id and make sure it matches
+        if @chat_id
+          return unless chat_id == message.chat.id
         end
 
-        if proxy_host && proxy_port
-          proxy = HTTP::Proxy::Client.new(proxy_host, proxy_port, username: proxy_user, password: proxy_pass)
+        # If user is set, check the message from user id and make sure it matches
+        if @user_id
+          return unless user_id == message.from.try &.id
         end
-      end
 
-      @pool = ConnectionPool(HTTP::Client).new(capacity: pool_capacity, initial: initial_pool_size, timeout: pool_timeout) do
-        client = HTTP::Client.new(URI.parse(endpoint))
-        client.set_proxy(proxy.dup) if proxy
-        client
-      end
-
-      @event_handlers = [] of EventHandler
-      register_event_handler_annotations
-
-      Container.client = self
-
-      @persistence.init
-      [Signal::INT, Signal::TERM].each do |sig|
-        sig.trap { @persistence.cleanup; exit }
+        @update_history << update if history?
+        awaiter.call(update)
       end
     end
 
-    def add_event_handler(handler : EventHandler)
-      @event_handlers << handler
-    end
-
-    def remove_event_handler(handler : EventHandler)
-      @event_handlers.delete(handler)
-    end
-
-    def handle_update(update : Update)
-      handled = [] of String
-      @event_handlers.each do |handler|
-        unless handled.includes?(handler.group)
-          if handler.call(self, update)
-            @persistence.handle_update(update)
-            handled << handler.group
-          end
-        end
-      end
-    end
-
-    private def request(type : U.class, method, params = {} of String => String) forall U
-      response = request(method, params)
-      type.from_json(response)
-    end
-
-    # Sends a json request to the Telegram Client API.
-    private def request(method, params = {} of String => String)
-      path = File.join("/bot" + @api_key, method)
-      multipart = includes_media(params)
-      client = @pool.checkout
-
-      Log.debug { "sending ►► #{method}(#{params.to_pretty_json})" }
-
-      begin
-        if multipart
-          config = build_form_data_config(params)
-          response = client.exec(**config, path: path)
-        else
-          config = build_json_config(params)
-          response = client.exec(**config, path: path)
-        end
-      rescue IO::TimeoutError
-        raise Error::RequestTimeoutError.new
-      ensure
-        @pool.checkin(client)
-      end
-
-      result = JSON.parse(response.body)
-
-      Log.debug { "receiving ◄◄ #{result.to_pretty_json}" }
-
-      if result["ok"].as_bool
-        result["result"].to_json
-      else
-        raise Error.from_message(result["description"].as_s)
-      end
-    end
-
-    private def object_or_id(object)
-      if object.responds_to?(:id)
-        return object.id
-      end
-      object
-    end
-
-    private def includes_media(params)
-      params.values.any? do |val|
-        case val
-        when Array
-          val.any? { |v| v.is_a?(File | InputMedia) }
-        when File, InputMedia
-          true
-        else
-          false
-        end
-      end
-    end
-
-    private def build_json_config(payload)
-      {
-        method:    "POST",
-        headers: HTTP::Headers{"Content-Type" => "application/json", "Connection" => "keep-alive"},
-        body:     payload.to_h.compact.to_json,
-      }
-    end
-
-    private def build_form_data_config(payload)
-      boundary = MIME::Multipart.generate_boundary
-      formdata = MIME::Multipart.build(boundary) do |form|
-        payload.each do |key, value|
-          attach_form_value(form, key.to_s, value)
-        end
-      end
-
-      {
-        method:    "POST",
-        headers: HTTP::Headers{
-          "Content-Type" => "multipart/form-data; boundary=#{boundary}",
-          "Connection"   => "keep-alive",
-        },
-        body: formdata,
-      }
-    end
-
-    private def attach_form_value(form : MIME::Multipart::Builder, id : String, value)
-      return unless value
-      headers = HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}"}
-
-      case value
-      when Array
-        # Likely an Array(InputMedia)
-        items = value.map do |item|
-          if item.is_a?(InputMedia)
-            attach_form_media(form, item)
-          end
-          item
-        end
-        form.body_part(headers, items.to_json)
-      when InputMedia
-        attach_form_media(form, value)
-        form.body_part(headers, value.to_json)
-      when File
-        filename = File.basename(value.path)
-        form.body_part(
-          HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
-          value
-        )
-      else
-        form.body_part(headers, value.to_s)
-      end
-    end
-
-    private def attach_form_media(form : MIME::Multipart::Builder, value : InputMedia)
-      media = value.media
-      thumb = value.responds_to?(:thumb) ? value.thumb : nil
-
-      {media: media, thumb: thumb}.each do |key, item|
-        item = check_open_local_file(item)
-        if item.is_a?(File)
-          id = Random.new.random_bytes(16).hexstring
-          filename = File.basename(item.path)
-
-          form.body_part(
-            HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}; filename=#{filename}"},
-            item
-          )
-
-          if key == :media
-            value.media = "attach://#{id}"
-          elsif value.responds_to?(:thumb)
-            value.thumb = "attach://#{id}"
-          end
-        end
-      end
-    end
-
-    private def check_open_local_file(file)
-      if file.is_a?(String)
-        begin
-          if File.file?(file)
-            return File.open(file)
-          end
-        rescue ex
-        end
-      end
-      file
+    private def register_annotations
+      {% begin %}
+        {% for method in @type.methods %}
+          {% for ann in method.annotations(Step) %}
+            %name = {{ ann[:name] || ann[0] }}
+            %initial = {{ !!ann[:initial] }}
+            on(%name, initial: %initial, &->{{ method.name.id }}(Client))
+          {% end %}
+        {% end %}
+      {% end %}
     end
   end
 end
