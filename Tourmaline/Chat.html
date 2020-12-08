@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="0.20.0">
+<meta name="crystal_docs.project_version" content="0.21.0">
 <meta name="crystal_docs.project_name" content="tourmaline">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::Chat - tourmaline 0.20.0</title>
+  <title>Tourmaline::Chat - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.20.0
+        0.21.0
       </span>
     </div>
   </div>
@@ -118,6 +118,11 @@
   
   <li class=" " data-id="tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+      <a href="../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
   
@@ -1201,6 +1206,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/ProximityAlertTriggered" data-name="tourmaline::proximityalerttriggered">
+      <a href="../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>
+      
+    </li>
+  
   <li class="parent " data-id="tourmaline/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
       <a href="../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
       
@@ -1468,17 +1478,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#bio:String?-instance-method" class="signature"><strong>#bio</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#can_set_sticker_set:Bool?-instance-method" class="signature"><strong>#can_set_sticker_set</strong> : Bool?</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#channel?-instance-method" class="signature"><strong>#channel?</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#chat_photo:ChatPhoto?-instance-method" class="signature"><strong>#chat_photo</strong> : ChatPhoto?</a>
         
       </li>
     
@@ -1543,6 +1553,16 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#linked_chat_id:Int64?-instance-method" class="signature"><strong>#linked_chat_id</strong> : Int64?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#location:ChatLocation?-instance-method" class="signature"><strong>#location</strong> : ChatLocation?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#member_count-instance-method" class="signature"><strong>#member_count</strong></a>
         
       </li>
@@ -1554,6 +1574,11 @@
     
       <li class="entry-summary">
         <a href="#permissions:ChatPermissions?-instance-method" class="signature"><strong>#permissions</strong> : ChatPermissions?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#photo:ChatPhoto?-instance-method" class="signature"><strong>#photo</strong> : ChatPhoto?</a>
         
       </li>
     
@@ -1800,6 +1825,20 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="bio:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>bio</strong> : String?
+
+        <a class="method-permalink" href="#bio:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="can_set_sticker_set:Bool?-instance-method">
       <div class="signature">
         
@@ -1820,20 +1859,6 @@
         def <strong>channel?</strong>
 
         <a class="method-permalink" href="#channel?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="chat_photo:ChatPhoto?-instance-method">
-      <div class="signature">
-        
-        def <strong>chat_photo</strong> : <a href="../Tourmaline/ChatPhoto.html">ChatPhoto</a>?
-
-        <a class="method-permalink" href="#chat_photo:ChatPhoto?-instance-method">#</a>
       </div>
       
       <br/>
@@ -2010,6 +2035,34 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="linked_chat_id:Int64?-instance-method">
+      <div class="signature">
+        
+        def <strong>linked_chat_id</strong> : Int64?
+
+        <a class="method-permalink" href="#linked_chat_id:Int64?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="location:ChatLocation?-instance-method">
+      <div class="signature">
+        
+        def <strong>location</strong> : <a href="../Tourmaline/ChatLocation.html">ChatLocation</a>?
+
+        <a class="method-permalink" href="#location:ChatLocation?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="member_count-instance-method">
       <div class="signature">
         
@@ -2044,6 +2097,20 @@
         def <strong>permissions</strong> : <a href="../Tourmaline/ChatPermissions.html">ChatPermissions</a>?
 
         <a class="method-permalink" href="#permissions:ChatPermissions?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="photo:ChatPhoto?-instance-method">
+      <div class="signature">
+        
+        def <strong>photo</strong> : <a href="../Tourmaline/ChatPhoto.html">ChatPhoto</a>?
+
+        <a class="method-permalink" href="#photo:ChatPhoto?-instance-method">#</a>
       </div>
       
       <br/>

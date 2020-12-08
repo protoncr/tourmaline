@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="0.20.0">
+<meta name="crystal_docs.project_version" content="0.21.0">
 <meta name="crystal_docs.project_name" content="tourmaline">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::Client::WebhookMethods - tourmaline 0.20.0</title>
+  <title>Tourmaline::Client::WebhookMethods - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.20.0
+        0.21.0
       </span>
     </div>
   </div>
@@ -118,6 +118,11 @@
   
   <li class=" " data-id="tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+      <a href="../../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
   
@@ -1201,6 +1206,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/ProximityAlertTriggered" data-name="tourmaline::proximityalerttriggered">
+      <a href="../../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>
+      
+    </li>
+  
   <li class="parent " data-id="tourmaline/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
       <a href="../../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
       
@@ -1467,7 +1477,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#delete_webhook-instance-method" class="signature"><strong>#delete_webhook</strong></a>
+        <a href="#delete_webhook(drop_pending_updates=false)-instance-method" class="signature"><strong>#delete_webhook</strong>(drop_pending_updates = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Use this method to remove webhook integration if you decide to switch back to getUpdates.</p></div>
         
@@ -1495,7 +1505,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method" class="signature"><strong>#set_webhook</strong>(url, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates)</a>
+        <a href="#set_webhook(url,ip_address=nil,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates,drop_pending_updates=false)-instance-method" class="signature"><strong>#set_webhook</strong>(url, ip_address = <span class="n">nil</span>, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates, drop_pending_updates = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Use this method to specify a url and receive incoming updates via an outgoing webhook.</p></div>
         
@@ -1542,12 +1552,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="delete_webhook-instance-method">
+    <div class="entry-detail" id="delete_webhook(drop_pending_updates=false)-instance-method">
       <div class="signature">
         
-        def <strong>delete_webhook</strong>
+        def <strong>delete_webhook</strong>(drop_pending_updates = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#delete_webhook-instance-method">#</a>
+        <a class="method-permalink" href="#delete_webhook(drop_pending_updates=false)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1598,7 +1608,7 @@ url field empty.</p>
 updates using Telegram's webhooks. This is the reccommended way to handle
 bots in production.</p>
 
-<p>Note: Don't forget to call <code><a href="../../Tourmaline/Client/WebhookMethods.html#set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method">#set_webhook</a></code> first! This method does not do it for you.</p>
+<p>Note: Don't forget to call <code><a href="../../Tourmaline/Client/WebhookMethods.html#set_webhook(url,ip_address=nil,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates,drop_pending_updates=false)-instance-method">#set_webhook</a></code> first! This method does not do it for you.</p>
         </div>
       
       <br/>
@@ -1621,7 +1631,7 @@ bots in production.</p>
 updates using Telegram's webhooks. This is the reccommended way to handle
 bots in production.</p>
 
-<p>Note: Don't forget to call <code><a href="../../Tourmaline/Client/WebhookMethods.html#set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method">#set_webhook</a></code> first! This method does not do it for you.</p>
+<p>Note: Don't forget to call <code><a href="../../Tourmaline/Client/WebhookMethods.html#set_webhook(url,ip_address=nil,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates,drop_pending_updates=false)-instance-method">#set_webhook</a></code> first! This method does not do it for you.</p>
         </div>
       
       <br/>
@@ -1630,12 +1640,12 @@ bots in production.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method">
+    <div class="entry-detail" id="set_webhook(url,ip_address=nil,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates,drop_pending_updates=false)-instance-method">
       <div class="signature">
         
-        def <strong>set_webhook</strong>(url, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates)
+        def <strong>set_webhook</strong>(url, ip_address = <span class="n">nil</span>, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates, drop_pending_updates = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method">#</a>
+        <a class="method-permalink" href="#set_webhook(url,ip_address=nil,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates,drop_pending_updates=false)-instance-method">#</a>
       </div>
       
         <div class="doc">

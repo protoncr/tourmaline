@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="0.20.0">
+<meta name="crystal_docs.project_version" content="0.21.0">
 <meta name="crystal_docs.project_name" content="tourmaline">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::InlineQueryResultCachedMpeg4Gif - tourmaline 0.20.0</title>
+  <title>Tourmaline::InlineQueryResultCachedMpeg4Gif - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.20.0
+        0.21.0
       </span>
     </div>
   </div>
@@ -118,6 +118,11 @@
   
   <li class=" " data-id="tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+      <a href="../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
   
@@ -1201,6 +1206,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/ProximityAlertTriggered" data-name="tourmaline::proximityalerttriggered">
+      <a href="../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>
+      
+    </li>
+  
   <li class="parent " data-id="tourmaline/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
       <a href="../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
       
@@ -1432,7 +1442,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(id,mpeg4_file_id,title=nil,caption=nil,reply_markup=nil,input_message_content=nil)-class-method" class="signature"><strong>.new</strong>(id, mpeg4_file_id, title = <span class="n">nil</span>, caption = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)</a>
+        <a href="#new(id,mpeg4_file_id,title=nil,caption=nil,parse_mode=nil,caption_entities=[]ofMessageEntity,reply_markup=nil,input_message_content=nil)-class-method" class="signature"><strong>.new</strong>(id, mpeg4_file_id, title = <span class="n">nil</span>, caption = <span class="n">nil</span>, parse_mode = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1463,6 +1473,16 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#caption_entities:Array(MessageEntity)-instance-method" class="signature"><strong>#caption_entities</strong> : Array(MessageEntity)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#caption_entities=(caption_entities:Array(MessageEntity))-instance-method" class="signature"><strong>#caption_entities=</strong>(caption_entities : Array(MessageEntity))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#id:String-instance-method" class="signature"><strong>#id</strong> : String</a>
         
       </li>
@@ -1474,6 +1494,16 @@
     
       <li class="entry-summary">
         <a href="#mpeg4_file_id:String-instance-method" class="signature"><strong>#mpeg4_file_id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_mode:ParseMode?-instance-method" class="signature"><strong>#parse_mode</strong> : ParseMode?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_mode=(parse_mode:ParseMode?)-instance-method" class="signature"><strong>#parse_mode=</strong>(parse_mode : ParseMode?)</a>
         
       </li>
     
@@ -1580,12 +1610,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(id,mpeg4_file_id,title=nil,caption=nil,reply_markup=nil,input_message_content=nil)-class-method">
+    <div class="entry-detail" id="new(id,mpeg4_file_id,title=nil,caption=nil,parse_mode=nil,caption_entities=[]ofMessageEntity,reply_markup=nil,input_message_content=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(id, mpeg4_file_id, title = <span class="n">nil</span>, caption = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)
+        def self.<strong>new</strong>(id, mpeg4_file_id, title = <span class="n">nil</span>, caption = <span class="n">nil</span>, parse_mode = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(id,mpeg4_file_id,title=nil,caption=nil,reply_markup=nil,input_message_content=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new(id,mpeg4_file_id,title=nil,caption=nil,parse_mode=nil,caption_entities=[]ofMessageEntity,reply_markup=nil,input_message_content=nil)-class-method">#</a>
       </div>
       
       <br/>
@@ -1636,6 +1666,34 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="caption_entities:Array(MessageEntity)-instance-method">
+      <div class="signature">
+        
+        def <strong>caption_entities</strong> : Array(<a href="../Tourmaline/MessageEntity.html">MessageEntity</a>)
+
+        <a class="method-permalink" href="#caption_entities:Array(MessageEntity)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="caption_entities=(caption_entities:Array(MessageEntity))-instance-method">
+      <div class="signature">
+        
+        def <strong>caption_entities=</strong>(caption_entities : Array(<a href="../Tourmaline/MessageEntity.html">MessageEntity</a>))
+
+        <a class="method-permalink" href="#caption_entities=(caption_entities:Array(MessageEntity))-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="id:String-instance-method">
       <div class="signature">
         
@@ -1670,6 +1728,34 @@
         def <strong>mpeg4_file_id</strong> : String
 
         <a class="method-permalink" href="#mpeg4_file_id:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_mode:ParseMode?-instance-method">
+      <div class="signature">
+        
+        def <strong>parse_mode</strong> : <a href="../Tourmaline/ParseMode.html">ParseMode</a>?
+
+        <a class="method-permalink" href="#parse_mode:ParseMode?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_mode=(parse_mode:ParseMode?)-instance-method">
+      <div class="signature">
+        
+        def <strong>parse_mode=</strong>(parse_mode : <a href="../Tourmaline/ParseMode.html">ParseMode</a>?)
+
+        <a class="method-permalink" href="#parse_mode=(parse_mode:ParseMode?)-instance-method">#</a>
       </div>
       
       <br/>

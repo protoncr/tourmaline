@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="0.20.0">
+<meta name="crystal_docs.project_version" content="0.21.0">
 <meta name="crystal_docs.project_name" content="tourmaline">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::InlineQueryResultVenue - tourmaline 0.20.0</title>
+  <title>Tourmaline::InlineQueryResultVenue - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.20.0
+        0.21.0
       </span>
     </div>
   </div>
@@ -118,6 +118,11 @@
   
   <li class=" " data-id="tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+      <a href="../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
   
@@ -1201,6 +1206,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/ProximityAlertTriggered" data-name="tourmaline::proximityalerttriggered">
+      <a href="../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>
+      
+    </li>
+  
   <li class="parent " data-id="tourmaline/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
       <a href="../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
       
@@ -1432,7 +1442,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(id,latitude,longitude,title,address,foursquare_id=nil,reply_markup=nil,input_message_content=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method" class="signature"><strong>.new</strong>(id, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>, thumb_url = <span class="n">nil</span>, thumb_width = <span class="n">nil</span>, thumb_height = <span class="n">nil</span>)</a>
+        <a href="#new(id,latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,reply_markup=nil,google_place_id=nil,google_place_type=nil,input_message_content=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method" class="signature"><strong>.new</strong>(id, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, foursquare_type = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, google_place_id = <span class="n">nil</span>, google_place_type = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>, thumb_url = <span class="n">nil</span>, thumb_width = <span class="n">nil</span>, thumb_height = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -1464,6 +1474,21 @@
     
       <li class="entry-summary">
         <a href="#foursquare_id:String?-instance-method" class="signature"><strong>#foursquare_id</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#foursquare_type:String?-instance-method" class="signature"><strong>#foursquare_type</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#google_place_id:String?-instance-method" class="signature"><strong>#google_place_id</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#google_place_type:String?-instance-method" class="signature"><strong>#google_place_type</strong> : String?</a>
         
       </li>
     
@@ -1605,12 +1630,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(id,latitude,longitude,title,address,foursquare_id=nil,reply_markup=nil,input_message_content=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method">
+    <div class="entry-detail" id="new(id,latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,reply_markup=nil,google_place_id=nil,google_place_type=nil,input_message_content=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(id, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>, thumb_url = <span class="n">nil</span>, thumb_width = <span class="n">nil</span>, thumb_height = <span class="n">nil</span>)
+        def self.<strong>new</strong>(id, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, foursquare_type = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>, google_place_id = <span class="n">nil</span>, google_place_type = <span class="n">nil</span>, input_message_content = <span class="n">nil</span>, thumb_url = <span class="n">nil</span>, thumb_width = <span class="n">nil</span>, thumb_height = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new(id,latitude,longitude,title,address,foursquare_id=nil,reply_markup=nil,input_message_content=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method">#</a>
+        <a class="method-permalink" href="#new(id,latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,reply_markup=nil,google_place_id=nil,google_place_type=nil,input_message_content=nil,thumb_url=nil,thumb_width=nil,thumb_height=nil)-class-method">#</a>
       </div>
       
       <br/>
@@ -1667,6 +1692,48 @@
         def <strong>foursquare_id</strong> : String?
 
         <a class="method-permalink" href="#foursquare_id:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="foursquare_type:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>foursquare_type</strong> : String?
+
+        <a class="method-permalink" href="#foursquare_type:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="google_place_id:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>google_place_id</strong> : String?
+
+        <a class="method-permalink" href="#google_place_id:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="google_place_type:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>google_place_type</strong> : String?
+
+        <a class="method-permalink" href="#google_place_type:String?-instance-method">#</a>
       </div>
       
       <br/>

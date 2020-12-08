@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="0.20.0">
+<meta name="crystal_docs.project_version" content="0.21.0">
 <meta name="crystal_docs.project_name" content="tourmaline">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::Message - tourmaline 0.20.0</title>
+  <title>Tourmaline::Message - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.20.0
+        0.21.0
       </span>
     </div>
   </div>
@@ -118,6 +118,11 @@
   
   <li class=" " data-id="tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+      <a href="../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
   
@@ -1201,6 +1206,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/ProximityAlertTriggered" data-name="tourmaline::proximityalerttriggered">
+      <a href="../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>
+      
+    </li>
+  
   <li class="parent " data-id="tourmaline/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
       <a href="../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
       
@@ -1468,6 +1478,11 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#animation:Animation?-instance-method" class="signature"><strong>#animation</strong> : Animation?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#audio:Audio?-instance-method" class="signature"><strong>#audio</strong> : Audio?</a>
         
       </li>
@@ -1632,6 +1647,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#forward_sender_name:String?-instance-method" class="signature"><strong>#forward_sender_name</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#forward_signature:String?-instance-method" class="signature"><strong>#forward_signature</strong> : String?</a>
         
       </li>
@@ -1724,7 +1744,17 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#pinned_message:Message?-instance-method" class="signature"><strong>#pinned_message</strong> : Message?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#poll:Poll?-instance-method" class="signature"><strong>#poll</strong> : Poll?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#proximity_alert_triggered:ProximityAlertTriggered?-instance-method" class="signature"><strong>#proximity_alert_triggered</strong> : ProximityAlertTriggered?</a>
         
       </li>
     
@@ -1933,6 +1963,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#sender_chat:Chat?-instance-method" class="signature"><strong>#sender_chat</strong> : Chat?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#sticker:Sticker?-instance-method" class="signature"><strong>#sticker</strong> : Sticker?</a>
         
       </li>
@@ -2074,6 +2109,20 @@
 </a>
     Instance Method Detail
   </h2>
+  
+    <div class="entry-detail" id="animation:Animation?-instance-method">
+      <div class="signature">
+        
+        def <strong>animation</strong> : <a href="../Tourmaline/Animation.html">Animation</a>?
+
+        <a class="method-permalink" href="#animation:Animation?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="audio:Audio?-instance-method">
       <div class="signature">
@@ -2530,6 +2579,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="forward_sender_name:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>forward_sender_name</strong> : String?
+
+        <a class="method-permalink" href="#forward_sender_name:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="forward_signature:String?-instance-method">
       <div class="signature">
         
@@ -2787,12 +2850,40 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="pinned_message:Message?-instance-method">
+      <div class="signature">
+        
+        def <strong>pinned_message</strong> : <a href="../Tourmaline/Message.html">Message</a>?
+
+        <a class="method-permalink" href="#pinned_message:Message?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="poll:Poll?-instance-method">
       <div class="signature">
         
         def <strong>poll</strong> : <a href="../Tourmaline/Poll.html">Poll</a>?
 
         <a class="method-permalink" href="#poll:Poll?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="proximity_alert_triggered:ProximityAlertTriggered?-instance-method">
+      <div class="signature">
+        
+        def <strong>proximity_alert_triggered</strong> : <a href="../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>?
+
+        <a class="method-permalink" href="#proximity_alert_triggered:ProximityAlertTriggered?-instance-method">#</a>
       </div>
       
       <br/>
@@ -3363,6 +3454,20 @@
         def <strong>respond_with_voice</strong>(*args, **kwargs)
 
         <a class="method-permalink" href="#respond_with_voice(*args,**kwargs)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sender_chat:Chat?-instance-method">
+      <div class="signature">
+        
+        def <strong>sender_chat</strong> : <a href="../Tourmaline/Chat.html">Chat</a>?
+
+        <a class="method-permalink" href="#sender_chat:Chat?-instance-method">#</a>
       </div>
       
       <br/>

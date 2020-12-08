@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="0.20.0">
+<meta name="crystal_docs.project_version" content="0.21.0">
 <meta name="crystal_docs.project_name" content="tourmaline">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::Client - tourmaline 0.20.0</title>
+  <title>Tourmaline::Client - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.20.0
+        0.21.0
       </span>
     </div>
   </div>
@@ -118,6 +118,11 @@
   
   <li class=" " data-id="tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+      <a href="../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
   
@@ -1201,6 +1206,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/ProximityAlertTriggered" data-name="tourmaline::proximityalerttriggered">
+      <a href="../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>
+      
+    </li>
+  
   <li class="parent " data-id="tourmaline/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
       <a href="../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
       
@@ -1567,8 +1577,8 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
   <h3>Instance methods inherited from module <code><a href="../Tourmaline/Client/WebhookMethods.html">Tourmaline::Client::WebhookMethods</a></code></h3>
   
   
-    <a href="../Tourmaline/Client/WebhookMethods.html#delete_webhook-instance-method" class="tooltip">
-      <span>delete_webhook</span>
+    <a href="../Tourmaline/Client/WebhookMethods.html#delete_webhook(drop_pending_updates=false)-instance-method" class="tooltip">
+      <span>delete_webhook(drop_pending_updates = <span class="n">false</span>)</span>
     delete_webhook</a>, 
     
   
@@ -1582,8 +1592,8 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     serve</a>, 
     
   
-    <a href="../Tourmaline/Client/WebhookMethods.html#set_webhook(url,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates)-instance-method" class="tooltip">
-      <span>set_webhook(url, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates)</span>
+    <a href="../Tourmaline/Client/WebhookMethods.html#set_webhook(url,ip_address=nil,certificate=nil,max_connections=nil,allowed_updates=@allowed_updates,drop_pending_updates=false)-instance-method" class="tooltip">
+      <span>set_webhook(url, ip_address = <span class="n">nil</span>, certificate = <span class="n">nil</span>, max_connections = <span class="n">nil</span>, allowed_updates = @allowed_updates, drop_pending_updates = <span class="n">false</span>)</span>
     set_webhook</a>, 
     
   
@@ -1851,6 +1861,16 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     answer_inline_query</a>, 
     
   
+    <a href="../Tourmaline/Client/CoreMethods.html#close-instance-method" class="tooltip">
+      <span>close</span>
+    close</a>, 
+    
+  
+    <a href="../Tourmaline/Client/CoreMethods.html#copy_message(chat,from_chat,message,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>copy_message(chat, from_chat, message, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
+    copy_message</a>, 
+    
+  
     <a href="../Tourmaline/Client/CoreMethods.html#delete_chat_photo(chat)-instance-method" class="tooltip">
       <span>delete_chat_photo(chat)</span>
     delete_chat_photo</a>, 
@@ -1861,13 +1881,13 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     delete_message</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,reply_markup=nil)-instance-method" class="tooltip">
-      <span>edit_message_caption(chat, caption, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,reply_markup=nil)-instance-method" class="tooltip">
+      <span>edit_message_caption(chat, caption, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, reply_markup = <span class="n">nil</span>)</span>
     edit_message_caption</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#edit_message_live_location(chat,latitude,longitude,message=nil,inline_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>edit_message_live_location(chat, latitude, longitude, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#edit_message_live_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,message=nil,inline_message=nil,reply_markup=nil)-instance-method" class="tooltip">
+      <span>edit_message_live_location(chat, latitude, longitude, horizontal_accuracy = <span class="n">nil</span>, live_period = <span class="n">nil</span>, proximity_alert_radius = <span class="n">nil</span>, heading = <span class="n">nil</span>, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
     edit_message_live_location</a>, 
     
   
@@ -1881,8 +1901,8 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     edit_message_reply_markup</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,reply_markup=nil)-instance-method" class="tooltip">
-      <span>edit_message_text(chat, text, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_link_preview = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,disable_link_preview=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>edit_message_text(chat, text, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_link_preview = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     edit_message_text</a>, 
     
   
@@ -1956,6 +1976,11 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     leave_chat</a>, 
     
   
+    <a href="../Tourmaline/Client/CoreMethods.html#log_out-instance-method" class="tooltip">
+      <span>log_out</span>
+    log_out</a>, 
+    
+  
     <a href="../Tourmaline/Client/CoreMethods.html#next_offset:Int64-instance-method" class="tooltip">
       <span>next_offset : Int64</span>
     next_offset</a>, 
@@ -1976,8 +2001,8 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     polling</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#promote_chat_member(chat,user,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method" class="tooltip">
-      <span>promote_chat_member(chat, user, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#promote_chat_member(chat,user,is_anonymous=false,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method" class="tooltip">
+      <span>promote_chat_member(chat, user, is_anonymous = <span class="n">false</span>, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)</span>
     promote_chat_member</a>, 
     
   
@@ -1986,19 +2011,19 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     restrict_chat_member</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_animation(chat, animation, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, thumb = <span class="n">nil</span>, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,caption_entities=[]ofMessageEntity,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_animation(chat, animation, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, thumb = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_animation</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_audio(chat,audio,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_audio(chat, audio, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_audio(chat,audio,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_audio(chat, audio, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_audio</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_basket(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_basket(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
-    send_basket</a>, 
+    <a href="../Tourmaline/Client/CoreMethods.html#send_basketball(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_basketball(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
+    send_basketball</a>, 
     
   
     <a href="../Tourmaline/Client/CoreMethods.html#send_chat_action(chat,action:ChatAction)-instance-method" class="tooltip">
@@ -2006,63 +2031,73 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     send_chat_action</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_contact(chat, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_contact(chat, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_contact</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_dart(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
-    send_dart</a>, 
+    <a href="../Tourmaline/Client/CoreMethods.html#send_darts(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_darts(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
+    send_darts</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_dice(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_dice(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_dice(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_dice</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_document(chat,document,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_document(chat, document, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_document(chat,document,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_document(chat, document, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_document</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_location(chat,latitude,longitude,live_period=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_location(chat, latitude, longitude, live_period = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_football(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_football(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
+    send_football</a>, 
+    
+  
+    <a href="../Tourmaline/Client/CoreMethods.html#send_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_location(chat, latitude, longitude, horizontal_accuracy = <span class="n">nil</span>, live_period = <span class="n">nil</span>, proximity_alert_radius = <span class="n">nil</span>, heading = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_location</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo),disable_notification=false,reply_to_message=nil)-instance-method" class="tooltip">
-      <span>send_media_group(chat, media : Array(InputMediaPhoto | InputMediaVideo), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo%7CInputMediaAudio%7CInputMediaDocument),disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false)-instance-method" class="tooltip">
+      <span>send_media_group(chat, media : Array(InputMediaPhoto | InputMediaVideo | InputMediaAudio | InputMediaDocument), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>)</span>
     send_media_group</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_message(chat,text,parse_mode=ParseMode::Normal,link_preview=false,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_message(chat, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_message(chat,text,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,link_preview=false,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_message(chat, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_message</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_photo(chat, photo, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_photo(chat, photo, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_photo</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_venue(chat, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_slot_machine(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_slot_machine(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
+    send_slot_machine</a>, 
+    
+  
+    <a href="../Tourmaline/Client/CoreMethods.html#send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,google_place_id=nil,google_place_type=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_venue(chat, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, foursquare_type = <span class="n">nil</span>, google_place_id = <span class="n">nil</span>, google_place_type = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_venue</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_video(chat, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_video(chat, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_video</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_video_note(chat, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_video_note(chat, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_video_note</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#send_voice(chat,voice,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="tooltip">
-      <span>send_voice(chat, voice, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#send_voice(chat,voice,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="tooltip">
+      <span>send_voice(chat, voice, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</span>
     send_voice</a>, 
     
   
@@ -2106,13 +2141,18 @@ instance of <code><a href="../Tourmaline/Client.html">Client</a></code> and add 
     stop_polling</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#unban_chat_member(chat,user)-instance-method" class="tooltip">
-      <span>unban_chat_member(chat, user)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#unban_chat_member(chat,user,only_if_banned=false)-instance-method" class="tooltip">
+      <span>unban_chat_member(chat, user, only_if_banned = <span class="n">false</span>)</span>
     unban_chat_member</a>, 
     
   
-    <a href="../Tourmaline/Client/CoreMethods.html#unpin_chat_message(chat)-instance-method" class="tooltip">
-      <span>unpin_chat_message(chat)</span>
+    <a href="../Tourmaline/Client/CoreMethods.html#unpin_all_chat_messages(chat)-instance-method" class="tooltip">
+      <span>unpin_all_chat_messages(chat)</span>
+    unpin_all_chat_messages</a>, 
+    
+  
+    <a href="../Tourmaline/Client/CoreMethods.html#unpin_chat_message(chat,message)-instance-method" class="tooltip">
+      <span>unpin_chat_message(chat, message)</span>
     unpin_chat_message</a>
     
   

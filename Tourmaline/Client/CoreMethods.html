@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="0.20.0">
+<meta name="crystal_docs.project_version" content="0.21.0">
 <meta name="crystal_docs.project_name" content="tourmaline">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::Client::CoreMethods - tourmaline 0.20.0</title>
+  <title>Tourmaline::Client::CoreMethods - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.20.0
+        0.21.0
       </span>
     </div>
   </div>
@@ -118,6 +118,11 @@
   
   <li class=" " data-id="tourmaline/Tourmaline/ChatAction" data-name="tourmaline::chataction">
       <a href="../../Tourmaline/ChatAction.html">ChatAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+      <a href="../../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
   
@@ -1201,6 +1206,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/ProximityAlertTriggered" data-name="tourmaline::proximityalerttriggered">
+      <a href="../../Tourmaline/ProximityAlertTriggered.html">ProximityAlertTriggered</a>
+      
+    </li>
+  
   <li class="parent " data-id="tourmaline/Tourmaline/ReplyKeyboardMarkup" data-name="tourmaline::replykeyboardmarkup">
       <a href="../../Tourmaline/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a>
       
@@ -1481,6 +1491,18 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+          <div class="summary"><p>Use this method to close the bot instance before moving it from one local server to another.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#copy_message(chat,from_chat,message,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#copy_message</strong>(chat, from_chat, message, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#delete_chat_photo(chat)-instance-method" class="signature"><strong>#delete_chat_photo</strong>(chat)</a>
         
           <div class="summary"><p>Use this method to delete a chat photo.</p></div>
@@ -1495,14 +1517,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_caption</strong>(chat, caption, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_caption</strong>(chat, caption, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to edit captions of messages.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#edit_message_live_location(chat,latitude,longitude,message=nil,inline_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_live_location</strong>(chat, latitude, longitude, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#edit_message_live_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,message=nil,inline_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_live_location</strong>(chat, latitude, longitude, horizontal_accuracy = <span class="n">nil</span>, live_period = <span class="n">nil</span>, proximity_alert_radius = <span class="n">nil</span>, heading = <span class="n">nil</span>, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to edit live location messages.</p></div>
         
@@ -1521,7 +1543,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_text</strong>(chat, text, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_link_preview = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,disable_link_preview=false,reply_markup=nil)-instance-method" class="signature"><strong>#edit_message_text</strong>(chat, text, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_link_preview = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to edit text and game messages.</p></div>
         
@@ -1626,6 +1648,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#log_out-instance-method" class="signature"><strong>#log_out</strong></a>
+        
+          <div class="summary"><p>Use this method to log out from the cloud Bot API server before launching the bot locally.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#next_offset:Int64-instance-method" class="signature"><strong>#next_offset</strong> : Int64</a>
         
       </li>
@@ -1650,7 +1679,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#promote_chat_member(chat,user,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method" class="signature"><strong>#promote_chat_member</strong>(chat, user, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)</a>
+        <a href="#promote_chat_member(chat,user,is_anonymous=false,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method" class="signature"><strong>#promote_chat_member</strong>(chat, user, is_anonymous = <span class="n">false</span>, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to promote or demote a user in a supergroup or a channel.</p></div>
         
@@ -1664,21 +1693,21 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_animation</strong>(chat, animation, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, thumb = <span class="n">nil</span>, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,caption_entities=[]ofMessageEntity,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_animation</strong>(chat, animation, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, thumb = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_audio(chat,audio,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_audio</strong>(chat, audio, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_audio(chat,audio,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_audio</strong>(chat, audio, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send audio files, if you want Telegram clients to display them in the music player.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_basket(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_basket</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_basketball(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_basketball</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Use this method to send a basket (🏀 emoji), which will have a random value from 1 to 6.</p></div>
+          <div class="summary"><p>Use this method to send a basketball (🏀 emoji), which will have a random value from 1 to 6.</p></div>
         
       </li>
     
@@ -1690,84 +1719,98 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_contact</strong>(chat, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_contact</strong>(chat, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send phone contacts.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_dart</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_darts(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_darts</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Use this method to send a dart (🎯 emoji), which will have a random value from 1 to 6.</p></div>
+          <div class="summary"><p>Use this method to send a darts (🎯 emoji), which will have a random value from 1 to 6.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_dice(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send a dice (🎲 emoji), which will have a random value from 1 to 6.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_document(chat,document,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_document</strong>(chat, document, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_document(chat,document,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_document</strong>(chat, document, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send general files.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_location(chat,latitude,longitude,live_period=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_location</strong>(chat, latitude, longitude, live_period = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_football(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_football</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send a football (⚽️ emoji), which will have a random value from 1 to 5.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_location</strong>(chat, latitude, longitude, horizontal_accuracy = <span class="n">nil</span>, live_period = <span class="n">nil</span>, proximity_alert_radius = <span class="n">nil</span>, heading = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send point on the map.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo),disable_notification=false,reply_to_message=nil)-instance-method" class="signature"><strong>#send_media_group</strong>(chat, media : Array(InputMediaPhoto | InputMediaVideo), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>)</a>
+        <a href="#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo%7CInputMediaAudio%7CInputMediaDocument),disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false)-instance-method" class="signature"><strong>#send_media_group</strong>(chat, media : Array(InputMediaPhoto | InputMediaVideo | InputMediaAudio | InputMediaDocument), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Use this method to send a group of photos or videos as an album.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_message(chat,text,parse_mode=ParseMode::Normal,link_preview=false,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_message</strong>(chat, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_message(chat,text,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,link_preview=false,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_message</strong>(chat, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send text messages.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_photo</strong>(chat, photo, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_photo</strong>(chat, photo, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send photos.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_venue</strong>(chat, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_slot_machine(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_slot_machine</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Use this method to send a slot_machine (🎰 emoji), which will have a random value from 1 to 64.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,google_place_id=nil,google_place_type=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_venue</strong>(chat, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, foursquare_type = <span class="n">nil</span>, google_place_id = <span class="n">nil</span>, google_place_type = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send information about a venue.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_video</strong>(chat, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_video</strong>(chat, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_video_note</strong>(chat, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_video_note</strong>(chat, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>As of <a href="https://telegram.org/blog/video-messages-and-telescope" target="_blank">v.4.0</a>, Telegram clients support rounded square <code>mp4</code> videos of up to <strong>1</strong> minute long.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send_voice(chat,voice,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method" class="signature"><strong>#send_voice</strong>(chat, voice, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)</a>
+        <a href="#send_voice(chat,voice,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method" class="signature"><strong>#send_voice</strong>(chat, voice, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message.</p></div>
         
@@ -1830,14 +1873,19 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#unban_chat_member(chat,user)-instance-method" class="signature"><strong>#unban_chat_member</strong>(chat, user)</a>
+        <a href="#unban_chat_member(chat,user,only_if_banned=false)-instance-method" class="signature"><strong>#unban_chat_member</strong>(chat, user, only_if_banned = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Use this method to unban a previously kicked user in a supergroup or channel.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#unpin_chat_message(chat)-instance-method" class="signature"><strong>#unpin_chat_message</strong>(chat)</a>
+        <a href="#unpin_all_chat_messages(chat)-instance-method" class="signature"><strong>#unpin_all_chat_messages</strong>(chat)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unpin_chat_message(chat,message)-instance-method" class="signature"><strong>#unpin_chat_message</strong>(chat, message)</a>
         
           <div class="summary"><p>Use this method to unpin a message in a group, a supergroup, or a channel.</p></div>
         
@@ -1927,6 +1975,44 @@ On success, True is returned. No more than
       </div>
     </div>
   
+    <div class="entry-detail" id="close-instance-method">
+      <div class="signature">
+        
+        def <strong>close</strong>
+
+        <a class="method-permalink" href="#close-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to close the bot instance before moving it from one local server to another.
+You need to delete the webhook before calling this method to ensure that the bot isn't
+launched again after server restart. The method will return error 429 in the first 10
+minutes after the bot is launched.</p>
+
+<p>Returns <code>true</code> on success. Requires no parameters.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="copy_message(chat,from_chat,message,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>copy_message</strong>(chat, from_chat, message, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#copy_message(chat,from_chat,message,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="delete_chat_photo(chat)-instance-method">
       <div class="signature">
         
@@ -1976,12 +2062,12 @@ Returns <code>true</code> on success.</li></ul>
       </div>
     </div>
   
-    <div class="entry-detail" id="edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>edit_message_caption</strong>(chat, caption, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>edit_message_caption</strong>(chat, caption, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#edit_message_caption(chat,caption,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -1998,12 +2084,12 @@ is returned.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="edit_message_live_location(chat,latitude,longitude,message=nil,inline_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="edit_message_live_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,message=nil,inline_message=nil,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>edit_message_live_location</strong>(chat, latitude, longitude, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>edit_message_live_location</strong>(chat, latitude, longitude, horizontal_accuracy = <span class="n">nil</span>, live_period = <span class="n">nil</span>, proximity_alert_radius = <span class="n">nil</span>, heading = <span class="n">nil</span>, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#edit_message_live_location(chat,latitude,longitude,message=nil,inline_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#edit_message_live_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,message=nil,inline_message=nil,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2058,12 +2144,12 @@ returned.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,disable_link_preview=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>edit_message_text</strong>(chat, text, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_link_preview = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>edit_message_text</strong>(chat, text, message = <span class="n">nil</span>, inline_message = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_link_preview = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,disable_link_preview=false,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#edit_message_text(chat,text,message=nil,inline_message=nil,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,disable_link_preview=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2388,6 +2474,31 @@ Returns <code>true</code> on success.</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="log_out-instance-method">
+      <div class="signature">
+        
+        def <strong>log_out</strong>
+
+        <a class="method-permalink" href="#log_out-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to log out from the cloud Bot API server before launching the bot locally.
+You must log out the bot before running it locally, otherwise there is no guarantee that
+the bot will receive updates. After a successful call, you can immediately log in on a
+local server, but will not be able to log in back to the cloud Bot API server for
+10 minutes.</p>
+
+<p>Returns <code>true</code> on success. Requires no parameters.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="next_offset:Int64-instance-method">
       <div class="signature">
         
@@ -2460,12 +2571,12 @@ for updates.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="promote_chat_member(chat,user,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method">
+    <div class="entry-detail" id="promote_chat_member(chat,user,is_anonymous=false,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method">
       <div class="signature">
         
-        def <strong>promote_chat_member</strong>(chat, user, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)
+        def <strong>promote_chat_member</strong>(chat, user, is_anonymous = <span class="n">false</span>, until_date = <span class="n">nil</span>, can_change_info = <span class="n">nil</span>, can_post_messages = <span class="n">nil</span>, can_edit_messages = <span class="n">nil</span>, can_delete_messages = <span class="n">nil</span>, can_invite_users = <span class="n">nil</span>, can_restrict_members = <span class="n">nil</span>, can_pin_messages = <span class="n">nil</span>, can_promote_members = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#promote_chat_member(chat,user,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#promote_chat_member(chat,user,is_anonymous=false,until_date=nil,can_change_info=nil,can_post_messages=nil,can_edit_messages=nil,can_delete_messages=nil,can_invite_users=nil,can_restrict_members=nil,can_pin_messages=nil,can_promote_members=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2506,12 +2617,12 @@ Returns <code>true</code> on success.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,caption_entities=[]ofMessageEntity,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_animation</strong>(chat, animation, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, thumb = <span class="n">nil</span>, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_animation</strong>(chat, animation, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, thumb = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_animation(chat,animation,duration=nil,width=nil,height=nil,thumb=nil,caption=nil,caption_entities=[]ofMessageEntity,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
       <br/>
@@ -2520,12 +2631,12 @@ Returns <code>true</code> on success.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_audio(chat,audio,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_audio(chat,audio,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_audio</strong>(chat, audio, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_audio</strong>(chat, audio, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_audio(chat,audio,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_audio(chat,audio,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2547,17 +2658,17 @@ changed in the future.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_basket(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_basketball(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_basket</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_basketball</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_basket(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_basketball(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Use this method to send a basket (🏀 emoji), which will have a random value from 1 to 6.
+          <p>Use this method to send a basketball (🏀 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>
         </div>
       
@@ -2597,12 +2708,12 @@ noticeable amount of time to arrive.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_contact</strong>(chat, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_contact</strong>(chat, phone_number, first_name, last_name = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_contact(chat,phone_number,first_name,last_name=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2617,17 +2728,17 @@ On success, the sent <code><a href="../../Tourmaline/Message.html">Message</a></
       </div>
     </div>
   
-    <div class="entry-detail" id="send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_darts(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_dart</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_darts</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_dart(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_darts(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Use this method to send a dart (🎯 emoji), which will have a random value from 1 to 6.
+          <p>Use this method to send a darts (🎯 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>
         </div>
       
@@ -2637,12 +2748,12 @@ On success, the sent Message is returned.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_dice(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_dice</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_dice(chat,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_dice(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2657,12 +2768,12 @@ On success, the sent Message is returned.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_document(chat,document,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_document(chat,document,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_document</strong>(chat, document, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_document</strong>(chat, document, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_document(chat,document,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_document(chat,document,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2681,12 +2792,32 @@ may be changed in the future.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_location(chat,latitude,longitude,live_period=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_football(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_location</strong>(chat, latitude, longitude, live_period = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_football</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_location(chat,latitude,longitude,live_period=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_football(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to send a football (⚽️ emoji), which will have a random value from 1 to 5.
+On success, the sent Message is returned.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_location</strong>(chat, latitude, longitude, horizontal_accuracy = <span class="n">nil</span>, live_period = <span class="n">nil</span>, proximity_alert_radius = <span class="n">nil</span>, heading = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_location(chat,latitude,longitude,horizontal_accuracy=nil,live_period=nil,proximity_alert_radius=nil,heading=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2701,12 +2832,12 @@ On success, the sent <code><a href="../../Tourmaline/Message.html">Message</a></
       </div>
     </div>
   
-    <div class="entry-detail" id="send_media_group(chat,media:Array(InputMediaPhoto|InputMediaVideo),disable_notification=false,reply_to_message=nil)-instance-method">
+    <div class="entry-detail" id="send_media_group(chat,media:Array(InputMediaPhoto|InputMediaVideo|InputMediaAudio|InputMediaDocument),disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false)-instance-method">
       <div class="signature">
         
-        def <strong>send_media_group</strong>(chat, media : Array(<a href="../../Tourmaline/InputMediaPhoto.html">InputMediaPhoto</a> | <a href="../../Tourmaline/InputMediaVideo.html">InputMediaVideo</a>), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>)
+        def <strong>send_media_group</strong>(chat, media : Array(<a href="../../Tourmaline/InputMediaPhoto.html">InputMediaPhoto</a> | <a href="../../Tourmaline/InputMediaVideo.html">InputMediaVideo</a> | <a href="../../Tourmaline/InputMediaAudio.html">InputMediaAudio</a> | <a href="../../Tourmaline/InputMediaDocument.html">InputMediaDocument</a>), disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo),disable_notification=false,reply_to_message=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_media_group(chat,media:Array(InputMediaPhoto%7CInputMediaVideo%7CInputMediaAudio%7CInputMediaDocument),disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2721,12 +2852,12 @@ On success, an array of the sent <code>Messages</code> is returned.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_message(chat,text,parse_mode=ParseMode::Normal,link_preview=false,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_message(chat,text,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,link_preview=false,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_message</strong>(chat, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_message</strong>(chat, text, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, link_preview = <span class="n">false</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_message(chat,text,parse_mode=ParseMode::Normal,link_preview=false,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_message(chat,text,parse_mode=ParseMode::Normal,entities=[]ofMessageEntity,link_preview=false,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2741,12 +2872,12 @@ On success, the sent <code><a href="../../Tourmaline/Message.html">Message</a></
       </div>
     </div>
   
-    <div class="entry-detail" id="send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_photo</strong>(chat, photo, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_photo</strong>(chat, photo, caption = <span class="n">nil</span>, parse_mode = <span class="t">ParseMode</span><span class="t">::</span><span class="t">Normal</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_photo(chat,photo,caption=nil,parse_mode=ParseMode::Normal,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2761,12 +2892,32 @@ On success, the sent <code><a href="../../Tourmaline/Message.html">Message</a></
       </div>
     </div>
   
-    <div class="entry-detail" id="send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_slot_machine(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_venue</strong>(chat, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_slot_machine</strong>(chat, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_slot_machine(chat,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Use this method to send a slot_machine (🎰 emoji), which will have a random value from 1 to 64.
+On success, the sent Message is returned.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,google_place_id=nil,google_place_type=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_venue</strong>(chat, latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, foursquare_type = <span class="n">nil</span>, google_place_id = <span class="n">nil</span>, google_place_type = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#send_venue(chat,latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,google_place_id=nil,google_place_type=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2781,12 +2932,12 @@ On success, the sent <code><a href="../../Tourmaline/Message.html">Message</a></
       </div>
     </div>
   
-    <div class="entry-detail" id="send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_video</strong>(chat, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_video</strong>(chat, video, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_video(chat,video,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2806,12 +2957,12 @@ changed in the future.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_video_note</strong>(chat, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_video_note</strong>(chat, video_note, duration = <span class="n">nil</span>, width = <span class="n">nil</span>, height = <span class="n">nil</span>, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_video_note(chat,video_note,duration=nil,width=nil,height=nil,caption=nil,caption_entities=[]ofMessageEntity,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -2828,12 +2979,12 @@ On success, the sent <code><a href="../../Tourmaline/Message.html">Message</a></
       </div>
     </div>
   
-    <div class="entry-detail" id="send_voice(chat,voice,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">
+    <div class="entry-detail" id="send_voice(chat,voice,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">
       <div class="signature">
         
-        def <strong>send_voice</strong>(chat, voice, caption = <span class="n">nil</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, reply_markup = <span class="n">nil</span>)
+        def <strong>send_voice</strong>(chat, voice, caption = <span class="n">nil</span>, caption_entities = <span class="o">[]</span> <span class="k">of</span> <span class="t">MessageEntity</span>, duration = <span class="n">nil</span>, preformer = <span class="n">nil</span>, title = <span class="n">nil</span>, disable_notification = <span class="n">false</span>, reply_to_message = <span class="n">nil</span>, allow_sending_without_reply = <span class="n">false</span>, reply_markup = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#send_voice(chat,voice,caption=nil,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,reply_markup=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#send_voice(chat,voice,caption=nil,caption_entities=[]ofMessageEntity,duration=nil,preformer=nil,title=nil,disable_notification=false,reply_to_message=nil,allow_sending_without_reply=false,reply_markup=nil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -3030,12 +3181,12 @@ live_period expires.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unban_chat_member(chat,user)-instance-method">
+    <div class="entry-detail" id="unban_chat_member(chat,user,only_if_banned=false)-instance-method">
       <div class="signature">
         
-        def <strong>unban_chat_member</strong>(chat, user)
+        def <strong>unban_chat_member</strong>(chat, user, only_if_banned = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#unban_chat_member(chat,user)-instance-method">#</a>
+        <a class="method-permalink" href="#unban_chat_member(chat,user,only_if_banned=false)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -3053,12 +3204,26 @@ Returns <code>true</code> on success.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="unpin_chat_message(chat)-instance-method">
+    <div class="entry-detail" id="unpin_all_chat_messages(chat)-instance-method">
       <div class="signature">
         
-        def <strong>unpin_chat_message</strong>(chat)
+        def <strong>unpin_all_chat_messages</strong>(chat)
 
-        <a class="method-permalink" href="#unpin_chat_message(chat)-instance-method">#</a>
+        <a class="method-permalink" href="#unpin_all_chat_messages(chat)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unpin_chat_message(chat,message)-instance-method">
+      <div class="signature">
+        
+        def <strong>unpin_chat_message</strong>(chat, message)
+
+        <a class="method-permalink" href="#unpin_chat_message(chat,message)-instance-method">#</a>
       </div>
       
         <div class="doc">

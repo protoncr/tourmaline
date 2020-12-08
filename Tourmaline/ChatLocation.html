@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="tourmaline">
-  <title>Tourmaline::InputVenueMessageContent - tourmaline 0.21.0</title>
+  <title>Tourmaline::ChatLocation - tourmaline 0.21.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -121,7 +121,7 @@
       
     </li>
   
-  <li class=" " data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
+  <li class=" current" data-id="tourmaline/Tourmaline/ChatLocation" data-name="tourmaline::chatlocation">
       <a href="../Tourmaline/ChatLocation.html">ChatLocation</a>
       
     </li>
@@ -976,7 +976,7 @@
       
     </li>
   
-  <li class=" current" data-id="tourmaline/Tourmaline/InputVenueMessageContent" data-name="tourmaline::inputvenuemessagecontent">
+  <li class=" " data-id="tourmaline/Tourmaline/InputVenueMessageContent" data-name="tourmaline::inputvenuemessagecontent">
       <a href="../Tourmaline/InputVenueMessageContent.html">InputVenueMessageContent</a>
       
     </li>
@@ -1380,12 +1380,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tourmaline::InputVenueMessageContent
+  <span class="kind">class</span> Tourmaline::ChatLocation
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/InputVenueMessageContent.html">Tourmaline::InputVenueMessageContent</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Tourmaline/ChatLocation.html">Tourmaline::ChatLocation</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -1442,11 +1442,6 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,google_place_id=nil,google_place_type=nil)-class-method" class="signature"><strong>.new</strong>(latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, foursquare_type = <span class="n">nil</span>, google_place_id = <span class="n">nil</span>, google_place_type = <span class="n">nil</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#new(pull:JSON::PullParser)-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
       </li>
@@ -1473,37 +1468,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#foursquare_id:String?-instance-method" class="signature"><strong>#foursquare_id</strong> : String?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#foursquare_type:String?-instance-method" class="signature"><strong>#foursquare_type</strong> : String?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#google_place_id:String?-instance-method" class="signature"><strong>#google_place_id</strong> : String?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#google_place_type:String?-instance-method" class="signature"><strong>#google_place_type</strong> : String?</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#latitude:Float64-instance-method" class="signature"><strong>#latitude</strong> : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#longitude:Float64-instance-method" class="signature"><strong>#longitude</strong> : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#title:String-instance-method" class="signature"><strong>#title</strong> : String</a>
+        <a href="#location:Location-instance-method" class="signature"><strong>#location</strong> : Location</a>
         
       </li>
     
@@ -1557,20 +1522,6 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,google_place_id=nil,google_place_type=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(latitude, longitude, title, address, foursquare_id = <span class="n">nil</span>, foursquare_type = <span class="n">nil</span>, google_place_id = <span class="n">nil</span>, google_place_type = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new(latitude,longitude,title,address,foursquare_id=nil,foursquare_type=nil,google_place_id=nil,google_place_type=nil)-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
       <div class="signature">
         
@@ -1613,96 +1564,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="foursquare_id:String?-instance-method">
+    <div class="entry-detail" id="location:Location-instance-method">
       <div class="signature">
         
-        def <strong>foursquare_id</strong> : String?
+        def <strong>location</strong> : <a href="../Tourmaline/Location.html">Location</a>
 
-        <a class="method-permalink" href="#foursquare_id:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="foursquare_type:String?-instance-method">
-      <div class="signature">
-        
-        def <strong>foursquare_type</strong> : String?
-
-        <a class="method-permalink" href="#foursquare_type:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="google_place_id:String?-instance-method">
-      <div class="signature">
-        
-        def <strong>google_place_id</strong> : String?
-
-        <a class="method-permalink" href="#google_place_id:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="google_place_type:String?-instance-method">
-      <div class="signature">
-        
-        def <strong>google_place_type</strong> : String?
-
-        <a class="method-permalink" href="#google_place_type:String?-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="latitude:Float64-instance-method">
-      <div class="signature">
-        
-        def <strong>latitude</strong> : Float64
-
-        <a class="method-permalink" href="#latitude:Float64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="longitude:Float64-instance-method">
-      <div class="signature">
-        
-        def <strong>longitude</strong> : Float64
-
-        <a class="method-permalink" href="#longitude:Float64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="title:String-instance-method">
-      <div class="signature">
-        
-        def <strong>title</strong> : String
-
-        <a class="method-permalink" href="#title:String-instance-method">#</a>
+        <a class="method-permalink" href="#location:Location-instance-method">#</a>
       </div>
       
       <br/>
