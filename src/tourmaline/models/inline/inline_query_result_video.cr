@@ -2,34 +2,39 @@ module Tourmaline
   class InlineQueryResultVideo < InlineQueryResult
     include JSON::Serializable
 
-    getter type : String = "video"
+    property type : String = "video"
 
-    getter id : String
+    property id : String
 
-    getter video_url : String
+    property video_url : String
 
-    getter mime_type : String
+    property mime_type : String
 
-    getter thumb_url : String
+    property thumb_url : String
 
-    getter title : String
+    property title : String
 
-    getter caption : String?
+    property caption : String?
 
-    getter video_width : Int32?
+    property parse_mode : ParseMode?
 
-    getter video_height : Int32?
+    property caption_entities : Array(MessageEntity) = [] of MessageEntity
 
-    getter video_duration : Int32?
+    property video_width : Int32?
 
-    getter description : String?
+    property video_height : Int32?
 
-    getter reply_markup : InlineKeyboardMarkup?
+    property video_duration : Int32?
 
-    getter input_message_content : InputMessageContent?
+    property description : String?
 
-    def initialize(@id, @video_url, @mime_type, @thumb_url, @title, @caption = nil, @video_width = nil,
-                   @video_height = nil, @video_duration = nil, @description = nil, @reply_markup = nil, @input_message_content = nil)
+    property reply_markup : InlineKeyboardMarkup?
+
+    property input_message_content : InputMessageContent?
+
+    def initialize(@id, @video_url, @mime_type, @thumb_url, @title, @caption = nil, @parse_mode = nil,
+                   @caption_entities = [] of MessageEntity, @video_width = nil, @video_height = nil,
+                   @video_duration = nil, @description = nil, @reply_markup = nil, @input_message_content = nil)
     end
   end
 end

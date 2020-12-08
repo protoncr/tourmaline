@@ -12,7 +12,9 @@ module Tourmaline
 
     property parse_mode : ParseMode?
 
-    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : ParseMode? = nil)
+    property caption_entities : Array(MessageEntity) = [] of MessageEntity
+
+    def initialize(@media, @thumb = nil, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity)
     end
   end
 end

@@ -18,7 +18,9 @@ module Tourmaline
 
     getter last_name : String?
 
-    getter chat_photo : ChatPhoto?
+    getter photo : ChatPhoto?
+
+    getter bio : String?
 
     getter description : String?
 
@@ -33,6 +35,10 @@ module Tourmaline
     getter sticker_set_name : String?
 
     getter can_set_sticker_set : Bool?
+
+    getter linked_chat_id : Int64?
+
+    getter location : ChatLocation?
 
     def name
       if first_name || last_name

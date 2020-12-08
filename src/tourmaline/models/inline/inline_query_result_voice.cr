@@ -2,21 +2,28 @@ module Tourmaline
   class InlineQueryResultVoice < InlineQueryResult
     include JSON::Serializable
 
-    getter type : String = "voice"
+    property type : String = "voice"
 
-    getter id : String
+    property id : String
 
-    getter voice_url : String
+    property voice_url : String
 
-    getter title : String
+    property title : String
 
-    getter voice_duration : Int32?
+    property caption : String?
 
-    getter reply_markup : InlineKeyboardMarkup?
+    property parse_mode : ParseMode?
 
-    getter input_message_content : InputMessageContent?
+    property caption_entities : Array(MessageEntity) = [] of MessageEntity
 
-    def initialize(@id, @voice_url, @title, @voice_duration = nil, @reply_markup = nil, @input_message_content = nil)
+    property voice_duration : Int32?
+
+    property reply_markup : InlineKeyboardMarkup?
+
+    property input_message_content : InputMessageContent?
+
+    def initialize(@id, @voice_url, @title, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
+                   @voice_duration = nil, @reply_markup = nil, @input_message_content = nil)
     end
   end
 end

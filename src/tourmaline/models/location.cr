@@ -6,7 +6,15 @@ module Tourmaline
 
     getter latitude : Float64
 
-    def initialize(@latitude : Float64, @longitude : Float64)
+    getter horizontal_accuracy : Int32?
+
+    getter live_period : Int32?
+
+    getter heading : Int32?
+
+    getter proximity_alert_radius : Int32?
+
+    def initialize(@latitude, @longitude, @horizontal_accuracy = nil, @live_period = nil, @heading = nil, @proximity_alert_radius = nil)
     end
   end
 end

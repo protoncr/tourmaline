@@ -25,6 +25,27 @@ module Tourmaline
         request(User, "getMe")
       end
 
+      # Use this method to log out from the cloud Bot API server before launching the bot locally.
+      # You must log out the bot before running it locally, otherwise there is no guarantee that
+      # the bot will receive updates. After a successful call, you can immediately log in on a
+      # local server, but will not be able to log in back to the cloud Bot API server for
+      # 10 minutes.
+      #
+      # Returns `true` on success. Requires no parameters.
+      def log_out
+        request("logOut")
+      end
+
+      # Use this method to close the bot instance before moving it from one local server to another.
+      # You need to delete the webhook before calling this method to ensure that the bot isn't
+      # launched again after server restart. The method will return error 429 in the first 10
+      # minutes after the bot is launched.
+      #
+      # Returns `true` on success. Requires no parameters.
+      def close
+        request("close")
+      end
+
       # Use this method to receive incoming updates using long polling
       # ([wiki](http://en.wikipedia.org/wiki/Push_technology#Long_polling)).
       # An `Array` of `Update` objects is returned.
@@ -110,7 +131,7 @@ module Tourmaline
       # Returns `true` on success.
       def delete_message(chat, message)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
 
         request(Bool, "deleteMessage", {
           chat_id:    chat_id,
@@ -128,6 +149,7 @@ module Tourmaline
         message = nil,
         inline_message = nil,
         parse_mode = ParseMode::Normal,
+        caption_entities = [] of MessageEntity,
         reply_markup = nil
       )
         if !message && !inline_message
@@ -135,8 +157,8 @@ module Tourmaline
         end
 
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
-        inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
+        inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
         parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
         request(Bool | Message, "editMessageCaption", {
@@ -145,6 +167,7 @@ module Tourmaline
           message_id:        message_id,
           inline_message_id: inline_message_id,
           parse_mode:        parse_mode,
+          caption_entities:  caption_entities,
           reply_markup:      reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -164,8 +187,8 @@ module Tourmaline
         end
 
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
-        inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
+        inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
 
         request(Bool | Message, "editMessageReplyMarkup", {
           chat_id:           chat_id,
@@ -184,6 +207,7 @@ module Tourmaline
         message = nil,
         inline_message = nil,
         parse_mode = ParseMode::Normal,
+        entities = [] of MessageEntity,
         disable_link_preview = false,
         reply_markup = nil
       )
@@ -192,8 +216,8 @@ module Tourmaline
         end
 
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
-        inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
+        inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
         parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
         request(Message, "editMessageText", {
@@ -202,6 +226,7 @@ module Tourmaline
           inline_message_id:        inline_message_id,
           text:                     text,
           parse_mode:               parse_mode,
+          entities:                 entities,
           disable_web_page_preview: disable_link_preview,
           reply_markup:             reply_markup ? reply_markup.to_json : nil,
         })
@@ -342,14 +367,16 @@ module Tourmaline
       # Returns `true` on success.
       def unban_chat_member(
         chat,
-        user
+        user,
+        only_if_banned = false
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         user_id = user.is_a?(Int) ? user : user.id
 
         request(Bool, "unbanChatMember", {
-          chat_id: chat_id,
-          user_id: user_id,
+          chat_id:        chat_id,
+          user_id:        user_id,
+          only_if_banned: only_if_banned,
         })
       end
 
@@ -385,6 +412,7 @@ module Tourmaline
       def promote_chat_member(
         chat,
         user,
+        is_anonymous = false,
         until_date = nil,
         can_change_info = nil,
         can_post_messages = nil,
@@ -401,6 +429,7 @@ module Tourmaline
         request(Bool, "promoteChatMember", {
           chat_id:              chat_id,
           user_id:              user_id,
+          is_anonymous:         is_anonymous,
           until_date:           until_date,
           can_change_info:      can_change_info,
           can_post_messages:    can_post_messages,
@@ -532,11 +561,21 @@ module Tourmaline
       # have the ‘can_pin_messages’ admin right in the supergroup or
       # ‘can_edit_messages’ admin right in the channel.
       # Returns `true` on success.
-      def unpin_chat_message(chat)
+      def unpin_chat_message(chat, message)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        message_id = message.is_a?(Int::Primitive | String) ? message : message.id
 
         request(Bool, "unpinChatMessage", {
-          chat_id: chat_id
+          chat_id:    chat_id,
+          message_id: message_id,
+        })
+      end
+
+      def unpin_all_chat_messages(chat)
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(Bool, "unpinAllChatMessages", {
+          chat_id: chat_id,
         })
       end
 
@@ -563,25 +602,29 @@ module Tourmaline
         chat,
         audio,
         caption = nil,
+        caption_entities = [] of MessageEntity,
         duration = nil,
         preformer = nil,
         title = nil,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendAudio", {
           chat_id:              chat_id,
           audio:                audio,
           caption:              caption,
+          caption_entities:     caption_entities,
           duration:             duration,
           preformer:            preformer,
           title:                title,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -594,14 +637,16 @@ module Tourmaline
         height = nil,
         thumb = nil,
         caption = nil,
+        caption_entities = [] of MessageEntity,
         parse_mode = ParseMode::Normal,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendAnimation", {
           chat_id:              chat_id,
@@ -611,9 +656,11 @@ module Tourmaline
           height:               height,
           thumb:                thumb,
           caption:              caption,
+          caption_entities:     caption_entities,
           parse_mode:           parse_mode,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -651,10 +698,11 @@ module Tourmaline
         last_name = nil,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendContact", {
           chat_id:              chat_id,
@@ -663,27 +711,30 @@ module Tourmaline
           last_name:            last_name,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
 
-      {% for val in [{"dice", "🎲", 6}, {"dart", "🎯", 6}, {"basket", "🏀", 6}] %}
+      {% for val in [{"dice", "🎲", 6}, {"darts", "🎯", 6}, {"basketball", "🏀", 6}, {"football", "⚽️", 5}, {"slot_machine", "🎰", 64}] %}
       # Use this method to send a {{ val[0].id }} ({{ val[1].id }} emoji), which will have a random value from 1 to {{ val[2].id }}.
       # On success, the sent Message is returned.
       def send_{{ val[0].id }}(
         chat,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendDice", {
           chat_id:              chat_id,
           emoji:                {{ val[1] }},
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup,
         })
       end
@@ -698,20 +749,24 @@ module Tourmaline
         chat,
         document,
         caption = nil,
+        caption_entities = [] of MessageEntity,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         document = check_open_local_file(document)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendDocument", {
           chat_id:              chat_id,
           document:             document,
           caption:              caption,
+          caption_entities:     caption_entities,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -722,22 +777,30 @@ module Tourmaline
         chat,
         latitude,
         longitude,
+        horizontal_accuracy = nil,
         live_period = nil,
+        proximity_alert_radius = nil,
+        heading = nil,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendLocation", {
-          chat_id:              chat_id,
-          latitude:             latitude,
-          longitude:            longitude,
-          live_period:          live_period,
-          disable_notification: disable_notification,
-          reply_to_message_id:  reply_to_message_id,
-          reply_markup:         reply_markup ? reply_markup.to_json : nil,
+          chat_id:                chat_id,
+          latitude:               latitude,
+          longitude:              longitude,
+          horizontal_accuracy:    horizontal_accuracy,
+          live_period:            live_period,
+          heading:                heading,
+          proximity_alert_radius: proximity_alert_radius,
+          disable_notification:   disable_notification,
+          reply_to_message_id:    reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
+          reply_markup:           reply_markup ? reply_markup.to_json : nil,
         })
       end
 
@@ -747,23 +810,59 @@ module Tourmaline
         chat,
         text,
         parse_mode = ParseMode::Normal,
+        entities = [] of MessageEntity,
         link_preview = false,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendMessage", {
           chat_id:                  chat_id,
           text:                     text,
           parse_mode:               parse_mode,
+          entities:                 entities,
           disable_web_page_preview: !link_preview,
           disable_notification:     disable_notification,
           reply_to_message_id:      reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:             reply_markup ? reply_markup.to_json : nil,
+        })
+      end
+
+      def copy_message(
+        chat,
+        from_chat,
+        message,
+        caption = nil,
+        parse_mode = ParseMode::Normal,
+        caption_entities = [] of MessageEntity,
+        disable_notification = false,
+        reply_to_message = nil,
+        allow_sending_without_reply = false,
+        reply_markup = nil
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        from_chat_id = from_chat.is_a?(Int::Primitive | String) ? from_chat : from_chat.id
+        message_id = message.is_a?(Int::Primitive) ? message : message.id
+        parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+
+        request("copyMessage", {
+          chat_id:                     chat_id,
+          from_chat_id:                from_chat_id,
+          message_id:                  message_id,
+          caption:                     caption,
+          parse_mode:                  parse_mode,
+          caption_entities:            caption_entities,
+          disable_notification:        disable_notification,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup ? reply_markup.to_json : nil,
         })
       end
 
@@ -774,8 +873,10 @@ module Tourmaline
         photo,
         caption = nil,
         parse_mode = ParseMode::Normal,
+        caption_entities = [] of MessageEntity,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         photo = check_open_local_file(photo)
@@ -788,8 +889,10 @@ module Tourmaline
           photo:                photo,
           caption:              caption,
           parse_mode:           parse_mode,
+          caption_entities:     caption_entities,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -803,8 +906,8 @@ module Tourmaline
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         media = check_open_local_file(media)
-        message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
-        inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
+        inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
 
         if !message_id && !inline_message_id
           raise "Either a message or inline_message is required"
@@ -823,18 +926,20 @@ module Tourmaline
       # On success, an array of the sent `Messages` is returned.
       def send_media_group(
         chat,
-        media : Array(InputMediaPhoto | InputMediaVideo),
+        media : Array(InputMediaPhoto | InputMediaVideo | InputMediaAudio | InputMediaDocument),
         disable_notification = false,
-        reply_to_message = nil
+        reply_to_message = nil,
+        allow_sending_without_reply = false
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Array(Message), "sendMediaGroup", {
-          chat_id:              chat_id,
-          media:                media,
-          disable_notification: disable_notification,
-          reply_to_message_id:  reply_to_message_id,
+          chat_id:                     chat_id,
+          media:                       media,
+          disable_notification:        disable_notification,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
         })
       end
 
@@ -847,12 +952,16 @@ module Tourmaline
         title,
         address,
         foursquare_id = nil,
+        foursquare_type = nil,
+        google_place_id = nil,
+        google_place_type = nil,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendVenue", {
           chat_id:              chat_id,
@@ -861,8 +970,12 @@ module Tourmaline
           title:                title,
           address:              address,
           foursquare_id:        foursquare_id,
+          foursquare_type:      foursquare_type,
+          google_place_id:      google_place_id,
+          google_place_type:    google_place_type,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -880,13 +993,15 @@ module Tourmaline
         width = nil,
         height = nil,
         caption = nil,
+        caption_entities = [] of MessageEntity,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         video = check_open_local_file(video)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendVideo", {
           chat_id:              chat_id,
@@ -895,8 +1010,10 @@ module Tourmaline
           width:                width,
           height:               height,
           caption:              caption,
+          caption_entities:     caption_entities,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -912,13 +1029,15 @@ module Tourmaline
         width = nil,
         height = nil,
         caption = nil,
+        caption_entities = [] of MessageEntity,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         video_note = check_open_local_file(video_note)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendVideoNote", {
           chat_id:              chat_id,
@@ -927,8 +1046,10 @@ module Tourmaline
           width:                width,
           height:               height,
           caption:              caption,
+          caption_entities:     caption_entities,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -944,24 +1065,28 @@ module Tourmaline
         chat,
         voice,
         caption = nil,
+        caption_entities = [] of MessageEntity,
         duration = nil,
         preformer = nil,
         title = nil,
         disable_notification = false,
         reply_to_message = nil,
+        allow_sending_without_reply = false,
         reply_markup = nil
       )
         voice = check_open_local_file(voice)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int32 | Int64 | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendVoice", {
           chat_id:              chat_id,
           voice:                voice,
           caption:              caption,
+          caption_entities:     caption_entities,
           duration:             duration,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
+          allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup ? reply_markup.to_json : nil,
         })
       end
@@ -976,6 +1101,10 @@ module Tourmaline
         chat,
         latitude,
         longitude,
+        horizontal_accuracy = nil,
+        live_period = nil,
+        proximity_alert_radius = nil,
+        heading = nil,
         message = nil,
         inline_message = nil,
         reply_markup = nil
@@ -985,16 +1114,20 @@ module Tourmaline
         end
 
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int32 | Int64 | Nil) ? message : message.id
-        inline_message_id = inline_message.is_a?(Int32 | Int64 | Nil) ? inline_message : inline_message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
+        inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
 
         request(Bool | Message, "editMessageLiveLocation", {
-          chat_id:           chat_id,
-          latitude:          latitude,
-          longitude:         longitude,
-          message_id:        message_id,
-          inline_message_id: inline_message_id,
-          reply_markup:      reply_markup ? reply_markup.to_json : nil,
+          chat_id:                chat_id,
+          latitude:               latitude,
+          longitude:              longitude,
+          horizontal_accuracy:    horizontal_accuracy,
+          live_period:            live_period,
+          proximity_alert_radius: proximity_alert_radius,
+          heading:                heading,
+          message_id:             message_id,
+          inline_message_id:      inline_message_id,
+          reply_markup:           reply_markup ? reply_markup.to_json : nil,
         })
       end
 

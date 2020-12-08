@@ -16,6 +16,12 @@ module Tourmaline
 
     getter foursquare_id : String?
 
+    getter foursquare_type : String?
+
+    getter google_place_id : String?
+
+    getter google_place_type : String?
+
     getter reply_markup : InlineKeyboardMarkup?
 
     getter input_message_content : InputMessageContent?
@@ -26,8 +32,9 @@ module Tourmaline
 
     getter thumb_height : Int32?
 
-    def initialize(@id, @latitude, @longitude, @title, @address, @foursquare_id = nil, @reply_markup = nil,
-                   @input_message_content = nil, @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
+    def initialize(@id, @latitude, @longitude, @title, @address, @foursquare_id = nil, @foursquare_type = nil,
+                   @reply_markup = nil, @google_place_id = nil, @google_place_type = nil, @input_message_content = nil,
+                   @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
     end
   end
 end

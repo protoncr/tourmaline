@@ -24,8 +24,8 @@ module Tourmaline
           raise "Incorrect option count. Expected 2-10, given #{options.size}."
         end
 
-        if options.any? { |o| o.size < 1 || o.size > 100 }
-          raise "Incorrect option size. Poll options must be between 1 and 100 characters."
+        if options.any? { |o| o.size < 1 || o.size > 300 }
+          raise "Incorrect option size. Poll options must be between 1 and 300 characters."
         end
 
         if type == Poll::Type::Quiz && !correct_option_id

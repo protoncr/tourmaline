@@ -2,32 +2,37 @@ module Tourmaline
   class InlineQueryResultGif < InlineQueryResult
     include JSON::Serializable
 
-    getter type : String = "gif"
+    property type : String = "gif"
 
-    getter id : String
+    property id : String
 
-    getter gif_url : String
+    property gif_url : String
 
-    getter gif_width : Int32?
+    property gif_width : Int32?
 
-    getter gif_height : Int32?
+    property gif_height : Int32?
 
-    getter gif_duration : Int32?
+    property gif_duration : Int32?
 
-    getter thumb_url : String
+    property thumb_url : String
 
-    getter thumb_mime_type : String?
+    property thumb_mime_type : String?
 
-    getter title : String?
+    property title : String?
 
-    getter caption : String?
+    property caption : String?
 
-    getter reply_markup : InlineKeyboardMarkup?
+    property parse_mode : ParseMode?
 
-    getter input_message_content : InputMessageContent?
+    property caption_entities : Array(MessageEntity) = [] of MessageEntity
+
+    property reply_markup : InlineKeyboardMarkup?
+
+    property input_message_content : InputMessageContent?
 
     def initialize(@id, @gif_url, @gif_width = nil, @gif_height = nil, @gif_duration = nil, @thumb_url = nil,
-                   @title = nil, @caption = nil, @reply_markup = nil, @input_message_content = nil)
+                   @title = nil, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
+                   @reply_markup = nil, @input_message_content = nil)
     end
   end
 end

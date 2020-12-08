@@ -13,12 +13,9 @@ module Tourmaline
 
     getter custom_title : String?
 
-    @[JSON::Field(converter: Time::EpochConverter)]
-    getter until_date : Time?
+    getter is_anonymous : Bool?
 
     getter can_be_edited : Bool?
-
-    getter can_change_info : Bool?
 
     getter can_post_messages : Bool?
 
@@ -26,13 +23,17 @@ module Tourmaline
 
     getter can_delete_messages : Bool?
 
-    getter can_invite_users : Bool?
-
     getter can_restrict_members : Bool?
+
+    getter can_promote_members : Bool?
+
+    getter can_change_info : Bool?
+
+    getter can_invite_users : Bool?
 
     getter can_pin_messages : Bool?
 
-    getter can_promote_members : Bool?
+    getter is_member : Bool?
 
     getter can_send_messages : Bool?
 
@@ -43,6 +44,9 @@ module Tourmaline
     getter can_send_other_messages : Bool?
 
     getter can_add_web_page_previews : Bool?
+
+    @[JSON::Field(converter: Time::EpochConverter)]
+    getter until_date : Time?
 
     def kick(until_date = nil)
       Container.client.kick_chat_member(chat_id, user.id, until_date)

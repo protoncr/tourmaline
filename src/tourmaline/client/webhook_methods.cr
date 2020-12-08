@@ -55,8 +55,8 @@ module Tourmaline
       # If you'd like to make sure that the Webhook request comes from Telegram, we recommend
       # using a secret path in the URL, e.g. `https://www.example.com/<token>`. Since nobody
       # else knows your bot‘s token, you can be pretty sure it’s us.
-      def set_webhook(url, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates)
-        params = {url: url, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate}
+      def set_webhook(url, ip_address = nil, certificate = nil, max_connections = nil, allowed_updates = @allowed_updates, drop_pending_updates = false)
+        params = {url: url, ip_address: ip_address, max_connections: max_connections, allowed_updates: allowed_updates, certificate: certificate, drop_pending_updates: drop_pending_updates}
         Log.info { "Setting webhook to '#{url}'#{" with certificate" if certificate}" }
         request(Bool, "setWebhook", params)
       end
@@ -76,8 +76,10 @@ module Tourmaline
 
       # Use this method to remove webhook integration if you decide to switch
       # back to getUpdates.
-      def delete_webhook
-        request(Bool, "deleteWebhook")
+      def delete_webhook(drop_pending_updates = false)
+        request(Bool, "deleteWebhook", {
+          drop_pending_updates: drop_pending_updates,
+        })
       end
     end
   end

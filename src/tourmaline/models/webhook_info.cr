@@ -4,6 +4,8 @@ module Tourmaline
 
     getter url : String
 
+    getter ip_address : String?
+
     getter has_custom_certificate : Bool
 
     getter pending_update_count : Int32

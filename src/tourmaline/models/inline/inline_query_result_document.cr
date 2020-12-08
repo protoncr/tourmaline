@@ -10,6 +10,10 @@ module Tourmaline
 
     getter caption : String?
 
+    property caption : String?
+
+    property parse_mode : ParseMode?
+
     getter document_url : String
 
     getter mime_type : String
@@ -26,8 +30,9 @@ module Tourmaline
 
     getter thumb_height : Int32?
 
-    def initialize(@id, @title, @caption = nil, @document_url = nil, @mime_type = nil, @description = nil,
-                   @reply_markup = nil, @input_message_content = nil, @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
+    def initialize(@id, @title, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
+                   @document_url = nil, @mime_type = nil, @description = nil, @reply_markup = nil,
+                   @input_message_content = nil, @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
     end
   end
 end

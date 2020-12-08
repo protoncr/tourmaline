@@ -12,6 +12,8 @@ module Tourmaline
 
     property parse_mode : ParseMode?
 
+    property caption_entities : Array(MessageEntity) = [] of MessageEntity
+
     property width : Int32?
 
     property height : Int32?
@@ -20,8 +22,8 @@ module Tourmaline
 
     property supports_streaming : Bool?
 
-    def initialize(@media : String, @thumb : (File | String)? = nil, @caption : String? = nil, @parse_mode : ParseMode? = nil,
-                   @width : Int32? = nil, @height : Int32? = nil, duration : Int32? = nil, @supports_streaming : Bool? = nil)
+    def initialize(@media, @thumb = nil, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
+                   @width = nil, @height = nil, duration = nil, @supports_streaming = nil)
     end
   end
 end

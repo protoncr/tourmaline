@@ -14,8 +14,12 @@ module Tourmaline
 
     getter foursquare_type : String?
 
-    def initialize(@latitude : Float64, @longitude : Float64, @title : String, @address : String,
-                   @foursquare_id : String? = nil, @foursquare_type : String? = nil)
+    getter google_place_id : String?
+
+    getter google_place_type : String?
+
+    def initialize(@latitude, @longitude, @title, @address, @foursquare_id = nil, @foursquare_type = nil,
+                   @google_place_id = nil, @google_place_type = nil)
     end
   end
 end

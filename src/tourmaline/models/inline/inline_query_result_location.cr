@@ -12,7 +12,13 @@ module Tourmaline
 
     getter title : String
 
+    getter horizontal_accuracy : Int32?
+
     getter live_period : Int32?
+
+    getter heading : Int32?
+
+    getter proximity_alert_radius : Int32?
 
     getter reply_markup : InlineKeyboardMarkup?
 

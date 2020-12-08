@@ -13,6 +13,8 @@ module Tourmaline
 
     getter from : User?
 
+    getter sender_chat : Chat?
+
     @[JSON::Field(converter: Time::EpochConverter)]
     getter date : Time
 
@@ -26,6 +28,8 @@ module Tourmaline
 
     getter forward_signature : String?
 
+    getter forward_sender_name : String?
+
     @[JSON::Field(converter: Time::EpochConverter)]
     getter forward_date : Time?
 
@@ -37,6 +41,9 @@ module Tourmaline
 
     getter via_bot : User?
 
+    @[JSON::Field(converter: Time::EpochConverter)]
+    getter edit_date : Time?
+
     getter media_group_id : String?
 
     getter author_signature : String?
@@ -45,13 +52,11 @@ module Tourmaline
 
     getter entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
 
-    getter caption_entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
+    getter animation : Animation?
 
     getter audio : Audio?
 
     getter document : Document?
-
-    getter game : Game?
 
     getter photo : Array(PhotoSize) = [] of Tourmaline::PhotoSize
 
@@ -59,21 +64,25 @@ module Tourmaline
 
     getter video : Video?
 
-    getter voice : Voice?
-
     getter video_note : VideoNote?
+
+    getter voice : Voice?
 
     getter caption : String?
 
+    getter caption_entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
+
     getter contact : Contact?
 
-    getter location : Location?
+    getter dice : Dice?
 
-    getter venue : Venue?
+    getter game : Game?
 
     getter poll : Poll?
 
-    getter dice : Dice?
+    getter venue : Venue?
+
+    getter location : Location?
 
     getter new_chat_members : Array(User) = [] of Tourmaline::User
 
@@ -95,6 +104,8 @@ module Tourmaline
 
     getter migrate_from_chat_id : Int64?
 
+    getter pinned_message : Message?
+
     getter invoice : Invoice?
 
     getter successful_payment : SuccessfulPayment?
@@ -102,6 +113,8 @@ module Tourmaline
     getter connected_website : String?
 
     getter passport_data : PassportData?
+
+    getter proximity_alert_triggered : ProximityAlertTriggered?
 
     getter reply_markup : InlineKeyboardMarkup?
 
