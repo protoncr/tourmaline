@@ -122,7 +122,7 @@ module Tourmaline
       if chat.username
         "https://t.me/#{chat.username}/#{message_id}"
       else
-        "https://t.me/c/#{chat.id}/#{message_id}"
+        "https://t.me/c/#{chat.id.to_s[5..]}/#{message_id}"
       end
     end
 
@@ -207,9 +207,14 @@ module Tourmaline
       Container.client.forward_message(to_chat, chat, message_id, **kwargs)
     end
 
-    # Pin the message. See `Tourmaline::Client#pin_message`.
+    # Pin the message. See `Tourmaline::Client#pin_chat_message`.
     def pin(**kwargs)
-      Container.client.pin_message(chat, message_id, **kwargs)
+      Container.client.pin_chat_message(chat, message_id, **kwargs)
+    end
+
+    # Unpin the message. See `Tourmaline::Client#unpin_chat_message`.
+    def unpin(**kwargs)
+      Container.client.unpin_chat_message(chat, message_id, **kwargs)
     end
 
     # Reply to a message. See `Tourmaline::Client#send_message`.

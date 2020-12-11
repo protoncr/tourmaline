@@ -9,7 +9,7 @@ module Tourmaline
     end
 
     def call(client : Client, update : Update)
-      if message = update.edited_message
+      if message = update.edited_message || update.edited_channel_post
         context = Context.new(update, message)
         @proc.call(context)
         return true

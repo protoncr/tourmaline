@@ -12,7 +12,7 @@ module Tourmaline
     end
 
     def call(client : Client, update : Update)
-      if message = update.message
+      if message = update.message || update.channel_post
         if (text = message.text) || (text = message.caption)
           if match = text.match(@pattern)
             context = Context.new(update, message, text, match)

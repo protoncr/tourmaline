@@ -8,6 +8,8 @@ module Tourmaline
 
     def self.from_message(text)
       error = case text
+      when /member list is inaccessible/
+        MemberListInaccessible
       when /chat not found/
         ChatNotFound
       when /chat_id is empty/
@@ -204,6 +206,7 @@ module Tourmaline
     class BadRequest < Error; end
 
     class RequestTimeoutError < BadRequest; end
+    class MemberListInaccessible < BadRequest; end
     class MessageError < BadRequest; end
     class MessageNotModified < MessageError; end
     class MessageIdInvalid < MessageError; end

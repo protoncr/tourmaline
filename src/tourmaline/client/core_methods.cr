@@ -561,9 +561,9 @@ module Tourmaline
       # have the ‘can_pin_messages’ admin right in the supergroup or
       # ‘can_edit_messages’ admin right in the channel.
       # Returns `true` on success.
-      def unpin_chat_message(chat, message)
+      def unpin_chat_message(chat, message = nil)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int::Primitive | String) ? message : message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
 
         request(Bool, "unpinChatMessage", {
           chat_id:    chat_id,
