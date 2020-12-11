@@ -441,6 +441,11 @@
       
     </li>
   
+  <li class=" " data-id="tourmaline/Tourmaline/Error/MemberListInaccessible" data-name="tourmaline::error::memberlistinaccessible">
+      <a href="../Tourmaline/Error/MemberListInaccessible.html">MemberListInaccessible</a>
+      
+    </li>
+  
   <li class=" " data-id="tourmaline/Tourmaline/Error/MessageCantBeDeleted" data-name="tourmaline::error::messagecantbedeleted">
       <a href="../Tourmaline/Error/MessageCantBeDeleted.html">MessageCantBeDeleted</a>
       
@@ -1513,12 +1518,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#chats-instance-method" class="signature"><strong>#chats</strong></a>
+        <a href="#chats(&block:Chat-%3E)-instance-method" class="signature"><strong>#chats</strong>(&block : Chat -> )</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#chats(&block:Chat-%3E)-instance-method" class="signature"><strong>#chats</strong>(&block : Chat -> )</a>
+        <a href="#chats-instance-method" class="signature"><strong>#chats</strong></a>
         
       </li>
     
@@ -1998,12 +2003,19 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#users(&block:User-%3E)-instance-method" class="signature"><strong>#users</strong>(&block : User -> )</a>
+        <a href="#unpin(**kwargs)-instance-method" class="signature"><strong>#unpin</strong>(**kwargs)</a>
+        
+          <div class="summary"><p>Unpin the message.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#users-instance-method" class="signature"><strong>#users</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#users(&block:User-%3E)-instance-method" class="signature"><strong>#users</strong>(&block : User -> )</a>
         
       </li>
     
@@ -2208,12 +2220,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="chats-instance-method">
+    <div class="entry-detail" id="chats(&block:Chat->)-instance-method">
       <div class="signature">
         
-        def <strong>chats</strong>
+        def <strong>chats</strong>(&block : <a href="../Tourmaline/Chat.html">Chat</a> -> )
 
-        <a class="method-permalink" href="#chats-instance-method">#</a>
+        <a class="method-permalink" href="#chats(&block:Chat-%3E)-instance-method">#</a>
       </div>
       
       <br/>
@@ -2222,12 +2234,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="chats(&block:Chat->)-instance-method">
+    <div class="entry-detail" id="chats-instance-method">
       <div class="signature">
         
-        def <strong>chats</strong>(&block : <a href="../Tourmaline/Chat.html">Chat</a> -> )
+        def <strong>chats</strong>
 
-        <a class="method-permalink" href="#chats(&block:Chat-%3E)-instance-method">#</a>
+        <a class="method-permalink" href="#chats-instance-method">#</a>
       </div>
       
       <br/>
@@ -2841,7 +2853,7 @@
       
         <div class="doc">
           
-          <p>Pin the message. See <code>Tourmaline::Client#pin_message</code>.</p>
+          <p>Pin the message. See <code>Tourmaline::Client#pin_chat_message</code>.</p>
         </div>
       
       <br/>
@@ -3560,13 +3572,18 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="users(&block:User->)-instance-method">
+    <div class="entry-detail" id="unpin(**kwargs)-instance-method">
       <div class="signature">
         
-        def <strong>users</strong>(&block : <a href="../Tourmaline/User.html">User</a> -> )
+        def <strong>unpin</strong>(**kwargs)
 
-        <a class="method-permalink" href="#users(&block:User-%3E)-instance-method">#</a>
+        <a class="method-permalink" href="#unpin(**kwargs)-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Unpin the message. See <code>Tourmaline::Client#unpin_chat_message</code>.</p>
+        </div>
       
       <br/>
       <div>
@@ -3580,6 +3597,20 @@
         def <strong>users</strong>
 
         <a class="method-permalink" href="#users-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="users(&block:User->)-instance-method">
+      <div class="signature">
+        
+        def <strong>users</strong>(&block : <a href="../Tourmaline/User.html">User</a> -> )
+
+        <a class="method-permalink" href="#users(&block:User-%3E)-instance-method">#</a>
       </div>
       
       <br/>
