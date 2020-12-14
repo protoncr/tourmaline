@@ -585,7 +585,7 @@ module Tourmaline
       def leave_chat(chat)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
-        request(Chat, "leaveChat", {
+        request(Bool, "leaveChat", {
           chat_id: chat_id,
         })
       end
