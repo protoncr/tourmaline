@@ -33,13 +33,12 @@ module Tourmaline
     def initialize(commands,
                    prefix = nil,
                    group = :default,
-                   async = true,
                    @private_only = false,
                    @group_only = false,
                    @admin_only = false,
                    @on_edit = false,
                    &block : Context ->)
-      super(group, async)
+      super(group)
       prefix ||= DEFAULT_PREFIXES
 
       commands = commands.is_a?(Array) ? commands : [commands]
@@ -104,7 +103,6 @@ module Tourmaline
               %command = {{ ann.named_args[:command] || ann.named_args[:commands] || ann.args[0] }}
               %prefix = {{ ann.named_args[:prefix] }}
               %group  = {{ ann.named_args[:group] || :default }}
-              %async = {{ !!ann[:async] }}
               %private_only = {{ ann.named_args[:private_only] || false }}
               %group_only = {{ ann.named_args[:group_only] || false }}
               %admin_only = {{ ann.named_args[:admin_only] || false }}
@@ -114,7 +112,6 @@ module Tourmaline
                 %command,
                 %prefix,
                 %group,
-                %async,
                 %private_only,
                 %group_only,
                 %admin_only,

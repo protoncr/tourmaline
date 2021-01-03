@@ -55,11 +55,11 @@ module Tourmaline
       def to_md(version : Int32 = 2) : String
         title = @tokens.first
         String.build do |str|
-          str << title.to_md(version)
+          str << title.to_md(version) + "\n"
           if @tokens.size > 1
-            @tokens[1..].each do |tok|
-              str << (" " * @indent) + tok.to_md(version)
-            end
+            str << @tokens[1..].map do |tok|
+              (" " * @indent) + tok.to_md(version)
+            end.join('\n')
           end
           str << "\n" * spacing
         end
@@ -68,11 +68,11 @@ module Tourmaline
       def to_html : String
         title = @tokens.first
         String.build do |str|
-          str << title.to_html
+          str << title.to_html + "\n"
           if @tokens.size > 1
-            @tokens[1..].each do |tok|
-              str << (" " * @indent) + tok.to_html
-            end
+            str << @tokens[1..].map do |tok|
+              (" " * @indent) + tok.to_html
+            end.join('\n')
           end
           str << "\n" * spacing
         end
@@ -91,23 +91,41 @@ module Tourmaline
       end
     end
 
-    class LineItem < Token
+    class Group < Token
+      property tokens : Array(Token | String)
+
+      delegate :push, :<<, :shift, :unshift, to: @tokens
+
+      def initialize(*tokens)
+        @tokens = [] of Token | String
+        tokens.each { |t| @tokens << t }
+      end
+
+      def to_md(version : Int32 = 2) : String
+        tokens.map(&.to_md(version)).join
+      end
+
+      def to_html : String
+        tokens.map(&.to_html).join
+      end
+    end
+
+    class LineItem < Group
       property tokens : Array(Token | String)
       property spaces : Int32
 
       delegate :push, :<<, :shift, :unshift, to: @tokens
 
       def initialize(*tokens, @spaces : Int32 = 1)
-        @tokens = [] of Token | String
-        tokens.each { |t| @tokens << t }
+        super(*tokens)
       end
 
       def to_md(version : Int32 = 2) : String
-        tokens.map(&.to_md(version)).join + ("\n" * spaces)
+        super(version) + ("\n" * spaces)
       end
 
       def to_html : String
-        tokens.map(&.to_html).join + ("\n" * @spaces)
+        super + ("\n" * @spaces)
       end
     end
 
@@ -118,11 +136,11 @@ module Tourmaline
       end
 
       def to_md(version : Int32 = 2) : String
-        key.to_md(version) + ": " + value.to_md(version) + "\n"
+        key.to_md(version) + ": " + value.to_md(version)
       end
 
       def to_html : String
-        key.to_html + ": " + value.to_html + "\n"
+        key.to_html + ": " + value.to_html
       end
     end
 
@@ -201,6 +219,26 @@ module Tourmaline
 
       def to_html : String
         "<a href=\"#{url}\">#{token.to_html}</a>"
+      end
+    end
+
+    class UserMention < Token
+      property token
+      property user_id
+
+      def initialize(@token : Token | String, @user_id : Int64)
+      end
+
+      def self.new(user)
+        UserMention.new(user.full_name, user.id.not_nil!)
+      end
+
+      def to_md(version : Int32 = 2) : String
+        "[#{token.to_md(version)}](tg://user?id=#{user_id})"
+      end
+
+      def to_html : String
+        "<a href=\"tg://user?id=#{user_id}\">#{token.to_html}</a>"
       end
     end
 

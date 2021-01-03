@@ -19,8 +19,8 @@ module Tourmaline
   class CallbackQueryHandler < EventHandler
     getter pattern : Regex?
 
-    def initialize(pattern : (String | Regex)? = nil, group = :default, async = true, &block : Context ->)
-      super(group, async)
+    def initialize(pattern : (String | Regex)? = nil, group = :default, &block : Context ->)
+      super(group)
       @proc = block
       @pattern = pattern.is_a?(Regex | Nil) ? pattern : Regex.new("^#{Regex.escape(pattern)}$")
     end
@@ -46,9 +46,8 @@ module Tourmaline
             {% for ann in method.annotations(OnCallbackQuery) %}
               %pattern = {{ ann[:pattern] || ann[0] }}
               %group = {{ ann[:group] || :default }}
-              %async = {{ !!ann[:async] }}
 
-              %handler = CallbackQueryHandler.new(%pattern, %group, %async, &->(c : Context) { client.{{ method.name.id }}(c); nil })
+              %handler = CallbackQueryHandler.new(%pattern, %group, &->(c : Context) { client.{{ method.name.id }}(c); nil })
               client.add_event_handler(%handler)
             {% end %}
           {% end %}

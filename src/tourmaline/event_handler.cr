@@ -5,10 +5,8 @@ module Tourmaline
   abstract class EventHandler
 
     getter group : String
-    getter async : Bool
 
-    def initialize(group = :default, async = true)
-      @async = !!async
+    def initialize(group = :default)
       @group = group.to_s
     end
 

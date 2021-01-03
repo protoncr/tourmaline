@@ -5,8 +5,8 @@ module Tourmaline
   class ChosenInlineResultHandler < EventHandler
     getter pattern : Regex?
 
-    def initialize(pattern : (String | Regex)? = nil, group = :default, async = true, &block : Context ->)
-      super(group, async)
+    def initialize(pattern : (String | Regex)? = nil, group = :default, &block : Context ->)
+      super(group)
       @proc = block
       @pattern = pattern.is_a?(Regex | Nil) ? pattern : Regex.new("^#{Regex.escape(pattern)}$")
     end
@@ -32,9 +32,8 @@ module Tourmaline
             {% for ann in method.annotations(OnChosenInlineResult) %}
               %pattern = {{ ann[:pattern] || ann[0] }}
               %group = {{ ann[:group] || :default }}
-              %async = {{ !!ann[:async] }}
 
-              %handler = ChosenInlineResultHandler.new(%pattern, %group, %async, &->(c : Context) { client.{{ method.name.id }}(c); nil })
+              %handler = ChosenInlineResultHandler.new(%pattern, %group, &->(c : Context) { client.{{ method.name.id }}(c); nil })
               client.add_event_handler(%handler)
             {% end %}
           {% end %}

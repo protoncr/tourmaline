@@ -4,21 +4,15 @@ module Tourmaline
   class UpdateHandler < EventHandler
     getter action : UpdateAction
 
-    def initialize(@action : UpdateAction, group = :default, async = true, &block : Update ->)
-      super(group, async)
+    def initialize(@action : UpdateAction, group = :default, &block : Update ->)
+      super(group)
       @proc = block
     end
 
     def call(client : Client, update : Update)
       actions = UpdateAction.from_update(update)
       if actions.includes?(@action)
-
-        if @async
-          spawn @proc.call(update)
-        else
-          @proc.call(update)
-        end
-
+        @proc.call(update)
         true
       end
     end
@@ -32,7 +26,6 @@ module Tourmaline
             {% for ann in method.annotations(On) %}
               %action = {{ ann[:action] || ann[0] }}
               %group = {{ ann[:group] || :default }}
-              %async = {{ !!ann[:async] }}
 
               if %action.is_a?(Symbol | String)
                 begin
@@ -42,7 +35,7 @@ module Tourmaline
                 end
               end
 
-              %handler = UpdateHandler.new(%action, %group, %async, &->(u : Update) { client.{{ method.name.id }}(u); nil })
+              %handler = UpdateHandler.new(%action, %group, &->(u : Update) { client.{{ method.name.id }}(u); nil })
               client.add_event_handler(%handler)
             {% end %}
           {% end %}
