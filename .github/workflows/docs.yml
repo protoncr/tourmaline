@@ -12,16 +12,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.x
     - name: Install Dependencies
       run: shards install
     - name: Lint
       run: ./bin/ameba
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
     - name: Build Docs
       run: |
-        pip3 install -r requirements.txt
+        pip install -r requirements.txt
         mkdocs gh-deploy --force
       env:
         GH_TOKEN: ${{ secrets.GHUB_PAT }}
