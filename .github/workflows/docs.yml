@@ -16,13 +16,11 @@ jobs:
       run: shards install
     - name: Lint
       run: ./bin/ameba
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Pipenv Install
+      uses: VaultVulp/action-pipenv@v2.0.1
       with:
-        python-version: 3.x
+        command: install -d
     - name: Build Docs
-      run: |
-        pip install -r requirements.txt
-        mkdocs gh-deploy --force
+      run: mkdocs gh-deploy --force
       env:
         GH_TOKEN: ${{ secrets.GHUB_PAT }}
