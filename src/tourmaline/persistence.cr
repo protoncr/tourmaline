@@ -14,6 +14,14 @@ module Tourmaline
   # ```
   #
   abstract class Persistence
+    def initialize
+      [Signal::INT, Signal::TERM].each do |sig|
+        sig.trap do
+          cleanup
+        end
+      end
+    end
+
     # Create or update the provided `User`.
     abstract def update_user(user : User) : User
 

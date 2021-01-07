@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mkdocs-material = "*"
+mkdocstrings = "*"
+mkdocs-gen-files = "*"
+mkdocstrings-crystal = "*"
+mkdocs-section-index = "*"
+mkdocs-versioning = "*"
+mkdocs-literate-nav = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

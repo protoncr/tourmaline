@@ -11,6 +11,7 @@ module Tourmaline
     getter persisted_chat_ids = {} of String => Int64
 
     def initialize(filename = nil)
+      super
       @filename = filename || "tourmaline_persistence.json"
     end
 

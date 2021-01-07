@@ -30,7 +30,7 @@ module Tourmaline
     end
 
     class Builder < KeyboardBuilder(Tourmaline::InlineKeyboardButton, Tourmaline::InlineKeyboardMarkup)
-      def keyboard(columns = nil)
+      def keyboard(columns = nil) : G
         buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
         InlineKeyboardMarkup.new(buttons)
       end

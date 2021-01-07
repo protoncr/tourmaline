@@ -1,0 +1,35 @@
+site_name: Tourmaline
+repo_url: https://github.com/protoncr/tourmaline
+edit_uri: https://github.com/protoncr/tourmaline/tree/master/docs/
+site_url: https://tourmaline.readthedocs.com
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: crystal
+      watch: [src]
+  - gen-files:
+      scripts:
+        - docs/gen_doc_stubs.py
+  - section-index
+  - literate-nav:
+      nav_file: SUMMARY.md
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.saneheaders
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - deduplicate-toc
+  - admonition

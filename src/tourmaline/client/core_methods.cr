@@ -1185,10 +1185,17 @@ module Tourmaline
       # for updates.
       def poll(delete_webhook = false)
         self.delete_webhook
+        @polling = true
+
+        [Signal::INT, Signal::TERM].each do |sig|
+          sig.trap do
+            self.stop_polling
+            # exit(0)
+          end
+        end
 
         Log.info { "Polling for updates" }
 
-        @polling = true
         while @polling
           begin
             updates = get_updates
@@ -1204,6 +1211,7 @@ module Tourmaline
 
       # Stops the bot from polling.
       def stop_polling
+        Log.info { "Stopping polling" }
         @polling = false
       end
     end

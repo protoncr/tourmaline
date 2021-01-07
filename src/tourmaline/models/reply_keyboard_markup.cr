@@ -72,7 +72,7 @@ module Tourmaline
     end
 
     class Builder < KeyboardBuilder(Tourmaline::KeyboardButton, Tourmaline::ReplyKeyboardMarkup)
-      def keyboard(columns = nil)
+      def keyboard(columns = nil) : G
         buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
         ReplyKeyboardMarkup.new(buttons, @resize, @one_time, @selective)
       end

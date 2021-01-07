@@ -68,7 +68,7 @@ module Tourmaline
     def initialize(@api_key : String,
                    endpoint = DEFAULT_API_URL,
                    *,
-                   @persistence : Persistence = NilPersistence.new,
+                   persistence : Persistence = NilPersistence.new,
                    @allowed_updates = [] of String,
                    pool_capacity = 200,
                    initial_pool_size = 20,
@@ -79,6 +79,10 @@ module Tourmaline
                    proxy_port = nil,
                    proxy_user = nil,
                    proxy_pass = nil)
+
+      @persistence = persistence
+      @persistence.init
+
       if !proxy
         if proxy_uri
           proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")
@@ -103,11 +107,6 @@ module Tourmaline
       register_event_handler_annotations
 
       Container.client = self
-
-      @persistence.init
-      [Signal::INT, Signal::TERM].each do |sig|
-        sig.trap { @persistence.cleanup; exit }
-      end
     end
 
     def add_event_handler(handler : EventHandler)
