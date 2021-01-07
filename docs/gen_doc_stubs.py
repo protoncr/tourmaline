@@ -21,4 +21,4 @@ for typ in root.lookup("Tourmaline").walk_types():
     write_file(typ.abs_id, filename)
 
 write_file('Tourmaline', 'api_reference/Tourmaline/index.md')
-write_file('String', 'api_reference/String/index.md')
+write_file('String', 'api_reference/String.md')

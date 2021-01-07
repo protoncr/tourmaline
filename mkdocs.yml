@@ -5,6 +5,9 @@ site_url: https://tourmaline.readthedocs.com
 
 theme:
   name: material
+  palette:
+    scheme: slate
+    primary: teal
 
 plugins:
   - search
@@ -33,3 +36,7 @@ markdown_extensions:
   - attr_list
   - deduplicate-toc
   - admonition
+
+extra:
+  version:
+    method: mike

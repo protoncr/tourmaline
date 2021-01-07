@@ -12,20 +12,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
     - name: Install Dependencies
       run: shards install
     - name: Lint
       run: ./bin/ameba
     - name: Build Docs
-      run: crystal docs
-    - name: Deploy to GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v1.3.0
-      with:
-        keep_history: true
-        build_dir: docs
-        committer_name: Chris Watson
-        committer_email: cawatson1993@gmail.com
-        commit_message: "Update docs"
+      run: pip install -r requirements.txt
+      run: mkdocs gh-deploy --force
       env:
-        GITHUB_PAT: ${{ secrets.GHUB_PAT }}
+        GH_TOKEN: ${{ secrets.GHUB_PAT }}

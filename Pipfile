@@ -10,9 +10,13 @@ mkdocs-gen-files = "*"
 mkdocstrings-crystal = "*"
 mkdocs-section-index = "*"
 mkdocs-versioning = "*"
-mkdocs-literate-nav = "*"
+mkdocs-literate-nav = ">= 0.3.0b1"
+mike = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
