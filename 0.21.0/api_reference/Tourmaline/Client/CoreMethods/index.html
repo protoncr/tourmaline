@@ -1,0 +1,6473 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://tourmaline.readthedocs.com/api_reference/Tourmaline/Client/CoreMethods/">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>CoreMethods - Tourmaline</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#Tourmaline::Client::CoreMethods" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://tourmaline.readthedocs.com" title="Tourmaline" class="md-header-nav__button md-logo" aria-label="Tourmaline">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Tourmaline
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              CoreMethods
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://tourmaline.readthedocs.com" title="Tourmaline" class="md-nav__button md-logo" aria-label="Tourmaline">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Tourmaline
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      <span class="md-nav__icon md-icon"></span>
+      
+        API Reference
+      
+    </label>
+    <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        
+          API Reference
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Tourmaline
+      
+    </label>
+    <nav class="md-nav" aria-label="Tourmaline" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Tourmaline
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Animation/" class="md-nav__link">
+      Animation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Audio/" class="md-nav__link">
+      Audio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../BotCommand/" class="md-nav__link">
+      BotCommand
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Button/" class="md-nav__link">
+      Button
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackGame/" class="md-nav__link">
+      CallbackGame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackQuery/" class="md-nav__link">
+      CallbackQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackQueryHandler/" class="md-nav__link">
+      CallbackQueryHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Chat/" class="md-nav__link">
+      Chat
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatAction/" class="md-nav__link">
+      ChatAction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatLocation/" class="md-nav__link">
+      ChatLocation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatMember/" class="md-nav__link">
+      ChatMember
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatPermissions/" class="md-nav__link">
+      ChatPermissions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatPhoto/" class="md-nav__link">
+      ChatPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChosenInlineResult/" class="md-nav__link">
+      ChosenInlineResult
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChosenInlineResultHandler/" class="md-nav__link">
+      ChosenInlineResultHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Command/" class="md-nav__link">
+      Command
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CommandHandler/" class="md-nav__link">
+      CommandHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Contact/" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Dice/" class="md-nav__link">
+      Dice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Document/" class="md-nav__link">
+      Document
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Edited/" class="md-nav__link">
+      Edited
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EditedHandler/" class="md-nav__link">
+      EditedHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EncryptedCredentials/" class="md-nav__link">
+      EncryptedCredentials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EncryptedPassportElement/" class="md-nav__link">
+      EncryptedPassportElement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/" class="md-nav__link">
+      Error
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EventHandler/" class="md-nav__link">
+      EventHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ForceReply/" class="md-nav__link">
+      ForceReply
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/" class="md-nav__link">
+      Format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Game/" class="md-nav__link">
+      Game
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../GameHighScore/" class="md-nav__link">
+      GameHighScore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../HashPersistence/" class="md-nav__link">
+      HashPersistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Hears/" class="md-nav__link">
+      Hears
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../HearsHandler/" class="md-nav__link">
+      HearsHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Helpers/" class="md-nav__link">
+      Helpers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineKeyboardButton/" class="md-nav__link">
+      InlineKeyboardButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineKeyboardMarkup/" class="md-nav__link">
+      InlineKeyboardMarkup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQuery/" class="md-nav__link">
+      InlineQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryHandler/" class="md-nav__link">
+      InlineQueryHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResult/" class="md-nav__link">
+      InlineQueryResult
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultArticle/" class="md-nav__link">
+      InlineQueryResultArticle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultAudio/" class="md-nav__link">
+      InlineQueryResultAudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedAudio/" class="md-nav__link">
+      InlineQueryResultCachedAudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedDocument/" class="md-nav__link">
+      InlineQueryResultCachedDocument
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedGif/" class="md-nav__link">
+      InlineQueryResultCachedGif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedMpeg4Gif/" class="md-nav__link">
+      InlineQueryResultCachedMpeg4Gif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedPhoto/" class="md-nav__link">
+      InlineQueryResultCachedPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedSticker/" class="md-nav__link">
+      InlineQueryResultCachedSticker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedVideo/" class="md-nav__link">
+      InlineQueryResultCachedVideo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedVoice/" class="md-nav__link">
+      InlineQueryResultCachedVoice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultContact/" class="md-nav__link">
+      InlineQueryResultContact
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultDocument/" class="md-nav__link">
+      InlineQueryResultDocument
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultGif/" class="md-nav__link">
+      InlineQueryResultGif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultLocation/" class="md-nav__link">
+      InlineQueryResultLocation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultMpeg4Gif/" class="md-nav__link">
+      InlineQueryResultMpeg4Gif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultPhoto/" class="md-nav__link">
+      InlineQueryResultPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultVenue/" class="md-nav__link">
+      InlineQueryResultVenue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultVideo/" class="md-nav__link">
+      InlineQueryResultVideo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultVoice/" class="md-nav__link">
+      InlineQueryResultVoice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputContactMessageContent/" class="md-nav__link">
+      InputContactMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputLocationMessageContent/" class="md-nav__link">
+      InputLocationMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMedia/" class="md-nav__link">
+      InputMedia
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaAnimation/" class="md-nav__link">
+      InputMediaAnimation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaAudio/" class="md-nav__link">
+      InputMediaAudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaDocument/" class="md-nav__link">
+      InputMediaDocument
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaPhoto/" class="md-nav__link">
+      InputMediaPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaVideo/" class="md-nav__link">
+      InputMediaVideo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMessageContent/" class="md-nav__link">
+      InputMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputTextMessageContent/" class="md-nav__link">
+      InputTextMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputVenueMessageContent/" class="md-nav__link">
+      InputVenueMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Invoice/" class="md-nav__link">
+      Invoice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../JsonPersistence/" class="md-nav__link">
+      JsonPersistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KemalAdapter/" class="md-nav__link">
+      KemalAdapter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KeyboardBuilder/" class="md-nav__link">
+      KeyboardBuilder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KeyboardButton/" class="md-nav__link">
+      KeyboardButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KeyboardButtonPollType/" class="md-nav__link">
+      KeyboardButtonPollType
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../LabeledPrice/" class="md-nav__link">
+      LabeledPrice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Location/" class="md-nav__link">
+      Location
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Logger/" class="md-nav__link">
+      Logger
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../LoginURL/" class="md-nav__link">
+      LoginURL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../MaskPosition/" class="md-nav__link">
+      MaskPosition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Message/" class="md-nav__link">
+      Message
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../MessageEntity/" class="md-nav__link">
+      MessageEntity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../NilPersistence/" class="md-nav__link">
+      NilPersistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../On/" class="md-nav__link">
+      On
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OnCallbackQuery/" class="md-nav__link">
+      OnCallbackQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OnChosenInlineResult/" class="md-nav__link">
+      OnChosenInlineResult
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OnInlineQuery/" class="md-nav__link">
+      OnInlineQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OrderInfo/" class="md-nav__link">
+      OrderInfo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PaginatedKeyboard/" class="md-nav__link">
+      PaginatedKeyboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ParseMode/" class="md-nav__link">
+      ParseMode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportData/" class="md-nav__link">
+      PassportData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementError/" class="md-nav__link">
+      PassportElementError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorDataField/" class="md-nav__link">
+      PassportElementErrorDataField
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorFile/" class="md-nav__link">
+      PassportElementErrorFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorFiles/" class="md-nav__link">
+      PassportElementErrorFiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorFrontSide/" class="md-nav__link">
+      PassportElementErrorFrontSide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorReverseSide/" class="md-nav__link">
+      PassportElementErrorReverseSide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorSelfie/" class="md-nav__link">
+      PassportElementErrorSelfie
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorTranslationFile/" class="md-nav__link">
+      PassportElementErrorTranslationFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorTranslationFiles/" class="md-nav__link">
+      PassportElementErrorTranslationFiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorUnspecified/" class="md-nav__link">
+      PassportElementErrorUnspecified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportFile/" class="md-nav__link">
+      PassportFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Persistence/" class="md-nav__link">
+      Persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PhotoSize/" class="md-nav__link">
+      PhotoSize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Poll/" class="md-nav__link">
+      Poll
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PollAnswer/" class="md-nav__link">
+      PollAnswer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PollOption/" class="md-nav__link">
+      PollOption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PreCheckoutQuery/" class="md-nav__link">
+      PreCheckoutQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ProximityAlertTriggered/" class="md-nav__link">
+      ProximityAlertTriggered
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ReplyKeyboardMarkup/" class="md-nav__link">
+      ReplyKeyboardMarkup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ReplyKeyboardRemove/" class="md-nav__link">
+      ReplyKeyboardRemove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/" class="md-nav__link">
+      RoutedMenu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ShippingAddress/" class="md-nav__link">
+      ShippingAddress
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ShippingOption/" class="md-nav__link">
+      ShippingOption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ShippingQuery/" class="md-nav__link">
+      ShippingQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Stage/" class="md-nav__link">
+      Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Sticker/" class="md-nav__link">
+      Sticker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../StickerSet/" class="md-nav__link">
+      StickerSet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../SuccessfulPayment/" class="md-nav__link">
+      SuccessfulPayment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../TFile/" class="md-nav__link">
+      TFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Update/" class="md-nav__link">
+      Update
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../UpdateAction/" class="md-nav__link">
+      UpdateAction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../UpdateHandler/" class="md-nav__link">
+      UpdateHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../User/" class="md-nav__link">
+      User
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../UserProfilePhotos/" class="md-nav__link">
+      UserProfilePhotos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Venue/" class="md-nav__link">
+      Venue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Video/" class="md-nav__link">
+      Video
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../VideoNote/" class="md-nav__link">
+      VideoNote
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Voice/" class="md-nav__link">
+      Voice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../WebhookInfo/" class="md-nav__link">
+      WebhookInfo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-133" type="checkbox" id="nav-2-1-133" >
+    
+    <label class="md-nav__link" for="nav-2-1-133">
+      <span class="md-nav__icon md-icon"></span>
+      
+        CallbackQueryHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="CallbackQueryHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-133">
+        <span class="md-nav__icon md-icon"></span>
+        
+          CallbackQueryHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackQueryHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-134" type="checkbox" id="nav-2-1-134" >
+    
+    <label class="md-nav__link" for="nav-2-1-134">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Chat
+      
+    </label>
+    <nav class="md-nav" aria-label="Chat" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-134">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Chat
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Chat/Type/" class="md-nav__link">
+      Type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-135" type="checkbox" id="nav-2-1-135" >
+    
+    <label class="md-nav__link" for="nav-2-1-135">
+      <span class="md-nav__icon md-icon"></span>
+      
+        ChosenInlineResultHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="ChosenInlineResultHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-135">
+        <span class="md-nav__icon md-icon"></span>
+        
+          ChosenInlineResultHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChosenInlineResultHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-136" type="checkbox" id="nav-2-1-136" checked>
+    
+    <label class="md-nav__link" for="nav-2-1-136">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Client
+      
+    </label>
+    <nav class="md-nav" aria-label="Client" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-136">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Client
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        
+          <a href="./" class="md-nav__link md-nav__link--active"
+            style="margin: initial; padding: initial; pointer-events: initial">
+        
+          CoreMethods
+        </a>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      CoreMethods
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods" class="md-nav__link">
+    CoreMethods
+  </a>
+  
+    <nav class="md-nav" aria-label="CoreMethods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#included-modules" class="md-nav__link">
+    Included modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-including-types" class="md-nav__link">
+    Direct including types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    Constants
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods::Log" class="md-nav__link">
+    Log
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#answer_callback_query(callback_query_id,text,show_alert,url,cache_time)" class="md-nav__link">
+    #answer_callback_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#answer_inline_query(inline_query_id,results,cache_time,is_personal,next_offset,switch_pm_text,switch_pm_parameter)" class="md-nav__link">
+    #answer_inline_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#close()" class="md-nav__link">
+    #close
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#copy_message(chat,from_chat,message,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #copy_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#delete_chat_photo(chat)" class="md-nav__link">
+    #delete_chat_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#delete_message(chat,message)" class="md-nav__link">
+    #delete_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_caption(chat,caption,message,inline_message,parse_mode,caption_entities,reply_markup)" class="md-nav__link">
+    #edit_message_caption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_live_location(chat,latitude,longitude,horizontal_accuracy,live_period,proximity_alert_radius,heading,message,inline_message,reply_markup)" class="md-nav__link">
+    #edit_message_live_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_media(chat,media,message,inline_message,reply_markup)" class="md-nav__link">
+    #edit_message_media
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_reply_markup(chat,message,inline_message,reply_markup)" class="md-nav__link">
+    #edit_message_reply_markup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_text(chat,text,message,inline_message,parse_mode,entities,disable_link_preview,reply_markup)" class="md-nav__link">
+    #edit_message_text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#export_chat_invite_link(chat)" class="md-nav__link">
+    #export_chat_invite_link
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#forward_message(chat,from_chat,message,disable_notification)" class="md-nav__link">
+    #forward_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat(chat)" class="md-nav__link">
+    #get_chat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat_administrators(chat)" class="md-nav__link">
+    #get_chat_administrators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat_member(chat,user)" class="md-nav__link">
+    #get_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat_members_count(chat)" class="md-nav__link">
+    #get_chat_members_count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_file(file_id)" class="md-nav__link">
+    #get_file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_me()" class="md-nav__link">
+    #get_me
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_my_commands()" class="md-nav__link">
+    #get_my_commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_updates(offset,limit,timeout,allowed_updates)" class="md-nav__link">
+    #get_updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_user_profile_photos(user,offset,limit)" class="md-nav__link">
+    #get_user_profile_photos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#is_admin?(chat_id)" class="md-nav__link">
+    #is_admin?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#kick_chat_member(chat,user,until_date)" class="md-nav__link">
+    #kick_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#leave_chat(chat)" class="md-nav__link">
+    #leave_chat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#log_out()" class="md-nav__link">
+    #log_out
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#next_offset()" class="md-nav__link">
+    #next_offset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#pin_chat_message(chat,message,disable_notification)" class="md-nav__link">
+    #pin_chat_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#poll(delete_webhook)" class="md-nav__link">
+    #poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#polling()" class="md-nav__link">
+    #polling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#promote_chat_member(chat,user,is_anonymous,until_date,can_change_info,can_post_messages,can_edit_messages,can_delete_messages,can_invite_users,can_restrict_members,can_pin_messages,can_promote_members)" class="md-nav__link">
+    #promote_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#restrict_chat_member(chat,user,permissions,until_date)" class="md-nav__link">
+    #restrict_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_animation(chat,animation,duration,width,height,thumb,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_animation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_basketball(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_basketball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_chat_action(chat,action)" class="md-nav__link">
+    #send_chat_action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_contact(chat,phone_number,first_name,last_name,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_darts(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_darts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_dice(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_dice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_football(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_football
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_location(chat,latitude,longitude,horizontal_accuracy,live_period,proximity_alert_radius,heading,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_media_group(chat,media,disable_notification,reply_to_message,allow_sending_without_reply)" class="md-nav__link">
+    #send_media_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_message(chat,text,parse_mode,entities,link_preview,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_photo(chat,photo,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_slot_machine(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_slot_machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_venue(chat,latitude,longitude,title,address,foursquare_id,foursquare_type,google_place_id,google_place_type,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_venue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_video_note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_voice(chat,voice,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_voice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_admininstrator_custom_title(chat,user,custom_title)" class="md-nav__link">
+    #set_chat_admininstrator_custom_title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_description(chat,description)" class="md-nav__link">
+    #set_chat_description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_permissions(chat,permissions)" class="md-nav__link">
+    #set_chat_permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_photo(chat,photo)" class="md-nav__link">
+    #set_chat_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_title(chat,title)" class="md-nav__link">
+    #set_chat_title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_my_commands(commands)" class="md-nav__link">
+    #set_my_commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#stop_message_live_location(chat,message,inline_message,reply_markup)" class="md-nav__link">
+    #stop_message_live_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#stop_polling()" class="md-nav__link">
+    #stop_polling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#unban_chat_member(chat,user,only_if_banned)" class="md-nav__link">
+    #unban_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#unpin_all_chat_messages(chat)" class="md-nav__link">
+    #unpin_all_chat_messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#unpin_chat_message(chat,message)" class="md-nav__link">
+    #unpin_chat_message
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../GameMethods/" class="md-nav__link">
+      GameMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../PassportMethods/" class="md-nav__link">
+      PassportMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../PaymentMethods/" class="md-nav__link">
+      PaymentMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../PollMethods/" class="md-nav__link">
+      PollMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../StickerMethods/" class="md-nav__link">
+      StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../WebhookMethods/" class="md-nav__link">
+      WebhookMethods
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-137" type="checkbox" id="nav-2-1-137" >
+    
+    <label class="md-nav__link" for="nav-2-1-137">
+      <span class="md-nav__icon md-icon"></span>
+      
+        CommandHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="CommandHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-137">
+        <span class="md-nav__icon md-icon"></span>
+        
+          CommandHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CommandHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-138" type="checkbox" id="nav-2-1-138" >
+    
+    <label class="md-nav__link" for="nav-2-1-138">
+      <span class="md-nav__icon md-icon"></span>
+      
+        EditedHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="EditedHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-138">
+        <span class="md-nav__icon md-icon"></span>
+        
+          EditedHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EditedHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-139" type="checkbox" id="nav-2-1-139" >
+    
+    <label class="md-nav__link" for="nav-2-1-139">
+      <span class="md-nav__icon md-icon"></span>
+      
+        EncryptedPassportElement
+      
+    </label>
+    <nav class="md-nav" aria-label="EncryptedPassportElement" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-139">
+        <span class="md-nav__icon md-icon"></span>
+        
+          EncryptedPassportElement
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EncryptedPassportElement/Type/" class="md-nav__link">
+      Type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-140" type="checkbox" id="nav-2-1-140" >
+    
+    <label class="md-nav__link" for="nav-2-1-140">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Error
+      
+    </label>
+    <nav class="md-nav" aria-label="Error" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-140">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Error
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadRequest/" class="md-nav__link">
+      BadRequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhook/" class="md-nav__link">
+      BadWebhook
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhookAddrInfo/" class="md-nav__link">
+      BadWebhookAddrInfo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhookNoAddressAssociatedWithHostname/" class="md-nav__link">
+      BadWebhookNoAddressAssociatedWithHostname
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhookPort/" class="md-nav__link">
+      BadWebhookPort
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BotBlocked/" class="md-nav__link">
+      BotBlocked
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BotDomainInvalid/" class="md-nav__link">
+      BotDomainInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BotKicked/" class="md-nav__link">
+      BotKicked
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ButtonDataInvalid/" class="md-nav__link">
+      ButtonDataInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ButtonURLInvalid/" class="md-nav__link">
+      ButtonURLInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantDemoteChatCreator/" class="md-nav__link">
+      CantDemoteChatCreator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantGetUpdates/" class="md-nav__link">
+      CantGetUpdates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantInitiateConversation/" class="md-nav__link">
+      CantInitiateConversation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantParseEntities/" class="md-nav__link">
+      CantParseEntities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantParseUrl/" class="md-nav__link">
+      CantParseUrl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantRestrictSelf/" class="md-nav__link">
+      CantRestrictSelf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantTalkWithBots/" class="md-nav__link">
+      CantTalkWithBots
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatAdminRequired/" class="md-nav__link">
+      ChatAdminRequired
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatDescriptionIsNotModified/" class="md-nav__link">
+      ChatDescriptionIsNotModified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatIdIsEmpty/" class="md-nav__link">
+      ChatIdIsEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatNotFound/" class="md-nav__link">
+      ChatNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ConflictError/" class="md-nav__link">
+      ConflictError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CurrencyTotalAmountInvalid/" class="md-nav__link">
+      CurrencyTotalAmountInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/GroupDeactivated/" class="md-nav__link">
+      GroupDeactivated
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InlineKeyboardExpected/" class="md-nav__link">
+      InlineKeyboardExpected
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidHTTPUrlContent/" class="md-nav__link">
+      InvalidHTTPUrlContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidPeerID/" class="md-nav__link">
+      InvalidPeerID
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidQueryID/" class="md-nav__link">
+      InvalidQueryID
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidResultID/" class="md-nav__link">
+      InvalidResultID
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidStickersSet/" class="md-nav__link">
+      InvalidStickersSet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidUserId/" class="md-nav__link">
+      InvalidUserId
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MemberListInaccessible/" class="md-nav__link">
+      MemberListInaccessible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageCantBeDeleted/" class="md-nav__link">
+      MessageCantBeDeleted
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageCantBeEdited/" class="md-nav__link">
+      MessageCantBeEdited
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageError/" class="md-nav__link">
+      MessageError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIdInvalid/" class="md-nav__link">
+      MessageIdInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIdentifierNotSpecified/" class="md-nav__link">
+      MessageIdentifierNotSpecified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIsNotAPoll/" class="md-nav__link">
+      MessageIsNotAPoll
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIsTooLong/" class="md-nav__link">
+      MessageIsTooLong
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageNotModified/" class="md-nav__link">
+      MessageNotModified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageTextIsEmpty/" class="md-nav__link">
+      MessageTextIsEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToDeleteNotFound/" class="md-nav__link">
+      MessageToDeleteNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToEditNotFound/" class="md-nav__link">
+      MessageToEditNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToForwardNotFound/" class="md-nav__link">
+      MessageToForwardNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToReplyNotFound/" class="md-nav__link">
+      MessageToReplyNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageWithPollNotFound/" class="md-nav__link">
+      MessageWithPollNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MethodIsNotAvailable/" class="md-nav__link">
+      MethodIsNotAvailable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MethodNotAvailableInPrivateChats/" class="md-nav__link">
+      MethodNotAvailableInPrivateChats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MethodNotKnown/" class="md-nav__link">
+      MethodNotKnown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MigrateToChat/" class="md-nav__link">
+      MigrateToChat
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NeedAdministratorRightsInTheChannel/" class="md-nav__link">
+      NeedAdministratorRightsInTheChannel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NetworkError/" class="md-nav__link">
+      NetworkError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NoStickerInRequest/" class="md-nav__link">
+      NoStickerInRequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotEnoughRightsToPinMessage/" class="md-nav__link">
+      NotEnoughRightsToPinMessage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotEnoughRightsToRestrict/" class="md-nav__link">
+      NotEnoughRightsToRestrict
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotFound/" class="md-nav__link">
+      NotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ObjectExpectedAsReplyMarkup/" class="md-nav__link">
+      ObjectExpectedAsReplyMarkup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PaymentProviderInvalid/" class="md-nav__link">
+      PaymentProviderInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PhotoAsInputFileRequired/" class="md-nav__link">
+      PhotoAsInputFileRequired
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PhotoDimensions/" class="md-nav__link">
+      PhotoDimensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollCantBeStopped/" class="md-nav__link">
+      PollCantBeStopped
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollCantHaveMoreOptions/" class="md-nav__link">
+      PollCantHaveMoreOptions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollError/" class="md-nav__link">
+      PollError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollHasAlreadyClosed/" class="md-nav__link">
+      PollHasAlreadyClosed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollMustHaveMoreOptions/" class="md-nav__link">
+      PollMustHaveMoreOptions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollOptionsMustBeNonEmpty/" class="md-nav__link">
+      PollOptionsMustBeNonEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollQuestionMustBeNonEmpty/" class="md-nav__link">
+      PollQuestionMustBeNonEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollSizeError/" class="md-nav__link">
+      PollSizeError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollsCantBeSentToPrivateChats/" class="md-nav__link">
+      PollsCantBeSentToPrivateChats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollsOptionsLengthTooLong/" class="md-nav__link">
+      PollsOptionsLengthTooLong
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/RequestTimeoutError/" class="md-nav__link">
+      RequestTimeoutError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ResultIdDuplicate/" class="md-nav__link">
+      ResultIdDuplicate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/RetryAfter/" class="md-nav__link">
+      RetryAfter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/StartParamInvalid/" class="md-nav__link">
+      StartParamInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/TerminatedByOtherGetUpdates/" class="md-nav__link">
+      TerminatedByOtherGetUpdates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/Throttled/" class="md-nav__link">
+      Throttled
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/TooMuchMessages/" class="md-nav__link">
+      TooMuchMessages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/TypeOfFileMismatch/" class="md-nav__link">
+      TypeOfFileMismatch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/URLHostIsEmpty/" class="md-nav__link">
+      URLHostIsEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/Unauthorized/" class="md-nav__link">
+      Unauthorized
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/UnavailableMembers/" class="md-nav__link">
+      UnavailableMembers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/UnsupportedUrlProtocol/" class="md-nav__link">
+      UnsupportedUrlProtocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/UserDeactivated/" class="md-nav__link">
+      UserDeactivated
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ValidationError/" class="md-nav__link">
+      ValidationError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WebhookRequireHTTPS/" class="md-nav__link">
+      WebhookRequireHTTPS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WrongFileIdentifier/" class="md-nav__link">
+      WrongFileIdentifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WrongLiveLocationPeriod/" class="md-nav__link">
+      WrongLiveLocationPeriod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WrongRemoteFileIdSpecified/" class="md-nav__link">
+      WrongRemoteFileIdSpecified
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-141" type="checkbox" id="nav-2-1-141" >
+    
+    <label class="md-nav__link" for="nav-2-1-141">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Format
+      
+    </label>
+    <nav class="md-nav" aria-label="Format" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-141">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Format
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Bold/" class="md-nav__link">
+      Bold
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Code/" class="md-nav__link">
+      Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/CodeBlock/" class="md-nav__link">
+      CodeBlock
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Group/" class="md-nav__link">
+      Group
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Italic/" class="md-nav__link">
+      Italic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/KeyValueItem/" class="md-nav__link">
+      KeyValueItem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/LineItem/" class="md-nav__link">
+      LineItem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Link/" class="md-nav__link">
+      Link
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Section/" class="md-nav__link">
+      Section
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Strikethrough/" class="md-nav__link">
+      Strikethrough
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/SubSection/" class="md-nav__link">
+      SubSection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/SubSubSection/" class="md-nav__link">
+      SubSubSection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Token/" class="md-nav__link">
+      Token
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Underline/" class="md-nav__link">
+      Underline
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/UserMention/" class="md-nav__link">
+      UserMention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-142" type="checkbox" id="nav-2-1-142" >
+    
+    <label class="md-nav__link" for="nav-2-1-142">
+      <span class="md-nav__icon md-icon"></span>
+      
+        HearsHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="HearsHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-142">
+        <span class="md-nav__icon md-icon"></span>
+        
+          HearsHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../HearsHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-143" type="checkbox" id="nav-2-1-143" >
+    
+    <label class="md-nav__link" for="nav-2-1-143">
+      <span class="md-nav__icon md-icon"></span>
+      
+        InlineKeyboardMarkup
+      
+    </label>
+    <nav class="md-nav" aria-label="InlineKeyboardMarkup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-143">
+        <span class="md-nav__icon md-icon"></span>
+        
+          InlineKeyboardMarkup
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineKeyboardMarkup/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-144" type="checkbox" id="nav-2-1-144" >
+    
+    <label class="md-nav__link" for="nav-2-1-144">
+      <span class="md-nav__icon md-icon"></span>
+      
+        InlineQueryHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="InlineQueryHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-144">
+        <span class="md-nav__icon md-icon"></span>
+        
+          InlineQueryHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-145" type="checkbox" id="nav-2-1-145" >
+    
+    <label class="md-nav__link" for="nav-2-1-145">
+      <span class="md-nav__icon md-icon"></span>
+      
+        InlineQueryResult
+      
+    </label>
+    <nav class="md-nav" aria-label="InlineQueryResult" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-145">
+        <span class="md-nav__icon md-icon"></span>
+        
+          InlineQueryResult
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResult/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-146" type="checkbox" id="nav-2-1-146" >
+    
+    <label class="md-nav__link" for="nav-2-1-146">
+      <span class="md-nav__icon md-icon"></span>
+      
+        KemalAdapter
+      
+    </label>
+    <nav class="md-nav" aria-label="KemalAdapter" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-146">
+        <span class="md-nav__icon md-icon"></span>
+        
+          KemalAdapter
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KemalAdapter/TGModel/" class="md-nav__link">
+      TGModel
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-147" type="checkbox" id="nav-2-1-147" >
+    
+    <label class="md-nav__link" for="nav-2-1-147">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Logger
+      
+    </label>
+    <nav class="md-nav" aria-label="Logger" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-147">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Logger
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Logger/Formatter/" class="md-nav__link">
+      Formatter
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-148" type="checkbox" id="nav-2-1-148" >
+    
+    <label class="md-nav__link" for="nav-2-1-148">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Poll
+      
+    </label>
+    <nav class="md-nav" aria-label="Poll" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-148">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Poll
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Poll/Type/" class="md-nav__link">
+      Type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-149" type="checkbox" id="nav-2-1-149" >
+    
+    <label class="md-nav__link" for="nav-2-1-149">
+      <span class="md-nav__icon md-icon"></span>
+      
+        ReplyKeyboardMarkup
+      
+    </label>
+    <nav class="md-nav" aria-label="ReplyKeyboardMarkup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-149">
+        <span class="md-nav__icon md-icon"></span>
+        
+          ReplyKeyboardMarkup
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ReplyKeyboardMarkup/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-150" type="checkbox" id="nav-2-1-150" >
+    
+    <label class="md-nav__link" for="nav-2-1-150">
+      <span class="md-nav__icon md-icon"></span>
+      
+        RoutedMenu
+      
+    </label>
+    <nav class="md-nav" aria-label="RoutedMenu" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-150">
+        <span class="md-nav__icon md-icon"></span>
+        
+          RoutedMenu
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Page/" class="md-nav__link">
+      Page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-150-3" type="checkbox" id="nav-2-1-150-3" >
+    
+    <label class="md-nav__link" for="nav-2-1-150-3">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Page
+      
+    </label>
+    <nav class="md-nav" aria-label="Page" data-md-level="4">
+      <label class="md-nav__title" for="nav-2-1-150-3">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Page
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Page/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Page/KeyboardBuilder/" class="md-nav__link">
+      KeyboardBuilder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-151" type="checkbox" id="nav-2-1-151" >
+    
+    <label class="md-nav__link" for="nav-2-1-151">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Stage
+      
+    </label>
+    <nav class="md-nav" aria-label="Stage" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-151">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Stage
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Stage/Step/" class="md-nav__link">
+      Step
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../String/" class="md-nav__link">
+      String
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods" class="md-nav__link">
+    CoreMethods
+  </a>
+  
+    <nav class="md-nav" aria-label="CoreMethods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#included-modules" class="md-nav__link">
+    Included modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-including-types" class="md-nav__link">
+    Direct including types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    Constants
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods::Log" class="md-nav__link">
+    Log
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#answer_callback_query(callback_query_id,text,show_alert,url,cache_time)" class="md-nav__link">
+    #answer_callback_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#answer_inline_query(inline_query_id,results,cache_time,is_personal,next_offset,switch_pm_text,switch_pm_parameter)" class="md-nav__link">
+    #answer_inline_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#close()" class="md-nav__link">
+    #close
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#copy_message(chat,from_chat,message,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #copy_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#delete_chat_photo(chat)" class="md-nav__link">
+    #delete_chat_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#delete_message(chat,message)" class="md-nav__link">
+    #delete_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_caption(chat,caption,message,inline_message,parse_mode,caption_entities,reply_markup)" class="md-nav__link">
+    #edit_message_caption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_live_location(chat,latitude,longitude,horizontal_accuracy,live_period,proximity_alert_radius,heading,message,inline_message,reply_markup)" class="md-nav__link">
+    #edit_message_live_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_media(chat,media,message,inline_message,reply_markup)" class="md-nav__link">
+    #edit_message_media
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_reply_markup(chat,message,inline_message,reply_markup)" class="md-nav__link">
+    #edit_message_reply_markup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#edit_message_text(chat,text,message,inline_message,parse_mode,entities,disable_link_preview,reply_markup)" class="md-nav__link">
+    #edit_message_text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#export_chat_invite_link(chat)" class="md-nav__link">
+    #export_chat_invite_link
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#forward_message(chat,from_chat,message,disable_notification)" class="md-nav__link">
+    #forward_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat(chat)" class="md-nav__link">
+    #get_chat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat_administrators(chat)" class="md-nav__link">
+    #get_chat_administrators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat_member(chat,user)" class="md-nav__link">
+    #get_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_chat_members_count(chat)" class="md-nav__link">
+    #get_chat_members_count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_file(file_id)" class="md-nav__link">
+    #get_file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_me()" class="md-nav__link">
+    #get_me
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_my_commands()" class="md-nav__link">
+    #get_my_commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_updates(offset,limit,timeout,allowed_updates)" class="md-nav__link">
+    #get_updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#get_user_profile_photos(user,offset,limit)" class="md-nav__link">
+    #get_user_profile_photos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#is_admin?(chat_id)" class="md-nav__link">
+    #is_admin?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#kick_chat_member(chat,user,until_date)" class="md-nav__link">
+    #kick_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#leave_chat(chat)" class="md-nav__link">
+    #leave_chat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#log_out()" class="md-nav__link">
+    #log_out
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#next_offset()" class="md-nav__link">
+    #next_offset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#pin_chat_message(chat,message,disable_notification)" class="md-nav__link">
+    #pin_chat_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#poll(delete_webhook)" class="md-nav__link">
+    #poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#polling()" class="md-nav__link">
+    #polling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#promote_chat_member(chat,user,is_anonymous,until_date,can_change_info,can_post_messages,can_edit_messages,can_delete_messages,can_invite_users,can_restrict_members,can_pin_messages,can_promote_members)" class="md-nav__link">
+    #promote_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#restrict_chat_member(chat,user,permissions,until_date)" class="md-nav__link">
+    #restrict_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_animation(chat,animation,duration,width,height,thumb,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_animation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_basketball(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_basketball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_chat_action(chat,action)" class="md-nav__link">
+    #send_chat_action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_contact(chat,phone_number,first_name,last_name,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_darts(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_darts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_dice(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_dice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_football(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_football
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_location(chat,latitude,longitude,horizontal_accuracy,live_period,proximity_alert_radius,heading,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_media_group(chat,media,disable_notification,reply_to_message,allow_sending_without_reply)" class="md-nav__link">
+    #send_media_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_message(chat,text,parse_mode,entities,link_preview,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_photo(chat,photo,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_slot_machine(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_slot_machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_venue(chat,latitude,longitude,title,address,foursquare_id,foursquare_type,google_place_id,google_place_type,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_venue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_video_note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#send_voice(chat,voice,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_voice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_admininstrator_custom_title(chat,user,custom_title)" class="md-nav__link">
+    #set_chat_admininstrator_custom_title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_description(chat,description)" class="md-nav__link">
+    #set_chat_description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_permissions(chat,permissions)" class="md-nav__link">
+    #set_chat_permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_photo(chat,photo)" class="md-nav__link">
+    #set_chat_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_chat_title(chat,title)" class="md-nav__link">
+    #set_chat_title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#set_my_commands(commands)" class="md-nav__link">
+    #set_my_commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#stop_message_live_location(chat,message,inline_message,reply_markup)" class="md-nav__link">
+    #stop_message_live_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#stop_polling()" class="md-nav__link">
+    #stop_polling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#unban_chat_member(chat,user,only_if_banned)" class="md-nav__link">
+    #unban_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#unpin_all_chat_messages(chat)" class="md-nav__link">
+    #unpin_all_chat_messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#unpin_chat_message(chat,message)" class="md-nav__link">
+    #unpin_chat_message
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/protoncr/tourmaline/tree/master/docs/api_reference/Tourmaline/Client/CoreMethods.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>CoreMethods</h1>
+                
+                <div class="doc doc-object doc-type module">
+<h2 class="doc doc-heading" id="Tourmaline::Client::CoreMethods">
+
+module <code>Tourmaline::Client::CoreMethods</code>
+  </h2>
+<div class="doc doc-contents first">
+<div class="doc doc-children">
+<h3 id="included-modules">Included modules</h3>
+<code><a href="../../Logger/#Tourmaline::Logger">Tourmaline::Logger</a></code>
+            <h3 id="direct-including-types">Direct including types</h3>
+<code><a href="../#Tourmaline::Client">Tourmaline::Client</a></code>
+
+          <h3 id="constants">Constants</h3>
+<div class="doc doc-object doc-constant">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods::Log">
+
+    <code>Log</code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+</div>
+<h3 id="methods">Methods</h3>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#answer_callback_query(callback_query_id,text,show_alert,url,cache_time)">
+
+    <code>
+      #answer_callback_query<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">callback_query_id</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">show_alert</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">url</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">cache_time</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send answers to callback queries sent from
+inline keyboards. The answer will be displayed to the user
+as a notification at the top of the chat screen or as
+an alert. On success, <code>true</code> is returned.</p>
+<blockquote>
+<p>Alternatively, the user can be redirected to the specified
+Game URL (<code>url</code>). For this option to work, you must first
+create a game for your bot via @Botfather and accept the
+terms. Otherwise, you may use links like
+<a href="https://t.me/your_bot?start=XXXX">t.me/your_bot?start=XXXX</a>
+that open your bot with a parameter.</p>
+</blockquote>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L83">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#answer_inline_query(inline_query_id,results,cache_time,is_personal,next_offset,switch_pm_text,switch_pm_parameter)">
+
+    <code>
+      #answer_inline_query<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">inline_query_id</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">cache_time</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">is_personal</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">next_offset</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">switch_pm_text</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">switch_pm_parameter</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send answers to an inline query.
+On success, True is returned. No more than
+<strong>50</strong> results per query are allowed.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L102">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#close()">
+
+    <code>
+      #close<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to close the bot instance before moving it from one local server to another.
+You need to delete the webhook before calling this method to ensure that the bot isn't
+launched again after server restart. The method will return error 429 in the first 10
+minutes after the bot is launched.</p>
+<p>Returns <code>true</code> on success. Requires no parameters.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L45">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#copy_message(chat,from_chat,message,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #copy_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">from_chat</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L837">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#delete_chat_photo(chat)">
+
+    <code>
+      #delete_chat_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to delete a chat photo. Photos can't be changed for private chats.
+The bot must be an administrator in the chat for this to work and must have the
+appropriate admin rights.
+Returns <code>true</code> on success.</p>
+<blockquote>
+<p><strong>Note:</strong> In regular groups (non-supergroups), this method will only work if the
+<code>All Members Are Admins</code> setting is off in the target group.</p>
+</blockquote>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L480">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#delete_message(chat,message)">
+
+    <code>
+      #delete_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to delete a <code>Message</code>, including service messages,
+with the following limitations:
+- A message can only be deleted if it was sent less than 48 hours ago.
+- Bots can delete outgoing messages in private chats, groups, and supergroups.
+- Bots can delete incoming messages in private chats.
+- Bots granted can_post_messages permissions can delete outgoing messages in channels.
+- If the bot is an administrator of a group, it can delete any message there.
+- If the bot has <code>can_delete_messages</code> permission in a supergroup or a
+  channel, it can delete any message there.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L132">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_caption(chat,caption,message,inline_message,parse_mode,caption_entities,reply_markup)">
+
+    <code>
+      #edit_message_caption<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">caption</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to edit captions of messages. On success,
+if edited message is sent by the bot, the edited
+<code>Message</code> is returned, otherwise <code>true</code>
+is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L146">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_live_location(chat,latitude,longitude,horizontal_accuracy,live_period,proximity_alert_radius,heading,message,inline_message,reply_markup)">
+
+    <code>
+      #edit_message_live_location<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">horizontal_accuracy</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">live_period</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proximity_alert_radius</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">heading</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to edit live location messages. A location can be edited until
+its live_period expires or editing is explicitly disabled by a call to
+<code>#stopMessageLiveLocation</code>.</p>
+<p>On success, if the edited message wasn't by the bot, the edited <code>Message</code> is
+returned, otherwise <code>true</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1100">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_media(chat,media,message,inline_message,reply_markup)">
+
+    <code>
+      #edit_message_media<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">media</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L900">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_reply_markup(chat,message,inline_message,reply_markup)">
+
+    <code>
+      #edit_message_reply_markup<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to edit only the reply markup of messages.
+On success, if edited message is sent by the bot, the
+edited <code>Message</code> is returned, otherwise <code>true</code> is
+returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L179">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_text(chat,text,message,inline_message,parse_mode,entities,disable_link_preview,reply_markup)">
+
+    <code>
+      #edit_message_text<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_link_preview</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to edit text and game messages. On success, if
+edited message is sent by the bot, the edited <code>Message</code>
+is returned, otherwise <code>true</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L204">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#export_chat_invite_link(chat)">
+
+    <code>
+      #export_chat_invite_link<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to generate a new invite link for a chat; any previously
+generated link is revoked. The bot must be an administrator in the chat
+for this to work and must have the appropriate admin rights.
+Returns the new invite link as <code>String</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L449">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#forward_message(chat,from_chat,message,disable_notification)">
+
+    <code>
+      #forward_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">from_chat</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to forward messages of any kind. On success,
+the sent <code>Message</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L237">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_chat(chat)">
+
+    <code>
+      #get_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to get up to date information about the chat
+(current name of the user for one-on-one conversations,
+current username of a user, group or channel, etc.).
+Returns a <code>Chat</code> object on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L259">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_chat_administrators(chat)">
+
+    <code>
+      #get_chat_administrators<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to get a list of administrators in a chat. On success,
+returns an <code>Array</code> of <code>ChatMember</code> objects that contains information
+about all chat administrators except other bots. If the chat is a
+group or a supergroup and no administrators were appointed,
+only the creator will be returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L272">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_chat_member(chat,user)">
+
+    <code>
+      #get_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to get information about a member of a chat. Returns a
+<code>ChatMember</code> object on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L282">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_chat_members_count(chat)">
+
+    <code>
+      #get_chat_members_count<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to get the number of members in a chat.
+Returns <code>Int32</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L297">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_file(file_id)">
+
+    <code>
+      #get_file<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">file_id</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to get basic info about a file and prepare it for downloading.
+For the moment, bots can download files of up to <strong>20MB</strong> in size. On success,
+a <code>TFile</code> object is returned. The file can then be downloaded via the
+link <code>https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;</code>, where
+<code>&lt;file_path&gt;</code> is taken from the response. It is guaranteed that
+the link will be valid for at least 1 hour. When the link
+expires, a new one can be requested by calling <code>#get_file</code> again.</p>
+<p>To simplify retrieving a link for a file, use the <code>#get_file_link</code> method.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L314">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_me()">
+
+    <code>
+      #get_me<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>A simple method for testing your bot's auth token. Requires
+no parameters. Returns basic information about the bot
+in form of a <code>User</code> object.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L24">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_my_commands()">
+
+    <code>
+      #get_my_commands<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to get the current list of the bot's commands. Requires no parameters.
+Returns Array of BotCommand on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1175">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_updates(offset,limit,timeout,allowed_updates)">
+
+    <code>
+      #get_updates<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">offset</span> <span class="o">=</span> <span class="vi">@next_offset</span><span class="p">,</span> <span class="n">limit</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">allowed_updates</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="nb">String</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to receive incoming updates using long polling
+(<a href="http://en.wikipedia.org/wiki/Push_technology#Long_polling">wiki</a>).
+An <code>Array</code> of <code>Update</code> objects is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L52">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_user_profile_photos(user,offset,limit)">
+
+    <code>
+      #get_user_profile_photos<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">limit</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to get a list of profile pictures for a user.
+Returns a <code>UserProfilePhotos</code> object.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L322">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#is_admin?(chat_id)">
+
+    <code>
+      #is_admin?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat_id</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Convenience method to check if this bot is an admin in
+the current chat. See <code>Client#get_chat_administrators</code>
+for more info.</p>
+<p>Note: This method should be used sparingly. It's much better to cache admins.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L16">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#kick_chat_member(chat,user,until_date)">
+
+    <code>
+      #kick_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">until_date</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to kick a user from a group, a supergroup or a channel.
+In the case of supergroups and channels, the user will not be able to
+return to the group on their own using invite links, etc., unless
+unbanned first. The bot must be an administrator in the chat
+for this to work and must have the appropriate admin
+rights. Returns <code>true</code> on success.</p>
+<blockquote>
+<p>Note: In regular groups (non-supergroups), this method will only work
+if the <code>All Members Are Admins</code> setting is off in the target group.
+Otherwise members may only be removed by the group's creator or
+by the member that added them.</p>
+</blockquote>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L347">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#leave_chat(chat)">
+
+    <code>
+      #leave_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method for your bot to leave a group,
+supergroup, or channel.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L585">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#log_out()">
+
+    <code>
+      #log_out<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to log out from the cloud Bot API server before launching the bot locally.
+You must log out the bot before running it locally, otherwise there is no guarantee that
+the bot will receive updates. After a successful call, you can immediately log in on a
+local server, but will not be able to log in back to the cloud Bot API server for
+10 minutes.</p>
+<p>Returns <code>true</code> on success. Requires no parameters.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L35">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#next_offset()">
+
+    <code>
+      #next_offset<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Int64</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L9">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#pin_chat_message(chat,message,disable_notification)">
+
+    <code>
+      #pin_chat_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to pin a message in a group, a supergroup, or a channel.
+The bot must be an administrator in the chat for this to work and must
+have the <code>can_pin_messages</code> admin right in the supergroup or
+<code>can_edit_messages</code> admin right in the channel.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L548">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#poll(delete_webhook)">
+
+    <code>
+      #poll<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">delete_webhook</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Start polling for updates. This method uses a combination of <code>#get_updates</code>
+and <code>#handle_update</code> to send continuously check Telegram's servers
+for updates.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1186">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#polling()">
+
+    <code>
+      #polling<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Bool</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L8">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#promote_chat_member(chat,user,is_anonymous,until_date,can_change_info,can_post_messages,can_edit_messages,can_delete_messages,can_invite_users,can_restrict_members,can_pin_messages,can_promote_members)">
+
+    <code>
+      #promote_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">is_anonymous</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">until_date</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_change_info</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_post_messages</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_edit_messages</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_delete_messages</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_invite_users</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_restrict_members</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_pin_messages</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_promote_members</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to promote or demote a user in a supergroup or a channel.
+The bot must be an administrator in the chat for this to work and must
+have the appropriate admin rights. Pass False for all boolean
+parameters to demote a user.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L412">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#restrict_chat_member(chat,user,permissions,until_date)">
+
+    <code>
+      #restrict_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">permissions</span><span class="p">,</span> <span class="n">until_date</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to unban a previously kicked user in a supergroup or
+channel. The user will not return to the group or channel
+automatically, but will be able to join via link, etc.
+The bot must be an administrator for this to work.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L388">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_animation(chat,animation,duration,width,height,thumb,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_animation<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">animation</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">thumb</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L632">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_audio<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">audio</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">preformer</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send audio files, if you want Telegram clients to display
+them in the music player. Your audio must be in the <code>.mp3</code> format.
+On success, the sent <code>Message</code> is returned. Bots can currently
+send audio files of up to <strong>50 MB</strong> in size, this limit may be
+changed in the future.</p>
+<p>For sending voice messages, use the <code>#sendVoice</code> method instead.
+TODO: Add filesize checking and validation.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L601">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_basketball(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_basketball<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send a basketball (🏀 emoji), which will have a random value from 1 to 6.
+On success, the sent Message is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L719">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_chat_action(chat,action)">
+
+    <code>
+      #send_chat_action<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">action</span> <span class="p">:</span> <span class="n">ChatAction</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method when you need to tell the user that something is happening on the
+bot's side. The status is set for 5 seconds or less (when a message arrives
+from your bot, Telegram clients clear its typing status).
+Returns <code>true</code> on success.</p>
+<blockquote>
+<p>Example: The ImageBot needs some time to process a request and upload the image.
+Instead of sending a text message along the lines of “Retrieving image, please
+wait…”, the bot may use <code>#sendChatAction</code> with action = upload_photo. The user
+will see a “sending photo” status for the bot.</p>
+</blockquote>
+<p>We only recommend using this method when a response from the bot will take a
+noticeable amount of time to arrive.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L680">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_contact(chat,phone_number,first_name,last_name,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_contact<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">phone_number</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send phone contacts.
+On success, the sent <code>Message</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L694">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_darts(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_darts<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send a darts (🎯 emoji), which will have a random value from 1 to 6.
+On success, the sent Message is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L719">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_dice(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_dice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send a dice (🎲 emoji), which will have a random value from 1 to 6.
+On success, the sent Message is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L719">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_document<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send general files.
+On success, the sent <code>Message</code> is returned. Bots can currently send files
+of any type of up to <strong>50 MB</strong> in size, this limit
+may be changed in the future.
+TODO: Add filesize checking and validation.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L748">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_football(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_football<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send a football (⚽️ emoji), which will have a random value from 1 to 5.
+On success, the sent Message is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L719">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_location(chat,latitude,longitude,horizontal_accuracy,live_period,proximity_alert_radius,heading,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_location<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">horizontal_accuracy</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">live_period</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proximity_alert_radius</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">heading</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send point on the map.
+On success, the sent <code>Message</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L776">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_media_group(chat,media,disable_notification,reply_to_message,allow_sending_without_reply)">
+
+    <code>
+      #send_media_group<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">media</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="n">InputMediaPhoto</span> <span class="o">|</span> <span class="n">InputMediaVideo</span> <span class="o">|</span> <span class="n">InputMediaAudio</span> <span class="o">|</span> <span class="n">InputMediaDocument</span><span class="p">),</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send a group of photos or videos as an album.
+On success, an array of the sent <code>Messages</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L927">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_message(chat,text,parse_mode,entities,link_preview,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">link_preview</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send text messages.
+On success, the sent <code>Message</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L809">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_photo(chat,photo,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send photos.
+On success, the sent <code>Message</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L871">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_slot_machine(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_slot_machine<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send a slot_machine (🎰 emoji), which will have a random value from 1 to 64.
+On success, the sent Message is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L719">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_venue(chat,latitude,longitude,title,address,foursquare_id,foursquare_type,google_place_id,google_place_type,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_venue<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">foursquare_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">foursquare_type</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">google_place_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">google_place_type</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send information about a venue.
+On success, the sent <code>Message</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L948">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_video<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send video files, Telegram clients support mp4 videos
+(other formats may be sent as Document).
+On success, the sent <code>Message</code> is returned. Bots can currently send
+video files of up to <strong>50 MB</strong> in size, this limit may be
+changed in the future.
+TODO: Add filesize checking and validation.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L989">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_video_note<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video_note</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>As of <a href="https://telegram.org/blog/video-messages-and-telescope">v.4.0</a>, Telegram
+clients support rounded square <code>mp4</code> videos of up to <strong>1</strong> minute long.
+Use this method to send video messages.
+On success, the sent <code>Message</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1025">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_voice(chat,voice,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+
+    <code>
+      #send_voice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">voice</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">preformer</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to send audio files, if you want Telegram clients to display the
+file as a playable voice message. For this to work, your audio must be in
+an <code>.ogg</code> file encoded with OPUS (other formats may be sent as <code>Audio</code>
+or <code>Document</code>).
+On success, the sent <code>Message</code> is returned. Bots can currently send voice
+messages of up to <strong>50 MB</strong> in size, this limit may be changed in the future.
+TODO: Add filesize checking and validation.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1064">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_admininstrator_custom_title(chat,user,custom_title)">
+
+    <code>
+      #set_chat_admininstrator_custom_title<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">custom_title</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
+Returns True on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L490">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_description(chat,description)">
+
+    <code>
+      #set_chat_description<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to change the description of a supergroup or a channel.
+The bot must be an administrator in the chat for this to work and
+must have the appropriate admin rights.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L534">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_permissions(chat,permissions)">
+
+    <code>
+      #set_chat_permissions<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">permissions</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to set default chat permissions for all members. The bot must be
+an administrator in the group or a supergroup for this to work and must have
+the can_restrict_members admin rights.
+Returns True on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L505">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_photo(chat,photo)">
+
+    <code>
+      #set_chat_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">photo</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to set a new profile photo for the chat. Photos can't be changed
+for private chats. The bot must be an administrator in the chat for this to
+work and must have the appropriate admin rights.
+Returns <code>true</code> on success.</p>
+<blockquote>
+<p><strong>Note:</strong> In regular groups (non-supergroups), this method will only work if the
+<code>All Members Are Admins</code> setting is off in the target group.</p>
+</blockquote>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L464">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_title(chat,title)">
+
+    <code>
+      #set_chat_title<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to change the title of a chat. Titles can't be changed for
+private chats. The bot must be an administrator in the chat for this to
+work and must have the appropriate admin rights.
+Returns <code>true</code> on success.</p>
+<blockquote>
+<p><strong>Note:</strong> In regular groups (non-supergroups), this method will only
+work if the <code>All Members Are Admins</code> setting is off in the target group.</p>
+</blockquote>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L521">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_my_commands(commands)">
+
+    <code>
+      #set_my_commands<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">commands</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="n">BotCommand</span> <span class="o">|</span> <span class="n">NamedTuple</span><span class="p">()))</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to change the list of the bot's commands.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1163">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#stop_message_live_location(chat,message,inline_message,reply_markup)">
+
+    <code>
+      #stop_message_live_location<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to stop updating a live location message before
+live_period expires.</p>
+<p>On success, if the message was sent by the bot, the sent
+<code>Message</code> is returned, otherwise <code>true</code> is returned.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1139">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#stop_polling()">
+
+    <code>
+      #stop_polling<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Stops the bot from polling.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1213">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#unban_chat_member(chat,user,only_if_banned)">
+
+    <code>
+      #unban_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">only_if_banned</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to unban a previously kicked user in a supergroup
+or channel. The user will not return to the group or channel
+automatically, but will be able to join via link, etc.
+The bot must be an administrator for this to work.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L368">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#unpin_all_chat_messages(chat)">
+
+    <code>
+      #unpin_all_chat_messages<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L574">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#unpin_chat_message(chat,message)">
+
+    <code>
+      #unpin_chat_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+<p>Use this method to unpin a message in a group, a supergroup, or a channel.
+The bot must be an administrator in the chat for this to work and must
+have the ‘can_pin_messages’ admin right in the supergroup or
+‘can_edit_messages’ admin right in the channel.
+Returns <code>true</code> on success.</p>
+</div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L564">View source</a>]
+</div>
+</div>
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../ChosenInlineResultHandler/Context/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Context
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../GameMethods/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                GameMethods
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

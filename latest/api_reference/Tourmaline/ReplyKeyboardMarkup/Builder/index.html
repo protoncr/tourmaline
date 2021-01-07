@@ -1,0 +1,4750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://tourmaline.readthedocs.com/api_reference/Tourmaline/ReplyKeyboardMarkup/Builder/">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Builder - Tourmaline</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#Tourmaline::ReplyKeyboardMarkup::Builder" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://tourmaline.readthedocs.com" title="Tourmaline" class="md-header-nav__button md-logo" aria-label="Tourmaline">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Tourmaline
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Builder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://tourmaline.readthedocs.com" title="Tourmaline" class="md-nav__button md-logo" aria-label="Tourmaline">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Tourmaline
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      <span class="md-nav__icon md-icon"></span>
+      
+        API Reference
+      
+    </label>
+    <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        
+          API Reference
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Tourmaline
+      
+    </label>
+    <nav class="md-nav" aria-label="Tourmaline" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Tourmaline
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Animation/" class="md-nav__link">
+      Animation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Audio/" class="md-nav__link">
+      Audio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../BotCommand/" class="md-nav__link">
+      BotCommand
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Button/" class="md-nav__link">
+      Button
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackGame/" class="md-nav__link">
+      CallbackGame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackQuery/" class="md-nav__link">
+      CallbackQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackQueryHandler/" class="md-nav__link">
+      CallbackQueryHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Chat/" class="md-nav__link">
+      Chat
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatAction/" class="md-nav__link">
+      ChatAction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatLocation/" class="md-nav__link">
+      ChatLocation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatMember/" class="md-nav__link">
+      ChatMember
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatPermissions/" class="md-nav__link">
+      ChatPermissions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChatPhoto/" class="md-nav__link">
+      ChatPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChosenInlineResult/" class="md-nav__link">
+      ChosenInlineResult
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChosenInlineResultHandler/" class="md-nav__link">
+      ChosenInlineResultHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Command/" class="md-nav__link">
+      Command
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CommandHandler/" class="md-nav__link">
+      CommandHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Contact/" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Dice/" class="md-nav__link">
+      Dice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Document/" class="md-nav__link">
+      Document
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Edited/" class="md-nav__link">
+      Edited
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EditedHandler/" class="md-nav__link">
+      EditedHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EncryptedCredentials/" class="md-nav__link">
+      EncryptedCredentials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EncryptedPassportElement/" class="md-nav__link">
+      EncryptedPassportElement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/" class="md-nav__link">
+      Error
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EventHandler/" class="md-nav__link">
+      EventHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ForceReply/" class="md-nav__link">
+      ForceReply
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/" class="md-nav__link">
+      Format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Game/" class="md-nav__link">
+      Game
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../GameHighScore/" class="md-nav__link">
+      GameHighScore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../HashPersistence/" class="md-nav__link">
+      HashPersistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Hears/" class="md-nav__link">
+      Hears
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../HearsHandler/" class="md-nav__link">
+      HearsHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Helpers/" class="md-nav__link">
+      Helpers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineKeyboardButton/" class="md-nav__link">
+      InlineKeyboardButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineKeyboardMarkup/" class="md-nav__link">
+      InlineKeyboardMarkup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQuery/" class="md-nav__link">
+      InlineQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryHandler/" class="md-nav__link">
+      InlineQueryHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResult/" class="md-nav__link">
+      InlineQueryResult
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultArticle/" class="md-nav__link">
+      InlineQueryResultArticle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultAudio/" class="md-nav__link">
+      InlineQueryResultAudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedAudio/" class="md-nav__link">
+      InlineQueryResultCachedAudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedDocument/" class="md-nav__link">
+      InlineQueryResultCachedDocument
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedGif/" class="md-nav__link">
+      InlineQueryResultCachedGif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedMpeg4Gif/" class="md-nav__link">
+      InlineQueryResultCachedMpeg4Gif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedPhoto/" class="md-nav__link">
+      InlineQueryResultCachedPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedSticker/" class="md-nav__link">
+      InlineQueryResultCachedSticker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedVideo/" class="md-nav__link">
+      InlineQueryResultCachedVideo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultCachedVoice/" class="md-nav__link">
+      InlineQueryResultCachedVoice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultContact/" class="md-nav__link">
+      InlineQueryResultContact
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultDocument/" class="md-nav__link">
+      InlineQueryResultDocument
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultGif/" class="md-nav__link">
+      InlineQueryResultGif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultLocation/" class="md-nav__link">
+      InlineQueryResultLocation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultMpeg4Gif/" class="md-nav__link">
+      InlineQueryResultMpeg4Gif
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultPhoto/" class="md-nav__link">
+      InlineQueryResultPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultVenue/" class="md-nav__link">
+      InlineQueryResultVenue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultVideo/" class="md-nav__link">
+      InlineQueryResultVideo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResultVoice/" class="md-nav__link">
+      InlineQueryResultVoice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputContactMessageContent/" class="md-nav__link">
+      InputContactMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputLocationMessageContent/" class="md-nav__link">
+      InputLocationMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMedia/" class="md-nav__link">
+      InputMedia
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaAnimation/" class="md-nav__link">
+      InputMediaAnimation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaAudio/" class="md-nav__link">
+      InputMediaAudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaDocument/" class="md-nav__link">
+      InputMediaDocument
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaPhoto/" class="md-nav__link">
+      InputMediaPhoto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMediaVideo/" class="md-nav__link">
+      InputMediaVideo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputMessageContent/" class="md-nav__link">
+      InputMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputTextMessageContent/" class="md-nav__link">
+      InputTextMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InputVenueMessageContent/" class="md-nav__link">
+      InputVenueMessageContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Invoice/" class="md-nav__link">
+      Invoice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../JsonPersistence/" class="md-nav__link">
+      JsonPersistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KemalAdapter/" class="md-nav__link">
+      KemalAdapter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KeyboardBuilder/" class="md-nav__link">
+      KeyboardBuilder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KeyboardButton/" class="md-nav__link">
+      KeyboardButton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KeyboardButtonPollType/" class="md-nav__link">
+      KeyboardButtonPollType
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../LabeledPrice/" class="md-nav__link">
+      LabeledPrice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Location/" class="md-nav__link">
+      Location
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Logger/" class="md-nav__link">
+      Logger
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../LoginURL/" class="md-nav__link">
+      LoginURL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../MaskPosition/" class="md-nav__link">
+      MaskPosition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Message/" class="md-nav__link">
+      Message
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../MessageEntity/" class="md-nav__link">
+      MessageEntity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../NilPersistence/" class="md-nav__link">
+      NilPersistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../On/" class="md-nav__link">
+      On
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OnCallbackQuery/" class="md-nav__link">
+      OnCallbackQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OnChosenInlineResult/" class="md-nav__link">
+      OnChosenInlineResult
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OnInlineQuery/" class="md-nav__link">
+      OnInlineQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../OrderInfo/" class="md-nav__link">
+      OrderInfo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PaginatedKeyboard/" class="md-nav__link">
+      PaginatedKeyboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ParseMode/" class="md-nav__link">
+      ParseMode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportData/" class="md-nav__link">
+      PassportData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementError/" class="md-nav__link">
+      PassportElementError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorDataField/" class="md-nav__link">
+      PassportElementErrorDataField
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorFile/" class="md-nav__link">
+      PassportElementErrorFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorFiles/" class="md-nav__link">
+      PassportElementErrorFiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorFrontSide/" class="md-nav__link">
+      PassportElementErrorFrontSide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorReverseSide/" class="md-nav__link">
+      PassportElementErrorReverseSide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorSelfie/" class="md-nav__link">
+      PassportElementErrorSelfie
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorTranslationFile/" class="md-nav__link">
+      PassportElementErrorTranslationFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorTranslationFiles/" class="md-nav__link">
+      PassportElementErrorTranslationFiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportElementErrorUnspecified/" class="md-nav__link">
+      PassportElementErrorUnspecified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PassportFile/" class="md-nav__link">
+      PassportFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Persistence/" class="md-nav__link">
+      Persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PhotoSize/" class="md-nav__link">
+      PhotoSize
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Poll/" class="md-nav__link">
+      Poll
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PollAnswer/" class="md-nav__link">
+      PollAnswer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PollOption/" class="md-nav__link">
+      PollOption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../PreCheckoutQuery/" class="md-nav__link">
+      PreCheckoutQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ProximityAlertTriggered/" class="md-nav__link">
+      ProximityAlertTriggered
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../" class="md-nav__link">
+      ReplyKeyboardMarkup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ReplyKeyboardRemove/" class="md-nav__link">
+      ReplyKeyboardRemove
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/" class="md-nav__link">
+      RoutedMenu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ShippingAddress/" class="md-nav__link">
+      ShippingAddress
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ShippingOption/" class="md-nav__link">
+      ShippingOption
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ShippingQuery/" class="md-nav__link">
+      ShippingQuery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Stage/" class="md-nav__link">
+      Stage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Sticker/" class="md-nav__link">
+      Sticker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../StickerSet/" class="md-nav__link">
+      StickerSet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../SuccessfulPayment/" class="md-nav__link">
+      SuccessfulPayment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../TFile/" class="md-nav__link">
+      TFile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Update/" class="md-nav__link">
+      Update
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../UpdateAction/" class="md-nav__link">
+      UpdateAction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../UpdateHandler/" class="md-nav__link">
+      UpdateHandler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../User/" class="md-nav__link">
+      User
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../UserProfilePhotos/" class="md-nav__link">
+      UserProfilePhotos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Venue/" class="md-nav__link">
+      Venue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Video/" class="md-nav__link">
+      Video
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../VideoNote/" class="md-nav__link">
+      VideoNote
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Voice/" class="md-nav__link">
+      Voice
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../WebhookInfo/" class="md-nav__link">
+      WebhookInfo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-133" type="checkbox" id="nav-2-1-133" >
+    
+    <label class="md-nav__link" for="nav-2-1-133">
+      <span class="md-nav__icon md-icon"></span>
+      
+        CallbackQueryHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="CallbackQueryHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-133">
+        <span class="md-nav__icon md-icon"></span>
+        
+          CallbackQueryHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CallbackQueryHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-134" type="checkbox" id="nav-2-1-134" >
+    
+    <label class="md-nav__link" for="nav-2-1-134">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Chat
+      
+    </label>
+    <nav class="md-nav" aria-label="Chat" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-134">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Chat
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Chat/Type/" class="md-nav__link">
+      Type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-135" type="checkbox" id="nav-2-1-135" >
+    
+    <label class="md-nav__link" for="nav-2-1-135">
+      <span class="md-nav__icon md-icon"></span>
+      
+        ChosenInlineResultHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="ChosenInlineResultHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-135">
+        <span class="md-nav__icon md-icon"></span>
+        
+          ChosenInlineResultHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../ChosenInlineResultHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-136" type="checkbox" id="nav-2-1-136" >
+    
+    <label class="md-nav__link" for="nav-2-1-136">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Client
+      
+    </label>
+    <nav class="md-nav" aria-label="Client" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-136">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Client
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/CoreMethods/" class="md-nav__link">
+      CoreMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/GameMethods/" class="md-nav__link">
+      GameMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/PassportMethods/" class="md-nav__link">
+      PassportMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/PaymentMethods/" class="md-nav__link">
+      PaymentMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/PollMethods/" class="md-nav__link">
+      PollMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/StickerMethods/" class="md-nav__link">
+      StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/WebhookMethods/" class="md-nav__link">
+      WebhookMethods
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-137" type="checkbox" id="nav-2-1-137" >
+    
+    <label class="md-nav__link" for="nav-2-1-137">
+      <span class="md-nav__icon md-icon"></span>
+      
+        CommandHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="CommandHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-137">
+        <span class="md-nav__icon md-icon"></span>
+        
+          CommandHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../CommandHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-138" type="checkbox" id="nav-2-1-138" >
+    
+    <label class="md-nav__link" for="nav-2-1-138">
+      <span class="md-nav__icon md-icon"></span>
+      
+        EditedHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="EditedHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-138">
+        <span class="md-nav__icon md-icon"></span>
+        
+          EditedHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EditedHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-139" type="checkbox" id="nav-2-1-139" >
+    
+    <label class="md-nav__link" for="nav-2-1-139">
+      <span class="md-nav__icon md-icon"></span>
+      
+        EncryptedPassportElement
+      
+    </label>
+    <nav class="md-nav" aria-label="EncryptedPassportElement" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-139">
+        <span class="md-nav__icon md-icon"></span>
+        
+          EncryptedPassportElement
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../EncryptedPassportElement/Type/" class="md-nav__link">
+      Type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-140" type="checkbox" id="nav-2-1-140" >
+    
+    <label class="md-nav__link" for="nav-2-1-140">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Error
+      
+    </label>
+    <nav class="md-nav" aria-label="Error" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-140">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Error
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadRequest/" class="md-nav__link">
+      BadRequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhook/" class="md-nav__link">
+      BadWebhook
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhookAddrInfo/" class="md-nav__link">
+      BadWebhookAddrInfo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhookNoAddressAssociatedWithHostname/" class="md-nav__link">
+      BadWebhookNoAddressAssociatedWithHostname
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BadWebhookPort/" class="md-nav__link">
+      BadWebhookPort
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BotBlocked/" class="md-nav__link">
+      BotBlocked
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BotDomainInvalid/" class="md-nav__link">
+      BotDomainInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/BotKicked/" class="md-nav__link">
+      BotKicked
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ButtonDataInvalid/" class="md-nav__link">
+      ButtonDataInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ButtonURLInvalid/" class="md-nav__link">
+      ButtonURLInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantDemoteChatCreator/" class="md-nav__link">
+      CantDemoteChatCreator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantGetUpdates/" class="md-nav__link">
+      CantGetUpdates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantInitiateConversation/" class="md-nav__link">
+      CantInitiateConversation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantParseEntities/" class="md-nav__link">
+      CantParseEntities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantParseUrl/" class="md-nav__link">
+      CantParseUrl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantRestrictSelf/" class="md-nav__link">
+      CantRestrictSelf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CantTalkWithBots/" class="md-nav__link">
+      CantTalkWithBots
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatAdminRequired/" class="md-nav__link">
+      ChatAdminRequired
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatDescriptionIsNotModified/" class="md-nav__link">
+      ChatDescriptionIsNotModified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatIdIsEmpty/" class="md-nav__link">
+      ChatIdIsEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ChatNotFound/" class="md-nav__link">
+      ChatNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ConflictError/" class="md-nav__link">
+      ConflictError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/CurrencyTotalAmountInvalid/" class="md-nav__link">
+      CurrencyTotalAmountInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/GroupDeactivated/" class="md-nav__link">
+      GroupDeactivated
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InlineKeyboardExpected/" class="md-nav__link">
+      InlineKeyboardExpected
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidHTTPUrlContent/" class="md-nav__link">
+      InvalidHTTPUrlContent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidPeerID/" class="md-nav__link">
+      InvalidPeerID
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidQueryID/" class="md-nav__link">
+      InvalidQueryID
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidResultID/" class="md-nav__link">
+      InvalidResultID
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidStickersSet/" class="md-nav__link">
+      InvalidStickersSet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/InvalidUserId/" class="md-nav__link">
+      InvalidUserId
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MemberListInaccessible/" class="md-nav__link">
+      MemberListInaccessible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageCantBeDeleted/" class="md-nav__link">
+      MessageCantBeDeleted
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageCantBeEdited/" class="md-nav__link">
+      MessageCantBeEdited
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageError/" class="md-nav__link">
+      MessageError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIdInvalid/" class="md-nav__link">
+      MessageIdInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIdentifierNotSpecified/" class="md-nav__link">
+      MessageIdentifierNotSpecified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIsNotAPoll/" class="md-nav__link">
+      MessageIsNotAPoll
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageIsTooLong/" class="md-nav__link">
+      MessageIsTooLong
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageNotModified/" class="md-nav__link">
+      MessageNotModified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageTextIsEmpty/" class="md-nav__link">
+      MessageTextIsEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToDeleteNotFound/" class="md-nav__link">
+      MessageToDeleteNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToEditNotFound/" class="md-nav__link">
+      MessageToEditNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToForwardNotFound/" class="md-nav__link">
+      MessageToForwardNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageToReplyNotFound/" class="md-nav__link">
+      MessageToReplyNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MessageWithPollNotFound/" class="md-nav__link">
+      MessageWithPollNotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MethodIsNotAvailable/" class="md-nav__link">
+      MethodIsNotAvailable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MethodNotAvailableInPrivateChats/" class="md-nav__link">
+      MethodNotAvailableInPrivateChats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MethodNotKnown/" class="md-nav__link">
+      MethodNotKnown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/MigrateToChat/" class="md-nav__link">
+      MigrateToChat
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NeedAdministratorRightsInTheChannel/" class="md-nav__link">
+      NeedAdministratorRightsInTheChannel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NetworkError/" class="md-nav__link">
+      NetworkError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NoStickerInRequest/" class="md-nav__link">
+      NoStickerInRequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotEnoughRightsToPinMessage/" class="md-nav__link">
+      NotEnoughRightsToPinMessage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotEnoughRightsToRestrict/" class="md-nav__link">
+      NotEnoughRightsToRestrict
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotFound/" class="md-nav__link">
+      NotFound
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ObjectExpectedAsReplyMarkup/" class="md-nav__link">
+      ObjectExpectedAsReplyMarkup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PaymentProviderInvalid/" class="md-nav__link">
+      PaymentProviderInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PhotoAsInputFileRequired/" class="md-nav__link">
+      PhotoAsInputFileRequired
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PhotoDimensions/" class="md-nav__link">
+      PhotoDimensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollCantBeStopped/" class="md-nav__link">
+      PollCantBeStopped
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollCantHaveMoreOptions/" class="md-nav__link">
+      PollCantHaveMoreOptions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollError/" class="md-nav__link">
+      PollError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollHasAlreadyClosed/" class="md-nav__link">
+      PollHasAlreadyClosed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollMustHaveMoreOptions/" class="md-nav__link">
+      PollMustHaveMoreOptions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollOptionsMustBeNonEmpty/" class="md-nav__link">
+      PollOptionsMustBeNonEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollQuestionMustBeNonEmpty/" class="md-nav__link">
+      PollQuestionMustBeNonEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollSizeError/" class="md-nav__link">
+      PollSizeError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollsCantBeSentToPrivateChats/" class="md-nav__link">
+      PollsCantBeSentToPrivateChats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/PollsOptionsLengthTooLong/" class="md-nav__link">
+      PollsOptionsLengthTooLong
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/RequestTimeoutError/" class="md-nav__link">
+      RequestTimeoutError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ResultIdDuplicate/" class="md-nav__link">
+      ResultIdDuplicate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/RetryAfter/" class="md-nav__link">
+      RetryAfter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/StartParamInvalid/" class="md-nav__link">
+      StartParamInvalid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/TerminatedByOtherGetUpdates/" class="md-nav__link">
+      TerminatedByOtherGetUpdates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/Throttled/" class="md-nav__link">
+      Throttled
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/TooMuchMessages/" class="md-nav__link">
+      TooMuchMessages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/TypeOfFileMismatch/" class="md-nav__link">
+      TypeOfFileMismatch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/URLHostIsEmpty/" class="md-nav__link">
+      URLHostIsEmpty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/Unauthorized/" class="md-nav__link">
+      Unauthorized
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/UnavailableMembers/" class="md-nav__link">
+      UnavailableMembers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/UnsupportedUrlProtocol/" class="md-nav__link">
+      UnsupportedUrlProtocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/UserDeactivated/" class="md-nav__link">
+      UserDeactivated
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/ValidationError/" class="md-nav__link">
+      ValidationError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WebhookRequireHTTPS/" class="md-nav__link">
+      WebhookRequireHTTPS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WrongFileIdentifier/" class="md-nav__link">
+      WrongFileIdentifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WrongLiveLocationPeriod/" class="md-nav__link">
+      WrongLiveLocationPeriod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/WrongRemoteFileIdSpecified/" class="md-nav__link">
+      WrongRemoteFileIdSpecified
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-141" type="checkbox" id="nav-2-1-141" >
+    
+    <label class="md-nav__link" for="nav-2-1-141">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Format
+      
+    </label>
+    <nav class="md-nav" aria-label="Format" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-141">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Format
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Bold/" class="md-nav__link">
+      Bold
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Code/" class="md-nav__link">
+      Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/CodeBlock/" class="md-nav__link">
+      CodeBlock
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Group/" class="md-nav__link">
+      Group
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Italic/" class="md-nav__link">
+      Italic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/KeyValueItem/" class="md-nav__link">
+      KeyValueItem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/LineItem/" class="md-nav__link">
+      LineItem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Link/" class="md-nav__link">
+      Link
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Section/" class="md-nav__link">
+      Section
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Strikethrough/" class="md-nav__link">
+      Strikethrough
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/SubSection/" class="md-nav__link">
+      SubSection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/SubSubSection/" class="md-nav__link">
+      SubSubSection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Token/" class="md-nav__link">
+      Token
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/Underline/" class="md-nav__link">
+      Underline
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Format/UserMention/" class="md-nav__link">
+      UserMention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-142" type="checkbox" id="nav-2-1-142" >
+    
+    <label class="md-nav__link" for="nav-2-1-142">
+      <span class="md-nav__icon md-icon"></span>
+      
+        HearsHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="HearsHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-142">
+        <span class="md-nav__icon md-icon"></span>
+        
+          HearsHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../HearsHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-143" type="checkbox" id="nav-2-1-143" >
+    
+    <label class="md-nav__link" for="nav-2-1-143">
+      <span class="md-nav__icon md-icon"></span>
+      
+        InlineKeyboardMarkup
+      
+    </label>
+    <nav class="md-nav" aria-label="InlineKeyboardMarkup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-143">
+        <span class="md-nav__icon md-icon"></span>
+        
+          InlineKeyboardMarkup
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineKeyboardMarkup/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-144" type="checkbox" id="nav-2-1-144" >
+    
+    <label class="md-nav__link" for="nav-2-1-144">
+      <span class="md-nav__icon md-icon"></span>
+      
+        InlineQueryHandler
+      
+    </label>
+    <nav class="md-nav" aria-label="InlineQueryHandler" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-144">
+        <span class="md-nav__icon md-icon"></span>
+        
+          InlineQueryHandler
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryHandler/Context/" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-145" type="checkbox" id="nav-2-1-145" >
+    
+    <label class="md-nav__link" for="nav-2-1-145">
+      <span class="md-nav__icon md-icon"></span>
+      
+        InlineQueryResult
+      
+    </label>
+    <nav class="md-nav" aria-label="InlineQueryResult" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-145">
+        <span class="md-nav__icon md-icon"></span>
+        
+          InlineQueryResult
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../InlineQueryResult/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-146" type="checkbox" id="nav-2-1-146" >
+    
+    <label class="md-nav__link" for="nav-2-1-146">
+      <span class="md-nav__icon md-icon"></span>
+      
+        KemalAdapter
+      
+    </label>
+    <nav class="md-nav" aria-label="KemalAdapter" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-146">
+        <span class="md-nav__icon md-icon"></span>
+        
+          KemalAdapter
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../KemalAdapter/TGModel/" class="md-nav__link">
+      TGModel
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-147" type="checkbox" id="nav-2-1-147" >
+    
+    <label class="md-nav__link" for="nav-2-1-147">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Logger
+      
+    </label>
+    <nav class="md-nav" aria-label="Logger" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-147">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Logger
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Logger/Formatter/" class="md-nav__link">
+      Formatter
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-148" type="checkbox" id="nav-2-1-148" >
+    
+    <label class="md-nav__link" for="nav-2-1-148">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Poll
+      
+    </label>
+    <nav class="md-nav" aria-label="Poll" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-148">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Poll
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Poll/Type/" class="md-nav__link">
+      Type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-149" type="checkbox" id="nav-2-1-149" checked>
+    
+    <label class="md-nav__link" for="nav-2-1-149">
+      <span class="md-nav__icon md-icon"></span>
+      
+        ReplyKeyboardMarkup
+      
+    </label>
+    <nav class="md-nav" aria-label="ReplyKeyboardMarkup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-149">
+        <span class="md-nav__icon md-icon"></span>
+        
+          ReplyKeyboardMarkup
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        
+          <a href="./" class="md-nav__link md-nav__link--active"
+            style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Builder
+        </a>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Builder
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder" class="md-nav__link">
+    Builder
+  </a>
+  
+    <nav class="md-nav" aria-label="Builder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-methods" class="md-nav__link">
+    Class methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Class methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder.new(force_reply,remove_keyboard,selective,keyboard,resize,one_time)" class="md-nav__link">
+    .new
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#contact_request_button(text)" class="md-nav__link">
+    #contact_request_button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#keyboard(columns)" class="md-nav__link">
+    #keyboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#location_request_button(text)" class="md-nav__link">
+    #location_request_button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#poll_request_button(text,type)" class="md-nav__link">
+    #poll_request_button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#text_button(text)" class="md-nav__link">
+    #text_button
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-150" type="checkbox" id="nav-2-1-150" >
+    
+    <label class="md-nav__link" for="nav-2-1-150">
+      <span class="md-nav__icon md-icon"></span>
+      
+        RoutedMenu
+      
+    </label>
+    <nav class="md-nav" aria-label="RoutedMenu" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-150">
+        <span class="md-nav__icon md-icon"></span>
+        
+          RoutedMenu
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Page/" class="md-nav__link">
+      Page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-150-3" type="checkbox" id="nav-2-1-150-3" >
+    
+    <label class="md-nav__link" for="nav-2-1-150-3">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Page
+      
+    </label>
+    <nav class="md-nav" aria-label="Page" data-md-level="4">
+      <label class="md-nav__title" for="nav-2-1-150-3">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Page
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Page/Builder/" class="md-nav__link">
+      Builder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../RoutedMenu/Page/KeyboardBuilder/" class="md-nav__link">
+      KeyboardBuilder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-151" type="checkbox" id="nav-2-1-151" >
+    
+    <label class="md-nav__link" for="nav-2-1-151">
+      <span class="md-nav__icon md-icon"></span>
+      
+        Stage
+      
+    </label>
+    <nav class="md-nav" aria-label="Stage" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-151">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Stage
+        
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Stage/Step/" class="md-nav__link">
+      Step
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../String/" class="md-nav__link">
+      String
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder" class="md-nav__link">
+    Builder
+  </a>
+  
+    <nav class="md-nav" aria-label="Builder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-methods" class="md-nav__link">
+    Class methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Class methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder.new(force_reply,remove_keyboard,selective,keyboard,resize,one_time)" class="md-nav__link">
+    .new
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#contact_request_button(text)" class="md-nav__link">
+    #contact_request_button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#keyboard(columns)" class="md-nav__link">
+    #keyboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#location_request_button(text)" class="md-nav__link">
+    #location_request_button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#poll_request_button(text,type)" class="md-nav__link">
+    #poll_request_button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ReplyKeyboardMarkup::Builder#text_button(text)" class="md-nav__link">
+    #text_button
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/protoncr/tourmaline/tree/master/docs/api_reference/Tourmaline/ReplyKeyboardMarkup/Builder.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Builder</h1>
+                
+                <div class="doc doc-object doc-type class">
+<h2 class="doc doc-heading" id="Tourmaline::ReplyKeyboardMarkup::Builder">
+
+class <code>Tourmaline::ReplyKeyboardMarkup::Builder</code>
+      <br />
+<small>inherits <code><a href="../../KeyboardBuilder/#Tourmaline::KeyboardBuilder">Tourmaline::KeyboardBuilder</a></code></small>
+  </h2>
+<div class="doc doc-contents first">
+<div class="doc doc-children">
+<h3 id="class-methods">Class methods</h3>
+<div class="doc doc-object doc-method doc-class_method">
+<h4 class="doc doc-heading" id="Tourmaline::ReplyKeyboardMarkup::Builder.new(force_reply,remove_keyboard,selective,keyboard,resize,one_time)">
+
+    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">force_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">remove_keyboard</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">selective</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">keyboard</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">T</span><span class="p">,</span> <span class="n">resize</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">one_time</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/keyboard_builder.cr#L17">View source</a>]
+</div>
+<h3 id="methods">Methods</h3>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::ReplyKeyboardMarkup::Builder#contact_request_button(text)">
+
+    <code>
+      #contact_request_button<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">text</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/reply_keyboard_markup.cr#L84">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::ReplyKeyboardMarkup::Builder#keyboard(columns)">
+
+    <code>
+      #keyboard<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">:</span> <span class="n">G</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/reply_keyboard_markup.cr#L75">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::ReplyKeyboardMarkup::Builder#location_request_button(text)">
+
+    <code>
+      #location_request_button<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">text</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/reply_keyboard_markup.cr#L88">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::ReplyKeyboardMarkup::Builder#poll_request_button(text,type)">
+
+    <code>
+      #poll_request_button<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="k">type</span> <span class="p">:</span> <span class="n">Poll</span><span class="o">::</span><span class="n">Type</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/reply_keyboard_markup.cr#L92">View source</a>]
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::ReplyKeyboardMarkup::Builder#text_button(text)">
+
+    <code>
+      #text_button<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">text</span><span class="p">)</span></code></span>
+    </code>
+  </h4>
+<div class="doc doc-contents ">
+  </div>
+
+    [<a href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/reply_keyboard_markup.cr#L80">View source</a>]
+</div>
+</div>
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../Poll/Type/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Type
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../RoutedMenu/Builder/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Builder
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
