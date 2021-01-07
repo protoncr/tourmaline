@@ -74,12 +74,13 @@ module Tourmaline
       # as a notification at the top of the chat screen or as
       # an alert. On success, `true` is returned.
       #
-      # > Alternatively, the user can be redirected to the specified
-      # > Game URL (`url`). For this option to work, you must first
-      # > create a game for your bot via @Botfather and accept the
-      # > terms. Otherwise, you may use links like
-      # > [t.me/your_bot?start=XXXX](https://t.me/your_bot?start=XXXX)
-      # > that open your bot with a parameter.
+      # !!! note
+      #     Alternatively, the user can be redirected to the specified
+      #     Game URL (`url`). For this option to work, you must first
+      #     create a game for your bot via @Botfather and accept the
+      #     terms. Otherwise, you may use links like
+      #     [t.me/your_bot?start=XXXX](https://t.me/your_bot?start=XXXX)
+      #     that open your bot with a parameter.
       def answer_callback_query(
         callback_query_id,
         text = nil,

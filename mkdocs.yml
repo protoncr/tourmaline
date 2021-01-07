@@ -6,18 +6,21 @@ site_url: https://tourmaline.readthedocs.com
 theme:
   name: material
   palette:
-    scheme: slate
+    scheme: default
     primary: teal
+
+extra_css:
+  - stylesheets/extra.css
 
 plugins:
   - search
+  - section-index
   - mkdocstrings:
       default_handler: crystal
       watch: [src]
   - gen-files:
       scripts:
         - docs/gen_doc_stubs.py
-  - section-index
   - literate-nav:
       nav_file: SUMMARY.md
 

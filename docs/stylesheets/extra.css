@@ -1,0 +1,25 @@
+h1 {
+    margin: 0 !important;
+}
+
+h2.doc.doc-heading {
+    font-size: 1em !important;
+}
+
+h2.doc.doc-heading > code {
+    font-size: 1.5625em !important;
+    vertical-align: baseline !important;
+}
+
+h2.doc.doc-heading > small {
+    font-size: 90% !important;
+}
+
+.doc.doc-object {
+    font-size: .9rem !important;
+}
+
+.doc-method h4 {
+    padding: 10px !important;
+    background-color: #F8F8F8 !important;
+}

@@ -23,13 +23,31 @@ module Tourmaline
   class CommandHandler < EventHandler
     DEFAULT_PREFIXES = ["/"]
 
+    # Commands (without prefix) that this handler should respond to.
     property commands : Array(String)
+
+    # Prefixes that commands should start with.
     property prefixes : Array(String)
+
+    # If true, this handler will only respond if the command is sent in private.
     property private_only : Bool
+
+    # If true, this handler will only respond if the command is sent in a group.
     property group_only : Bool
+
+    # If true, this handler will only respond if the command is sent by a group admin.
     property admin_only : Bool
+
+    # If true, this handler will also run (or re-run) when messages are edited.
     property on_edit : Bool
 
+    # Create a new `CommandHandler` instance using the provided `commands`. `commands` can
+    # be a single command string, or an array of possible commands.
+    #
+    # !!! warning
+    #     If `#admin_only` is true, `get_chat_adminstrators` will be run every time the
+    #     handler is invoked. This should be fine in testing, but in production it's
+    #     recommended to cache admins and do your own guarding.
     def initialize(commands,
                    prefix = nil,
                    group = :default,
@@ -93,6 +111,7 @@ module Tourmaline
       end
     end
 
+    # :nodoc:
     def self.annotate(client)
       {% begin %}
         {% for command_class in Tourmaline::Client.subclasses %}

@@ -17,7 +17,7 @@ def write_file(abs_id, filename):
         f.write(f'::: {abs_id}\n\n')
 
 for typ in root.lookup("Tourmaline").walk_types():
-    filename = 'api_reference/' + '/'.join(typ.abs_id.split('::')) + '.md'
+    filename = 'api_reference/' + '/'.join(typ.abs_id.split('::')) + '/index.md'
     write_file(typ.abs_id, filename)
 
 write_file('Tourmaline', 'api_reference/Tourmaline/index.md')
