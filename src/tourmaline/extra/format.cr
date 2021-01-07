@@ -29,7 +29,7 @@ class String
   end
 
   def code_block
-    Tourmaline::Format::CodeBlock.new(self, language = nil)
+    Tourmaline::Format::CodeBlock.new(self, language: nil)
   end
 end
 
