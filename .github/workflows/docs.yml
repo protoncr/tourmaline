@@ -28,6 +28,6 @@ jobs:
     - name: Lint
       run: ./bin/ameba
     - name: Build Docs
-      run: pipenv install -d && mkdocs gh-deploy --force
+      run: mkdocs gh-deploy --force
       env:
         GH_TOKEN: ${{ secrets.GHUB_PAT }}
