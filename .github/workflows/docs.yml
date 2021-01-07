@@ -28,6 +28,15 @@ jobs:
     - name: Lint
       run: ./bin/ameba
     - name: Build Docs
-      run: mkdocs gh-deploy --force
+      run: mkdocs build
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        keep_history: true
+        build_dir: site
+        committer_name: Chris Watson
+        committer_email: cawatson1993@gmail.com
+        commit_message: "Update docs"
       env:
-        GH_TOKEN: ${{ secrets.GHUB_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GHUB_PAT }}
