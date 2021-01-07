@@ -20,7 +20,8 @@ jobs:
     - name: Lint
       run: ./bin/ameba
     - name: Build Docs
-      - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
+      run: |
+        pip install -r requirements.txt
+        mkdocs gh-deploy --force
       env:
         GH_TOKEN: ${{ secrets.GHUB_PAT }}
