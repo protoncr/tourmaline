@@ -9,8 +9,6 @@
       
       
       
-        <link rel="canonical" href="https://tourmaline.readthedocs.com/">
-      
       <link rel="shortcut icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
     
@@ -63,11 +61,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#getting-started-with-tourmaline" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -96,7 +89,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Getting Started
+              
             
           </span>
         </div>
@@ -199,58 +192,11 @@
       
 
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        <span class="md-nav__icon md-icon"></span>
-        
-          Getting Started
-        
-      </label>
-    
-    <a href="." class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="." class="md-nav__link">
       Getting Started
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-project" class="md-nav__link">
-    Example Project
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -4393,98 +4339,12 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-project" class="md-nav__link">
-    Example Project
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-                
-                  <a href="https://github.com/protoncr/tourmaline/tree/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <h1 id="getting-started-with-tourmaline">Getting Started with Tourmaline</h1>
-<p>So you want a Telegram bot, you like clean code and powerful frameworks, and you don't want to spend forever combing through complex documentation trying to figure out how to get started. Well you've come to the right place!</p>
-<p>Tourmaline is a Telegram bot framework for those that like things fast, efficient, and beautiful, which is why it's written in <a href="https://crystal-lang.org">Crystal</a>. But enough talk, this is a getting started guide, not a biography.</p>
-<h2 id="installation">Installation</h2>
-<p>First be sure you have Crystal installed. This is a Crystal framework, and won't work otherwise. Unfortunately this means (for now) you Windows people are going to have to run this using WSL or a virtual machine.</p>
-<p>Initialize your new Crystal project, for the purposes of this example we'll call our project <code>echo_bot</code>, but you can call yours whatever you like. To create the new project, run <code>crystal init app echo_bot</code> (replacing <code>echo_bot</code> with the name you'd like for your project).</p>
-<p>Change directories into your new project (using <code>cd echo_bot</code> in our case here). If you're unfamiliar with Crystal I highly recommend checking out <a href="https://crystal-lang.org/reference/using_the_compiler/index.html#creating-a-crystal-project">the official docs</a> to get an idea of the project structure, from now on it will be assumed that you understand the basics of a Crystal project.</p>
-<p>Now to install Tourmaline. Open up <code>shard.yml</code> and add the following snippet:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">dependencies</span><span class="p">:</span>
-  <span class="nt">tourmaline</span><span class="p">:</span>
-    <span class="nt">github</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">protoncr/tourmaline</span>
-</code></pre></div>
-<p>Then in your terminal run <code>shards install</code>. Tourmaline should now be installed!</p>
-<h2 id="example-project">Example Project</h2>
-<p>We're going to be making a really simple echo bot for this example, hence the project name <code>echo_bot</code>. Go head and open the generated file at <code>src/echo_bot.cr</code> and paste in the following code. Don't worry, we'll go over each line in detail afterwards.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>This is exactly the same as the <a href="https://github.com/protoncr/tourmaline/blob/master/examples/echo_bot.cr">echo bot</a> example in the source repo. If anything is broken be sure to check there for an updated code snippet.</p>
-</div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">require</span> <span class="s2">&quot;tourmaline&quot;</span>
+  <h1>404 - Not found</h1>
 
-<span class="k">class</span> <span class="nc">EchoBot</span> <span class="o">&lt;</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">Client</span>
-  <span class="o">@[</span><span class="nd">Command</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">)</span><span class="o">]</span>
-  <span class="k">def</span> <span class="nf">echo_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
-    <span class="n">ctx</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">reply</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="n">bot</span> <span class="o">=</span> <span class="n">EchoBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;API_KEY&quot;</span><span class="o">]</span><span class="p">)</span>
-<span class="n">bot</span><span class="o">.</span><span class="n">poll</span>
-</code></pre></div>
-</td></tr></table>
-                
-              
               
                 
 
@@ -4497,27 +4357,6 @@
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-        
-          <a href="api_reference/Tourmaline/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Index
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -4540,7 +4379,7 @@
       
       <script>
         app = initialize({
-          base: ".",
+          base: "",
           features: [],
           search: Object.assign({
             worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
