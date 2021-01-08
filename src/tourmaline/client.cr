@@ -1,3 +1,4 @@
+require "./annotations"
 require "./helpers"
 require "./error"
 require "./logger"
@@ -48,23 +49,45 @@ module Tourmaline
 
     # Create a new instance of `Tourmaline::Client`.
     #
-    # ## Arguments
+    # ## Positional Arguments
     #
-    # ### Positional
-    # - `api_key` - required; the bot token you were provided with by `@BotFather`
-    # - `endpoint` - the Telegram bot API endpoint to use; defaults to `https://api.telegram.org`
+    # `api_key`
+    # :    required; the bot token you were provided with by `@BotFather`
     #
-    # ### Named
-    # - `persistence` - the persistence strategy to use
-    # - `pool_capacity` - the maximum number of concurrent HTTP connections to use
-    # - `initial_pool_size` - the number of HTTP::Client instances to create on init
-    # - `pool_timeout` - How long to wait for a new client to be available if the pool is full before throwing a `TimeoutError`
-    # - `proxy` - an instance of `HTTP::Proxy::Client` to use; if set, overrides the following `proxy_` args
-    # - `proxy_uri` - a URI to use when connecting to the proxy; can be a `URI` instance or a String
-    # - `proxy_host` - if no `proxy_uri` is provided, this will be the host for the URI
-    # - `proxy_port` - if no `proxy_uri` is provided, this will be the port for the URI
-    # - `proxy_user` - a username to use for a proxy that requires authentication
-    # - `proxy_pass` - a password to use for a proxy that requires authentication
+    # `endpoint`
+    # :    the Telegram bot API endpoint to use; defaults to `https://api.telegram.org`
+    #
+    # ## Named Arguments
+    #
+    # `persistence`
+    # :    the persistence strategy to use
+    #
+    # `pool_capacity`
+    # :    the maximum number of concurrent HTTP connections to use
+    #
+    # `initial_pool_size`
+    # :    the number of HTTP::Client instances to create on init
+    #
+    # `pool_timeout`
+    # :    How long to wait for a new client to be available if the pool is full before throwing a `TimeoutError`
+    #
+    # `proxy`
+    # :    an instance of `HTTP::Proxy::Client` to use; if set, overrides the following `proxy_` args
+    #
+    # `proxy_uri`
+    # :    a URI to use when connecting to the proxy; can be a `URI` instance or a String
+    #
+    # `proxy_host`
+    # :    if no `proxy_uri` is provided, this will be the host for the URI
+    #
+    # `proxy_port`
+    # :    if no `proxy_uri` is provided, this will be the port for the URI
+    #
+    # `proxy_user`
+    # :    a username to use for a proxy that requires authentication
+    #
+    # `proxy_pass`
+    # :    a password to use for a proxy that requires authentication
     def initialize(@api_key : String,
                    endpoint = DEFAULT_API_URL,
                    *,
@@ -109,14 +132,18 @@ module Tourmaline
       Container.client = self
     end
 
+    # Add an `EventHandler` instance to the handler stack
     def add_event_handler(handler : EventHandler)
       @event_handlers << handler
     end
 
+    # Remove an existing event handler from the stack
     def remove_event_handler(handler : EventHandler)
       @event_handlers.delete(handler)
     end
 
+    # Calls all handlers in the stack with the given update and
+    # this client instance.
     def handle_update(update : Update)
       handled = [] of String
       @event_handlers.each do |handler|

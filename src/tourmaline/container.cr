@@ -1,4 +1,3 @@
-# :nodoc:
 module Tourmaline
   # :nodoc:
   module Container

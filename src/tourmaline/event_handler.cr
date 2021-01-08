@@ -1,7 +1,5 @@
 module Tourmaline
-  # Processes updates. `Update`s first get checked to see if they fit
-  # into the given `UpdateAction` and then checked against the provided
-  # Filter`s (if any).
+  # Base class for all handlers.
   abstract class EventHandler
 
     getter group : String

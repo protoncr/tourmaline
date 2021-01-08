@@ -1,39 +1,54 @@
+require "../helpers"
+
 class String
+  # Escape the markdown in this string
   def to_md(version)
     Tourmaline::Helpers.escape_md(self, version)
   end
 
+  # Escspe the HTML in this string
   def to_html
-    # TODO: Escape HTML entities
-    self
+    Tourmaline::Helpers.escape_html(self)
   end
 
+  # Convert the string to a `Tourmaline::Format::Bold`
   def bold
     Tourmaline::Format::Bold.new(self)
   end
 
+  # Convert the string to a `Tourmaline::Format::Italic`
   def italic
     Tourmaline::Format::Italic.new(self)
   end
 
+  # Convert the string to a `Tourmaline::Format::Underline`
   def underline
     Tourmaline::Format::Underline.new(self)
   end
 
+  # Convert the string to a `Tourmaline::Format::Link`
   def link(to : String)
     Tourmaline::Format::Link.new(self, to)
   end
 
+  # Convert the string to a `Tourmaline::Format::Code`
   def code
     Tourmaline::Format::Code.new(self)
   end
 
+  # Convert the string to a `Tourmaline::Format::CodeBlock`
   def code_block
     Tourmaline::Format::CodeBlock.new(self, language: nil)
   end
 end
 
 module Tourmaline
+  # The `Tourmaline::Format` module provides an easy to use DSL for
+  # formatting text for Telegram. It takes care of escaping
+  # entities for you so you don't have to.
+  #
+  # Heavily inspired by the [mdtex](https://github.com/kantek/kantek/blob/master/kantek/utils/mdtex.py)
+  # module from Kantek, so thanks Simon!
   module Format
     abstract class Token
       abstract def to_md(version : Int32) : String
@@ -50,6 +65,12 @@ module Tourmaline
       def initialize(*tokens, @indent : Int32 = 4, @spacing : Int32 = 1)
         @tokens = [] of Token | String
         tokens.each { |t| @tokens << t }
+      end
+
+      def self.build(*args, **kwargs, &block : self ->)
+        section = new(*args, *kwargs)
+        yield section
+        section
       end
 
       def to_md(version : Int32 = 2) : String
@@ -77,6 +98,11 @@ module Tourmaline
           str << "\n" * spacing
         end
       end
+
+      # :nodoc:
+      def self.block_section
+        Section.fibers[Fiber.current]?
+      end
     end
 
     class SubSection < Section
@@ -99,6 +125,12 @@ module Tourmaline
       def initialize(*tokens)
         @tokens = [] of Token | String
         tokens.each { |t| @tokens << t }
+      end
+
+      def build(*args, **kwargs, &block : self ->)
+        group = new(*args, **kwargs)
+        yield group
+        group
       end
 
       def to_md(version : Int32 = 2) : String

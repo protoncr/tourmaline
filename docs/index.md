@@ -44,7 +44,7 @@ The `/newbot` command will ask for a name. This will be the screen name of your 
 
 Next it will ask for a username. This must be unique, can only contain alphanumeric characters and underscores, and must be at least 5 characters long (3 and 4 character usernames are reserved for Telegram internal use).
 
-Once you've entered a valid username it will send you a message containing some instructions and an API token. {++KEEP THIS SECRET!++} Anyone with access to this token will be able to control your bot, so don't share it.
+Once you've entered a valid username it will send you a message containing some instructions and an API token that looks something like this `123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ`. {++KEEP THIS SECRET!++} Anyone with access to this token will be able to control your bot, so don't share it.
 
 Now if you send the `/mybots` command you should see your bot listed. Click it to enter the configuration menu for your bot. You can explore the options here if you wish, but we'll be moving on now.
 
@@ -88,4 +88,17 @@ This is just defining our bot, `EchoBot`, as a sublcass of `Tourmaline::Client`.
   end
 ```
 
-`@[Constant()]` is the annotation invokation syntax. Annotations, much like in languages like Python and Typescript, can be used to modify the annotated method, class, variable, etc.. In this case it registers the method as an event handler for [commands][Tourmaline::CommandHandler] specifically.
+`@[Constant()]` is the annotation invokation syntax. Annotations, much like in languages like Python and Typescript, can be used to modify the annotated method, class, variable, etc.. In this case it registers the method as an event handler for commands specifically (see `Tourmaline::Handlers::CommandHandler`). The `ctx` property that gets passed into the command is an instance of `Tourmaline::Handlers::CommandHandler::Context`.
+
+```crystal
+    ctx.message.reply(ctx.text)
+```
+
+This is pretty simple. The [context][Tourmaline::Handlers::CommandHandler::Context] has a `message` property, which is the [message][Tourmaline::Message] that contains the command we're acting on. All we're doing is replying to the message with the text that was in the message (minus the bot command).
+
+```crystal
+bot = EchoBot.new("YOUR_API_TOKEN")
+bot.poll
+```
+
+Finally we create a new instance of our `EchoBot` with our API token, and start it in [polling mode][Tourmaline::Client::CoreMethods#poll(delete_webhook)].

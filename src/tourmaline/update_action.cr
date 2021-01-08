@@ -1,6 +1,5 @@
 module Tourmaline
-  # The available event types for `EventHandler`. `UpdateAction`s can
-  # be retrieved from an `Update` using `.from_update`.
+  # The available event types for `EventHandler`.
   enum UpdateAction
     Update
     Message
@@ -57,6 +56,7 @@ module Tourmaline
       {{ @type.constants.map { |c| c.stringify.id } }}
     end
 
+    # Takes an `Update` and returns an array of update actions.
     def self.from_update(update : Tourmaline::Update)
       actions = [] of UpdateAction
 

@@ -1,46 +1,45 @@
 module Tourmaline
-  # TODO: Comments
-  annotation Hears; end
+  module Handlers
+    class HearsHandler < EventHandler
+      getter pattern : Regex
 
-  class HearsHandler < EventHandler
-    getter pattern : Regex
+      def initialize(pattern : String | Regex, group = :default, &block : Context ->)
+        super(group)
+        @proc = block
+        @pattern = pattern.is_a?(Regex) ? pattern : Regex.new("#{Regex.escape(pattern)}")
+      end
 
-    def initialize(pattern : String | Regex, group = :default, &block : Context ->)
-      super(group)
-      @proc = block
-      @pattern = pattern.is_a?(Regex) ? pattern : Regex.new("#{Regex.escape(pattern)}")
-    end
-
-    def call(client : Client, update : Update)
-      if message = update.message || update.channel_post
-        if (text = message.text) || (text = message.caption)
-          if match = text.match(@pattern)
-            context = Context.new(update, message, text, match)
-            @proc.call(context)
-            return true
+      def call(client : Client, update : Update)
+        if message = update.message || update.channel_post
+          if (text = message.text) || (text = message.caption)
+            if match = text.match(@pattern)
+              context = Context.new(update, message, text, match)
+              @proc.call(context)
+              return true
+            end
           end
         end
       end
-    end
 
-    def self.annotate(client)
-      {% begin %}
-        {% for command_class in Tourmaline::Client.subclasses %}
-          {% for method in command_class.methods %}
+      def self.annotate(client)
+        {% begin %}
+          {% for command_class in Tourmaline::Client.subclasses %}
+            {% for method in command_class.methods %}
 
-            # Handle `Hears` annotation
-            {% for ann in method.annotations(Hears) %}
-              %pattern = {{ ann[:pattern] || ann[0] }}
-              %group = {{ ann[:group] || :default }}
+              # Handle `Hears` annotation
+              {% for ann in method.annotations(Hears) %}
+                %pattern = {{ ann[:pattern] || ann[0] }}
+                %group = {{ ann[:group] || :default }}
 
-              %handler = HearsHandler.new(%pattern, %group, &->(c : Context) { client.{{ method.name.id }}(c); nil })
-              client.add_event_handler(%handler)
+                %handler = HearsHandler.new(%pattern, %group, &->(c : Context) { client.{{ method.name.id }}(c); nil })
+                client.add_event_handler(%handler)
+              {% end %}
             {% end %}
           {% end %}
         {% end %}
-      {% end %}
-    end
+      end
 
-    record Context, update : Update, message : Message, text : String, match : Regex::MatchData
+      record Context, update : Update, message : Message, text : String, match : Regex::MatchData
+    end
   end
 end

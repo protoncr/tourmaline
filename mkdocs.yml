@@ -8,13 +8,15 @@ theme:
   palette:
     scheme: default
     primary: teal
+  features:
+    - navigation.instant
+    - navigation.tabs
 
 extra_css:
   - stylesheets/extra.css
 
 plugins:
   - search
-  - section-index
   - mkdocstrings:
       default_handler: crystal
       watch: [src]
@@ -23,6 +25,7 @@ plugins:
         - docs/gen_doc_stubs.py
   - literate-nav:
       nav_file: SUMMARY.md
+  - section-index
 
 markdown_extensions:
   - pymdownx.highlight
@@ -39,6 +42,9 @@ markdown_extensions:
   - attr_list
   - deduplicate-toc
   - admonition
+  - def_list
+  - toc:
+      permalink: "#"
 
 extra:
   version:

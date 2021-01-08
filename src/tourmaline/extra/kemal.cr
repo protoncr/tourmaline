@@ -1,12 +1,12 @@
 require "kemal"
 
-# Tourmaline handler for Kemal.
-#
-# This handler allows you to use Tourmaline as a part of your
-# Kemal server rather than as a standalone server. This means
-# that webhook requests can be sent to a specific path
-# and handled accordingly.
 module Tourmaline
+  # Tourmaline adapter for Kemal.
+  #
+  # This handler allows you to use Tourmaline as a part of your
+  # Kemal server rather than as a standalone server. This means
+  # that webhook requests can be sent to a specific path
+  # and handled accordingly.
   class KemalAdapter < Kemal::Handler
     alias TGModel = Tourmaline
 

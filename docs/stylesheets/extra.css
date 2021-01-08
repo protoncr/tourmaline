@@ -1,3 +1,10 @@
+.md-typeset h4:target::before {
+    display: block;
+    margin-top: -4.1rem;
+    padding-top: 4.1rem;
+    content: "";
+}
+
 h1 {
     margin: 0 !important;
 }
@@ -16,10 +23,26 @@ h2.doc.doc-heading > small {
 }
 
 .doc.doc-object {
-    font-size: .9rem !important;
+    font-size: .85rem !important;
 }
 
 .doc-method h4 {
     padding: 10px !important;
     background-color: #F8F8F8 !important;
+}
+
+.doc-source-link {
+    font-size: 80%;
+}
+
+.doc-source-link::before {
+    content: "["
+}
+
+.doc-source-link::after {
+    content: "]"
+}
+
+.md-typeset dd {
+    margin: 0.4em 0 0.8em 1.875em;
 }

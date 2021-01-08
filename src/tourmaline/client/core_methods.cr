@@ -1188,13 +1188,6 @@ module Tourmaline
         self.delete_webhook
         @polling = true
 
-        [Signal::INT, Signal::TERM].each do |sig|
-          sig.trap do
-            self.stop_polling
-            # exit(0)
-          end
-        end
-
         Log.info { "Polling for updates" }
 
         while @polling

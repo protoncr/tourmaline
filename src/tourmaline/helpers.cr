@@ -91,6 +91,13 @@ module Tourmaline
       rands.join
     end
 
+    def escape_html(text)
+      text
+        .gsub('<', "&lt;")
+        .gsub('>', "&gt;")
+        .gsub('&', "&amp;")
+    end
+
     def escape_md(text, version = 1)
       text = text.to_s
 
