@@ -11,6 +11,10 @@ theme:
   features:
     - navigation.instant
     - navigation.tabs
+  icon:
+    logo: fontawesome/brands/telegram
+    repo: fontawesome/brands/github
+  favicon: images/logo.png
 
 extra_css:
   - stylesheets/extra.css
@@ -26,6 +30,9 @@ plugins:
   - literate-nav:
       nav_file: SUMMARY.md
   - section-index
+  - macros:
+      modules:
+        - mkdocstrings.handlers.crystal.macros
 
 markdown_extensions:
   - pymdownx.highlight

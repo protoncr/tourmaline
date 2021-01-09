@@ -2,15 +2,11 @@
 
 Tourmaline is built around the concept of `Handlers`, each of which is modeled to handle a specific kind of input. For instance, the [CommandHandler](Tourmaline::Handlers::CommandHandler) is specifically designed to handle bot commands. Each handler also has a corresponding annotation. For instance, [Command][Tourmaline::Annotations::Command].
 
-There are currently 7 types of handlers built in:
+There are currently **{{ crystal.lookup('Tourmaline::Handlers').types | length }}** types of handler built in:
 
-- [CommandHandler][Tourmaline::Handlers::CommandHandler]
-- [UpdateHandler][Tourmaline::Handlers::UpdateHandler]
-- [HearsHandler][Tourmaline::Handlers::HearsHandler]
-- [EditedHandler][Tourmaline::Handlers::EditedHandler]
-- [InlineQueryHandler][Tourmaline::Handlers::InlineQueryHandler]
-- [CallbackQueryHandler][Tourmaline::Handlers::CallbackQueryHandler]
-- [ChosenInlineResultHandler][Tourmaline::Handlers::ChosenInlineResultHandler]
+{% for typ in crystal.lookup('Tourmaline::Handlers').types %}
+- [{{typ.name}}][{{typ.abs_id}}]
+{% endfor %}
 
 For the purposes of this document we'll be focusing on the CommandHandler, since it's the one you're most likely to use most often, but you can find specific documentation for each handler type on their API reference page.
 
@@ -100,6 +96,7 @@ In the above example if we didn't have the `group` set in the first handler the 
 
 You can also create custom handlers if you want. Let's create a simple `PhotoHandler` as an example:
 
+{% raw %}
 ```crystal linenums="1"
 annotation OnPhoto; end
 
@@ -150,5 +147,6 @@ class PhotoHandler < Tourmaline::EventHandler
   record Context, update : Update, message : Message, photos : Array(PhotoSize)
 end
 ```
+{% endraw %}
 
 For more advanced handler logic, be sure to check the source for each of the existing handlers.

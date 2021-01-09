@@ -7,11 +7,12 @@ name = "pypi"
 mkdocs-material = "*"
 mkdocstrings = "*"
 mkdocs-gen-files = "*"
-mkdocstrings-crystal = ">= 0.2.1"
+mkdocstrings-crystal = ">= 0.2.2"
 mkdocs-section-index = "*"
 mkdocs-versioning = "*"
 mkdocs-literate-nav = ">= 0.3.0b1"
 mike = "*"
+mkdocs-macros-plugin = "*"
 
 [dev-packages]
 

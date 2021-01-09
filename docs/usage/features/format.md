@@ -56,4 +56,9 @@ message = Section.build do |s|
   s << Group.new("Tourmaline is the ", Bold.new("freaking"), " best!")
 end
 ```
-::: Tourmaline::Format
+
+For more information on each of the different format types and how to use them, see their individual documentation pages:
+
+{% for typ in crystal.lookup('Tourmaline::Format').types %}
+- [{{typ.name}}][{{typ.abs_id}}]
+{% endfor %}

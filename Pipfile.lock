@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "06cacc49d6f801824118477bbdb31e6af2cf221605a71c0908bb4ae5af47bcea"
+            "sha256": "e87cb87fc7004499586b38c09fe9342f09d4520cece611bcc135b4403530c786"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -155,6 +155,21 @@
             "index": "pypi",
             "version": "==0.3.0"
         },
+        "mkdocs-macros-plugin": {
+            "hashes": [
+                "sha256:62d294443599f011a66dcf2141bb89adee7889116725ddac8ad1a3a8330f0897",
+                "sha256:70f9cb691b06d9765cca38c621c7d2a85442866a9f4dfd665c0f030fd930f837"
+            ],
+            "index": "pypi",
+            "version": "==0.5.0"
+        },
+        "mkdocs-macros-test": {
+            "hashes": [
+                "sha256:c5aba3cd060f28a9804d14ff0eda38287c83373529a91dbee922038aead422f0",
+                "sha256:d775f23600ee006331b4c6fe57e34c5b794b7faf17d91d34bcfaf4b0a59430f3"
+            ],
+            "version": "==0.1.0"
+        },
         "mkdocs-material": {
             "hashes": [
                 "sha256:3307d735b681f954eb1c89b64b1f4baa5a2b1a4e87a33c81244d55191c63c943",
@@ -197,11 +212,11 @@
         },
         "mkdocstrings-crystal": {
             "hashes": [
-                "sha256:ef9fa44798f273f04b76a84c2fc83b7efcb7f58ef7d50271db2a70f36784de89",
-                "sha256:f271d5f45ab50032cc266976bb0ebf18c631c1f66d869e66a15b6284c6f77eb2"
+                "sha256:028e01fc59e74bef3a4c24b3a3aca05c0b95d4c00f770ca352256732fe966a8e",
+                "sha256:3fb3c0d3281285d158038fe9e1f0e18425dd3b4e5ac18b29f9db1ec5ee58b092"
             ],
             "index": "pypi",
-            "version": "==0.2.1"
+            "version": "==0.2.2"
         },
         "nltk": {
             "hashes": [
@@ -240,6 +255,14 @@
             ],
             "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.4.7"
+        },
+        "python-dateutil": {
+            "hashes": [
+                "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c",
+                "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==2.8.1"
         },
         "pytkdocs": {
             "hashes": [
@@ -364,6 +387,12 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.15.0"
+        },
+        "termcolor": {
+            "hashes": [
+                "sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"
+            ],
+            "version": "==1.1.0"
         },
         "tornado": {
             "hashes": [
