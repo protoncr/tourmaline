@@ -1,8 +1,8 @@
 module Tourmaline
   module Handlers
     class EditedHandler < EventHandler
-      def initialize(group = :default, &block : Context ->)
-        super(group)
+      def initialize(group = :default, priority = 0, &block : Context ->)
+        super(group, priority)
         @proc = block
       end
 
@@ -22,8 +22,9 @@ module Tourmaline
               # Handle `Hears` annotation
               {% for ann in method.annotations(Edited) %}
                 %group = {{ ann[:group] || :default }}
+                %priority = {{ ann[:priority] || 0 }}
 
-                %handler = EditedHandler.new(%group, &->(c : Context) { client.{{ method.name.id }}(c); nil })
+                %handler = EditedHandler.new(%group, %priority, &->(c : Context) { client.{{ method.name.id }}(c); nil })
                 client.add_event_handler(%handler)
               {% end %}
             {% end %}

@@ -135,6 +135,8 @@ module Tourmaline
     # Add an `EventHandler` instance to the handler stack
     def add_event_handler(handler : EventHandler)
       @event_handlers << handler
+      @event_handlers.sort! { |a, b| b.priority <=> a.priority }
+      @event_handlers
     end
 
     # Remove an existing event handler from the stack

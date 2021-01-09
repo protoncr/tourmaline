@@ -4,8 +4,11 @@ module Tourmaline
 
     getter group : String
 
-    def initialize(group = :default)
+    getter priority : Int32
+
+    def initialize(group = :default, priority = 0)
       @group = group.to_s
+      @priority = priority.to_i
     end
 
     abstract def call(client : Client, update : Update)

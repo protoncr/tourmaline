@@ -101,9 +101,9 @@ You can also create custom handlers if you want. Let's create a simple `PhotoHan
 annotation OnPhoto; end
 
 class PhotoHandler < Tourmaline::EventHandler
-  # All handlers need at least these 2 things in their initialize method
-  def initialize(group = :default, &block : Context ->)
-    super(group)
+  # All handlers need at least these 3 things in their initialize method
+  def initialize(group = :default priority = 0, &block : Context ->)
+    super(group, priority)
     @proc = block
   end
 
@@ -131,9 +131,11 @@ class PhotoHandler < Tourmaline::EventHandler
             # Handle `OnPhoto` annotation
             {% for ann in method.annotations(OnPhoto) %}
               %group  = {{ ann.named_args[:group] || :default }}
+              %group  = {{ ann.named_args[:priority] || 0 }}
 
               %handler = PhotoHandler.new(
                 %group,
+                %priority,
                 &->(ctx : Context) { client.{{ method.name.id }}(ctx); nil }
               )
 

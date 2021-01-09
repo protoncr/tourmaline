@@ -3,8 +3,8 @@ module Tourmaline
     class HearsHandler < EventHandler
       getter pattern : Regex
 
-      def initialize(pattern : String | Regex, group = :default, &block : Context ->)
-        super(group)
+      def initialize(pattern : String | Regex, group = :default, priority = 0, &block : Context ->)
+        super(group, priority)
         @proc = block
         @pattern = pattern.is_a?(Regex) ? pattern : Regex.new("#{Regex.escape(pattern)}")
       end
@@ -30,8 +30,9 @@ module Tourmaline
               {% for ann in method.annotations(Hears) %}
                 %pattern = {{ ann[:pattern] || ann[0] }}
                 %group = {{ ann[:group] || :default }}
+                %priority = {{ ann[:priority] || 0 }}
 
-                %handler = HearsHandler.new(%pattern, %group, &->(c : Context) { client.{{ method.name.id }}(c); nil })
+                %handler = HearsHandler.new(%pattern, %group, %priority, &->(c : Context) { client.{{ method.name.id }}(c); nil })
                 client.add_event_handler(%handler)
               {% end %}
             {% end %}
