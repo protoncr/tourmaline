@@ -46,6 +46,10 @@ Yes, under 2 conditions:
 1. The bot must have the Delete Messages permission
 2. The message must be less than 48 hours old
 
+### How can I add my bot to a group?
+
+Same way you add any other user. On the desktop client this can be done by clicking the ellipses in the top right corner while viewing your group, clicking `Info`, and then clicking the `Add` button. If your bot is meant to be added to groups you can make this a bit easier by giving users a link to do so. The URL for the link should be `http://telegram.me/BOT_NAME?startgroup=botstart` where `BOTNAME` is the username of your bot.
+
 ### How can I get a user's information?
 
 Bots are not capable of accessing a user's information soley based off of their user id or username, however there are some ways around this. The simplest is to keep a record of each user your bot comes in contact with by watching incoming messages for the user that sent them. An example of this could be as follows:
