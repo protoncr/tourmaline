@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedVideo < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "video"
 

@@ -1,6 +1,7 @@
 module Tourmaline
   class StickerSet
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter name : String
 

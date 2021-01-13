@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultDocument < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "document"
 

@@ -820,7 +820,7 @@ module Tourmaline
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendMessage", {
           chat_id:                  chat_id,
@@ -1197,7 +1197,6 @@ module Tourmaline
               handle_update(u)
             end
           rescue ex
-            puts ex.inspect_with_backtrace
             Log.error(exception: ex) { "Error during polling" }
           end
         end

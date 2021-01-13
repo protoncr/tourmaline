@@ -16,7 +16,7 @@ module Tourmaline
     # ```
     annotation Step; end
 
-    # The client instance this stage is attached to
+    # The client controlling this stage
     getter client : Client
 
     # A hash containing the steps in this stage
@@ -53,17 +53,20 @@ module Tourmaline
     @event_handler : EventHandler
     @on_start_handlers : Array(Proc(Nil))
     @on_exit_handlers  : Array(Proc(T, Nil))
-    @response_awaiter  : Proc(Update, Nil)?
+    @response_awaiter  : Proc(Context, Nil)?
+
+    forward_missing_to @client
 
     # Create a new Stage instance
     def initialize(@client : Client,
                    *,
-                   @context : T,
+                   context : T,
                    chat_id = nil,
                    user_id = nil,
                    group = nil,
-                   @history = true,
+                   priority = 0,
                    **handler_options)
+      @context = context || T.new
       @chat_id = chat_id
       @user_id = user_id
       @active  = false
@@ -73,8 +76,8 @@ module Tourmaline
       @on_start_handlers = [] of Proc(Nil)
       @on_exit_handlers  = [] of Proc(T, Nil)
 
-      group = group ? group.to_s : Helpers.random_string(8)
-      @event_handler = UpdateHandler.new(:update, **handler_options, group: group) do |update|
+      group ||= Helpers.random_string(8)
+      @event_handler = UpdateHandler.new(:update, **handler_options, group: group, priority: priority) do |update|
         handle_update(update)
       end
 
@@ -138,7 +141,7 @@ module Tourmaline
 
     # Allows you to await a response to a step, yielding the awaited
     # update to the block.
-    def await_response(&block : Update ->)
+    def await_response(&block : Context ->)
       @response_awaiter = block
     end
 
@@ -156,19 +159,16 @@ module Tourmaline
       return unless @active
 
       if @first_run
-        @update_history << update if history?
+        @update_history << update
         @first_run = false
         return
       end
 
       if awaiter = @response_awaiter
-        # Get the returned messages from the chat, but not nested ones
-        messages = [update.channel_post, update.edited_channel_post, update.edited_message, update.message].compact
-        return if messages.empty?
-        message = messages.first
+        message = update.message.not_nil!
 
         # Ignore updates coming from this client
-        return if message.from.try &.id == @client.bot.id
+        return if message.from.try &.id == self.bot.id
 
         # If chat_id is set, check the message chat id and make sure it matches
         if @chat_id
@@ -180,21 +180,39 @@ module Tourmaline
           return unless user_id == message.from.try &.id
         end
 
-        @update_history << update if history?
-        awaiter.call(update)
+        @update_history << update
+
+        message = update.message.not_nil!
+        text = (message.text || message.caption).to_s
+        ctx = Context.new(update, message, text)
+        awaiter.call(ctx)
       end
     end
 
     private def register_annotations
       {% begin %}
-        {% for method in @type.methods %}
-          {% for ann in method.annotations(Step) %}
+        {% for method in @type.methods %}\
+          {% for ann in method.annotations(Step) %}\
             %name = {{ ann[:name] || ann[0] }}
             %initial = {{ !!ann[:initial] }}
             on(%name, initial: %initial, &->{{ method.name.id }}(Client))
-          {% end %}
-        {% end %}
+          {% end %}\
+
+          {% for event_handler in Tourmaline::EventHandler.subclasses %}\
+            {% if event_handler.has_constant?("ANNOTATION") %}\
+              {% for ann in method.annotations(event_handler.constant("ANNOTATION").resolve) %}\
+                  @client.add_event_handler({{ event_handler.id }}.new(
+                    {% unless ann.args.empty? %}*{{ ann.args }}, {% end %}
+                    {% unless ann.named_args.empty? %}**{{ ann.named_args }}, {% end %}
+                    &->(ctx : {{ event_handler.id }}::Context) { {{ method.name.id }}(ctx); nil }
+                  ))
+              {% end %}\
+            {% end %}\
+          {% end %}\
+        {% end %}\
       {% end %}
     end
+
+    record Context, update : Update, message : Message, text : String
   end
 end

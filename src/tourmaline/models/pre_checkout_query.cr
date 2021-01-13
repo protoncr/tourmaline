@@ -1,6 +1,7 @@
 module Tourmaline
   class PreCheckoutQuery
     include JSON::Serializable
+    include Tourmaline::Model
 
     @[JSON::Field(ignore: true)]
     property! client : Tourmaline::Client
@@ -20,7 +21,7 @@ module Tourmaline
     getter order_info : OrderInfo?
 
     def answer(ok, **kwargs)
-      Container.client.answer_pre_checkout_query(id, ok, **kwargs)
+      client.answer_pre_checkout_query(id, ok, **kwargs)
     end
   end
 end

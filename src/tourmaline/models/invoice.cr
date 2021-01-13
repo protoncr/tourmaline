@@ -1,6 +1,7 @@
 module Tourmaline
   class Invoice
     include JSON::Serializable
+    include Tourmaline::Model
 
     property title : String
 

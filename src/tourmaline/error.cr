@@ -63,6 +63,8 @@ module Tourmaline
         MethodNotAvailableInPrivateChats
       when /can't demote chat creator/
         CantDemoteChatCreator
+      when /can't remove chat owner/
+        CantRemoveChatOwner
       when /can't restrict self/
         text = "Admin can't restrict self"
         CantRestrictSelf
@@ -267,6 +269,7 @@ module Tourmaline
     class NeedAdministratorRightsInTheChannel < BadRequest; end
     class MethodNotAvailableInPrivateChats < BadRequest; end
     class CantDemoteChatCreator < BadRequest; end
+    class CantRemoveChatOwner < BadRequest; end
     class CantRestrictSelf < BadRequest; end
     class NotEnoughRightsToRestrict < BadRequest; end
     class NotEnoughRightsToPinMessage < BadRequest; end

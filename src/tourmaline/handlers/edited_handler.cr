@@ -14,24 +14,6 @@ module Tourmaline
         end
       end
 
-      def self.annotate(client)
-        {% begin %}
-          {% for command_class in Tourmaline::Client.subclasses %}
-            {% for method in command_class.methods %}
-
-              # Handle `Hears` annotation
-              {% for ann in method.annotations(Edited) %}
-                %group = {{ ann[:group] || :default }}
-                %priority = {{ ann[:priority] || 0 }}
-
-                %handler = EditedHandler.new(%group, %priority, &->(c : Context) { client.{{ method.name.id }}(c); nil })
-                client.add_event_handler(%handler)
-              {% end %}
-            {% end %}
-          {% end %}
-        {% end %}
-      end
-
       record Context, update : Update, message : Message
     end
   end

@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedSticker < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "sticker"
 

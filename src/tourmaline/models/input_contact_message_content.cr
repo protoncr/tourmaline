@@ -4,6 +4,7 @@ require "./input_message_content.cr"
 module Tourmaline
   class InputContactMessageContent
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter phone_number : String
 

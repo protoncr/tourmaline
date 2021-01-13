@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedGif < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "gif"
 

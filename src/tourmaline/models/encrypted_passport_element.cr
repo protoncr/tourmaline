@@ -1,6 +1,7 @@
 module Tourmaline
   class EncryptedPassportElement
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter type : EncryptedPassportElement::Type
 

@@ -1,6 +1,7 @@
 module Tourmaline
   class Contact
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter phone_number : String
 

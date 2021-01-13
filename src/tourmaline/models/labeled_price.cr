@@ -1,6 +1,7 @@
 module Tourmaline
   class LabeledPrice
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter label : String
 

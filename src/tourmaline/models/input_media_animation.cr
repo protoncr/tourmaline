@@ -1,6 +1,7 @@
 module Tourmaline
   class InputMediaAnimation
     include JSON::Serializable
+    include Tourmaline::Model
 
     @type = "animation"
 

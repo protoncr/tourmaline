@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultVoice < InlineQueryResult
-    include JSON::Serializable
 
     property type : String = "voice"
 

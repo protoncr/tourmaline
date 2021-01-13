@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedAudio < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "audio"
 

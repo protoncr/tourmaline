@@ -1,4 +1,5 @@
 require "pool"
+require "async"
 require "http_proxy"
 require "mime/multipart"
 

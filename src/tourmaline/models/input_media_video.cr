@@ -1,6 +1,7 @@
 module Tourmaline
   class InputMediaVideo
     include JSON::Serializable
+    include Tourmaline::Model
 
     @type = "video"
 

@@ -1,6 +1,7 @@
 module Tourmaline
   class Audio
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter file_id : String
 

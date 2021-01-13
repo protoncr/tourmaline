@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultLocation < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "location"
 

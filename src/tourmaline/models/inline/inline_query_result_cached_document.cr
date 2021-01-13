@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedDocument < InlineQueryResult
-    include JSON::Serializable
 
     property type : String = "document"
 

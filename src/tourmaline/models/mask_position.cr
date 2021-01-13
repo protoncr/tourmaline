@@ -1,6 +1,7 @@
 module Tourmaline
   class MaskPosition
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter point : String
 

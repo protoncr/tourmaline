@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultPhoto < InlineQueryResult
-    include JSON::Serializable
 
     property type : String = "photo"
 

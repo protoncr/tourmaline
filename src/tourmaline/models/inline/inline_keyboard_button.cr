@@ -1,6 +1,7 @@
 module Tourmaline
   class InlineKeyboardButton
     include JSON::Serializable
+    include Tourmaline::Model
 
     property text : String
 

@@ -1,6 +1,7 @@
 module Tourmaline
   class ChosenInlineResult
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter result_id : String
 

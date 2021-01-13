@@ -1,6 +1,7 @@
 module Tourmaline
   module Handlers
     class CommandHandler < EventHandler
+      ANNOTATION = Command
       DEFAULT_PREFIXES = ["/"]
 
       # Commands (without prefix) that this handler should respond to.
@@ -21,6 +22,18 @@ module Tourmaline
       # If true, this handler will also run (or re-run) when messages are edited.
       property on_edit : Bool
 
+      # Register this command with BotFather. Only works is `prefixes` contains `/` (as
+      # it does by default), as non-botcommands can't be registed with BotFather.
+      property register : Bool
+
+      # By default the first command in `commands` will be selected as the command name
+      # to register. If this property is set, it will be used instead.
+      property register_as : String?
+
+      # Used when registering the command with BotFather. If `register` is true, but this
+      # is not set, the command will not be registered.
+      property description : String?
+
       # Create a new `CommandHandler` instance using the provided `commands`. `commands` can
       # be a single command string, or an array of possible commands.
       #
@@ -36,6 +49,9 @@ module Tourmaline
                     @group_only = false,
                     @admin_only = false,
                     @on_edit = false,
+                    @register = false,
+                    @register_as = nil,
+                    @description = nil,
                     &block : Context ->)
         super(group, priority)
         prefix ||= DEFAULT_PREFIXES
@@ -90,42 +106,6 @@ module Tourmaline
             return true
           end
         end
-      end
-
-      # :nodoc:
-      def self.annotate(client)
-        {% begin %}
-          {% for command_class in Tourmaline::Client.subclasses %}
-            {% for method in command_class.methods %}
-
-              # Handle `Command` annotation
-              {% for ann in method.annotations(Command) %}
-                %command = {{ ann.named_args[:command] || ann.named_args[:commands] || ann.args[0] }}
-                %prefix = {{ ann.named_args[:prefix] }}
-                %group  = {{ ann.named_args[:group] || :default }}
-                %priority = {{ ann[:priority] || 0 }}
-                %private_only = {{ ann.named_args[:private_only] || false }}
-                %group_only = {{ ann.named_args[:group_only] || false }}
-                %admin_only = {{ ann.named_args[:admin_only] || false }}
-                %on_edit = {{ ann.named_args[:on_edit] || false }}
-
-                %handler = CommandHandler.new(
-                  %command,
-                  %prefix,
-                  %group,
-                  %priority,
-                  %private_only,
-                  %group_only,
-                  %admin_only,
-                  %on_edit,
-                  &->(ctx : Context) { client.{{ method.name.id }}(ctx); nil }
-                )
-
-                client.add_event_handler(%handler)
-              {% end %}
-            {% end %}
-          {% end %}
-        {% end %}
       end
 
       record Context, update : Update, message : Message, command : String, text : String, raw_text : String, botname : Bool, edit : Bool

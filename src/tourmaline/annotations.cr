@@ -58,5 +58,13 @@ module Tourmaline
     annotation OnInlineQuery; end
 
     annotation On; end
+
+    # Catch errors and pass them to the annotated method to be handled.\
+    #
+    # Options:
+    #
+    # `*errors`
+    # : `Tourmaline::Error` classes that you wish to handle.
+    annotation Catch; end
   end
 end

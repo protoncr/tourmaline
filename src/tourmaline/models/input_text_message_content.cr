@@ -1,6 +1,7 @@
 module Tourmaline
   class InputTextMessageContent
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter message_text : String
 

@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultAudio < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "audio"
 

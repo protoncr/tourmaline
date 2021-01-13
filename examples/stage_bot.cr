@@ -14,13 +14,17 @@ class StageBot < Tourmaline::Client
 
     # Once `stage.exit` is called, this callback will be called with the answers
     stage.on_exit do |answers|
-      response = answers.map { |k, v| "#{k}: `#{v}`" }.join("\n")
-      ctx.message.chat.send_message(response, parse_mode: :markdown)
+      ctx.message.chat.send_message(answers.to_pretty_json, parse_mode: :markdown)
     end
   end
 
   # The conversation stage. The generic represents our context.
   class Conversation(T) < Stage(T)
+    @[Command("exit")]
+    def exit_command(ctx)
+      ctx.message.respond("Stopping the questions")
+      self.exit
+    end
 
     # A step is a proc that takes a client. It doesn't include any update information
     # because it's not being called in response to an update.
@@ -29,18 +33,15 @@ class StageBot < Tourmaline::Client
     # when the Stage is started.
     @[Step(:name, initial: true)]
     def ask_name(client)
-      client.send_message(self.chat_id, "What is your name?")
+      send_message(self.chat_id, "What is your name?")
 
       # Responses to steps can be awaited. The next update that comes
       # in will be passed to this block.
-      self.await_response do |update|
-        text = update.message.try &.text
-        if message = update.message
-          self.context["name"] = text.to_s
+      self.await_response do |ctx|
+        self.context["name"] = ctx.text
 
-          # `self.transition` sets the state to the next step and calls the associated method
-          self.transition :age
-        end
+        # `self.transition` sets the state to the next step and calls the associated method
+        self.transition :age
       end
 
       # If `self.transition` is not called, the Stage will be stuck in the current state, so
@@ -50,10 +51,9 @@ class StageBot < Tourmaline::Client
 
     @[Step(:age)]
     def ask_age(client)
-      client.send_message(self.chat_id, "What is your age?")
-      self.await_response do |update|
-        text = update.message.try &.text
-        if (message = update.message) && (age = text.to_s.to_i?)
+      send_message(self.chat_id, "What is your age?")
+      self.await_response do |ctx|
+        if age = ctx.text.to_i?
           self.context["age"] = age
           self.transition :gender
         end
@@ -63,11 +63,10 @@ class StageBot < Tourmaline::Client
     @[Step(:gender)]
     def ask_gender(client)
       valid_responses = {"male", "female", "other"}
-      client.send_message(self.chat_id, "What is your gender? (male, female, other)")
-      self.await_response do |update|
-        text = update.message.try &.text
-        if (message = update.message) && (valid_responses.includes?(text.to_s.downcase))
-          self.context["gender"] = text.to_s
+      send_message(self.chat_id, "What is your gender? (male, female, other)")
+      self.await_response do |ctx|
+        if valid_responses.includes?(ctx.text.downcase)
+          self.context["gender"] = ctx.text
 
           # `self.exit` exits the current stage, returning to the normal bot context
           self.exit

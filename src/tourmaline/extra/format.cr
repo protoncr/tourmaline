@@ -2,7 +2,7 @@ require "../helpers"
 
 class String
   # Escape the markdown in this string
-  def to_md(version)
+  def to_md(version = 2)
     Tourmaline::Helpers.escape_md(self, version)
   end
 
@@ -68,7 +68,7 @@ module Tourmaline
       end
 
       def self.build(*args, **kwargs, &block : self ->)
-        section = new(*args, *kwargs)
+        section = new(*args, **kwargs)
         yield section
         section
       end

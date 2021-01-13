@@ -101,6 +101,10 @@ You can also create custom handlers if you want. Let's create a simple `PhotoHan
 annotation OnPhoto; end
 
 class PhotoHandler < Tourmaline::EventHandler
+  # This is needed for the macro which registers the handler
+  # to know which annotation belongs to it.
+  ANNOTATION = OnPhoto
+
   # All handlers need at least these 3 things in their initialize method
   def initialize(group = :default priority = 0, &block : Context ->)
     super(group, priority)
@@ -121,31 +125,8 @@ class PhotoHandler < Tourmaline::EventHandler
     end
   end
 
-  # This is techincally optional, but is required if we want to use an annotation.
-  # Hopefully it will be more streamlined in the future.
-  def self.annotate(client)
-    {% begin %}
-        {% for cls in Tourmaline::Client.subclasses %}
-        {% for method in cls.methods %}
-
-            # Handle `OnPhoto` annotation
-            {% for ann in method.annotations(OnPhoto) %}
-              %group  = {{ ann.named_args[:group] || :default }}
-              %group  = {{ ann.named_args[:priority] || 0 }}
-
-              %handler = PhotoHandler.new(
-                %group,
-                %priority,
-                &->(ctx : Context) { client.{{ method.name.id }}(ctx); nil }
-              )
-
-              client.add_event_handler(%handler)
-            {% end %}
-        {% end %}
-        {% end %}
-    {% end %}
-  end
-
+  # Handlers with an annotation also need a Context object. This can be a class, struct,
+  # or an alias to another type. All that matters is that it exists.
   record Context, update : Update, message : Message, photos : Array(PhotoSize)
 end
 ```

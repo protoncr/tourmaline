@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedPhoto < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "photo"
 

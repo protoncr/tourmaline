@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedVoice < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "voice"
 

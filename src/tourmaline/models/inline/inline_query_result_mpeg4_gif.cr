@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultMpeg4Gif < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "mpeg4_gif"
 

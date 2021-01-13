@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultContact < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "contact"
 

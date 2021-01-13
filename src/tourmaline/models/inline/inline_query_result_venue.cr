@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultVenue < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "venue"
 

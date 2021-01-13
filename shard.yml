@@ -13,6 +13,10 @@ dependencies:
   http_proxy:
     github: mamantoha/http_proxy
     branch: master
+  async:
+    # github: protoncr/async
+    # branch: main
+    path: ../async
 
 development_dependencies:
   ngrok:

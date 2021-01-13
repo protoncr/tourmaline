@@ -1,6 +1,7 @@
 module Tourmaline
   class ChatPermissions
     include JSON::Serializable
+    include Tourmaline::Model
 
     property can_send_messages : Bool
 

@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultGif < InlineQueryResult
-    include JSON::Serializable
 
     property type : String = "gif"
 

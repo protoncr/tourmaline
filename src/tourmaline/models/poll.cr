@@ -4,6 +4,7 @@ module Tourmaline
   # This object contains information about a poll.
   class Poll
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter id : String
 

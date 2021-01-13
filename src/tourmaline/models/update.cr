@@ -2,6 +2,7 @@ module Tourmaline
   # # This object represents a Telegram user or bot.
   class Update
     include JSON::Serializable
+    include Tourmaline::Model
 
     # The update‘s unique identifier. Update identifiers start from a certain
     # positive number and increase sequentially. This ID becomes especially

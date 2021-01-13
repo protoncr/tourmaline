@@ -1,6 +1,7 @@
 module Tourmaline
   class ChatMember
     include JSON::Serializable
+    include Tourmaline::Model
 
     @[JSON::Field(ignore: true)]
     property! client : Tourmaline::Client
@@ -49,17 +50,17 @@ module Tourmaline
     getter until_date : Time?
 
     def kick(until_date = nil)
-      Container.client.kick_chat_member(chat_id, user.id, until_date)
+      client.kick_chat_member(chat_id, user.id, until_date)
     end
 
     def unban
-      Container.client.unban_chat_member(chat_id, user.id)
+      client.unban_chat_member(chat_id, user.id)
     end
 
     def restrict(permissions, until_date = nil)
       case permissions
       when true
-        Container.client.restrict_chat_member(chat_id, user.id, {
+        client.restrict_chat_member(chat_id, user.id, {
           can_send_messages:         true,
           can_send_media_messages:   true,
           can_send_polls:            true,
@@ -70,7 +71,7 @@ module Tourmaline
           can_pin_messages:          true,
         }, until_date)
       when false
-        Container.client.restrict_chat_member(chat_id, user.id, {
+        client.restrict_chat_member(chat_id, user.id, {
           can_send_messages:         false,
           can_send_media_messages:   false,
           can_send_polls:            false,
@@ -81,12 +82,12 @@ module Tourmaline
           can_pin_messages:          false,
         }, until_date)
       else
-        Container.client.restrict_chat_member(chat_id, user.id, permissions, until_date)
+        client.restrict_chat_member(chat_id, user.id, permissions, until_date)
       end
     end
 
     def promote(**permissions)
-      Container.client.promote_chat_member(chat_id, user.id, **permissions)
+      client.promote_chat_member(chat_id, user.id, **permissions)
     end
 
     def self.from_user(user)

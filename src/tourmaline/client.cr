@@ -6,7 +6,7 @@ require "./persistence"
 require "./parse_mode"
 require "./container"
 require "./chat_action"
-require "./models/*"
+require "./model"
 require "./update_action"
 require "./event_handler"
 require "./client/*"
@@ -62,6 +62,10 @@ module Tourmaline
     # `persistence`
     # :    the persistence strategy to use
     #
+    # `set_commands`
+    # :    if true, `set_my_commands` will be run on start and any commands marked with `register`
+    #      will be registered with BotFather.
+    #
     # `pool_capacity`
     # :    the maximum number of concurrent HTTP connections to use
     #
@@ -89,10 +93,11 @@ module Tourmaline
     # `proxy_pass`
     # :    a password to use for a proxy that requires authentication
     def initialize(@api_key : String,
-                   endpoint = DEFAULT_API_URL,
+                   @endpoint = DEFAULT_API_URL,
                    *,
-                   persistence : Persistence = NilPersistence.new,
+                   @persistence : Persistence = NilPersistence.new,
                    @allowed_updates = [] of String,
+                   @set_commands = false,
                    pool_capacity = 200,
                    initial_pool_size = 20,
                    pool_timeout = 0.1,
@@ -129,7 +134,12 @@ module Tourmaline
       @event_handlers = [] of EventHandler
       register_event_handler_annotations
 
+      register_commands_with_botfather
+
+      # TODO: Replace this with something that supports multiple clients
       Container.client = self
+
+      Signal::INT.trap { exit }
     end
 
     # Add an `EventHandler` instance to the handler stack
@@ -159,8 +169,8 @@ module Tourmaline
     end
 
     private def request(type : U.class, method, params = {} of String => String) forall U
-      response = request(method, params)
-      type.from_json(response)
+    response = request(method, params)
+    type.from_json(response)
     end
 
     # Sends a json request to the Telegram Client API.
@@ -304,6 +314,29 @@ module Tourmaline
         end
       end
       file
+    end
+
+    private def register_commands_with_botfather
+      commands = [] of Handlers::CommandHandler
+      @event_handlers.each { |h| commands << h if h.is_a?(Handlers::CommandHandler) }
+
+      registerable = commands
+        .select { |c| c.register && c.description && !c.description.to_s.empty? }
+        .select { |c| c.prefixes.includes?("/") }
+        .sort { |a, b| b.priority <=> a.priority }
+
+      if registerable.size > 100
+        Log.warn {
+          "Only a maximum of 100 commands may be registered with BotFather at a time.\n" \
+          "Registering the first 100"
+        }
+      end
+
+      bot_commands = registerable[..100].map do |c|
+        { command: c.register_as || c.commands[0], description: c.description.to_s }
+      end
+
+      set_my_commands(bot_commands) if @set_commands
     end
   end
 end

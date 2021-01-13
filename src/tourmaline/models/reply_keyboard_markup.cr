@@ -6,6 +6,7 @@ module Tourmaline
 
   class KeyboardButton
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter text : String
 
@@ -23,6 +24,7 @@ module Tourmaline
   # created and sent when the corresponding button is pressed.
   class KeyboardButtonPollType
     include JSON::Serializable
+    include Tourmaline::Model
 
     @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
     getter type : Poll::Type
@@ -33,6 +35,7 @@ module Tourmaline
 
   class ReplyKeyboardMarkup
     include JSON::Serializable
+    include Tourmaline::Model
 
     getter keyboard : Array(Array(KeyboardButton))
 

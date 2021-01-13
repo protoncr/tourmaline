@@ -1,6 +1,7 @@
 module Tourmaline
   class InputMediaPhoto
     include JSON::Serializable
+    include Tourmaline::Model
 
     @type = "photo"
 

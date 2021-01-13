@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultArticle < InlineQueryResult
-    include JSON::Serializable
 
     getter type : String = "article"
 

@@ -1,6 +1,7 @@
 module Tourmaline
   abstract class InlineQueryResult
     include JSON::Serializable
+    include Tourmaline::Model
 
     def self.build(&block)
       builder = Builder.new

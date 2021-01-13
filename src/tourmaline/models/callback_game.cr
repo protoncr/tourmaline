@@ -1,5 +1,6 @@
 module Tourmaline
   class CallbackGame
     include JSON::Serializable
-  end
+    include Tourmaline::Model
+      end
 end

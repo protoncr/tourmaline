@@ -1,6 +1,7 @@
 module Tourmaline
   class ShippingQuery
     include JSON::Serializable
+    include Tourmaline::Model
 
     @[JSON::Field(ignore: true)]
     property! client : Tourmaline::Client
@@ -17,7 +18,7 @@ module Tourmaline
     end
 
     def answer(ok, **kwargs)
-      Container.client.answer_shipping_query(id, ok, **kwargs)
+      client.answer_shipping_query(id, ok, **kwargs)
     end
   end
 end
