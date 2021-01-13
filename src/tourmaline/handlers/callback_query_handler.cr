@@ -1,10 +1,11 @@
 module Tourmaline
   module Handlers
     class CallbackQueryHandler < EventHandler
+      ANNOTATION = OnCallbackQuery
       getter pattern : Regex?
 
       def initialize(pattern : (String | Regex)? = nil, group = :default, priority = 0, &block : Context ->)
-        super(Context, group, priority, &block)
+        super(group, priority)
         @pattern = pattern.is_a?(Regex | Nil) ? pattern : Regex.new("^#{Regex.escape(pattern)}$")
         @proc = block
       end

@@ -1,6 +1,8 @@
 module Tourmaline
   module Handlers
     class InlineQueryHandler < EventHandler
+      ANNOTATION = OnInlineQuery
+
       getter pattern : Regex?
 
       def initialize(pattern : (String | Regex)? = nil, group = :default, priority = 0, &block : Context ->)

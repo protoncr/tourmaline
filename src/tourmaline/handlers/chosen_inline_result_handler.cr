@@ -1,6 +1,7 @@
 module Tourmaline
   module Handlers
     class ChosenInlineResultHandler < EventHandler
+      ANNOTATION = OnChosenInlineResult
       getter pattern : Regex?
 
       def initialize(pattern : (String | Regex)? = nil, group = :default, priority = 0, &block : Context ->)

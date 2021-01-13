@@ -1,6 +1,8 @@
 module Tourmaline
   module Handlers
     class EditedHandler < EventHandler
+      ANNOTATION = Edited
+
       def initialize(group = :default, priority = 0, &block : Context ->)
         super(group, priority)
         @proc = block

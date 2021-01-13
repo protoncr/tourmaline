@@ -1,6 +1,8 @@
 module Tourmaline
   module Handlers
     class HearsHandler < EventHandler
+      ANNOTATION = Hears
+
       getter pattern : Regex
 
       def initialize(pattern : String | Regex, group = :default, priority = 0, &block : Context ->)
