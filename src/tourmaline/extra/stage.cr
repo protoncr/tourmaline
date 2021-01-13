@@ -31,9 +31,6 @@ module Tourmaline
     # True if this Stage is currently active
     getter? active : Bool
 
-    # True if update history is being recorded
-    getter? history : Bool
-
     # Maintains a history of updates that match the given chat_id and/or user_id.
     # The first update will be the one that initiated this Stage.
     getter update_history : Array(Update)
