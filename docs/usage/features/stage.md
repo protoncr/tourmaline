@@ -60,4 +60,4 @@ def ask_age(client)
 end
 ```
 
-For a more example of Stage use, see [examples/stage_bot.cr][https://github.com/protoncr/tourmaline/blob/master/examples/stage_bot.cr].
+For a more example of Stage use, see [examples/stage_bot.cr](https://github.com/protoncr/tourmaline/blob/master/examples/stage_bot.cr).
