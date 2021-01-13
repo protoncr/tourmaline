@@ -381,10 +381,31 @@ module Tourmaline
         })
       end
 
-      # Use this method to unban a previously kicked user in a supergroup or
-      # channel. The user will not return to the group or channel
-      # automatically, but will be able to join via link, etc.
-      # The bot must be an administrator for this to work.
+      # Use this method to easily mute a user in a supergroup. The bot must
+      # be an administrator in the supergroup for this to work and must
+      # have the appropriate admin right. Works by calling
+      # `restrict_chat_member` with all permissions
+      # set to `false`.
+      # Returns `true` on success.
+      def mute_chat_member(chat, user, until_date = nil)
+        permissions = ChatPermissions.new(
+          can_send_messages: false,
+          can_send_media_messages: false,
+          can_send_polls: false,
+          can_send_other_messages: false,
+          can_add_web_page_previews: false,
+          can_change_info: false,
+          can_invite_users: false,
+          can_pin_messages: false
+        )
+
+        restrict_chat_member(chat, user, permissions, until_date)
+      end
+
+      # Use this method to restrict a user in a supergroup. The bot must be an
+      # administrator in the supergroup for this to work and must have the
+      # appropriate admin rights. Pass True for all permissions to
+      # lift restrictions from a user.
       # Returns `true` on success.
       def restrict_chat_member(
         chat,
