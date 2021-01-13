@@ -1,7 +1,7 @@
 site_name: Tourmaline
 repo_url: https://github.com/protoncr/tourmaline
 edit_uri: https://github.com/protoncr/tourmaline/tree/master/docs/
-site_url: https://tourmaline.readthedocs.com
+site_url: https://tourmaline.dev
 
 theme:
   name: material
