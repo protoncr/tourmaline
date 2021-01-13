@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultVideo < InlineQueryResult
-
     property type : String = "video"
 
     property id : String

@@ -8,7 +8,7 @@ class MenuBot < Tourmaline::Client
       buttons(columns: 2) do
         route_button "How it works", to: "/how_it_works"
         route_button "Interactive tutorial", to: "/tutorial"
-        url_button   "Tourmaline website", "https://tourmaline.dev"
+        url_button "Tourmaline website", "https://tourmaline.dev"
       end
     end
 

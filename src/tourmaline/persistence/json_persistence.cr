@@ -18,8 +18,7 @@ module Tourmaline
           users: Hash(Int64, User),
           user_ids: Hash(String, Int64),
           chats: Hash(Int64, Chat),
-          chat_ids: Hash(String, Int64)
-        ).from_json(json)
+          chat_ids: Hash(String, Int64)).from_json(json)
         @persisted_users = parsed[:users]
         @persisted_user_ids = parsed[:user_ids]
         @persisted_chats = parsed[:chats]
@@ -30,10 +29,10 @@ module Tourmaline
     def cleanup
       Log.info { "Persisting data..." }
       json = {
-        users: @persisted_users,
+        users:    @persisted_users,
         user_ids: @persisted_user_ids,
-        chats: @persisted_chats,
-        chat_ids: @persisted_chat_ids
+        chats:    @persisted_chats,
+        chat_ids: @persisted_chat_ids,
       }
       File.write(@filename, json.to_json)
     end

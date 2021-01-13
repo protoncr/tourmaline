@@ -1,7 +1,7 @@
 module Tourmaline
   module Handlers
     class CommandHandler < EventHandler
-      ANNOTATION = Command
+      ANNOTATION       = Command
       DEFAULT_PREFIXES = ["/"]
 
       # Commands (without prefix) that this handler should respond to.
@@ -42,17 +42,17 @@ module Tourmaline
       #     handler is invoked. This should be fine in testing, but in production it's
       #     recommended to cache admins and do your own guarding.
       def initialize(commands,
-                    prefix = nil,
-                    group = :default,
-                    priority = 0,
-                    @private_only = false,
-                    @group_only = false,
-                    @admin_only = false,
-                    @on_edit = false,
-                    @register = false,
-                    @register_as = nil,
-                    @description = nil,
-                    &block : Context ->)
+                     prefix = nil,
+                     group = :default,
+                     priority = 0,
+                     @private_only = false,
+                     @group_only = false,
+                     @admin_only = false,
+                     @on_edit = false,
+                     @register = false,
+                     @register_as = nil,
+                     @description = nil,
+                     &block : Context ->)
         super(group, priority)
         prefix ||= DEFAULT_PREFIXES
 
@@ -66,7 +66,7 @@ module Tourmaline
       def call(client : Client, update : Update)
         if (message = update.message || update.channel_post) || (@on_edit && (message = update.edited_message || update.edited_channel_post))
           if ((raw_text = message.raw_text) && (text = message.text)) ||
-              (raw_text = message.raw_caption && (text = message.caption))
+             (raw_text = message.raw_caption && (text = message.caption))
             return if private_only && message.chat.type != Chat::Type::Private
             return if (group_only || admin_only) && message.chat.type == Chat::Type::Private
 

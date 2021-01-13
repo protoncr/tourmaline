@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultMpeg4Gif < InlineQueryResult
-
     getter type : String = "mpeg4_gif"
 
     getter id : String

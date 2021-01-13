@@ -107,7 +107,6 @@ module Tourmaline
                    proxy_port = nil,
                    proxy_user = nil,
                    proxy_pass = nil)
-
       @persistence = persistence
       @persistence.init
 
@@ -169,8 +168,8 @@ module Tourmaline
     end
 
     private def request(type : U.class, method, params = {} of String => String) forall U
-    response = request(method, params)
-    type.from_json(response)
+      response = request(method, params)
+      type.from_json(response)
     end
 
     # Sends a json request to the Telegram Client API.
@@ -228,9 +227,9 @@ module Tourmaline
 
     private def build_json_config(payload)
       {
-        method:    "POST",
+        method:  "POST",
         headers: HTTP::Headers{"Content-Type" => "application/json", "Connection" => "keep-alive"},
-        body:     payload.to_h.compact.to_json,
+        body:    payload.to_h.compact.to_json,
       }
     end
 
@@ -243,7 +242,7 @@ module Tourmaline
       end
 
       {
-        method:    "POST",
+        method:  "POST",
         headers: HTTP::Headers{
           "Content-Type" => "multipart/form-data; boundary=#{boundary}",
           "Connection"   => "keep-alive",
@@ -333,7 +332,7 @@ module Tourmaline
       end
 
       bot_commands = registerable[..100].map do |c|
-        { command: c.register_as || c.commands[0], description: c.description.to_s }
+        {command: c.register_as || c.commands[0], description: c.description.to_s}
       end
 
       set_my_commands(bot_commands) if @set_commands

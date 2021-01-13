@@ -1,7 +1,6 @@
 module Tourmaline
   # Base class for all handlers.
   abstract class EventHandler
-
     getter group : String
 
     getter priority : Int32

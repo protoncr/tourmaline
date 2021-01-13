@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultAudio < InlineQueryResult
-
     getter type : String = "audio"
 
     getter id : String

@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedGif < InlineQueryResult
-
     getter type : String = "gif"
 
     getter id : String

@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultPhoto < InlineQueryResult
-
     property type : String = "photo"
 
     property id : String

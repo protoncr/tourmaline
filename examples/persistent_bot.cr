@@ -1,7 +1,6 @@
 require "../src/tourmaline"
 require "../src/tourmaline/persistence/json_persistence"
 
-
 class PersistentBot < Tourmaline::Client
   @[Command("seen")]
   def seen_command(ctx)

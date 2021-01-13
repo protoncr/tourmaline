@@ -86,9 +86,9 @@ module Tourmaline
           @current_route = route
           route_history << route
           message.edit_text(page.content,
-                            reply_markup: page.buttons,
-                            parse_mode: page.parse_mode,
-                            disable_link_preview: !page.link_preview)
+            reply_markup: page.buttons,
+            parse_mode: page.parse_mode,
+            disable_link_preview: !page.link_preview)
           ctx.query.answer
         else
           ctx.query.answer("Route not found")

@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultLocation < InlineQueryResult
-
     getter type : String = "location"
 
     getter id : String

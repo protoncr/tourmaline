@@ -52,8 +52,8 @@ module Tourmaline
     @first_run : Bool
     @event_handler : EventHandler
     @on_start_handlers : Array(Proc(Nil))
-    @on_exit_handlers  : Array(Proc(T, Nil))
-    @response_awaiter  : Proc(Context, Nil)?
+    @on_exit_handlers : Array(Proc(T, Nil))
+    @response_awaiter : Proc(Context, Nil)?
 
     forward_missing_to @client
 
@@ -69,12 +69,12 @@ module Tourmaline
       @context = context || T.new
       @chat_id = chat_id
       @user_id = user_id
-      @active  = false
-      @first_run  = true
+      @active = false
+      @first_run = true
 
-      @update_history  = [] of Update
+      @update_history = [] of Update
       @on_start_handlers = [] of Proc(Nil)
-      @on_exit_handlers  = [] of Proc(T, Nil)
+      @on_exit_handlers = [] of Proc(T, Nil)
 
       group ||= Helpers.random_string(8)
       @event_handler = UpdateHandler.new(:update, **handler_options, group: group, priority: priority) do |update|

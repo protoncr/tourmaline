@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedSticker < InlineQueryResult
-
     getter type : String = "sticker"
 
     getter id : String

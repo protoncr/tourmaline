@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultVoice < InlineQueryResult
-
     property type : String = "voice"
 
     property id : String

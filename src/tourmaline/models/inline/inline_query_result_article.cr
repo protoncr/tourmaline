@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultArticle < InlineQueryResult
-
     getter type : String = "article"
 
     getter id : String

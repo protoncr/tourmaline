@@ -139,9 +139,9 @@ module Tourmaline
         user_id = user.is_a?(Int) ? user : user.id
 
         request(Bool, "setStickerSetThumb", {
-          name: name,
+          name:    name,
           user_id: user_id,
-          thumb: thumb
+          thumb:   thumb,
         })
       end
     end

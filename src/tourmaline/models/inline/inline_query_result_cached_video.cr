@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedVideo < InlineQueryResult
-
     getter type : String = "video"
 
     getter id : String

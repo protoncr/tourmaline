@@ -13,58 +13,58 @@ module Tourmaline
     }
 
     MD_ENTITY_MAP = {
-      "bold" => {"*", "*"},
-      "italic" => {"_", "_"},
-      "underline" => {"", ""},
-      "code" => {"`", "`"},
-      "pre" => {"```\n", "\n```"},
-      "pre_language" => {"```{language}\n", "\n```"},
+      "bold"          => {"*", "*"},
+      "italic"        => {"_", "_"},
+      "underline"     => {"", ""},
+      "code"          => {"`", "`"},
+      "pre"           => {"```\n", "\n```"},
+      "pre_language"  => {"```{language}\n", "\n```"},
       "strikethrough" => {"", ""},
-      "text_mention" => {"[", "](tg://user?id={id})"},
-      "text_link" => {"[", "]({url})"}
+      "text_mention"  => {"[", "](tg://user?id={id})"},
+      "text_link"     => {"[", "]({url})"},
     }
 
     MDV2_ENTITY_MAP = {
-      "bold" => {"*", "*"},
-      "italic" => {"_", "_"},
-      "underline" => {"__", "__"},
-      "code" => {"`", "`"},
-      "pre" => {"```\n", "\n```"},
-      "pre_language" => {"```{language}\n", "\n```"},
+      "bold"          => {"*", "*"},
+      "italic"        => {"_", "_"},
+      "underline"     => {"__", "__"},
+      "code"          => {"`", "`"},
+      "pre"           => {"```\n", "\n```"},
+      "pre_language"  => {"```{language}\n", "\n```"},
       "strikethrough" => {"~", "~"},
-      "text_mention" => {"[", "](tg://user?id={id})"},
-      "text_link" => {"[", "]({url})"}
+      "text_mention"  => {"[", "](tg://user?id={id})"},
+      "text_link"     => {"[", "]({url})"},
     }
 
     HTML_ENTITY_MAP = {
-      "bold" => {"<b>", "</b>"},
-      "italic" => {"<i>", "</i>"},
-      "underline" => {"<u>", "</u>"},
-      "code" => {"<code>", "</code>"},
-      "pre" => {"<pre>\n", "\n</pre>"},
-      "pre_language" => {"<pre><code class=\"language-{language}\">\n", "\n</code></pre>"},
+      "bold"          => {"<b>", "</b>"},
+      "italic"        => {"<i>", "</i>"},
+      "underline"     => {"<u>", "</u>"},
+      "code"          => {"<code>", "</code>"},
+      "pre"           => {"<pre>\n", "\n</pre>"},
+      "pre_language"  => {"<pre><code class=\"language-{language}\">\n", "\n</code></pre>"},
       "strikethrough" => {"<s>", "</s>"},
-      "text_mention" => {"<a href=\"tg://user?id={id}\">", "</a>"},
-      "text_link" => {"<a href=\"{url}\">", "</a>"}
+      "text_mention"  => {"<a href=\"tg://user?id={id}\">", "</a>"},
+      "text_link"     => {"<a href=\"{url}\">", "</a>"},
     }
 
     def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown)
       start_entities = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset] = e; acc }
-      end_entities   = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset + e.length] = e; acc }
+      end_entities = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset + e.length] = e; acc }
 
       chars = text.chars
       chars << ' ' # The last entity doesn't complete without this
 
       entity_map = case parse_mode
-      when ParseMode::Markdown
-        MD_ENTITY_MAP
-      when ParseMode::MarkdownV2
-        MDV2_ENTITY_MAP
-      when ParseMode::HTML
-        HTML_ENTITY_MAP
-      else
-        raise "Unreachable"
-      end
+                   when ParseMode::Markdown
+                     MD_ENTITY_MAP
+                   when ParseMode::MarkdownV2
+                     MDV2_ENTITY_MAP
+                   when ParseMode::HTML
+                     HTML_ENTITY_MAP
+                   else
+                     raise "Unreachable"
+                   end
 
       String.build do |str|
         chars.each_with_index do |char, i|

@@ -19,7 +19,7 @@ module Tourmaline
       )
         request(Bool, "sendSticker", {
           user_id: user_id,
-          errors: errors,
+          errors:  errors,
         })
       end
     end

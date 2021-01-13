@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedPhoto < InlineQueryResult
-
     getter type : String = "photo"
 
     getter id : String

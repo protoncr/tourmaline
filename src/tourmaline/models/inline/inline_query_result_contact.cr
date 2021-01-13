@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultContact < InlineQueryResult
-
     getter type : String = "contact"
 
     getter id : String

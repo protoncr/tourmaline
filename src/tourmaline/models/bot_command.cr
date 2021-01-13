@@ -8,7 +8,7 @@ module Tourmaline
     getter description : String
 
     def to_h
-      { "command" => command, "description" => description }
+      {"command" => command, "description" => description}
     end
   end
 end

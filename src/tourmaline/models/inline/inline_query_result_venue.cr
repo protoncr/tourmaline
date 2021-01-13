@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultVenue < InlineQueryResult
-
     getter type : String = "venue"
 
     getter id : String

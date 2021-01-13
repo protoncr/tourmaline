@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedVoice < InlineQueryResult
-
     getter type : String = "voice"
 
     getter id : String

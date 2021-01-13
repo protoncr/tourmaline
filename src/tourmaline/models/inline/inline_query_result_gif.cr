@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultGif < InlineQueryResult
-
     property type : String = "gif"
 
     property id : String

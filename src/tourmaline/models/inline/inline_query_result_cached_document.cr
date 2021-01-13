@@ -1,6 +1,5 @@
 module Tourmaline
   class InlineQueryResultCachedDocument < InlineQueryResult
-
     property type : String = "document"
 
     property id : String

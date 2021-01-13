@@ -3,7 +3,7 @@ require "../src/tourmaline"
 class MediaBot < Tourmaline::Client
   ANIMATION_URL_1 = "https://media.giphy.com/media/ya4eevXU490Iw/giphy.gif"
   ANIMATION_URL_2 = "https://media.giphy.com/media/LrmU6jXIjwziE/giphy.gif"
-  LOCAL_FILE = File.expand_path("./cat.jpg", __DIR__)
+  LOCAL_FILE      = File.expand_path("./cat.jpg", __DIR__)
 
   @[Command("local")]
   def local_command(ctx)
