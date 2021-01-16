@@ -7,11 +7,16 @@ module Tourmaline
     HTML
 
     def self.new(pull : JSON::PullParser)
-      parse(pull.read_string)
+      parse(pull.read_string_or_null)
     end
 
     def to_json(json : JSON::Builder)
-      json.string(to_s)
+      case self
+      when Normal
+        json.null
+      else
+        json.string(to_s)
+      end
     end
   end
 end

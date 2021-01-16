@@ -42,6 +42,9 @@ module Tourmaline
 
     property allowed_updates : Array(String)
 
+    # Default parse mode to use for commands when it isn't included explicitly
+    property default_parse_mode : ParseMode
+
     private getter event_handlers : Array(EventHandler)
     private getter persistence : Persistence
 
@@ -98,6 +101,7 @@ module Tourmaline
                    @persistence : Persistence = NilPersistence.new,
                    @allowed_updates = [] of String,
                    @set_commands = false,
+                   @default_parse_mode : ParseMode = ParseMode::Markdown,
                    pool_capacity = 200,
                    initial_pool_size = 20,
                    pool_timeout = 0.1,

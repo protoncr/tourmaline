@@ -149,7 +149,7 @@ module Tourmaline
         caption,
         message = nil,
         inline_message = nil,
-        parse_mode = ParseMode::Normal,
+        parse_mode = @default_parse_mode,
         caption_entities = [] of MessageEntity,
         reply_markup = nil
       )
@@ -160,7 +160,6 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
         inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
-        parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
         request(Bool | Message, "editMessageCaption", {
           chat_id:           chat_id,
@@ -207,7 +206,7 @@ module Tourmaline
         text,
         message = nil,
         inline_message = nil,
-        parse_mode = ParseMode::Normal,
+        parse_mode = @default_parse_mode,
         entities = [] of MessageEntity,
         disable_link_preview = false,
         reply_markup = nil
@@ -219,7 +218,6 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
         inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
-        parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
 
         request(Message, "editMessageText", {
           chat_id:                  chat_id,
@@ -660,14 +658,13 @@ module Tourmaline
         thumb = nil,
         caption = nil,
         caption_entities = [] of MessageEntity,
-        parse_mode = ParseMode::Normal,
+        parse_mode = @default_parse_mode,
         disable_notification = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendAnimation", {
@@ -831,7 +828,7 @@ module Tourmaline
       def send_message(
         chat,
         text,
-        parse_mode = ParseMode::Normal,
+        parse_mode = @default_parse_mode,
         entities = [] of MessageEntity,
         link_preview = false,
         disable_notification = false,
@@ -840,7 +837,6 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendMessage", {
@@ -861,7 +857,7 @@ module Tourmaline
         from_chat,
         message,
         caption = nil,
-        parse_mode = ParseMode::Normal,
+        parse_mode = @default_parse_mode,
         caption_entities = [] of MessageEntity,
         disable_notification = false,
         reply_to_message = nil,
@@ -871,7 +867,6 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         from_chat_id = from_chat.is_a?(Int::Primitive | String) ? from_chat : from_chat.id
         message_id = message.is_a?(Int::Primitive) ? message : message.id
-        parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request("copyMessage", {
@@ -894,7 +889,7 @@ module Tourmaline
         chat,
         photo,
         caption = nil,
-        parse_mode = ParseMode::Normal,
+        parse_mode = @default_parse_mode,
         caption_entities = [] of MessageEntity,
         disable_notification = false,
         reply_to_message = nil,
@@ -903,7 +898,6 @@ module Tourmaline
       )
         photo = check_open_local_file(photo)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        parse_mode = parse_mode == ParseMode::Normal ? nil : parse_mode.to_s
         reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.id
 
         request(Message, "sendPhoto", {
