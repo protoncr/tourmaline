@@ -1,7 +1,7 @@
 module Tourmaline
   module Handlers
     class UpdateHandler < EventHandler
-      ANNOTATION    = On
+      ANNOTATION = On
       alias Context = Update
 
       getter action : UpdateAction
