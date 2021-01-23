@@ -225,7 +225,7 @@ module Tourmaline
       client.send_message(chat, message, **kwargs)
     end
 
-    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll dice dart basket] %}
+    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll dice dart basketball] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end

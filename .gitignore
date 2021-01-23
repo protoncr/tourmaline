@@ -1,7 +1,10 @@
+.DS_Store
+
 /lib/
 /bin/
 /site/
 /.shards/
+/examples/build/
 
 # Libraries don't need dependency lock
 # Dependencies will be locked in application that uses them

@@ -13,7 +13,7 @@ class DiceBot < Tourmaline::Client
 
   @[Command("shoot")]
   def shoot_command(ctx)
-    ctx.message.reply_with_basket
+    ctx.message.reply_with_basketball
   end
 end
 

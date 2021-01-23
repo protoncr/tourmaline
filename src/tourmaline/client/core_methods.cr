@@ -735,7 +735,7 @@ module Tourmaline
         })
       end
 
-      {% for val in [{"dice", "🎲", 6}, {"darts", "🎯", 6}, {"basketball", "🏀", 6}, {"football", "⚽️", 5}, {"slot_machine", "🎰", 64}] %}
+      {% for val in [{"dice", "🎲", 6}, {"dart", "🎯", 6}, {"basketball", "🏀", 6}, {"football", "⚽️", 5}, {"slot_machine", "🎰", 64}] %}
       # Use this method to send a {{ val[0].id }} ({{ val[1].id }} emoji), which will have a random value from 1 to {{ val[2].id }}.
       # On success, the sent Message is returned.
       def send_{{ val[0].id }}(

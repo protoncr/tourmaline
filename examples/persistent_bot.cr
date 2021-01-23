@@ -5,7 +5,7 @@ class PersistentBot < Tourmaline::Client
   @[Command("seen")]
   def seen_command(ctx)
     users = @persistence.as(JsonPersistence).persisted_users.map(&.[1].id).join('\n')
-    update.message.reply(users)
+    ctx.message.reply(users)
   end
 
   @[Command("info")]
@@ -21,9 +21,9 @@ class PersistentBot < Tourmaline::Client
         str.puts "  id: `#{user.id}`"
         str.puts "  username: `#{user.username}`"
       end
-      update.message.reply(message, parse_mode: :markdown)
+      ctx.message.reply(message, parse_mode: :markdown)
     else
-      update.message.reply("User not found")
+      ctx.message.reply("User not found")
     end
   end
 end
