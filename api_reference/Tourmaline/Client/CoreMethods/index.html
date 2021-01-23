@@ -1187,6 +1187,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#mute_chat_member(chat,user,until_date)" class="md-nav__link">
+    #mute_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client::CoreMethods#next_offset()" class="md-nav__link">
     #next_offset
   </a>
@@ -1264,8 +1271,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_darts(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
-    #send_darts
+  <a href="#Tourmaline::Client::CoreMethods#send_dart(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_dart
   </a>
   
 </li>
@@ -5345,6 +5352,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client::CoreMethods#mute_chat_member(chat,user,until_date)" class="md-nav__link">
+    #mute_chat_member
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client::CoreMethods#next_offset()" class="md-nav__link">
     #next_offset
   </a>
@@ -5422,8 +5436,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_darts(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
-    #send_darts
+  <a href="#Tourmaline::Client::CoreMethods#send_dart(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+    #send_dart
   </a>
   
 </li>
@@ -5697,7 +5711,7 @@ minutes after the bot is launched.</p>
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#copy_message(chat,from_chat,message,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #copy_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">from_chat</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #copy_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">from_chat</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#copy_message(chat,from_chat,message,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
@@ -5745,7 +5759,7 @@ Returns <code>true</code> on success.</p>
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_caption(chat,caption,message,inline_message,parse_mode,caption_entities,reply_markup)">
 
     <code>
-      #edit_message_caption<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">caption</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #edit_message_caption<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">caption</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#edit_message_caption(chat,caption,message,inline_message,parse_mode,caption_entities,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
@@ -5798,7 +5812,7 @@ returned.</p>
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_text(chat,text,message,inline_message,parse_mode,entities,disable_link_preview,reply_markup)">
 
     <code>
-      #edit_message_text<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_link_preview</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #edit_message_text<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inline_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_link_preview</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#edit_message_text(chat,text,message,inline_message,parse_mode,entities,disable_link_preview,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
@@ -6020,6 +6034,22 @@ local server, but will not be able to log in back to the cloud Bot API server fo
 </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#mute_chat_member(chat,user,until_date)">
+
+    <code>
+      #mute_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">until_date</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#mute_chat_member(chat,user,until_date)" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+<p>Use this method to easily mute a user in a supergroup. The bot must
+be an administrator in the supergroup for this to work and must
+have the appropriate admin right. Works by calling
+<code>restrict_chat_member</code> with all permissions
+set to <code>false</code>.
+Returns <code>true</code> on success.</p>
+</div>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#next_offset()">
 
     <code>
@@ -6090,10 +6120,10 @@ Returns <code>true</code> on success.</p>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#restrict_chat_member(chat,user,permissions,until_date)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
-<p>Use this method to unban a previously kicked user in a supergroup or
-channel. The user will not return to the group or channel
-automatically, but will be able to join via link, etc.
-The bot must be an administrator for this to work.
+<p>Use this method to restrict a user in a supergroup. The bot must be an
+administrator in the supergroup for this to work and must have the
+appropriate admin rights. Pass True for all permissions to
+lift restrictions from a user.
 Returns <code>true</code> on success.</p>
 </div>
 </div>
@@ -6101,7 +6131,7 @@ Returns <code>true</code> on success.</p>
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_animation(chat,animation,duration,width,height,thumb,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_animation<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">animation</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">thumb</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_animation<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">animation</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">thumb</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_animation(chat,animation,duration,width,height,thumb,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
@@ -6171,14 +6201,14 @@ On success, the sent <code>Message</code> is returned.</p>
 </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_darts(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_dart(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_darts<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_dart<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_darts(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_dart(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
-<p>Use this method to send a darts (🎯 emoji), which will have a random value from 1 to 6.
+<p>Use this method to send a dart (🎯 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>
 </div>
 </div>
@@ -6249,7 +6279,7 @@ On success, an array of the sent <code>Messages</code> is returned.</p>
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_message(chat,text,parse_mode,entities,link_preview,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">link_preview</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">link_preview</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_message(chat,text,parse_mode,entities,link_preview,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
@@ -6261,7 +6291,7 @@ On success, the sent <code>Message</code> is returned.</p>
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_photo(chat,photo,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Normal</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_photo(chat,photo,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
