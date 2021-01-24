@@ -161,6 +161,9 @@ module Tourmaline
     # this client instance.
     def handle_update(update : Update)
       handled = [] of String
+
+      {% if flag?(:no_async) %}
+
       @event_handlers.each do |handler|
         unless handled.includes?(handler.group)
           if handler.call(self, update)
@@ -169,6 +172,23 @@ module Tourmaline
           end
         end
       end
+
+      {% else %}
+
+      futures = @event_handlers.map do |handler|
+        Async::Future(Nil).execute do
+          unless handled.includes?(handler.group)
+            if handler.call(self, update)
+              @persistence.handle_update(update)
+              handled << handler.group
+            end
+          end
+        end
+      end
+
+      Async::Future.all(futures)
+
+      {% end %}
     end
 
     private def request(type : U.class, method, params = {} of String => String) forall U
