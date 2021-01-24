@@ -1857,6 +1857,19 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../Error/NotEnoughRightsOther/" class="md-nav__link">
+      NotEnoughRightsOther
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
     <a href="../../../Error/NotEnoughRightsToPinMessage/" class="md-nav__link">
       NotEnoughRightsToPinMessage
     </a>
@@ -2723,7 +2736,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,query,match)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,message,query,match)" class="md-nav__link">
     .new
   </a>
   
@@ -2750,7 +2763,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,query,match)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,message,query,match)" class="md-nav__link">
     #copy_with
   </a>
   
@@ -2759,6 +2772,13 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#match()" class="md-nav__link">
     #match
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#message()" class="md-nav__link">
+    #message
   </a>
   
 </li>
@@ -4725,7 +4745,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,query,match)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,message,query,match)" class="md-nav__link">
     .new
   </a>
   
@@ -4752,7 +4772,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,query,match)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,message,query,match)" class="md-nav__link">
     #copy_with
   </a>
   
@@ -4761,6 +4781,13 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#match()" class="md-nav__link">
     #match
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::CallbackQueryHandler::Context#message()" class="md-nav__link">
+    #message
   </a>
   
 </li>
@@ -4819,12 +4846,12 @@ struct <code>Tourmaline::Handlers::CallbackQueryHandler::Context</code>
 <div class="doc doc-children">
 <h3 id="class-methods">Class methods<a class="headerlink" href="#class-methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-class_method">
-<h4 class="doc doc-heading" id="Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,query,match)">
+<h4 class="doc doc-heading" id="Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,message,query,match)">
 
     <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <span class="n">Update</span><span class="p">,</span> <span class="n">query</span> <span class="p">:</span> <span class="n">CallbackQuery</span><span class="p">,</span> <span class="n">match</span> <span class="p">:</span> <span class="nb">Regex</span><span class="o">::</span><span class="n">MatchData?</span><span class="p">)</span></code></span>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <span class="n">Update</span><span class="p">,</span> <span class="n">message</span> <span class="p">:</span> <span class="n">Message?</span><span class="p">,</span> <span class="n">query</span> <span class="p">:</span> <span class="n">CallbackQuery</span><span class="p">,</span> <span class="n">match</span> <span class="p">:</span> <span class="nb">Regex</span><span class="o">::</span><span class="n">MatchData</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,query,match)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Handlers::CallbackQueryHandler::Context.new(update,message,query,match)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
 </div>
@@ -4840,12 +4867,12 @@ struct <code>Tourmaline::Handlers::CallbackQueryHandler::Context</code>
   </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,query,match)">
+<h4 class="doc doc-heading" id="Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,message,query,match)">
 
     <code>
-      #copy_with<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="n">_update</span> <span class="o">=</span> <span class="vi">@update</span><span class="p">,</span> <span class="n">query</span> <span class="n">_query</span> <span class="o">=</span> <span class="vi">@query</span><span class="p">,</span> <span class="n">match</span> <span class="n">_match</span> <span class="o">=</span> <span class="vi">@match</span><span class="p">)</span></code></span>
+      #copy_with<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="n">_update</span> <span class="o">=</span> <span class="vi">@update</span><span class="p">,</span> <span class="n">message</span> <span class="n">_message</span> <span class="o">=</span> <span class="vi">@message</span><span class="p">,</span> <span class="n">query</span> <span class="n">_query</span> <span class="o">=</span> <span class="vi">@query</span><span class="p">,</span> <span class="n">match</span> <span class="n">_match</span> <span class="o">=</span> <span class="vi">@match</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,query,match)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Handlers::CallbackQueryHandler::Context#copy_with(update,message,query,match)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
 </div>
@@ -4853,9 +4880,19 @@ struct <code>Tourmaline::Handlers::CallbackQueryHandler::Context</code>
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CallbackQueryHandler::Context#match()">
 
     <code>
-      #match<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Regex</span><span class="o">::</span><span class="n">MatchData?</span></code></span>
+      #match<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Regex</span><span class="o">::</span><span class="n">MatchData</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CallbackQueryHandler::Context#match()" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+  </div>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Handlers::CallbackQueryHandler::Context#message()">
+
+    <code>
+      #message<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Message?</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Handlers::CallbackQueryHandler::Context#message()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
 </div>

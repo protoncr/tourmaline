@@ -1105,7 +1105,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat_id,sticker,disable_notification,reply_to_message_id,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)" class="md-nav__link">
     #send_sticker
   </a>
   
@@ -2010,6 +2010,19 @@
   <li class="md-nav__item">
     <a href="../../Error/NoStickerInRequest/" class="md-nav__link">
       NoStickerInRequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotEnoughRightsOther/" class="md-nav__link">
+      NotEnoughRightsOther
     </a>
   </li>
 
@@ -4841,7 +4854,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat_id,sticker,disable_notification,reply_to_message_id,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)" class="md-nav__link">
     #send_sticker
   </a>
   
@@ -4993,12 +5006,12 @@ On success, a <code>StickerSet</code> object is returned.</p>
 </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#send_sticker(chat_id,sticker,disable_notification,reply_to_message_id,reply_markup)">
+<h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)">
 
     <code>
-      #send_sticker<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat_id</span> <span class="p">:</span> <span class="nb">Int32</span> <span class="o">|</span> <span class="nb">String</span><span class="p">,</span> <span class="n">sticker</span> <span class="p">:</span> <span class="n">InputFile</span> <span class="o">|</span> <span class="nb">String</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="p">:</span> <span class="nb">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_to_message_id</span> <span class="p">:</span> <span class="nb">Int32</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_sticker<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">sticker</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="p">:</span> <span class="nb">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_to_message_id</span> <span class="p">:</span> <span class="nb">Int32</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client::StickerMethods#send_sticker(chat_id,sticker,disable_notification,reply_to_message_id,reply_markup)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Use this method to send <code>.webp</code> stickers.
 On success, the sent <code>Message</code> is returned.</p>

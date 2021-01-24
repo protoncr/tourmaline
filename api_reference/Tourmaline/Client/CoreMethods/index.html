@@ -1243,7 +1243,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_audio
   </a>
   
@@ -1285,7 +1285,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_document
   </a>
   
@@ -1341,14 +1341,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_video
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_video_note
   </a>
   
@@ -2374,6 +2374,19 @@
   <li class="md-nav__item">
     <a href="../../Error/NoStickerInRequest/" class="md-nav__link">
       NoStickerInRequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Error/NotEnoughRightsOther/" class="md-nav__link">
+      NotEnoughRightsOther
     </a>
   </li>
 
@@ -5408,7 +5421,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_audio
   </a>
   
@@ -5450,7 +5463,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_document
   </a>
   
@@ -5506,14 +5519,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_video
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_video_note
   </a>
   
@@ -6138,12 +6151,12 @@ Returns <code>true</code> on success.</p>
   </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_audio<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">audio</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">preformer</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_audio<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">audio</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">preformer</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Use this method to send audio files, if you want Telegram clients to display
 them in the music player. Your audio must be in the <code>.mp3</code> format.
@@ -6225,12 +6238,12 @@ On success, the sent Message is returned.</p>
 </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_document<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_document<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Use this method to send general files.
 On success, the sent <code>Message</code> is returned. Bots can currently send files
@@ -6324,12 +6337,12 @@ On success, the sent <code>Message</code> is returned.</p>
 </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_video<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_video<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Use this method to send video files, Telegram clients support mp4 videos
 (other formats may be sent as Document).
@@ -6340,12 +6353,12 @@ TODO: Add filesize checking and validation.</p>
 </div>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
+<h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
 
     <code>
-      #send_video_note<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video_note</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_video_note<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video_note</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="o">=</span> <span class="vi">@default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>As of <a href="https://telegram.org/blog/video-messages-and-telescope">v.4.0</a>, Telegram
 clients support rounded square <code>mp4</code> videos of up to <strong>1</strong> minute long.
