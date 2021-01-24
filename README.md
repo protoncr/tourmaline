@@ -23,7 +23,7 @@ dependencies:
 
 ## Usage
 
-API documentation is also available [here](https://api.tourmaline.dev).
+API documentation is also available [here](https://tourmaline.dev/api_reference/Tourmaline/).
 
 Examples are available in the [examples](https://github.com/protoncr/tourmaline/branch/master/examples) folder.
 
