@@ -17,11 +17,11 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
         request(Message, "sendSticker", {
-          chat_id:               chat_id,
-          sticker:               sticker,
-          disable_notification:  disable_notification,
-          reply_to_message_id:   reply_to_message_id,
-          reply_markup:          reply_markup,
+          chat_id:              chat_id,
+          sticker:              sticker,
+          disable_notification: disable_notification,
+          reply_to_message_id:  reply_to_message_id,
+          reply_markup:         reply_markup,
         })
       end
 
