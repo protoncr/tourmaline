@@ -2,27 +2,28 @@ module Tourmaline
   module Handlers
     class CallbackQueryHandler < EventHandler
       ANNOTATION = OnCallbackQuery
-      getter pattern : Regex?
+      getter pattern : Regex
 
-      def initialize(pattern : (String | Regex)? = nil, group = :default, priority = 0, &block : Context ->)
+      def initialize(pattern : String | Regex, group = :default, priority = 0, &block : Context ->)
         super(group, priority)
-        @pattern = pattern.is_a?(Regex | Nil) ? pattern : Regex.new("^#{Regex.escape(pattern)}$")
+        @pattern = pattern.is_a?(Regex) ? pattern : Regex.new("^#{Regex.escape(pattern)}$")
         @proc = block
       end
 
       def call(client : Client, update : Update)
         if query = update.callback_query
           data = query.data
-          if data && (pattern = @pattern)
-            match = data.match(pattern)
+          if data
+            if match = data.match(@pattern)
+              context = Context.new(update, query.message, query, match)
+              @proc.call(context)
+              return true
+            end
           end
-          context = Context.new(update, query, match)
-          @proc.call(context)
-          return true
         end
       end
 
-      record Context, update : Update, query : CallbackQuery, match : Regex::MatchData?
+      record Context, update : Update, message : Message?, query : CallbackQuery, match : Regex::MatchData
     end
   end
 end

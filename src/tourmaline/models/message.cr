@@ -116,6 +116,26 @@ module Tourmaline
 
     getter reply_markup : InlineKeyboardMarkup?
 
+    def file
+      if animation
+        {:animation, animation}
+      elsif audio
+        {:audio, audio}
+      elsif document
+        {:document, document}
+      elsif sticker
+        {:sticker, sticker}
+      elsif video
+        {:video, video}
+      elsif video_note
+        {:video_note, video_note}
+      elsif photo.first?
+        {:photo, photo.first}
+      else
+        {nil, nil}
+      end
+    end
+
     def link
       if chat.username
         "https://t.me/#{chat.username}/#{message_id}"
@@ -225,7 +245,7 @@ module Tourmaline
       client.send_message(chat, message, **kwargs)
     end
 
-    {% for content_type in %w[audio animation contact document location photo media_group venu video video_note voice invoice poll dice dart basketball] %}
+    {% for content_type in %w[audio animation contact document location sticker photo media_group venu video video_note voice invoice poll dice dart basketball] %}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
       end

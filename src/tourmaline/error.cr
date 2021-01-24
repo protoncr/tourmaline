@@ -70,6 +70,8 @@ module Tourmaline
                 CantRestrictSelf
               when /not enough rights to restrict\/unrestrict chat member/
                 NotEnoughRightsToRestrict
+              when /not enough rights/
+                NotEnoughRightsOther
               when /PHOTO_INVALID_DIMENSIONS/
                 text = "Invalid photo dimensions"
                 PhotoDimensions
@@ -326,6 +328,8 @@ module Tourmaline
     class NotEnoughRightsToRestrict < BadRequest; end
 
     class NotEnoughRightsToPinMessage < BadRequest; end
+
+    class NotEnoughRightsOther < BadRequest; end
 
     class PhotoDimensions < BadRequest; end
 

@@ -8,16 +8,18 @@ module Tourmaline
       #
       # See: https://core.telegram.org/bots/api#stickers for more info.
       def send_sticker(
-        chat_id : Int32 | String,
-        sticker : InputFile | String,
+        chat,
+        sticker,
         disable_notification : Bool? = nil,
         reply_to_message_id : Int32? = nil,
         reply_markup = nil
       )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
         request(Message, "sendSticker", {
           chat_id:               chat_id,
           sticker:               sticker,
-          disable_notifications: disable_notifications,
+          disable_notification:  disable_notification,
           reply_to_message_id:   reply_to_message_id,
           reply_markup:          reply_markup,
         })
