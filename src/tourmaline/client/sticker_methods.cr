@@ -10,11 +10,12 @@ module Tourmaline
       def send_sticker(
         chat,
         sticker,
-        disable_notification : Bool? = nil,
-        reply_to_message_id : Int32? = nil,
+        disable_notification = nil,
+        reply_to_message = nil,
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
 
         request(Message, "sendSticker", {
           chat_id:              chat_id,
