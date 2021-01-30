@@ -32,7 +32,6 @@ module Tourmaline
     getter? active : Bool
 
     # Maintains a history of updates that match the given chat_id and/or user_id.
-    # The first update will be the one that initiated this Stage.
     getter update_history : Array(Update)
 
     # The context for this stage
@@ -46,7 +45,6 @@ module Tourmaline
     # will be usable across all users
     property! user_id : Int::Primitive?
 
-    @first_run : Bool
     @event_handler : EventHandler
     @on_start_handlers : Array(Proc(Nil))
     @on_exit_handlers : Array(Proc(T, Nil))
@@ -67,7 +65,6 @@ module Tourmaline
       @chat_id = chat_id
       @user_id = user_id
       @active = false
-      @first_run = true
 
       @update_history = [] of Update
       @on_start_handlers = [] of Proc(Nil)
@@ -155,11 +152,7 @@ module Tourmaline
     private def handle_update(update)
       return unless @active
 
-      if @first_run
-        @update_history << update
-        @first_run = false
-        return
-      end
+      @update_history << update
 
       if awaiter = @response_awaiter
         message = update.message.not_nil!
