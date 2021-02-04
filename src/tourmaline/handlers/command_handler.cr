@@ -2,13 +2,15 @@ module Tourmaline
   module Handlers
     class CommandHandler < EventHandler
       ANNOTATION       = Command
-      DEFAULT_PREFIXES = ["/"]
 
       # Commands (without prefix) that this handler should respond to.
       property commands : Array(String)
 
       # Prefixes that commands should start with.
       property prefixes : Array(String)
+
+      # User API: if true, this command will only be activated by an outgoing message.
+      property outgoing : Bool
 
       # If true, this handler will only respond if the command is sent in private.
       property private_only : Bool
@@ -45,6 +47,7 @@ module Tourmaline
                      prefix = nil,
                      group = :default,
                      priority = 0,
+                     @outgoing = true,
                      @private_only = false,
                      @group_only = false,
                      @admin_only = false,
@@ -54,7 +57,7 @@ module Tourmaline
                      @description = nil,
                      &block : Context ->)
         super(group, priority)
-        prefix ||= DEFAULT_PREFIXES
+        prefix ||= Tourmaline::Client.default_command_prefixes
 
         commands = commands.is_a?(Array) ? commands : [commands]
         @commands = commands.map(&.to_s)
@@ -65,6 +68,7 @@ module Tourmaline
 
       def call(client : Client, update : Update)
         if (message = update.message || update.channel_post) || (@on_edit && (message = update.edited_message || update.edited_channel_post))
+          return if message.is_outgoing? unless @outgoing
           if ((raw_text = message.raw_text) && (text = message.text)) ||
              (raw_text = message.raw_caption && (text = message.caption))
             return if private_only && message.chat.type != Chat::Type::Private
@@ -95,7 +99,7 @@ module Tourmaline
               return unless botname.downcase == client.bot.username.to_s.downcase
             end
 
-            prefix_re = /^#{@prefixes.join('|')}/
+            prefix_re = /^#{@prefixes.map(&->Regex.escape(String)).join('|')}/
 
             return unless command.match(prefix_re)
             command = command.sub(prefix_re, "")

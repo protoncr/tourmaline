@@ -14,6 +14,7 @@ module Tourmaline
     EditedChannelPost
 
     Text
+    Caption
     Audio
     Document
     Photo
@@ -44,9 +45,18 @@ module Tourmaline
     PollAnswer
     ViaBot
 
+    # 🎲
     Dice
+    # 🎯
     Dart
-    Basket
+    # 🏀
+    Basketball
+    # ⚽️
+    Football
+    # ⚽️ but American
+    Soccerball
+    # 🎰
+    SlotMachine
 
     def to_s
       super.to_s.underscore
@@ -71,6 +81,7 @@ module Tourmaline
         end
 
         actions << UpdateAction::Text if message.text
+        actions << UpdateAction::Caption if message.caption
         actions << UpdateAction::Audio if message.audio
         actions << UpdateAction::Document if message.document
         actions << UpdateAction::Photo if message.photo.size > 0
@@ -101,7 +112,10 @@ module Tourmaline
         if dice = message.dice
           actions << UpdateAction::Dice if dice.emoji == "🎲"
           actions << UpdateAction::Dart if dice.emoji == "🎯"
-          actions << UpdateAction::Basket if dice.emoji == "🏀"
+          actions << UpdateAction::Basketball if dice.emoji == "🏀"
+          actions << UpdateAction::Soccerball if dice.emoji == "⚽️"
+          actions << UpdateAction::Football if dice.emoji == "⚽️"
+          actions << UpdateAction::SlotMachine if dice.emoji == "🎰"
         end
       end
 

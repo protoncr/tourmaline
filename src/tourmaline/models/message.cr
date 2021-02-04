@@ -116,6 +116,15 @@ module Tourmaline
 
     getter reply_markup : InlineKeyboardMarkup?
 
+    # USER API ONLY
+    getter? is_outgoing : Bool?
+
+    # USER API ONLY
+    getter views : Int32?
+
+    # USER API ONLY
+    getter forwards : Int32?
+
     def file
       if animation
         {:animation, animation}

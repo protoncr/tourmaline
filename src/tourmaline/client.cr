@@ -3,6 +3,7 @@ require "./helpers"
 require "./error"
 require "./logger"
 require "./persistence"
+require "./request_mode"
 require "./parse_mode"
 require "./container"
 require "./chat_action"
@@ -30,37 +31,53 @@ module Tourmaline
     include PollMethods
     include StickerMethods
     include WebhookMethods
+    include UserMethods
 
     include EventHandler::Annotator
 
     DEFAULT_API_URL = "https://api.telegram.org/"
+    DEFAULT_COMMAND_PREFIXES = ["/"]
 
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
     # `@bot` to `get_me`.
     getter bot : User { get_me }
 
+    property bot_token : String?
+    property user_token : String?
     property allowed_updates : Array(String)
 
     # Default parse mode to use for commands when it isn't included explicitly
     property default_parse_mode : ParseMode
 
+    # Default prefixes to use for commands
+    class_property default_command_prefixes : Array(String) = DEFAULT_COMMAND_PREFIXES
+
     private getter event_handlers : Array(EventHandler)
     private getter persistence : Persistence
 
     @pool : ConnectionPool(HTTP::Client)
+    @auth_code : String?
 
     # Create a new instance of `Tourmaline::Client`.
     #
     # ## Positional Arguments
     #
-    # `api_key`
-    # :    required; the bot token you were provided with by `@BotFather`
-    #
-    # `endpoint`
-    # :    the Telegram bot API endpoint to use; defaults to `https://api.telegram.org`
+    # `mode`
+    # :    the [request mode][Tourmaline::RequestMode] to run in; defaults to 'Bot'
     #
     # ## Named Arguments
+    #
+    # `bot_token`
+    # :    required in Bot mode; this is the bot token you should've received from `@BotFather`
+    #
+    # `user_token`
+    # :    this is a token given by the server for authenticating with the User API. You can generate
+    #      this with `#login` and then save it and pass it here to avoid logging in again.
+    #
+    # `endpoint`
+    # :    the API endpoint to use for requests; default is `https://api.telegram.org`, but in User mode
+    #      this must be provided explicitly and set to a server that has `--allow-users` enabled.
     #
     # `persistence`
     # :    the persistence strategy to use
@@ -95,9 +112,11 @@ module Tourmaline
     #
     # `proxy_pass`
     # :    a password to use for a proxy that requires authentication
-    def initialize(@api_key : String,
-                   @endpoint = DEFAULT_API_URL,
+    def initialize(@mode : RequestMode = :bot,
                    *,
+                   @bot_token : String? = nil,
+                   @user_token : String? = nil,
+                   @endpoint = DEFAULT_API_URL,
                    @persistence : Persistence = NilPersistence.new,
                    @allowed_updates = [] of String,
                    @set_commands = false,
@@ -111,6 +130,14 @@ module Tourmaline
                    proxy_port = nil,
                    proxy_user = nil,
                    proxy_pass = nil)
+
+      if @mode == RequestMode::Bot
+        raise "Request mode set to 'Bot', but a bot token wasn't provided." unless @bot_token
+        Log.info { "Starting Tourmaline in 'Bot' mode." }
+      else
+        Log.info { "Starting Tourmaline in 'User' mode." }
+      end
+
       @persistence = persistence
       @persistence.init
 
@@ -137,9 +164,10 @@ module Tourmaline
       @event_handlers = [] of EventHandler
       register_event_handler_annotations
 
-      register_commands_with_botfather
+      register_commands_with_botfather unless @mode == :user
 
-      # TODO: Replace this with something that supports multiple clients
+      # FIXME: Find a way to support multiple clients while allowing models
+      # to include an instance of the client that created them.
       Container.client = self
 
       Signal::INT.trap { exit }
@@ -192,17 +220,29 @@ module Tourmaline
     end
 
     private def request(type : U.class, method, params = {} of String => String) forall U
-      response = request(method, params)
+      if @mode == RequestMode::Bot
+          path = File.join("/bot#{@bot_token}", method)
+      else
+        path = "/user"
+        if method == "login"
+          path += "login"
+        else
+          user_token = @user_token
+          raise "No user_token provided. Did you remember to log in?" unless user_token
+          path = File.join("#{path}#{user_token}", method)
+        end
+      end
+
+      response = request(path, params)
       type.from_json(response)
     end
 
     # Sends a json request to the Telegram Client API.
-    private def request(method, params = {} of String => String)
-      path = File.join("/bot" + @api_key, method)
+    private def request(path, params = {} of String => String)
       multipart = includes_media(params)
       client = @pool.checkout
 
-      Log.debug { "sending ►► #{method}(#{params.to_pretty_json})" }
+      Log.debug { "sending ►► #{path.split("/").last}(#{params.to_pretty_json})" }
 
       begin
         if multipart

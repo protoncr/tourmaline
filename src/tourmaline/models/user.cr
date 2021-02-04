@@ -25,6 +25,12 @@ module Tourmaline
 
     getter supports_inline_queries : Bool?
 
+    # USER API ONLY
+    getter? is_verified : Bool?
+
+    # USER API ONLY
+    getter? is_scam : Bool?
+
     def full_name
       [first_name, last_name].compact.join(" ")
     end

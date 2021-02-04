@@ -38,6 +38,12 @@ module Tourmaline
 
     getter location : ChatLocation?
 
+    # USER API ONLY
+    getter? is_verified : Bool?
+
+    # USER API ONLY
+    getter? is_scam : Bool?
+
     def name
       if first_name || last_name
         [first_name, last_name].compact.join(" ")

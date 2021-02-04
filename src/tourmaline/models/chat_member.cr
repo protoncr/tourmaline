@@ -46,6 +46,14 @@ module Tourmaline
 
     getter can_add_web_page_previews : Bool?
 
+
+    # USER API ONLY
+    @[JSON::Field(converter: Time::EpochConverter)]
+    getter joined_date : Time?
+
+    # USER API ONLY
+    getter inviter : User?
+
     @[JSON::Field(converter: Time::EpochConverter)]
     getter until_date : Time?
 
