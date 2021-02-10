@@ -316,6 +316,21 @@ module Tourmaline
         })
       end
 
+      # Takes a file id and returns a link to download the file. The link will be valid
+      # for at least one hour.
+      def get_file_link(file_id)
+        file = get_file(file_id)
+        "https://api.telegram.org/file/bot#{bot_token}/#{file.file_path}"
+      end
+
+      # Given a file_id, download the file and return its path on the file system.
+      def dowload_file(file_id, path=nil)
+        path = path ? path : File.tempname
+        res = HTTP::Client.get(get_file_link(file_id))
+        File.write(path, res.body)
+        path
+      end
+
       # Use this method to get a list of profile pictures for a user.
       # Returns a `UserProfilePhotos` object.
       def get_user_profile_photos(
