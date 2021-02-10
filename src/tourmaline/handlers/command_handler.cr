@@ -1,7 +1,7 @@
 module Tourmaline
   module Handlers
     class CommandHandler < EventHandler
-      ANNOTATION       = Command
+      ANNOTATION = Command
 
       # Commands (without prefix) that this handler should respond to.
       property commands : Array(String)

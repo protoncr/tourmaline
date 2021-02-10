@@ -324,7 +324,7 @@ module Tourmaline
       end
 
       # Given a file_id, download the file and return its path on the file system.
-      def dowload_file(file_id, path=nil)
+      def dowload_file(file_id, path = nil)
         path = path ? path : File.tempname
         res = HTTP::Client.get(get_file_link(file_id))
         File.write(path, res.body)

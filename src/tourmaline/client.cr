@@ -35,7 +35,7 @@ module Tourmaline
 
     include EventHandler::Annotator
 
-    DEFAULT_API_URL = "https://api.telegram.org/"
+    DEFAULT_API_URL          = "https://api.telegram.org/"
     DEFAULT_COMMAND_PREFIXES = ["/"]
 
     # Gets the name of the Client at the time the Client was
@@ -130,7 +130,6 @@ module Tourmaline
                    proxy_port = nil,
                    proxy_user = nil,
                    proxy_pass = nil)
-
       if @mode == RequestMode::Bot
         raise "Request mode set to 'Bot', but a bot token wasn't provided." unless @bot_token
         Log.info { "Starting Tourmaline in 'Bot' mode." }
@@ -191,20 +190,7 @@ module Tourmaline
       handled = [] of String
 
       {% if flag?(:no_async) %}
-
-      @event_handlers.each do |handler|
-        unless handled.includes?(handler.group)
-          if handler.call(self, update)
-            @persistence.handle_update(update)
-            handled << handler.group
-          end
-        end
-      end
-
-      {% else %}
-
-      futures = @event_handlers.map do |handler|
-        Async::Future(Nil).execute do
+        @event_handlers.each do |handler|
           unless handled.includes?(handler.group)
             if handler.call(self, update)
               @persistence.handle_update(update)
@@ -212,16 +198,25 @@ module Tourmaline
             end
           end
         end
-      end
+      {% else %}
+        futures = @event_handlers.map do |handler|
+          Async::Future(Nil).execute do
+            unless handled.includes?(handler.group)
+              if handler.call(self, update)
+                @persistence.handle_update(update)
+                handled << handler.group
+              end
+            end
+          end
+        end
 
-      Async::Future.all(futures)
-
+        Async::Future.all(futures)
       {% end %}
     end
 
     private def request(type : U.class, method, params = {} of String => String) forall U
       if @mode == RequestMode::Bot
-          path = File.join("/bot#{@bot_token}", method)
+        path = File.join("/bot#{@bot_token}", method)
       else
         path = "/user"
         if method == "login"
