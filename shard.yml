@@ -23,9 +23,6 @@ development_dependencies:
     version: 0.3.0
   kemal:
     github: kemalcr/kemal
-  ameba:
-    github: veelenga/ameba
-    version: ~> 0.10.0
   spectator:
     github: icy-arctic-fox/spectator
     branch: master
