@@ -320,15 +320,21 @@ module Tourmaline
       # for at least one hour.
       def get_file_link(file_id)
         file = get_file(file_id)
-        "https://api.telegram.org/file/bot#{bot_token}/#{file.file_path}"
+        token = @bot_token ? "bot#{@bot_token}" : "user#{@user_token}"
+        File.join(@endpoint, "file", token, file.file_path.to_s)
       end
 
       # Given a file_id, download the file and return its path on the file system.
-      def dowload_file(file_id, path = nil)
+      def download_file(file_id, path = nil)
         path = path ? path : File.tempname
         res = HTTP::Client.get(get_file_link(file_id))
-        File.write(path, res.body)
-        path
+        if res.status_code < 300
+          File.write(path, res.body)
+          path
+        else
+          result = JSON.parse(res.body)
+          raise Error.from_message(result["description"].as_s)
+        end
       end
 
       # Use this method to get a list of profile pictures for a user.

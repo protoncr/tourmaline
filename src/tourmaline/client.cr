@@ -9,6 +9,7 @@ require "./chat_action"
 require "./model"
 require "./update_action"
 require "./event_handler"
+require "./middleware"
 require "./client/*"
 require "pool/connection"
 
@@ -53,6 +54,7 @@ module Tourmaline
 
     private getter event_handlers : Array(EventHandler)
     private getter persistence : Persistence
+    private getter middlewares : Array(Middleware | MiddlewareProc)
 
     @pool : ConnectionPool(HTTP::Client)
     @auth_code : String?
@@ -124,6 +126,8 @@ module Tourmaline
       @persistence = persistence
       @persistence.init
 
+      @middlewares = [] of Middleware | MiddlewareProc
+
       if !proxy
         if proxy_uri
           proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")
@@ -156,6 +160,10 @@ module Tourmaline
       Signal::INT.trap { exit }
     end
 
+    def use(middleware : Middleware)
+      @middlewares << middleware
+    end
+
     # Add an `EventHandler` instance to the handler stack
     def add_event_handler(handler : EventHandler)
       @event_handlers << handler
@@ -173,6 +181,12 @@ module Tourmaline
     def handle_update(update : Update)
       handled = [] of String
 
+      # First call middlewares
+      @middlewares.each do |middleware|
+        middleware.call(self, update)
+      end
+
+      # Then call individual event handlers
       {% if flag?(:no_async) %}
         @event_handlers.each do |handler|
           unless handled.includes?(handler.group)

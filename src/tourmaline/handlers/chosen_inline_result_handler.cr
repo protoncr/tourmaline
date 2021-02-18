@@ -16,13 +16,17 @@ module Tourmaline
           if query && (pattern = @pattern)
             match = query.match(pattern)
           end
-          context = Context.new(update, result, match)
+          context = Context.new(update, update.context, result, match)
           @proc.call(context)
           return true
         end
       end
 
-      record Context, update : Update, result : ChosenInlineResult, match : Regex::MatchData?
+      record Context,
+        update : Update,
+        context : Middleware::Context,
+        result : ChosenInlineResult,
+        match : Regex::MatchData?
     end
   end
 end
