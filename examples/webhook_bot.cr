@@ -9,7 +9,7 @@ class EchoBot < Tourmaline::Client
 end
 
 Ngrok.start(addr: "127.0.0.1:3000") do |ngrok|
-  bot = EchoBot.new(ENV["API_KEY"])
+  bot = EchoBot.new(bot_token: ENV["API_KEY"])
   path = "/bot-webhook/#{ENV["API_KEY"]}"
 
   bot.set_webhook(File.join(ngrok.url_https.to_s, path))

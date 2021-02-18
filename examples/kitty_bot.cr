@@ -36,5 +36,5 @@ class KittyBot < Tourmaline::Client
   end
 end
 
-bot = KittyBot.new(ENV["API_KEY"])
+bot = KittyBot.new(bot_token: ENV["API_KEY"])
 bot.poll

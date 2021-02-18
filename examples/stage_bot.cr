@@ -76,5 +76,5 @@ class StageBot < Tourmaline::Client
   end
 end
 
-bot = StageBot.new(ENV["API_KEY"])
+bot = StageBot.new(bot_token: ENV["API_KEY"])
 bot.poll

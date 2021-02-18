@@ -16,5 +16,5 @@ class LiveLocationBot < Tourmaline::Client
   end
 end
 
-bot = LiveLocationBot.new(ENV["API_KEY"])
+bot = LiveLocationBot.new(bot_token: ENV["API_KEY"])
 bot.poll

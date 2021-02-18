@@ -9,22 +9,20 @@ class Userbot < Tourmaline::Client
   end
 end
 
-token = "18018362322:It2pxst9_vXLKLMPYQHcfQ9yJT-tPZZUKWRkrNY60-k"
-bot = Userbot.new(
-  mode: :user,
-  user_token: token,
+bot = UserBot.new(bot_token:
   endpoint: "https://tg.watzon.tech/"
 )
+
+token = bot.login "+18018362322"
+
+print "Enter code: "
+code = gets.to_s.strip
+
+result = bot.send_code code
+if result
+  puts "Logged in! Your user_token is #{token}."
+else
+  puts "Failed to log in."
+end
+
 bot.poll
-
-# token = bot.login "+18018362322"
-
-# print "Enter code: "
-# code = gets.to_s.strip
-
-# result = bot.send_code code
-# if result
-#   puts "Logged in! Your user_token is #{token}."
-# else
-#   puts "Failed to log in."
-# end

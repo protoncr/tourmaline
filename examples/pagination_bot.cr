@@ -18,5 +18,5 @@ class PaginationBot < Tourmaline::Client
   end
 end
 
-bot = PaginationBot.new(ENV["API_KEY"])
+bot = PaginationBot.new(bot_token: ENV["API_KEY"])
 bot.poll

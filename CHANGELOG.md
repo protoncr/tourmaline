@@ -2,6 +2,14 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.22.0
+
+- Added support for TDLight.
+- Added `user_token` argument to `Client.new` to support the TDLight user API.
+- **(breaking change)** All arguments to `Client.new` are now keyword arguments.
+- **(breaking change)** Removed `async` argument from event handlers. All events are now async by default. Async events can be disabled with the `-Dno_async` flag.
+- `UpdateHandler` now accepts an array of `UpdateAction`, or a single one.
+- Fixed an issue where `poll` always deletes a set webhook. Now it will only delete the webhook if `delete_webhook` is true.
 ## 0.20.0
 
 - **(breaking change)** Removed the filters, replaced with new handlers

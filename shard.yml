@@ -1,10 +1,13 @@
 name: tourmaline
-version: 0.21.0
+version: 0.22.0
 
 authors:
   - Chris Watson <chris@watzon.tech>
 
-crystal: 0.35.1
+crystal: 0.36.1
+
+crystalline:
+  main: examples/echo_bot.cr
 
 dependencies:
   pool:
@@ -13,10 +16,6 @@ dependencies:
   http_proxy:
     github: mamantoha/http_proxy
     branch: master
-  async:
-    github: protoncr/async
-    branch: main
-    # path: ../async
 
 development_dependencies:
   ngrok:

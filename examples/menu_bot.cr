@@ -49,5 +49,5 @@ class MenuBot < Tourmaline::Client
   end
 end
 
-bot = MenuBot.new(ENV["API_KEY"])
+bot = MenuBot.new(bot_token: ENV["API_KEY"])
 bot.poll

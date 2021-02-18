@@ -29,5 +29,5 @@ class InlineQueryBot < Tourmaline::Client
   end
 end
 
-bot = InlineQueryBot.new(ENV["API_KEY"])
+bot = InlineQueryBot.new(bot_token: ENV["API_KEY"])
 bot.poll

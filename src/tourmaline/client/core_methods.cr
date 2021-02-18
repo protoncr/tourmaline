@@ -1223,7 +1223,7 @@ module Tourmaline
       # and `#handle_update` to send continuously check Telegram's servers
       # for updates.
       def poll(delete_webhook = false)
-        self.delete_webhook
+        self.delete_webhook if delete_webhook
         @polling = true
 
         Log.info { "Polling for updates" }

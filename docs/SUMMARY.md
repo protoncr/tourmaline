@@ -12,4 +12,5 @@
         * [Kemal Middleware](usage/features/kemal_middleware.md)
         * [Multilevel Menus](usage/features/multilevel_menus.md)
         * [Paginated Keyboards](usage/features/paginated_keyboards.md)
+        * [TDLight](usage/features/tdlight.md)
 * [API Reference](api_reference/)

@@ -38,5 +38,5 @@ class InstaBot < Tourmaline::Client
   end
 end
 
-bot = InstaBot.new(ENV["API_KEY"])
+bot = InstaBot.new(bot_token: ENV["API_KEY"])
 bot.poll

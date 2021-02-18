@@ -28,5 +28,5 @@ class PersistentBot < Tourmaline::Client
   end
 end
 
-bot = PersistentBot.new(ENV["API_KEY"], persistence: Tourmaline::JsonPersistence.new)
+bot = PersistentBot.new(bot_token: ENV["API_KEY"], persistence: Tourmaline::JsonPersistence.new)
 bot.poll

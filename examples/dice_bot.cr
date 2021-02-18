@@ -17,5 +17,5 @@ class DiceBot < Tourmaline::Client
   end
 end
 
-bot = DiceBot.new(ENV["API_KEY"])
+bot = DiceBot.new(bot_token: ENV["API_KEY"])
 bot.poll

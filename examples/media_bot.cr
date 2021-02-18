@@ -64,5 +64,5 @@ class MediaBot < Tourmaline::Client
   end
 end
 
-bot = MediaBot.new(ENV["API_KEY"])
+bot = MediaBot.new(bot_token: ENV["API_KEY"])
 bot.poll

@@ -43,5 +43,5 @@ class PollBot < Tourmaline::Client
   end
 end
 
-bot = PollBot.new(ENV["API_KEY"])
+bot = PollBot.new(bot_token: ENV["API_KEY"])
 bot.poll
