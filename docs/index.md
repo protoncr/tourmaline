@@ -65,7 +65,7 @@ class EchoBot < Tourmaline::Client
   end
 end
 
-bot = EchoBot.new("YOUR_API_TOKEN")
+bot = EchoBot.new(bot_token: "YOUR_API_TOKEN")
 bot.poll
 ```
 
@@ -97,7 +97,7 @@ This is just defining our bot, `EchoBot`, as a sublcass of `Tourmaline::Client`.
 This is pretty simple. The [context][Tourmaline::Handlers::CommandHandler::Context] has a `message` property, which is the [message][Tourmaline::Message] that contains the command we're acting on. All we're doing is replying to the message with the text that was in the message (minus the bot command).
 
 ```crystal
-bot = EchoBot.new("YOUR_API_TOKEN")
+bot = EchoBot.new(bot_token: "YOUR_API_TOKEN")
 bot.poll
 ```
 

@@ -39,7 +39,7 @@ class EchoBot < Tourmaline::Client
   end
 end
 
-bot = EchoBot.new(ENV["API_KEY"])
+bot = EchoBot.new(bot_token: ENV["API_KEY"])
 bot.poll
 ```
 

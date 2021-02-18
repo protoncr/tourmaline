@@ -19,7 +19,7 @@ class PostBot < Tourmaline::Client
   end
 end
 
-bot = PostBot.new(ENV["API_KEY"])
+bot = PostBot.new(bot_token: ENV["API_KEY"])
 
 # Grab the default Tasker instance
 schedule = Tasker.instance
@@ -58,7 +58,7 @@ end
 
 # Bot needs to be a constant so we can access it. Obviously
 # there are better ways to do this with a proper project setup
-BOT = PostBot.new(ENV["API_KEY"])
+BOT = PostBot.new(bot_token: ENV["API_KEY"])
 
 # The job will be automatically queued as it's made
 class MyJob < Mosquito::PeriodicJob
