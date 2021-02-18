@@ -1,18 +1,23 @@
 name: Specs
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    container:
-      image: crystallang/crystal
-
+    strategy:
+      matrix:
+        crystal-version: [0.36.1]
+    
     steps:
     - uses: actions/checkout@v2
+    - uses: oprypin/install-crystal@v1
+      with:
+        crystal: ${{ matrix.crystal-version }}
     - name: Install dependencies
       run: shards install
+    - name: Format code
+      run: crystal tool format --check
     - name: Run tests
       run: crystal spec

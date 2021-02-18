@@ -9,14 +9,14 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
+        crystal-version: [0.36.1]
     
-    container:
-      image: crystallang/crystal
-
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+    - uses: oprypin/install-crystal@v1
+      with:
+        crystal: ${{ matrix.crystal-version }}
+    - uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Python Dependencies
