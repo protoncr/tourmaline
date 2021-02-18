@@ -121,7 +121,6 @@ module Tourmaline
                    proxy_port = nil,
                    proxy_user = nil,
                    proxy_pass = nil)
-
       @persistence = persistence
       @persistence.init
 

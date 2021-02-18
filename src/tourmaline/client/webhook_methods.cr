@@ -64,12 +64,12 @@ module Tourmaline
         drop_pending_updates = false
       )
         params = {
-          url: url,
-          ip_address: ip_address,
-          max_connections: max_connections,
-          allowed_updates: allowed_updates,
-          certificate: certificate,
-          drop_pending_updates: drop_pending_updates
+          url:                  url,
+          ip_address:           ip_address,
+          max_connections:      max_connections,
+          allowed_updates:      allowed_updates,
+          certificate:          certificate,
+          drop_pending_updates: drop_pending_updates,
         }
         Log.info { "Setting webhook to '#{url}'#{" with certificate" if certificate}" }
         request(Bool, "setWebhook", params)

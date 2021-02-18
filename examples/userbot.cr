@@ -9,7 +9,7 @@ class Userbot < Tourmaline::Client
   end
 end
 
-bot = UserBot.new(bot_token:
+bot = UserBot.new(
   endpoint: "https://tg.watzon.tech/"
 )
 

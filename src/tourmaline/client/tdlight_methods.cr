@@ -32,7 +32,7 @@ module Tourmaline
       #     Additionally this request is __heavily__ rate limited by Telegram. Use sparingly.
       def get_participants(chat)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        request(Array(ChatMember), "getParticipants", { chat_id: chat_id })
+        request(Array(ChatMember), "getParticipants", {chat_id: chat_id})
       end
 
       # Delete all messages from `start_id` to `end_id`. `start_id` must be less than `end_id`
@@ -46,8 +46,8 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         res = request(JSON::Any, "deleteMessages", {
           chat_id: chat_id,
-          start: start_id,
-          end: end_id
+          start:   start_id,
+          end:     end_id,
         })
         res["result"].as_bool
       end
@@ -84,7 +84,7 @@ module Tourmaline
       def register_user(first_name, last_name = nil)
         res = request(JSON::Any, "registerUser", {
           first_name: first_name,
-          last_name: last_name,
+          last_name:  last_name,
         })
         res["result"].as_bool
       end
