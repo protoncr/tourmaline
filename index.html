@@ -4783,7 +4783,7 @@
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">bot</span> <span class="o">=</span> <span class="n">EchoBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;YOUR_API_TOKEN&quot;</span><span class="p">)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">EchoBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bot_token</span><span class="p">:</span> <span class="s2">&quot;YOUR_API_TOKEN&quot;</span><span class="p">)</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">poll</span>
 </code></pre></div>
 </td></tr></table>
@@ -4803,7 +4803,7 @@
 <div class="highlight"><pre><span></span><code>    <span class="n">ctx</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">reply</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>
 <p>This is pretty simple. The <a href="api_reference/Tourmaline/Handlers/CommandHandler/Context/#Tourmaline::Handlers::CommandHandler::Context">context</a> has a <code>message</code> property, which is the <a href="api_reference/Tourmaline/Message/#Tourmaline::Message">message</a> that contains the command we're acting on. All we're doing is replying to the message with the text that was in the message (minus the bot command).</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">EchoBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;YOUR_API_TOKEN&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">EchoBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bot_token</span><span class="p">:</span> <span class="s2">&quot;YOUR_API_TOKEN&quot;</span><span class="p">)</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">poll</span>
 </code></pre></div>
 <p>Finally we create a new instance of our <code>EchoBot</code> with our API token, and start it in <a href="api_reference/Tourmaline/Client/CoreMethods/#Tourmaline::Client::CoreMethods#poll(delete_webhook)">polling mode</a>.</p>

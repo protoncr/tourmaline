@@ -4729,7 +4729,7 @@
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">bot</span> <span class="o">=</span> <span class="n">PostBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;API_KEY&quot;</span><span class="o">]</span><span class="p">)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">PostBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bot_token</span><span class="p">:</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;API_KEY&quot;</span><span class="o">]</span><span class="p">)</span>
 
 <span class="c1"># Grab the default Tasker instance</span>
 <span class="n">schedule</span> <span class="o">=</span> <span class="n">Tasker</span><span class="o">.</span><span class="n">instance</span>
@@ -4763,7 +4763,7 @@
 
 <span class="c1"># Bot needs to be a constant so we can access it. Obviously</span>
 <span class="c1"># there are better ways to do this with a proper project setup</span>
-<span class="no">BOT</span> <span class="o">=</span> <span class="n">PostBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;API_KEY&quot;</span><span class="o">]</span><span class="p">)</span>
+<span class="no">BOT</span> <span class="o">=</span> <span class="n">PostBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bot_token</span><span class="p">:</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;API_KEY&quot;</span><span class="o">]</span><span class="p">)</span>
 
 <span class="c1"># The job will be automatically queued as it&#39;s made</span>
 <span class="k">class</span> <span class="nc">MyJob</span> <span class="o">&lt;</span> <span class="n">Mosquito</span><span class="o">::</span><span class="n">PeriodicJob</span>
