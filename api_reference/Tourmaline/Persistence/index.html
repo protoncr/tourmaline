@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -988,6 +1001,19 @@
   <li class="md-nav__item">
     <a href="../Client/StickerMethods/" class="md-nav__link">
       StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../Client/TDLightMethods/" class="md-nav__link">
+      TDLightMethods
     </a>
   </li>
 
@@ -4925,6 +4951,7 @@ to be fetched by either id or username.</p>
   <a class="headerlink" href="#Tourmaline::Persistence.new()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L17">View source</a>
 </div>
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4937,17 +4964,19 @@ to be fetched by either id or username.</p>
 <div class="doc doc-contents ">
 <p>Returns true if the chat with the provided <code>chat_id</code> exists.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L38">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#chat_exists?(username)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #chat_exists?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">username</span> <span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Bool</span></code></span>
+      #chat_exists?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">username</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">)</span> <span class="p">:</span> <span class="nb">Bool</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#chat_exists?(username)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Returns true if the chat with the provided <code>username</code> exists.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L41">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#cleanup()">
@@ -4959,62 +4988,68 @@ to be fetched by either id or username.</p>
 <div class="doc doc-contents ">
 <p>Gets called upon exit. It can be used to perform any necessary cleanup.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L64">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#get_chat(chat_id)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #get_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat_id</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">:</span> <span class="n">Chat?</span></code></span>
+      #get_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat_id</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Chat?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#get_chat(chat_id)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Fetches a chat by <code>chat_id</code>. Returns <code>nil</code> if the chat is not found.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L50">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#get_chat(username)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #get_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">username</span> <span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">:</span> <span class="n">Chat?</span></code></span>
+      #get_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">username</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">)</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Chat?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#get_chat(username)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Fetches a chat by <code>username</code>. Returns <code>nil</code> if the chat is not found.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L53">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#get_user(user_id)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #get_user<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user_id</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">:</span> <span class="n">User?</span></code></span>
+      #get_user<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user_id</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">User?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#get_user(user_id)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Fetches a user by <code>user_id</code>. Returns <code>nil</code> if the user is not found.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L44">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#get_user(username)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #get_user<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">username</span> <span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">:</span> <span class="n">User?</span></code></span>
+      #get_user<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">username</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">)</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">User?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#get_user(username)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Fetches a user by <code>username</code>. Returns <code>nil</code> if the user is not found.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L47">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#handle_update(update)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #handle_update<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <span class="n">Update</span><span class="p">)</span></code></span>
+      #handle_update<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <a href="../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#handle_update(update)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Takes an <code>Update</code> object, pulls out all unique <code>Chat</code>s and <code>User</code>s,
 and uses <code>update_user</code> and <code>update_chat</code> on each of them respectively.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L57">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#init()">
@@ -5027,28 +5062,31 @@ and uses <code>update_user</code> and <code>update_chat</code> on each of them r
 <p>Gets called when the bot is initialized. This can be used for setup if
 you need access to the bot instance.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L61">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#update_chat(chat)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #update_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span> <span class="p">:</span> <span class="n">Chat</span><span class="p">)</span> <span class="p">:</span> <span class="n">Chat</span></code></span>
+      #update_chat<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Chat</a><span class="p">)</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Chat</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#update_chat(chat)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Create or update the provided <code>Chat</code>.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L29">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#update_user(user)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #update_user<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user</span> <span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">:</span> <span class="n">User</span></code></span>
+      #update_user<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">User</a><span class="p">)</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">User</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#update_user(user)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Create or update the provided <code>User</code>.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L26">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#user_exists?(user_id)">
@@ -5060,17 +5098,19 @@ you need access to the bot instance.</p>
 <div class="doc doc-contents ">
 <p>Returns true if the user with the provided <code>user_id</code> exists.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L32">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Persistence#user_exists?(usename)">
 
 <small style="font-weight: normal">abstract</small>     <code>
-      #user_exists?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">usename</span> <span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Bool</span></code></span>
+      #user_exists?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">usename</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">)</span> <span class="p">:</span> <span class="nb">Bool</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Persistence#user_exists?(usename)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Returns true if the user with the provided <code>username</code> exists.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/persistence.cr#L35">View source</a>
 </div>
 </div>
 </div>

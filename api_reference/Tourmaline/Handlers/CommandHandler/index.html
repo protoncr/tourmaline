@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -988,6 +1001,19 @@
   <li class="md-nav__item">
     <a href="../../Client/StickerMethods/" class="md-nav__link">
       StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../Client/TDLightMethods/" class="md-nav__link">
+      TDLightMethods
     </a>
   </li>
 
@@ -4631,13 +4657,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CommandHandler::DEFAULT_PREFIXES" class="md-nav__link">
-    DEFAULT_PREFIXES
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -4652,7 +4671,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,private_only,group_only,admin_only,on_edit,register,register_as,description,&)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&)" class="md-nav__link">
     .new
   </a>
   
@@ -4744,6 +4763,20 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::Handlers::CommandHandler#on_edit=(on_edit)" class="md-nav__link">
     #on_edit=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::CommandHandler#outgoing()" class="md-nav__link">
+    #outgoing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::CommandHandler#outgoing=(outgoing)" class="md-nav__link">
+    #outgoing=
   </a>
   
 </li>
@@ -4853,24 +4886,14 @@ class <code>Tourmaline::Handlers::CommandHandler</code>
 <div class="doc doc-contents ">
   </div>
 </div>
-<div class="doc doc-object doc-constant">
-<h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler::DEFAULT_PREFIXES">
-
-    <code>
-      DEFAULT_PREFIXES = <span style="font-weight: normal"><code class="highlight language-crystal"><span class="o">[</span><span class="s2">"/"</span><span class="o">]</span></code></span>
-    </code>
-  <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler::DEFAULT_PREFIXES" title="Permanent link">#</a></h4>
-<div class="doc doc-contents ">
-  </div>
-</div>
 <h3 id="class-methods">Class methods<a class="headerlink" href="#class-methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-class_method">
-<h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)">
+<h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)">
 
     <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">commands</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="ss">:default</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">private_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">group_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">admin_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">on_edit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register_as</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <span class="n">Context</span> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">commands</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="ss">:default</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">outgoing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">private_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">group_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">admin_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">on_edit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register_as</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="Context/#Tourmaline::Handlers::CommandHandler::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Create a new <code>CommandHandler</code> instance using the provided <code>commands</code>. <code>commands</code> can
 be a single command string, or an array of possible commands.</p>
@@ -4881,6 +4904,7 @@ handler is invoked. This should be fine in testing, but in production it's
 recommended to cache admins and do your own guarding.</p>
 </div>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L46">View source</a>
 </div>
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4893,6 +4917,7 @@ recommended to cache admins and do your own guarding.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent by a group admin.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L22">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#admin_only=(admin_only)">
@@ -4904,62 +4929,68 @@ recommended to cache admins and do your own guarding.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent by a group admin.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L22">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#call(client,update)">
 
     <code>
-      #call<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <span class="n">Client</span><span class="p">,</span> <span class="n">update</span> <span class="p">:</span> <span class="n">Update</span><span class="p">)</span></code></span>
+      #call<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a><span class="p">,</span> <span class="n">update</span> <span class="p">:</span> <a href="../../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#call(client,update)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L69">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#commands()">
 
     <code>
-      #commands<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span></code></span>
+      #commands<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../../../String/#String">String</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#commands()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Commands (without prefix) that this handler should respond to.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L7">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#commands=(commands)">
 
     <code>
-      #commands=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">commands</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="nb">String</span><span class="p">))</span></code></span>
+      #commands=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">commands</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../../../String/#String">String</a><span class="p">))</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#commands=(commands)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Commands (without prefix) that this handler should respond to.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L7">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#description()">
 
     <code>
-      #description<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">String</span><span class="p">?</span></code></span>
+      #description<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../../String/#String">String</a><span class="p">?</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#description()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Used when registering the command with BotFather. If <code>register</code> is true, but this
 is not set, the command will not be registered.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L37">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#description=(description)">
 
     <code>
-      #description=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">description</span> <span class="p">:</span> <span class="nb">String</span><span class="sc">?)</span></code></span>
+      #description=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">description</span> <span class="p">:</span> <a href="../../../String/#String">String</a><span class="sc">?)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#description=(description)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Used when registering the command with BotFather. If <code>register</code> is true, but this
 is not set, the command will not be registered.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L37">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#group_only()">
@@ -4971,6 +5002,7 @@ is not set, the command will not be registered.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in a group.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L19">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#group_only=(group_only)">
@@ -4982,6 +5014,7 @@ is not set, the command will not be registered.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in a group.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L19">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#on_edit()">
@@ -4993,6 +5026,7 @@ is not set, the command will not be registered.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will also run (or re-run) when messages are edited.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L25">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#on_edit=(on_edit)">
@@ -5004,28 +5038,55 @@ is not set, the command will not be registered.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will also run (or re-run) when messages are edited.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L25">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#outgoing()">
+
+    <code>
+      #outgoing<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Bool</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#outgoing()" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+<p>User API: if true, this command will only be activated by an outgoing message.</p>
+</div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L13">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#outgoing=(outgoing)">
+
+    <code>
+      #outgoing=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">outgoing</span> <span class="p">:</span> <span class="nb">Bool</span><span class="p">)</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#outgoing=(outgoing)" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+<p>User API: if true, this command will only be activated by an outgoing message.</p>
+</div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L13">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#prefixes()">
 
     <code>
-      #prefixes<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span></code></span>
+      #prefixes<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../../../String/#String">String</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#prefixes()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Prefixes that commands should start with.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L10">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#prefixes=(prefixes)">
 
     <code>
-      #prefixes=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">prefixes</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="nb">String</span><span class="p">))</span></code></span>
+      #prefixes=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">prefixes</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../../../String/#String">String</a><span class="p">))</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#prefixes=(prefixes)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Prefixes that commands should start with.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L10">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#private_only()">
@@ -5037,6 +5098,7 @@ is not set, the command will not be registered.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in private.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L16">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#private_only=(private_only)">
@@ -5048,6 +5110,7 @@ is not set, the command will not be registered.</p>
 <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in private.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L16">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#register()">
@@ -5060,6 +5123,7 @@ is not set, the command will not be registered.</p>
 <p>Register this command with BotFather. Only works is <code>prefixes</code> contains <code>/</code> (as
 it does by default), as non-botcommands can't be registed with BotFather.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L29">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#register=(register)">
@@ -5072,30 +5136,33 @@ it does by default), as non-botcommands can't be registed with BotFather.</p>
 <p>Register this command with BotFather. Only works is <code>prefixes</code> contains <code>/</code> (as
 it does by default), as non-botcommands can't be registed with BotFather.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L29">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#register_as()">
 
     <code>
-      #register_as<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">String</span><span class="p">?</span></code></span>
+      #register_as<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../../String/#String">String</a><span class="p">?</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#register_as()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>By default the first command in <code>commands</code> will be selected as the command name
 to register. If this property is set, it will be used instead.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L33">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Handlers::CommandHandler#register_as=(register_as)">
 
     <code>
-      #register_as=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">register_as</span> <span class="p">:</span> <span class="nb">String</span><span class="sc">?)</span></code></span>
+      #register_as=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">register_as</span> <span class="p">:</span> <a href="../../../String/#String">String</a><span class="sc">?)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Handlers::CommandHandler#register_as=(register_as)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>By default the first command in <code>commands</code> will be selected as the command name
 to register. If this property is set, it will be used instead.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/handlers/command_handler.cr#L33">View source</a>
 </div>
 </div>
 </div>

@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -988,6 +1001,19 @@
   <li class="md-nav__item">
     <a href="../Client/StickerMethods/" class="md-nav__link">
       StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../Client/TDLightMethods/" class="md-nav__link">
+      TDLightMethods
     </a>
   </li>
 
@@ -4869,17 +4895,19 @@ for a particular user and/or chat.</p>
 <div class="doc doc-contents ">
 <p>Create a new Stage instance and start it immediately</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L82">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-class_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage.new(client,*,context,chat_id,user_id,group,priority,**handler_options)">
 
     <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <span class="n">Client</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span> <span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">chat_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">user_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">handler_options</span><span class="p">)</span></code></span>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../Client/#Tourmaline::Client">Client</a><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span> <span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">chat_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">user_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">handler_options</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage.new(client,*,context,chat_id,user_id,group,priority,**handler_options)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Create a new Stage instance</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L56">View source</a>
 </div>
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4892,18 +4920,20 @@ for a particular user and/or chat.</p>
 <div class="doc doc-contents ">
 <p>True if this Stage is currently active</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L32">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#await_response(&amp;)">
 
     <code>
-      #await_response<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <span class="n">Context</span> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+      #await_response<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="Context/#Tourmaline::Stage::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage#await_response(&amp;)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Allows you to await a response to a step, yielding the awaited
 update to the block.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L138">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#chat_id()">
@@ -4928,6 +4958,7 @@ will be usable across all chats</p>
 <p>The chat id that this stage applies to If nil, this stage
 will be usable across all chats</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L42">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#chat_id?()">
@@ -4945,12 +4976,13 @@ will be usable across all chats</p>
 <h4 class="doc doc-heading" id="Tourmaline::Stage#client()">
 
     <code>
-      #client<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Client</span></code></span>
+      #client<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Client/#Tourmaline::Client">Client</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage#client()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>The client controlling this stage</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L20">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#context()">
@@ -4962,6 +4994,7 @@ will be usable across all chats</p>
 <div class="doc doc-contents ">
 <p>The context for this stage</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L38">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#context=(context)">
@@ -4973,17 +5006,19 @@ will be usable across all chats</p>
 <div class="doc doc-contents ">
 <p>The context for this stage</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L38">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#current_step()">
 
     <code>
-      #current_step<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">String</span><span class="p">?</span></code></span>
+      #current_step<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../String/#String">String</a><span class="p">?</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage#current_step()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>The key for the currently active step</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L26">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#exit()">
@@ -4995,39 +5030,43 @@ will be usable across all chats</p>
 <div class="doc doc-contents ">
 <p>Stop the current Stage and remove the event handler from the client.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L99">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#initial_step()">
 
     <code>
-      #initial_step<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">String</span><span class="p">?</span></code></span>
+      #initial_step<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../String/#String">String</a><span class="p">?</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage#initial_step()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>The key to use for the initial step</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L29">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#on(step,proc,initial)">
 
     <code>
-      #on<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">proc</span> <span class="p">:</span> <span class="n">Client</span> <span class="o">-&gt;</span> <span class="p">,</span> <span class="n">initial</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+      #on<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">proc</span> <span class="p">:</span> <a href="../Client/#Tourmaline::Client">Client</a> <span class="o">-&gt;</span> <span class="p">,</span> <span class="n">initial</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage#on(step,proc,initial)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Add an event handler for the given event name using the supplied proc</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L113">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#on(step,initial,&amp;)">
 
     <code>
-      #on<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">initial</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <span class="n">Client</span> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+      #on<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">initial</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="../Client/#Tourmaline::Client">Client</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage#on(step,initial,&amp;)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Add an event handler for the given step name using the supplied block</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L108">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#on_exit(&amp;)">
@@ -5039,6 +5078,7 @@ will be usable across all chats</p>
 <div class="doc doc-contents ">
 <p>Add a handler that's called when this Stage is exited</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L132">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#on_start(&amp;)">
@@ -5050,6 +5090,7 @@ will be usable across all chats</p>
 <div class="doc doc-contents ">
 <p>Add a handler that's called when this Stage is started</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L127">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#start()">
@@ -5062,6 +5103,7 @@ will be usable across all chats</p>
 <p>Start the current Stage, setting the given initial step as the current step
 and adding an event handler to the client.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L89">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#steps()">
@@ -5073,6 +5115,7 @@ and adding an event handler to the client.</p>
 <div class="doc doc-contents ">
 <p>A hash containing the steps in this stage</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L23">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#transition(event)">
@@ -5084,18 +5127,19 @@ and adding an event handler to the client.</p>
 <div class="doc doc-contents ">
 <p>Set the current step to the given value</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L143">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#update_history()">
 
     <code>
-      #update_history<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="n">Update</span><span class="p">)</span></code></span>
+      #update_history<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Stage#update_history()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
-<p>Maintains a history of updates that match the given chat_id and/or user_id.
-The first update will be the one that initiated this Stage.</p>
+<p>Maintains a history of updates that match the given chat_id and/or user_id.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L35">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#user_id()">
@@ -5120,6 +5164,7 @@ will be usable across all users</p>
 <p>The user id that this stage applies to If nil, this stage
 will be usable across all users</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L46">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Stage#user_id?()">
@@ -5143,6 +5188,7 @@ will be usable across all users</p>
   <a class="headerlink" href="#Tourmaline::Stage:method_missing(call)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/stage.cr#L53">View source</a>
 </div>
 </div>
 </div>

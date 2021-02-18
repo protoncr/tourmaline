@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -990,6 +1003,19 @@
   <li class="md-nav__item">
     <a href="StickerMethods/" class="md-nav__link">
       StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="TDLightMethods/" class="md-nav__link">
+      TDLightMethods
     </a>
   </li>
 
@@ -4637,6 +4663,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client::DEFAULT_COMMAND_PREFIXES" class="md-nav__link">
+    DEFAULT_COMMAND_PREFIXES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client::Log" class="md-nav__link">
     Log
   </a>
@@ -4657,7 +4690,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)" class="md-nav__link">
+  <a href="#Tourmaline::Client.default_command_prefixes()" class="md-nav__link">
+    .default_command_prefixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client.default_command_prefixes=(default_command_prefixes)" class="md-nav__link">
+    .default_command_prefixes=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client.new(*,bot_token,user_token,endpoint,persistence,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)" class="md-nav__link">
     .new
   </a>
   
@@ -4665,14 +4712,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--positional-arguments" class="md-nav__link">
-    Positional Arguments#
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments" class="md-nav__link">
+  <a href="#Tourmaline::Client.new(*,bot_token,user_token,endpoint,persistence,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments" class="md-nav__link">
     Named Arguments#
   </a>
   
@@ -4704,22 +4744,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#allowed_updates()" class="md-nav__link">
-    #allowed_updates
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Tourmaline::Client#allowed_updates=(allowed_updates)" class="md-nav__link">
-    #allowed_updates=
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#Tourmaline::Client#bot()" class="md-nav__link">
     #bot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client#bot_token()" class="md-nav__link">
+    #bot_token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client#bot_token=(bot_token)" class="md-nav__link">
+    #bot_token=
   </a>
   
 </li>
@@ -4755,6 +4795,20 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::Client#send_menu(chat,menu,**kwargs)" class="md-nav__link">
     #send_menu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client#user_token()" class="md-nav__link">
+    #user_token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client#user_token=(user_token)" class="md-nav__link">
+    #user_token=
   </a>
   
 </li>
@@ -4807,6 +4861,7 @@ instance of <code>Client</code> and add event handlers to it.</p>
               <code><a href="PaymentMethods/#Tourmaline::Client::PaymentMethods">Tourmaline::Client::PaymentMethods</a></code>
               <code><a href="PollMethods/#Tourmaline::Client::PollMethods">Tourmaline::Client::PollMethods</a></code>
               <code><a href="StickerMethods/#Tourmaline::Client::StickerMethods">Tourmaline::Client::StickerMethods</a></code>
+              <code><a href="TDLightMethods/#Tourmaline::Client::TDLightMethods">Tourmaline::Client::TDLightMethods</a></code>
               <code><a href="WebhookMethods/#Tourmaline::Client::WebhookMethods">Tourmaline::Client::WebhookMethods</a></code>
               <code>Tourmaline::EventHandler::Annotator</code>
               <code>Tourmaline::Logger</code>
@@ -4823,6 +4878,16 @@ instance of <code>Client</code> and add event handlers to it.</p>
   </div>
 </div>
 <div class="doc doc-object doc-constant">
+<h4 class="doc doc-heading" id="Tourmaline::Client::DEFAULT_COMMAND_PREFIXES">
+
+    <code>
+      DEFAULT_COMMAND_PREFIXES = <span style="font-weight: normal"><code class="highlight language-crystal"><span class="o">[</span><span class="s2">"/"</span><span class="o">]</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client::DEFAULT_COMMAND_PREFIXES" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+  </div>
+</div>
+<div class="doc doc-object doc-constant">
 <h4 class="doc doc-heading" id="Tourmaline::Client::Log">
 
     <code>
@@ -4834,23 +4899,48 @@ instance of <code>Client</code> and add event handlers to it.</p>
 </div>
 <h3 id="class-methods">Class methods<a class="headerlink" href="#class-methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-class_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)">
+<h4 class="doc doc-heading" id="Tourmaline::Client.default_command_prefixes()">
 
     <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">api_key</span> <span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">endpoint</span> <span class="o">=</span> <span class="no">DEFAULT_API_URL</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">persistence</span> <span class="p">:</span> <span class="n">Persistence</span> <span class="o">=</span> <span class="n">NilPersistence</span><span class="o">.</span><span class="n">new</span><span class="p">,</span> <span class="n">allowed_updates</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="nb">String</span><span class="p">,</span> <span class="n">set_commands</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">default_parse_mode</span> <span class="p">:</span> <span class="n">ParseMode</span> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Markdown</span><span class="p">,</span> <span class="n">pool_capacity</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">initial_pool_size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">pool_timeout</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">proxy</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_uri</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_host</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_port</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_user</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_pass</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      .default_command_prefixes<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../../String/#String">String</a><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client.default_command_prefixes()" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+<p>Default prefixes to use for commands</p>
+</div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L52">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-class_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client.default_command_prefixes=(default_command_prefixes)">
+
+    <code>
+      .default_command_prefixes=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">default_command_prefixes</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../../String/#String">String</a><span class="p">))</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client.default_command_prefixes=(default_command_prefixes)" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+<p>Default prefixes to use for commands</p>
+</div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L52">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-class_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client.new(*,bot_token,user_token,endpoint,persistence,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)">
+
+    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">bot_token</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">user_token</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">endpoint</span> <span class="o">=</span> <span class="no">DEFAULT_API_URL</span><span class="p">,</span> <span class="n">persistence</span> <span class="p">:</span> <a href="../Persistence/#Tourmaline::Persistence">Persistence</a> <span class="o">=</span> <span class="n">NilPersistence</span><span class="o">.</span><span class="n">new</span><span class="p">,</span> <span class="n">set_commands</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">default_parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a> <span class="o">=</span> <span class="n">ParseMode</span><span class="o">::</span><span class="n">Markdown</span><span class="p">,</span> <span class="n">pool_capacity</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">initial_pool_size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">pool_timeout</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">proxy</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_uri</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_host</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_port</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_user</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proxy_pass</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client.new(*,bot_token,user_token,endpoint,persistence,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Create a new instance of <code>Tourmaline::Client</code>.</p>
-<h6 id="Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--positional-arguments">Positional Arguments<a class="headerlink" href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--positional-arguments" title="Permanent link">#</a><a class="headerlink" href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--positional-arguments" title="Permanent link">#</a></h6>
+<h6 id="Tourmaline::Client.new(*,bot_token,user_token,endpoint,persistence,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments">Named Arguments<a class="headerlink" href="#Tourmaline::Client.new(*,bot_token,user_token,endpoint,persistence,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments" title="Permanent link">#</a><a class="headerlink" href="#Tourmaline::Client.new(*,bot_token,user_token,endpoint,persistence,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments" title="Permanent link">#</a></h6>
 <dl>
-<dt><code>api_key</code></dt>
-<dd>required; the bot token you were provided with by <code>@BotFather</code></dd>
+<dt><code>bot_token</code></dt>
+<dd>the bot token you should've received from <code>@BotFather</code></dd>
+<dt><code>user_token</code></dt>
+<dd>the token returned by the <code>#login</code> method</dd>
 <dt><code>endpoint</code></dt>
-<dd>the Telegram bot API endpoint to use; defaults to <code>https://api.telegram.org</code></dd>
-</dl>
-<h6 id="Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments">Named Arguments<a class="headerlink" href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments" title="Permanent link">#</a><a class="headerlink" href="#Tourmaline::Client.new(api_key,endpoint,*,persistence,allowed_updates,set_commands,default_parse_mode,pool_capacity,initial_pool_size,pool_timeout,proxy,proxy_uri,proxy_host,proxy_port,proxy_user,proxy_pass)--named-arguments" title="Permanent link">#</a></h6>
-<dl>
+<dd>the API endpoint to use for requests; default is <code>https://api.telegram.org</code>, but for
+ TDLight methods to work you may consider hosting your own instance or using one of
+ the official ones such as <code>https://telegram.rest</code></dd>
 <dt><code>persistence</code></dt>
 <dd>the persistence strategy to use</dd>
 <dt><code>set_commands</code></dt>
@@ -4876,38 +4966,20 @@ instance of <code>Client</code> and add event handlers to it.</p>
 <dd>a password to use for a proxy that requires authentication</dd>
 </dl>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L108">View source</a>
 </div>
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client#add_event_handler(handler)">
 
     <code>
-      #add_event_handler<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">handler</span> <span class="p">:</span> <span class="n">EventHandler</span><span class="p">)</span></code></span>
+      #add_event_handler<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">handler</span> <span class="p">:</span> <a href="../EventHandler/#Tourmaline::EventHandler">EventHandler</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client#add_event_handler(handler)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Add an <code>EventHandler</code> instance to the handler stack</p>
 </div>
-</div>
-<div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client#allowed_updates()">
-
-    <code>
-      #allowed_updates<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span></code></span>
-    </code>
-  <a class="headerlink" href="#Tourmaline::Client#allowed_updates()" title="Permanent link">#</a></h4>
-<div class="doc doc-contents ">
-  </div>
-</div>
-<div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client#allowed_updates=(allowed_updates)">
-
-    <code>
-      #allowed_updates=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">allowed_updates</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="nb">String</span><span class="p">))</span></code></span>
-    </code>
-  <a class="headerlink" href="#Tourmaline::Client#allowed_updates=(allowed_updates)" title="Permanent link">#</a></h4>
-<div class="doc doc-contents ">
-  </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L160">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client#bot()">
@@ -4921,61 +4993,111 @@ instance of <code>Client</code> and add event handlers to it.</p>
 started. Refreshing can be done by setting
 <code>@bot</code> to <code>get_me</code>.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L43">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client#bot_token()">
+
+    <code>
+      #bot_token<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../String/#String">String</a><span class="p">?</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client#bot_token()" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+  </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L45">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client#bot_token=(bot_token)">
+
+    <code>
+      #bot_token=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">bot_token</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="sc">?)</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client#bot_token=(bot_token)" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+  </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L45">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client#default_parse_mode()">
 
     <code>
-      #default_parse_mode<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">ParseMode</span></code></span>
+      #default_parse_mode<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client#default_parse_mode()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Default parse mode to use for commands when it isn't included explicitly</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L49">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client#default_parse_mode=(default_parse_mode)">
 
     <code>
-      #default_parse_mode=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">default_parse_mode</span> <span class="p">:</span> <span class="n">ParseMode</span><span class="p">)</span></code></span>
+      #default_parse_mode=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">default_parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client#default_parse_mode=(default_parse_mode)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Default parse mode to use for commands when it isn't included explicitly</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L49">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client#handle_update(update)">
 
     <code>
-      #handle_update<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <span class="n">Update</span><span class="p">)</span></code></span>
+      #handle_update<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <a href="../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client#handle_update(update)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Calls all handlers in the stack with the given update and
 this client instance.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L173">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client#remove_event_handler(handler)">
 
     <code>
-      #remove_event_handler<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">handler</span> <span class="p">:</span> <span class="n">EventHandler</span><span class="p">)</span></code></span>
+      #remove_event_handler<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">handler</span> <span class="p">:</span> <a href="../EventHandler/#Tourmaline::EventHandler">EventHandler</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client#remove_event_handler(handler)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Remove an existing event handler from the stack</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L167">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client#send_menu(chat,menu,**kwargs)">
 
     <code>
-      #send_menu<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">menu</span> <span class="p">:</span> <span class="n">RoutedMenu</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+      #send_menu<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">menu</span> <span class="p">:</span> <a href="../RoutedMenu/#Tourmaline::RoutedMenu">RoutedMenu</a><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client#send_menu(chat,menu,**kwargs)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/extra/routed_menu.cr#L161">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client#user_token()">
+
+    <code>
+      #user_token<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../String/#String">String</a><span class="p">?</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client#user_token()" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+  </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L46">View source</a>
+</div>
+<div class="doc doc-object doc-method doc-instance_method">
+<h4 class="doc doc-heading" id="Tourmaline::Client#user_token=(user_token)">
+
+    <code>
+      #user_token=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user_token</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="sc">?)</span></code></span>
+    </code>
+  <a class="headerlink" href="#Tourmaline::Client#user_token=(user_token)" title="Permanent link">#</a></h4>
+<div class="doc doc-contents ">
+  </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client.cr#L46">View source</a>
 </div>
 </div>
 </div>

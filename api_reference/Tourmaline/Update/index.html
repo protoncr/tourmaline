@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -988,6 +1001,19 @@
   <li class="md-nav__item">
     <a href="../Client/StickerMethods/" class="md-nav__link">
       StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../Client/TDLightMethods/" class="md-nav__link">
+      TDLightMethods
     </a>
   </li>
 
@@ -4996,29 +5022,32 @@ class <code>Tourmaline::Update</code>
   <a class="headerlink" href="#Tourmaline::Update.new(pull)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L4">View source</a>
 </div>
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">#</a></h3>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#callback_query()">
 
     <code>
-      #callback_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">CallbackQuery?</span></code></span>
+      #callback_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../CallbackQuery/#Tourmaline::CallbackQuery">CallbackQuery?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#callback_query()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New incoming callback query</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L37">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#channel_post()">
 
     <code>
-      #channel_post<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Message?</span></code></span>
+      #channel_post<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Message/#Tourmaline::Message">Message?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#channel_post()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New incoming channel post of any kind — text, photo, sticker, etc.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L23">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#chats()">
@@ -5030,23 +5059,25 @@ class <code>Tourmaline::Update</code>
 <div class="doc doc-contents ">
 <p>Returns all unique chats included in this update</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L87">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#chats(&amp;)">
 
     <code>
-      #chats<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <span class="n">Chat</span> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+      #chats<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Chat</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#chats(&amp;)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Yields each unique chat in this update to the block.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L98">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#chosen_inline_result()">
 
     <code>
-      #chosen_inline_result<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">ChosenInlineResult?</span></code></span>
+      #chosen_inline_result<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../ChosenInlineResult/#Tourmaline::ChosenInlineResult">ChosenInlineResult?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#chosen_inline_result()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
@@ -5054,96 +5085,105 @@ class <code>Tourmaline::Update</code>
 their chat partner. Please see our documentation on the feedback collecting
 for details on how to enable these updates for your bot.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L34">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#edited_channel_post()">
 
     <code>
-      #edited_channel_post<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Message?</span></code></span>
+      #edited_channel_post<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Message/#Tourmaline::Message">Message?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#edited_channel_post()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New version of a channel post that is known to the bot and was edited</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L26">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#edited_message()">
 
     <code>
-      #edited_message<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Message?</span></code></span>
+      #edited_message<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Message/#Tourmaline::Message">Message?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#edited_message()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New version of a message that is known to the bot and was edited</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L20">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#inline_query()">
 
     <code>
-      #inline_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">InlineQuery?</span></code></span>
+      #inline_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../InlineQuery/#Tourmaline::InlineQuery">InlineQuery?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#inline_query()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New incoming inline query</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L29">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#message()">
 
     <code>
-      #message<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Message?</span></code></span>
+      #message<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Message/#Tourmaline::Message">Message?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#message()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New incoming message of any kind — text, photo, sticker, etc.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L17">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#poll()">
 
     <code>
-      #poll<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Poll?</span></code></span>
+      #poll<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Poll/#Tourmaline::Poll">Poll?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#poll()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New poll state. Bots receive only updates about stopped polls and polls,
 which are sent by the bot</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L47">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#poll_answer()">
 
     <code>
-      #poll_answer<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">PollAnswer?</span></code></span>
+      #poll_answer<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../PollAnswer/#Tourmaline::PollAnswer">PollAnswer?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#poll_answer()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. A user changed their answer in a non-anonymous poll. Bots receive new
 votes only in polls that were sent by the bot itself.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L51">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#pre_checkout_query()">
 
     <code>
-      #pre_checkout_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">PreCheckoutQuery?</span></code></span>
+      #pre_checkout_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../PreCheckoutQuery/#Tourmaline::PreCheckoutQuery">PreCheckoutQuery?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#pre_checkout_query()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New incoming pre-checkout query. Contains full information about checkout</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L43">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#shipping_query()">
 
     <code>
-      #shipping_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">ShippingQuery?</span></code></span>
+      #shipping_query<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../ShippingQuery/#Tourmaline::ShippingQuery">ShippingQuery?</a></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#shipping_query()" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Optional. New incoming shipping query. Only for invoices with flexible price</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L40">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#update_id()">
@@ -5161,6 +5201,7 @@ should they get out of order. If there are no new updates
 for at least a week, then identifier of the next update
 will be chosen randomly instead of sequentially.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L14">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#users()">
@@ -5172,17 +5213,19 @@ will be chosen randomly instead of sequentially.</p>
 <div class="doc doc-contents ">
 <p>Returns all users included in this update as a Set</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L54">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Update#users(&amp;)">
 
     <code>
-      #users<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <span class="n">User</span> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+      #users<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">User</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Update#users(&amp;)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Yields each unique user in this update to the block.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/models/update.cr#L82">View source</a>
 </div>
 </div>
 </div>

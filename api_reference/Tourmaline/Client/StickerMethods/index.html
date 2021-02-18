@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1105,7 +1118,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message,reply_markup)" class="md-nav__link">
     #send_sticker
   </a>
   
@@ -1153,6 +1166,19 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../TDLightMethods/" class="md-nav__link">
+      TDLightMethods
+    </a>
   </li>
 
         
@@ -4854,7 +4880,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message,reply_markup)" class="md-nav__link">
     #send_sticker
   </a>
   
@@ -4952,6 +4978,7 @@ module <code>Tourmaline::Client::StickerMethods</code>
 <p>Use this method to add a new sticker to a set created by the bot.
 Returns <code>true</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L52">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#create_new_sticker_set(user_id,name,title,emojis,png_sticker,tgs_sticker,contains_masks,mask_position)">
@@ -4965,6 +4992,7 @@ Returns <code>true</code> on success.</p>
 edit the created sticker set. You must use exactly one of the fields <code>png_sticker</code> or <code>tgs_sticker</code>.
 Returns <code>true</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L75">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#delete_chat_sticker_set(chat_id)">
@@ -4980,6 +5008,7 @@ admin rights. Use the field can_set_sticker_set optionally returned in
 <code>#get_chat</code> requests to check if the bot can use this method.
 Returns <code>true</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L104">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#delete_sticker_from_set(sticker)">
@@ -4992,31 +5021,34 @@ Returns <code>true</code> on success.</p>
 <p>Use this method to delete a sticker from a set created by the bot.
 Returns <code>true</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L112">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#get_sticker_set(name)">
 
     <code>
-      #get_sticker_set<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">name</span> <span class="p">:</span> <span class="nb">String</span><span class="p">)</span></code></span>
+      #get_sticker_set<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">name</span> <span class="p">:</span> <a href="../../../String/#String">String</a><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::StickerMethods#get_sticker_set(name)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Use this method to get a sticker set.
 On success, a <code>StickerSet</code> object is returned.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L31">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
-<h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)">
+<h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message,reply_markup)">
 
     <code>
-      #send_sticker<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">sticker</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="p">:</span> <span class="nb">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_to_message_id</span> <span class="p">:</span> <span class="nb">Int32</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_sticker<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">sticker</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-  <a class="headerlink" href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message_id,reply_markup)" title="Permanent link">#</a></h4>
+  <a class="headerlink" href="#Tourmaline::Client::StickerMethods#send_sticker(chat,sticker,disable_notification,reply_to_message,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Use this method to send <code>.webp</code> stickers.
 On success, the sent <code>Message</code> is returned.</p>
 <p>See: <a href="https://core.telegram.org/bots/api#stickers">https://core.telegram.org/bots/api#stickers</a> for more info.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L10">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#set_chat_sticker_set(chat_id,sticker_set_name)">
@@ -5033,6 +5065,7 @@ optionally returned in <code>#get_chat</code> requests to check if the
 bot can use this method.
 Returns <code>true</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L43">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#set_sticker_position_in_set(sticker,position)">
@@ -5045,6 +5078,7 @@ Returns <code>true</code> on success.</p>
 <p>Use this method to move a sticker in a set created by the bot to a specific position.
 Returns <code>true</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L120">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#set_sticker_set_thumb(name,user,thumb)">
@@ -5058,6 +5092,7 @@ Returns <code>true</code> on success.</p>
 set for animated sticker sets only.
 Returns <code>true</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L141">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::StickerMethods#upload_sticker_file(user_id,png_sticker)">
@@ -5072,6 +5107,7 @@ Returns <code>true</code> on success.</p>
 used multiple times).
 Returns the uploaded <code>TFile</code> on success.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/sticker_methods.cr#L131">View source</a>
 </div>
 </div>
 </div>
@@ -5109,13 +5145,13 @@ Returns the uploaded <code>TFile</code> on success.</p>
           </a>
         
         
-          <a href="../WebhookMethods/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../TDLightMethods/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                WebhookMethods
+                TDLightMethods
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

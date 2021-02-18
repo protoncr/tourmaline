@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1096,6 +1109,19 @@
   <li class="md-nav__item">
     <a href="../StickerMethods/" class="md-nav__link">
       StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../TDLightMethods/" class="md-nav__link">
+      TDLightMethods
     </a>
   </li>
 
@@ -4833,13 +4859,14 @@ module <code>Tourmaline::Client::PollMethods</code>
 <h4 class="doc doc-heading" id="Tourmaline::Client::PollMethods#send_poll(chat,question,options,anonymous,type,allows_multiple_answers,correct_option_id,close_date,open_period,closed,disable_notification,reply_to_message,reply_markup)">
 
     <code>
-      #send_poll<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">question</span> <span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">options</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span> <span class="n">anonymous</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="k">type</span> <span class="p">:</span> <span class="n">Poll</span><span class="o">::</span><span class="n">Type</span> <span class="o">=</span> <span class="n">Poll</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">Regular</span><span class="p">,</span> <span class="n">allows_multiple_answers</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">correct_option_id</span> <span class="p">:</span> <span class="nb">Int32</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">close_date</span> <span class="p">:</span> <span class="nb">Time</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">open_period</span> <span class="p">:</span> <span class="nb">Int32</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">closed</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      #send_poll<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">question</span> <span class="p">:</span> <a href="../../../String/#String">String</a><span class="p">,</span> <span class="n">options</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><a href="../../../String/#String">String</a><span class="p">),</span> <span class="n">anonymous</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="k">type</span> <span class="p">:</span> <a href="../../Poll/Type/#Tourmaline::Poll::Type">Poll::Type</a> <span class="o">=</span> <span class="n">Poll</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">Regular</span><span class="p">,</span> <span class="n">allows_multiple_answers</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">correct_option_id</span> <span class="p">:</span> <span class="nb">Int32</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">close_date</span> <span class="p">:</span> <span class="nb">Time</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">open_period</span> <span class="p">:</span> <span class="nb">Int32</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">closed</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::PollMethods#send_poll(chat,question,options,anonymous,type,allows_multiple_answers,correct_option_id,close_date,open_period,closed,disable_notification,reply_to_message,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
 <p>Use this method to send a native poll.
 On success, the sent Message is returned.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/poll_methods.cr#L8">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::PollMethods#stop_poll(chat,message,reply_markup)">
@@ -4852,6 +4879,7 @@ On success, the sent Message is returned.</p>
 <p>Use this method to stop a poll which was sent by the bot.
 On success, the stopped <code>Poll</code> with the final results is returned.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/poll_methods.cr#L58">View source</a>
 </div>
 </div>
 </div>

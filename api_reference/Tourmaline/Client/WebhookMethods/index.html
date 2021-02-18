@@ -453,6 +453,19 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../../usage/features/tdlight/" class="md-nav__link">
+      TDLight
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -990,6 +1003,19 @@
   <li class="md-nav__item">
     <a href="../StickerMethods/" class="md-nav__link">
       StickerMethods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../TDLightMethods/" class="md-nav__link">
+      TDLightMethods
     </a>
   </li>
 
@@ -4882,6 +4908,7 @@ module <code>Tourmaline::Client::WebhookMethods</code>
 <p>Use this method to remove webhook integration if you decide to switch
 back to getUpdates.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/webhook_methods.cr#L93">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::WebhookMethods#get_webhook_info()">
@@ -4896,6 +4923,7 @@ On success, returns a <code>WebhookInfo</code> object. If the bot is using
 <code>#getUpdates</code>, will return an object with the
 url field empty.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/webhook_methods.cr#L87">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::WebhookMethods#serve(host,port,ssl_certificate_path,ssl_key_path,&amp;)">
@@ -4910,6 +4938,7 @@ updates using Telegram's webhooks. This is the reccommended way to handle
 bots in production.</p>
 <p>Note: Don't forget to call <code>set_webhook</code> first! This method does not do it for you.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/webhook_methods.cr#L11">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::WebhookMethods#serve(path,host,port,ssl_certificate_path,ssl_key_path)">
@@ -4924,12 +4953,13 @@ updates using Telegram's webhooks. This is the reccommended way to handle
 bots in production.</p>
 <p>Note: Don't forget to call <code>set_webhook</code> first! This method does not do it for you.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/webhook_methods.cr#L38">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::WebhookMethods#set_webhook(url,ip_address,certificate,max_connections,allowed_updates,drop_pending_updates)">
 
     <code>
-      #set_webhook<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">ip_address</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">certificate</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">max_connections</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allowed_updates</span> <span class="o">=</span> <span class="vi">@allowed_updates</span><span class="p">,</span> <span class="n">drop_pending_updates</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
+      #set_webhook<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">ip_address</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">certificate</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">max_connections</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allowed_updates</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">drop_pending_updates</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
     </code>
   <a class="headerlink" href="#Tourmaline::Client::WebhookMethods#set_webhook(url,ip_address,certificate,max_connections,allowed_updates,drop_pending_updates)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
@@ -4942,6 +4972,7 @@ Returns <code>true</code> on success.</p>
 using a secret path in the URL, e.g. <code>https://www.example.com/&lt;token&gt;</code>. Since nobody
 else knows your bot‘s token, you can be pretty sure it’s us.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/webhook_methods.cr#L58">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::WebhookMethods#unset_webhook()">
@@ -4953,6 +4984,7 @@ else knows your bot‘s token, you can be pretty sure it’s us.</p>
 <div class="doc doc-contents ">
 <p>Use this to unset the webhook and stop receiving updates to your bot.</p>
 </div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/webhook_methods.cr#L79">View source</a>
 </div>
 </div>
 </div>
@@ -4975,7 +5007,7 @@ else knows your bot‘s token, you can be pretty sure it’s us.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../StickerMethods/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../TDLightMethods/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -4984,7 +5016,7 @@ else knows your bot‘s token, you can be pretty sure it’s us.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                StickerMethods
+                TDLightMethods
               </div>
             </div>
           </a>
