@@ -255,6 +255,15 @@ module Tourmaline
       # (current name of the user for one-on-one conversations,
       # current username of a user, group or channel, etc.).
       # Returns a `Chat` object on success.
+      #
+      # !!! tip
+      #     When using TDLight this method isn't restructed to chats/users your
+      #     bot is familiar with.
+      #
+      # !!! warning
+      #     When using TDLight this method will first check for a locally cached
+      #     chat, then use MTProto if that fails. When using MTProto this method
+      #     is __heavily__ rate limited, so be careful.
       def get_chat(chat)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 

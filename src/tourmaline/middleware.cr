@@ -23,6 +23,11 @@ module Tourmaline
         @parameters[name.to_s]?.try &.value
       end
 
+      # Returns the value of the parameter with the provided *name* as a `type` if it exists, otherwise `nil`.
+      def get?(name, type : T.class) forall T
+        @parameters[name.to_s]?.try &.value.as(T)
+      end
+
       # Returns the value of the parameter with the provided *name*.
       #
       # Raises a `KeyError` if no parameter with that name exists.
