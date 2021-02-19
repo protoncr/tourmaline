@@ -5865,7 +5865,7 @@ minutes after the bot is launched.</p>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#copy_message(chat,from_chat,message,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L880">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L889">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#delete_chat_photo(chat)">
@@ -5884,7 +5884,7 @@ Returns <code>true</code> on success.</p>
 <code>All Members Are Admins</code> setting is off in the target group.</p>
 </blockquote>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L521">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L530">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#delete_message(chat,message)">
@@ -5917,7 +5917,7 @@ Returns <code>true</code> on success.</p>
 <div class="doc doc-contents ">
 <p>Given a file_id, download the file and return its path on the file system.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L328">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L337">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_caption(chat,caption,message,inline_message,parse_mode,caption_entities,reply_markup)">
@@ -5948,7 +5948,7 @@ its live_period expires or editing is explicitly disabled by a call to
 <p>On success, if the edited message wasn't by the bot, the edited <code>Message</code> is
 returned, otherwise <code>true</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1145">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1154">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_media(chat,media,message,inline_message,reply_markup)">
@@ -5959,7 +5959,7 @@ returned, otherwise <code>true</code> is returned.</p>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#edit_message_media(chat,media,message,inline_message,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L941">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L950">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#edit_message_reply_markup(chat,message,inline_message,reply_markup)">
@@ -6003,7 +6003,7 @@ generated link is revoked. The bot must be an administrator in the chat
 for this to work and must have the appropriate admin rights.
 Returns the new invite link as <code>String</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L490">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L499">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#forward_message(chat,from_chat,message,disable_notification)">
@@ -6030,8 +6030,19 @@ the sent <code>Message</code> is returned.</p>
 (current name of the user for one-on-one conversations,
 current username of a user, group or channel, etc.).
 Returns a <code>Chat</code> object on success.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When using TDLight this method isn't restructed to chats/users your
+bot is familiar with.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L258">View source</a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When using TDLight this method will first check for a locally cached
+chat, then use MTProto if that fails. When using MTProto this method
+is <strong>heavily</strong> rate limited, so be careful.</p>
+</div>
+</div>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L267">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_chat_administrators(chat)">
@@ -6047,7 +6058,7 @@ about all chat administrators except other bots. If the chat is a
 group or a supergroup and no administrators were appointed,
 only the creator will be returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L271">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L280">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_chat_member(chat,user)">
@@ -6060,7 +6071,7 @@ only the creator will be returned.</p>
 <p>Use this method to get information about a member of a chat. Returns a
 <code>ChatMember</code> object on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L281">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L290">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_chat_members_count(chat)">
@@ -6073,7 +6084,7 @@ only the creator will be returned.</p>
 <p>Use this method to get the number of members in a chat.
 Returns <code>Int32</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L296">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L305">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_file(file_id)">
@@ -6092,7 +6103,7 @@ the link will be valid for at least 1 hour. When the link
 expires, a new one can be requested by calling <code>#get_file</code> again.</p>
 <p>To simplify retrieving a link for a file, use the <code>#get_file_link</code> method.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L313">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L322">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_file_link(file_id)">
@@ -6105,7 +6116,7 @@ expires, a new one can be requested by calling <code>#get_file</code> again.</p>
 <p>Takes a file id and returns a link to download the file. The link will be valid
 for at least one hour.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L321">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L330">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_me()">
@@ -6132,7 +6143,7 @@ in form of a <code>User</code> object.</p>
 <p>Use this method to get the current list of the bot's commands. Requires no parameters.
 Returns Array of BotCommand on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1220">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1229">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#get_updates(offset,limit,timeout,allowed_updates)">
@@ -6159,7 +6170,7 @@ An <code>Array</code> of <code>Update</code> objects is returned.</p>
 <p>Use this method to get a list of profile pictures for a user.
 Returns a <code>UserProfilePhotos</code> object.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L342">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L351">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#is_admin?(chat_id)">
@@ -6197,7 +6208,7 @@ Otherwise members may only be removed by the group's creator or
 by the member that added them.</p>
 </blockquote>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L367">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L376">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#leave_chat(chat)">
@@ -6211,7 +6222,7 @@ by the member that added them.</p>
 supergroup, or channel.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L626">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L635">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#log_out()">
@@ -6245,7 +6256,7 @@ have the appropriate admin right. Works by calling
 set to <code>false</code>.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L409">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L418">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#next_offset()">
@@ -6272,7 +6283,7 @@ have the <code>can_pin_messages</code> admin right in the supergroup or
 <code>can_edit_messages</code> admin right in the channel.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L589">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L598">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#poll(delete_webhook)">
@@ -6286,7 +6297,7 @@ Returns <code>true</code> on success.</p>
 and <code>#handle_update</code> to send continuously check Telegram's servers
 for updates.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1231">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1240">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#polling()">
@@ -6313,7 +6324,7 @@ have the appropriate admin rights. Pass False for all boolean
 parameters to demote a user.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L453">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L462">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#restrict_chat_member(chat,user,permissions,until_date)">
@@ -6329,7 +6340,7 @@ appropriate admin rights. Pass True for all permissions to
 lift restrictions from a user.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L429">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L438">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_animation(chat,animation,duration,width,height,thumb,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6340,7 +6351,7 @@ Returns <code>true</code> on success.</p>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#send_animation(chat,animation,duration,width,height,thumb,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L675">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L684">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_audio(chat,audio,caption,caption_entities,duration,preformer,title,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6358,7 +6369,7 @@ changed in the future.</p>
 <p>For sending voice messages, use the <code>#sendVoice</code> method instead.
 TODO: Add filesize checking and validation.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L642">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L651">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_basketball(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6371,7 +6382,7 @@ TODO: Add filesize checking and validation.</p>
 <p>Use this method to send a basketball (🏀 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L761">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L770">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_chat_action(chat,action)">
@@ -6394,7 +6405,7 @@ will see a “sending photo” status for the bot.</p>
 <p>We only recommend using this method when a response from the bot will take a
 noticeable amount of time to arrive.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L722">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L731">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_contact(chat,phone_number,first_name,last_name,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6407,7 +6418,7 @@ noticeable amount of time to arrive.</p>
 <p>Use this method to send phone contacts.
 On success, the sent <code>Message</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L736">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L745">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_dart(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6420,7 +6431,7 @@ On success, the sent <code>Message</code> is returned.</p>
 <p>Use this method to send a dart (🎯 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L761">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L770">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_dice(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6433,7 +6444,7 @@ On success, the sent Message is returned.</p>
 <p>Use this method to send a dice (🎲 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L761">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L770">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_document(chat,document,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6449,7 +6460,7 @@ of any type of up to <strong>50 MB</strong> in size, this limit
 may be changed in the future.
 TODO: Add filesize checking and validation.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L790">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L799">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_football(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6462,7 +6473,7 @@ TODO: Add filesize checking and validation.</p>
 <p>Use this method to send a football (⚽️ emoji), which will have a random value from 1 to 5.
 On success, the sent Message is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L761">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L770">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_location(chat,latitude,longitude,horizontal_accuracy,live_period,proximity_alert_radius,heading,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6475,7 +6486,7 @@ On success, the sent Message is returned.</p>
 <p>Use this method to send point on the map.
 On success, the sent <code>Message</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L820">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L829">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_media_group(chat,media,disable_notification,reply_to_message,allow_sending_without_reply)">
@@ -6488,7 +6499,7 @@ On success, the sent <code>Message</code> is returned.</p>
 <p>Use this method to send a group of photos or videos as an album.
 On success, an array of the sent <code>Messages</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L968">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L977">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_message(chat,text,parse_mode,entities,link_preview,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6501,7 +6512,7 @@ On success, an array of the sent <code>Messages</code> is returned.</p>
 <p>Use this method to send text messages.
 On success, the sent <code>Message</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L853">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L862">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_photo(chat,photo,caption,parse_mode,caption_entities,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6514,7 +6525,7 @@ On success, the sent <code>Message</code> is returned.</p>
 <p>Use this method to send photos.
 On success, the sent <code>Message</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L913">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L922">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_slot_machine(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6527,7 +6538,7 @@ On success, the sent <code>Message</code> is returned.</p>
 <p>Use this method to send a slot_machine (🎰 emoji), which will have a random value from 1 to 64.
 On success, the sent Message is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L761">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L770">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_soccerball(chat,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6540,7 +6551,7 @@ On success, the sent Message is returned.</p>
 <p>Use this method to send a soccerball (⚽️ emoji), which will have a random value from 1 to 5.
 On success, the sent Message is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L761">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L770">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_venue(chat,latitude,longitude,title,address,foursquare_id,foursquare_type,google_place_id,google_place_type,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6553,7 +6564,7 @@ On success, the sent Message is returned.</p>
 <p>Use this method to send information about a venue.
 On success, the sent <code>Message</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L989">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L998">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video(chat,video,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6570,7 +6581,7 @@ video files of up to <strong>50 MB</strong> in size, this limit may be
 changed in the future.
 TODO: Add filesize checking and validation.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1030">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1039">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_video_note(chat,video_note,duration,width,height,caption,caption_entities,parse_mode,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6585,7 +6596,7 @@ clients support rounded square <code>mp4</code> videos of up to <strong>1</stron
 Use this method to send video messages.
 On success, the sent <code>Message</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1068">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1077">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#send_voice(chat,voice,caption,caption_entities,duration,preformer,title,disable_notification,reply_to_message,allow_sending_without_reply,reply_markup)">
@@ -6603,7 +6614,7 @@ On success, the sent <code>Message</code> is returned. Bots can currently send v
 messages of up to <strong>50 MB</strong> in size, this limit may be changed in the future.
 TODO: Add filesize checking and validation.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1109">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1118">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_admininstrator_custom_title(chat,user,custom_title)">
@@ -6616,7 +6627,7 @@ TODO: Add filesize checking and validation.</p>
 <p>Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
 Returns True on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L531">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L540">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_description(chat,description)">
@@ -6631,7 +6642,7 @@ The bot must be an administrator in the chat for this to work and
 must have the appropriate admin rights.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L575">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L584">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_permissions(chat,permissions)">
@@ -6646,7 +6657,7 @@ an administrator in the group or a supergroup for this to work and must have
 the can_restrict_members admin rights.
 Returns True on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L546">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L555">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_photo(chat,photo)">
@@ -6665,7 +6676,7 @@ Returns <code>true</code> on success.</p>
 <code>All Members Are Admins</code> setting is off in the target group.</p>
 </blockquote>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L505">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L514">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_chat_title(chat,title)">
@@ -6684,7 +6695,7 @@ Returns <code>true</code> on success.</p>
 work if the <code>All Members Are Admins</code> setting is off in the target group.</p>
 </blockquote>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L562">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L571">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#set_my_commands(commands)">
@@ -6697,7 +6708,7 @@ work if the <code>All Members Are Admins</code> setting is off in the target gro
 <p>Use this method to change the list of the bot's commands.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1208">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1217">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#stop_message_live_location(chat,message,inline_message,reply_markup)">
@@ -6712,7 +6723,7 @@ live_period expires.</p>
 <p>On success, if the message was sent by the bot, the sent
 <code>Message</code> is returned, otherwise <code>true</code> is returned.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1184">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1193">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#stop_polling()">
@@ -6724,7 +6735,7 @@ live_period expires.</p>
 <div class="doc doc-contents ">
 <p>Stops the bot from polling.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1250">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L1259">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#unban_chat_member(chat,user,only_if_banned)">
@@ -6740,7 +6751,7 @@ automatically, but will be able to join via link, etc.
 The bot must be an administrator for this to work.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L388">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L397">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#unpin_all_chat_messages(chat)">
@@ -6751,7 +6762,7 @@ Returns <code>true</code> on success.</p>
   <a class="headerlink" href="#Tourmaline::Client::CoreMethods#unpin_all_chat_messages(chat)" title="Permanent link">#</a></h4>
 <div class="doc doc-contents ">
   </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L615">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L624">View source</a>
 </div>
 <div class="doc doc-object doc-method doc-instance_method">
 <h4 class="doc doc-heading" id="Tourmaline::Client::CoreMethods#unpin_chat_message(chat,message)">
@@ -6767,7 +6778,7 @@ have the ‘can_pin_messages’ admin right in the supergroup or
 ‘can_edit_messages’ admin right in the channel.
 Returns <code>true</code> on success.</p>
 </div>
-<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L605">View source</a>
+<a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/master/src/tourmaline/client/core_methods.cr#L614">View source</a>
 </div>
 </div>
 </div>
