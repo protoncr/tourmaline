@@ -10,13 +10,13 @@ module Tourmaline
 
       def call(client : Client, update : Update)
         if message = update.edited_message || update.edited_channel_post
-          context = Context.new(update, message)
+          context = Context.new(update, update.context, message)
           @proc.call(context)
           return true
         end
       end
 
-      record Context, update : Update, message : Message
+      record Context, update : Update, context : Middleware::Context, message : Message
     end
   end
 end

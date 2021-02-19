@@ -50,6 +50,10 @@ module Tourmaline
     # votes only in polls that were sent by the bot itself.
     getter poll_answer : PollAnswer?
 
+    # Context object allowing data to be passed from middleware to handlers.
+    @[JSON::Field(ignore: true)]
+    getter context : Middleware::Context { Middleware::Context.new }
+
     # Returns all users included in this update as a Set
     def users
       users = [] of User?

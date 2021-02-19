@@ -105,14 +105,22 @@ module Tourmaline
             command = command.sub(prefix_re, "")
             return unless @commands.includes?(command)
 
-            context = Context.new(update, message, command, text, raw_text, !!botname, !!update.edited_message)
+            context = Context.new(update, update.context, message, command, text, raw_text, !!botname, !!update.edited_message)
             @proc.call(context)
             return true
           end
         end
       end
 
-      record Context, update : Update, message : Message, command : String, text : String, raw_text : String, botname : Bool, edit : Bool
+      record Context,
+        update : Update,
+        context : Middleware::Context,
+        message : Message,
+        command : String,
+        text : String,
+        raw_text : String,
+        botname : Bool,
+        edit : Bool
     end
   end
 end

@@ -16,7 +16,7 @@ module Tourmaline
           data = query.query
           if data
             if match = data.match(@pattern)
-              context = Context.new(update, query, match)
+              context = Context.new(update, update.context, query, match)
               @proc.call(context)
               return true
             end
@@ -24,7 +24,11 @@ module Tourmaline
         end
       end
 
-      record Context, update : Update, query : InlineQuery, match : Regex::MatchData
+      record Context,
+        update : Update,
+        context : Middleware::Context,
+        query : InlineQuery,
+        match : Regex::MatchData
     end
   end
 end

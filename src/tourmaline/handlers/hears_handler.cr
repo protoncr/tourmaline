@@ -15,7 +15,7 @@ module Tourmaline
         if message = update.message || update.channel_post
           if (text = message.text) || (text = message.caption)
             if match = text.match(@pattern)
-              context = Context.new(update, message, text, match)
+              context = Context.new(update, update.context, message, text, match)
               @proc.call(context)
               return true
             end
@@ -23,7 +23,12 @@ module Tourmaline
         end
       end
 
-      record Context, update : Update, message : Message, text : String, match : Regex::MatchData
+      record Context,
+        update : Update,
+        context : Middleware::Context,
+        message : Message,
+        text : String,
+        match : Regex::MatchData
     end
   end
 end
