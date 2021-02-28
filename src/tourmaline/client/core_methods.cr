@@ -198,12 +198,12 @@ module Tourmaline
         })
       end
 
-      # Use this method to edit text and game messages. On success, if
-      # edited message is sent by the bot, the edited `Message`
-      # is returned, otherwise `true` is returned.
+      # Use this method to edit text and game messages.
+      # On success, if the edited message is not an inline message,
+      # the edited Message is returned, otherwise True is returned.
       def edit_message_text(
-        chat,
         text,
+        chat = nil,
         message = nil,
         inline_message = nil,
         parse_mode = @default_parse_mode,
@@ -211,15 +211,18 @@ module Tourmaline
         disable_link_preview = false,
         reply_markup = nil
       )
-        if !message && !inline_message
-          raise "A message_id or inline_message_id is required"
+        if (!message || !chat) && !inline_message
+          raise "A message_id witth chat_id or inline_message_id is required"
         end
 
-        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
-        inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
+        if !inline_message
+          chat_id = chat.is_a?(Int::Primitive | String | Nil) ? chat : chat.id
+          message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
+        else
+          inline_message_id = inline_message.is_a?(String | Int::Primitive) ? inline_message : inline_message.id
+        end
 
-        request(Message, "editMessageText", {
+        request(Message | Bool, "editMessageText", {
           chat_id:                  chat_id,
           message_id:               message_id,
           inline_message_id:        inline_message_id,
