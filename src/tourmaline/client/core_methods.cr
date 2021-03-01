@@ -200,7 +200,7 @@ module Tourmaline
 
       # Use this method to edit text and game messages.
       # On success, if the edited message is not an inline message,
-      # the edited Message is returned, otherwise True is returned.
+      # the edited Message is returned, otherwise true is returned.
       def edit_message_text(
         text,
         chat = nil,
@@ -212,7 +212,7 @@ module Tourmaline
         reply_markup = nil
       )
         if (!message || !chat) && !inline_message
-          raise "A message_id witth chat_id or inline_message_id is required"
+          raise "edit_message_text requires either a chat and a message, or an inline_message"
         end
 
         if !inline_message
