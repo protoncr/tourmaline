@@ -221,7 +221,7 @@ module Tourmaline
 
     # Edits the text of a message. See `Tourmaline::Client#edit_message_text`.
     def edit_text(text, **kwargs)
-      client.edit_message_text(chat, text, **kwargs, message: message_id)
+      client.edit_message_text(text, chat, **kwargs, message: message_id)
     end
 
     # Edits the message's live_location. See `Tourmaline::Client#edit_message_live_location`
