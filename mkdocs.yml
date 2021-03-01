@@ -11,6 +11,7 @@ theme:
   features:
     - navigation.instant
     - navigation.tabs
+    - navigation.sections
   icon:
     logo: fontawesome/brands/telegram
     repo: fontawesome/brands/github
@@ -39,6 +40,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.saneheaders
+  - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.critic
   - pymdownx.betterem:
