@@ -5,7 +5,7 @@ module Tourmaline
   # to be fetched by either id or username.
   #
   # Example:
-  # ```crystal
+  # ```
   # bot = MyBot.new(API_KEY, persistence: Tourmaline::JsonPersistence.new)
   # # ... do some things
   # if user = bot.persistence.get_user?("foobar")

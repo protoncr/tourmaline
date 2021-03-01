@@ -23,7 +23,7 @@ module Tourmaline
     #
     # Example:
     #
-    # ```crystal
+    # ```
     # @[Command("help", prefix: "!", private_only: true)]
     # def help_command(client, update)
     #   update.message.not_nil!.reply("This is a help message")
@@ -40,7 +40,7 @@ module Tourmaline
     #
     # Example:
     #
-    # ```crystal
+    # ```
     # @[OnCallbackQuery("back")]
     # def back_button_pressed(client, update)
     #   query = update.callback_query.not_nil!
