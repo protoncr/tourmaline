@@ -1,0 +1,15 @@
+
+/* Prevent all-caps names in headings */
+h5.doc-heading {
+  text-transform: none !important;
+}
+
+/* [View source] links don't have brackets by default */
+a.doc-source-link::before {
+  content: "[";
+  color: var(--md-typeset-color);
+}
+a.doc-source-link::after {
+  content: "]";
+  color: var(--md-typeset-color);
+}
