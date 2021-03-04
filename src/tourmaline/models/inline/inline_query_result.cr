@@ -87,6 +87,10 @@ module Tourmaline
       def video(*args, **opts)
         results << InlineQueryResultVideo.new(*args, **opts)
       end
+
+      def game(*args, **opts)
+        results << InlineQueryResultGame.new(*args, **opts)
+      end
     end
   end
 end
