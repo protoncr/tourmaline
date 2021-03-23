@@ -25,7 +25,7 @@ dependencies:
 
 API documentation is also available [here](https://tourmaline.dev/api_reference/Tourmaline/).
 
-Examples are available in the [examples](https://github.com/protoncr/tourmaline/branch/master/examples) folder.
+Examples are available in the [examples](https://github.com/protoncr/tourmaline/tree/master/examples) folder.
 
 Just for README purposes though, let's look at the echo bot example:
 
