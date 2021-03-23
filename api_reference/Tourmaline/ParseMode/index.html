@@ -4687,7 +4687,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/protoncr/tourmaline/blob/533f576a8cec447d37991f662c8158afd2bd15f7/src/tourmaline/parse_mode.cr#L3" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/protoncr/tourmaline/blob/215f558185972871818c5c5b6b454b81714d534c/src/tourmaline/parse_mode.cr#L3" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -4747,7 +4747,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/533f576a8cec447d37991f662c8158afd2bd15f7/src/tourmaline/parse_mode.cr#L9">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/215f558185972871818c5c5b6b454b81714d534c/src/tourmaline/parse_mode.cr#L9">View source</a>
 </div><h2 id="Tourmaline::ParseMode-methods">Methods<a href="#Tourmaline::ParseMode-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4758,7 +4758,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/533f576a8cec447d37991f662c8158afd2bd15f7/src/tourmaline/parse_mode.cr#L7">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/215f558185972871818c5c5b6b454b81714d534c/src/tourmaline/parse_mode.cr#L7">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4769,7 +4769,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/533f576a8cec447d37991f662c8158afd2bd15f7/src/tourmaline/parse_mode.cr#L5">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/215f558185972871818c5c5b6b454b81714d534c/src/tourmaline/parse_mode.cr#L5">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4780,7 +4780,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/533f576a8cec447d37991f662c8158afd2bd15f7/src/tourmaline/parse_mode.cr#L6">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/215f558185972871818c5c5b6b454b81714d534c/src/tourmaline/parse_mode.cr#L6">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4791,7 +4791,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/533f576a8cec447d37991f662c8158afd2bd15f7/src/tourmaline/parse_mode.cr#L4">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/215f558185972871818c5c5b6b454b81714d534c/src/tourmaline/parse_mode.cr#L4">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4800,9 +4800,36 @@
     </code>
 <a href="#Tourmaline::ParseMode#to_json(json)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>Serializes this enum member by name.</p>
+<p>For non-flags enums, the serialization is a JSON string. The value is the
+member name (see <code>#to_s</code>) transformed with <code>String#underscore</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span> <span class="nc">Stages</span>
+  <span class="no">INITIAL</span>
+  <span class="no">SECOND_STAGE</span>
+<span class="k">end</span>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/533f576a8cec447d37991f662c8158afd2bd15f7/src/tourmaline/parse_mode.cr#L13">View source</a>
+<span class="n">Stages</span><span class="o">::</span><span class="n">INITIAL</span><span class="o">.</span><span class="n">to_json</span>      <span class="c1"># =&gt; %(&quot;initial&quot;)</span>
+<span class="n">Stages</span><span class="o">::</span><span class="n">SECOND_STAGE</span><span class="o">.</span><span class="n">to_json</span> <span class="c1"># =&gt; %(&quot;second_stage&quot;)</span>
+</code></pre></div>
+<p>For flags enums, the serialization is a JSON array including every flagged
+member individually serialized in the same way as a member of a non-flags enum.
+<code>None</code> is serialized as an empty array, <code>All</code> as an array containing
+all members.</p>
+<div class="highlight"><pre><span></span><code><span class="o">@[</span><span class="nd">Flags</span><span class="o">]</span>
+<span class="k">enum</span> <span class="nc">Sides</span>
+  <span class="no">LEFT</span>
+  <span class="no">RIGHT</span>
+<span class="k">end</span>
+
+<span class="n">Sides</span><span class="o">::</span><span class="n">LEFT</span><span class="o">.</span><span class="n">to_json</span>                  <span class="c1"># =&gt; %([&quot;left&quot;])</span>
+<span class="p">(</span><span class="n">Sides</span><span class="o">::</span><span class="no">LEFT</span> <span class="o">|</span> <span class="n">Sides</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">)</span><span class="o">.</span><span class="n">to_json</span> <span class="c1"># =&gt; %([&quot;left&quot;,&quot;right&quot;])</span>
+<span class="n">Sides</span><span class="o">::</span><span class="n">All</span><span class="o">.</span><span class="n">to_json</span>                   <span class="c1"># =&gt; %([&quot;left&quot;,&quot;right&quot;])</span>
+<span class="n">Sides</span><span class="o">::</span><span class="n">None</span><span class="o">.</span><span class="n">to_json</span>                  <span class="c1"># =&gt; %([])</span>
+</code></pre></div>
+<p><code>ValueConverter.to_json</code> offers a different serialization strategy based on the
+member value.</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/215f558185972871818c5c5b6b454b81714d534c/src/tourmaline/parse_mode.cr#L13">View source</a>
 </div>      </div>
   </div>
 
