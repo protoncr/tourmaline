@@ -15,9 +15,12 @@ jobs:
     - uses: oprypin/install-crystal@v1
       with:
         crystal: ${{ matrix.crystal-version }}
+    
     - name: Install dependencies
       run: shards install
+    
     - name: Format code
-      run: crystal tool format --check
+      run: crystal tool format && git diff --exit-code
+    
     - name: Run tests
       run: crystal spec

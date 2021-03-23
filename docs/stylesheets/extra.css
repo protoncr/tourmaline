@@ -1,46 +1,26 @@
-.md-typeset h4:target::before {
+.doc-method:target::before {
     display: block;
     margin-top: -4.1rem;
     padding-top: 4.1rem;
     content: "";
 }
 
-h1 {
-    margin: 0 !important;
+.doc-type > .doc-heading {
+    font-size: 1.3em !important;
 }
 
-h2.doc.doc-heading {
-    font-size: 1em !important;
-}
-
-h2.doc.doc-heading > code {
-    font-size: 1.5625em !important;
+.doc-type > .doc-heading > code {
+    font-size: 1.3em !important;
     vertical-align: baseline !important;
 }
 
-h2.doc.doc-heading > small {
-    font-size: 90% !important;
-}
-
-.doc.doc-object {
-    font-size: .85rem !important;
-}
-
-.doc-method h4 {
-    padding: 10px !important;
+.doc-method .doc-heading {
+    padding: 8px !important;
     background-color: #F8F8F8 !important;
 }
 
 .doc-source-link {
     font-size: 80%;
-}
-
-.doc-source-link::before {
-    content: "["
-}
-
-.doc-source-link::after {
-    content: "]"
 }
 
 .md-typeset dd {

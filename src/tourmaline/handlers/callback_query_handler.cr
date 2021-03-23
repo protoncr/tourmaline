@@ -12,7 +12,7 @@ module Tourmaline
 
       def call(client : Client, update : Update)
         if query = update.callback_query
-          data = query.data
+          data = query.data || query.game_short_name
           if data
             if match = data.match(@pattern)
               context = Context.new(update, update.context, query.message, query, match)
