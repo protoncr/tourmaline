@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        crystal-version: [0.36.1]
+        crystal-version: [1.0.0]
     
     steps:
     - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
         crystal: ${{ matrix.crystal-version }}
     
     - name: Install dependencies
-      run: shards install
+      run: shards install --ignore-crystal-version
     
     - name: Format code
       run: crystal tool format && git diff --exit-code

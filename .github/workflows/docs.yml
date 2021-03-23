@@ -1,15 +1,17 @@
 name: Docs
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.8]
-        crystal-version: [0.36.1]
+        crystal-version: [1.0.0]
     
     steps:
     - uses: actions/checkout@v2
@@ -24,7 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Install Crystal Dependencies
-      run: shards install
+      run: shards install --ignore-crystal-version
     - name: Build Docs
       run: mkdocs build
     - name: Deploy to GitHub Pages
