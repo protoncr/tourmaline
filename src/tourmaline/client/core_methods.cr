@@ -1252,6 +1252,8 @@ module Tourmaline
             updates.each do |u|
               handle_update(u)
             end
+          rescue ex : Error::PoolRetryAttemptsExceeded
+            raise ex
           rescue ex
             Log.error(exception: ex) { "Error during polling" }
           end
