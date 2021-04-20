@@ -1,4 +1,3 @@
-require "pool"
 require "http_proxy"
 require "mime/multipart"
 

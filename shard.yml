@@ -10,9 +10,8 @@ crystalline:
   main: examples/echo_bot.cr
 
 dependencies:
-  pool:
-    github: watzon/pool
-    version: 0.3.0
+  db:
+    github: crystal-lang/crystal-db
   http_proxy:
     github: mamantoha/http_proxy
     branch: master
