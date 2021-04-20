@@ -11,7 +11,7 @@ require "./update_action"
 require "./event_handler"
 require "./middleware"
 require "./client/*"
-require "pool/connection"
+require "db/pool"
 
 module Tourmaline
   # The `Client` class is the base class for all Tourmaline based bots.
@@ -56,7 +56,7 @@ module Tourmaline
     private getter persistence : Persistence
     private getter middlewares : Array(Middleware | MiddlewareProc)
 
-    @pool : ConnectionPool(HTTP::Client)
+    @pool : DB::Pool(HTTP::Client)
     @auth_code : String?
 
     # Create a new instance of `Tourmaline::Client`.
@@ -142,7 +142,7 @@ module Tourmaline
         end
       end
 
-      @pool = ConnectionPool(HTTP::Client).new(capacity: pool_capacity, initial: initial_pool_size, timeout: pool_timeout) do
+      @pool = DB::Pool(HTTP::Client).new(max_pool_size: pool_capacity, initial_pool_size: initial_pool_size, checkout_timeout: pool_timeout) do
         client = HTTP::Client.new(URI.parse(endpoint))
         client.set_proxy(proxy.dup) if proxy
         client
@@ -230,11 +230,11 @@ module Tourmaline
     # Sends a json request to the Telegram Client API.
     private def request(path, params = {} of String => String)
       multipart = includes_media(params)
-      client = @pool.checkout
 
-      Log.debug { "sending ►► #{path.split("/").last}(#{params.to_pretty_json})" }
+      # Wrap this so pool can attempt a retry
+      @pool.checkout do |client|
+        Log.debug { "sending ►► #{path.split("/").last}(#{params.to_pretty_json})" }
 
-      begin
         if multipart
           config = build_form_data_config(params)
           response = client.exec(**config, path: path)
@@ -242,21 +242,19 @@ module Tourmaline
           config = build_json_config(params)
           response = client.exec(**config, path: path)
         end
-      rescue IO::TimeoutError
-        raise Error::RequestTimeoutError.new
-      ensure
-        @pool.checkin(client)
+
+        result = JSON.parse(response.body)
+
+        Log.debug { "receiving ◄◄ #{result.to_pretty_json}" }
+
+        if result["ok"].as_bool
+          result["result"].to_json
+        else
+          raise Error.from_message(result["description"].as_s)
+        end
       end
-
-      result = JSON.parse(response.body)
-
-      Log.debug { "receiving ◄◄ #{result.to_pretty_json}" }
-
-      if result["ok"].as_bool
-        result["result"].to_json
-      else
-        raise Error.from_message(result["description"].as_s)
-      end
+    rescue IO::TimeoutError
+      raise Error::RequestTimeoutError.new
     end
 
     private def object_or_id(object)
