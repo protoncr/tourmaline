@@ -227,20 +227,35 @@ module Tourmaline
       type.from_json(response)
     end
 
+    private def using_connection
+      @pool.retry do
+        @pool.checkout do |conn|
+          yield conn
+        end
+      end
+    end
+
     # Sends a json request to the Telegram Client API.
     private def request(path, params = {} of String => String)
       multipart = includes_media(params)
 
       # Wrap this so pool can attempt a retry
-      @pool.checkout do |client|
+      using_connection do |client|
         Log.debug { "sending ►► #{path.split("/").last}(#{params.to_pretty_json})" }
 
-        if multipart
-          config = build_form_data_config(params)
-          response = client.exec(**config, path: path)
-        else
-          config = build_json_config(params)
-          response = client.exec(**config, path: path)
+        begin
+          if multipart
+            config = build_form_data_config(params)
+            response = client.exec(**config, path: path)
+          else
+            config = build_json_config(params)
+            response = client.exec(**config, path: path)
+          end
+        rescue ex : IO::Error | IO::TimeoutError
+          Log.error { ex.message }
+          Log.trace(exception: ex) { ex.message }
+
+          raise Error::ConnectionLost.new(client)
         end
 
         result = JSON.parse(response.body)
@@ -253,8 +268,6 @@ module Tourmaline
           raise Error.from_message(result["description"].as_s)
         end
       end
-    rescue IO::TimeoutError
-      raise Error::RequestTimeoutError.new
     end
 
     private def object_or_id(object)

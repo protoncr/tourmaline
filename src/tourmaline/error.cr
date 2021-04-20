@@ -1,5 +1,13 @@
+require "db/pool"
+
 module Tourmaline
   class Error < Exception
+    # Raised when a connection is unable to be established
+    # probably due to socket/network or configuration issues.
+    # It is used by the connection pool retry logic.
+    class ConnectionLost < ::DB::PoolResourceLost(HTTP::Client)
+    end
+
     ERROR_PREFIXES = ["error: ", "[error]: ", "bad request: ", "conflict: ", "not found: "]
 
     def initialize(message = "")
