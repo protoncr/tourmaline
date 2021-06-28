@@ -16,6 +16,8 @@ module Tourmaline
 
     getter is_anonymous : Bool?
 
+    getter can_manage_chat : Bool?
+
     getter can_be_edited : Bool?
 
     getter can_post_messages : Bool?

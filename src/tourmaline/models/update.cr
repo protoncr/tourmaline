@@ -50,6 +50,15 @@ module Tourmaline
     # votes only in polls that were sent by the bot itself.
     getter poll_answer : PollAnswer?
 
+    # Optional. The bot's chat member status was updated in a chat. For private chats, this
+    # update is received only when the bot is blocked or unblocked by the user.
+    getter my_chat_member : ChatMemberUpdated?
+
+    # Optional. A chat member's status was updated in a chat. The bot must be an administrator
+    # in the chat and must explicitly specify “chat_member” in the list of
+    # allowed_updates to receive these updates.
+    getter chat_member : ChatMemberUpdated?
+
     # Context object allowing data to be passed from middleware to handlers.
     @[JSON::Field(ignore: true)]
     getter context : Middleware::Context { Middleware::Context.new }

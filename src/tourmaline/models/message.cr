@@ -98,6 +98,8 @@ module Tourmaline
 
     getter channel_chat_created : Bool?
 
+    getter message_auto_delete_timer_changed : MessageAutoDeleteTimerChanged?
+
     getter migrate_to_chat_id : Int64?
 
     getter migrate_from_chat_id : Int64?
@@ -113,6 +115,14 @@ module Tourmaline
     getter passport_data : PassportData?
 
     getter proximity_alert_triggered : ProximityAlertTriggered?
+
+    getter voice_chat_scheduled : VoiceChatScheduled?
+
+    getter voice_chat_started : VoiceChatStarted?
+
+    getter voice_chat_ended : VoiceChatEnded?
+
+    getter voice_chat_participants_invited : VoiceChatParticipantsInvited?
 
     getter reply_markup : InlineKeyboardMarkup?
 

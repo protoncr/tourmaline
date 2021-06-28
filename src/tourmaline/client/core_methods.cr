@@ -379,7 +379,8 @@ module Tourmaline
       def kick_chat_member(
         chat,
         user,
-        until_date = nil
+        until_date = nil,
+        revoke_messages = nil,
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         user_id = user.is_a?(Int) ? user : user.id
@@ -389,6 +390,7 @@ module Tourmaline
           chat_id:    chat_id,
           user_id:    user_id,
           until_date: until_date,
+          revoke_messages: revoke_messages,
         })
       end
 
@@ -467,11 +469,13 @@ module Tourmaline
         user,
         is_anonymous = false,
         until_date = nil,
+        can_manage_chat = nil,
         can_change_info = nil,
         can_post_messages = nil,
         can_edit_messages = nil,
         can_delete_messages = nil,
         can_invite_users = nil,
+        can_manage_voice_chats = nil,
         can_restrict_members = nil,
         can_pin_messages = nil,
         can_promote_members = nil
@@ -484,11 +488,13 @@ module Tourmaline
           user_id:              user_id,
           is_anonymous:         is_anonymous,
           until_date:           until_date,
+          can_manage_chat:      can_manage_chat,
           can_change_info:      can_change_info,
           can_post_messages:    can_post_messages,
           can_edit_messages:    can_edit_messages,
           can_delete_messages:  can_delete_messages,
           can_invite_users:     can_invite_users,
+          can_manage_voice_chats: can_manage_voice_chats,
           can_restrict_members: can_restrict_members,
           can_pin_messages:     can_pin_messages,
           can_promote_members:  can_promote_members,
@@ -770,7 +776,7 @@ module Tourmaline
         })
       end
 
-      {% for val in [{"dice", "🎲", 6}, {"dart", "🎯", 6}, {"basketball", "🏀", 6}, {"football", "⚽️", 5}, {"soccerball", "⚽️", 5}, {"slot_machine", "🎰", 64}] %}
+      {% for val in [{"dice", "🎲", 6}, {"dart", "🎯", 6}, {"basketball", "🏀", 6}, {"football", "⚽️", 5}, {"soccerball", "⚽️", 5}, {"slot_machine", "🎰", 64}, {"bowling", "🎳", 6}] %}
       # Use this method to send a {{ val[0].id }} ({{ val[1].id }} emoji), which will have a random value from 1 to {{ val[2].id }}.
       # On success, the sent Message is returned.
       def send_{{ val[0].id }}(

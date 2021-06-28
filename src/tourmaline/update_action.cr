@@ -12,7 +12,10 @@ module Tourmaline
     ChosenInlineResult
     ChannelPost
     EditedChannelPost
+    MyChatMember
+    ChatMember
 
+    ViaBot
     Text
     Caption
     Audio
@@ -30,20 +33,25 @@ module Tourmaline
     NewChatPhoto
     DeleteChatPhoto
     GroupChatCreated
+    MessageAutoDeleteTimerChanged
     MigrateToChatId
     SupergroupChatCreated
     ChannelChatCreated
     MigrateFromChatId
     PinnedMessage
     Game
+    Poll
     VideoNote
     Invoice
     SuccessfulPayment
     ConnectedWebsite
     PassportData
-    Poll
     PollAnswer
-    ViaBot
+    ProximityAlertTriggered
+    VoiceChatScheduled
+    VoiceChatStarted
+    VoiceChatEnded
+    VoiceChatParticipantsInvited
 
     # 🎲
     Dice
@@ -57,6 +65,8 @@ module Tourmaline
     Soccerball
     # 🎰
     SlotMachine
+    # 🎳
+    Bowling
 
     def to_s
       super.to_s.underscore
@@ -80,6 +90,7 @@ module Tourmaline
           actions << UpdateAction::PinnedMessage if chat.pinned_message
         end
 
+        actions << UpdateAction::ViaBot if message.via_bot
         actions << UpdateAction::Text if message.text
         actions << UpdateAction::Caption if message.caption
         actions << UpdateAction::Audio if message.audio
@@ -97,18 +108,23 @@ module Tourmaline
         actions << UpdateAction::NewChatPhoto if message.new_chat_photo.size > 0
         actions << UpdateAction::DeleteChatPhoto if message.delete_chat_photo
         actions << UpdateAction::GroupChatCreated if message.group_chat_created
+        actions << UpdateAction::MessageAutoDeleteTimerChanged if message.message_auto_delete_timer_changed
         actions << UpdateAction::MigrateToChatId if message.migrate_from_chat_id
         actions << UpdateAction::SupergroupChatCreated if message.supergroup_chat_created
         actions << UpdateAction::ChannelChatCreated if message.channel_chat_created
         actions << UpdateAction::MigrateFromChatId if message.migrate_from_chat_id
         actions << UpdateAction::Game if message.game
+        actions << UpdateAction::Poll if message.poll
         actions << UpdateAction::VideoNote if message.video_note
         actions << UpdateAction::Invoice if message.invoice
         actions << UpdateAction::SuccessfulPayment if message.successful_payment
         actions << UpdateAction::ConnectedWebsite if message.connected_website
         actions << UpdateAction::PassportData if message.passport_data
-        actions << UpdateAction::Poll if message.poll
-        actions << UpdateAction::ViaBot if message.via_bot
+        actions << UpdateAction::ProximityAlertTriggered if message.proximity_alert_triggered
+        actions << UpdateAction::VoiceChatScheduled if message.voice_chat_scheduled
+        actions << UpdateAction::VoiceChatStarted if message.voice_chat_started
+        actions << UpdateAction::VoiceChatEnded if message.voice_chat_ended
+        actions << UpdateAction::VoiceChatParticipantsInvited if message.voice_chat_participants_invited
         if dice = message.dice
           actions << UpdateAction::Dice if dice.emoji == "🎲"
           actions << UpdateAction::Dart if dice.emoji == "🎯"
@@ -116,6 +132,7 @@ module Tourmaline
           actions << UpdateAction::Soccerball if dice.emoji == "⚽️"
           actions << UpdateAction::Football if dice.emoji == "⚽️"
           actions << UpdateAction::SlotMachine if dice.emoji == "🎰"
+          actions << UpdateAction::Bowling if dice.emoji == "🎳"
         end
       end
 
@@ -129,6 +146,8 @@ module Tourmaline
       actions << UpdateAction::PreCheckoutQuery if update.pre_checkout_query
       actions << UpdateAction::Poll if update.poll
       actions << UpdateAction::PollAnswer if update.poll_answer
+      actions << UpdateAction::MyChatMember if update.my_chat_member
+      actions << UpdateAction::ChatMember if update.chat_member
 
       actions
     end
