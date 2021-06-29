@@ -2,6 +2,15 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.23.0
+
+- Added full support for Bot API 5.1 - 5.3
+- Fixed some dependencies.
+- Added additional classes `ChatInviteLink`, `VoiceChatStarted`, `VoiceChatEnded`, `VoiceChatParticipantInvited`, `VoiceChatScheduled`, `MessageAutoDeleteTimerChanged`, `InputInvoiceMessageContent`, and `BotCommandScope`.
+- Added `scope` and `language_code` options to `set_my_commands` and `get_my_commands`.
+- Added method `delete_my_commands`.
+- More, see [the official Bot API changelog](https://core.telegram.org/bots/api#june-25-2021) for a complete list of changes.
+
 ## 0.22.0
 
 - Added support for TDLight.
