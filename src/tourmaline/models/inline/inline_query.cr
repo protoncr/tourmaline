@@ -10,11 +10,14 @@ module Tourmaline
 
     getter from : User
 
-    getter location : Location?
-
     getter query : String
 
     getter offset : String
+
+    getter chat_type : String? # TODO: Make enum
+
+    getter location : Location?
+
 
     def answer(results, **kwargs)
       client.answer_inline_query(id, results, **kwargs)

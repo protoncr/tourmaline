@@ -5,5 +5,5 @@ require "./input_venue_message_content"
 require "./input_contact_message_content"
 
 module Tourmaline
-  alias InputMessageContent = InputTextMessageContent | InputLocationMessageContent | InputVenueMessageContent | InputContactMessageContent
+  alias InputMessageContent = InputTextMessageContent | InputLocationMessageContent | InputVenueMessageContent | InputContactMessageContent | InputInvoiceMessageContent
 end

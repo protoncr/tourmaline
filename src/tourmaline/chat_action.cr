@@ -9,7 +9,9 @@ module Tourmaline
     RecordVideo
     UploadVideo
     RecordAudio
+    RecordVoice
     UploadAudio
+    UploadVoice
     UploadDocument
     Findlocation
     RecordVideoNote
