@@ -8,13 +8,13 @@ module Tourmaline
     include JSON::Serializable
     include Tourmaline::Model
 
-    getter text : String
+    property text : String
 
-    getter request_contact : Bool = false
+    property request_contact : Bool = false
 
-    getter request_location : Bool = false
+    property request_location : Bool = false
 
-    getter request_poll : KeyboardButtonPollType?
+    property request_poll : KeyboardButtonPollType?
 
     def initialize(@text : String, @request_contact = false, @request_location = false, @request_poll = nil)
     end
@@ -27,7 +27,7 @@ module Tourmaline
     include Tourmaline::Model
 
     @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
-    getter type : Poll::Type
+    property type : Poll::Type
 
     def initialize(@type)
     end
@@ -37,15 +37,17 @@ module Tourmaline
     include JSON::Serializable
     include Tourmaline::Model
 
-    getter keyboard : Array(Array(KeyboardButton))
+    property keyboard : Array(Array(KeyboardButton))
 
-    getter resize_keyboard : Bool = false
+    property resize_keyboard : Bool = false
 
-    getter one_time_keyboard : Bool = false
+    property one_time_keyboard : Bool = false
 
-    getter selective : Bool = false
+    property input_field_placeholder : String? = nil
 
-    def initialize(@keyboard = [] of Array(KeyboardButton), @resize_keyboard = false, @one_time_keyboard = false, @selective = false)
+    property selective : Bool = false
+
+    def initialize(@keyboard = [] of Array(KeyboardButton), @resize_keyboard = false, @one_time_keyboard = false, @input_field_placeholder = nil, @selective = false)
     end
 
     def <<(row : Int32, key : KeyboardButton)

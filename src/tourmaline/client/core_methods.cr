@@ -1224,19 +1224,36 @@ module Tourmaline
       # Use this method to change the list of the bot's commands.
       # Returns `true` on success.
       def set_my_commands(
-        commands : Array(BotCommand | NamedTuple(command: String, description: String))
+        commands : Array(BotCommand | NamedTuple(command: String, description: String)),
+        scope : BotCommandScope? = nil,
+        language_code : String? = nil,
       )
         # commands = commands.map(&.to_h.transform_keys(&.to_s))
 
         request(Bool, "setMyCommands", {
           commands: commands,
+          scope: scope,
+          language_code: language_code,
         })
       end
 
       # Use this method to get the current list of the bot's commands. Requires no parameters.
       # Returns Array of BotCommand on success.
-      def get_my_commands
-        request(Array(BotCommand), "getMyCommands")
+      def get_my_commands(scope : BotCommandScope? = nil, language_code : String? = nil)
+        request(Array(BotCommand), "getMyCommands", {
+          scope: scope,
+          language_code: language_code,
+        })
+      end
+
+      # Use this method to delete the list of the bot's commands for the given scope and user language.
+      # After deletion, higher level commands will be shown to affected users.
+      # Returns True on success.
+      def delete_my_commands(scope : BotCommandScope? = nil, language_code : String? = nil)
+        request(Bool, "deleteMyCommands", {
+          scope: scope,
+          language_code: language_code,
+        })
       end
 
       ##########################
