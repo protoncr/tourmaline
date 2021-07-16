@@ -17,7 +17,7 @@ module Tourmaline
       macro register_event_handler_annotations
         {% begin %}\
           {% for method in @type.methods %}\
-            {% for event_handler in Tourmaline::EventHandler.subclasses %}\
+            {% for event_handler in Tourmaline::EventHandler.all_subclasses %}\
               {% if event_handler.has_constant?("ANNOTATION") %}\
                 {% for ann in method.annotations(event_handler.constant("ANNOTATION").resolve) %}\
                     @event_handlers << {{ event_handler.id }}.new(
