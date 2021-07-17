@@ -8,6 +8,10 @@ module Tourmaline
       getter polling : Bool = false
       getter next_offset : Int64 = 0.to_i64
 
+      # Instance variable that points to the internal webhook server
+      # Should not be used outside of this class
+      @webhook_server : HTTP::Server?
+
       # Convenience method to check if this bot is an admin in
       # the current chat. See `Client#get_chat_administrators`
       # for more info.
