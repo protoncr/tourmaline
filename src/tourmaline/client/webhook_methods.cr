@@ -9,7 +9,7 @@ module Tourmaline
       #
       # Note: Don't forget to call `set_webhook` first! This method does not do it for you.
       def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, &block : HTTP::Server::Context ->)
-        @webhook_server = HTTP::Server.new do |context|
+        @webhook_server = server = HTTP::Server.new do |context|
           Fiber.current.telegram_bot_server_http_context = context
           begin
             block.call(context)
@@ -19,8 +19,6 @@ module Tourmaline
             Fiber.current.telegram_bot_server_http_context = nil
           end
         end
-
-        server = @webhook_server.not_nil!
 
         if ssl_certificate_path && ssl_key_path
           fl_use_ssl = true
