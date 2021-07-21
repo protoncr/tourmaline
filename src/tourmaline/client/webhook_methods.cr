@@ -9,7 +9,7 @@ module Tourmaline
       #
       # Note: Don't forget to call `set_webhook` first! This method does not do it for you.
       def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, &block : HTTP::Server::Context ->)
-        server = HTTP::Server.new do |context|
+        @webhook_server = server = HTTP::Server.new do |context|
           Fiber.current.telegram_bot_server_http_context = context
           begin
             block.call(context)
@@ -44,6 +44,11 @@ module Tourmaline
             handle_update(update)
           end
         end
+      end
+
+      # Stops the webhook HTTP server
+      def stop_serving
+        @webhook_server.try &.close
       end
 
       # Use this method to specify a url and receive incoming updates via an outgoing webhook.
