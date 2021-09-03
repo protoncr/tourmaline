@@ -136,7 +136,7 @@ module Tourmaline
       # Returns `true` on success.
       def delete_message(chat, message)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
+        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.message_id
 
         request(Bool, "deleteMessage", {
           chat_id:    chat_id,
