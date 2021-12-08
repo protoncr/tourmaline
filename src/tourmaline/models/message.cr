@@ -31,6 +31,8 @@ module Tourmaline
     @[JSON::Field(converter: Time::EpochConverter)]
     getter forward_date : Time?
 
+    getter is_automatic_forward : Bool?
+
     @[JSON::Field(converter: Time::EpochConverter)]
     getter edit_date : Time?
 
@@ -41,6 +43,8 @@ module Tourmaline
 
     @[JSON::Field(converter: Time::EpochConverter)]
     getter edit_date : Time?
+
+    getter has_protected_content : Bool?
 
     getter media_group_id : String?
 

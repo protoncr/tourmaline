@@ -505,18 +505,6 @@ module Tourmaline
         })
       end
 
-      # Use this method to generate a new invite link for a chat; any previously
-      # generated link is revoked. The bot must be an administrator in the chat
-      # for this to work and must have the appropriate admin rights.
-      # Returns the new invite link as `String` on success.
-      def export_chat_invite_link(chat)
-        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
-        request(String, "exportChatInviteLink", {
-          chat_id: chat_id,
-        })
-      end
-
       # Use this method to set a new profile photo for the chat. Photos can't be changed
       # for private chats. The bot must be an administrator in the chat for this to
       # work and must have the appropriate admin rights.
@@ -558,6 +546,141 @@ module Tourmaline
           chat_id:      chat_id,
           user_id:      user_id,
           custom_title: custom_title,
+        })
+      end
+
+      # Use this method to ban a channel chat in a supergroup or a channel. The owner
+      # of the chat will not be able to send messages and join live streams on
+      # behalf of the chat, unless it is unbanned first. The bot must be an
+      # administrator in the supergroup or channel for this to work and
+      # must have the appropriate administrator rights.
+      # Returns True on success.
+      def ban_chat_sender_chat(chat, sender_chat)
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        sender_chat_id = sender_chat.is_a?(Int::Primitive) ? chat : chat.id
+
+        request(Bool, "banChatSenderChat", {
+          chat_id: chat_id,
+          sender_chat_id: sender_chat_id
+        })
+      end
+
+      # Use this method to unban a previously banned channel chat in a supergroup or channel.
+      # The bot must be an administrator for this to work and must have the
+      # appropriate administrator rights.
+      # Returns True on success.
+      def unban_chat_sender_chat(chat, sender_chat)
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        sender_chat_id = sender_chat.is_a?(Int::Primitive) ? chat : chat.id
+
+        request(Bool, "unbanChatSenderChat", {
+          chat_id: chat_id,
+          sender_chat_id: sender_chat_id
+        })
+      end
+
+      # Use this method to generate a new invite link for a chat; any previously
+      # generated link is revoked. The bot must be an administrator in the chat
+      # for this to work and must have the appropriate admin rights.
+      # Returns the new invite link as `String` on success.
+      def export_chat_invite_link(chat)
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(String, "exportChatInviteLink", {
+          chat_id: chat_id,
+        })
+      end
+
+      # Use this method to create an additional invite link for a chat. The bot must be an
+      # administrator in the chat for this to work and must have the appropriate
+      # administrator rights. The link can be revoked using the method
+      # revokeChatInviteLink.
+      # Returns the new invite link as ChatInviteLink object.
+      def create_chat_invite_link(
+        chat,
+        name = nil,
+        expire_date = nil,
+        member_limit = nil,
+        creates_join_request = false,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
+
+        request(ChatInviteLink, "createChatInviteLink", {
+          chat_id: chat_id,
+          name: name,
+          expire_date: expire_date,
+          member_limit: member_limit,
+          creates_join_request: creates_join_request,
+        })
+      end
+
+      # Use this method to edit a non-primary invite link created by the bot. The
+      # bot must be an administrator in the chat for this to work and must
+      # have the appropriate administrator rights.
+      # Returns the edited invite link as a ChatInviteLink object.
+      def edit_chat_invite_link(
+        chat,
+        invite_link,
+        name = nil,
+        expire_date = nil,
+        member_limit = nil,
+        creates_join_request = false,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
+        expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
+
+        request(ChatInviteLink, "editChatInviteLink", {
+          chat_id: chat_id,
+          invite_link: invite_link,
+          name: name,
+          expire_date: expire_date,
+          member_limit: member_limit,
+          creates_join_request: creates_join_request,
+        })
+      end
+
+      # Use this method to revoke an invite link created by the bot. If the primary link
+      # is revoked, a new link is automatically generated. The bot must be an
+      # administrator in the chat for this to work and must have the
+      # appropriate administrator rights.
+      # Returns the revoked invite link as ChatInviteLink object.
+      def revoke_chat_invite_link(chat, invite_link)
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
+
+        request(ChatInviteLink, "revokeChatInviteLink", {
+          chat_id: chat_id,
+          invite_link: invite_link,
+        })
+      end
+
+      # Use this method to approve a chat join request. The bot must be an administrator
+      # in the chat for this to work and must have the can_invite_users
+      # administrator right.
+      # Returns True on success.
+      def approve_chat_join_request(chat, user)
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        user_id = user.is_a?(Int) ? user : user.id
+
+        request(Bool, "approveChatJoinRequest", {
+          chat_id: chat_id,
+          user_id: user_id,
+        })
+      end
+
+      # Use this method to decline a chat join request. The bot must be an administrator
+      # in the chat for this to work and must have the can_invite_users
+      # administrator right.
+      # Returns True on success.
+      def decline_chat_join_request(chat, user)
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        user_id = user.is_a?(Int) ? user : user.id
+
+        request(Bool, "declineChatJoinRequest", {
+          chat_id: chat_id,
+          user_id: user_id,
         })
       end
 

@@ -1,5 +1,5 @@
 module Tourmaline
-  # # This object represents a Telegram user or bot.
+  # This object represents a Telegram user or bot.
   class Chat
     include JSON::Serializable
     include Tourmaline::Model
@@ -20,6 +20,8 @@ module Tourmaline
 
     getter bio : String?
 
+    getter has_private_forwards : Bool?
+
     getter description : String?
 
     getter invite_link : String?
@@ -29,6 +31,10 @@ module Tourmaline
     getter permissions : ChatPermissions?
 
     getter slow_mode_delay : Int32?
+
+    getter message_auto_delete_time : Int32?
+
+    getter has_protected_content : Bool?
 
     getter sticker_set_name : String?
 
