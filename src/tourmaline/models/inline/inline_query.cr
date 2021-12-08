@@ -3,9 +3,6 @@ module Tourmaline
     include JSON::Serializable
     include Tourmaline::Model
 
-    @[JSON::Field(ignore: true)]
-    property! client : Tourmaline::Client
-
     getter id : String
 
     getter from : User

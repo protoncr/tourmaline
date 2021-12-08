@@ -4,9 +4,6 @@ module Tourmaline
     include JSON::Serializable
     include Tourmaline::Model
 
-    @[JSON::Field(ignore: true)]
-    property! client : Tourmaline::Client
-
     getter id : Int64
 
     getter is_bot : Bool

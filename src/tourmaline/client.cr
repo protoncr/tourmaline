@@ -4,7 +4,6 @@ require "./error"
 require "./logger"
 require "./persistence"
 require "./parse_mode"
-require "./container"
 require "./chat_action"
 require "./model"
 require "./update_action"
@@ -153,10 +152,6 @@ module Tourmaline
 
       register_commands_with_botfather if @bot_token
 
-      # FIXME: Find a way to support multiple clients while allowing models
-      # to include an instance of the client that created them.
-      Container.client = self
-
       Signal::INT.trap { exit }
     end
 
@@ -224,7 +219,18 @@ module Tourmaline
       end
 
       response = request(path, params)
-      type.from_json(response)
+      value = type.from_json(response)
+      do_finish_init(value)
+      value
+    end
+
+    private def do_finish_init(value)
+      case value
+      when Tourmaline::Model
+        value.finish_init(self)
+      when Array
+        value.each { |v| do_finish_init(v) }
+      end
     end
 
     private def using_connection

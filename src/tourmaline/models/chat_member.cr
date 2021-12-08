@@ -3,9 +3,6 @@ module Tourmaline
     include JSON::Serializable
     include Tourmaline::Model
 
-    @[JSON::Field(ignore: true)]
-    property! client : Tourmaline::Client
-
     property! chat_id : Int64
 
     getter user : User
