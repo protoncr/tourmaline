@@ -16,7 +16,7 @@
     
     
       
-        <title>Getting Started - Tourmaline</title>
+        <title>Tourmaline</title>
       
     
     
@@ -24,10 +24,6 @@
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.7fa14f5b.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#009485">
         
       
     
@@ -55,6 +51,8 @@
   
     
     
+      
+    
     
     
     
@@ -66,11 +64,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#getting-started-with-tourmaline" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -100,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Getting Started
+              Home
             
           </span>
         </div>
@@ -173,12 +166,36 @@
   
 
 
+  <li class="md-tabs__item">
+    <a href="." class="md-tabs__link md-tabs__link--active">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="usage/" class="md-tabs__link">
+      Usage
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
   
   
   
     <li class="md-tabs__item">
-      <a href="." class="md-tabs__link md-tabs__link--active">
-        Usage
+      <a href="features/handlers/" class="md-tabs__link">
+        Features
       </a>
     </li>
   
@@ -193,7 +210,23 @@
   
   
     <li class="md-tabs__item">
-      <a href="api_reference/Tourmaline/" class="md-tabs__link">
+      <a href="resources/faq/" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="changelog/" class="md-tabs__link">
         API Reference
       </a>
     </li>
@@ -210,7 +243,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -255,23 +290,95 @@
     
   
   
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Home
+      </a>
+      
+    </li>
+  
+
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
       
-      <label class="md-nav__link" for="__nav_1">
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
         <span class="md-nav__icon md-icon"></span>
         
-          Usage
+          <a href="usage/" class="md-nav__link"
+            style="margin: initial; padding: initial; pointer-events: initial">
         
+          Usage
+        </a>
       </label>
       <nav class="md-nav" aria-label="Usage" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
+        <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           
+            <a href="usage/" class="md-nav__link"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
             Usage
+          </a>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usage/getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Features
+        
+      </label>
+      <nav class="md-nav" aria-label="Features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Features
           
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
@@ -279,65 +386,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-nav__icon md-icon"></span>
-          
-            Getting Started
-          
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
-        Getting Started
+    <li class="md-nav__item">
+      <a href="features/handlers/" class="md-nav__link">
+        Handlers
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#register-your-bot" class="md-nav__link">
-    Register Your Bot
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-project" class="md-nav__link">
-    Example Project
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -347,7 +400,149 @@
   
   
     <li class="md-nav__item">
-      <a href="usage/faq/" class="md-nav__link">
+      <a href="features/async/" class="md-nav__link">
+        Async
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/stage/" class="md-nav__link">
+        Stage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/format/" class="md-nav__link">
+        Formatting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/background_jobs/" class="md-nav__link">
+        Background Jobs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/emoji_support/" class="md-nav__link">
+        Emoji Support
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/kemal_middleware/" class="md-nav__link">
+        Kemal Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/multilevel_menus/" class="md-nav__link">
+        Multilevel Menus
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/paginated_keyboards/" class="md-nav__link">
+        Paginated Keyboards
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="features/tdlight/" class="md-nav__link">
+        TDLight
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        <span class="md-nav__icon md-icon"></span>
+        
+          Resources
+        
+      </label>
+      <nav class="md-nav" aria-label="Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          
+            Resources
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resources/faq/" class="md-nav__link">
         FAQ
       </a>
     </li>
@@ -365,6 +560,40 @@
     </li>
   
 
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        <span class="md-nav__icon md-icon"></span>
+        
+          API Reference
+        
+      </label>
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          
+            API Reference
+          
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
             
   
@@ -388,196 +617,9 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
       
-      <label class="md-nav__link" for="__nav_1_5">
-        <span class="md-nav__icon md-icon"></span>
-        
-          Features
-        
-      </label>
-      <nav class="md-nav" aria-label="Features" data-md-level="2">
-        <label class="md-nav__title" for="__nav_1_5">
-          <span class="md-nav__icon md-icon"></span>
-          
-            Features
-          
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/handlers/" class="md-nav__link">
-        Handlers
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/async/" class="md-nav__link">
-        Async
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/stage/" class="md-nav__link">
-        Stage
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/format/" class="md-nav__link">
-        Formatting
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/background_jobs/" class="md-nav__link">
-        Background Jobs
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/emoji_support/" class="md-nav__link">
-        Emoji Support
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/kemal_middleware/" class="md-nav__link">
-        Kemal Middleware
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/multilevel_menus/" class="md-nav__link">
-        Multilevel Menus
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/paginated_keyboards/" class="md-nav__link">
-        Paginated Keyboards
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="usage/features/tdlight/" class="md-nav__link">
-        TDLight
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      <label class="md-nav__link" for="__nav_2">
-        <span class="md-nav__icon md-icon"></span>
-        
-          API Reference
-        
-      </label>
-      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          
-            API Reference
-          
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
-      
-      <label class="md-nav__link" for="__nav_2_1">
+      <label class="md-nav__link" for="__nav_5_2">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/" class="md-nav__link"
@@ -587,7 +629,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Tourmaline" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
+        <label class="md-nav__title" for="__nav_5_2">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/" class="md-nav__link"
@@ -618,9 +660,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" type="checkbox" id="__nav_5_2_2" >
       
-      <label class="md-nav__link" for="__nav_2_1_2">
+      <label class="md-nav__link" for="__nav_5_2_2">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Annotations/" class="md-nav__link"
@@ -630,7 +672,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Annotations" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_2">
+        <label class="md-nav__title" for="__nav_5_2_2">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Annotations/" class="md-nav__link"
@@ -907,9 +949,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_16" type="checkbox" id="__nav_2_1_16" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_16" type="checkbox" id="__nav_5_2_16" >
       
-      <label class="md-nav__link" for="__nav_2_1_16">
+      <label class="md-nav__link" for="__nav_5_2_16">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Chat/" class="md-nav__link"
@@ -919,7 +961,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Chat" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_16">
+        <label class="md-nav__title" for="__nav_5_2_16">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Chat/" class="md-nav__link"
@@ -1052,9 +1094,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_25" type="checkbox" id="__nav_2_1_25" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_25" type="checkbox" id="__nav_5_2_25" >
       
-      <label class="md-nav__link" for="__nav_2_1_25">
+      <label class="md-nav__link" for="__nav_5_2_25">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Client/" class="md-nav__link"
@@ -1064,7 +1106,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Client" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_25">
+        <label class="md-nav__title" for="__nav_5_2_25">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Client/" class="md-nav__link"
@@ -1233,9 +1275,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_30" type="checkbox" id="__nav_2_1_30" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_30" type="checkbox" id="__nav_5_2_30" >
       
-      <label class="md-nav__link" for="__nav_2_1_30">
+      <label class="md-nav__link" for="__nav_5_2_30">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/EncryptedPassportElement/" class="md-nav__link"
@@ -1245,7 +1287,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="EncryptedPassportElement" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_30">
+        <label class="md-nav__title" for="__nav_5_2_30">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/EncryptedPassportElement/" class="md-nav__link"
@@ -1282,9 +1324,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_31" type="checkbox" id="__nav_2_1_31" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_31" type="checkbox" id="__nav_5_2_31" >
       
-      <label class="md-nav__link" for="__nav_2_1_31">
+      <label class="md-nav__link" for="__nav_5_2_31">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Error/" class="md-nav__link"
@@ -1294,7 +1336,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Error" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_31">
+        <label class="md-nav__title" for="__nav_5_2_31">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Error/" class="md-nav__link"
@@ -2447,9 +2489,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_34" type="checkbox" id="__nav_2_1_34" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_34" type="checkbox" id="__nav_5_2_34" >
       
-      <label class="md-nav__link" for="__nav_2_1_34">
+      <label class="md-nav__link" for="__nav_5_2_34">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Format/" class="md-nav__link"
@@ -2459,7 +2501,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Format" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_34">
+        <label class="md-nav__title" for="__nav_5_2_34">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Format/" class="md-nav__link"
@@ -2688,9 +2730,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37" type="checkbox" id="__nav_2_1_37" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37" type="checkbox" id="__nav_5_2_37" >
       
-      <label class="md-nav__link" for="__nav_2_1_37">
+      <label class="md-nav__link" for="__nav_5_2_37">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/" class="md-nav__link"
@@ -2700,7 +2742,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Handlers" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_37">
+        <label class="md-nav__title" for="__nav_5_2_37">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/" class="md-nav__link"
@@ -2719,9 +2761,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37_1" type="checkbox" id="__nav_2_1_37_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_1" type="checkbox" id="__nav_5_2_37_1" >
       
-      <label class="md-nav__link" for="__nav_2_1_37_1">
+      <label class="md-nav__link" for="__nav_5_2_37_1">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/CallbackQueryHandler/" class="md-nav__link"
@@ -2731,7 +2773,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="CallbackQueryHandler" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_37_1">
+        <label class="md-nav__title" for="__nav_5_2_37_1">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/CallbackQueryHandler/" class="md-nav__link"
@@ -2768,9 +2810,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37_2" type="checkbox" id="__nav_2_1_37_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_2" type="checkbox" id="__nav_5_2_37_2" >
       
-      <label class="md-nav__link" for="__nav_2_1_37_2">
+      <label class="md-nav__link" for="__nav_5_2_37_2">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/ChosenInlineResultHandler/" class="md-nav__link"
@@ -2780,7 +2822,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="ChosenInlineResultHandler" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_37_2">
+        <label class="md-nav__title" for="__nav_5_2_37_2">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/ChosenInlineResultHandler/" class="md-nav__link"
@@ -2817,9 +2859,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37_3" type="checkbox" id="__nav_2_1_37_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_3" type="checkbox" id="__nav_5_2_37_3" >
       
-      <label class="md-nav__link" for="__nav_2_1_37_3">
+      <label class="md-nav__link" for="__nav_5_2_37_3">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/CommandHandler/" class="md-nav__link"
@@ -2829,7 +2871,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="CommandHandler" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_37_3">
+        <label class="md-nav__title" for="__nav_5_2_37_3">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/CommandHandler/" class="md-nav__link"
@@ -2866,9 +2908,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37_4" type="checkbox" id="__nav_2_1_37_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_4" type="checkbox" id="__nav_5_2_37_4" >
       
-      <label class="md-nav__link" for="__nav_2_1_37_4">
+      <label class="md-nav__link" for="__nav_5_2_37_4">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/EditedHandler/" class="md-nav__link"
@@ -2878,7 +2920,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="EditedHandler" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_37_4">
+        <label class="md-nav__title" for="__nav_5_2_37_4">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/EditedHandler/" class="md-nav__link"
@@ -2915,9 +2957,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37_5" type="checkbox" id="__nav_2_1_37_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_5" type="checkbox" id="__nav_5_2_37_5" >
       
-      <label class="md-nav__link" for="__nav_2_1_37_5">
+      <label class="md-nav__link" for="__nav_5_2_37_5">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/HearsHandler/" class="md-nav__link"
@@ -2927,7 +2969,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="HearsHandler" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_37_5">
+        <label class="md-nav__title" for="__nav_5_2_37_5">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/HearsHandler/" class="md-nav__link"
@@ -2964,9 +3006,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37_6" type="checkbox" id="__nav_2_1_37_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_6" type="checkbox" id="__nav_5_2_37_6" >
       
-      <label class="md-nav__link" for="__nav_2_1_37_6">
+      <label class="md-nav__link" for="__nav_5_2_37_6">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/InlineQueryHandler/" class="md-nav__link"
@@ -2976,7 +3018,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="InlineQueryHandler" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_37_6">
+        <label class="md-nav__title" for="__nav_5_2_37_6">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/InlineQueryHandler/" class="md-nav__link"
@@ -3013,9 +3055,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_37_7" type="checkbox" id="__nav_2_1_37_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_7" type="checkbox" id="__nav_5_2_37_7" >
       
-      <label class="md-nav__link" for="__nav_2_1_37_7">
+      <label class="md-nav__link" for="__nav_5_2_37_7">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Handlers/UpdateHandler/" class="md-nav__link"
@@ -3025,7 +3067,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="UpdateHandler" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_37_7">
+        <label class="md-nav__title" for="__nav_5_2_37_7">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Handlers/UpdateHandler/" class="md-nav__link"
@@ -3104,9 +3146,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_41" type="checkbox" id="__nav_2_1_41" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_41" type="checkbox" id="__nav_5_2_41" >
       
-      <label class="md-nav__link" for="__nav_2_1_41">
+      <label class="md-nav__link" for="__nav_5_2_41">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/InlineKeyboardMarkup/" class="md-nav__link"
@@ -3116,7 +3158,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="InlineKeyboardMarkup" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_41">
+        <label class="md-nav__title" for="__nav_5_2_41">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/InlineKeyboardMarkup/" class="md-nav__link"
@@ -3165,9 +3207,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_43" type="checkbox" id="__nav_2_1_43" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_43" type="checkbox" id="__nav_5_2_43" >
       
-      <label class="md-nav__link" for="__nav_2_1_43">
+      <label class="md-nav__link" for="__nav_5_2_43">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/InlineQueryResult/" class="md-nav__link"
@@ -3177,7 +3219,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="InlineQueryResult" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_43">
+        <label class="md-nav__title" for="__nav_5_2_43">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/InlineQueryResult/" class="md-nav__link"
@@ -3622,9 +3664,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_78" type="checkbox" id="__nav_2_1_78" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_78" type="checkbox" id="__nav_5_2_78" >
       
-      <label class="md-nav__link" for="__nav_2_1_78">
+      <label class="md-nav__link" for="__nav_5_2_78">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/KemalAdapter/" class="md-nav__link"
@@ -3634,7 +3676,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="KemalAdapter" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_78">
+        <label class="md-nav__title" for="__nav_5_2_78">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/KemalAdapter/" class="md-nav__link"
@@ -3751,10 +3793,47 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_86" type="checkbox" id="__nav_5_2_86" >
+      
+      <label class="md-nav__link" for="__nav_5_2_86">
+        <span class="md-nav__icon md-icon"></span>
+        
+          <a href="api_reference/Tourmaline/Message/" class="md-nav__link"
+            style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Message
+        </a>
+      </label>
+      <nav class="md-nav" aria-label="Message" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_86">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="api_reference/Tourmaline/Message/" class="md-nav__link"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Message
+          </a>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
-      <a href="api_reference/Tourmaline/Message/" class="md-nav__link">
-        Message
+      <a href="api_reference/Tourmaline/Message/SenderType/" class="md-nav__link">
+        SenderType
       </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -3791,9 +3870,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_89" type="checkbox" id="__nav_2_1_89" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_89" type="checkbox" id="__nav_5_2_89" >
       
-      <label class="md-nav__link" for="__nav_2_1_89">
+      <label class="md-nav__link" for="__nav_5_2_89">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Middleware/" class="md-nav__link"
@@ -3803,7 +3882,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Middleware" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_89">
+        <label class="md-nav__title" for="__nav_5_2_89">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Middleware/" class="md-nav__link"
@@ -4080,9 +4159,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_110" type="checkbox" id="__nav_2_1_110" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_110" type="checkbox" id="__nav_5_2_110" >
       
-      <label class="md-nav__link" for="__nav_2_1_110">
+      <label class="md-nav__link" for="__nav_5_2_110">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Poll/" class="md-nav__link"
@@ -4092,7 +4171,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Poll" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_110">
+        <label class="md-nav__title" for="__nav_5_2_110">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Poll/" class="md-nav__link"
@@ -4177,9 +4256,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_115" type="checkbox" id="__nav_2_1_115" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_115" type="checkbox" id="__nav_5_2_115" >
       
-      <label class="md-nav__link" for="__nav_2_1_115">
+      <label class="md-nav__link" for="__nav_5_2_115">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/ReplyKeyboardMarkup/" class="md-nav__link"
@@ -4189,7 +4268,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="ReplyKeyboardMarkup" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_115">
+        <label class="md-nav__title" for="__nav_5_2_115">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/ReplyKeyboardMarkup/" class="md-nav__link"
@@ -4238,9 +4317,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_117" type="checkbox" id="__nav_2_1_117" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_117" type="checkbox" id="__nav_5_2_117" >
       
-      <label class="md-nav__link" for="__nav_2_1_117">
+      <label class="md-nav__link" for="__nav_5_2_117">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/RoutedMenu/" class="md-nav__link"
@@ -4250,7 +4329,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="RoutedMenu" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_117">
+        <label class="md-nav__title" for="__nav_5_2_117">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/RoutedMenu/" class="md-nav__link"
@@ -4281,9 +4360,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_117_2" type="checkbox" id="__nav_2_1_117_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_117_2" type="checkbox" id="__nav_5_2_117_2" >
       
-      <label class="md-nav__link" for="__nav_2_1_117_2">
+      <label class="md-nav__link" for="__nav_5_2_117_2">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/RoutedMenu/Page/" class="md-nav__link"
@@ -4293,7 +4372,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Page" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_117_2">
+        <label class="md-nav__title" for="__nav_5_2_117_2">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/RoutedMenu/Page/" class="md-nav__link"
@@ -4384,9 +4463,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_121" type="checkbox" id="__nav_2_1_121" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_121" type="checkbox" id="__nav_5_2_121" >
       
-      <label class="md-nav__link" for="__nav_2_1_121">
+      <label class="md-nav__link" for="__nav_5_2_121">
         <span class="md-nav__icon md-icon"></span>
         
           <a href="api_reference/Tourmaline/Stage/" class="md-nav__link"
@@ -4396,7 +4475,7 @@
         </a>
       </label>
       <nav class="md-nav" aria-label="Stage" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_121">
+        <label class="md-nav__title" for="__nav_5_2_121">
           <span class="md-nav__icon md-icon"></span>
           
             <a href="api_reference/Tourmaline/Stage/" class="md-nav__link"
@@ -4672,51 +4751,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#register-your-bot" class="md-nav__link">
-    Register Your Bot
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-project" class="md-nav__link">
-    Example Project
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -4727,59 +4761,67 @@
                   </a>
                 
                 
-                <h1 id="getting-started-with-tourmaline">Getting Started with Tourmaline<a class="headerlink" href="#getting-started-with-tourmaline" title="Permanent link">#</a></h1>
-<p>So you want a Telegram bot, you like clean code and powerful frameworks, and you don't want to spend forever combing through complex documentation trying to figure out how to get started. Well you've come to the right place!</p>
-<p>Tourmaline is a Telegram bot framework for those that like things fast, efficient, and beautiful, which is why it's written in <a href="https://crystal-lang.org">Crystal</a>. But enough talk, this is a getting started guide, not a biography.</p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<p>First be sure you have Crystal installed. This is a Crystal framework, and won't work otherwise. Unfortunately this means (for now) you Windows people are going to have to run this using WSL or a virtual machine.</p>
-<p>Initialize your new Crystal project, for the purposes of this example we'll call our project <code>echo_bot</code>, but you can call yours whatever you like. To create the new project, run <code>crystal init app echo_bot</code> (replacing <code>echo_bot</code> with the name you'd like for your project).</p>
-<p>Change directories into your new project (using <code>cd echo_bot</code> in our case here). If you're unfamiliar with Crystal I highly recommend checking out <a href="https://crystal-lang.org/reference/using_the_compiler/index.html#creating-a-crystal-project">the official docs</a> to get an idea of the project structure, from now on it will be assumed that you understand the basics of a Crystal project.</p>
-<p>Now to install Tourmaline. Open up <code>shard.yml</code> and add the following snippet:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">dependencies</span><span class="p">:</span>
-  <span class="nt">tourmaline</span><span class="p">:</span>
-    <span class="nt">github</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">protoncr/tourmaline</span>
-</code></pre></div>
-<p>Then in your terminal run <code>shards install</code>. Tourmaline should now be installed!</p>
-<h2 id="register-your-bot">Register Your Bot<a class="headerlink" href="#register-your-bot" title="Permanent link">#</a></h2>
-<p>All bot registration in Telegram is facilitated through <a href="https://t.me/BotFather">@BotFather</a>. Don't confuse <em>registration</em> with <em>creation</em> though. BotFather simply helps you tell Telegram about, and manage your bot. We still need to write some code for the bot to function.</p>
-<p>Head on over to <a href="https://t.me/BotFather">t.me/BotFather</a>. Just in case this is your first time using a Telegram bot, let's go over some basics.</p>
-<ol>
-<li>
-<p>Bots are <ins class="critic">NOT</ins> users. The operate by a specific set of rules, most of which don't apply to standard user accounts.</p>
-</li>
-<li>
-<p>Most bots are controlled by using <ins class="critic">bot commands</ins>. Officially, bot commands begin with a <code>/</code> and can contain any of the characters <code>[a-zA-Z_]</code>, additionally an <code>@</code> can be used to differentiate between bots in a group.</p>
-</li>
-<li>
-<p>Bots cannot send messages to users that did not start a conversation with them first. This is a spam prevention measure.</p>
-</li>
-<li>
-<p>By default bots will be in group privacy mode. This means that they will only be able to see messages that start with a bot command until this is turned off. This only applies to groups, in private they can see everything.</p>
-</li>
-</ol>
-<p>There are plenty of other things to know, but those are some of the more important ones. Now let's get on to using BotFather to register a bot!</p>
-<p>First send the <code>/help</code> command. Whenever using a new bot it's always a good idea to see if they respond to this command, and what help is available. In our case we can see in the BotFather help that we can run <code>/newbot</code> to create (register) a new bot.</p>
-<p>The <code>/newbot</code> command will ask for a name. This will be the screen name of your bot, not the username, so feel free to call it whatever you want.</p>
-<p>Next it will ask for a username. This must be unique, can only contain alphanumeric characters and underscores, and must be at least 5 characters long (3 and 4 character usernames are reserved for Telegram internal use).</p>
-<p>Once you've entered a valid username it will send you a message containing some instructions and an API token that looks something like this <code>123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ</code>. <ins class="critic">KEEP THIS SECRET!</ins> Anyone with access to this token will be able to control your bot, so don't share it.</p>
-<p>Now if you send the <code>/mybots</code> command you should see your bot listed. Click it to enter the configuration menu for your bot. You can explore the options here if you wish, but we'll be moving on now.</p>
-<h2 id="example-project">Example Project<a class="headerlink" href="#example-project" title="Permanent link">#</a></h2>
-<p>We're going to be making a really simple echo bot for this example, hence the project name <code>echo_bot</code>. Go head and open the generated file at <code>src/echo_bot.cr</code> and paste in the following code. Don't worry, we'll go over each line in detail afterwards.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>This is exactly the same as the <a href="https://github.com/protoncr/tourmaline/blob/master/examples/echo_bot.cr">echo bot</a> example in the source repo. If anything is broken be sure to check there for an updated code snippet.</p>
-</div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">require</span> <span class="s2">&quot;tourmaline&quot;</span>
+                <style>
+  .md-content__button {
+    display: none;
+  }
+
+  .md-content .logo {
+    width: 150px;
+    display: block;
+    margin: 0px auto 20px auto;
+  }
+
+  .md-content .md-typeset h1,
+  .md-content .md-typeset h2 {
+    text-align: center;
+    margin: 0;
+  }
+
+  .md-content .md-typeset h1 {
+    text-align: center;
+    margin-bottom: 0.12em;
+  }
+
+  .md-content .md-typeset .headerlink {
+    display: none;
+  }
+
+  .md-content .md-typeset .quickstart {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .md-content .md-typeset .quickstart * {
+    flex: 1 1 0;
+  }
+
+  .md-content .md-typeset .quickstart .sample-one {
+    margin-right: 10px;
+  }
+
+  .md-content .md-typeset .quickstart .sample-two {
+    margin-left: 10px;
+  }
+</style>
+
+<p><img src="/images/logo.svg" class="logo"></p>
+<h1>Tourmaline<h1>
+<h2>Crystal Telegram Bot Framework</h2>
+
+<hr />
+
+<h2>Quickstart</h2>
+
+<p style="text-align: center;">Tourmaline uses Crystal to communicate with the Telegram Bot API. Therefore to use Tourmaline you should be familiar with how Crystal works.</p>
+<p style="text-align: center;">Once inside of a Crystal project, add Tourmaline to your <code>shard.yml</code> file and run <code>shards install</code> to install it.</p>
+<p style="text-align: center;">For more information, see the <a href="usage/getting_started">getting started</a> page.</p>
+
+<div class="quickstart">
+  <div class="sample-one">
+<h3>Using Annotations</h3>
+
+<div class="highlight"><pre><span></span><code><span class="k">require</span> <span class="s2">&quot;tourmaline&quot;</span>
 
 <span class="k">class</span> <span class="nc">EchoBot</span> <span class="o">&lt;</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">Client</span>
   <span class="o">@[</span><span class="nd">Command</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">)</span><span class="o">]</span>
@@ -4791,27 +4833,25 @@
 <span class="n">bot</span> <span class="o">=</span> <span class="n">EchoBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bot_token</span><span class="p">:</span> <span class="s2">&quot;YOUR_API_TOKEN&quot;</span><span class="p">)</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">poll</span>
 </code></pre></div>
-</td></tr></table>
-<p>Be sure to replace <code>YOUR_API_TOKEN</code> with the token you received from BotFather. Now run the bot with <code>crystal run ./src/echo_bot.cr</code>. Now if you visit your bot in Telegram and run <code>/echo some message</code> it should relpy to you with the message you sent. Congrats! You just created your first bot.</p>
-<p>Now let's break this code down line by line, starting from line 3 since the <code>require</code> should be obvious enough.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">EchoBot</span> <span class="o">&lt;</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">Client</span>
-  <span class="c1"># ...</span>
+  </div>
+  <div class="sample-two">
+<h3>More Procedural</h3>
+<div class="highlight"><pre><span></span><code><span class="k">require</span> <span class="s2">&quot;tourmaline&quot;</span>
+<span class="k">include</span> <span class="n">Tourmaline</span> <span class="c1"># To shorten things</span>
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bot_token</span><span class="p">:</span> <span class="s2">&quot;YOUR_API_TOKEN&quot;</span><span class="p">)</span>
+
+<span class="n">echo_handler</span> <span class="o">=</span> <span class="n">Handlers</span><span class="o">::</span><span class="n">CommandHandler</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ctx</span><span class="o">|</span>
+  <span class="n">ctx</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">reply</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre></div>
-<p>This is just defining our bot, <code>EchoBot</code>, as a sublcass of <code>Tourmaline::Client</code>. This gives us access to everything that <code>Tourmaline::Client</code> has, as well as allowing us to use the <code>Command</code> annotation which we'll take a look at next.</p>
-<div class="highlight"><pre><span></span><code>  <span class="o">@[</span><span class="nd">Command</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">)</span><span class="o">]</span>
-  <span class="k">def</span> <span class="nf">echo_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
-    <span class="c1"># ...</span>
-  <span class="k">end</span>
-</code></pre></div>
-<p><code>@[Constant()]</code> is the annotation invokation syntax. Annotations, much like in languages like Python and Typescript, can be used to modify the annotated method, class, variable, etc.. In this case it registers the method as an event handler for commands specifically (see <code>Tourmaline::Handlers::CommandHandler</code>). The <code>ctx</code> property that gets passed into the command is an instance of <code>Tourmaline::Handlers::CommandHandler::Context</code>.</p>
-<div class="highlight"><pre><span></span><code>    <span class="n">ctx</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">reply</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>
-<p>This is pretty simple. The <a href="api_reference/Tourmaline/Handlers/CommandHandler/Context/#Tourmaline::Handlers::CommandHandler::Context">context</a> has a <code>message</code> property, which is the <a href="api_reference/Tourmaline/Message/#Tourmaline::Message">message</a> that contains the command we're acting on. All we're doing is replying to the message with the text that was in the message (minus the bot command).</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">EchoBot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bot_token</span><span class="p">:</span> <span class="s2">&quot;YOUR_API_TOKEN&quot;</span><span class="p">)</span>
+
+<span class="n">bot</span><span class="o">.</span><span class="n">add_event_handler</span><span class="p">(</span><span class="n">echo_handler</span><span class="p">)</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">poll</span>
 </code></pre></div>
-<p>Finally we create a new instance of our <code>EchoBot</code> with our API token, and start it in <a href="api_reference/Tourmaline/Client/CoreMethods/#Tourmaline::Client::CoreMethods#poll(delete_webhook)">polling mode</a>.</p>
+  </div>
+</div>
+                
+                  
                 
               
               
@@ -4830,13 +4870,13 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
       
-        <a href="usage/faq/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="usage/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              FAQ
+              Usage
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -4864,7 +4904,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tabs", "navigation.sections"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "assets/javascripts/workers/search.fb4a9340.min.js", "version": {"method": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.ca5457b8.min.js"></script>
