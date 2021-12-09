@@ -1,8 +1,6 @@
 module Tourmaline
   class Client
     module StickerMethods
-      include Logger
-
       # Use this method to send `.webp` stickers.
       # On success, the sent `Message` is returned.
       #

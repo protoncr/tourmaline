@@ -1,8 +1,6 @@
 module Tourmaline
   class Client
     module PaymentMethods
-      include Logger
-
       # Use this method to send invoices.
       # On success, the sent `Message` is returned.
       def send_invoice(

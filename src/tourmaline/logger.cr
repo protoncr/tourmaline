@@ -9,6 +9,7 @@ module Tourmaline
     macro included
       {% begin %}
         {% tname = @type.name.stringify.split("::").map(&.underscore).join(".") %}
+        # :nodoc:
         Log = ::Log.for({{ tname }})
       {% end %}
     end

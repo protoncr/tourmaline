@@ -1,3 +1,13 @@
+[data-md-color-scheme="default"] {
+    --md-heading-bg-color: #F8F8F8;
+    --md-including-bg-color: #E2E2E2;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-heading-bg-color: #3E3E46;
+    --md-including-bg-color: #C4C4C4;
+}
+
 .doc-method:target::before {
     display: block;
     margin-top: -4.1rem;
@@ -6,17 +16,26 @@
 }
 
 .doc-type > .doc-heading {
-    font-size: 1.3em !important;
+    font-size: 1.1em !important;
 }
 
 .doc-type > .doc-heading > code {
-    font-size: 1.3em !important;
+    font-size: 1.1em !important;
     vertical-align: baseline !important;
 }
 
-.doc-method .doc-heading {
+.doc-object .doc-heading {
     padding: 8px !important;
-    background-color: #F8F8F8 !important;
+    background-color: var(--md-heading-bg-color) !important;
+}
+
+.doc-object .doc-contents {
+    font-size: 0.9em;
+}
+
+.doc-contents > .doc-children > h2 + code {
+    font-size: 1.2em;
+    background-color: var(--md-including-bg-color) !important;
 }
 
 .doc-source-link {

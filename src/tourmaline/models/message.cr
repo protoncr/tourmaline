@@ -285,5 +285,36 @@ module Tourmaline
     def stop_live_location(**kwargs)
       client.stop_message_live_location(chat, message_id, **kwargs)
     end
+
+    def sender_type
+      case sender_chat_id
+      when nil
+        if from && from.is_bot?
+          SenderType::Bot
+        else
+          SenderType::User
+        end
+      when chat.id
+        if chat.type == Chat::Type::Channel
+          SenderType::Channel
+        else
+          SenderType::AnonymousAdmin
+        end
+      else
+        if is_automatic_forward
+          SenderType::ChannelForward
+        else
+          SenderType::Channel
+        end
+      end
+    end
+
+    enum SenderType
+      Bot
+      User
+      Channel
+      ChannelForward
+      AnonymousAdmin
+    end
   end
 end

@@ -31,7 +31,7 @@ end
 
 ## Steps
 
-Stages are composed of steps which are created either with [Stage#on][Tourmaline::Stage#on(step,initial,&)] or with the [Step][Tourmaline::Stage::Step] annotation. If a step is tagged with `initial: true` it will be the first step in the series. If no step is tagged with `initial: true` you will have to manually transition to the step you want to start with by using [Stage#transition][Stage#transition(event)].
+Stages are composed of steps which are created either with [Stage#on][Tourmaline::Stage#on(step,initial,&)] or with the [Step][Tourmaline::Stage::Step] annotation. If a step is tagged with `initial: true` it will be the first step in the series. If no step is tagged with `initial: true` you will have to manually transition to the step you want to start with by using [Stage#transition][Tourmaline::Stage#transition(event)].
 
 !!! note
     The main caviat, and it's a small one, is that you must either transition or exit from a step. If you don't your program will be stuck in a sort of limbo.

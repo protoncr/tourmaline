@@ -1,8 +1,6 @@
 module Tourmaline
   class Client
     module GameMethods
-      include Logger
-
       # Use this method to send a game.
       # On success, the sent `Message` is returned.
       def send_game(

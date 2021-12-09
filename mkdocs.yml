@@ -6,12 +6,21 @@ site_url: https://tourmaline.dev
 theme:
   name: material
   palette:
-    scheme: default
-    primary: teal
+    - scheme: default
+      primary: teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
   features:
     - navigation.instant
     - navigation.tabs
     - navigation.sections
+    - navigation.tracking
+    - content.code.annotate
   icon:
     logo: fontawesome/brands/telegram
     repo: fontawesome/brands/github
@@ -21,7 +30,8 @@ extra_css:
   - stylesheets/extra.css
 
 plugins:
-  - search
+  - search:
+      indexing: full
   - mkdocstrings:
       default_handler: crystal
       watch: [src]
@@ -36,6 +46,7 @@ plugins:
         - mkdocstrings.handlers.crystal.macros
 
 markdown_extensions:
+  - meta
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.magiclink
@@ -55,6 +66,6 @@ markdown_extensions:
   - toc:
       permalink: "#"
 
-extra:
-  version:
-    method: mike
+# extra:
+#   version:
+#     method: mike

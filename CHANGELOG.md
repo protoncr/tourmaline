@@ -2,6 +2,18 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.25.1
+- Added `sender_type` method and `SenderType` enum to `Message`, allowing the user to easily figure out what type of user or channel sent the given message.
+- Updated docs
+
+## 0.25.0
+- Removed `Container` class which was being used to maintain a global instance of `Client`.
+- Added `finish_init` method to all models, allowing them to contain an instance of the `Client` that created them.
+
+## 0.24.0
+- Added full support for Bot API 5.4 and 5.5
+- More, see [the official Bot API changelog](https://core.telegram.org/bots/api#december-7-2021) for a complete list of changes.
+
 ## 0.23.0
 
 - Added full support for Bot API 5.1 - 5.3

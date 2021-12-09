@@ -1,8 +1,6 @@
 module Tourmaline
   class Client
     module PollMethods
-      include Logger
-
       # Use this method to send a native poll.
       # On success, the sent Message is returned.
       def send_poll(

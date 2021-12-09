@@ -3,9 +3,6 @@ module Tourmaline
   # It is designed to be customizable so as not to get in your way.
   class PaginatedKeyboard < InlineKeyboardMarkup
     @[JSON::Field(ignore: true)]
-    @client : Tourmaline::Client
-
-    @[JSON::Field(ignore: true)]
     @current_page : Int32
 
     @[JSON::Field(ignore: true)]

@@ -3,8 +3,6 @@ require "uri"
 module Tourmaline
   class Client
     module CoreMethods
-      include Logger
-
       getter polling : Bool = false
       getter next_offset : Int64 = 0.to_i64
 
