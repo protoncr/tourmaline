@@ -8,11 +8,10 @@
       
       
       
-      
         <link rel="canonical" href="https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeChatMember/">
       
-      <link rel="shortcut icon" href="../../../images/logo.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+      <link rel="icon" href="../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
     
     
       
@@ -20,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.1655a90d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a617204b.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7fa14f5b.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
         
       
     
@@ -33,17 +32,18 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
-    
     
     
       <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+
     
     
   </head>
@@ -57,8 +57,10 @@
     
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
-      
   
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -75,14 +77,15 @@
       
     </div>
     
+    
       
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://tourmaline.dev" title="Tourmaline" class="md-header__button md-logo" aria-label="Tourmaline">
+    <a href="../../.." title="Tourmaline" class="md-header__button md-logo" aria-label="Tourmaline" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,26 +107,50 @@
         </div>
       </div>
     </div>
-    <div class="md-header__options">
-      
-    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
     
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -140,8 +167,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -153,6 +179,7 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
@@ -160,6 +187,7 @@
       
         
           
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -241,6 +269,7 @@
     </ul>
   </div>
 </nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -253,25 +282,22 @@
                   <div class="md-sidebar__inner">
                     
 
-
-
   
 
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://tourmaline.dev" title="Tourmaline" class="md-nav__button md-logo" aria-label="Tourmaline">
+    <a href="../../.." title="Tourmaline" class="md-nav__button md-logo" aria-label="Tourmaline" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
 
     </a>
     Tourmaline
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -312,28 +338,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
-      <label class="md-nav__link" for="__nav_2">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../../../usage/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Usage
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../usage/">Usage</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Usage" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../../../usage/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Usage
-          </a>
+          Usage
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -344,6 +367,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -364,22 +388,23 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
-      <label class="md-nav__link" for="__nav_3">
-        <span class="md-nav__icon md-icon"></span>
-        
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
           Features
-        
-      </label>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Features" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          
-            Features
-          
+          Features
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -390,8 +415,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -402,8 +429,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -414,8 +443,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -426,8 +457,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -438,8 +471,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -450,8 +485,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -462,8 +499,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -474,8 +513,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -486,8 +527,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -498,6 +541,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -518,22 +562,23 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        <span class="md-nav__icon md-icon"></span>
-        
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
           Resources
-        
-      </label>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Resources" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          
-            Resources
-          
+          Resources
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -544,8 +589,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -556,6 +603,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -578,22 +626,23 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_5">
-        <span class="md-nav__icon md-icon"></span>
-        
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
           API Reference
-        
-      </label>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="API Reference" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          
-            API Reference
-          
+          API Reference
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -604,8 +653,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -619,28 +670,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" checked>
       
-      <label class="md-nav__link" for="__nav_5_2">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Tourmaline
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Tourmaline</a>
+          
+            <label for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Tourmaline" data-md-level="2">
         <label class="md-nav__title" for="__nav_5_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Tourmaline
-          </a>
+          Tourmaline
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -651,8 +703,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -662,28 +716,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" type="checkbox" id="__nav_5_2_2" >
       
-      <label class="md-nav__link" for="__nav_5_2_2">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Annotations/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Annotations
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Annotations/">Annotations</a>
+          
+            <label for="__nav_5_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Annotations" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Annotations/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Annotations
-          </a>
+          Annotations
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -694,8 +749,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -706,8 +763,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -718,8 +777,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -730,8 +791,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -742,8 +805,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -754,8 +819,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -766,8 +833,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -778,14 +847,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -796,8 +868,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -808,8 +882,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -820,8 +896,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -832,8 +910,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -844,8 +924,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -856,8 +938,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -868,8 +952,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -880,8 +966,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -891,17 +979,13 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
+      
         
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
+          BotCommandScopeChatMember
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="./" class="md-nav__link md-nav__link--active"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            BotCommandScopeChatMember
-          </a>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
@@ -909,7 +993,9 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -922,11 +1008,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#Tourmaline::BotCommandScopeChatMember-class-methods" class="md-nav__link">
-    Class methods
+  <a href="#Tourmaline::BotCommandScopeChatMember-constructors" class="md-nav__link">
+    Constructors
   </a>
   
-    <nav class="md-nav" aria-label="Class methods">
+    <nav class="md-nav" aria-label="Constructors">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -996,8 +1082,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1008,8 +1096,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1020,8 +1110,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1032,8 +1124,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1044,8 +1138,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1055,28 +1151,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_16" type="checkbox" id="__nav_5_2_16" >
       
-      <label class="md-nav__link" for="__nav_5_2_16">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Chat/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Chat
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Chat/">Chat</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Chat" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_16">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Chat/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Chat
-          </a>
+          Chat
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1087,14 +1180,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1105,8 +1201,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1117,8 +1215,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1129,8 +1229,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1141,8 +1243,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1153,8 +1257,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1165,8 +1271,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1177,8 +1285,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1189,8 +1299,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1200,28 +1312,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_25" type="checkbox" id="__nav_5_2_25" >
       
-      <label class="md-nav__link" for="__nav_5_2_25">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Client/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Client
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Client/">Client</a>
+          
+            <label for="__nav_5_2_25">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Client" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_25">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Client/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Client
-          </a>
+          Client
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1232,8 +1345,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1244,8 +1359,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1256,8 +1373,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1268,8 +1387,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1280,8 +1401,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1292,8 +1415,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1304,8 +1429,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1316,14 +1443,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1334,8 +1464,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1346,8 +1478,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1358,8 +1492,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1370,8 +1506,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1381,28 +1519,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_30" type="checkbox" id="__nav_5_2_30" >
       
-      <label class="md-nav__link" for="__nav_5_2_30">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../EncryptedPassportElement/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          EncryptedPassportElement
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../EncryptedPassportElement/">EncryptedPassportElement</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="EncryptedPassportElement" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_30">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../EncryptedPassportElement/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            EncryptedPassportElement
-          </a>
+          EncryptedPassportElement
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1413,14 +1548,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1430,28 +1568,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_31" type="checkbox" id="__nav_5_2_31" >
       
-      <label class="md-nav__link" for="__nav_5_2_31">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Error/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Error
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Error/">Error</a>
+          
+            <label for="__nav_5_2_31">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Error" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_31">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Error/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Error
-          </a>
+          Error
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1462,8 +1601,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1474,8 +1615,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1486,8 +1629,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1498,8 +1643,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1510,8 +1657,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1522,8 +1671,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1534,8 +1685,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1546,8 +1699,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1558,8 +1713,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1570,8 +1727,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1582,8 +1741,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1594,8 +1755,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1606,8 +1769,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1618,8 +1783,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1630,8 +1797,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1642,8 +1811,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1654,8 +1825,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1666,8 +1839,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1678,8 +1853,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1690,8 +1867,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1702,8 +1881,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1714,8 +1895,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1726,8 +1909,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1738,8 +1923,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1750,8 +1937,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1762,8 +1951,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1774,8 +1965,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1786,8 +1979,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1798,8 +1993,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1810,8 +2007,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1822,8 +2021,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1834,8 +2035,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1846,8 +2049,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1858,8 +2063,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1870,8 +2077,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1882,8 +2091,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1894,8 +2105,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1906,8 +2119,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1918,8 +2133,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1930,8 +2147,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1942,8 +2161,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1954,8 +2175,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1966,8 +2189,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1978,8 +2203,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1990,8 +2217,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2002,8 +2231,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2014,8 +2245,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2026,8 +2259,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2038,8 +2273,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2050,8 +2287,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2062,8 +2301,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2074,8 +2315,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2086,8 +2329,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2098,8 +2343,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2110,8 +2357,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2122,8 +2371,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2134,8 +2385,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2146,8 +2399,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2158,8 +2413,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2170,8 +2427,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2182,8 +2441,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2194,8 +2455,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2206,8 +2469,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2218,8 +2483,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2230,8 +2497,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2242,8 +2511,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2254,8 +2525,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2266,8 +2539,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2278,8 +2553,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2290,8 +2567,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2302,8 +2581,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2314,8 +2595,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2326,8 +2609,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2338,8 +2623,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2350,8 +2637,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2362,8 +2651,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2374,8 +2665,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2386,8 +2679,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2398,8 +2693,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2410,8 +2707,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2422,8 +2721,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2434,8 +2735,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2446,8 +2749,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2458,8 +2763,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2470,8 +2777,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2482,8 +2791,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2494,8 +2805,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2506,8 +2819,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2518,8 +2833,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2530,8 +2847,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2542,8 +2861,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2554,14 +2875,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2572,8 +2896,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2584,8 +2910,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2595,28 +2923,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_34" type="checkbox" id="__nav_5_2_34" >
       
-      <label class="md-nav__link" for="__nav_5_2_34">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Format/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Format
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Format/">Format</a>
+          
+            <label for="__nav_5_2_34">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Format" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_34">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Format/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Format
-          </a>
+          Format
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -2627,8 +2956,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2639,8 +2970,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2651,8 +2984,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2663,8 +2998,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2675,8 +3012,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2687,8 +3026,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2699,8 +3040,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2711,8 +3054,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2723,8 +3068,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2735,8 +3082,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2747,8 +3096,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2759,8 +3110,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2771,8 +3124,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2783,8 +3138,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2795,14 +3152,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2813,8 +3173,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2825,8 +3187,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2836,28 +3200,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37" type="checkbox" id="__nav_5_2_37" >
       
-      <label class="md-nav__link" for="__nav_5_2_37">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Handlers
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/">Handlers</a>
+          
+            <label for="__nav_5_2_37">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Handlers" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_37">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Handlers
-          </a>
+          Handlers
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -2867,28 +3232,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_1" type="checkbox" id="__nav_5_2_37_1" >
       
-      <label class="md-nav__link" for="__nav_5_2_37_1">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/CallbackQueryHandler/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          CallbackQueryHandler
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/CallbackQueryHandler/">CallbackQueryHandler</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="CallbackQueryHandler" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_37_1">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/CallbackQueryHandler/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            CallbackQueryHandler
-          </a>
+          CallbackQueryHandler
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -2899,14 +3261,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2916,28 +3281,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_2" type="checkbox" id="__nav_5_2_37_2" >
       
-      <label class="md-nav__link" for="__nav_5_2_37_2">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/ChosenInlineResultHandler/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          ChosenInlineResultHandler
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/ChosenInlineResultHandler/">ChosenInlineResultHandler</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="ChosenInlineResultHandler" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_37_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/ChosenInlineResultHandler/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            ChosenInlineResultHandler
-          </a>
+          ChosenInlineResultHandler
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -2948,14 +3310,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -2965,28 +3330,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_3" type="checkbox" id="__nav_5_2_37_3" >
       
-      <label class="md-nav__link" for="__nav_5_2_37_3">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/CommandHandler/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          CommandHandler
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/CommandHandler/">CommandHandler</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="CommandHandler" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_37_3">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/CommandHandler/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            CommandHandler
-          </a>
+          CommandHandler
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -2997,14 +3359,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3014,28 +3379,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_4" type="checkbox" id="__nav_5_2_37_4" >
       
-      <label class="md-nav__link" for="__nav_5_2_37_4">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/EditedHandler/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          EditedHandler
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/EditedHandler/">EditedHandler</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="EditedHandler" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_37_4">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/EditedHandler/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            EditedHandler
-          </a>
+          EditedHandler
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3046,14 +3408,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3063,28 +3428,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_5" type="checkbox" id="__nav_5_2_37_5" >
       
-      <label class="md-nav__link" for="__nav_5_2_37_5">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/HearsHandler/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          HearsHandler
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/HearsHandler/">HearsHandler</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="HearsHandler" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_37_5">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/HearsHandler/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            HearsHandler
-          </a>
+          HearsHandler
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3095,14 +3457,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3112,28 +3477,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_6" type="checkbox" id="__nav_5_2_37_6" >
       
-      <label class="md-nav__link" for="__nav_5_2_37_6">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/InlineQueryHandler/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          InlineQueryHandler
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/InlineQueryHandler/">InlineQueryHandler</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="InlineQueryHandler" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_37_6">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/InlineQueryHandler/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            InlineQueryHandler
-          </a>
+          InlineQueryHandler
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3144,14 +3506,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3161,28 +3526,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_37_7" type="checkbox" id="__nav_5_2_37_7" >
       
-      <label class="md-nav__link" for="__nav_5_2_37_7">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Handlers/UpdateHandler/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          UpdateHandler
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Handlers/UpdateHandler/">UpdateHandler</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="UpdateHandler" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_37_7">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Handlers/UpdateHandler/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            UpdateHandler
-          </a>
+          UpdateHandler
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3193,20 +3555,24 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3217,8 +3583,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3229,8 +3597,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3241,8 +3611,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3252,28 +3624,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_41" type="checkbox" id="__nav_5_2_41" >
       
-      <label class="md-nav__link" for="__nav_5_2_41">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../InlineKeyboardMarkup/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          InlineKeyboardMarkup
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../InlineKeyboardMarkup/">InlineKeyboardMarkup</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="InlineKeyboardMarkup" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_41">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../InlineKeyboardMarkup/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            InlineKeyboardMarkup
-          </a>
+          InlineKeyboardMarkup
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3284,14 +3653,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3302,8 +3674,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3313,28 +3687,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_43" type="checkbox" id="__nav_5_2_43" >
       
-      <label class="md-nav__link" for="__nav_5_2_43">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../InlineQueryResult/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          InlineQueryResult
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../InlineQueryResult/">InlineQueryResult</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="InlineQueryResult" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_43">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../InlineQueryResult/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            InlineQueryResult
-          </a>
+          InlineQueryResult
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3345,14 +3716,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3363,8 +3737,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3375,8 +3751,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3387,8 +3765,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3399,8 +3779,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3411,8 +3793,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3423,8 +3807,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3435,8 +3821,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3447,8 +3835,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3459,8 +3849,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3471,8 +3863,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3483,8 +3877,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3495,8 +3891,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3507,8 +3905,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3519,8 +3919,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3531,8 +3933,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3543,8 +3947,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3555,8 +3961,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3567,8 +3975,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3579,8 +3989,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3591,8 +4003,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3603,8 +4017,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3615,8 +4031,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3627,8 +4045,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3639,8 +4059,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3651,8 +4073,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3663,8 +4087,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3675,8 +4101,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3687,8 +4115,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3699,8 +4129,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3711,8 +4143,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3723,8 +4157,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3735,8 +4171,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3747,8 +4185,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3759,8 +4199,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3770,28 +4212,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_78" type="checkbox" id="__nav_5_2_78" >
       
-      <label class="md-nav__link" for="__nav_5_2_78">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../KemalAdapter/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          KemalAdapter
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../KemalAdapter/">KemalAdapter</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="KemalAdapter" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_78">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../KemalAdapter/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            KemalAdapter
-          </a>
+          KemalAdapter
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3802,14 +4241,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3820,8 +4262,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3832,8 +4276,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3844,8 +4290,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3856,8 +4304,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3868,8 +4318,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3880,8 +4332,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3892,8 +4346,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3903,28 +4359,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_86" type="checkbox" id="__nav_5_2_86" >
       
-      <label class="md-nav__link" for="__nav_5_2_86">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Message/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Message
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Message/">Message</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Message" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_86">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Message/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Message
-          </a>
+          Message
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -3935,14 +4388,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3953,8 +4409,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3965,8 +4423,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -3976,28 +4436,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_89" type="checkbox" id="__nav_5_2_89" >
       
-      <label class="md-nav__link" for="__nav_5_2_89">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Middleware/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Middleware
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Middleware/">Middleware</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Middleware" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_89">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Middleware/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Middleware
-          </a>
+          Middleware
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -4008,14 +4465,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4026,8 +4486,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4038,8 +4500,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4050,8 +4514,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4062,8 +4528,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4074,8 +4542,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4086,8 +4556,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4098,8 +4570,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4110,8 +4584,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4122,8 +4598,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4134,8 +4612,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4146,8 +4626,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4158,8 +4640,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4170,8 +4654,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4182,8 +4668,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4194,8 +4682,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4206,8 +4696,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4218,8 +4710,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4230,8 +4724,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4242,8 +4738,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4254,8 +4752,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4265,28 +4765,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_110" type="checkbox" id="__nav_5_2_110" >
       
-      <label class="md-nav__link" for="__nav_5_2_110">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Poll/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Poll
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Poll/">Poll</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Poll" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_110">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Poll/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Poll
-          </a>
+          Poll
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -4297,14 +4794,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4315,8 +4815,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4327,8 +4829,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4339,8 +4843,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4351,8 +4857,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4362,28 +4870,25 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_115" type="checkbox" id="__nav_5_2_115" >
       
-      <label class="md-nav__link" for="__nav_5_2_115">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../ReplyKeyboardMarkup/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          ReplyKeyboardMarkup
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../ReplyKeyboardMarkup/">ReplyKeyboardMarkup</a>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="ReplyKeyboardMarkup" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_115">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../ReplyKeyboardMarkup/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            ReplyKeyboardMarkup
-          </a>
+          ReplyKeyboardMarkup
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -4394,14 +4899,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4412,8 +4920,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4423,28 +4933,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_117" type="checkbox" id="__nav_5_2_117" >
       
-      <label class="md-nav__link" for="__nav_5_2_117">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../RoutedMenu/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          RoutedMenu
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../RoutedMenu/">RoutedMenu</a>
+          
+            <label for="__nav_5_2_117">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="RoutedMenu" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_117">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../RoutedMenu/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            RoutedMenu
-          </a>
+          RoutedMenu
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -4455,8 +4966,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4466,28 +4979,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_117_2" type="checkbox" id="__nav_5_2_117_2" >
       
-      <label class="md-nav__link" for="__nav_5_2_117_2">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../RoutedMenu/Page/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Page
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../RoutedMenu/Page/">Page</a>
+          
+            <label for="__nav_5_2_117_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Page" data-md-level="4">
         <label class="md-nav__title" for="__nav_5_2_117_2">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../RoutedMenu/Page/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Page
-          </a>
+          Page
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -4498,8 +5012,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4510,20 +5026,24 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4534,8 +5054,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4546,8 +5068,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4558,8 +5082,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4569,28 +5095,29 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_121" type="checkbox" id="__nav_5_2_121" >
       
-      <label class="md-nav__link" for="__nav_5_2_121">
-        <span class="md-nav__icon md-icon"></span>
+      
+      
+      
         
-          <a href="../Stage/" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
         
-          Stage
-        </a>
-      </label>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Stage/">Stage</a>
+          
+            <label for="__nav_5_2_121">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
       <nav class="md-nav" aria-label="Stage" data-md-level="3">
         <label class="md-nav__title" for="__nav_5_2_121">
           <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Stage/" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Stage
-          </a>
+          Stage
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -4601,8 +5128,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4613,14 +5142,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4631,8 +5163,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4643,8 +5177,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4655,8 +5191,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4667,8 +5205,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4679,8 +5219,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4691,8 +5233,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4703,8 +5247,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4715,8 +5261,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4727,8 +5275,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4739,8 +5289,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4751,8 +5303,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4763,8 +5317,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4775,8 +5331,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4787,8 +5345,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4799,8 +5359,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4811,8 +5373,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4823,14 +5387,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -4841,6 +5408,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -4860,7 +5428,9 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -4873,11 +5443,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#Tourmaline::BotCommandScopeChatMember-class-methods" class="md-nav__link">
-    Class methods
+  <a href="#Tourmaline::BotCommandScopeChatMember-constructors" class="md-nav__link">
+    Constructors
   </a>
   
-    <nav class="md-nav" aria-label="Class methods">
+    <nav class="md-nav" aria-label="Constructors">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4952,12 +5522,12 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L2" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <div class="doc doc-object doc-type class">
+<a href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L2" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<div class="doc doc-object doc-type class">
 <h1 id="Tourmaline::BotCommandScopeChatMember" class="doc doc-heading">class <code>Tourmaline::BotCommandScopeChatMember</code>
       <br/><small>inherits <code>Reference</code></small>
 <a href="#Tourmaline::BotCommandScopeChatMember" class="headerlink" title="Permanent link">#</a></h1>
@@ -4970,7 +5540,7 @@
               <code><a href="../Model/#Tourmaline::Model">Tourmaline::Model</a></code>
 
 
-<h2 id="Tourmaline::BotCommandScopeChatMember-class-methods">Class methods<a href="#Tourmaline::BotCommandScopeChatMember-class-methods" class="headerlink" title="Permanent link">#</a></h2>
+<h2 id="Tourmaline::BotCommandScopeChatMember-constructors">Constructors<a href="#Tourmaline::BotCommandScopeChatMember-constructors" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-class_method">
 <h3 id="Tourmaline::BotCommandScopeChatMember.new(chat,user)" class="doc doc-heading">    <code>
@@ -4980,7 +5550,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L15">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L15">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-class_method">
@@ -4991,7 +5561,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L3">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L3">View source</a>
 </div><h2 id="Tourmaline::BotCommandScopeChatMember-methods">Methods<a href="#Tourmaline::BotCommandScopeChatMember-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5003,7 +5573,7 @@
 <p>Unique identifier for the target chat or username of the target supergroup
 (in the format <code>@supergroupusername</code>)</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L10">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L10">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5015,7 +5585,7 @@
 <p>Unique identifier for the target chat or username of the target supergroup
 (in the format <code>@supergroupusername</code>)</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L10">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L10">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5026,7 +5596,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L6">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L6">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5037,7 +5607,7 @@
   <div class="doc doc-contents ">
 <p>Unique identifier of the target user</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L13">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L13">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5048,29 +5618,25 @@
   <div class="doc doc-contents ">
 <p>Unique identifier of the target user</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d219ac7704f183bc6d3712531719af15ec24731f/src/tourmaline/models/bot_command_scope_chat_member.cr#L13">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2c5c8f6bff259a32ae440166364e81dc0b73d37b/src/tourmaline/models/bot_command_scope_chat_member.cr#L13">View source</a>
 </div>      </div>
   </div>
 
 </div>
-                
-              
-              
-                
-
 
               
             </article>
           </div>
         </div>
+        
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../BotCommandScopeChatAdministrators/" class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href="../BotCommandScopeChatAdministrators/" class="md-footer__link md-footer__link--prev" aria-label="Previous: BotCommandScopeChatAdministrators" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -5085,7 +5651,8 @@
         </a>
       
       
-        <a href="../BotCommandScopeDefault/" class="md-footer__link md-footer__link--next" rel="next">
+        
+        <a href="../BotCommandScopeDefault/" class="md-footer__link md-footer__link--next" aria-label="Next: BotCommandScopeDefault" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -5103,13 +5670,15 @@
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-      </div>
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -5119,10 +5688,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
       
     
   </body>
