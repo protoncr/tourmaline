@@ -382,16 +382,16 @@ module Tourmaline
         chat,
         user,
         until_date = nil,
-        revoke_messages = nil,
+        revoke_messages = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         user_id = user.is_a?(Int) ? user : user.id
         until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
 
         request(Bool, "kickChatMember", {
-          chat_id:    chat_id,
-          user_id:    user_id,
-          until_date: until_date,
+          chat_id:         chat_id,
+          user_id:         user_id,
+          until_date:      until_date,
           revoke_messages: revoke_messages,
         })
       end
@@ -486,20 +486,20 @@ module Tourmaline
         user_id = user.is_a?(Int) ? user : user.id
 
         request(Bool, "promoteChatMember", {
-          chat_id:              chat_id,
-          user_id:              user_id,
-          is_anonymous:         is_anonymous,
-          until_date:           until_date,
-          can_manage_chat:      can_manage_chat,
-          can_change_info:      can_change_info,
-          can_post_messages:    can_post_messages,
-          can_edit_messages:    can_edit_messages,
-          can_delete_messages:  can_delete_messages,
-          can_invite_users:     can_invite_users,
+          chat_id:                chat_id,
+          user_id:                user_id,
+          is_anonymous:           is_anonymous,
+          until_date:             until_date,
+          can_manage_chat:        can_manage_chat,
+          can_change_info:        can_change_info,
+          can_post_messages:      can_post_messages,
+          can_edit_messages:      can_edit_messages,
+          can_delete_messages:    can_delete_messages,
+          can_invite_users:       can_invite_users,
           can_manage_voice_chats: can_manage_voice_chats,
-          can_restrict_members: can_restrict_members,
-          can_pin_messages:     can_pin_messages,
-          can_promote_members:  can_promote_members,
+          can_restrict_members:   can_restrict_members,
+          can_pin_messages:       can_pin_messages,
+          can_promote_members:    can_promote_members,
         })
       end
 
@@ -558,8 +558,8 @@ module Tourmaline
         sender_chat_id = sender_chat.is_a?(Int::Primitive) ? chat : chat.id
 
         request(Bool, "banChatSenderChat", {
-          chat_id: chat_id,
-          sender_chat_id: sender_chat_id
+          chat_id:        chat_id,
+          sender_chat_id: sender_chat_id,
         })
       end
 
@@ -572,8 +572,8 @@ module Tourmaline
         sender_chat_id = sender_chat.is_a?(Int::Primitive) ? chat : chat.id
 
         request(Bool, "unbanChatSenderChat", {
-          chat_id: chat_id,
-          sender_chat_id: sender_chat_id
+          chat_id:        chat_id,
+          sender_chat_id: sender_chat_id,
         })
       end
 
@@ -599,16 +599,16 @@ module Tourmaline
         name = nil,
         expire_date = nil,
         member_limit = nil,
-        creates_join_request = false,
+        creates_join_request = false
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
 
         request(ChatInviteLink, "createChatInviteLink", {
-          chat_id: chat_id,
-          name: name,
-          expire_date: expire_date,
-          member_limit: member_limit,
+          chat_id:              chat_id,
+          name:                 name,
+          expire_date:          expire_date,
+          member_limit:         member_limit,
           creates_join_request: creates_join_request,
         })
       end
@@ -623,18 +623,18 @@ module Tourmaline
         name = nil,
         expire_date = nil,
         member_limit = nil,
-        creates_join_request = false,
+        creates_join_request = false
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
         expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
 
         request(ChatInviteLink, "editChatInviteLink", {
-          chat_id: chat_id,
-          invite_link: invite_link,
-          name: name,
-          expire_date: expire_date,
-          member_limit: member_limit,
+          chat_id:              chat_id,
+          invite_link:          invite_link,
+          name:                 name,
+          expire_date:          expire_date,
+          member_limit:         member_limit,
           creates_join_request: creates_join_request,
         })
       end
@@ -649,7 +649,7 @@ module Tourmaline
         invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
 
         request(ChatInviteLink, "revokeChatInviteLink", {
-          chat_id: chat_id,
+          chat_id:     chat_id,
           invite_link: invite_link,
         })
       end
@@ -1351,13 +1351,13 @@ module Tourmaline
       def set_my_commands(
         commands : Array(BotCommand | NamedTuple(command: String, description: String)),
         scope : BotCommandScope? = nil,
-        language_code : String? = nil,
+        language_code : String? = nil
       )
         # commands = commands.map(&.to_h.transform_keys(&.to_s))
 
         request(Bool, "setMyCommands", {
-          commands: commands,
-          scope: scope,
+          commands:      commands,
+          scope:         scope,
           language_code: language_code,
         })
       end
@@ -1366,7 +1366,7 @@ module Tourmaline
       # Returns Array of BotCommand on success.
       def get_my_commands(scope : BotCommandScope? = nil, language_code : String? = nil)
         request(Array(BotCommand), "getMyCommands", {
-          scope: scope,
+          scope:         scope,
           language_code: language_code,
         })
       end
@@ -1376,7 +1376,7 @@ module Tourmaline
       # Returns True on success.
       def delete_my_commands(scope : BotCommandScope? = nil, language_code : String? = nil)
         request(Bool, "deleteMyCommands", {
-          scope: scope,
+          scope:         scope,
           language_code: language_code,
         })
       end

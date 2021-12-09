@@ -44,14 +44,13 @@ module Tourmaline
 
     getter? send_email_to_provider : Bool = false
 
-
     @[JSON::Field(key: "is_flexible")]
     getter? flexible : Bool = false
 
     def initialize(@title : String, @description : String, @payload : String, @provider_token : String, @currency : String, @prices = [] of Tourmaline::LabeledPrice, @max_tip_amount : Int32? = nil,
-      @suggested_tip_amounts : Array(Int32) = [] of Int32, @provider_data : String? = nil, @photo_url : String? = nil, @photo_size : Int32? = nil, @photo_width : Int32? = nil,
-      @photo_height : Int32? = nil, @need_name : Bool = false, @need_phone_number : Bool = false, @need_email : Bool = false, @need_shipping_address : Bool = false,
-      @send_phone_number_to_provider : Bool = false, @send_email_to_provider : Bool = false)
+                   @suggested_tip_amounts : Array(Int32) = [] of Int32, @provider_data : String? = nil, @photo_url : String? = nil, @photo_size : Int32? = nil, @photo_width : Int32? = nil,
+                   @photo_height : Int32? = nil, @need_name : Bool = false, @need_phone_number : Bool = false, @need_email : Bool = false, @need_shipping_address : Bool = false,
+                   @send_phone_number_to_provider : Bool = false, @send_email_to_provider : Bool = false)
     end
   end
 end
