@@ -205,7 +205,24 @@ module Tourmaline
       {% end %}
     end
 
-    private def request(type : U.class, method, params = {} of String => String) forall U
+    protected def do_finish_init(value)
+      case value
+      when Tourmaline::Model
+        value.finish_init(self)
+      when Array
+        value.each { |v| do_finish_init(v) }
+      end
+    end
+
+    protected def using_connection
+      @pool.retry do
+        @pool.checkout do |conn|
+          yield conn
+        end
+      end
+    end
+
+    protected def request(type : U.class, method, params = {} of String => String) forall U
       if bot_token = @bot_token
         path = File.join("/bot#{bot_token}", method)
       else
@@ -224,25 +241,8 @@ module Tourmaline
       value
     end
 
-    private def do_finish_init(value)
-      case value
-      when Tourmaline::Model
-        value.finish_init(self)
-      when Array
-        value.each { |v| do_finish_init(v) }
-      end
-    end
-
-    private def using_connection
-      @pool.retry do
-        @pool.checkout do |conn|
-          yield conn
-        end
-      end
-    end
-
     # Sends a json request to the Telegram Client API.
-    private def request(path, params = {} of String => String)
+    protected def request(path, params = {} of String => String)
       multipart = includes_media(params)
 
       # Wrap this so pool can attempt a retry
@@ -276,14 +276,14 @@ module Tourmaline
       end
     end
 
-    private def object_or_id(object)
+    protected def object_or_id(object)
       if object.responds_to?(:id)
         return object.id
       end
       object
     end
 
-    private def includes_media(params)
+    protected def includes_media(params)
       params.values.any? do |val|
         case val
         when Array
@@ -296,7 +296,7 @@ module Tourmaline
       end
     end
 
-    private def build_json_config(payload)
+    protected def build_json_config(payload)
       {
         method:  "POST",
         headers: HTTP::Headers{"Content-Type" => "application/json", "Connection" => "keep-alive"},
@@ -304,7 +304,7 @@ module Tourmaline
       }
     end
 
-    private def build_form_data_config(payload)
+    protected def build_form_data_config(payload)
       boundary = MIME::Multipart.generate_boundary
       formdata = MIME::Multipart.build(boundary) do |form|
         payload.each do |key, value|
@@ -322,7 +322,7 @@ module Tourmaline
       }
     end
 
-    private def attach_form_value(form : MIME::Multipart::Builder, id : String, value)
+    protected def attach_form_value(form : MIME::Multipart::Builder, id : String, value)
       return unless value
       headers = HTTP::Headers{"Content-Disposition" => "form-data; name=#{id}"}
 
@@ -350,7 +350,7 @@ module Tourmaline
       end
     end
 
-    private def attach_form_media(form : MIME::Multipart::Builder, value : InputMedia)
+    protected def attach_form_media(form : MIME::Multipart::Builder, value : InputMedia)
       media = value.media
       thumb = value.responds_to?(:thumb) ? value.thumb : nil
 
@@ -374,7 +374,7 @@ module Tourmaline
       end
     end
 
-    private def check_open_local_file(file)
+    protected def check_open_local_file(file)
       if file.is_a?(String)
         begin
           if File.file?(file)
@@ -386,7 +386,7 @@ module Tourmaline
       file
     end
 
-    private def register_commands_with_botfather
+    protected def register_commands_with_botfather
       commands = [] of Handlers::CommandHandler
       @event_handlers.each { |h| commands << h if h.is_a?(Handlers::CommandHandler) }
 

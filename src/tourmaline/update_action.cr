@@ -53,20 +53,35 @@ module Tourmaline
     VoiceChatEnded
     VoiceChatParticipantsInvited
 
-    # 🎲
-    Dice
-    # 🎯
-    Dart
-    # 🏀
-    Basketball
-    # ⚽️
-    Football
-    # ⚽️ but American
-    Soccerball
-    # 🎰
-    SlotMachine
-    # 🎳
-    Bowling
+    Dice # 🎲
+    Dart # 🎯
+    Basketball # 🏀
+    Football # ⚽️
+    Soccerball # ⚽️ but American
+    SlotMachine # 🎰
+    Bowling # 🎳
+
+    BotMessage
+    UserMessage
+    ChannelMessage
+    ChannelForwardMessage
+    AnonymousAdminMessage
+
+    MentionEntity
+    TextMentionEntity
+    HashtagEntity
+    CashtagEntity
+    BotCommandEntity
+    UrlEntity
+    EmailEntity
+    PhoneNumberEntity
+    BoldEntity
+    ItalicEntity
+    CodeEntity
+    PreEntity
+    TextLinkEntity
+    UnderlineEntity
+    StrikethroughEntity
 
     def to_s
       super.to_s.underscore
@@ -125,14 +140,72 @@ module Tourmaline
         actions << UpdateAction::VoiceChatStarted if message.voice_chat_started
         actions << UpdateAction::VoiceChatEnded if message.voice_chat_ended
         actions << UpdateAction::VoiceChatParticipantsInvited if message.voice_chat_participants_invited
+
         if dice = message.dice
-          actions << UpdateAction::Dice if dice.emoji == "🎲"
-          actions << UpdateAction::Dart if dice.emoji == "🎯"
-          actions << UpdateAction::Basketball if dice.emoji == "🏀"
-          actions << UpdateAction::Soccerball if dice.emoji == "⚽️"
-          actions << UpdateAction::Football if dice.emoji == "⚽️"
-          actions << UpdateAction::SlotMachine if dice.emoji == "🎰"
-          actions << UpdateAction::Bowling if dice.emoji == "🎳"
+          case dice.emoji
+          when "🎲"
+            actions << UpdateAction::Dice
+          when "🎯"
+            actions << UpdateAction::Dart
+          when "🏀"
+            actions << UpdateAction::Basketball
+          when "⚽️"
+            actions << UpdateAction::Football
+            actions << UpdateAction::Soccerball
+          when "🎰"
+            actions << UpdateAction::SlotMachine
+          when "🎳"
+            actions << UpdateAction::Bowling
+          end
+        end
+
+        case message.sender_type
+        when Tourmaline::Message::SenderType::Bot
+          actions << UpdateAction::BotMessage
+        when Tourmaline::Message::SenderType::Channel
+          actions << UpdateAction::ChannelMessage
+        when Tourmaline::Message::SenderType::User
+          actions << UpdateAction::UserMessage
+        when Tourmaline::Message::SenderType::AnonymousAdmin
+          actions << UpdateAction::AnonymousAdminMessage
+        when Tourmaline::Message::SenderType::ChannelForward
+          actions << UpdateAction::ChannelForwardMessage
+        end
+
+        entities = message.entities.map(&.type).uniq
+        entities.each do |ent|
+          case ent
+          when "mention"
+            actions << UpdateAction::MentionEntity
+          when "text_mention"
+            actions << UpdateAction::TextMentionEntity
+          when "hashtag"
+            actions << UpdateAction::HashtagEntity
+          when "cashtag"
+            actions << UpdateAction::CashtagEntity
+          when "bot_command"
+            actions << UpdateAction::BotCommandEntity
+          when "url"
+            actions << UpdateAction::UrlEntity
+          when "email"
+            actions << UpdateAction::EmailEntity
+          when "phone_number"
+            actions << UpdateAction::PhoneNumberEntity
+          when "bold"
+            actions << UpdateAction::BoldEntity
+          when "italic"
+            actions << UpdateAction::ItalicEntity
+          when "code"
+            actions << UpdateAction::CodeEntity
+          when "pre"
+            actions << UpdateAction::PreEntity
+          when "text_link"
+            actions << UpdateAction::TextLinkEntity
+          when "underline"
+            actions << UpdateAction::UnderlineEntity
+          when "strikethrough"
+            actions << UpdateAction::StrikethroughEntity
+          end
         end
       end
 

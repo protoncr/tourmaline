@@ -163,7 +163,7 @@ module Tourmaline
       if chat.username
         "https://t.me/#{chat.username}/#{message_id}"
       else
-        "https://t.me/c/#{chat.id.to_s[5..]}/#{message_id}"
+        "https://t.me/c/#{chat.id}/#{message_id}"
       end
     end
 
@@ -287,14 +287,14 @@ module Tourmaline
     end
 
     def sender_type
-      case sender_chat_id
+      case sender_chat
       when nil
-        if from && from.is_bot?
+        if from.try(&.is_bot)
           SenderType::Bot
         else
           SenderType::User
         end
-      when chat.id
+      when chat
         if chat.type == Chat::Type::Channel
           SenderType::Channel
         else
