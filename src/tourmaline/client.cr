@@ -179,17 +179,18 @@ module Tourmaline
       handled = [] of String
 
       # First call middlewares
-      status = @middlewares.each do |middleware|
+      success = true
+      @middlewares.each do |middleware|
         begin
           middleware.call(self, update)
         rescue Middleware::ContinueIteration
-          next true
+          next
         end
 
-        break false
+        break success = false
       end
 
-      if status
+      if success
         # Then call individual event handlers
         {% if flag?(:no_async) %}
           @event_handlers.each do |handler|
