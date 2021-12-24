@@ -2,1542 +2,1547 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tourmaline.dev/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>None</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/changelog/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/String/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Animation/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/Catch/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/Command/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/Edited/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/Hears/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/On/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/OnCallbackQuery/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/OnChosenInlineResult/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Annotations/OnInlineQuery/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Audio/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommand/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScope/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeAllChatAdministrators/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeAllGroupChats/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeAllPrivateChats/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeChat/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeChatAdministrators/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeChatMember/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/BotCommandScopeDefault/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Button/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/CallbackGame/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/CallbackQuery/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Chat/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Chat/Type/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatAction/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatInviteLink/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatLocation/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMember/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMemberUpdated/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatPermissions/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatPhoto/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChosenInlineResult/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/CoreMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/GameMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/PassportMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/PaymentMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/PollMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/StickerMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/TDLightMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Client/WebhookMethods/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Contact/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Dice/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Document/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/EncryptedCredentials/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/EncryptedPassportElement/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/EncryptedPassportElement/Type/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BadRequest/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BadWebhook/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BadWebhookAddrInfo/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BadWebhookNoAddressAssociatedWithHostname/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BadWebhookPort/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BotBlocked/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BotDomainInvalid/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/BotKicked/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ButtonDataInvalid/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ButtonURLInvalid/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantDemoteChatCreator/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantGetUpdates/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantInitiateConversation/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantParseEntities/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantParseUrl/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantRemoveChatOwner/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantRestrictSelf/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CantTalkWithBots/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ChatAdminRequired/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ChatDescriptionIsNotModified/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ChatIdIsEmpty/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ChatNotFound/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ConflictError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ConnectionLost/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/CurrencyTotalAmountInvalid/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/GroupDeactivated/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/InlineKeyboardExpected/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/InvalidHTTPUrlContent/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/InvalidPeerID/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/InvalidQueryID/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/InvalidResultID/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/InvalidStickersSet/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/InvalidUserId/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MemberListInaccessible/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageCantBeDeleted/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageCantBeEdited/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageIdInvalid/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageIdentifierNotSpecified/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageIsNotAPoll/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageIsTooLong/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageNotModified/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageTextIsEmpty/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageToDeleteNotFound/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageToEditNotFound/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageToForwardNotFound/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageToReplyNotFound/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MessageWithPollNotFound/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MethodIsNotAvailable/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MethodNotAvailableInPrivateChats/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MethodNotKnown/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/MigrateToChat/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/NeedAdministratorRightsInTheChannel/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/NetworkError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/NoStickerInRequest/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/NotEnoughRightsOther/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/NotEnoughRightsToPinMessage/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/NotEnoughRightsToRestrict/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/NotFound/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ObjectExpectedAsReplyMarkup/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PaymentProviderInvalid/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PhotoAsInputFileRequired/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PhotoDimensions/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollCantBeStopped/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollCantHaveMoreOptions/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollHasAlreadyClosed/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollMustHaveMoreOptions/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollOptionsMustBeNonEmpty/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollQuestionMustBeNonEmpty/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollSizeError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollsCantBeSentToPrivateChats/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PollsOptionsLengthTooLong/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/PoolRetryAttemptsExceeded/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/RequestTimeoutError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ResultIdDuplicate/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/RetryAfter/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/StartParamInvalid/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/TerminatedByOtherGetUpdates/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/Throttled/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/TooMuchMessages/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/TypeOfFileMismatch/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/URLHostIsEmpty/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/Unauthorized/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/UnavailableMembers/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/UnsupportedUrlProtocol/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/UserDeactivated/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ValidationError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/WebhookRequireHTTPS/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/WrongFileIdentifier/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/WrongLiveLocationPeriod/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/WrongRemoteFileIdSpecified/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/EventHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ForceReply/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Bold/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Code/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/CodeBlock/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Group/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Italic/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/KeyValueItem/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/LineItem/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Link/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Section/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Strikethrough/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/SubSection/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/SubSubSection/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Token/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/Underline/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Format/UserMention/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Game/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/GameHighScore/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/CallbackQueryHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/CallbackQueryHandler/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/ChosenInlineResultHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/ChosenInlineResultHandler/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/CommandHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/CommandHandler/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/EditedHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/EditedHandler/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/HearsHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/HearsHandler/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/InlineQueryHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/InlineQueryHandler/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/UpdateHandler/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Handlers/UpdateHandler/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/HashPersistence/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Helpers/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineKeyboardButton/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineKeyboardMarkup/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineKeyboardMarkup/Builder/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQuery/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResult/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResult/Builder/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultArticle/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultAudio/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedAudio/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedDocument/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedGif/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedMpeg4Gif/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedPhoto/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedSticker/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedVideo/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultCachedVoice/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultContact/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultDocument/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultGame/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultGif/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultLocation/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultMpeg4Gif/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultPhoto/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultVenue/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultVideo/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InlineQueryResultVoice/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputContactMessageContent/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputInvoiceMessageContent/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputLocationMessageContent/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputMedia/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputMediaAnimation/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputMediaAudio/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputMediaDocument/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputMediaPhoto/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputMediaVideo/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputMessageContent/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputTextMessageContent/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/InputVenueMessageContent/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Invoice/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/JsonPersistence/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/KemalAdapter/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/KemalAdapter/TGModel/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/KeyboardBuilder/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/KeyboardButton/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/KeyboardButtonPollType/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/LabeledPrice/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Location/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/LoginURL/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/MaskPosition/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Message/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Message/SenderType/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/MessageAutoDeleteTimerChanged/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/MessageEntity/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Middleware/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Middleware/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/Middleware/ContinueIteration/</loc>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/MiddlewareProc/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Model/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/NilPersistence/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/OrderInfo/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PaginatedKeyboard/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ParseMode/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportData/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementError/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorDataField/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorFile/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorFiles/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorFrontSide/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorReverseSide/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorSelfie/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorTranslationFile/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorTranslationFiles/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportElementErrorUnspecified/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PassportFile/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Persistence/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PhotoSize/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Poll/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Poll/Type/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PollAnswer/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PollOption/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/PreCheckoutQuery/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ProximityAlertTriggered/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ReplyKeyboardMarkup/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ReplyKeyboardMarkup/Builder/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ReplyKeyboardRemove/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/RoutedMenu/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/RoutedMenu/Builder/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/RoutedMenu/Page/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/RoutedMenu/Page/Builder/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/RoutedMenu/Page/KeyboardBuilder/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ShippingAddress/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ShippingOption/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ShippingQuery/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Stage/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Stage/Context/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Stage/Step/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Sticker/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/StickerSet/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/SuccessfulPayment/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/TFile/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Update/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/UpdateAction/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/User/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/UserProfilePhotos/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Venue/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Video/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/VideoNote/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Voice/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatEnded/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatParticipantsInvited/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatScheduled/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatStarted/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/WebhookInfo/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/async/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/background_jobs/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/emoji_support/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/format/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/handlers/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/kemal_middleware/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/multilevel_menus/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/paginated_keyboards/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/stage/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/features/tdlight/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/resources/faq/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/usage/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tourmaline.dev/usage/getting_started/</loc>
-         <lastmod>2021-12-21</lastmod>
+         <lastmod>2021-12-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
