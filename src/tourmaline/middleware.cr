@@ -4,6 +4,12 @@ module Tourmaline
   module Middleware
     abstract def call(client : Client, update : Update)
 
+    def next
+      raise ContinueIteration.new
+    end
+
+    class ContinueIteration < Exception; end
+
     struct Context
       private abstract struct Param
         abstract def value

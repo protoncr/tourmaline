@@ -40,7 +40,7 @@ module Tourmaline
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
     # `@bot` to `get_me`.
-    getter bot : User { get_me }
+    getter! bot : User
 
     property bot_token : String?
     property user_token : String?
@@ -152,6 +152,8 @@ module Tourmaline
 
       register_commands_with_botfather if @bot_token
 
+      @bot = self.get_me
+
       Signal::INT.trap { exit }
     end
 
@@ -177,23 +179,20 @@ module Tourmaline
       handled = [] of String
 
       # First call middlewares
-      @middlewares.each do |middleware|
-        middleware.call(self, update)
+      status = @middlewares.each do |middleware|
+        begin
+          middleware.call(self, update)
+        rescue Middleware::ContinueIteration
+          next true
+        end
+
+        break false
       end
 
-      # Then call individual event handlers
-      {% if flag?(:no_async) %}
-        @event_handlers.each do |handler|
-          unless handled.includes?(handler.group)
-            if handler.call(self, update)
-              @persistence.handle_update(update)
-              handled << handler.group
-            end
-          end
-        end
-      {% else %}
-        @event_handlers.each do |handler|
-          spawn do
+      if status
+        # Then call individual event handlers
+        {% if flag?(:no_async) %}
+          @event_handlers.each do |handler|
             unless handled.includes?(handler.group)
               if handler.call(self, update)
                 @persistence.handle_update(update)
@@ -201,8 +200,19 @@ module Tourmaline
               end
             end
           end
-        end
-      {% end %}
+        {% else %}
+          @event_handlers.each do |handler|
+            spawn do
+              unless handled.includes?(handler.group)
+                if handler.call(self, update)
+                  @persistence.handle_update(update)
+                  handled << handler.group
+                end
+              end
+            end
+          end
+        {% end %}
+      end
     end
 
     protected def do_finish_init(value)
