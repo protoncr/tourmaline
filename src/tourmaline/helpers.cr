@@ -105,7 +105,7 @@ module Tourmaline
       when 0, 1
         chars = ['_', '*', '`', '[', ']', '(', ')']
       when 2
-        chars = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
+        chars = (1..126).map(&.chr)
       else
         raise "Invalid version #{version} for `escape_md`"
       end
