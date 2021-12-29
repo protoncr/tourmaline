@@ -287,25 +287,18 @@ module Tourmaline
     end
 
     def sender_type
-      case sender_chat
-      when nil
-        if from.try(&.is_bot)
-          SenderType::Bot
-        else
-          SenderType::User
-        end
-      when chat
+      if sender_chat == chat
         if chat.type == Chat::Type::Channel
           SenderType::Channel
         else
           SenderType::AnonymousAdmin
         end
+      elsif is_automatic_forward
+        SenderType::ChannelForward
+      elsif from.try(&.is_bot)
+        SenderType::Bot
       else
-        if is_automatic_forward
-          SenderType::ChannelForward
-        else
-          SenderType::Channel
-        end
+        SenderType::User
       end
     end
 
