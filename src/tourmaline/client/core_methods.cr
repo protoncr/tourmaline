@@ -162,7 +162,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
         inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Bool | Message, "editMessageCaption", {
           chat_id:           chat_id,
@@ -225,7 +225,7 @@ module Tourmaline
           inline_message_id = inline_message.is_a?(String | Int::Primitive) ? inline_message : inline_message.id
         end
 
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message | Bool, "editMessageText", {
           chat_id:                  chat_id,
@@ -801,7 +801,7 @@ module Tourmaline
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendAudio", {
           chat_id:                     chat_id,
@@ -836,7 +836,7 @@ module Tourmaline
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendAnimation", {
           chat_id:                     chat_id,
@@ -949,7 +949,7 @@ module Tourmaline
         document = check_open_local_file(document)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendDocument", {
           chat_id:                     chat_id,
@@ -1012,7 +1012,7 @@ module Tourmaline
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendMessage", {
           chat_id:                     chat_id,
@@ -1043,7 +1043,7 @@ module Tourmaline
         from_chat_id = from_chat.is_a?(Int::Primitive | String) ? from_chat : from_chat.id
         message_id = message.is_a?(Int::Primitive) ? message : message.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request("copyMessage", {
           chat_id:                     chat_id,
@@ -1075,7 +1075,7 @@ module Tourmaline
         photo = check_open_local_file(photo)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendPhoto", {
           chat_id:                     chat_id,
@@ -1196,7 +1196,7 @@ module Tourmaline
         video = check_open_local_file(video)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendVideo", {
           chat_id:                     chat_id,
@@ -1235,7 +1235,7 @@ module Tourmaline
         video_note = check_open_local_file(video_note)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
-        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) : ParseMode.parse(parse_mode.to_s) : parse_mode
+        parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendVideoNote", {
           chat_id:                     chat_id,
