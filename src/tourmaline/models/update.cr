@@ -63,6 +63,19 @@ module Tourmaline
     @[JSON::Field(ignore: true)]
     getter context : Middleware::Context { Middleware::Context.new }
 
+    @[JSON::Field(ignore: true)]
+    getter update_actions : Array(UpdateAction) { UpdateAction.from_update(self) }
+
+    {% for action in Tourmaline::UpdateAction.constants %}
+    def {{ action.id.underscore }}?
+      if self.update_actions.includes?(UpdateAction::{{ action.id }})
+        true
+      else
+        false
+      end
+    end
+    {% end %}
+
     # Returns all users included in this update as a Set
     def users
       users = [] of User?

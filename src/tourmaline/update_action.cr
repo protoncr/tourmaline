@@ -5,6 +5,7 @@ module Tourmaline
     Message
     ReplyMessage
     EditedMessage
+    ForwardedMessage
     CallbackQuery
     InlineQuery
     ShippingQuery
@@ -18,6 +19,7 @@ module Tourmaline
     ViaBot
     Text
     Caption
+    Animation
     Audio
     Document
     Photo
@@ -27,6 +29,7 @@ module Tourmaline
     Contact
     Location
     Venue
+    MediaGroup
     NewChatMembers
     LeftChatMember
     NewChatTitle
@@ -52,6 +55,7 @@ module Tourmaline
     VoiceChatStarted
     VoiceChatEnded
     VoiceChatParticipantsInvited
+    ReplyMarkup
 
     Dice # 🎲
     Dart # 🎯
@@ -100,6 +104,7 @@ module Tourmaline
       if message = update.message
         actions << UpdateAction::Message
         actions << UpdateAction::ReplyMessage if message.reply_message
+        actions << UpdateAction::ForwardedMessage if message.forward_date
 
         if chat = message.chat
           actions << UpdateAction::PinnedMessage if chat.pinned_message
@@ -108,6 +113,7 @@ module Tourmaline
         actions << UpdateAction::ViaBot if message.via_bot
         actions << UpdateAction::Text if message.text
         actions << UpdateAction::Caption if message.caption
+        actions << UpdateAction::Animation if message.animation
         actions << UpdateAction::Audio if message.audio
         actions << UpdateAction::Document if message.document
         actions << UpdateAction::Photo if message.photo.size > 0
@@ -117,6 +123,7 @@ module Tourmaline
         actions << UpdateAction::Contact if message.contact
         actions << UpdateAction::Location if message.location
         actions << UpdateAction::Venue if message.venue
+        actions << UpdateAction::MediaGroup if message.media_group_id
         actions << UpdateAction::NewChatMembers if message.new_chat_members.size > 0
         actions << UpdateAction::LeftChatMember if message.left_chat_member
         actions << UpdateAction::NewChatTitle if message.new_chat_title
@@ -140,6 +147,7 @@ module Tourmaline
         actions << UpdateAction::VoiceChatStarted if message.voice_chat_started
         actions << UpdateAction::VoiceChatEnded if message.voice_chat_ended
         actions << UpdateAction::VoiceChatParticipantsInvited if message.voice_chat_participants_invited
+        actions << UpdateAction::ReplyMarkup if message.reply_markup
 
         if dice = message.dice
           case dice.emoji
