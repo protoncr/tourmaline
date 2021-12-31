@@ -68,14 +68,14 @@ module Tourmaline
                    end
 
       text = text.gsub('\u{0}', "") + ' '
-      reader = Char::Reader.new(text)
+      codepoints = text.to_utf16
 
       io = IO::Memory.new
-      while reader.pos != text.size
-        i = reader.pos
-        char = reader.current_char
+      io.set_encoding("UTF-16")
 
-        if escape
+      codepoints.each_with_index do |codepoint, i|
+        if escape && codepoint < 128
+          char = codepoint.chr
           case parse_mode
           in ParseMode::HTML
             char = escape_html(char)
@@ -87,15 +87,19 @@ module Tourmaline
         end
 
         if entities = end_entities[i]?
-          newline_count = 0
-          loop do
-            io.seek(-1, :current)
-            if (byte = io.read_byte) && byte.chr == '\n'
-              newline_count += 1
-              io.seek(-1, :current)
-            else break
-            end
-          end
+          # TODO:
+          # newline_count = 0
+          # loop do
+          #   io.seek(-1, :current)
+          #   bytes = io.peek
+          #   if bytes[0].chr == '\n'
+          #     newline_count += 1
+          #     io.seek(-1, :current)
+          #   else
+          #     io.seek(1, :current)
+          #     break
+          #   end
+          # end
 
           entities.each do |entity|
             if pieces = entity_map[entity.type]?
@@ -106,7 +110,7 @@ module Tourmaline
             end
           end
 
-          io << "\n" * newline_count
+          # io << ("\n" * newline_count)
           end_entities.delete(i)
         end
 
@@ -124,10 +128,15 @@ module Tourmaline
           end
         end
 
-        io << char
-        reader.next_char if reader.has_next?
+        if char
+          io << char
+        else
+          io.write_bytes(codepoint, IO::ByteFormat::LittleEndian)
+        end
       end
-      io.rewind.gets_to_end
+
+      result = io.rewind.gets_to_end
+      result
     end
 
     def random_string(length)
@@ -138,9 +147,9 @@ module Tourmaline
 
     def escape_html(text)
       text.to_s
+        .gsub('&', "&amp;")
         .gsub('<', "&lt;")
         .gsub('>', "&gt;")
-        .gsub('&', "&amp;")
     end
 
     def escape_md(text, version = 1)
