@@ -136,6 +136,7 @@ module Tourmaline
       end
 
       result = io.rewind.gets_to_end
+      puts result
       result
     end
 
