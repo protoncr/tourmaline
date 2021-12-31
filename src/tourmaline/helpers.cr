@@ -51,51 +51,83 @@ module Tourmaline
     }
 
     def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown, escape : Bool = false)
-      start_entities = ents.reduce({} of Int32 => MessageEntity) { |acc, e| acc[e.offset] = e; acc }
-      end_entities = ents.reduce({} of Int32 => MessageEntity) { |acc, e| acc[e.offset + e.length] = e; acc }
-
-      chars = text.chars
-      chars << ' ' # The last entity doesn't complete without this
+      end_entities = {} of Int32 => Array(MessageEntity)
+      start_entities = ents.reduce({} of Int32 => Array(MessageEntity)) do |acc, e|
+        acc[e.offset] ||= [] of MessageEntity
+        acc[e.offset] << e
+        acc
+      end
 
       entity_map = case parse_mode
-                   when ParseMode::Markdown
+                   in ParseMode::Markdown
                      MD_ENTITY_MAP
-                   when ParseMode::MarkdownV2
+                   in ParseMode::MarkdownV2
                      MDV2_ENTITY_MAP
-                   when ParseMode::HTML
+                   in ParseMode::HTML
                      HTML_ENTITY_MAP
-                   else
-                     raise "Unreachable"
                    end
 
-      String.build do |str|
-        chars.each_with_index do |char, i|
-          if (entity = start_entities[i]?) && (pieces = entity_map[entity.type]?)
-            str << pieces[0]
-              .sub("{language}", entity.language.to_s)
-              .sub("{id}", entity.user.try &.id.to_s)
-              .sub("{url}", entity.url.to_s)
-          elsif (entity = end_entities[i]?) && (pieces = entity_map[entity.type]?)
-            str << pieces[1]
-              .sub("{language}", entity.language.to_s)
-              .sub("{id}", entity.user.try &.id.to_s)
-              .sub("{url}", entity.url.to_s)
-          end
+      text = text.gsub('\u{0}', "") + ' '
+      reader = Char::Reader.new(text)
 
-          if escape
-            case parse_mode
-            in ParseMode::HTML
-              char = escape_html(char)
-            in ParseMode::Markdown
-              char = escape_md(char, 1)
-            in ParseMode::MarkdownV2
-              char = escape_md(char, 2)
+      io = IO::Memory.new
+      while reader.pos != text.size
+        i = reader.pos
+        char = reader.current_char
+
+        if escape
+          case parse_mode
+          in ParseMode::HTML
+            char = escape_html(char)
+          in ParseMode::Markdown
+            char = escape_md(char, 1)
+          in ParseMode::MarkdownV2
+            char = escape_md(char, 2)
+          end
+        end
+
+        if entities = end_entities[i]?
+          newline_count = 0
+          loop do
+            io.seek(-1, :current)
+            if (byte = io.read_byte) && byte.chr == '\n'
+              newline_count += 1
+              io.seek(-1, :current)
+            else break
             end
           end
 
-          str << char unless (i == chars.size - 1)
+          entities.each do |entity|
+            if pieces = entity_map[entity.type]?
+              io << pieces[1]
+                .sub("{language}", entity.language.to_s)
+                .sub("{id}", entity.user.try &.id.to_s)
+                .sub("{url}", entity.url.to_s)
+            end
+          end
+
+          io << "\n" * newline_count
+          end_entities.delete(i)
         end
+
+        if entities = start_entities[i]?
+          entities.each do |entity|
+            if pieces = entity_map[entity.type]?
+              io << pieces[0]
+                .sub("{language}", entity.language.to_s)
+                .sub("{id}", entity.user.try &.id.to_s)
+                .sub("{url}", entity.url.to_s)
+
+              end_entities[entity.offset + entity.length] ||= [] of MessageEntity
+              end_entities[entity.offset + entity.length] << entity
+            end
+          end
+        end
+
+        io << char
+        reader.next_char if reader.has_next?
       end
+      io.rewind.gets_to_end
     end
 
     def random_string(length)
