@@ -174,15 +174,15 @@ module Tourmaline
       end
     end
 
-    def raw_text(parse_mode : ParseMode = :markdown)
+    def raw_text(parse_mode : ParseMode = :markdown, escape : Bool = false)
       if txt = text
-        Helpers.unparse_text(txt, entities, parse_mode)
+        Helpers.unparse_text(txt, entities, parse_mode, escape)
       end
     end
 
-    def raw_caption(parse_mode : ParseMode = :markdown)
+    def raw_caption(parse_mode : ParseMode = :markdown, escape : Bool = false)
       if txt = caption
-        Helpers.unparse_text(txt, entities, parse_mode)
+        Helpers.unparse_text(txt, entities, parse_mode, escape)
       end
     end
 

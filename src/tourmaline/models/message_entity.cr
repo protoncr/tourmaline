@@ -5,7 +5,7 @@ module Tourmaline
 
     MENTION_TYPES = %w[
       mention text_mention hashtag cashtag bot_command url email phone_number
-      bold italic code pre text_link underline strikethrough
+      bold italic code pre text_link underline strikethrough spoiler
     ]
 
     getter type : String

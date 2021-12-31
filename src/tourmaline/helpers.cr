@@ -48,7 +48,7 @@ module Tourmaline
       "text_link"     => {"<a href=\"{url}\">", "</a>"},
     }
 
-    def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown)
+    def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown, escape : Bool = false)
       start_entities = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset] = e; acc }
       end_entities = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset + e.length] = e; acc }
 
@@ -80,6 +80,17 @@ module Tourmaline
               .sub("{url}", entity.url.to_s)
           end
 
+          if escape
+            case parse_mode
+            in ParseMode::HTML
+              char = escape_html(char)
+            in ParseMode::Markdown
+              char = escape_md(char, 1)
+            in ParseMode::MarkdownV2
+              char = escape_md(char, 2)
+            end
+          end
+
           str << char unless (i == chars.size - 1)
         end
       end
@@ -92,7 +103,7 @@ module Tourmaline
     end
 
     def escape_html(text)
-      text
+      text.to_s
         .gsub('<', "&lt;")
         .gsub('>', "&gt;")
         .gsub('&', "&amp;")

@@ -17,14 +17,12 @@ module Tourmaline
 
       def call(client : Client, update : Update)
         actions = UpdateAction.from_update(update)
-        result = false
         @actions.each do |action|
           if action.in?(actions)
             @proc.call(update)
-            break result = true
+            break
           end
         end
-        result
       end
     end
   end

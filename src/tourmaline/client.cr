@@ -51,9 +51,9 @@ module Tourmaline
     # Default prefixes to use for commands
     class_property default_command_prefixes : Array(String) = DEFAULT_COMMAND_PREFIXES
 
-    private getter event_handlers : Array(EventHandler)
-    private getter persistence : Persistence
-    private getter middlewares : Array(Middleware | MiddlewareProc)
+    getter event_handlers : Array(EventHandler)
+    getter persistence : Persistence
+    getter middlewares : Array(Middleware | MiddlewareProc)
 
     @pool : DB::Pool(HTTP::Client)
     @auth_code : String?
@@ -148,8 +148,8 @@ module Tourmaline
       end
 
       @event_handlers = [] of EventHandler
-      register_event_handler_annotations
 
+      register_event_handler_annotations
       register_commands_with_botfather if @bot_token
 
       @bot = self.get_me
@@ -176,43 +176,13 @@ module Tourmaline
     # Calls all handlers in the stack with the given update and
     # this client instance.
     def handle_update(update : Update)
-      handled = [] of String
-
       # First call middlewares
-      success = true
       @middlewares.each do |middleware|
         begin
           middleware.call(self, update)
         rescue Middleware::ContinueIteration
           next
         end
-
-        break success = false
-      end
-
-      if success
-        # Then call individual event handlers
-        {% if flag?(:no_async) %}
-          @event_handlers.each do |handler|
-            unless handled.includes?(handler.group)
-              if handler.call(self, update)
-                @persistence.handle_update(update)
-                handled << handler.group
-              end
-            end
-          end
-        {% else %}
-          @event_handlers.each do |handler|
-            spawn do
-              unless handled.includes?(handler.group)
-                if handler.call(self, update)
-                  @persistence.handle_update(update)
-                  handled << handler.group
-                end
-              end
-            end
-          end
-        {% end %}
       end
     end
 

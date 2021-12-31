@@ -17,7 +17,6 @@ module Tourmaline
             if match = data.match(@pattern)
               context = Context.new(update, update.context, query.message, query, match)
               @proc.call(context)
-              return true
             end
           end
         end

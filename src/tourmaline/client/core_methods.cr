@@ -1399,7 +1399,13 @@ module Tourmaline
       # Start polling for updates. This method uses a combination of `#get_updates`
       # and `#handle_update` to send continuously check Telegram's servers
       # for updates.
-      def poll(delete_webhook = false)
+      def poll(delete_webhook = false, no_middleware_check = false)
+        unless no_middleware_check
+          if @middleware.empty?
+            self.use(EventMiddleware.new)
+          end
+        end
+
         self.delete_webhook if delete_webhook
         @polling = true
 

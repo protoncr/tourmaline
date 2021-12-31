@@ -63,3 +63,5 @@ module Tourmaline
     end
   end
 end
+
+require "./middleware/*"

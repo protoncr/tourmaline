@@ -18,7 +18,6 @@ module Tourmaline
           end
           context = Context.new(update, update.context, result, match)
           @proc.call(context)
-          return true
         end
       end
 

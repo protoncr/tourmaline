@@ -12,7 +12,6 @@ module Tourmaline
         if message = update.edited_message || update.edited_channel_post
           context = Context.new(update, update.context, message)
           @proc.call(context)
-          return true
         end
       end
 

@@ -6,7 +6,13 @@ module Tourmaline
       # bots in production.
       #
       # Note: Don't forget to call `set_webhook` first! This method does not do it for you.
-      def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, &block : HTTP::Server::Context ->)
+      def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, no_middleware_check = false, &block : HTTP::Server::Context ->)
+        unless no_middleware_check
+          if @middleware.empty?
+            self.use(EventMiddleware.new)
+          end
+        end
+
         @webhook_server = server = HTTP::Server.new do |context|
           Fiber.current.telegram_bot_server_http_context = context
           begin
@@ -33,8 +39,8 @@ module Tourmaline
       end
 
       # :ditto:
-      def serve(path = "/", host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil)
-        serve(host, port, ssl_certificate_path, ssl_key_path) do |context|
+      def serve(path = "/", host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, no_middleware_check = false)
+        serve(host, port, ssl_certificate_path, ssl_key_path, no_middleware_check) do |context|
           next unless context.request.method == "POST"
           next unless context.request.path == path
           if body = context.request.body
