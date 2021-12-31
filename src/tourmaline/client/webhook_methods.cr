@@ -8,7 +8,7 @@ module Tourmaline
       # Note: Don't forget to call `set_webhook` first! This method does not do it for you.
       def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, no_middleware_check = false, &block : HTTP::Server::Context ->)
         unless no_middleware_check
-          if @middleware.empty?
+          if @middlewares.empty?
             self.use(EventMiddleware.new)
           end
         end

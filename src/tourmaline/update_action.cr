@@ -57,13 +57,13 @@ module Tourmaline
     VoiceChatParticipantsInvited
     ReplyMarkup
 
-    Dice # 🎲
-    Dart # 🎯
-    Basketball # 🏀
-    Football # ⚽️
-    Soccerball # ⚽️ but American
+    Dice        # 🎲
+    Dart        # 🎯
+    Basketball  # 🏀
+    Football    # ⚽️
+    Soccerball  # ⚽️ but American
     SlotMachine # 🎰
-    Bowling # 🎳
+    Bowling     # 🎳
 
     BotMessage
     UserMessage
@@ -86,6 +86,7 @@ module Tourmaline
     TextLinkEntity
     UnderlineEntity
     StrikethroughEntity
+    SpoilerEntity
 
     def to_s
       super.to_s.underscore
@@ -213,6 +214,8 @@ module Tourmaline
             actions << UpdateAction::UnderlineEntity
           when "strikethrough"
             actions << UpdateAction::StrikethroughEntity
+          when "spoiler"
+            actions << UpdateAction::SpoilerEntity
           end
         end
       end

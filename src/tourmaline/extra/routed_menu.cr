@@ -168,7 +168,7 @@ module Tourmaline
       menu.client = self
       start_page = menu.current_page
 
-      kwargs = { parse_mode: start_page.parse_mode }.merge(kwargs)
+      kwargs = {parse_mode: start_page.parse_mode}.merge(kwargs)
       send_message(chat_id, start_page.content, **kwargs, reply_markup: start_page.buttons)
     end
   end

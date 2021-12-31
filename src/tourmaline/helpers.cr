@@ -34,6 +34,7 @@ module Tourmaline
       "strikethrough" => {"~", "~"},
       "text_mention"  => {"[", "](tg://user?id={id})"},
       "text_link"     => {"[", "]({url})"},
+      "spoiler"       => {"||", "||"},
     }
 
     HTML_ENTITY_MAP = {
@@ -46,6 +47,7 @@ module Tourmaline
       "strikethrough" => {"<s>", "</s>"},
       "text_mention"  => {"<a href=\"tg://user?id={id}\">", "</a>"},
       "text_link"     => {"<a href=\"{url}\">", "</a>"},
+      "spoiler"       => {"<span class=\"tg-spoiler\">", "</span>"},
     }
 
     def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown, escape : Bool = false)

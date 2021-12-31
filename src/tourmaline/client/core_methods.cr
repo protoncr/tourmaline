@@ -245,7 +245,8 @@ module Tourmaline
         chat,
         from_chat,
         message,
-        disable_notification = false
+        disable_notification = false,
+        protect_content = false
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         message_id = message.is_a?(Int) ? message : message.id
@@ -256,6 +257,7 @@ module Tourmaline
           from_chat_id:         from_chat_id,
           message_id:           message_id,
           disable_notification: disable_notification,
+          protect_content:      protect_content,
         })
       end
 
@@ -795,6 +797,7 @@ module Tourmaline
         title = nil,
         parse_mode = @default_parse_mode,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -813,6 +816,7 @@ module Tourmaline
           title:                       title,
           parse_mode:                  parse_mode,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -830,6 +834,7 @@ module Tourmaline
         caption_entities = [] of MessageEntity,
         parse_mode = @default_parse_mode,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -849,6 +854,7 @@ module Tourmaline
           caption_entities:            caption_entities,
           parse_mode:                  parse_mode,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -887,6 +893,7 @@ module Tourmaline
         first_name,
         last_name = nil,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -900,6 +907,7 @@ module Tourmaline
           first_name:                  first_name,
           last_name:                   last_name,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -912,6 +920,7 @@ module Tourmaline
       def send_{{ val[0].id }}(
         chat,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -923,6 +932,7 @@ module Tourmaline
           chat_id:              chat_id,
           emoji:                {{ val[1] }},
           disable_notification: disable_notification,
+          protect_content: protect_content,
           reply_to_message_id:  reply_to_message_id,
           allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup,
@@ -942,6 +952,7 @@ module Tourmaline
         caption_entities = [] of MessageEntity,
         parse_mode = @default_parse_mode,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -958,6 +969,7 @@ module Tourmaline
           caption_entities:            caption_entities,
           parse_mode:                  parse_mode,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -975,6 +987,7 @@ module Tourmaline
         proximity_alert_radius = nil,
         heading = nil,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -991,6 +1004,7 @@ module Tourmaline
           heading:                     heading,
           proximity_alert_radius:      proximity_alert_radius,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1006,6 +1020,7 @@ module Tourmaline
         entities = [] of MessageEntity,
         link_preview = false,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -1021,6 +1036,7 @@ module Tourmaline
           entities:                    entities,
           disable_web_page_preview:    !link_preview,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1035,6 +1051,7 @@ module Tourmaline
         parse_mode = @default_parse_mode,
         caption_entities = [] of MessageEntity,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -1053,6 +1070,7 @@ module Tourmaline
           parse_mode:                  parse_mode,
           caption_entities:            caption_entities,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1068,6 +1086,7 @@ module Tourmaline
         parse_mode = @default_parse_mode,
         caption_entities = [] of MessageEntity,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -1084,6 +1103,7 @@ module Tourmaline
           parse_mode:                  parse_mode,
           caption_entities:            caption_entities,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1121,6 +1141,7 @@ module Tourmaline
         chat,
         media : Array(InputMediaPhoto | InputMediaVideo | InputMediaAudio | InputMediaDocument),
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false
       )
@@ -1131,6 +1152,7 @@ module Tourmaline
           chat_id:                     chat_id,
           media:                       media,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
         })
@@ -1149,6 +1171,7 @@ module Tourmaline
         google_place_id = nil,
         google_place_type = nil,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -1167,6 +1190,7 @@ module Tourmaline
           google_place_id:             google_place_id,
           google_place_type:           google_place_type,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1189,6 +1213,7 @@ module Tourmaline
         caption_entities = [] of MessageEntity,
         parse_mode = @default_parse_mode,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -1208,6 +1233,7 @@ module Tourmaline
           caption_entities:            caption_entities,
           parse_mode:                  parse_mode,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1228,6 +1254,7 @@ module Tourmaline
         caption_entities = [] of MessageEntity,
         parse_mode = @default_parse_mode,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -1247,6 +1274,7 @@ module Tourmaline
           caption_entities:            caption_entities,
           parse_mode:                  parse_mode,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1269,6 +1297,7 @@ module Tourmaline
         preformer = nil,
         title = nil,
         disable_notification = false,
+        protect_content = false,
         reply_to_message = nil,
         allow_sending_without_reply = false,
         reply_markup = nil
@@ -1284,6 +1313,7 @@ module Tourmaline
           caption_entities:            caption_entities,
           duration:                    duration,
           disable_notification:        disable_notification,
+          protect_content:             protect_content,
           reply_to_message_id:         reply_to_message_id,
           allow_sending_without_reply: allow_sending_without_reply,
           reply_markup:                reply_markup ? reply_markup.to_json : nil,
@@ -1401,7 +1431,7 @@ module Tourmaline
       # for updates.
       def poll(delete_webhook = false, no_middleware_check = false)
         unless no_middleware_check
-          if @middleware.empty?
+          if @middlewares.empty?
             self.use(EventMiddleware.new)
           end
         end
