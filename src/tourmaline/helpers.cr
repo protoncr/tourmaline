@@ -51,8 +51,8 @@ module Tourmaline
     }
 
     def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown, escape : Bool = false)
-      start_entities = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset] = e; acc }
-      end_entities = ents.reduce({} of Int64 => MessageEntity) { |acc, e| acc[e.offset + e.length] = e; acc }
+      start_entities = ents.reduce({} of Int32 => MessageEntity) { |acc, e| acc[e.offset] = e; acc }
+      end_entities = ents.reduce({} of Int32 => MessageEntity) { |acc, e| acc[e.offset + e.length] = e; acc }
 
       chars = text.chars
       chars << ' ' # The last entity doesn't complete without this

@@ -10,9 +10,9 @@ module Tourmaline
 
     getter type : String
 
-    getter offset : Int64
+    getter offset : Int32
 
-    getter length : Int64
+    getter length : Int32
 
     getter url : String?
 
