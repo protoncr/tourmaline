@@ -135,9 +135,7 @@ module Tourmaline
         end
       end
 
-      result = io.rewind.gets_to_end
-      puts result
-      result
+      io.rewind.gets_to_end
     end
 
     def random_string(length)
