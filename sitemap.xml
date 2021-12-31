@@ -1196,12 +1196,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/Middleware/ContinueIteration/</loc>
-         <lastmod>2021-12-31</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/MiddlewareProc/</loc>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/Middleware/StopIteration/</loc>
          <lastmod>2021-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
