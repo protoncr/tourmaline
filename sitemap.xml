@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Slice/</loc>
+         <lastmod>2021-12-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/String/</loc>
          <lastmod>2021-12-31</lastmod>
          <changefreq>daily</changefreq>
