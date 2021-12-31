@@ -1,14 +1,19 @@
 module Tourmaline
-  alias MiddlewareProc = Proc(Client, Update, Nil)
-
   module Middleware
+    @continue_iteration : Bool = false
+
     abstract def call(client : Client, update : Update)
 
     def next
-      raise ContinueIteration.new
+      @continue_iteration = true
     end
 
-    class ContinueIteration < Exception; end
+    def call_internal(client : Client, update : Update)
+      self.call(client, update)
+      raise StopIteration.new unless @continue_iteration
+    end
+
+    class StopIteration < Exception; end
 
     struct Context
       private abstract struct Param

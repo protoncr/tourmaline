@@ -53,7 +53,7 @@ module Tourmaline
 
     getter event_handlers : Array(EventHandler)
     getter persistence : Persistence
-    getter middlewares : Array(Middleware | MiddlewareProc)
+    getter middlewares : Array(Middleware)
 
     @pool : DB::Pool(HTTP::Client)
     @auth_code : String?
@@ -125,7 +125,7 @@ module Tourmaline
       @persistence = persistence
       @persistence.init
 
-      @middlewares = [] of Middleware | MiddlewareProc
+      @middlewares = [] of Middleware
 
       if !proxy
         if proxy_uri
@@ -179,9 +179,9 @@ module Tourmaline
       # First call middlewares
       @middlewares.each do |middleware|
         begin
-          middleware.call(self, update)
-        rescue Middleware::ContinueIteration
-          next
+          middleware.call_internal(self, update)
+        rescue Middleware::StopIteration
+          break
         end
       end
     end
