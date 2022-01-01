@@ -4,7 +4,7 @@ module Tourmaline
 
     def call(client : Client, update : Update)
       called = client.event_handlers.each do |handler|
-        if handler.call(client, update)
+        if handler.call(update)
           client.persistence.handle_update(update)
           break true
         end

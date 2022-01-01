@@ -3,12 +3,14 @@ module Tourmaline
     class EditedHandler < EventHandler
       ANNOTATION = Edited
 
-      def initialize(group = :default, priority = 0, &block : Context ->)
-        super(group, priority)
+      property client : Client
+
+      def initialize(@client : Client, &block : Context ->)
+        super()
         @proc = block
       end
 
-      def call(client : Client, update : Update)
+      def call(update : Update)
         if message = update.edited_message || update.edited_channel_post
           context = Context.new(update, update.context, message)
           @proc.call(context)

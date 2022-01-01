@@ -3,6 +3,9 @@ module Tourmaline
     class CommandHandler < EventHandler
       ANNOTATION = Command
 
+      # The parent client instance
+      property client : Client
+
       # Commands (without prefix) that this handler should respond to.
       property commands : Array(String)
 
@@ -43,10 +46,9 @@ module Tourmaline
       #     If `#admin_only` is true, `get_chat_adminstrators` will be run every time the
       #     handler is invoked. This should be fine in testing, but in production it's
       #     recommended to cache admins and do your own guarding.
-      def initialize(commands,
+      def initialize(@client,
+                     commands,
                      prefix = nil,
-                     group = :default,
-                     priority = 0,
                      @outgoing = true,
                      @private_only = false,
                      @group_only = false,
@@ -56,17 +58,20 @@ module Tourmaline
                      @register_as = nil,
                      @description = nil,
                      &block : Context ->)
-        super(group, priority)
-        prefix ||= Tourmaline::Client.default_command_prefixes
+        super()
+
+        if prefix
+          @prefixes = prefix.is_a?(Array) ? prefix : [prefix]
+        else
+          @prefixes = client.default_command_prefixes
+        end
 
         commands = commands.is_a?(Array) ? commands : [commands]
         @commands = commands.map(&.to_s)
-
-        @prefixes = prefix.is_a?(Array) ? prefix : [prefix]
         @proc = block
       end
 
-      def call(client : Client, update : Update)
+      def call(update : Update)
         if (message = update.message || update.channel_post) || (@on_edit && (message = update.edited_message || update.edited_channel_post))
           return if message.is_outgoing? unless @outgoing
           if ((raw_text = message.raw_text) && (text = message.text)) ||
@@ -76,7 +81,7 @@ module Tourmaline
 
             if @admin_only
               if from = message.from
-                admins = client.get_chat_administrators(message.chat.id)
+                admins = @client.get_chat_administrators(message.chat.id)
                 ids = admins.map(&.user.id)
                 return unless ids.includes?(from.id)
               end
@@ -96,7 +101,7 @@ module Tourmaline
 
             if command.includes?("@")
               command, botname = command.split("@", 2)
-              return unless botname.downcase == client.bot.username.to_s.downcase
+              return unless botname.downcase == @client.bot.username.to_s.downcase
             end
 
             prefix_re = /^#{@prefixes.map(&->Regex.escape(String)).join('|')}/

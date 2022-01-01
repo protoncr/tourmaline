@@ -3,15 +3,17 @@ module Tourmaline
     class HearsHandler < EventHandler
       ANNOTATION = Hears
 
-      getter pattern : Regex
+      property client : Client
 
-      def initialize(pattern : String | Regex, group = :default, priority = 0, &block : Context ->)
-        super(group, priority)
+      property pattern : Regex
+
+      def initialize(@client : Client, pattern : String | Regex, &block : Context ->)
+        super()
         @pattern = pattern.is_a?(Regex) ? pattern : Regex.new("#{Regex.escape(pattern)}")
         @proc = block
       end
 
-      def call(client : Client, update : Update)
+      def call(update : Update)
         if message = update.message || update.channel_post
           if (text = message.text) || (text = message.caption)
             if match = text.match(@pattern)

@@ -4,10 +4,12 @@ module Tourmaline
       ANNOTATION = On
       alias Context = Update
 
-      getter actions : Array(UpdateAction)
+      property client : Client
 
-      def initialize(actions, group = :default, priority = 0, &block : Context ->)
-        super(group, priority)
+      property actions : Array(UpdateAction)
+
+      def initialize(@client : Client, actions, &block : Context ->)
+        super()
         actions = [actions] unless actions.is_a?(Array)
         @actions = actions.map do |a|
           a.is_a?(UpdateAction) ? a : UpdateAction.parse(a.to_s)
@@ -15,7 +17,7 @@ module Tourmaline
         @proc = block
       end
 
-      def call(client : Client, update : Update)
+      def call(update : Update)
         actions = UpdateAction.from_update(update)
         @actions.each do |action|
           if action.in?(actions)

@@ -49,7 +49,7 @@ module Tourmaline
     property default_parse_mode : ParseMode
 
     # Default prefixes to use for commands
-    class_property default_command_prefixes : Array(String) = DEFAULT_COMMAND_PREFIXES
+    property default_command_prefixes : Array(String)
 
     getter event_handlers : Array(EventHandler)
     getter persistence : Persistence
@@ -113,6 +113,7 @@ module Tourmaline
                    @persistence : Persistence = NilPersistence.new,
                    @set_commands = false,
                    @default_parse_mode : ParseMode = ParseMode::Markdown,
+                   @default_command_prefixes : Array(String) = DEFAULT_COMMAND_PREFIXES,
                    pool_capacity = 200,
                    initial_pool_size = 20,
                    pool_timeout = 0.1,
@@ -149,7 +150,7 @@ module Tourmaline
 
       @event_handlers = [] of EventHandler
 
-      register_event_handler_annotations
+      register_event_handler_annotations(self)
       register_commands_with_botfather if @bot_token
 
       @bot = self.get_me
@@ -374,7 +375,6 @@ module Tourmaline
       registerable = commands
         .select { |c| c.register && c.description && !c.description.to_s.empty? }
         .select { |c| c.prefixes.includes?("/") }
-        .sort { |a, b| b.priority <=> a.priority }
 
       if registerable.size > 100
         Log.warn {
