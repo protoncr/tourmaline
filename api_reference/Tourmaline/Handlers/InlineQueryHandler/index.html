@@ -5391,7 +5391,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::InlineQueryHandler.new(pattern,group,priority,&)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::InlineQueryHandler.new(client,pattern,&)" class="md-nav__link">
     .new
   </a>
   
@@ -5411,8 +5411,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::InlineQueryHandler#call(client,update)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::InlineQueryHandler#call(update)" class="md-nav__link">
     #call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::InlineQueryHandler#client" class="md-nav__link">
+    #client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::InlineQueryHandler#client=(client)" class="md-nav__link">
+    #client=
   </a>
   
 </li>
@@ -5441,7 +5455,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/inline_query_handler.cr#L3" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/inline_query_handler.cr#L3" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -5468,25 +5482,47 @@
 <h2 id="Tourmaline::Handlers::InlineQueryHandler-constructors">Constructors<a href="#Tourmaline::Handlers::InlineQueryHandler-constructors" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-class_method">
-<h3 id="Tourmaline::Handlers::InlineQueryHandler.new(pattern,group,priority,&amp;)" class="doc doc-heading">    <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">pattern</span> <span class="p">:</span> <a href="../../../String/#String">String</a> <span class="o">|</span> <span class="n">Regex</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="ss">:default</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="Context/#Tourmaline::Handlers::InlineQueryHandler::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+<h3 id="Tourmaline::Handlers::InlineQueryHandler.new(client,pattern,&amp;)" class="doc doc-heading">    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a><span class="p">,</span> <span class="n">pattern</span> <span class="p">:</span> <a href="../../../String/#String">String</a> <span class="o">|</span> <span class="n">Regex</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="Context/#Tourmaline::Handlers::InlineQueryHandler::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Handlers::InlineQueryHandler.new(pattern,group,priority,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Handlers::InlineQueryHandler.new(client,pattern,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/inline_query_handler.cr#L8">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/inline_query_handler.cr#L10">View source</a>
 </div><h2 id="Tourmaline::Handlers::InlineQueryHandler-methods">Methods<a href="#Tourmaline::Handlers::InlineQueryHandler-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Handlers::InlineQueryHandler#call(client,update)" class="doc doc-heading">    <code>
-      #call<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a><span class="p">,</span> <span class="n">update</span> <span class="p">:</span> <a href="../../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Handlers::InlineQueryHandler#call(update)" class="doc doc-heading">    <code>
+      #call<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <a href="../../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Handlers::InlineQueryHandler#call(client,update)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Handlers::InlineQueryHandler#call(update)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/inline_query_handler.cr#L14">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/inline_query_handler.cr#L16">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Handlers::InlineQueryHandler#client" class="doc doc-heading">    <code>
+      #client<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a></code></span>
+    </code>
+<a href="#Tourmaline::Handlers::InlineQueryHandler#client" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/inline_query_handler.cr#L6">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Handlers::InlineQueryHandler#client=(client)" class="doc doc-heading">    <code>
+      #client=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Handlers::InlineQueryHandler#client=(client)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/inline_query_handler.cr#L6">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5497,7 +5533,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/inline_query_handler.cr#L6">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/inline_query_handler.cr#L8">View source</a>
 </div>      </div>
   </div>
 

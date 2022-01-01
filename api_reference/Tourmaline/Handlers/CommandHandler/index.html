@@ -5391,7 +5391,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::CommandHandler.new(client,commands,prefix,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&)" class="md-nav__link">
     .new
   </a>
   
@@ -5425,8 +5425,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Handlers::CommandHandler#call(client,update)" class="md-nav__link">
+  <a href="#Tourmaline::Handlers::CommandHandler#call(update)" class="md-nav__link">
     #call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::CommandHandler#client" class="md-nav__link">
+    #client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Handlers::CommandHandler#client=(client)" class="md-nav__link">
+    #client=
   </a>
   
 </li>
@@ -5574,7 +5588,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L3" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L3" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -5601,10 +5615,10 @@
 <h2 id="Tourmaline::Handlers::CommandHandler-constructors">Constructors<a href="#Tourmaline::Handlers::CommandHandler-constructors" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-class_method">
-<h3 id="Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)" class="doc doc-heading">    <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">commands</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="ss">:default</span><span class="p">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">outgoing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">private_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">group_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">admin_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">on_edit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register_as</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="Context/#Tourmaline::Handlers::CommandHandler::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+<h3 id="Tourmaline::Handlers::CommandHandler.new(client,commands,prefix,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)" class="doc doc-heading">    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">commands</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">outgoing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">private_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">group_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">admin_only</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">on_edit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">register_as</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="Context/#Tourmaline::Handlers::CommandHandler::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Handlers::CommandHandler.new(commands,prefix,group,priority,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Handlers::CommandHandler.new(client,commands,prefix,outgoing,private_only,group_only,admin_only,on_edit,register,register_as,description,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
 <p>Create a new <code>CommandHandler</code> instance using the provided <code>commands</code>. <code>commands</code> can
 be a single command string, or an array of possible commands.</p>
@@ -5615,7 +5629,7 @@ handler is invoked. This should be fine in testing, but in production it's
 recommended to cache admins and do your own guarding.</p>
 </div>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L46">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L49">View source</a>
 </div><h2 id="Tourmaline::Handlers::CommandHandler-methods">Methods<a href="#Tourmaline::Handlers::CommandHandler-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5626,7 +5640,7 @@ recommended to cache admins and do your own guarding.</p>
   <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent by a group admin.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L22">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L25">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5637,18 +5651,40 @@ recommended to cache admins and do your own guarding.</p>
   <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent by a group admin.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L22">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L25">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Handlers::CommandHandler#call(client,update)" class="doc doc-heading">    <code>
-      #call<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a><span class="p">,</span> <span class="n">update</span> <span class="p">:</span> <a href="../../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Handlers::CommandHandler#call(update)" class="doc doc-heading">    <code>
+      #call<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">update</span> <span class="p">:</span> <a href="../../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Handlers::CommandHandler#call(client,update)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Handlers::CommandHandler#call(update)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L69">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L74">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Handlers::CommandHandler#client" class="doc doc-heading">    <code>
+      #client<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a></code></span>
+    </code>
+<a href="#Tourmaline::Handlers::CommandHandler#client" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>The parent client instance</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L7">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Handlers::CommandHandler#client=(client)" class="doc doc-heading">    <code>
+      #client=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../../Client/#Tourmaline::Client">Client</a><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Handlers::CommandHandler#client=(client)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>The parent client instance</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L7">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5659,7 +5695,7 @@ recommended to cache admins and do your own guarding.</p>
   <div class="doc doc-contents ">
 <p>Commands (without prefix) that this handler should respond to.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L7">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L10">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5670,7 +5706,7 @@ recommended to cache admins and do your own guarding.</p>
   <div class="doc doc-contents ">
 <p>Commands (without prefix) that this handler should respond to.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L7">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L10">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5682,7 +5718,7 @@ recommended to cache admins and do your own guarding.</p>
 <p>Used when registering the command with BotFather. If <code>register</code> is true, but this
 is not set, the command will not be registered.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L37">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L40">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5694,7 +5730,7 @@ is not set, the command will not be registered.</p>  </div>
 <p>Used when registering the command with BotFather. If <code>register</code> is true, but this
 is not set, the command will not be registered.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L37">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L40">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5705,7 +5741,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in a group.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L19">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L22">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5716,7 +5752,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in a group.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L19">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L22">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5727,7 +5763,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>If true, this handler will also run (or re-run) when messages are edited.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L25">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L28">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5738,7 +5774,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>If true, this handler will also run (or re-run) when messages are edited.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L25">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L28">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5749,7 +5785,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>User API: if true, this command will only be activated by an outgoing message.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L13">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L16">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5760,7 +5796,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>User API: if true, this command will only be activated by an outgoing message.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L13">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L16">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5771,7 +5807,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>Prefixes that commands should start with.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L10">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L13">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5782,7 +5818,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>Prefixes that commands should start with.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L10">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L13">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5793,7 +5829,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in private.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L16">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L19">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5804,7 +5840,7 @@ is not set, the command will not be registered.</p>  </div>
   <div class="doc doc-contents ">
 <p>If true, this handler will only respond if the command is sent in private.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L16">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L19">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5816,7 +5852,7 @@ is not set, the command will not be registered.</p>  </div>
 <p>Register this command with BotFather. Only works is <code>prefixes</code> contains <code>/</code> (as
 it does by default), as non-botcommands can't be registed with BotFather.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L29">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L32">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5828,7 +5864,7 @@ it does by default), as non-botcommands can't be registed with BotFather.</p>  <
 <p>Register this command with BotFather. Only works is <code>prefixes</code> contains <code>/</code> (as
 it does by default), as non-botcommands can't be registed with BotFather.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L29">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L32">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5840,7 +5876,7 @@ it does by default), as non-botcommands can't be registed with BotFather.</p>  <
 <p>By default the first command in <code>commands</code> will be selected as the command name
 to register. If this property is set, it will be used instead.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L33">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L36">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5852,7 +5888,7 @@ to register. If this property is set, it will be used instead.</p>  </div>
 <p>By default the first command in <code>commands</code> will be selected as the command name
 to register. If this property is set, it will be used instead.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/d2c7039346119255fb1579e805dc68138091f0ed/src/tourmaline/handlers/command_handler.cr#L33">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/329e3c577a588f20c0316977beea0f7820947d20/src/tourmaline/handlers/command_handler.cr#L36">View source</a>
 </div>      </div>
   </div>
 
