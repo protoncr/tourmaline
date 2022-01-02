@@ -803,7 +803,7 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendAudio", {
@@ -840,7 +840,7 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendAnimation", {
@@ -899,7 +899,7 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendContact", {
           chat_id:                     chat_id,
@@ -926,7 +926,7 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendDice", {
           chat_id:              chat_id,
@@ -959,7 +959,7 @@ module Tourmaline
       )
         document = check_open_local_file(document)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendDocument", {
@@ -993,7 +993,7 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendLocation", {
           chat_id:                     chat_id,
@@ -1059,7 +1059,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         from_chat_id = from_chat.is_a?(Int::Primitive | String) ? from_chat : from_chat.id
         message_id = message.is_a?(Int::Primitive) ? message : message.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request("copyMessage", {
@@ -1093,7 +1093,7 @@ module Tourmaline
       )
         photo = check_open_local_file(photo)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendPhoto", {
@@ -1146,7 +1146,7 @@ module Tourmaline
         allow_sending_without_reply = false
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Array(Message), "sendMediaGroup", {
           chat_id:                     chat_id,
@@ -1177,7 +1177,7 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendVenue", {
           chat_id:                     chat_id,
@@ -1220,7 +1220,7 @@ module Tourmaline
       )
         video = check_open_local_file(video)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendVideo", {
@@ -1261,7 +1261,7 @@ module Tourmaline
       )
         video_note = check_open_local_file(video_note)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
         request(Message, "sendVideoNote", {
@@ -1304,7 +1304,7 @@ module Tourmaline
       )
         voice = check_open_local_file(voice)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendVoice", {
           chat_id:                     chat_id,
