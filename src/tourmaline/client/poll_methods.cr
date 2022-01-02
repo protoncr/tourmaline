@@ -32,7 +32,7 @@ module Tourmaline
 
         chat_id = chat.is_a?(Int) ? chat : chat.id
         if reply_to_message
-          reply_to_message = reply_to_message.is_a?(Int) ? reply_to_message : reply_to_message.id
+          reply_to_message = reply_to_message.is_a?(Int) ? reply_to_message : reply_to_message.message_id
         end
 
         request(Message, "sendPoll", {
@@ -59,7 +59,7 @@ module Tourmaline
         reply_markup = nil
       )
         chat_id = chat.is_a?(Int) ? chat : chat.id
-        message_id = message.is_a?(Int) ? message : message.id
+        message_id = message.is_a?(Int) ? message : message.message_id
 
         request(Poll, "stopPoll", {
           chat_id:      chat_id,
