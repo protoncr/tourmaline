@@ -177,7 +177,10 @@ module Tourmaline
     # Calls all handlers in the stack with the given update and
     # this client instance.
     def handle_update(update : Update)
-      # First call middlewares
+      # Add this client instance to the update and subtypes
+      do_finish_init(update)
+
+      # Call middlewares
       @middlewares.each do |middleware|
         begin
           middleware.call_internal(self, update)
@@ -218,9 +221,7 @@ module Tourmaline
       end
 
       response = request(path, params)
-      value = type.from_json(response)
-      do_finish_init(value)
-      value
+      type.from_json(response)
     end
 
     # Sends a json request to the Telegram Client API.
