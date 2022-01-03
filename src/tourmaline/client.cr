@@ -221,7 +221,9 @@ module Tourmaline
       end
 
       response = request(path, params)
-      type.from_json(response)
+      value = type.from_json(response)
+      do_finish_init(value)
+      value
     end
 
     # Sends a json request to the Telegram Client API.
