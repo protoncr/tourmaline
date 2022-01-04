@@ -76,10 +76,10 @@ module Tourmaline
           return if message.is_outgoing? unless @outgoing
           if ((raw_text = message.raw_text) && (text = message.text)) ||
              (raw_text = message.raw_caption && (text = message.caption))
-            return if private_only && message.chat.type != Chat::Type::Private
-            return if (group_only || admin_only) && message.chat.type == Chat::Type::Private
+            return if private_only && message.chat.private?
+            return if (group_only || admin_only) && message.chat.private?
 
-            if @admin_only
+            if @admin_only && !message.chat.private? && !message.chat.channel?
               if from = message.from
                 admins = @client.get_chat_administrators(message.chat.id)
                 ids = admins.map(&.user.id)

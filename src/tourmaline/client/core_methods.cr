@@ -383,7 +383,7 @@ module Tourmaline
       # > if the `All Members Are Admins` setting is off in the target group.
       # > Otherwise members may only be removed by the group's creator or
       # > by the member that added them.
-      def kick_chat_member(
+      def ban_chat_member(
         chat,
         user,
         until_date = nil,
@@ -393,12 +393,16 @@ module Tourmaline
         user_id = user.is_a?(Int) ? user : user.id
         until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
 
-        request(Bool, "kickChatMember", {
+        request(Bool, "banChatMember", {
           chat_id:         chat_id,
           user_id:         user_id,
           until_date:      until_date,
           revoke_messages: revoke_messages,
         })
+      end
+
+      def kick_chat_member(*args, **kwargs)
+        ban_chat_member(*args, **kwargs)
       end
 
       # Use this method to unban a previously kicked user in a supergroup
