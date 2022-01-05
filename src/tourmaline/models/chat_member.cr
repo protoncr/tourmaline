@@ -23,6 +23,8 @@ module Tourmaline
 
     getter can_delete_messages : Bool?
 
+    getter can_manage_voice_chats : Bool?
+
     getter can_restrict_members : Bool?
 
     getter can_promote_members : Bool?
