@@ -169,7 +169,7 @@ module Tourmaline
 
     def text_entities
       [entities, caption_entities].flatten.reduce({} of MessageEntity => String) do |acc, ent|
-        acc[ent] = text.to_s[ent.offset..ent.length]
+        acc[ent] = text.to_s[ent.offset, ent.length]
         acc
       end
     end
