@@ -564,7 +564,7 @@ module Tourmaline
       # Returns True on success.
       def ban_chat_sender_chat(chat, sender_chat)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        sender_chat_id = sender_chat.is_a?(Int::Primitive) ? chat : chat.id
+        sender_chat_id = sender_chat.is_a?(Int::Primitive) ? sender_chat : sender_chat.id
 
         request(Bool, "banChatSenderChat", {
           chat_id:        chat_id,
@@ -578,7 +578,7 @@ module Tourmaline
       # Returns True on success.
       def unban_chat_sender_chat(chat, sender_chat)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-        sender_chat_id = sender_chat.is_a?(Int::Primitive) ? chat : chat.id
+        sender_chat_id = sender_chat.is_a?(Int::Primitive) ? sender_chat : sender_chat.id
 
         request(Bool, "unbanChatSenderChat", {
           chat_id:        chat_id,

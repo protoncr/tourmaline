@@ -21,11 +21,13 @@ module Tourmaline
                 MemberListInaccessible
               when /chat not found/
                 ChatNotFound
+              when /user not found/
+                UserNotFound
               when /chat_id is empty/
                 ChatIdIsEmpty
-              when /user_id_invalid/
+              when /invalid user_id specified/
                 text = "Invalid user id"
-                BotDomainInvalid
+                InvalidUserId
               when /chat description is not modified/
                 ChatDescriptionIsNotModified
               when /query is too old and response timeout expired or query id is invalid/
@@ -277,6 +279,8 @@ module Tourmaline
     class InlineKeyboardExpected < BadRequest; end
 
     class ChatNotFound < BadRequest; end
+
+    class UserNotFound < BadRequest; end
 
     class ChatDescriptionIsNotModified < BadRequest; end
 
