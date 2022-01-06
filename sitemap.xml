@@ -711,6 +711,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/UserNotFound/</loc>
+         <lastmod>2022-01-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Error/ValidationError/</loc>
          <lastmod>2022-01-06</lastmod>
          <changefreq>daily</changefreq>
