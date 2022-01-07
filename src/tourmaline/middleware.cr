@@ -21,29 +21,35 @@ module Tourmaline
       end
 
       private record Parameter(T) < Param, value : T
+      private record LazyParameter(T) < Param, value : Proc(T)
 
       @parameters : Hash(String, Param) = Hash(String, Param).new
 
       # Returns `true` if a parameter with the provided *name* exists, otherwise `false`.
       def has?(name) : Bool
-        @parameters.has_key? name.to_s
+        @parameters.has_key?(name.to_s)
       end
 
       # Returns the value of the parameter with the provided *name* if it exists, otherwise `nil`.
       def get?(name)
-        @parameters[name.to_s]?.try &.value
+        if param = @parameters[name.to_s]?
+          result = param.is_a?(LazyParameter) ? param.value.call : param.value
+        end
       end
 
       # Returns the value of the parameter with the provided *name* as a `type` if it exists, otherwise `nil`.
       def get?(name, type : T.class) forall T
-        @parameters[name.to_s]?.try &.value.as(T)
+        if result = get?(name)
+          result.as(T)
+        end
       end
 
       # Returns the value of the parameter with the provided *name*.
       #
       # Raises a `KeyError` if no parameter with that name exists.
       def get(name)
-        @parameters.fetch(name.to_s) { raise KeyError.new "No parameter exists with the name '#{name.to_s}'." }.value
+        param = @parameters.fetch(name.to_s) { raise KeyError.new "No parameter exists with the name '#{name.to_s}'." }
+        param.is_a?(LazyParameter) ? param.value.call : param.value
       end
 
       # Returns the value of the parameter with the provided *name* as a `type`.
@@ -53,7 +59,12 @@ module Tourmaline
 
       # Sets a parameter with the provided *name* to *value*.
       def set(name, value : T) : Nil forall T
-        self.set name.to_s, value, T
+        self.set(name.to_s, value, T)
+      end
+
+      # Sets a lazy parameter with the provided *name* to the return value of the provided *block*.
+      def set(name, &block : -> T) : Nil forall T
+        self.set(name.to_s, T, &block)
       end
 
       # Sets a parameter with the provided *name* to *value*, restricted to the given *type*.
@@ -61,9 +72,15 @@ module Tourmaline
         @parameters[name.to_s] = Parameter(T).new value
       end
 
+      # Sets a lazy parameter with the provided *name* to the return value of the provided *block*,
+      # restricted to the given *type*.
+      def set(name, type : T.class, &block : -> T) : Nil forall T
+        @parameters[name.to_s] = LazyParameter(T).new block
+      end
+
       # Removes the parameter with the provided *name*.
       def remove(name) : Nil
-        @parameters.delete name.to_s
+        @parameters.delete(name.to_s)
       end
     end
   end

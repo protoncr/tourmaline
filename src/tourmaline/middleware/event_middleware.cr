@@ -3,14 +3,14 @@ module Tourmaline
     include Middleware
 
     def call(client : Client, update : Update)
-      called = client.event_handlers.each do |handler|
+      return if client.event_handlers.each do |handler|
         if handler.call(update)
           client.persistence.handle_update(update)
           break true
         end
       end
 
-      self.next unless called
+      self.next
     end
   end
 end
