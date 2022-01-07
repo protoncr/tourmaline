@@ -168,6 +168,7 @@ module Tourmaline
     end
 
     def text_entities
+      text = self.caption || self.text
       [entities, caption_entities].flatten.reduce({} of MessageEntity => String) do |acc, ent|
         acc[ent] = text.to_s[ent.offset, ent.length]
         acc
