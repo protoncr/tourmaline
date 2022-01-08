@@ -1136,11 +1136,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/KemalAdapter/TGModel/</loc>
-         <lastmod>2022-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/KeyboardBuilder/</loc>
          <lastmod>2022-01-08</lastmod>
          <changefreq>daily</changefreq>

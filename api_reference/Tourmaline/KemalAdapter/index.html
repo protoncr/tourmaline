@@ -4134,45 +4134,145 @@
     
   
   
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_79" type="checkbox" id="__nav_5_2_79" checked>
-      
-      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
         
-        
-        <div class="md-nav__link md-nav__link--index md-nav__link--active">
-          <a href="./">KemalAdapter</a>
-          
-        </div>
       
-      <nav class="md-nav" aria-label="KemalAdapter" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_79">
-          <span class="md-nav__icon md-icon"></span>
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
           KemalAdapter
+          <span class="md-nav__icon md-icon"></span>
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="TGModel/" class="md-nav__link">
-        TGModel
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        KemalAdapter
       </a>
-    </li>
-  
+      
+        
 
-            
-          
-        </ul>
-      </nav>
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter-constructors" class="md-nav__link">
+    Constructors
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter.new(bot,url,path,certificate,max_connections)" class="md-nav__link">
+    .new
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter-methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#bot" class="md-nav__link">
+    #bot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#bot=(bot)" class="md-nav__link">
+    #bot=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#call(context)" class="md-nav__link">
+    #call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#check_config" class="md-nav__link">
+    #check_config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#path" class="md-nav__link">
+    #path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#path=(path)" class="md-nav__link">
+    #path=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#set_webhook(certificate,max_connections)" class="md-nav__link">
+    #set_webhook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#unset_webhook" class="md-nav__link">
+    #unset_webhook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#url" class="md-nav__link">
+    #url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::KemalAdapter#url=(url)" class="md-nav__link">
+    #url=
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5489,13 +5589,13 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L10" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L10" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 <div class="doc doc-object doc-type class">
-<h1 id="Tourmaline::KemalAdapter" class="doc doc-heading">class <code>Tourmaline::KemalAdapter</code>
+<h1 id="Tourmaline::KemalAdapter" class="doc doc-heading">class <code>Tourmaline::KemalAdapter(T)</code>
       <br/><small>inherits <code>Kemal::Handler</code></small>
 <a href="#Tourmaline::KemalAdapter" class="headerlink" title="Permanent link">#</a></h1>
   <div class="doc doc-contents first">
@@ -5512,7 +5612,7 @@ and handled accordingly.</p>
 
 <div class="doc doc-object doc-method doc-class_method">
 <h3 id="Tourmaline::KemalAdapter.new(bot,url,path,certificate,max_connections)" class="doc doc-heading">    <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">bot</span> <span class="p">:</span> <a href="../Client/#Tourmaline::Client">Tourmaline::Client</a><span class="p">,</span> <span class="n">url</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">certificate</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">max_connections</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">bot</span> <span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">url</span> <span class="p">:</span> <a href="../../String/#String">String</a><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">certificate</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">max_connections</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
 <a href="#Tourmaline::KemalAdapter.new(bot,url,path,certificate,max_connections)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
@@ -5524,29 +5624,29 @@ kemal instance. By default this is at <code>/webhook/{bot.name}</code>, but
 it is recommended to use your bot's API key somewhere in the
 path for security reasons.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L27">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L25">View source</a>
 </div><h2 id="Tourmaline::KemalAdapter-methods">Methods<a href="#Tourmaline::KemalAdapter-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::KemalAdapter#bot" class="doc doc-heading">    <code>
-      #bot<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Client/#Tourmaline::Client">Tourmaline::Client</a></code></span>
+      #bot<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">T</span></code></span>
     </code>
 <a href="#Tourmaline::KemalAdapter#bot" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L13">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L11">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::KemalAdapter#bot=(bot)" class="doc doc-heading">    <code>
-      #bot=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">bot</span> <span class="p">:</span> <a href="../Client/#Tourmaline::Client">Tourmaline::Client</a><span class="p">)</span></code></span>
+      #bot=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">bot</span> <span class="p">:</span> <span class="n">T</span><span class="p">)</span></code></span>
     </code>
 <a href="#Tourmaline::KemalAdapter#bot=(bot)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L13">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L11">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5557,7 +5657,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L62">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L64">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5568,7 +5668,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L45">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L47">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5579,7 +5679,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L17">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L15">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5590,7 +5690,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L17">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L15">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5601,7 +5701,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L53">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L55">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5612,7 +5712,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L58">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L60">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5623,7 +5723,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L15">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L13">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5634,7 +5734,7 @@ path for security reasons.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/5ee82d21fd43a1b8c260f445ddc0177679419d73/src/tourmaline/extra/kemal.cr#L15">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/eb1d5955d8209f02da3e2e33f4d08165bd2cf559/src/tourmaline/extra/kemal.cr#L13">View source</a>
 </div>      </div>
   </div>
 
@@ -5668,13 +5768,13 @@ path for security reasons.</p>  </div>
       
       
         
-        <a href="TGModel/" class="md-footer__link md-footer__link--next" aria-label="Next: TGModel" rel="next">
+        <a href="../KeyboardBuilder/" class="md-footer__link md-footer__link--next" aria-label="Next: KeyboardBuilder" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              TGModel
+              KeyboardBuilder
             </div>
           </div>
           <div class="md-footer__button md-icon">
