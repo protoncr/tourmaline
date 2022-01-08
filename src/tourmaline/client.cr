@@ -180,12 +180,14 @@ module Tourmaline
       # Add this client instance to the update and subtypes
       do_finish_init(update)
 
-      # Call middlewares
-      @middlewares.each do |middleware|
-        begin
-          middleware.call_internal(self, update)
-        rescue Middleware::StopIteration
-          break
+      spawn do
+        # Call middlewares
+        @middlewares.each do |middleware|
+          begin
+            middleware.call_internal(self, update)
+          rescue Middleware::StopIteration
+            break
+          end
         end
       end
     end
