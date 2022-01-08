@@ -7,10 +7,8 @@ module Tourmaline
   # Kemal server rather than as a standalone server. This means
   # that webhook requests can be sent to a specific path
   # and handled accordingly.
-  class KemalAdapter < Kemal::Handler
-    alias TGModel = Tourmaline
-
-    property bot : Tourmaline::Client
+  class KemalAdapter(T) < Kemal::Handler
+    property bot : T
 
     property url : String
 
@@ -25,12 +23,16 @@ module Tourmaline
     # it is recommended to use your bot's API key somewhere in the
     # path for security reasons.
     def initialize(
-      @bot : Tourmaline::Client,
+      @bot : T,
       @url : String,
       path = nil,
       certificate = nil,
       max_connections = nil
     )
+      {% unless T <= Tourmaline::Client %}
+        {% raise "bot must be an instance of Tourmaline::Client" %}
+      {% end %}
+
       check_config
 
       @path = path || "/webhook/#{bot.bot.username}"
