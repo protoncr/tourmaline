@@ -93,7 +93,7 @@ module Tourmaline
         end
       end
 
-      [self.chosen_inline_result, self.shipping_query, self.inline_query, self.pre_checkout_query].compact.each do |e|
+      [self.chosen_inline_result, self.shipping_query, self.inline_query, self.pre_checkout_query, self.my_chat_member, self.chat_member].compact.each do |e|
         users << e.from if e.from
       end
 

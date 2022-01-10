@@ -203,6 +203,7 @@ module Tourmaline
     def chats
       chats = [] of Chat?
       chats << self.chat
+      chats << self.sender_chat
       chats << self.forward_from_chat
       if reply_message = self.reply_message
         chats.concat(reply_message.chats)
