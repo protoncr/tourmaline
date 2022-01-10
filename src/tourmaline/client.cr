@@ -184,6 +184,7 @@ module Tourmaline
         # Call middlewares
         @middlewares.each do |middleware|
           begin
+            puts middleware
             middleware.call_internal(self, update)
           rescue Middleware::StopIteration
             break

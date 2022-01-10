@@ -45,7 +45,7 @@ module Tourmaline
     end
 
     def check_config
-      raise "Tourmaline bot webhooks require ssl." unless url.starts_with?("https")
+      raise "Tourmaline bot webhooks require ssl." unless @url.starts_with?("https")
 
       ["10.", "172.", "192.", "100."].each do |ippart|
         raise "Cannot serve a Tourmaline bot webhook locally. Please use Ngrok for local testing." if @url.starts_with?(ippart)
