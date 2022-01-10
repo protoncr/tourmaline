@@ -99,7 +99,7 @@ module Tourmaline
             command = raw_tokens[0]
             text = tokens[1]
 
-            if command.includes?("@")
+            if command.starts_with?('/') && command.includes?("@")
               command, botname = command.split("@", 2)
               return unless botname.downcase == @client.bot.username.to_s.downcase
             end

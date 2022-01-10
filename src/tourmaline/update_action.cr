@@ -181,7 +181,7 @@ module Tourmaline
           actions << UpdateAction::ChannelForwardMessage
         end
 
-        entities = message.entities.map(&.type).uniq
+        entities = (message.entities + message.caption_entities).map(&.type).uniq
         entities.each do |ent|
           case ent
           when "mention"
