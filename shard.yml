@@ -16,6 +16,9 @@ dependencies:
   http_proxy:
     github: mamantoha/http_proxy
     branch: master
+  html5:
+    github: watzon/crystal-html5
+    branch: master
 
 development_dependencies:
   ngrok:

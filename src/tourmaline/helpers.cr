@@ -169,5 +169,17 @@ module Tourmaline
 
       text
     end
+
+    def within_surrogate(text, index, *, length = nil)
+      length = length || text.size
+
+      return false unless 1 < index < text.size
+
+      prev = text[index - 1].ord
+      curr = text[index].ord
+
+      0xd800 <= prev <= 0xdfff &&
+      0xd800 <= curr <= 0xdfff
+    end
   end
 end

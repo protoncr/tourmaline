@@ -28,6 +28,9 @@ module Tourmaline
     # USER API ONLY
     getter? is_scam : Bool?
 
+    def initialize(@id : Int64, @is_bot : Bool, @first_name : String, @last_name : String? = nil, @language_code : String? = nil, @can_join_groups : Bool? = nil, @can_read_all_group_messages : Bool? = nil, @supports_inline_queries : Bool? = nil)
+    end
+
     def full_name
       [first_name, last_name].compact.join(" ")
     end

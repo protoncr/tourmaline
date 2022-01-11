@@ -112,11 +112,15 @@ module Tourmaline
     # Returns all unique chats included in this update
     def chats
       chats = [] of Chat
-      [self.channel_post, self.edited_channel_post, self.edited_message, self.message].compact.each do |message|
-        if message
-          chats.concat(message.chats)
-        end
+
+      [self.callback_query, self.channel_post, self.edited_channel_post, self.edited_message, self.message].compact.each do |message|
+        chats.concat(message.chats) if message
       end
+
+      [my_chat_member, chat_member, chat_join_request, ].compact.each do |updated|
+        chats << updated.chat
+      end
+
       chats
     end
 

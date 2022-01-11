@@ -8,19 +8,19 @@ module Tourmaline
       bold italic code pre text_link underline strikethrough spoiler
     ]
 
-    getter type : String
+    property type : String
 
-    getter offset : Int32
+    property offset : Int32
 
-    getter length : Int32
+    property length : Int32
 
-    getter url : String?
+    property url : String?
 
-    getter user : User?
+    property user : User?
 
-    getter language : String?
+    property language : String?
 
-    def initialize(@type, @offset, @length, @url = nil, @user = nil, @language = nil)
+    def initialize(@type, @offset = 0, @length = 0, @url = nil, @user = nil, @language = nil)
     end
 
     {% for mention_type in MENTION_TYPES %}
@@ -28,5 +28,15 @@ module Tourmaline
         @type == {{mention_type}}
       end
     {% end %}
+
+    def ==(other)
+      other.is_a?(MessageEntity) &&
+      other.type == type &&
+      other.offset == offset &&
+      other.length == length &&
+      other.url == url &&
+      other.user == user &&
+      other.language == language
+    end
   end
 end
