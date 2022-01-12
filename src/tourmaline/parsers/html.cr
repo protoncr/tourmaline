@@ -75,7 +75,7 @@ module Tourmaline
         when "code"
           html << "<code>#{entity_text}</code>"
         when "underline"
-          html << "<u>#{entity_text}</code>"
+          html << "<u>#{entity_text}</u>"
         when "strikethrough"
           html << "<del>#{entity_text}</del>"
         when "spoiler"

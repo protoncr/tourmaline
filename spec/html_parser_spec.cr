@@ -46,4 +46,66 @@ Spectator.describe "::HTMLParser" do
     expect(parser.parse(parsed)).to eq({text, entities})
     expect(parser.unparse(text, entities)).to eq(parsed)
   end
+
+  describe "entities" do
+    it "unparses bold" do
+      text = "bold"
+      entities = [MessageEntity.new("bold", 0, 4)]
+      expect(parser.unparse(text, entities)).to eq("<strong>bold</strong>")
+    end
+
+    it "unparses italic" do
+      text = "italic"
+      entities = [MessageEntity.new("italic", 0, 6)]
+      expect(parser.unparse(text, entities)).to eq("<em>italic</em>")
+    end
+
+    it "unparses underline" do
+      text = "underline"
+      entities = [MessageEntity.new("underline", 0, 9)]
+      expect(parser.unparse(text, entities)).to eq("<u>underline</u>")
+    end
+
+    it "unparses strikethrough" do
+      text = "strikethrough"
+      entities = [MessageEntity.new("strikethrough", 0, 13)]
+      expect(parser.unparse(text, entities)).to eq("<del>strikethrough</del>")
+    end
+
+    it "unparses code" do
+      text = "code"
+      entities = [MessageEntity.new("code", 0, 4)]
+      expect(parser.unparse(text, entities)).to eq("<code>code</code>")
+    end
+
+    it "unparses spoiler" do
+      text = "spoiler"
+      entities = [MessageEntity.new("spoiler", 0, 7)]
+      expect(parser.unparse(text, entities)).to eq("<tg-spoiler>spoiler</tg-spoiler>")
+    end
+
+    it "unparses email" do
+      text = "johndoe@gmail.com"
+      entities = [MessageEntity.new("email", 0, 17)]
+      expect(parser.unparse(text, entities)).to eq("<a href=\"mailto:johndoe@gmail.com\">johndoe@gmail.com</a>")
+    end
+
+    it "unparses url" do
+      text = "https://some-url.xyz"
+      entities = [MessageEntity.new("url", 0, 20)]
+      expect(parser.unparse(text, entities)).to eq("<a href=\"https://some-url.xyz\">https://some-url.xyz</a>")
+    end
+
+    it "unparses text link" do
+      text = "some url"
+      entities = [MessageEntity.new("text_link", 0, 8, url: "https://some-url.xyz")]
+      expect(parser.unparse(text, entities)).to eq("<a href=\"https://some-url.xyz\">some url</a>")
+    end
+
+    it "unparses text mention" do
+      text = "some user"
+      entities = [MessageEntity.new("text_mention", 0, 9, user: User.new(123456789, false, ""))]
+      expect(parser.unparse(text, entities)).to eq("<a href=\"tg://user?id=123456789\">some user</a>")
+    end
+  end
 end

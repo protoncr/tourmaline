@@ -59,6 +59,10 @@ module Tourmaline
     # allowed_updates to receive these updates.
     getter chat_member : ChatMemberUpdated?
 
+    #Optional. A request to join the chat has been sent. The bot must have the can_invite_users
+    # administrator right in the chat to receive these updates.
+    getter chat_join_request : ChatJoinRequest?
+
     # Context object allowing data to be passed from middleware to handlers.
     @[JSON::Field(ignore: true)]
     getter context : Middleware::Context { Middleware::Context.new }
@@ -113,12 +117,18 @@ module Tourmaline
     def chats
       chats = [] of Chat
 
-      [self.callback_query, self.channel_post, self.edited_channel_post, self.edited_message, self.message].compact.each do |message|
+      [self.channel_post, self.edited_channel_post, self.edited_message, self.message].compact.each do |message|
         chats.concat(message.chats) if message
       end
 
-      [my_chat_member, chat_member, chat_join_request, ].compact.each do |updated|
-        chats << updated.chat
+      [self.callback_query].compact.each do |event|
+        if message = event.message
+          chats.concat(message.chats)
+        end
+      end
+
+      [self.my_chat_member, self.chat_member, self.chat_join_request].compact.each do |event|
+        chats << event.chat
       end
 
       chats

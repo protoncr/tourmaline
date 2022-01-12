@@ -50,7 +50,17 @@ module Tourmaline
       "spoiler"       => {"<span class=\"tg-spoiler\">", "</span>"},
     }
 
+    def unparse_html(text : String, entities ents : Array(MessageEntity))
+      pp! text, ents
+      parser = HTMLParser.new
+      parser.unparse(text, ents)
+    end
+
     def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown, escape : Bool = false)
+      if parse_mode == ParseMode::HTML
+        return unparse_html(text, ents)
+      end
+
       end_entities = {} of Int32 => Array(MessageEntity)
       start_entities = ents.reduce({} of Int32 => Array(MessageEntity)) do |acc, e|
         acc[e.offset] ||= [] of MessageEntity
