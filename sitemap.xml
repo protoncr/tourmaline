@@ -171,6 +171,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatJoinRequest/</loc>
+         <lastmod>2022-01-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatLocation/</loc>
          <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
