@@ -170,16 +170,27 @@ module Tourmaline
       text
     end
 
-    def within_surrogate(text, index, *, length = nil)
-      length = length || text.size
+    def pad_utf16(text)
+      String.build do |str|
+        text.each_char do |c|
+          str << c
+          if c.ord >= 0x10000 && c.ord <= 0x10FFFF
+            str << " "
+          end
+        end
+      end
+    end
 
-      return false unless 1 < index < text.size
-
-      prev = text[index - 1].ord
-      curr = text[index].ord
-
-      0xd800 <= prev <= 0xdfff &&
-      0xd800 <= curr <= 0xdfff
+    def unpad_utf16(text)
+      String.build do |str|
+        last_char = nil
+        text.each_char do |c|
+          unless last_char && last_char.ord >= 0x10000 && last_char.ord <= 0x10FFFF
+            str << c
+          end
+          last_char = c
+        end
+      end
     end
   end
 end

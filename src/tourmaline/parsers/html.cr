@@ -1,10 +1,7 @@
 require "html5"
 
 module Tourmaline
-
   class HTMLParser < BaseParser
-    alias Type = XML::Node::Type
-
     def initialize
       @text = ""
       @entities = [] of MessageEntity
@@ -22,7 +19,7 @@ module Tourmaline
     end
 
     def parse(text str : String) : Tuple(String, Array(MessageEntity))
-      io = IO::Memory.new(pad_utf16(str))
+      io = IO::Memory.new(Helpers.pad_utf16(str))
       tokenizer = HTML5::Tokenizer.new(io, "")
 
       while !tokenizer.next.error?
@@ -37,14 +34,14 @@ module Tourmaline
         end
       end
 
-      {unpad_utf16(@text), @entities}
+      {Helpers.unpad_utf16(@text), @entities}
     ensure
       self.reset
     end
 
     def unparse(text : String, entities : Array(MessageEntity), _offset = 0, _length = nil) : String
       return text if text.empty? || entities.empty?
-      text = pad_utf16(text)
+      text = Helpers.pad_utf16(text)
 
       _length = _length || text.size
       html = [] of String
@@ -107,7 +104,7 @@ module Tourmaline
       end
 
       html << text[last_offset..]
-      unpad_utf16(html.join(""))
+      Helpers.unpad_utf16(html.join(""))
     end
 
     private def handle_start_tag(tag : HTML5::Token)
@@ -191,29 +188,6 @@ module Tourmaline
 
       if entity = @building_entities.delete(tag.data)
         @entities.push(entity)
-      end
-    end
-
-    private def pad_utf16(text)
-      String.build do |str|
-        text.each_char do |c|
-          str << c
-          if c.ord >= 0x10000 && c.ord <= 0x10FFFF
-            str << " "
-          end
-        end
-      end
-    end
-
-    private def unpad_utf16(text)
-      String.build do |str|
-        last_char = nil
-        text.each_char do |c|
-          unless last_char && last_char.ord >= 0x10000 && last_char.ord <= 0x10FFFF
-            str << c
-          end
-          last_char = c
-        end
       end
     end
   end
