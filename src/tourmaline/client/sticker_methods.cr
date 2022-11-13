@@ -96,15 +96,15 @@ module Tourmaline
         raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker || webm_sticker
 
         request(Bool, "createNewStickerSet", {
-          user_id:        user_id,
-          name:           name,
-          title:          title,
-          png_sticker:    png_sticker,
-          tgs_sticker:    tgs_sticker,
-          webm_sticker:   webm_sticker,
-          sticker_type:   sticker_type,
-          emojis:         emojis,
-          mask_position:  mask_position,
+          user_id:       user_id,
+          name:          name,
+          title:         title,
+          png_sticker:   png_sticker,
+          tgs_sticker:   tgs_sticker,
+          webm_sticker:  webm_sticker,
+          sticker_type:  sticker_type,
+          emojis:        emojis,
+          mask_position: mask_position,
         })
       end
 

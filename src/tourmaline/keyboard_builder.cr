@@ -23,7 +23,7 @@ module Tourmaline
       @keyboard = [] of T,
       @resize = false,
       @one_time = false,
-      @input_field_placeholder = nil,
+      @input_field_placeholder = nil
     )
     end
 

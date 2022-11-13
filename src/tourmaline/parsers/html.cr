@@ -112,8 +112,8 @@ module Tourmaline
       @open_tags_meta.unshift(nil)
 
       attrs = tag.attr.reduce({} of String => String) do |acc, t|
-          acc[t.key] = t.val
-          acc
+        acc[t.key] = t.val
+        acc
       end
 
       case tag.data

@@ -30,7 +30,7 @@ module Tourmaline
       @can_change_info = true,
       @can_invite_users = true,
       @can_pin_messages = true,
-      @can_manage_topics = true,
+      @can_manage_topics = true
     )
     end
   end

@@ -8,7 +8,7 @@ class Tourmaline::LuckyBotHandler(T)
     @url : String,
     path : String? = nil,
     certificate = nil,
-    max_connections = nil,
+    max_connections = nil
   )
     {% unless T <= Tourmaline::Client %}
       {% raise "bot must be an instance of Tourmaline::Client" %}

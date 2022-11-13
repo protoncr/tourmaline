@@ -336,14 +336,14 @@ module Tourmaline
         chat,
         name,
         icon_color = nil,
-        icon_custom_emoji_id = nil,
+        icon_custom_emoji_id = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
         request(ForumTopic, "createForumTopic", {
-          chat_id: chat_id,
-          name: name,
-          icon_color: icon_color,
+          chat_id:              chat_id,
+          name:                 name,
+          icon_color:           icon_color,
           icon_custom_emoji_id: icon_custom_emoji_id,
         })
       end
@@ -357,14 +357,14 @@ module Tourmaline
         chat,
         message_thread_id,
         name,
-        icon_custom_emoji_id,
+        icon_custom_emoji_id
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
         request(Bool, "editForumTopic", {
-          chat_id: chat_id,
-          message_thread_id: message_thread_id,
-          name: name,
+          chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
+          name:                 name,
           icon_custom_emoji_id: icon_custom_emoji_id,
         })
       end
@@ -375,12 +375,12 @@ module Tourmaline
       # Returns True on success.
       def close_forum_topic(
         chat,
-        message_thread_id,
+        message_thread_id
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
         request(Bool, "closeForumTopic", {
-          chat_id: chat_id,
+          chat_id:           chat_id,
           message_thread_id: message_thread_id,
         })
       end
@@ -392,12 +392,12 @@ module Tourmaline
       # Returns True on success.
       def reopen_forum_topic(
         chat,
-        message_thread_id,
+        message_thread_id
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
         request(Bool, "reopenForumTopic", {
-          chat_id: chat_id,
+          chat_id:           chat_id,
           message_thread_id: message_thread_id,
         })
       end
@@ -408,12 +408,12 @@ module Tourmaline
       # Returns True on success.
       def delete_forum_topic(
         chat,
-        message_thread_id,
+        message_thread_id
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
         request(Bool, "deleteForumTopic", {
-          chat_id: chat_id,
+          chat_id:           chat_id,
           message_thread_id: message_thread_id,
         })
       end
@@ -424,12 +424,12 @@ module Tourmaline
       # Returns True on success.
       def unpin_all_forum_topic_messages(
         chat,
-        message_thread_id,
+        message_thread_id
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
         request(Bool, "unpinAllForumTopicMessages", {
-          chat_id: chat_id,
+          chat_id:           chat_id,
           message_thread_id: message_thread_id,
         })
       end
@@ -1576,8 +1576,8 @@ module Tourmaline
       # Returns True on success.
       def set_my_default_adminstrator_rights(rights : ChatAdministratorRights, for_channels : Bool = false)
         request(Bool, "setMyDefaultAdminstratorRights", {
-          rights:        rights,
-          for_channels:  for_channels,
+          rights:       rights,
+          for_channels: for_channels,
         })
       end
 
@@ -1585,7 +1585,7 @@ module Tourmaline
       # Returns ChatAdministratorRights on success.
       def get_my_default_adminstrator_rights(for_channels : Bool = false)
         request(ChatAdministratorRights, "getMyDefaultAdminstratorRights", {
-          for_channels:  for_channels,
+          for_channels: for_channels,
         })
       end
 

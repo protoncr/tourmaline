@@ -71,7 +71,7 @@ module Tourmaline
         max_connections = nil,
         allowed_updates = nil,
         drop_pending_updates = false,
-        secret_token = nil,
+        secret_token = nil
       )
         params = {
           url:                  url,

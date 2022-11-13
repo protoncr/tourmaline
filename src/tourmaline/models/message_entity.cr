@@ -35,12 +35,12 @@ module Tourmaline
 
     def ==(other)
       other.is_a?(MessageEntity) &&
-      other.type == type &&
-      other.offset == offset &&
-      other.length == length &&
-      other.url == url &&
-      other.user == user &&
-      other.language == language
+        other.type == type &&
+        other.offset == offset &&
+        other.length == length &&
+        other.url == url &&
+        other.user == user &&
+        other.language == language
     end
   end
 end

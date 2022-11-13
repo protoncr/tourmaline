@@ -23,7 +23,7 @@ module Tourmaline
 
     getter bio : String?
 
-    getter active_usernames : Array(String)  = [] of String
+    getter active_usernames : Array(String) = [] of String
 
     getter emoji_status_custom_emoji_id : String?
 

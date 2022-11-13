@@ -59,7 +59,7 @@ module Tourmaline
     # allowed_updates to receive these updates.
     getter chat_member : ChatMemberUpdated?
 
-    #Optional. A request to join the chat has been sent. The bot must have the can_invite_users
+    # Optional. A request to join the chat has been sent. The bot must have the can_invite_users
     # administrator right in the chat to receive these updates.
     getter chat_join_request : ChatJoinRequest?
 

@@ -23,8 +23,6 @@
 #       loop do
 #         char = reader.current_char
 
-
-
 #         if reader.peek_next_char?
 #           reader.next_char
 #         else
