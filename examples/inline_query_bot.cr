@@ -1,7 +1,7 @@
 require "../src/tourmaline"
 
 class InlineQueryBot < Tourmaline::Client
-  @[OnInlineQuery]
+  @[OnInlineQuery("")]
   def on_inline_query(ctx)
     results = InlineQueryResult.build do
       article(
