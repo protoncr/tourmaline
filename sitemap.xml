@@ -166,6 +166,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatAdministratorRights/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatInviteLink/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
@@ -182,6 +187,36 @@
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMember/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMemberAdministrator/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMemberBanned/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMemberLeft/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMemberMember/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMemberOwner/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatMemberRestricted/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -846,6 +881,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ForumTopicClosed/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ForumTopicCreated/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ForumTopicReopened/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Game/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
@@ -1191,6 +1241,26 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/MenuButton/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/MenuButtonCommands/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/MenuButtonDefault/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/MenuButtonWebApp/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Message/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
@@ -1391,6 +1461,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/SentWebAppMessage/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ShippingAddress/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
@@ -1422,6 +1497,11 @@
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Sticker/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/Sticker/Type/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1471,6 +1551,26 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/VideoChatEnded/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/VideoChatParticipantsInvited/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/VideoChatScheduled/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/VideoChatStarted/</loc>
+         <lastmod>2022-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/VideoNote/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
@@ -1481,22 +1581,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatEnded/</loc>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/WebAppData/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatParticipantsInvited/</loc>
-         <lastmod>2022-11-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatScheduled/</loc>
-         <lastmod>2022-11-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/VoiceChatStarted/</loc>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/WebAppInfo/</loc>
          <lastmod>2022-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
