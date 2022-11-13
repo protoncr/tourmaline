@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        crystal-version: [1.0.0]
+        crystal-version: [1.6.2]
     
     steps:
     - uses: actions/checkout@v2

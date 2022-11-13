@@ -31,6 +31,6 @@ development_dependencies:
     version: ~> 0.11.0
   spectator:
     github: icy-arctic-fox/spectator
-    branch: master
+    version: ~> 0.11.3
 
 license: MIT
