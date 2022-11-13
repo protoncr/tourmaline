@@ -30,8 +30,6 @@ module Tourmaline
   # send_menu(chat_id, MENU)
   # ```
   class RoutedMenu
-    property! client : Client
-
     getter routes : Hash(String, Page)
     getter current_route : String
     getter route_history : Array(String)
@@ -42,7 +40,7 @@ module Tourmaline
                    group = Helpers.random_string(8))
       @current_route = self.class.hash_route(start_route)
       @route_history = [@current_route]
-      @event_handler = CallbackQueryHandler.new(/route:(\S+)/, group: group) do |ctx|
+      @event_handler = CallbackQueryHandler.new(/route:(\S+)/) do |ctx|
         handle_button_click(ctx)
       end
     end
@@ -89,7 +87,7 @@ module Tourmaline
           route_history << route
           message.edit_text(page.content,
             reply_markup: page.buttons,
-            parse_mode: page.parse_mode || client.default_parse_mode,
+            parse_mode: page.parse_mode || Tourmaline::Client.default_parse_mode,
             disable_link_preview: !page.link_preview)
           ctx.query.answer
         else
@@ -165,7 +163,6 @@ module Tourmaline
 
       add_event_handler(menu.event_handler) unless event_handlers.includes?(menu.event_handler)
 
-      menu.client = self
       start_page = menu.current_page
 
       kwargs = {parse_mode: start_page.parse_mode}.merge(kwargs)

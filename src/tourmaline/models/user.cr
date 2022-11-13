@@ -6,7 +6,8 @@ module Tourmaline
 
     getter id : Int64
 
-    getter is_bot : Bool
+    @[JSON::Field(key: "is_bot")]
+    getter? bot : Bool
 
     getter first_name : String
 
@@ -16,19 +17,26 @@ module Tourmaline
 
     getter language_code : String?
 
-    getter can_join_groups : Bool?
+    @[JSON::Field(key: "is_premium")]
+    getter? premium : Bool?
 
-    getter can_read_all_group_messages : Bool?
+    getter? added_to_attachment_menu : Bool?
 
-    getter supports_inline_queries : Bool?
+    getter? can_join_groups : Bool?
+
+    getter? can_read_all_group_messages : Bool?
+
+    getter? supports_inline_queries : Bool?
 
     # USER API ONLY
-    getter? is_verified : Bool?
+    @[JSON::Field(key: "is_verified")]
+    getter? verified : Bool?
 
     # USER API ONLY
-    getter? is_scam : Bool?
+    @[JSON::Field(key: "is_scam")]
+    getter? scam : Bool?
 
-    def initialize(@id : Int64, @is_bot : Bool, @first_name : String, @last_name : String? = nil, @language_code : String? = nil, @can_join_groups : Bool? = nil, @can_read_all_group_messages : Bool? = nil, @supports_inline_queries : Bool? = nil)
+    def initialize(@id : Int64, @bot : Bool, @first_name : String, @last_name : String? = nil, @language_code : String? = nil, @can_join_groups : Bool? = nil, @can_read_all_group_messages : Bool? = nil, @supports_inline_queries : Bool? = nil)
     end
 
     def full_name

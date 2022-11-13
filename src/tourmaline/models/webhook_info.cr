@@ -16,6 +16,9 @@ module Tourmaline
 
     getter last_error_message : String?
 
+    @[JSON::Field(converter: Time::EpochConverter)]
+    getter last_synchronization_error_date : Time?
+
     getter max_connections : Int32?
 
     getter allowed_updates : Array(String)?

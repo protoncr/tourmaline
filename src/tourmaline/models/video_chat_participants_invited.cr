@@ -1,5 +1,5 @@
 module Tourmaline
-  class VoiceChatParticipantsInvited
+  class VideoChatParticipantsInvited
     include JSON::Serializable
     include Tourmaline::Model
 

@@ -1,5 +1,5 @@
 module Tourmaline
-  class VoiceChatScheduled
+  class VideoChatScheduled
     include JSON::Serializable
     include Tourmaline::Model
 

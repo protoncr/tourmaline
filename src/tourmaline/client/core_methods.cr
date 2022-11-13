@@ -151,7 +151,7 @@ module Tourmaline
         caption,
         message = nil,
         inline_message = nil,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         caption_entities = [] of MessageEntity,
         reply_markup = nil
       )
@@ -209,7 +209,7 @@ module Tourmaline
         chat = nil,
         message = nil,
         inline_message = nil,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         entities = [] of MessageEntity,
         disable_link_preview = false,
         reply_markup = nil
@@ -245,6 +245,7 @@ module Tourmaline
         chat,
         from_chat,
         message,
+        message_thread_id = nil,
         disable_notification = false,
         protect_content = false
       )
@@ -254,6 +255,7 @@ module Tourmaline
 
         request(Message, "forwardMessage", {
           chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
           from_chat_id:         from_chat_id,
           message_id:           message_id,
           disable_notification: disable_notification,
@@ -317,6 +319,118 @@ module Tourmaline
 
         request(Int32, "getChatMembersCount", {
           chat_id: chat_id,
+        })
+      end
+
+      # Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user.
+      # Requires no parameters.
+      # Returns an Array of Sticker objects.
+      def get_forum_topic_icon_stickers
+        request(Array(Sticker), "getForumTopicIconStickers")
+      end
+
+      # Use this method to create a topic in a forum supergroup chat. The bot must be an administrator
+      # in the chat for this to work and must have the can_manage_topics administrator rights.
+      # Returns information about the created topic as a ForumTopic object.
+      def create_forum_topic(
+        chat,
+        name,
+        icon_color = nil,
+        icon_custom_emoji_id = nil,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(ForumTopic, "createForumTopic", {
+          chat_id: chat_id,
+          name: name,
+          icon_color: icon_color,
+          icon_custom_emoji_id: icon_custom_emoji_id,
+        })
+      end
+
+      # Use this method to edit name and icon of a topic in a forum supergroup chat. The bot
+      # must be an administrator in the chat for this to work and must have
+      # can_manage_topics administrator rights, unless it is the
+      # creator of the topic.
+      # Returns True on success.
+      def edit_forum_topic(
+        chat,
+        message_thread_id,
+        name,
+        icon_custom_emoji_id,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(Bool, "editForumTopic", {
+          chat_id: chat_id,
+          message_thread_id: message_thread_id,
+          name: name,
+          icon_custom_emoji_id: icon_custom_emoji_id,
+        })
+      end
+
+      # Use this method to close an open topic in a forum supergroup chat. The bot must be
+      # an administrator in the chat for this to work and must have the can_manage_topics
+      # administrator rights, unless it is the creator of the topic.
+      # Returns True on success.
+      def close_forum_topic(
+        chat,
+        message_thread_id,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(Bool, "closeForumTopic", {
+          chat_id: chat_id,
+          message_thread_id: message_thread_id,
+        })
+      end
+
+      # Use this method to reopen a closed topic in a forum supergroup chat. The bot must
+      # be an administrator in the chat for this to work and must have the
+      # can_manage_topics administrator rights, unless it is the
+      # creator of the topic.
+      # Returns True on success.
+      def reopen_forum_topic(
+        chat,
+        message_thread_id,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(Bool, "reopenForumTopic", {
+          chat_id: chat_id,
+          message_thread_id: message_thread_id,
+        })
+      end
+
+      # Use this method to delete a forum topic along with all its messages in a forum
+      # supergroup chat. The bot must be an administrator in the chat for this to
+      # work and must have the can_delete_messages administrator rights.
+      # Returns True on success.
+      def delete_forum_topic(
+        chat,
+        message_thread_id,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(Bool, "deleteForumTopic", {
+          chat_id: chat_id,
+          message_thread_id: message_thread_id,
+        })
+      end
+
+      # Use this method to clear the list of pinned messages in a forum topic. The bot
+      # must be an administrator in the chat for this to work and must have the
+      # can_pin_messages administrator right in the supergroup.
+      # Returns True on success.
+      def unpin_all_forum_topic_messages(
+        chat,
+        message_thread_id,
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+
+        request(Bool, "unpinAllForumTopicMessages", {
+          chat_id: chat_id,
+          message_thread_id: message_thread_id,
         })
       end
 
@@ -486,10 +600,11 @@ module Tourmaline
         can_edit_messages = nil,
         can_delete_messages = nil,
         can_invite_users = nil,
-        can_manage_voice_chats = nil,
+        can_manage_video_chats = nil,
         can_restrict_members = nil,
         can_pin_messages = nil,
-        can_promote_members = nil
+        can_promote_members = nil,
+        can_manage_topics = nil
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         user_id = user.is_a?(Int) ? user : user.id
@@ -505,10 +620,11 @@ module Tourmaline
           can_edit_messages:      can_edit_messages,
           can_delete_messages:    can_delete_messages,
           can_invite_users:       can_invite_users,
-          can_manage_voice_chats: can_manage_voice_chats,
+          can_manage_video_chats: can_manage_video_chats,
           can_restrict_members:   can_restrict_members,
           can_pin_messages:       can_pin_messages,
           can_promote_members:    can_promote_members,
+          can_manage_topics:      can_manage_topics,
         })
       end
 
@@ -794,12 +910,13 @@ module Tourmaline
       def send_audio(
         chat,
         audio,
+        message_thread_id = nil,
         caption = nil,
         caption_entities = [] of MessageEntity,
         duration = nil,
         preformer = nil,
         title = nil,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         disable_notification = false,
         protect_content = false,
         reply_to_message = nil,
@@ -812,6 +929,7 @@ module Tourmaline
 
         request(Message, "sendAudio", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           audio:                       audio,
           caption:                     caption,
           caption_entities:            caption_entities,
@@ -830,13 +948,14 @@ module Tourmaline
       def send_animation(
         chat,
         animation,
+        message_thread_id = nil,
         duration = nil,
         width = nil,
         height = nil,
         thumb = nil,
         caption = nil,
         caption_entities = [] of MessageEntity,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         disable_notification = false,
         protect_content = false,
         reply_to_message = nil,
@@ -849,6 +968,7 @@ module Tourmaline
 
         request(Message, "sendAnimation", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           animation:                   animation,
           duration:                    duration,
           width:                       width,
@@ -895,6 +1015,7 @@ module Tourmaline
         chat,
         phone_number,
         first_name,
+        message_thread_id = nil,
         last_name = nil,
         disable_notification = false,
         protect_content = false,
@@ -907,6 +1028,7 @@ module Tourmaline
 
         request(Message, "sendContact", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           phone_number:                phone_number,
           first_name:                  first_name,
           last_name:                   last_name,
@@ -923,6 +1045,7 @@ module Tourmaline
       # On success, the sent Message is returned.
       def send_{{ val[0].id }}(
         chat,
+        message_thread_id = nil,
         disable_notification = false,
         protect_content = false,
         reply_to_message = nil,
@@ -934,6 +1057,7 @@ module Tourmaline
 
         request(Message, "sendDice", {
           chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
           emoji:                {{ val[1] }},
           disable_notification: disable_notification,
           protect_content: protect_content,
@@ -952,9 +1076,10 @@ module Tourmaline
       def send_document(
         chat,
         document,
+        message_thread_id = nil,
         caption = nil,
         caption_entities = [] of MessageEntity,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         disable_notification = false,
         protect_content = false,
         reply_to_message = nil,
@@ -968,6 +1093,7 @@ module Tourmaline
 
         request(Message, "sendDocument", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           document:                    document,
           caption:                     caption,
           caption_entities:            caption_entities,
@@ -986,6 +1112,7 @@ module Tourmaline
         chat,
         latitude,
         longitude,
+        message_thread_id = nil,
         horizontal_accuracy = nil,
         live_period = nil,
         proximity_alert_radius = nil,
@@ -1001,6 +1128,7 @@ module Tourmaline
 
         request(Message, "sendLocation", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           latitude:                    latitude,
           longitude:                   longitude,
           horizontal_accuracy:         horizontal_accuracy,
@@ -1020,7 +1148,8 @@ module Tourmaline
       def send_message(
         chat,
         text,
-        parse_mode = @default_parse_mode,
+        message_thread_id = nil,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         entities = [] of MessageEntity,
         link_preview = false,
         disable_notification = false,
@@ -1035,6 +1164,7 @@ module Tourmaline
 
         request(Message, "sendMessage", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           text:                        text,
           parse_mode:                  parse_mode,
           entities:                    entities,
@@ -1051,8 +1181,9 @@ module Tourmaline
         chat,
         from_chat,
         message,
+        message_thread_id = nil,
         caption = nil,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         caption_entities = [] of MessageEntity,
         disable_notification = false,
         protect_content = false,
@@ -1068,6 +1199,7 @@ module Tourmaline
 
         request("copyMessage", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           from_chat_id:                from_chat_id,
           message_id:                  message_id,
           caption:                     caption,
@@ -1086,8 +1218,9 @@ module Tourmaline
       def send_photo(
         chat,
         photo,
+        message_thread_id = nil,
         caption = nil,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         caption_entities = [] of MessageEntity,
         disable_notification = false,
         protect_content = false,
@@ -1102,6 +1235,7 @@ module Tourmaline
 
         request(Message, "sendPhoto", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           photo:                       photo,
           caption:                     caption,
           parse_mode:                  parse_mode,
@@ -1144,6 +1278,7 @@ module Tourmaline
       def send_media_group(
         chat,
         media : Array(InputMediaPhoto | InputMediaVideo | InputMediaAudio | InputMediaDocument),
+        message_thread_id = nil,
         disable_notification = false,
         protect_content = false,
         reply_to_message = nil,
@@ -1154,6 +1289,7 @@ module Tourmaline
 
         request(Array(Message), "sendMediaGroup", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           media:                       media,
           disable_notification:        disable_notification,
           protect_content:             protect_content,
@@ -1170,6 +1306,7 @@ module Tourmaline
         longitude,
         title,
         address,
+        message_thread_id = nil,
         foursquare_id = nil,
         foursquare_type = nil,
         google_place_id = nil,
@@ -1185,6 +1322,7 @@ module Tourmaline
 
         request(Message, "sendVenue", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           latitude:                    latitude,
           longitude:                   longitude,
           title:                       title,
@@ -1210,12 +1348,13 @@ module Tourmaline
       def send_video(
         chat,
         video,
+        message_thread_id = nil,
         duration = nil,
         width = nil,
         height = nil,
         caption = nil,
         caption_entities = [] of MessageEntity,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         disable_notification = false,
         protect_content = false,
         reply_to_message = nil,
@@ -1229,6 +1368,7 @@ module Tourmaline
 
         request(Message, "sendVideo", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           video:                       video,
           duration:                    duration,
           width:                       width,
@@ -1251,12 +1391,13 @@ module Tourmaline
       def send_video_note(
         chat,
         video_note,
+        message_thread_id = nil,
         duration = nil,
         width = nil,
         height = nil,
         caption = nil,
         caption_entities = [] of MessageEntity,
-        parse_mode = @default_parse_mode,
+        parse_mode = Tourmaline::Client.default_parse_mode,
         disable_notification = false,
         protect_content = false,
         reply_to_message = nil,
@@ -1270,6 +1411,7 @@ module Tourmaline
 
         request(Message, "sendVideoNote", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           video_note:                  video_note,
           duration:                    duration,
           width:                       width,
@@ -1295,6 +1437,7 @@ module Tourmaline
       def send_voice(
         chat,
         voice,
+        message_thread_id = nil,
         caption = nil,
         caption_entities = [] of MessageEntity,
         duration = nil,
@@ -1312,6 +1455,7 @@ module Tourmaline
 
         request(Message, "sendVoice", {
           chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
           voice:                       voice,
           caption:                     caption,
           caption_entities:            caption_entities,
@@ -1426,6 +1570,35 @@ module Tourmaline
         })
       end
 
+      # Use this method to change the default administrator rights requested by the bot when it's added
+      # as an administrator to groups or channels. These rights will be suggested to users, but
+      # they are are free to modify the list before adding the bot.
+      # Returns True on success.
+      def set_my_default_adminstrator_rights(rights : ChatAdministratorRights, for_channels : Bool = false)
+        request(Bool, "setMyDefaultAdminstratorRights", {
+          rights:        rights,
+          for_channels:  for_channels,
+        })
+      end
+
+      # Use this method to get the current default administrator rights of the bot.
+      # Returns ChatAdministratorRights on success.
+      def get_my_default_adminstrator_rights(for_channels : Bool = false)
+        request(ChatAdministratorRights, "getMyDefaultAdminstratorRights", {
+          for_channels:  for_channels,
+        })
+      end
+
+      # Use this method to set the result of an interaction with a Web App and send a corresponding
+      # message on behalf of the user to the chat from which the query originated.
+      # On success, a SentWebAppMessage object is returned.
+      def answer_web_app_query(query_id : String, result : InlineQueryResult)
+        request(SentWebAppMessage, "answerWebAppQuery", {
+          web_app_query_id: query_id,
+          result:           result,
+        })
+      end
+
       ##########################
       #        POLLING         #
       ##########################
@@ -1451,8 +1624,12 @@ module Tourmaline
             updates.each do |u|
               handle_update(u)
             end
+            sleep(0.5)
           rescue ex : Error::PoolRetryAttemptsExceeded
             raise ex
+          rescue ex : Error::RetryAfter
+            Log.info { "Flood control exceeded while polling. Retrying in #{ex.seconds} seconds." }
+            sleep(ex.seconds)
           rescue ex
             Log.error(exception: ex) { "Error during polling" }
           end

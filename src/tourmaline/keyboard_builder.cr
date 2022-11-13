@@ -14,13 +14,16 @@ module Tourmaline
 
     property one_time : Bool
 
+    property input_field_placeholder : String?
+
     def initialize(
       @force_reply = false,
       @remove_keyboard = false,
       @selective = false,
       @keyboard = [] of T,
       @resize = false,
-      @one_time = false
+      @one_time = false,
+      @input_field_placeholder = nil,
     )
     end
 
@@ -48,6 +51,11 @@ module Tourmaline
 
     def one_time(value)
       @one_time = value
+      self
+    end
+
+    def input_field_placeholder(value)
+      @input_field_placeholder = value
       self
     end
 

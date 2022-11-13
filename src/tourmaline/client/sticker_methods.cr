@@ -8,6 +8,7 @@ module Tourmaline
       def send_sticker(
         chat,
         sticker,
+        message_thread_id = nil,
         disable_notification = nil,
         reply_to_message = nil,
         reply_markup = nil
@@ -17,6 +18,7 @@ module Tourmaline
 
         request(Message, "sendSticker", {
           chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
           sticker:              sticker,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,
@@ -29,6 +31,14 @@ module Tourmaline
       def get_sticker_set(name : String)
         request(Message, "getStickerSet", {
           name: name,
+        })
+      end
+
+      # Use this method to get information about custom emoji stickers by their identifiers.
+      # Returns an Array of Sticker objects.
+      def get_custom_emoji_stickers(custom_emoji_ids : Array(String))
+        request(Array(Sticker), "getCustomEmojiStickers", {
+          custom_emoji_ids: custom_emoji_ids,
         })
       end
 
@@ -53,15 +63,17 @@ module Tourmaline
         emojis,
         png_sticker = nil,
         tgs_sticker = nil,
+        webm_sticker = nil,
         mask_position = nil
       )
-        raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker
+        raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker || webm_sticker
 
         request(bool, "addStickerToSet", {
           user_id:       user_id,
           name:          name,
           png_sticker:   png_sticker,
           tgs_sticker:   tgs_sticker,
+          webm_sticker:  webm_sticker,
           emojis:        emojis,
           mask_position: mask_position,
         })
@@ -77,10 +89,11 @@ module Tourmaline
         emojis,
         png_sticker = nil,
         tgs_sticker = nil,
-        contains_masks = nil,
+        webm_sticker = nil,
+        sticker_type = nil,
         mask_position = nil
       )
-        raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker
+        raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker || webm_sticker
 
         request(Bool, "createNewStickerSet", {
           user_id:        user_id,
@@ -88,8 +101,9 @@ module Tourmaline
           title:          title,
           png_sticker:    png_sticker,
           tgs_sticker:    tgs_sticker,
+          webm_sticker:   webm_sticker,
+          sticker_type:   sticker_type,
           emojis:         emojis,
-          contains_masks: contains_masks,
           mask_position:  mask_position,
         })
       end

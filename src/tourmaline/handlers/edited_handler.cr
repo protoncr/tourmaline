@@ -3,9 +3,7 @@ module Tourmaline
     class EditedHandler < EventHandler
       ANNOTATION = Edited
 
-      property client : Client
-
-      def initialize(@client : Client, &block : Context ->)
+      def initialize(&block : Context ->)
         super()
         @proc = block
       end

@@ -16,7 +16,9 @@ module Tourmaline
 
     property request_poll : KeyboardButtonPollType?
 
-    def initialize(@text : String, @request_contact = false, @request_location = false, @request_poll = nil)
+    property web_app : WebAppInfo?
+
+    def initialize(@text : String, @request_contact = false, @request_location = false, @request_poll = nil, @web_app = nil)
     end
   end
 
@@ -79,7 +81,7 @@ module Tourmaline
     class Builder < KeyboardBuilder(Tourmaline::KeyboardButton, Tourmaline::ReplyKeyboardMarkup)
       def keyboard(columns = nil) : G
         buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
-        ReplyKeyboardMarkup.new(buttons, @resize, @one_time, @selective)
+        ReplyKeyboardMarkup.new(buttons, @resize, @one_time, @input_field_placeholder, @selective)
       end
 
       def text_button(text)
@@ -97,6 +99,11 @@ module Tourmaline
       def poll_request_button(text, type : Poll::Type)
         type = KeyboardButtonPollType.new(type)
         button(text, request_poll: type)
+      end
+
+      def web_app_button(app : String | WebAppInfo)
+        web_app = app.is_a?(String) ? WebAppInfo.new(app) : app
+        button(url, web_app: web_app)
       end
     end
   end

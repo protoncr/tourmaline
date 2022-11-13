@@ -1,33 +1,28 @@
 module Tourmaline
   # Convenience class for creating an `InlineKeyboard` with built in pagination.
   # It is designed to be customizable so as not to get in your way.
-  class PaginatedKeyboard < InlineKeyboardMarkup
-    @[JSON::Field(ignore: true)]
+  class PaginatedKeyboard
     @current_page : Int32
 
-    @[JSON::Field(ignore: true)]
     getter id : String
 
-    @[JSON::Field(ignore: true)]
     property results : Array(String)
 
-    @[JSON::Field(ignore: true)]
     property per_page : Int32
 
-    @[JSON::Field(ignore: true)]
     property header : String?
 
-    @[JSON::Field(ignore: true)]
     property footer : String?
 
-    @[JSON::Field(ignore: true)]
     property prefix : String?
 
-    @[JSON::Field(ignore: true)]
     property back_button_procs : Array(Proc(PaginatedKeyboard, Nil))
 
-    @[JSON::Field(ignore: true)]
     property next_button_procs : Array(Proc(PaginatedKeyboard, Nil))
+
+    getter event_handler : CallbackQueryHandler
+
+    getter keyboard : InlineKeyboardMarkup
 
     delegate :<<, :push, :each, :index, :delete, to: @results
 
@@ -42,15 +37,13 @@ module Tourmaline
                    @next_text = "Next",
                    @id = Helpers.random_string(8))
       @current_page = 0
-      @inline_keyboard = make_keyboard
+      @keyboard = make_keyboard
       @back_button_procs = [] of Proc(PaginatedKeyboard, Nil)
       @next_button_procs = [] of Proc(PaginatedKeyboard, Nil)
 
-      handler = CallbackQueryHandler.new(group: @id) do |ctx|
+      @event_handler = CallbackQueryHandler.new(/#{@id}:(back|next)/) do |ctx|
         on_button_press(ctx)
       end
-
-      @client.add_event_handler(handler)
     end
 
     # Creates a new `PaginatedKeyboard`, yielding the newly created keyboard to the block
@@ -116,9 +109,9 @@ module Tourmaline
         else
         end
 
-        @inline_keyboard = make_keyboard
+        @keyboard = make_keyboard
         if message = ctx.query.message
-          message.edit_text(current_page, reply_markup: self, parse_mode: :markdown)
+          message.edit_text(current_page, reply_markup: self.keyboard, parse_mode: :markdown)
         end
       end
     end
@@ -134,7 +127,7 @@ module Tourmaline
         keyboard << InlineKeyboardButton.new(@next_text, callback_data: "#{@id}:next")
       end
 
-      [keyboard]
+      InlineKeyboardMarkup.new([keyboard])
     end
 
     private def format_text(text, index = nil)
@@ -142,6 +135,33 @@ module Tourmaline
         .gsub("{page}", (@current_page + 1).to_s)
         .gsub("{page count}", pages.size.to_s)
         .gsub("{index}", index.to_s)
+    end
+  end
+
+  class Client
+    def send_paginated_keyboard(chat, keyboard : PaginatedKeyboard, **kwargs)
+      chat_id = chat.is_a?(Chat) ? chat.id : chat
+
+      add_event_handler(keyboard.event_handler) unless event_handlers.includes?(keyboard.event_handler)
+      start_page = keyboard.current_page
+
+      send_message(chat_id, start_page, **kwargs, reply_markup: keyboard.keyboard)
+    end
+  end
+
+  class Chat
+    def send_paginated_keyboard(keyboard : PaginatedKeyboard, **kwargs)
+      client.send_paginated_keyboard(self, keyboard, **kwargs)
+    end
+  end
+
+  class Message
+    def reply_with_paginated_keyboard(keyboard : PaginatedKeyboard, **kwargs)
+      client.send_paginated_keyboard(chat, keyboard, **kwargs, reply_to_message: message_id)
+    end
+
+    def respond_with_paginated_keyboard(keyboard : PaginatedKeyboard, **kwargs)
+      client.send_paginated_keyboard(chat, menu, **kwargs, reply_to_message: nil)
     end
   end
 end

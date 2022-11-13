@@ -47,10 +47,10 @@ module Tourmaline
     property user_token : String?
 
     # Default parse mode to use for commands when it isn't included explicitly
-    property default_parse_mode : ParseMode
+    class_property default_parse_mode : ParseMode = ParseMode::Markdown
 
     # Default prefixes to use for commands
-    property default_command_prefixes : Array(String)
+    class_property default_command_prefixes : Array(String) = DEFAULT_COMMAND_PREFIXES
 
     getter event_handlers : Array(EventHandler)
     getter persistence : Persistence
@@ -113,8 +113,6 @@ module Tourmaline
                    @endpoint = DEFAULT_API_URL,
                    @persistence : Persistence = NilPersistence.new,
                    @set_commands = false,
-                   @default_parse_mode : ParseMode = ParseMode::Markdown,
-                   @default_command_prefixes : Array(String) = DEFAULT_COMMAND_PREFIXES,
                    pool_capacity = 200,
                    initial_pool_size = 20,
                    pool_timeout = 0.1,
@@ -150,11 +148,10 @@ module Tourmaline
       end
 
       @event_handlers = [] of EventHandler
-
-      register_event_handler_annotations(self)
-      register_commands_with_botfather if @bot_token
-
       @bot = self.get_me
+
+      register_event_handler_annotations
+      register_commands_with_botfather if @bot_token
 
       Signal::INT.trap { exit }
     end
@@ -166,8 +163,6 @@ module Tourmaline
     # Add an `EventHandler` instance to the handler stack
     def add_event_handler(handler : EventHandler)
       @event_handlers << handler
-      @event_handlers.sort! { |a, b| b.priority <=> a.priority }
-      @event_handlers
     end
 
     # Remove an existing event handler from the stack

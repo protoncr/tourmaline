@@ -56,6 +56,9 @@ class StageBot < Tourmaline::Client
         if age = ctx.text.to_i?
           self.context["age"] = age
           self.transition :gender
+        else
+          send_message(self.chat_id, "Please enter a number")
+          self.transition :age
         end
       end
     end
@@ -70,6 +73,9 @@ class StageBot < Tourmaline::Client
 
           # `self.exit` exits the current stage, returning to the normal bot context
           self.exit
+        else
+          send_message(self.chat_id, "Please send one of: male, female, or other")
+          self.transition(:gender)
         end
       end
     end

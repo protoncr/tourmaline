@@ -4,11 +4,9 @@ module Tourmaline
       ANNOTATION = On
       alias Context = Update
 
-      property client : Client
-
       property actions : Array(UpdateAction)
 
-      def initialize(@client : Client, actions, &block : Context ->)
+      def initialize(actions, &block : Context ->)
         super()
         actions = [actions] unless actions.is_a?(Array)
         @actions = actions.map do |a|

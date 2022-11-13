@@ -23,8 +23,7 @@ class KittyBot < Tourmaline::Client
   def kitty_command(ctx)
     # The time hack is to get around Telegram's image cache
     api = API_URL + "?time=#{Time.utc}&format=src&type="
-
-    case ctx.text
+    case ctx.command
     when "kitty"
       ctx.message.chat.send_chat_action(:upload_photo)
       ctx.message.chat.send_photo(api + "jpg")

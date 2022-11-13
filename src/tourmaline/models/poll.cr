@@ -14,9 +14,11 @@ module Tourmaline
 
     getter total_voter_count : Int32
 
-    getter is_closed : Bool
+    @[JSON::Field(key: "is_closed")]
+    getter? closed : Bool
 
-    getter is_anonymous : Bool
+    @[JSON::Field(key: "is_anonymous")]
+    getter? anonymous : Bool
 
     @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
     getter type : Type

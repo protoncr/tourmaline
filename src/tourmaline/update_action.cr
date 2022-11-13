@@ -3,6 +3,7 @@ module Tourmaline
   enum UpdateAction
     Update
     Message
+    ThreadMessage
     ReplyMessage
     EditedMessage
     ForwardedMessage
@@ -51,10 +52,14 @@ module Tourmaline
     PassportData
     PollAnswer
     ProximityAlertTriggered
-    VoiceChatScheduled
-    VoiceChatStarted
-    VoiceChatEnded
-    VoiceChatParticipantsInvited
+    ForumTopicCreated
+    ForumTopicClosed
+    ForumTopicReopened
+    VideoChatScheduled
+    VideoChatStarted
+    VideoChatEnded
+    VideoChatParticipantsInvited
+    WebAppData
     ReplyMarkup
 
     Dice        # 🎲
@@ -104,6 +109,7 @@ module Tourmaline
 
       if message = update.message
         actions << UpdateAction::Message
+        actions << UpdateAction::ThreadMessage if message.message_thread_id
         actions << UpdateAction::ReplyMessage if message.reply_message
         actions << UpdateAction::ForwardedMessage if message.forward_date
 
@@ -144,10 +150,14 @@ module Tourmaline
         actions << UpdateAction::ConnectedWebsite if message.connected_website
         actions << UpdateAction::PassportData if message.passport_data
         actions << UpdateAction::ProximityAlertTriggered if message.proximity_alert_triggered
-        actions << UpdateAction::VoiceChatScheduled if message.voice_chat_scheduled
-        actions << UpdateAction::VoiceChatStarted if message.voice_chat_started
-        actions << UpdateAction::VoiceChatEnded if message.voice_chat_ended
-        actions << UpdateAction::VoiceChatParticipantsInvited if message.voice_chat_participants_invited
+        actions << UpdateAction::VideoChatScheduled if message.video_chat_scheduled
+        actions << UpdateAction::ForumTopicCreated if message.forum_topic_created
+        actions << UpdateAction::ForumTopicClosed if message.forum_topic_closed
+        actions << UpdateAction::ForumTopicReopened if message.forum_topic_reopened
+        actions << UpdateAction::VideoChatStarted if message.video_chat_started
+        actions << UpdateAction::VideoChatEnded if message.video_chat_ended
+        actions << UpdateAction::VideoChatParticipantsInvited if message.video_chat_participants_invited
+        actions << UpdateAction::WebAppData if message.web_app_data
         actions << UpdateAction::ReplyMarkup if message.reply_markup
 
         if dice = message.dice

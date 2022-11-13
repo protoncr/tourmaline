@@ -3,11 +3,9 @@ module Tourmaline
     class ChosenInlineResultHandler < EventHandler
       ANNOTATION = OnChosenInlineResult
 
-      property client : Client
-
       property pattern : Regex?
 
-      def initialize(@client : Client, pattern : (String | Regex)? = nil, &block : Context ->)
+      def initialize(pattern : (String | Regex)? = nil, &block : Context ->)
         super()
         @pattern = pattern.is_a?(Regex | Nil) ? pattern : Regex.new("^#{Regex.escape(pattern)}$")
         @proc = block

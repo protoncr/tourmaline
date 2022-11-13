@@ -5,7 +5,7 @@ module Tourmaline
 
     MENTION_TYPES = %w[
       mention text_mention hashtag cashtag bot_command url email phone_number
-      bold italic code pre text_link underline strikethrough spoiler
+      bold italic code pre text_link underline strikethrough spoiler custom_emoji
     ]
 
     property type : String
@@ -20,7 +20,11 @@ module Tourmaline
 
     property language : String?
 
-    def initialize(@type, @offset = 0, @length = 0, @url = nil, @user = nil, @language = nil)
+    property custom_emoji_id : String?
+
+    def initialize(type, @offset = 0, @length = 0, @url = nil, @user = nil, @language = nil, @custom_emoji_id = nil)
+      @type = type.to_s
+      raise ArgumentError.new("Invalid type: #{@type}") unless MENTION_TYPES.includes?(@type)
     end
 
     {% for mention_type in MENTION_TYPES %}

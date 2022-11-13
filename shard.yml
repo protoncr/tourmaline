@@ -4,7 +4,7 @@ version: 0.26.1
 authors:
   - Chris Watson <chris@watzon.tech>
 
-crystal: ">= 0.1.0"
+crystal: ">= 1.6.0"
 
 crystalline:
   main: examples/echo_bot.cr

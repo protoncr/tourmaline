@@ -3,11 +3,9 @@ module Tourmaline
     class HearsHandler < EventHandler
       ANNOTATION = Hears
 
-      property client : Client
-
       property pattern : Regex
 
-      def initialize(@client : Client, pattern : String | Regex, &block : Context ->)
+      def initialize(pattern : String | Regex, &block : Context ->)
         super()
         @pattern = pattern.is_a?(Regex) ? pattern : Regex.new("#{Regex.escape(pattern)}")
         @proc = block

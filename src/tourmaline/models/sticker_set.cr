@@ -7,9 +7,13 @@ module Tourmaline
 
     getter title : String
 
-    getter is_animated : Bool
+    getter sticker_type : Sticker::Type
 
-    getter contains_masks : Bool
+    @[JSON::Field(key: "is_animated")]
+    getter? animated : Bool
+
+    @[JSON::Field(key: "is_video")]
+    getter? video : Bool
 
     getter stickers : Array(Sticker)
 

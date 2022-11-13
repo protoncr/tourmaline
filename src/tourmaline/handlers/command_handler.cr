@@ -3,9 +3,6 @@ module Tourmaline
     class CommandHandler < EventHandler
       ANNOTATION = Command
 
-      # The parent client instance
-      property client : Client
-
       # Commands (without prefix) that this handler should respond to.
       property commands : Array(String)
 
@@ -20,9 +17,6 @@ module Tourmaline
 
       # If true, this handler will only respond if the command is sent in a group.
       property group_only : Bool
-
-      # If true, this handler will only respond if the command is sent by a group admin.
-      property admin_only : Bool
 
       # If true, this handler will also run (or re-run) when messages are edited.
       property on_edit : Bool
@@ -46,13 +40,11 @@ module Tourmaline
       #     If `#admin_only` is true, `get_chat_adminstrators` will be run every time the
       #     handler is invoked. This should be fine in testing, but in production it's
       #     recommended to cache admins and do your own guarding.
-      def initialize(@client,
-                     commands,
+      def initialize(commands,
                      prefix = nil,
                      @outgoing = true,
                      @private_only = false,
                      @group_only = false,
-                     @admin_only = false,
                      @on_edit = false,
                      @register = false,
                      @register_as = nil,
@@ -63,7 +55,7 @@ module Tourmaline
         if prefix
           @prefixes = prefix.is_a?(Array) ? prefix : [prefix]
         else
-          @prefixes = client.default_command_prefixes
+          @prefixes = Tourmaline::Client.default_command_prefixes
         end
 
         commands = commands.is_a?(Array) ? commands : [commands]
@@ -73,19 +65,11 @@ module Tourmaline
 
       def call(update : Update)
         if (message = update.message || update.channel_post) || (@on_edit && (message = update.edited_message || update.edited_channel_post))
-          return if message.is_outgoing? unless @outgoing
+          return if message.outgoing? unless @outgoing
           if ((raw_text = message.raw_text) && (text = message.text)) ||
              (raw_text = message.raw_caption && (text = message.caption))
             return if private_only && message.chat.private?
-            return if (group_only || admin_only) && message.chat.private?
-
-            if @admin_only && !message.chat.private? && !message.chat.channel?
-              if from = message.from
-                admins = @client.get_chat_administrators(message.chat.id)
-                ids = admins.map(&.user.id)
-                return unless ids.includes?(from.id)
-              end
-            end
+            return if group_only && message.chat.private?
 
             text = text.to_s
             raw_text = raw_text.to_s
@@ -101,7 +85,7 @@ module Tourmaline
 
             if command.starts_with?('/') && command.includes?("@")
               command, botname = command.split("@", 2)
-              return unless botname.downcase == @client.bot.username.to_s.downcase
+              return unless botname.downcase == client.bot.username.to_s.downcase
             end
 
             prefix_re = /^#{@prefixes.map(&->Regex.escape(String)).join('|')}/

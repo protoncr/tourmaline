@@ -6,12 +6,14 @@ module Tourmaline
       def send_game(
         chat_id,
         game_short_name,
+        message_thread_id = nil,
         disable_notification = nil,
         reply_to_message_id = nil,
         reply_markup = nil
       )
         request(Message, "sendGame", {
           chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
           game_short_name:      game_short_name,
           disable_notification: disable_notification,
           reply_to_message_id:  reply_to_message_id,

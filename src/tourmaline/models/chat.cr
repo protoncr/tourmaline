@@ -16,11 +16,24 @@ module Tourmaline
 
     getter last_name : String?
 
+    @[JSON::Field(key: "is_forum")]
+    getter? forum : Bool?
+
     getter photo : ChatPhoto?
 
     getter bio : String?
 
+    getter active_usernames : Array(String)  = [] of String
+
+    getter emoji_status_custom_emoji_id : String?
+
     getter has_private_forwards : Bool?
+
+    getter has_restricted_voice_and_video_messages : Bool?
+
+    getter join_to_send_messages : Bool?
+
+    getter join_by_request : Bool?
 
     getter description : String?
 
@@ -45,10 +58,12 @@ module Tourmaline
     getter location : ChatLocation?
 
     # USER API ONLY
-    getter? is_verified : Bool?
+    @[JSON::Field(key: "is_verified")]
+    getter? verified : Bool?
 
     # USER API ONLY
-    getter? is_scam : Bool?
+    @[JSON::Field(key: "is_scam")]
+    getter? scam : Bool?
 
     def name
       if first_name || last_name

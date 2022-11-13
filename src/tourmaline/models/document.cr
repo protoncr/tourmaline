@@ -13,6 +13,6 @@ module Tourmaline
 
     getter mime_type : String?
 
-    getter file_size : Int32
+    getter file_size : Int64?
   end
 end

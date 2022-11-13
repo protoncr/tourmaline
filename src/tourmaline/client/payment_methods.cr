@@ -11,6 +11,7 @@ module Tourmaline
         provider_token,
         currency,
         prices,
+        message_thread_id = nil,
         max_tip_amount = nil,
         suggested_tip_amounts = nil,
         start_parameter = nil,
@@ -20,6 +21,8 @@ module Tourmaline
         photo_width = nil,
         photo_height = nil,
         need_name = nil,
+        need_phone_number = nil,
+        need_email = nil,
         need_shipping_address = nil,
         send_phone_number_to_provider = nil,
         send_email_to_provider = nil,
@@ -33,6 +36,7 @@ module Tourmaline
 
         request(Message, "sendInvoice", {
           chat_id:                       chat_id,
+          message_thread_id:             message_thread_id,
           title:                         title,
           description:                   description,
           payload:                       payload,
@@ -48,6 +52,8 @@ module Tourmaline
           photo_width:                   photo_width,
           photo_height:                  photo_height,
           need_name:                     need_name,
+          need_phone_number:             need_phone_number,
+          need_email:                    need_email,
           need_shipping_address:         need_shipping_address,
           send_phone_number_to_provider: send_phone_number_to_provider,
           send_email_to_provider:        send_email_to_provider,
@@ -55,6 +61,54 @@ module Tourmaline
           disable_notification:          disable_notification,
           reply_to_message_id:           reply_to_message_id,
           reply_markup:                  reply_markup,
+        })
+      end
+
+      # Use this method to create a link for an invoice.
+      # Returns the created invoice link as String on success.
+      def create_invoice_link(
+        title,
+        description,
+        payload,
+        provider_token,
+        currency,
+        prices,
+        max_tip_amount = nil,
+        suggested_tip_amounts = nil,
+        provider_data = nil,
+        photo_url = nil,
+        photo_size = nil,
+        photo_width = nil,
+        photo_height = nil,
+        need_name = nil,
+        need_phone_number = nil,
+        need_email = nil,
+        need_shipping_address = nil,
+        send_phone_number_to_provider = nil,
+        send_email_to_provider = nil,
+        is_flexible = nil
+      )
+        request(String, "createInvoiceLink", {
+          title:                         title,
+          description:                   description,
+          payload:                       payload,
+          provider_token:                provider_token,
+          currency:                      currency,
+          prices:                        prices.to_json,
+          max_tip_amount:                max_tip_amount,
+          suggested_tip_amounts:         suggested_tip_amounts,
+          provider_data:                 provider_data,
+          photo_url:                     photo_url,
+          photo_size:                    photo_size,
+          photo_width:                   photo_width,
+          photo_height:                  photo_height,
+          need_name:                     need_name,
+          need_phone_number:             need_phone_number,
+          need_email:                    need_email,
+          need_shipping_address:         need_shipping_address,
+          send_phone_number_to_provider: send_phone_number_to_provider,
+          send_email_to_provider:        send_email_to_provider,
+          is_flexible:                   is_flexible,
         })
       end
 

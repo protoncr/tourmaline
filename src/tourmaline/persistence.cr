@@ -32,7 +32,7 @@ module Tourmaline
     abstract def user_exists?(user_id : Int) : Bool
 
     # Returns true if the user with the provided `username` exists.
-    abstract def user_exists?(usename : String) : Bool
+    abstract def user_exists?(username : String) : Bool
 
     # Returns true if the chat with the provided `chat_id` exists.
     abstract def chat_exists?(chat_id : Int) : Bool

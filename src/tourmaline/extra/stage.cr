@@ -16,7 +16,6 @@ module Tourmaline
     # ```
     annotation Step; end
 
-    # The client controlling this stage
     getter client : Client
 
     # A hash containing the steps in this stage
@@ -53,13 +52,11 @@ module Tourmaline
     forward_missing_to @client
 
     # Create a new Stage instance
-    def initialize(@client : Client,
+    def initialize(@client : Tourmaline::Client,
                    *,
                    context : T,
                    chat_id = nil,
                    user_id = nil,
-                   group = nil,
-                   priority = 0,
                    **handler_options)
       @context = context || T.new
       @chat_id = chat_id
@@ -70,8 +67,7 @@ module Tourmaline
       @on_start_handlers = [] of Proc(Nil)
       @on_exit_handlers = [] of Proc(T, Nil)
 
-      group ||= Helpers.random_string(8)
-      @event_handler = UpdateHandler.new(:update, **handler_options, group: group, priority: priority) do |update|
+      @event_handler = UpdateHandler.new(:update, **handler_options) do |update|
         handle_update(update)
       end
 
@@ -79,8 +75,8 @@ module Tourmaline
     end
 
     # Create a new Stage instance and start it immediately
-    def self.enter(*args, **options)
-      stage = new(*args, **options)
+    def self.enter(client, **options)
+      stage = new(client, **options)
       stage.start
     end
 

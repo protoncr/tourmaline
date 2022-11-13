@@ -14,7 +14,7 @@ class PaginationBot < Tourmaline::Client
       footer: "\nPage: {page} of {page count}"
     )
 
-    ctx.message.respond(keyboard.current_page, parse_mode: :markdown, reply_markup: keyboard)
+    ctx.message.reply_with_paginated_keyboard(keyboard, parse_mode: :markdown)
   end
 end
 

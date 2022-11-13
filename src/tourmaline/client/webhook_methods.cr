@@ -70,7 +70,8 @@ module Tourmaline
         certificate = nil,
         max_connections = nil,
         allowed_updates = nil,
-        drop_pending_updates = false
+        drop_pending_updates = false,
+        secret_token = nil,
       )
         params = {
           url:                  url,
@@ -79,6 +80,7 @@ module Tourmaline
           allowed_updates:      allowed_updates,
           certificate:          certificate,
           drop_pending_updates: drop_pending_updates,
+          secret_token:         secret_token,
         }
         Log.info { "Setting webhook to '#{url}'#{" with certificate" if certificate}" }
         request(Bool, "setWebhook", params)

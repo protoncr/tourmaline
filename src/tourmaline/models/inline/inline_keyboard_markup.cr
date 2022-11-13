@@ -63,6 +63,11 @@ module Tourmaline
       def login_button(text, url, *args, **opts)
         button(text, login_url: LoginUrl.new(url, *args, **opts))
       end
+
+      def web_app_button(app : String | WebAppInfo)
+        web_app = app.is_a?(String) ? WebAppInfo.new(app) : app
+        button(url, web_app: web_app)
+      end
     end
   end
 end

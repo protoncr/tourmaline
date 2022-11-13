@@ -9,6 +9,8 @@ module Tourmaline
 
     getter message_id : Int64
 
+    getter message_thread_id : Int64?
+
     getter from : User?
 
     getter sender_chat : Chat?
@@ -31,7 +33,11 @@ module Tourmaline
     @[JSON::Field(converter: Time::EpochConverter)]
     getter forward_date : Time?
 
-    getter is_automatic_forward : Bool?
+    @[JSON::Field(key: "is_topic_message")]
+    getter? topic_message : Bool?
+
+    @[JSON::Field(key: "is_automatic_forward")]
+    getter? automatic_forward : Bool?
 
     @[JSON::Field(converter: Time::EpochConverter)]
     getter edit_date : Time?
@@ -44,7 +50,7 @@ module Tourmaline
     @[JSON::Field(converter: Time::EpochConverter)]
     getter edit_date : Time?
 
-    getter has_protected_content : Bool?
+    getter? has_protected_content : Bool?
 
     getter media_group_id : String?
 
@@ -120,18 +126,26 @@ module Tourmaline
 
     getter proximity_alert_triggered : ProximityAlertTriggered?
 
-    getter voice_chat_scheduled : VoiceChatScheduled?
+    getter forum_topic_created : ForumTopicCreated?
 
-    getter voice_chat_started : VoiceChatStarted?
+    getter forum_topic_closed : ForumTopicClosed?
 
-    getter voice_chat_ended : VoiceChatEnded?
+    getter forum_topic_reopened : ForumTopicReopened?
 
-    getter voice_chat_participants_invited : VoiceChatParticipantsInvited?
+    getter video_chat_scheduled : VideoChatScheduled?
+
+    getter video_chat_started : VideoChatStarted?
+
+    getter video_chat_ended : VideoChatEnded?
+
+    getter video_chat_participants_invited : VideoChatParticipantsInvited?
 
     getter reply_markup : InlineKeyboardMarkup?
 
+    getter web_app_data : WebAppData?
+
     # USER API ONLY
-    getter? is_outgoing : Bool?
+    getter? outgoing : Bool?
 
     # USER API ONLY
     getter views : Int32?
@@ -289,7 +303,7 @@ module Tourmaline
     end
 
     def sender_type
-      if is_automatic_forward
+      if automatic_forward?
         SenderType::ChannelForward
       elsif sc = sender_chat
         if sc.id == chat.id
@@ -297,7 +311,7 @@ module Tourmaline
         else
           SenderType::Channel
         end
-      elsif from.try(&.is_bot)
+      elsif from.try(&.bot?)
         SenderType::Bot
       else
         SenderType::User

@@ -1,8 +1,6 @@
 module Tourmaline
-  class VoiceChatEnded
+  class ForumTopicReopened
     include JSON::Serializable
     include Tourmaline::Model
-
-    getter duration : Int32
   end
 end
