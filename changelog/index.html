@@ -681,6 +681,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0270" class="md-nav__link">
+    0.27.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0251" class="md-nav__link">
     0.25.1
   </a>
@@ -5797,6 +5804,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0270" class="md-nav__link">
+    0.27.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0251" class="md-nav__link">
     0.25.1
   </a>
@@ -5913,6 +5927,21 @@
 
 <h1 id="tourmaline-changelog">Tourmaline Changelog<a class="headerlink" href="#tourmaline-changelog" title="Permanent link">#</a></h1>
 <p>I will do my best to keep this updated with changes as they happen.</p>
+<h2 id="0270">0.27.0<a class="headerlink" href="#0270" title="Permanent link">#</a></h2>
+<ul>
+<li>Added full support for Bot API 6.3</li>
+<li><strong>(breaking change)</strong> All <code>is_</code> prefixed properties in models have been replaced with <code>?</code> getters. For instance, <code>is_anonymous</code> is now <code>anonymous?</code>.</li>
+<li><strong>(breaking change)</strong> <code>Client#default_parse_mode</code> and <code>Client#default_command_prefixes</code> have been made class properties instead of instance properties.</li>
+<li>Fixed issues with missing <code>priority</code> and <code>group</code> properties on event handlers.</li>
+<li><strong>(breaking change)</strong> <code>extra/paginated_keyboard</code> no longer extends <code>InlineKeyboardMarkup</code>.</li>
+<li>Added methods <code>Client#send_paginated_keyboard</code>, <code>Chat#send_paginated_keyboard</code>, <code>Message#reply_with_paginated_keyboard</code>, and <code>Message#respond_with_paginated_keyboard</code>. Requires import of <code>extra/paginated_keyboard</code>.</li>
+<li>Fixed broken parts of <code>extra/routed_menu</code>.</li>
+<li>Fixed broken parts of <code>extra/stage</code>.</li>
+<li>Handlers no longer require an instance of <code>Tourmaline::Client</code>.</li>
+<li>Added several new <code>UpdateAction</code>s including <code>ThreadMessage</code>, <code>ForumTopicCreated</code>, <code>ForumTopicClosed</code>, <code>ForumTopicReopened</code>, <code>VideoChatScheduled</code>, <code>VideoChatStarted</code>, <code>VideoChatEnded</code>, <code>VideoChatParticipantsInvited</code>, and <code>WebAppData</code>.</li>
+<li>Bot examples have all been fixed</li>
+<li>More, see <a href="https://core.telegram.org/bots/api#november-5-2022">the official Bot API changelog</a> for a complete list of changes.</li>
+</ul>
 <h2 id="0251">0.25.1<a class="headerlink" href="#0251" title="Permanent link">#</a></h2>
 <ul>
 <li>Added <code>sender_type</code> method and <code>SenderType</code> enum to <code>Message</code>, allowing the user to easily figure out what type of user or channel sent the given message.</li>
