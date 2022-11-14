@@ -2,6 +2,20 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.27.0
+- Added full support for Bot API 6.3
+- **(breaking change)** All `is_` prefixed properties in models have been replaced with `?` getters. For instance, `is_anonymous` is now `anonymous?`.
+- **(breaking change)** `Client#default_parse_mode` and `Client#default_command_prefixes` have been made class properties instead of instance properties.
+- Fixed issues with missing `priority` and `group` properties on event handlers.
+- **(breaking change)** `extra/paginated_keyboard` no longer extends `InlineKeyboardMarkup`.
+- Added methods `Client#send_paginated_keyboard`, `Chat#send_paginated_keyboard`, `Message#reply_with_paginated_keyboard`, and `Message#respond_with_paginated_keyboard`. Requires import of `extra/paginated_keyboard`.
+- Fixed broken parts of `extra/routed_menu`.
+- Fixed broken parts of `extra/stage`.
+- Handlers no longer require an instance of `Tourmaline::Client`.
+- Added several new `UpdateAction`s including `ThreadMessage`, `ForumTopicCreated`, `ForumTopicClosed`, `ForumTopicReopened`, `VideoChatScheduled`, `VideoChatStarted`, `VideoChatEnded`, `VideoChatParticipantsInvited`, and `WebAppData`.
+- Bot examples have all been fixed
+- More, see [the official Bot API changelog](https://core.telegram.org/bots/api#november-5-2022) for a complete list of changes.
+
 ## 0.25.1
 - Added `sender_type` method and `SenderType` enum to `Message`, allowing the user to easily figure out what type of user or channel sent the given message.
 - Updated docs
