@@ -18,7 +18,7 @@ dependencies:
     branch: master
   html5:
     github: naqvis/crystal-html5
-    branch: master
+    version: ~> 0.4.0
 
 development_dependencies:
   ngrok:
