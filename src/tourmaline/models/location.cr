@@ -7,7 +7,7 @@ module Tourmaline
 
     getter latitude : Float64
 
-    getter horizontal_accuracy : Int32?
+    getter horizontal_accuracy : Float64?
 
     getter live_period : Int32?
 
