@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class Voice
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter file_id : String
 

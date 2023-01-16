@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultArticle < InlineQueryResult
     getter type : String = "article"
 

@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class VideoChatParticipantsInvited
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter users : Array(User)
   end

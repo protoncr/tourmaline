@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultVideo < InlineQueryResult
     property type : String = "video"
 

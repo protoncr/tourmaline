@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class InputLocationMessageContent
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter latitude : String
 

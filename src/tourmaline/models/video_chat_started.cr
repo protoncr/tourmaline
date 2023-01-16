@@ -1,6 +1,5 @@
-module Tourmaline
+module Tourmaline::Model
   class VideoChatStarted
     include JSON::Serializable
-    include Tourmaline::Model
   end
 end

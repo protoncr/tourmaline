@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class Venue
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter location : Location
 

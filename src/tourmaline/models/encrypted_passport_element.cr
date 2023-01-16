@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class EncryptedPassportElement
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter type : EncryptedPassportElement::Type
 
@@ -11,15 +10,15 @@ module Tourmaline
 
     getter email : String?
 
-    getter files : Array(PassportFile) = [] of Tourmaline::PassportFile
+    getter files : Array(PassportFile) = [] of Tourmaline::Model::PassportFile
 
-    getter front_side : Array(PassportFile) = [] of Tourmaline::PassportFile
+    getter front_side : Array(PassportFile) = [] of Tourmaline::Model::PassportFile
 
-    getter reverse_side : Array(PassportFile) = [] of Tourmaline::PassportFile
+    getter reverse_side : Array(PassportFile) = [] of Tourmaline::Model::PassportFile
 
     getter selfie : PassportFile?
 
-    getter translation : Array(PassportFile) = [] of Tourmaline::PassportFile
+    getter translation : Array(PassportFile) = [] of Tourmaline::Model::PassportFile
 
     getter hash : String
 

@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultCachedMpeg4Gif < InlineQueryResult
     getter type : String = "mpeg4_gif"
 

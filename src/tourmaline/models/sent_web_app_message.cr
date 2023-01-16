@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class SentWebAppMessage
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter inline_message_id : String
 

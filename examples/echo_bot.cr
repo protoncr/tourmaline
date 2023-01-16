@@ -1,11 +1,11 @@
 require "../src/tourmaline"
 
-class EchoBot < Tourmaline::Client
-  @[Command("echo")]
-  def echo_command(ctx)
-    ctx.message.reply(ctx.text)
+class Echo < TL::Controller
+  @[TLA::Command("echo")]
+  def echo_command(message : TLM::Message, text : String)
+    message.reply(text)
   end
 end
 
-bot = EchoBot.new(bot_token: ENV["API_KEY"])
-bot.poll
+TL::Config.api_token = ENV["API_TOKEN"]
+TL.poll

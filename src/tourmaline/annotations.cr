@@ -30,6 +30,11 @@ module Tourmaline
     # end
     # ```
     annotation Command; end
+    ACF.configuration_annotation TLA::Command,
+      commands : String | Array(String),
+      prefix : String = "/",
+      private_only : Bool = false,
+      group_only : Bool = false
 
     # Add a callback query handler which optionally listens for a specific data value.
     #
@@ -48,23 +53,34 @@ module Tourmaline
     # end
     # ```
     annotation OnCallbackQuery; end
+    ACF.configuration_annotation TLA::OnCallbackQuery,
+      pattern : String | Regex
 
     annotation OnChosenInlineResult; end
+    ACF.configuration_annotation TLA::OnChosenInlineResult
 
     annotation Edited; end
+    ACF.configuration_annotation TLA::Edited
 
     annotation Hears; end
+    ACF.configuration_annotation TLA::Hears,
+      pattern : String | Regex
 
     annotation OnInlineQuery; end
+    ACF.configuration_annotation TLA::OnInlineQuery
 
     annotation On; end
+    ACF.configuration_annotation TLA::On,
+      events : String | Symbol | UpdateAction | Array(String) | Array(Symbol) | Array(UpdateAction)
 
     # Catch errors and pass them to the annotated method to be handled.\
     #
     # Options:
     #
     # `*errors`
-    # : `Tourmaline::Error` classes that you wish to handle.
+    # : `Tourmaline::Exceptions::Error` classes that you wish to handle.
     annotation Catch; end
+    ACF.configuration_annotation TLA::Catch,
+      errors : Exceptions::Error | Array(Exceptions::Error)
   end
 end

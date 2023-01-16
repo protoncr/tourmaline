@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultCachedVideo < InlineQueryResult
     getter type : String = "video"
 

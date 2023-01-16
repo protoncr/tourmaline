@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultContact < InlineQueryResult
     getter type : String = "contact"
 

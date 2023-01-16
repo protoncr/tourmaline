@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class WebhookInfo
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter url : String
 

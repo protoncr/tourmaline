@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ChatInviteLink
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter invite_link : String
 

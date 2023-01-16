@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ChatAdministratorRights
     include JSON::Serializable
-    include Tourmaline::Model
 
     @[JSON::Field(key: "is_anonymous")]
     getter? anonymous : Bool

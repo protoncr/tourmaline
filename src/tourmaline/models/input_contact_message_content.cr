@@ -1,10 +1,9 @@
 require "json"
 require "./input_message_content.cr"
 
-module Tourmaline
+module Tourmaline::Model
   class InputContactMessageContent
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter phone_number : String
 

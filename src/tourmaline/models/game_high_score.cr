@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class GameHighScore
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter position : Int32
 

@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultPhoto < InlineQueryResult
     property type : String = "photo"
 

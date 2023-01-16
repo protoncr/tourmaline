@@ -1,6 +1,5 @@
-module Tourmaline
+module Tourmaline::Model
   class ForumTopicReopened
     include JSON::Serializable
-    include Tourmaline::Model
   end
 end

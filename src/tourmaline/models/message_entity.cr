@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class MessageEntity
     include JSON::Serializable
-    include Tourmaline::Model
 
     MENTION_TYPES = %w[
       mention text_mention hashtag cashtag bot_command url email phone_number

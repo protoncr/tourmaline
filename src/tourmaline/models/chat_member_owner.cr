@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ChatMemberOwner
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter status : String
 

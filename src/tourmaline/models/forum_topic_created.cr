@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ForumTopicCreated
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter name : String
 

@@ -1,6 +1,6 @@
 require "./chat_member_member"
 
-module Tourmaline
+module Tourmaline::Model
   class ChatMemberLeft < ChatMemberMember
   end
 end

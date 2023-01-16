@@ -1,3 +1,3 @@
-module Tourmaline
+module Tourmaline::Model
   alias InputMedia = InputMediaAnimation | InputMediaDocument | InputMediaAudio | InputMediaVideo | InputMediaPhoto
 end

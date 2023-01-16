@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultCachedGif < InlineQueryResult
     getter type : String = "gif"
 

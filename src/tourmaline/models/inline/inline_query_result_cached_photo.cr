@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultCachedPhoto < InlineQueryResult
     getter type : String = "photo"
 

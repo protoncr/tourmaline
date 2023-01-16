@@ -1,8 +1,7 @@
-module Tourmaline
+module Tourmaline::Model
   # This object contains information about one answer option in a poll.
   class PollOption
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter text : String
 

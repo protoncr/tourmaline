@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultDocument < InlineQueryResult
     getter type : String = "document"
 

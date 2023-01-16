@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultCachedDocument < InlineQueryResult
     property type : String = "document"
 

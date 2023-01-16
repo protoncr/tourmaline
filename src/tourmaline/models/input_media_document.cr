@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class InputMediaDocument
     include JSON::Serializable
-    include Tourmaline::Model
 
     @type = "document"
 

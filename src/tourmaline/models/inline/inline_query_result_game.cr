@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultGame < InlineQueryResult
     getter type : String = "game"
 

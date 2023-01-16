@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class Dice
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter emoji : String
     getter value : Int32

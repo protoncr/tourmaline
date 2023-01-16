@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ProximityAlertTriggered
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter traveler : User
 

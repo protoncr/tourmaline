@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ChatJoinRequest
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter chat : Chat
 

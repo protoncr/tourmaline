@@ -24,7 +24,7 @@ module Tourmaline
       # no parameters. Returns basic information about the bot
       # in form of a `User` object.
       def get_me
-        request(User, "getMe")
+        request(Tourmaline::Model::User, "getMe")
       end
 
       # Use this method to log out from the cloud Bot API server before launching the bot locally.
@@ -57,7 +57,7 @@ module Tourmaline
         timeout = 0,
         allowed_updates = [] of String
       )
-        updates = request(Array(Update), "getUpdates", {
+        updates = request(Array(Tourmaline::Model::Update), "getUpdates", {
           offset:          offset,
           limit:           limit,
           timeout:         timeout,
@@ -164,7 +164,7 @@ module Tourmaline
         inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Bool | Message, "editMessageCaption", {
+        request(Bool | Tourmaline::Model::Message, "editMessageCaption", {
           chat_id:           chat_id,
           caption:           caption,
           message_id:        message_id,
@@ -193,7 +193,7 @@ module Tourmaline
         message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
         inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
 
-        request(Bool | Message, "editMessageReplyMarkup", {
+        request(Bool | Tourmaline::Model::Message, "editMessageReplyMarkup", {
           chat_id:           chat_id,
           message_id:        message_id,
           inline_message_id: inline_message_id,
@@ -227,7 +227,7 @@ module Tourmaline
 
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message | Bool, "editMessageText", {
+        request(Tourmaline::Model::Message | Bool, "editMessageText", {
           chat_id:                  chat_id,
           message_id:               message_id,
           inline_message_id:        inline_message_id,
@@ -253,7 +253,7 @@ module Tourmaline
         message_id = message.is_a?(Int) ? message : message.id
         from_chat_id = from_chat.is_a?(Int) ? from_chat : from_chat.id
 
-        request(Message, "forwardMessage", {
+        request(Tourmaline::Model::Message, "forwardMessage", {
           chat_id:              chat_id,
           message_thread_id:    message_thread_id,
           from_chat_id:         from_chat_id,
@@ -279,7 +279,7 @@ module Tourmaline
       def get_chat(chat)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
-        request(Chat, "getChat", {
+        request(Tourmaline::Model::Chat, "getChat", {
           chat_id: chat_id,
         })
       end
@@ -292,7 +292,7 @@ module Tourmaline
       def get_chat_administrators(chat)
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
-        request(Array(ChatMember), "getChatAdministrators", {
+        request(Array(Tourmaline::Model::ChatMember), "getChatAdministrators", {
           chat_id: chat_id,
         })
       end
@@ -303,7 +303,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         user_id = user.is_a?(Int) ? user : user.id
 
-        chat_member = request(ChatMember, "getChatMember", {
+        chat_member = request(Tourmaline::Model::ChatMember, "getChatMember", {
           chat_id: chat_id,
           user_id: user_id,
         })
@@ -326,7 +326,7 @@ module Tourmaline
       # Requires no parameters.
       # Returns an Array of Sticker objects.
       def get_forum_topic_icon_stickers
-        request(Array(Sticker), "getForumTopicIconStickers")
+        request(Array(Tourmaline::Model::Sticker), "getForumTopicIconStickers")
       end
 
       # Use this method to create a topic in a forum supergroup chat. The bot must be an administrator
@@ -340,7 +340,7 @@ module Tourmaline
       )
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
 
-        request(ForumTopic, "createForumTopic", {
+        request(Tourmaline::Model::ForumTopic, "createForumTopic", {
           chat_id:              chat_id,
           name:                 name,
           icon_color:           icon_color,
@@ -444,7 +444,7 @@ module Tourmaline
       #
       # To simplify retrieving a link for a file, use the `#get_file_link` method.
       def get_file(file_id)
-        request(TFile, "getFile", {
+        request(Tourmaline::Model::TFile, "getFile", {
           file_id: file_id,
         })
       end
@@ -479,7 +479,7 @@ module Tourmaline
       )
         user_id = user.is_a?(Int) ? user : user.id
 
-        request(UserProfilePhotos, "getUserProfilePhotos", {
+        request(Tourmaline::Model::UserProfilePhotos, "getUserProfilePhotos", {
           user_id: user_id,
           offset:  offset,
           limit:   limit,
@@ -729,7 +729,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
 
-        request(ChatInviteLink, "createChatInviteLink", {
+        request(Tourmaline::Model::ChatInviteLink, "createChatInviteLink", {
           chat_id:              chat_id,
           name:                 name,
           expire_date:          expire_date,
@@ -754,7 +754,7 @@ module Tourmaline
         invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
         expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
 
-        request(ChatInviteLink, "editChatInviteLink", {
+        request(Tourmaline::Model::ChatInviteLink, "editChatInviteLink", {
           chat_id:              chat_id,
           invite_link:          invite_link,
           name:                 name,
@@ -773,7 +773,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
 
-        request(ChatInviteLink, "revokeChatInviteLink", {
+        request(Tourmaline::Model::ChatInviteLink, "revokeChatInviteLink", {
           chat_id:     chat_id,
           invite_link: invite_link,
         })
@@ -927,7 +927,7 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message, "sendAudio", {
+        request(Tourmaline::Model::Message, "sendAudio", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           audio:                       audio,
@@ -966,7 +966,7 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message, "sendAnimation", {
+        request(Tourmaline::Model::Message, "sendAnimation", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           animation:                   animation,
@@ -1026,7 +1026,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
-        request(Message, "sendContact", {
+        request(Tourmaline::Model::Message, "sendContact", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           phone_number:                phone_number,
@@ -1055,7 +1055,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
-        request(Message, "sendDice", {
+        request(Tourmaline::Model::Message, "sendDice", {
           chat_id:              chat_id,
           message_thread_id:    message_thread_id,
           emoji:                {{ val[1] }},
@@ -1091,7 +1091,7 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message, "sendDocument", {
+        request(Tourmaline::Model::Message, "sendDocument", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           document:                    document,
@@ -1126,7 +1126,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
-        request(Message, "sendLocation", {
+        request(Tourmaline::Model::Message, "sendLocation", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           latitude:                    latitude,
@@ -1162,7 +1162,7 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message, "sendMessage", {
+        request(Tourmaline::Model::Message, "sendMessage", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           text:                        text,
@@ -1233,7 +1233,7 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message, "sendPhoto", {
+        request(Tourmaline::Model::Message, "sendPhoto", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           photo:                       photo,
@@ -1264,7 +1264,7 @@ module Tourmaline
           raise "Either a message or inline_message is required"
         end
 
-        request(Message, "editMessageMedia", {
+        request(Tourmaline::Model::Message, "editMessageMedia", {
           chat_id:           chat_id,
           media:             media,
           message_id:        message_id,
@@ -1277,7 +1277,7 @@ module Tourmaline
       # On success, an array of the sent `Messages` is returned.
       def send_media_group(
         chat,
-        media : Array(InputMediaPhoto | InputMediaVideo | InputMediaAudio | InputMediaDocument),
+        media : Array(Tourmaline::Model::InputMediaPhoto | Tourmaline::Model::InputMediaVideo | Tourmaline::Model::InputMediaAudio | Tourmaline::Model::InputMediaDocument),
         message_thread_id = nil,
         disable_notification = false,
         protect_content = false,
@@ -1287,7 +1287,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
-        request(Array(Message), "sendMediaGroup", {
+        request(Array(Tourmaline::Model::Message), "sendMediaGroup", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           media:                       media,
@@ -1320,7 +1320,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
-        request(Message, "sendVenue", {
+        request(Tourmaline::Model::Message, "sendVenue", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           latitude:                    latitude,
@@ -1366,7 +1366,7 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message, "sendVideo", {
+        request(Tourmaline::Model::Message, "sendVideo", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           video:                       video,
@@ -1409,7 +1409,7 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
         parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
-        request(Message, "sendVideoNote", {
+        request(Tourmaline::Model::Message, "sendVideoNote", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           video_note:                  video_note,
@@ -1453,7 +1453,7 @@ module Tourmaline
         chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
-        request(Message, "sendVoice", {
+        request(Tourmaline::Model::Message, "sendVoice", {
           chat_id:                     chat_id,
           message_thread_id:           message_thread_id,
           voice:                       voice,
@@ -1494,7 +1494,7 @@ module Tourmaline
         message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
         inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
 
-        request(Bool | Message, "editMessageLiveLocation", {
+        request(Bool | Tourmaline::Model::Message, "editMessageLiveLocation", {
           chat_id:                chat_id,
           latitude:               latitude,
           longitude:              longitude,
@@ -1527,7 +1527,7 @@ module Tourmaline
         message_id = object_or_id(message)
         inline_message_id = object_or_id(inline_message)
 
-        request(Bool | Message, "stopMessageLiveLocation", {
+        request(Bool | Tourmaline::Model::Message, "stopMessageLiveLocation", {
           chat_id:           chat_id,
           message_id:        message_id,
           inline_message_id: inline_message_id,
@@ -1538,7 +1538,7 @@ module Tourmaline
       # Use this method to change the list of the bot's commands.
       # Returns `true` on success.
       def set_my_commands(
-        commands : Array(BotCommand | NamedTuple(command: String, description: String)),
+        commands : Array(Tourmaline::Model::BotCommand | NamedTuple(command: String, description: String)),
         scope : BotCommandScope? = nil,
         language_code : String? = nil
       )
@@ -1554,7 +1554,7 @@ module Tourmaline
       # Use this method to get the current list of the bot's commands. Requires no parameters.
       # Returns Array of BotCommand on success.
       def get_my_commands(scope : BotCommandScope? = nil, language_code : String? = nil)
-        request(Array(BotCommand), "getMyCommands", {
+        request(Array(Tourmaline::Model::BotCommand), "getMyCommands", {
           scope:         scope,
           language_code: language_code,
         })
@@ -1584,7 +1584,7 @@ module Tourmaline
       # Use this method to get the current default administrator rights of the bot.
       # Returns ChatAdministratorRights on success.
       def get_my_default_adminstrator_rights(for_channels : Bool = false)
-        request(ChatAdministratorRights, "getMyDefaultAdminstratorRights", {
+        request(Tourmaline::Model::ChatAdministratorRights, "getMyDefaultAdminstratorRights", {
           for_channels: for_channels,
         })
       end
@@ -1593,26 +1593,29 @@ module Tourmaline
       # message on behalf of the user to the chat from which the query originated.
       # On success, a SentWebAppMessage object is returned.
       def answer_web_app_query(query_id : String, result : InlineQueryResult)
-        request(SentWebAppMessage, "answerWebAppQuery", {
+        request(Tourmaline::Model::SentWebAppMessage, "answerWebAppQuery", {
           web_app_query_id: query_id,
           result:           result,
         })
       end
 
-      ##########################
-      #        POLLING         #
-      ##########################
+      ########################################################################
+      ########################################################################
+      ###
+      # ##  ██████╗  ██████╗ ██╗     ██╗     ██╗███╗   ██╗ ██████╗
+      # ##  ██╔══██╗██╔═══██╗██║     ██║     ██║████╗  ██║██╔════╝
+      # ##  ██████╔╝██║   ██║██║     ██║     ██║██╔██╗ ██║██║  ███╗
+      # ##  ██╔═══╝ ██║   ██║██║     ██║     ██║██║╚██╗██║██║   ██║
+      # ##  ██║     ╚██████╔╝███████╗███████╗██║██║ ╚████║╚██████╔╝
+      # ##  ╚═╝      ╚═════╝ ╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝
+      ###
+      ########################################################################
+      ########################################################################
 
       # Start polling for updates. This method uses a combination of `#get_updates`
       # and `#handle_update` to send continuously check Telegram's servers
       # for updates.
-      def poll(delete_webhook = false, no_middleware_check = false)
-        unless no_middleware_check
-          if @middlewares.empty?
-            self.use(EventMiddleware.new)
-          end
-        end
-
+      def poll(delete_webhook = false)
         self.delete_webhook if delete_webhook
         @polling = true
 
@@ -1625,9 +1628,9 @@ module Tourmaline
               handle_update(u)
             end
             sleep(0.5)
-          rescue ex : Error::PoolRetryAttemptsExceeded
+          rescue ex : Exceptions::PoolRetryAttemptsExceeded
             raise ex
-          rescue ex : Error::RetryAfter
+          rescue ex : Exceptions::RetryAfter
             Log.info { "Flood control exceeded while polling. Retrying in #{ex.seconds} seconds." }
             sleep(ex.seconds)
           rescue ex
@@ -1636,10 +1639,674 @@ module Tourmaline
         end
       end
 
+      ########################################################################
+      ########################################################################
+      ###
+      # ## ██╗    ██╗███████╗██████╗ ██╗  ██╗ ██████╗  ██████╗ ██╗  ██╗███████╗
+      # ## ██║    ██║██╔════╝██╔══██╗██║  ██║██╔═══██╗██╔═══██╗██║ ██╔╝██╔════╝
+      # ## ██║ █╗ ██║█████╗  ██████╔╝███████║██║   ██║██║   ██║█████╔╝ ███████╗
+      # ## ██║███╗██║██╔══╝  ██╔══██╗██╔══██║██║   ██║██║   ██║██╔═██╗ ╚════██║
+      # ## ╚███╔███╔╝███████╗██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║  ██╗███████║
+      # ##  ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝
+      ###
+      ########################################################################
+      ########################################################################
+
+      # Start an HTTP server at the specified `host` and `port` that listens for
+      # updates using Telegram's webhooks. This is the reccommended way to handle
+      # bots in production.
+      #
+      # Note: Don't forget to call `set_webhook` first! This method does not do it for you.
+      def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, no_middleware_check = false, &block : HTTP::Server::Context ->)
+        unless no_middleware_check
+          if @middlewares.empty?
+            self.use(EventMiddleware.new)
+          end
+        end
+
+        @webhook_server = server = HTTP::Server.new do |context|
+          Fiber.current.telegram_bot_server_http_context = context
+          begin
+            block.call(context)
+          rescue ex
+            Log.error(exception: ex) { "Server error" }
+          ensure
+            Fiber.current.telegram_bot_server_http_context = nil
+          end
+        end
+
+        if ssl_certificate_path && ssl_key_path
+          fl_use_ssl = true
+          ssl = OpenSSL::SSL::Context::Server.new
+          ssl.certificate_chain = ssl_certificate_path.not_nil!
+          ssl.private_key = ssl_key_path.not_nil!
+          server.bind_tls(host: host, port: port, context: ssl)
+        else
+          server.bind_tcp(host: host, port: port)
+        end
+
+        Log.info { "Listening for requests at #{host}:#{port}" }
+        server.listen
+      end
+
+      # :ditto:
+      def serve(path = "/", host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, no_middleware_check = false)
+        serve(host, port, ssl_certificate_path, ssl_key_path, no_middleware_check) do |context|
+          next unless context.request.method == "POST"
+          next unless context.request.path == path
+          if body = context.request.body
+            update = Update.from_json(body)
+            handle_update(update)
+          end
+        end
+      end
+
+      # Stops the webhook HTTP server
+      def stop_serving
+        @webhook_server.try &.close
+      end
+
+      # Use this method to specify a url and receive incoming updates via an outgoing webhook.
+      # Whenever there is an update for the bot, we will send an HTTPS POST request to the
+      # specified url, containing a JSON-serialized `Update`. In case of an unsuccessful
+      # request, we will give up after a reasonable amount of attempts.
+      # Returns `true` on success.
+      #
+      # If you'd like to make sure that the Webhook request comes from Telegram, we recommend
+      # using a secret path in the URL, e.g. `https://www.example.com/<token>`. Since nobody
+      # else knows your bot‘s token, you can be pretty sure it’s us.
+      def set_webhook(
+        url,
+        ip_address = nil,
+        certificate = nil,
+        max_connections = nil,
+        allowed_updates = nil,
+        drop_pending_updates = false,
+        secret_token = nil
+      )
+        params = {
+          url:                  url,
+          ip_address:           ip_address,
+          max_connections:      max_connections,
+          allowed_updates:      allowed_updates,
+          certificate:          certificate,
+          drop_pending_updates: drop_pending_updates,
+          secret_token:         secret_token,
+        }
+        Log.info { "Setting webhook to '#{url}'#{" with certificate" if certificate}" }
+        request(Bool, "setWebhook", params)
+      end
+
+      # Use this to unset the webhook and stop receiving updates to your bot.
+      def unset_webhook
+        request(Bool, "setWebhook", {url: ""})
+      end
+
+      # Use this method to get current webhook status. Requires no parameters.
+      # On success, returns a `WebhookInfo` object. If the bot is using
+      # `#getUpdates`, will return an object with the
+      # url field empty.
+      def get_webhook_info
+        request(Tourmaline::Model::WebhookInfo, "getWebhookInfo")
+      end
+
+      # Use this method to remove webhook integration if you decide to switch
+      # back to getUpdates.
+      def delete_webhook(drop_pending_updates = false)
+        request(Bool, "deleteWebhook", {
+          drop_pending_updates: drop_pending_updates,
+        })
+      end
+
       # Stops the bot from polling.
       def stop_polling
         Log.info { "Stopping polling" }
         @polling = false
+      end
+
+      ########################################################################
+      ########################################################################
+      ###
+      # ## ██████╗  █████╗ ███╗   ███╗███████╗███████╗
+      # ## ██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔════╝
+      # ## ██║  ███╗███████║██╔████╔██║█████╗  ███████╗
+      # ## ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ╚════██║
+      # ## ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗███████║
+      # ##  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝
+      ###
+      ########################################################################
+      ########################################################################
+
+      # Use this method to send a game.
+      # On success, the sent `Message` is returned.
+      def send_game(
+        chat_id,
+        game_short_name,
+        message_thread_id = nil,
+        disable_notification = nil,
+        reply_to_message_id = nil,
+        reply_markup = nil
+      )
+        request(Tourmaline::Model::Message, "sendGame", {
+          chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
+          game_short_name:      game_short_name,
+          disable_notification: disable_notification,
+          reply_to_message_id:  reply_to_message_id,
+          reply_markup:         reply_markup,
+        })
+      end
+
+      # Use this method to set the score of the specified user in a game. On success,
+      # if the message was sent by the bot, returns the edited Message, otherwise
+      # returns `true`.
+      #
+      # Raises an error, if the new score is not greater than the user's current
+      # score in the chat and force is `false` (default).
+      def set_game_score(
+        user_id,
+        score,
+        force = false,
+        disable_edit_message = nil,
+        chat_id = nil,
+        message_id = nil,
+        inline_message_id = nil
+      )
+        request(Bool | Tourmaline::Model::Message, "setGameScore", {
+          user_id:              user_id,
+          score:                score,
+          force:                force,
+          disable_edit_message: disable_edit_message,
+          chat_id:              chat_id,
+          message_id:           message_id,
+          inline_message_id:    inline_message_id,
+        })
+      end
+
+      # Use this method to get data for high score tables. Will return the score of the
+      # specified user and several of his neighbors in a game.
+      # On success, returns an `Array` of `GameHighScore` objects.
+      #
+      # > This method will currently return scores for the target user, plus two of his
+      # > closest neighbors on each side. Will also return the top three users if the
+      # > user and his neighbors are not among them. Please note that this behavior
+      # > is subject to change.
+      def get_game_high_scores(
+        user_id,
+        chat_id = nil,
+        message_id = nil,
+        inline_message_id = nil
+      )
+        request(Array(Tourmaline::Model::GameHighScore), "getGameHighScores", {
+          user_id:           user_id,
+          chat_id:           chat_id,
+          message_id:        message_id,
+          inline_message_id: inline_message_id,
+        })
+      end
+
+      ########################################################################
+      ########################################################################
+      ###
+      # ## ██████╗  █████╗ ███████╗███████╗██████╗  ██████╗ ██████╗ ████████╗
+      # ## ██╔══██╗██╔══██╗██╔════╝██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝
+      # ## ██████╔╝███████║███████╗███████╗██████╔╝██║   ██║██████╔╝   ██║
+      # ## ██╔═══╝ ██╔══██║╚════██║╚════██║██╔═══╝ ██║   ██║██╔══██╗   ██║
+      # ## ██║     ██║  ██║███████║███████║██║     ╚██████╔╝██║  ██║   ██║
+      # ## ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝
+      ###
+      ########################################################################
+      ########################################################################
+
+      # Informs a user that some of the Telegram Passport elements they provided contains errors.
+      # The user will not be able to re-submit their Passport to you until the errors are fixed
+      # (the contents of the field for which you returned the error must change).
+      #
+      # Returns True on success.
+      #
+      # Use this if the data submitted by the user doesn't satisfy the standards your service requires
+      # for any reason. For example, if a birthday date seems invalid, a submitted document is blurry,
+      # a scan shows evidence of tampering, etc. Supply some details in the error message to make
+      # sure the user knows how to correct the issues.
+      def set_passport_data_errors(
+        user_id : Int32,
+        errors : Array(Tourmaline::Model::PassportElementError)
+      )
+        request(Bool, "sendSticker", {
+          user_id: user_id,
+          errors:  errors,
+        })
+      end
+
+      ########################################################################
+      ########################################################################
+      ###
+      # ## ██████╗  █████╗ ██╗   ██╗███╗   ███╗███████╗███╗   ██╗████████╗███████╗
+      # ## ██╔══██╗██╔══██╗╚██╗ ██╔╝████╗ ████║██╔════╝████╗  ██║╚══██╔══╝██╔════╝
+      # ## ██████╔╝███████║ ╚████╔╝ ██╔████╔██║█████╗  ██╔██╗ ██║   ██║   ███████╗
+      # ## ██╔═══╝ ██╔══██║  ╚██╔╝  ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║   ╚════██║
+      # ## ██║     ██║  ██║   ██║   ██║ ╚═╝ ██║███████╗██║ ╚████║   ██║   ███████║
+      # ## ╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝
+      ###
+      ########################################################################
+      ########################################################################
+
+      # Use this method to send invoices.
+      # On success, the sent `Message` is returned.
+      def send_invoice(
+        chat,
+        title,
+        description,
+        payload,
+        provider_token,
+        currency,
+        prices,
+        message_thread_id = nil,
+        max_tip_amount = nil,
+        suggested_tip_amounts = nil,
+        start_parameter = nil,
+        provider_data = nil,
+        photo_url = nil,
+        photo_size = nil,
+        photo_width = nil,
+        photo_height = nil,
+        need_name = nil,
+        need_phone_number = nil,
+        need_email = nil,
+        need_shipping_address = nil,
+        send_phone_number_to_provider = nil,
+        send_email_to_provider = nil,
+        is_flexible = nil,
+        disable_notification = nil,
+        reply_to_message = nil,
+        reply_markup = nil
+      )
+        chat_id = chat.is_a?(Int) ? chat : chat.id
+        reply_to_message_id = reply_to_message.is_a?(Int) ? reply_to_message : reply_to_message.message_id
+
+        request(Tourmaline::Model::Message, "sendInvoice", {
+          chat_id:                       chat_id,
+          message_thread_id:             message_thread_id,
+          title:                         title,
+          description:                   description,
+          payload:                       payload,
+          provider_token:                provider_token,
+          currency:                      currency,
+          prices:                        prices.to_json,
+          max_tip_amount:                max_tip_amount,
+          suggested_tip_amounts:         suggested_tip_amounts,
+          start_parameter:               start_parameter,
+          provider_data:                 provider_data,
+          photo_url:                     photo_url,
+          photo_size:                    photo_size,
+          photo_width:                   photo_width,
+          photo_height:                  photo_height,
+          need_name:                     need_name,
+          need_phone_number:             need_phone_number,
+          need_email:                    need_email,
+          need_shipping_address:         need_shipping_address,
+          send_phone_number_to_provider: send_phone_number_to_provider,
+          send_email_to_provider:        send_email_to_provider,
+          is_flexible:                   is_flexible,
+          disable_notification:          disable_notification,
+          reply_to_message_id:           reply_to_message_id,
+          reply_markup:                  reply_markup,
+        })
+      end
+
+      # Use this method to create a link for an invoice.
+      # Returns the created invoice link as String on success.
+      def create_invoice_link(
+        title,
+        description,
+        payload,
+        provider_token,
+        currency,
+        prices,
+        max_tip_amount = nil,
+        suggested_tip_amounts = nil,
+        provider_data = nil,
+        photo_url = nil,
+        photo_size = nil,
+        photo_width = nil,
+        photo_height = nil,
+        need_name = nil,
+        need_phone_number = nil,
+        need_email = nil,
+        need_shipping_address = nil,
+        send_phone_number_to_provider = nil,
+        send_email_to_provider = nil,
+        is_flexible = nil
+      )
+        request(String, "createInvoiceLink", {
+          title:                         title,
+          description:                   description,
+          payload:                       payload,
+          provider_token:                provider_token,
+          currency:                      currency,
+          prices:                        prices.to_json,
+          max_tip_amount:                max_tip_amount,
+          suggested_tip_amounts:         suggested_tip_amounts,
+          provider_data:                 provider_data,
+          photo_url:                     photo_url,
+          photo_size:                    photo_size,
+          photo_width:                   photo_width,
+          photo_height:                  photo_height,
+          need_name:                     need_name,
+          need_phone_number:             need_phone_number,
+          need_email:                    need_email,
+          need_shipping_address:         need_shipping_address,
+          send_phone_number_to_provider: send_phone_number_to_provider,
+          send_email_to_provider:        send_email_to_provider,
+          is_flexible:                   is_flexible,
+        })
+      end
+
+      # If you sent an invoice requesting a shipping address and the parameter is_flexible
+      # was specified, the Client API will send a `Update` with a shipping_query field to
+      # the bot. Use this method to reply to shipping queries.
+      # On success, `true` is returned.
+      def answer_shipping_query(
+        shipping_query_id,
+        ok,
+        shipping_options = nil,
+        error_message = nil
+      )
+        request(Tourmaline::Model::Message, "answerShippingQuery", {
+          shipping_query_id: shipping_query_id,
+          ok:                ok,
+          shipping_options:  shipping_options,
+          error_message:     error_message,
+        })
+      end
+
+      # Once the user has confirmed their payment and shipping details, the Client API sends
+      # the final confirmation in the form of a `Update` with the field pre_checkout_query.
+      # Use this method to respond to such pre-checkout queries.
+      # On success, `true` is returned.
+      #
+      # > Note: The Client API must receive an answer within 10 seconds after the
+      # > pre-checkout query was sent.
+      def answer_pre_checkout_query(
+        pre_checkout_query_id,
+        ok,
+        error_message = nil
+      )
+        request(Bool, "answerPreCheckoutQuery", {
+          pre_checkout_query_id: pre_checkout_query_id,
+          ok:                    ok,
+          error_message:         error_message,
+        })
+      end
+
+      # Convenience method to create and `Array` of `LabledPrice` from an `Array`
+      # of `NamedTuple(label: String, amount: Int32)`.
+      # TODO: Replace with a builder of some kind
+      def labeled_prices(lp : Array(NamedTuple(label: String, amount: Int32)))
+        lp.reduce([] of Tourmaline::LabeledPrice) { |acc, i|
+          acc << Tourmaline::LabeledPrice.new(label: i[:label], amount: i[:amount])
+        }
+      end
+
+      # Convenience method to create an `Array` of `ShippingOption` from a
+      # `NamedTuple(id: String, title: String, prices: Array(LabeledPrice))`.
+      # TODO: Replace with a builder of some kind
+      def shipping_options(options : Array(NamedTuple(id: String, title: String, prices: Array(Tourmaline::Model::LabeledPrice))))
+        lp.reduce([] of Tourmaline::ShippingOption) { |acc, i|
+          acc << Tourmaline::ShippingOption.new(id: i[:id], title: i[:title], prices: i[:prices])
+        }
+      end
+
+      ########################################################################
+      ########################################################################
+      ###
+      # ## ██████╗  ██████╗ ██╗     ██╗     ███████╗
+      # ## ██╔══██╗██╔═══██╗██║     ██║     ██╔════╝
+      # ## ██████╔╝██║   ██║██║     ██║     ███████╗
+      # ## ██╔═══╝ ██║   ██║██║     ██║     ╚════██║
+      # ## ██║     ╚██████╔╝███████╗███████╗███████║
+      # ## ╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
+      ###
+      ########################################################################
+      ########################################################################
+
+      # Use this method to send a native poll.
+      # On success, the sent Message is returned.
+      def send_poll(
+        chat,
+        question : String,
+        options : Array(String), # 2-10 strings, up to 100 chars each
+        anonymous : Bool = true,
+        type : Poll::Type = Poll::Type::Regular,
+        allows_multiple_answers : Bool = false,
+        correct_option_id : Int32? = nil, # required for quiz mode
+        close_date : Time? = nil,
+        open_period : Int32? = nil,
+        closed : Bool = false,
+        disable_notification : Bool = false,
+        reply_to_message = nil,
+        reply_markup = nil
+      )
+        if options.size < 2 || options.size > 10
+          raise "Incorrect option count. Expected 2-10, given #{options.size}."
+        end
+
+        if options.any? { |o| o.size < 1 || o.size > 300 }
+          raise "Incorrect option size. Poll options must be between 1 and 300 characters."
+        end
+
+        if type == Poll::Type::Quiz && !correct_option_id
+          raise "Quiz poll type requires a correct_option_id be set."
+        end
+
+        chat_id = chat.is_a?(Int) ? chat : chat.id
+        if reply_to_message
+          reply_to_message = reply_to_message.is_a?(Int) ? reply_to_message : reply_to_message.message_id
+        end
+
+        request(Tourmaline::Model::Message, "sendPoll", {
+          chat_id:                 chat_id,
+          question:                question,
+          options:                 options,
+          anonymous:               anonymous,
+          type:                    type.to_s,
+          allows_multiple_answers: allows_multiple_answers,
+          correct_option_id:       correct_option_id,
+          close_date:              close_date.try &.to_unix,
+          is_closed:               closed,
+          disable_notification:    disable_notification,
+          reply_to_message_id:     reply_to_message,
+          reply_markup:            reply_markup,
+        })
+      end
+
+      # Use this method to stop a poll which was sent by the bot.
+      # On success, the stopped `Poll` with the final results is returned.
+      def stop_poll(
+        chat,
+        message,
+        reply_markup = nil
+      )
+        chat_id = chat.is_a?(Int) ? chat : chat.id
+        message_id = message.is_a?(Int) ? message : message.message_id
+
+        request(Tourmaline::Model::Poll, "stopPoll", {
+          chat_id:      chat_id,
+          message_id:   message_id,
+          reply_markup: reply_markup,
+        })
+      end
+
+      ########################################################################
+      ########################################################################
+      ###
+      # ## ███████╗████████╗██╗ ██████╗██╗  ██╗███████╗██████╗ ███████╗
+      # ## ██╔════╝╚══██╔══╝██║██╔════╝██║ ██╔╝██╔════╝██╔══██╗██╔════╝
+      # ## ███████╗   ██║   ██║██║     █████╔╝ █████╗  ██████╔╝███████╗
+      # ## ╚════██║   ██║   ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗╚════██║
+      # ## ███████║   ██║   ██║╚██████╗██║  ██╗███████╗██║  ██║███████║
+      # ## ╚══════╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+      ###
+      ########################################################################
+      ########################################################################
+
+      # Use this method to send `.webp` stickers.
+      # On success, the sent `Message` is returned.
+      #
+      # See: https://core.telegram.org/bots/api#stickers for more info.
+      def send_sticker(
+        chat,
+        sticker,
+        message_thread_id = nil,
+        disable_notification = nil,
+        reply_to_message = nil,
+        reply_markup = nil
+      )
+        chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
+        reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
+
+        request(Tourmaline::Model::Message, "sendSticker", {
+          chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
+          sticker:              sticker,
+          disable_notification: disable_notification,
+          reply_to_message_id:  reply_to_message_id,
+          reply_markup:         reply_markup,
+        })
+      end
+
+      # Use this method to get a sticker set.
+      # On success, a `StickerSet` object is returned.
+      def get_sticker_set(name : String)
+        request(Tourmaline::Model::Message, "getStickerSet", {
+          name: name,
+        })
+      end
+
+      # Use this method to get information about custom emoji stickers by their identifiers.
+      # Returns an Array of Sticker objects.
+      def get_custom_emoji_stickers(custom_emoji_ids : Array(String))
+        request(Array(Tourmaline::Model::Sticker), "getCustomEmojiStickers", {
+          custom_emoji_ids: custom_emoji_ids,
+        })
+      end
+
+      # Use this method to set a new group sticker set for a supergroup. The bot must
+      # be an administrator in the chat for this to work and must have the
+      # appropriate admin rights. Use the field can_set_sticker_set
+      # optionally returned in `#get_chat` requests to check if the
+      # bot can use this method.
+      # Returns `true` on success.
+      def set_chat_sticker_set(chat_id, sticker_set_name)
+        request(Bool, "setChatStickerSet", {
+          chat_id:          chat_id,
+          sticker_set_name: sticker_set_name,
+        })
+      end
+
+      # Use this method to add a new sticker to a set created by the bot.
+      # Returns `true` on success.
+      def add_sticker_to_set(
+        user_id,
+        name,
+        emojis,
+        png_sticker = nil,
+        tgs_sticker = nil,
+        webm_sticker = nil,
+        mask_position = nil
+      )
+        raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker || webm_sticker
+
+        request(bool, "addStickerToSet", {
+          user_id:       user_id,
+          name:          name,
+          png_sticker:   png_sticker,
+          tgs_sticker:   tgs_sticker,
+          webm_sticker:  webm_sticker,
+          emojis:        emojis,
+          mask_position: mask_position,
+        })
+      end
+
+      # Use this method to create new sticker set owned by a user. The bot will be able to
+      # edit the created sticker set. You must use exactly one of the fields `png_sticker` or `tgs_sticker`.
+      # Returns `true` on success.
+      def create_new_sticker_set(
+        user_id,
+        name,
+        title,
+        emojis,
+        png_sticker = nil,
+        tgs_sticker = nil,
+        webm_sticker = nil,
+        sticker_type = nil,
+        mask_position = nil
+      )
+        raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker || webm_sticker
+
+        request(Bool, "createNewStickerSet", {
+          user_id:       user_id,
+          name:          name,
+          title:         title,
+          png_sticker:   png_sticker,
+          tgs_sticker:   tgs_sticker,
+          webm_sticker:  webm_sticker,
+          sticker_type:  sticker_type,
+          emojis:        emojis,
+          mask_position: mask_position,
+        })
+      end
+
+      # Use this method to delete a group sticker set from a supergroup. The bot must be
+      # an administrator in the chat for this to work and must have the appropriate
+      # admin rights. Use the field can_set_sticker_set optionally returned in
+      # `#get_chat` requests to check if the bot can use this method.
+      # Returns `true` on success.
+      def delete_chat_sticker_set(chat_id)
+        request(Bool, "deleteChatStickerSet", {
+          chat_id: chat_id,
+        })
+      end
+
+      # Use this method to delete a sticker from a set created by the bot.
+      # Returns `true` on success.
+      def delete_sticker_from_set(sticker)
+        request(Bool, "deleteStickerFromSet", {
+          sticker: sticker,
+        })
+      end
+
+      # Use this method to move a sticker in a set created by the bot to a specific position.
+      # Returns `true` on success.
+      def set_sticker_position_in_set(sticker, position)
+        request(Bool, "setStickerPositionInSet", {
+          sticker:  sticker,
+          position: position,
+        })
+      end
+
+      # Use this method to upload a .png file with a sticker for later use in
+      # `#create_new_sticker_set` and `#add_sticker_to_set` methods (can be
+      # used multiple times).
+      # Returns the uploaded `TFile` on success.
+      def upload_sticker_file(user_id, png_sticker)
+        request(Tourmaline::Model::TFile, "uploadStickerFile", {
+          user_id:     user_id,
+          png_sticker: png_sticker,
+        })
+      end
+
+      # Use this method to set the thumbnail of a sticker set. Animated thumbnails can be
+      # set for animated sticker sets only.
+      # Returns `true` on success.
+      def set_sticker_set_thumb(name, user, thumb = nil)
+        user_id = user.is_a?(Int) ? user : user.id
+
+        request(Bool, "setStickerSetThumb", {
+          name:    name,
+          user_id: user_id,
+          thumb:   thumb,
+        })
       end
     end
   end

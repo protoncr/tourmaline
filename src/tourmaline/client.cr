@@ -1,63 +1,22 @@
-require "./annotations"
-require "./helpers"
-require "./error"
-require "./logger"
-require "./persistence"
-require "./parse_mode"
-require "./chat_action"
-require "./update_action"
-require "./parsers/*"
-require "./model"
-require "./event_handler"
-require "./middleware"
 require "./client/*"
-require "db/pool"
 
 module Tourmaline
   # The `Client` class is the base class for all Tourmaline based bots.
   # Extend this class to create your own bots, or create an
   # instance of `Client` and add event handlers to it.
   class Client
-    macro inherited
-      include Tourmaline
-    end
-
     include Logger
-
     include CoreMethods
-    include GameMethods
-    include PassportMethods
-    include PaymentMethods
-    include PollMethods
-    include StickerMethods
-    include WebhookMethods
-    include TDLightMethods
-
-    include EventHandler::Annotator
-
-    DEFAULT_API_URL          = "https://api.telegram.org/"
-    DEFAULT_COMMAND_PREFIXES = ["/"]
+    include SugarMethods
 
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
     # `@bot` to `get_me`.
-    getter! bot : User
+    getter! bot : Model::User
 
-    property bot_token : String?
-    property user_token : String?
-
-    # Default parse mode to use for commands when it isn't included explicitly
-    class_property default_parse_mode : ParseMode = ParseMode::Markdown
-
-    # Default prefixes to use for commands
-    class_property default_command_prefixes : Array(String) = DEFAULT_COMMAND_PREFIXES
-
-    getter event_handlers : Array(EventHandler)
-    getter persistence : Persistence
-    getter middlewares : Array(Middleware)
+    getter dispatcher : AED::EventDispatcher
 
     @pool : DB::Pool(HTTP::Client)
-    @auth_code : String?
 
     # Create a new instance of `Tourmaline::Client`.
     #
@@ -107,53 +66,34 @@ module Tourmaline
     #
     # `proxy_pass`
     # :    a password to use for a proxy that requires authentication
-    def initialize(*,
-                   @bot_token : String? = nil,
-                   @user_token : String? = nil,
-                   @endpoint = DEFAULT_API_URL,
-                   @persistence : Persistence = NilPersistence.new,
-                   @set_commands = false,
-                   pool_capacity = 200,
-                   initial_pool_size = 20,
-                   pool_timeout = 0.1,
-                   proxy = nil,
-                   proxy_uri = nil,
-                   proxy_host = nil,
-                   proxy_port = nil,
-                   proxy_user = nil,
-                   proxy_pass = nil)
-      @persistence = persistence
-      @persistence.init
+    def initialize
+      # @persistence = persistence
+      # @persistence.init
 
-      @middlewares = [] of Middleware
+      # @middlewares = [] of Middleware
 
-      if !proxy
-        if proxy_uri
-          proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")
-          proxy_host = proxy_uri.host
-          proxy_port = proxy_uri.port
-          proxy_user = proxy_uri.user if proxy_uri.user
-          proxy_pass = proxy_uri.password if proxy_uri.password
+      if Config.proxy
+        if uri = Config.proxy_uri?
+          uri = uri.is_a?(URI) ? uri : URI.parse(uri.starts_with?("http") ? uri : "http://#{uri}")
+          Config.proxy_host = uri.host
+          Config.proxy_port = uri.port
+          Config.proxy_user = uri.user if uri.user
+          Config.proxy_pass = uri.password if uri.password
         end
 
-        if proxy_host && proxy_port
-          proxy = HTTP::Proxy::Client.new(proxy_host, proxy_port, username: proxy_user, password: proxy_pass)
+        if Config.proxy_host && Config.proxy_port
+          proxy = HTTP::Proxy::Client.new(Config.proxy_host, Config.proxy_port, username: Config.proxy_user, password: Config.proxy_pass)
         end
       end
 
-      @pool = DB::Pool(HTTP::Client).new(max_pool_size: pool_capacity, initial_pool_size: initial_pool_size, checkout_timeout: pool_timeout) do
-        client = HTTP::Client.new(URI.parse(endpoint))
+      @pool = DB::Pool(HTTP::Client).new(max_pool_size: 200, initial_pool_size: 20, checkout_timeout: 0.1) do
+        client = HTTP::Client.new(URI.parse(Config.api_endpoint))
         client.set_proxy(proxy.dup) if proxy
         client
       end
 
-      @event_handlers = [] of EventHandler
+      @dispatcher = AED::EventDispatcher.new
       @bot = self.get_me
-
-      register_event_handler_annotations
-      register_commands_with_botfather if @bot_token
-
-      Signal::INT.trap { exit }
     end
 
     def use(middleware : Middleware)
@@ -172,28 +112,19 @@ module Tourmaline
 
     # Calls all handlers in the stack with the given update and
     # this client instance.
-    def handle_update(update : Update)
-      # Add this client instance to the update and subtypes
-      do_finish_init(update)
-
-      spawn do
-        # Call middlewares
-        @middlewares.each do |middleware|
-          begin
-            middleware.call_internal(self, update)
-          rescue Middleware::StopIteration
-            break
+    def handle_update(update : Tourmaline::Model::Update)
+      if message = update.message
+        if text = message.text
+          Config.command_prefixes.each do |prefix|
+            if text.starts_with?(prefix)
+              trigger = text[prefix.size..-1]
+              text = text.split(" ")[1..].join(" ")
+              command = Events::Command.new(trigger, text, message)
+              pp @dispatcher
+              @dispatcher.dispatch(command)
+            end
           end
         end
-      end
-    end
-
-    protected def do_finish_init(value)
-      case value
-      when Tourmaline::Model
-        value.finish_init(self)
-      when Array
-        value.each { |v| do_finish_init(v) }
       end
     end
 
@@ -206,22 +137,9 @@ module Tourmaline
     end
 
     protected def request(type : U.class, method, params = {} of String => String) forall U
-      if bot_token = @bot_token
-        path = File.join("/bot#{bot_token}", method)
-      else
-        if method == "login"
-          path = "/userlogin"
-        elsif user_token = @user_token
-          path = File.join("/user#{user_token}", method)
-        else
-          raise "Attempted to call API method without bot_token or user_token"
-        end
-      end
-
+      path = File.join("/bot#{Config.api_token}", method)
       response = request(path, params)
-      value = type.from_json(response)
-      do_finish_init(value)
-      value
+      type.from_json(response)
     end
 
     # Sends a json request to the Telegram Client API.
@@ -244,7 +162,7 @@ module Tourmaline
           Log.error { ex.message }
           Log.trace(exception: ex) { ex.message }
 
-          raise Error::ConnectionLost.new(client)
+          raise Exceptions::ConnectionLost.new(client)
         end
 
         result = JSON.parse(response.body)
@@ -254,7 +172,7 @@ module Tourmaline
         if result["ok"].as_bool
           result["result"].to_json
         else
-          raise Error.from_message(result["description"].as_s)
+          raise Exceptions::Error.from_message(result["description"].as_s)
         end
       end
     end
@@ -270,8 +188,8 @@ module Tourmaline
       params.values.any? do |val|
         case val
         when Array
-          val.any? { |v| v.is_a?(File | InputMedia) }
-        when File, InputMedia
+          val.any? { |v| v.is_a?(File | Tourmaline::Model::InputMedia) }
+        when File, Tourmaline::Model::InputMedia
           true
         else
           false
@@ -313,13 +231,13 @@ module Tourmaline
       when Array
         # Likely an Array(InputMedia)
         items = value.map do |item|
-          if item.is_a?(InputMedia)
+          if item.is_a?(Tourmaline::Model::InputMedia)
             attach_form_media(form, item)
           end
           item
         end
         form.body_part(headers, items.to_json)
-      when InputMedia
+      when Tourmaline::Model::InputMedia
         attach_form_media(form, value)
         form.body_part(headers, value.to_json)
       when File

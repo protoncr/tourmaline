@@ -1,10 +1,9 @@
 require "json"
 
-module Tourmaline
+module Tourmaline::Model
   # This object contains information about a poll.
   class Poll
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter id : String
 
@@ -20,14 +19,14 @@ module Tourmaline
     @[JSON::Field(key: "is_anonymous")]
     getter? anonymous : Bool
 
-    @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
+    @[JSON::Field(converter: Tourmaline::Model::Poll::PollTypeConverter)]
     getter type : Type
 
     getter allows_multiple_answers : Bool
 
     getter correct_option_id : Int32?
 
-    getter explanation_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
+    getter explanation_entities : Array(MessageEntity) = [] of Tourmaline::Model::MessageEntity
 
     enum Type
       Quiz

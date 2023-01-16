@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class Document
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter file_id : String
 

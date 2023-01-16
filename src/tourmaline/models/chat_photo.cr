@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ChatPhoto
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter small_file_id : String
 

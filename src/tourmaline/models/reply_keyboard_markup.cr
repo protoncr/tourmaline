@@ -1,12 +1,11 @@
 require "json"
 require "../keyboard_builder"
 
-module Tourmaline
+module Tourmaline::Model
   alias Button = KeyboardButton | InlineKeyboardButton
 
   class KeyboardButton
     include JSON::Serializable
-    include Tourmaline::Model
 
     property text : String
 
@@ -26,9 +25,8 @@ module Tourmaline
   # created and sent when the corresponding button is pressed.
   class KeyboardButtonPollType
     include JSON::Serializable
-    include Tourmaline::Model
 
-    @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
+    @[JSON::Field(converter: Tourmaline::Model::Poll::PollTypeConverter)]
     property type : Poll::Type
 
     def initialize(@type)
@@ -37,7 +35,6 @@ module Tourmaline
 
   class ReplyKeyboardMarkup
     include JSON::Serializable
-    include Tourmaline::Model
 
     property keyboard : Array(Array(KeyboardButton))
 
@@ -78,7 +75,7 @@ module Tourmaline
       builder.keyboard(columns)
     end
 
-    class Builder < KeyboardBuilder(Tourmaline::KeyboardButton, Tourmaline::ReplyKeyboardMarkup)
+    class Builder < KeyboardBuilder(Tourmaline::Model::KeyboardButton, Tourmaline::Model::ReplyKeyboardMarkup)
       def keyboard(columns = nil) : G
         buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
         ReplyKeyboardMarkup.new(buttons, @resize, @one_time, @input_field_placeholder, @selective)

@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   abstract class InlineQueryResult
     include JSON::Serializable
-    include Tourmaline::Model
 
     def self.build(&block)
       builder = Builder.new
@@ -10,10 +9,10 @@ module Tourmaline
     end
 
     class Builder
-      getter results : Array(Tourmaline::InlineQueryResult)
+      getter results : Array(Tourmaline::Model::InlineQueryResult)
 
       def initialize
-        @results = [] of Tourmaline::InlineQueryResult
+        @results = [] of Tourmaline::Model::InlineQueryResult
       end
 
       def article(*args, **opts)

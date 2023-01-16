@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultAudio < InlineQueryResult
     getter type : String = "audio"
 

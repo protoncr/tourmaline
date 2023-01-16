@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultCachedSticker < InlineQueryResult
     getter type : String = "sticker"
 

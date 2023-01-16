@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class SuccessfulPayment
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter currency : String
 

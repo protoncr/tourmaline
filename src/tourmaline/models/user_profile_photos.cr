@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class UserProfilePhotos
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter total_count : Int32
 

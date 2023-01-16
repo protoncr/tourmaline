@@ -1,4 +1,4 @@
-module Tourmaline
+module Tourmaline::Model
   class InlineQueryResultVenue < InlineQueryResult
     getter type : String = "venue"
 

@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class ForceReply
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter force_reply : Bool = true
 

@@ -1,10 +1,9 @@
 require "json"
 require "./input_message_content.cr"
 
-module Tourmaline
+module Tourmaline::Model
   class InputInvoiceMessageContent
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter title : String
 
@@ -16,7 +15,7 @@ module Tourmaline
 
     getter currency : String
 
-    getter prices : Array(Tourmaline::LabeledPrice)
+    getter prices : Array(LabeledPrice)
 
     getter max_tip_amount : Int32?
 

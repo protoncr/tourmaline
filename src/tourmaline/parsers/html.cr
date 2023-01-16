@@ -4,21 +4,21 @@ module Tourmaline
   class HTMLParser < BaseParser
     def initialize
       @text = ""
-      @entities = [] of MessageEntity
-      @building_entities = {} of String => MessageEntity
+      @entities = [] of Model::MessageEntity
+      @building_entities = {} of String => Model::MessageEntity
       @open_tags = Deque(String).new
       @open_tags_meta = Deque(String?).new
     end
 
     def reset
       @text = ""
-      @entities = [] of MessageEntity
-      @building_entities = {} of String => MessageEntity
+      @entities = [] of Model::MessageEntity
+      @building_entities = {} of String => Model::MessageEntity
       @open_tags = Deque(String).new
       @open_tags_meta = Deque(String?).new
     end
 
-    def parse(text str : String) : Tuple(String, Array(MessageEntity))
+    def parse(text str : String) : Tuple(String, Array(Model::MessageEntity))
       io = IO::Memory.new(Helpers.pad_utf16(str))
       tokenizer = HTML5::Tokenizer.new(io, "")
 
@@ -39,7 +39,7 @@ module Tourmaline
       self.reset
     end
 
-    def unparse(text : String, entities : Array(MessageEntity), _offset = 0, _length = nil) : String
+    def unparse(text : String, entities : Array(Model::MessageEntity), _offset = 0, _length = nil) : String
       return text if text.empty? || entities.empty?
       text = Helpers.pad_utf16(text)
 
@@ -162,7 +162,7 @@ module Tourmaline
       end
 
       if ent_type && !@building_entities.has_key?(tag.data)
-        @building_entities[tag.data] = MessageEntity.new(
+        @building_entities[tag.data] = Model::MessageEntity.new(
           ent_type,
           offset: @text.size,
           url: url,

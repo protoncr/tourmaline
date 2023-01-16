@@ -1,11 +1,10 @@
 require "json"
 require "./message_entity"
 
-module Tourmaline
+module Tourmaline::Model
   # # This object represents a Telegram user or bot.
   class Message
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter message_id : Int64
 
@@ -58,7 +57,7 @@ module Tourmaline
 
     getter text : String?
 
-    getter entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
+    getter entities : Array(MessageEntity) = [] of Tourmaline::Model::MessageEntity
 
     getter animation : Animation?
 
@@ -66,7 +65,7 @@ module Tourmaline
 
     getter document : Document?
 
-    getter photo : Array(PhotoSize) = [] of Tourmaline::PhotoSize
+    getter photo : Array(PhotoSize) = [] of Tourmaline::Model::PhotoSize
 
     getter sticker : Sticker?
 
@@ -78,7 +77,7 @@ module Tourmaline
 
     getter caption : String?
 
-    getter caption_entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
+    getter caption_entities : Array(MessageEntity) = [] of Tourmaline::Model::MessageEntity
 
     getter contact : Contact?
 
@@ -92,13 +91,13 @@ module Tourmaline
 
     getter location : Location?
 
-    getter new_chat_members : Array(User) = [] of Tourmaline::User
+    getter new_chat_members : Array(User) = [] of Tourmaline::Model::User
 
     getter left_chat_member : User?
 
     getter new_chat_title : String?
 
-    getter new_chat_photo : Array(PhotoSize) = [] of Tourmaline::PhotoSize
+    getter new_chat_photo : Array(PhotoSize) = [] of Tourmaline::Model::PhotoSize
 
     getter delete_chat_photo : Bool?
 
@@ -227,79 +226,6 @@ module Tourmaline
 
     def chats(&block : Chat ->)
       self.chats.each { |c| block.call(c) }
-    end
-
-    # Delete the message. See `Tourmaline::Client#delete_message`.
-    def delete
-      client.delete_message(chat, message_id)
-    end
-
-    # Edits the message's media. See `Tourmaline::Client#edit_message_media`
-    def edit_media(media, **kwargs)
-      client.edit_message_media(chat, media, **kwargs, message: message_id)
-    end
-
-    # Edits the message's caption. See `Tourmaline::Client#edit_message_caption`
-    def edit_caption(caption, **kwargs)
-      client.edit_message_caption(chat, caption, **kwargs, message: message_id)
-    end
-
-    # Set the reply markup for the message. See `Tourmaline::Client#edit_message_reply_markup`.
-    def edit_reply_markup(reply_markup)
-      client.edit_message_reply_markup(chat, message: message_id, reply_markup: reply_markup)
-    end
-
-    # Edits the text of a message. See `Tourmaline::Client#edit_message_text`.
-    def edit_text(text, **kwargs)
-      client.edit_message_text(text, chat, **kwargs, message: message_id)
-    end
-
-    # Edits the message's live_location. See `Tourmaline::Client#edit_message_live_location`
-    def edit_live_location(lat, long, **kwargs)
-      client.edit_message_live_location(chat, lat, long, **kwargs, message: message_id)
-    end
-
-    # Forward the message to another chat. See `Tourmaline::Client#forward_message`.
-    def forward(to_chat, **kwargs)
-      client.forward_message(to_chat, chat, message_id, **kwargs)
-    end
-
-    # Pin the message. See `Tourmaline::Client#pin_chat_message`.
-    def pin(**kwargs)
-      client.pin_chat_message(chat, message_id, **kwargs)
-    end
-
-    # Unpin the message. See `Tourmaline::Client#unpin_chat_message`.
-    def unpin(**kwargs)
-      client.unpin_chat_message(chat, message_id, **kwargs)
-    end
-
-    # Reply to a message. See `Tourmaline::Client#send_message`.
-    def reply(message, **kwargs)
-      client.send_message(chat, message, **kwargs, reply_to_message: message_id)
-    end
-
-    # Respond to a message. See `Tourmaline::Client#send_message`.
-    def respond(message, **kwargs)
-      client.send_message(chat, message, **kwargs)
-    end
-
-    {% for content_type in %w[audio animation contact document location sticker photo media_group venu video video_note voice invoice poll dice dart basketball] %}
-      def reply_with_{{content_type.id}}(*args, **kwargs)
-        client.send_{{content_type.id}}(chat, *args, **kwargs, reply_to_message: message_id)
-      end
-
-      def respond_with_{{content_type.id}}(*args, **kwargs)
-        client.send_{{content_type.id}}(chat, *args, **kwargs)
-      end
-    {% end %}
-
-    def edit_live_location(latitude, longitude, **kwargs)
-      client.edit_message_live_location(chat, latitude, longitude, **kwargs, message: message_id)
-    end
-
-    def stop_live_location(**kwargs)
-      client.stop_message_live_location(chat, message_id, **kwargs)
     end
 
     def sender_type

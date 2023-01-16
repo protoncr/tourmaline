@@ -1,10 +1,9 @@
 require "json"
 require "../../keyboard_builder"
 
-module Tourmaline
+module Tourmaline::Model
   class InlineKeyboardMarkup
     include JSON::Serializable
-    include Tourmaline::Model
 
     property inline_keyboard : Array(Array(InlineKeyboardButton))
 
@@ -30,7 +29,7 @@ module Tourmaline
       builder.keyboard(columns)
     end
 
-    class Builder < KeyboardBuilder(Tourmaline::InlineKeyboardButton, Tourmaline::InlineKeyboardMarkup)
+    class Builder < KeyboardBuilder(Tourmaline::Model::InlineKeyboardButton, Tourmaline::Model::InlineKeyboardMarkup)
       def keyboard(columns = nil) : G
         buttons = KeyboardBuilder(T, G).build_keyboard(@keyboard, columns: columns || 1)
         InlineKeyboardMarkup.new(buttons)

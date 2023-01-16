@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class InputVenueMessageContent
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter latitude : Float64
 

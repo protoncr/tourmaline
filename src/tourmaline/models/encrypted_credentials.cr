@@ -1,7 +1,6 @@
-module Tourmaline
+module Tourmaline::Model
   class EncryptedCredentials
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter data : String
 
