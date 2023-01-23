@@ -102,7 +102,7 @@ module Tourmaline
     end
 
     # Takes an `Update` and returns an array of update actions.
-    def self.from_update(update : Tourmaline::Update)
+    def self.from_update(update : TLM::Update)
       actions = [] of UpdateAction
 
       actions << UpdateAction::Update
@@ -179,15 +179,15 @@ module Tourmaline
         end
 
         case message.sender_type
-        when Tourmaline::Message::SenderType::Bot
+        when TLM::Message::SenderType::Bot
           actions << UpdateAction::BotMessage
-        when Tourmaline::Message::SenderType::Channel
+        when TLM::Message::SenderType::Channel
           actions << UpdateAction::ChannelMessage
-        when Tourmaline::Message::SenderType::User
+        when TLM::Message::SenderType::User
           actions << UpdateAction::UserMessage
-        when Tourmaline::Message::SenderType::AnonymousAdmin
+        when TLM::Message::SenderType::AnonymousAdmin
           actions << UpdateAction::AnonymousAdminMessage
-        when Tourmaline::Message::SenderType::ChannelForward
+        when TLM::Message::SenderType::ChannelForward
           actions << UpdateAction::ChannelForwardMessage
         end
 

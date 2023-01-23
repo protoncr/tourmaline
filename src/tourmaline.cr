@@ -21,12 +21,14 @@ require "./tourmaline/parsers/*"
 require "./tourmaline/models/**"
 require "./tourmaline/events/*"
 require "./tourmaline/listeners/*"
+require "./tourmaline/services/*"
+require "./tourmaline/handler"
 require "./tourmaline/controller"
-require "./tourmaline/client"
 
 alias TL = Tourmaline
 alias TLA = Tourmaline::Annotations
-alias TLM = Tourmaline::Models
+alias TLM = Tourmaline::Model
+alias TLE = Tourmaline::Events
 alias TLDI = Athena::DependencyInjection
 
 # Tourmaline is a Telegram Bot API library
@@ -56,7 +58,7 @@ module Tourmaline
   end
 
   def self.poll(*args, **kwargs)
-    client = Tourmaline::Client.new
-    client.poll(*args, **kwargs)
+    polling_service = ADI.container.tourmaline_polling_service
+    polling_service.poll(*args, **kwargs)
   end
 end

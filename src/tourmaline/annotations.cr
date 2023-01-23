@@ -46,18 +46,18 @@ module Tourmaline
     # Example:
     #
     # ```
-    # @[OnCallbackQuery("back")]
+    # @[CallbackQuery("back")]
     # def back_button_pressed(client, update)
     #   query = update.callback_query.not_nil!
     #   query.answer("You pressed back!")
     # end
     # ```
-    annotation OnCallbackQuery; end
-    ACF.configuration_annotation TLA::OnCallbackQuery,
+    annotation CallbackQuery; end
+    ACF.configuration_annotation TLA::CallbackQuery,
       pattern : String | Regex
 
-    annotation OnChosenInlineResult; end
-    ACF.configuration_annotation TLA::OnChosenInlineResult
+    annotation ChosenInlineResult; end
+    ACF.configuration_annotation TLA::ChosenInlineResult
 
     annotation Edited; end
     ACF.configuration_annotation TLA::Edited
@@ -66,8 +66,8 @@ module Tourmaline
     ACF.configuration_annotation TLA::Hears,
       pattern : String | Regex
 
-    annotation OnInlineQuery; end
-    ACF.configuration_annotation TLA::OnInlineQuery
+    annotation InlineQuery; end
+    ACF.configuration_annotation TLA::InlineQuery
 
     annotation On; end
     ACF.configuration_annotation TLA::On,

@@ -1,5 +1,5 @@
 # module Tourmaline
-#   class Client
+#   class TelegramService
 #     module TDLightMethods
 #       # Remove old data from the in-memory cache and give the freed memory back to the os.
 #       # Returns true on success.

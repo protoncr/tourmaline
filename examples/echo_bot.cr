@@ -2,8 +2,8 @@ require "../src/tourmaline"
 
 class Echo < TL::Controller
   @[TLA::Command("echo")]
-  def echo_command(message : TLM::Message, text : String)
-    message.reply(text)
+  def echo_command(message : TLM::Message)
+    api.reply_to(message, message.text)
   end
 end
 

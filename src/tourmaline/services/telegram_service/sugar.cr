@@ -1,5 +1,5 @@
 module Tourmaline
-  class Client
+  class TelegramService
     module SugarMethods
     end
   end

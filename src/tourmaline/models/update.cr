@@ -1,5 +1,5 @@
 module Tourmaline::Model
-  # # This object represents a Telegram user or bot.
+  # This object represents a Telegram user or bot.
   class Update
     include JSON::Serializable
 

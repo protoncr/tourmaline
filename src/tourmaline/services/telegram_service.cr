@@ -1,10 +1,11 @@
-require "./client/*"
+require "./telegram_service/*"
 
 module Tourmaline
   # The `Client` class is the base class for all Tourmaline based bots.
   # Extend this class to create your own bots, or create an
   # instance of `Client` and add event handlers to it.
-  class Client
+  @[ADI::Register(public: true)]
+  class TelegramService
     include Logger
     include CoreMethods
     include SugarMethods
@@ -14,64 +15,9 @@ module Tourmaline
     # `@bot` to `get_me`.
     getter! bot : Model::User
 
-    getter dispatcher : AED::EventDispatcher
-
     @pool : DB::Pool(HTTP::Client)
 
-    # Create a new instance of `Tourmaline::Client`.
-    #
-    # ## Named Arguments
-    #
-    # `bot_token`
-    # :    the bot token you should've received from `@BotFather`
-    #
-    # `user_token`
-    # :    the token returned by the `#login` method
-    #
-    # `endpoint`
-    # :    the API endpoint to use for requests; default is `https://api.telegram.org`, but for
-    #      TDLight methods to work you may consider hosting your own instance or using one of
-    #      the official ones such as `https://telegram.rest`
-    #
-    # `persistence`
-    # :    the persistence strategy to use
-    #
-    # `set_commands`
-    # :    if true, `set_my_commands` will be run on start and any commands marked with `register`
-    #      will be registered with BotFather.
-    #
-    # `pool_capacity`
-    # :    the maximum number of concurrent HTTP connections to use
-    #
-    # `initial_pool_size`
-    # :    the number of HTTP::Client instances to create on init
-    #
-    # `pool_timeout`
-    # :    How long to wait for a new client to be available if the pool is full before throwing a `TimeoutError`
-    #
-    # `proxy`
-    # :    an instance of `HTTP::Proxy::Client` to use; if set, overrides the following `proxy_` args
-    #
-    # `proxy_uri`
-    # :    a URI to use when connecting to the proxy; can be a `URI` instance or a String
-    #
-    # `proxy_host`
-    # :    if no `proxy_uri` is provided, this will be the host for the URI
-    #
-    # `proxy_port`
-    # :    if no `proxy_uri` is provided, this will be the port for the URI
-    #
-    # `proxy_user`
-    # :    a username to use for a proxy that requires authentication
-    #
-    # `proxy_pass`
-    # :    a password to use for a proxy that requires authentication
     def initialize
-      # @persistence = persistence
-      # @persistence.init
-
-      # @middlewares = [] of Middleware
-
       if Config.proxy
         if uri = Config.proxy_uri?
           uri = uri.is_a?(URI) ? uri : URI.parse(uri.starts_with?("http") ? uri : "http://#{uri}")
@@ -92,7 +38,6 @@ module Tourmaline
         client
       end
 
-      @dispatcher = AED::EventDispatcher.new
       @bot = self.get_me
     end
 
@@ -108,24 +53,6 @@ module Tourmaline
     # Remove an existing event handler from the stack
     def remove_event_handler(handler : EventHandler)
       @event_handlers.delete(handler)
-    end
-
-    # Calls all handlers in the stack with the given update and
-    # this client instance.
-    def handle_update(update : Tourmaline::Model::Update)
-      if message = update.message
-        if text = message.text
-          Config.command_prefixes.each do |prefix|
-            if text.starts_with?(prefix)
-              trigger = text[prefix.size..-1]
-              text = text.split(" ")[1..].join(" ")
-              command = Events::Command.new(trigger, text, message)
-              pp @dispatcher
-              @dispatcher.dispatch(command)
-            end
-          end
-        end
-      end
     end
 
     protected def using_connection

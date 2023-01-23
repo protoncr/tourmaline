@@ -1,11 +1,10 @@
 module Tourmaline::Listeners
   @[ADI::Register]
-  struct CommandListener
+  struct UpdateListener
     include AED::EventListenerInterface
 
     @[AEDA::AsEventListener(priority: 50)]
-    def on_command(command : Tourmaline::Events::Command)
-      pp command
+    def on_message(event : TLE::Update)
     end
   end
 end
