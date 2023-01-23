@@ -1,9 +1,19 @@
 require "../src/tourmaline"
 
-class Echo < TL::Controller
-  @[TLA::Command("echo")]
-  def echo_command(message : TLM::Message)
-    api.reply_to(message, message.text)
+@[TLA::Command("echo",
+  description: "Echoes back the text you send it",
+  usage: "/echo <text>",
+)]
+class Echo < TL::CommandController
+  include AED::EventListenerInterface
+
+  def execute
+    api.reply_to message, text
+  end
+
+  @[AEDA::AsEventListener(priority: 100)]
+  def on_update(event : TLE::Update)
+    pp event
   end
 end
 

@@ -1,23 +1,46 @@
 module Tourmaline
   abstract class Controller
-    macro inherited
-      private CONTROLLER_ACTION_METHODS = [] of {String, String}
-
-      macro method_added(m)
-        \{%
-           if (m.annotation(TLA::Command) || m.annotation(TLA::CallbackQuery) || m.annotation(TLA::ChosenInlineResult) || m.annotation(TLA::Edited) || m.annotation(TLA::Hears) || m.annotation(TLA::InlineQuery) || m.annotation(TLA::On) || m.annotation(TLA::Catch))
-             if CONTROLLER_ACTION_METHODS.includes?({@type.name.id, m.name.id})
-               m.raise "A controller action named '##{m.name}' already exists within '#{@type.name}'."
-             end
-
-             CONTROLLER_ACTION_METHODS << {@type.name.id, m.name.id}
-           end
-        %}
-      end
-    end
+    abstract def execute
 
     def api
       ADI.container.telegram_telegram_service
     end
+
+    def description
+      nil
+    end
+
+    def usage
+      nil
+    end
+
+    def examples
+      [] of String
+    end
+
+    def help_text
+      String.build do |str|
+        str << "*#{self.class.name.split("::").last}*\n\n"
+
+        if description
+          str << "#{description}\n\n"
+        end
+
+        if usage
+          str << "*Usage:*\n"
+          str << "`#{usage}`\n\n"
+        end
+
+        if examples.any?
+          str << "*Examples:*\n"
+          examples.each do |example|
+            str << "`#{example}`\n"
+          end
+          str << "\n"
+        end
+      end
+    end
   end
 end
+
+require "./controllers/*"
