@@ -81,7 +81,7 @@ module Tourmaline
       codepoints = text.to_utf16
 
       io = IO::Memory.new
-      io.set_encoding("UTF-16")
+      io.set_encoding("UTF-16LE")
 
       codepoints.each_with_index do |codepoint, i|
         if escape && codepoint < 128
