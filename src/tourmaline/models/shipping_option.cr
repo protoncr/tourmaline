@@ -1,7 +1,6 @@
 module Tourmaline
   class ShippingOption
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter id : String
 

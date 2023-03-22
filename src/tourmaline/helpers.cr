@@ -12,148 +12,15 @@ module Tourmaline
       voice:      "ogg",
     }
 
-    MD_ENTITY_MAP = {
-      "bold"          => {"*", "*"},
-      "italic"        => {"_", "_"},
-      "underline"     => {"", ""},
-      "code"          => {"`", "`"},
-      "pre"           => {"```\n", "\n```"},
-      "pre_language"  => {"```{language}\n", "\n```"},
-      "strikethrough" => {"", ""},
-      "text_mention"  => {"[", "](tg://user?id={id})"},
-      "text_link"     => {"[", "]({url})"},
-    }
-
-    MDV2_ENTITY_MAP = {
-      "bold"          => {"*", "*"},
-      "italic"        => {"_", "_"},
-      "underline"     => {"__", "__"},
-      "code"          => {"`", "`"},
-      "pre"           => {"```\n", "\n```"},
-      "pre_language"  => {"```{language}\n", "\n```"},
-      "strikethrough" => {"~", "~"},
-      "text_mention"  => {"[", "](tg://user?id={id})"},
-      "text_link"     => {"[", "]({url})"},
-      "spoiler"       => {"||", "||"},
-    }
-
-    HTML_ENTITY_MAP = {
-      "bold"          => {"<b>", "</b>"},
-      "italic"        => {"<i>", "</i>"},
-      "underline"     => {"<u>", "</u>"},
-      "code"          => {"<code>", "</code>"},
-      "pre"           => {"<pre>\n", "\n</pre>"},
-      "pre_language"  => {"<pre><code class=\"language-{language}\">\n", "\n</code></pre>"},
-      "strikethrough" => {"<s>", "</s>"},
-      "text_mention"  => {"<a href=\"tg://user?id={id}\">", "</a>"},
-      "text_link"     => {"<a href=\"{url}\">", "</a>"},
-      "spoiler"       => {"<span class=\"tg-spoiler\">", "</span>"},
-    }
-
-    def unparse_html(text : String, entities ents : Array(MessageEntity))
-      pp! text, ents
-      parser = HTMLParser.new
-      parser.unparse(text, ents)
-    end
-
-    def unparse_text(text : String, entities ents : Array(MessageEntity), parse_mode : ParseMode = :markdown, escape : Bool = false)
-      if parse_mode == ParseMode::HTML
-        return unparse_html(text, ents)
-      end
-
-      end_entities = {} of Int32 => Array(MessageEntity)
-      start_entities = ents.reduce({} of Int32 => Array(MessageEntity)) do |acc, e|
-        acc[e.offset] ||= [] of MessageEntity
-        acc[e.offset] << e
-        acc
-      end
-
-      entity_map = case parse_mode
-                   in ParseMode::Markdown
-                     MD_ENTITY_MAP
-                   in ParseMode::MarkdownV2
-                     MDV2_ENTITY_MAP
-                   in ParseMode::HTML
-                     HTML_ENTITY_MAP
-                   end
-
-      text = text.gsub('\u{0}', "") + ' '
-      codepoints = text.to_utf16
-
-      io = IO::Memory.new
-      io.set_encoding("UTF-16LE")
-
-      codepoints.each_with_index do |codepoint, i|
-        if escape && codepoint < 128
-          char = codepoint.chr
-          case parse_mode
-          in ParseMode::HTML
-            char = escape_html(char)
-          in ParseMode::Markdown
-            char = escape_md(char, 1)
-          in ParseMode::MarkdownV2
-            char = escape_md(char, 2)
-          end
-        end
-
-        if entities = end_entities[i]?
-          # TODO:
-          # newline_count = 0
-          # loop do
-          #   io.seek(-1, :current)
-          #   bytes = io.peek
-          #   if bytes[0].chr == '\n'
-          #     newline_count += 1
-          #     io.seek(-1, :current)
-          #   else
-          #     io.seek(1, :current)
-          #     break
-          #   end
-          # end
-
-          entities.each do |entity|
-            if pieces = entity_map[entity.type]?
-              io << pieces[1]
-                .sub("{language}", entity.language.to_s)
-                .sub("{id}", entity.user.try &.id.to_s)
-                .sub("{url}", entity.url.to_s)
-            end
-          end
-
-          # io << ("\n" * newline_count)
-          end_entities.delete(i)
-        end
-
-        if entities = start_entities[i]?
-          entities.each do |entity|
-            if pieces = entity_map[entity.type]?
-              io << pieces[0]
-                .sub("{language}", entity.language.to_s)
-                .sub("{id}", entity.user.try &.id.to_s)
-                .sub("{url}", entity.url.to_s)
-
-              end_entities[entity.offset + entity.length] ||= [] of MessageEntity
-              end_entities[entity.offset + entity.length] << entity
-            end
-          end
-        end
-
-        if char
-          io << char
-        else
-          io.write_bytes(codepoint, IO::ByteFormat::LittleEndian)
-        end
-      end
-
-      io.rewind.gets_to_end
-    end
-
-    def random_string(length)
-      chars = ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a
-      rands = chars.sample(length)
+    # Return a random string of the given length. If `characters` is not given,
+    # it will default to 0..9, a..z, A..Z.
+    def random_string(length, characters = nil)
+      characters ||= ('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a
+      rands = characters.sample(length)
       rands.join
     end
 
+    # Escape the given html for use in a Telegram message.
     def escape_html(text)
       text.to_s
         .gsub('&', "&amp;")
@@ -161,6 +28,7 @@ module Tourmaline
         .gsub('>', "&gt;")
     end
 
+    # Escape the given markdown for use in a Telegram message.
     def escape_md(text, version = 1)
       text = text.to_s
 
@@ -180,6 +48,7 @@ module Tourmaline
       text
     end
 
+    # Pad the given text with spaces to make it a multiple of 4 bytes.
     def pad_utf16(text)
       String.build do |str|
         text.each_char do |c|
@@ -191,6 +60,8 @@ module Tourmaline
       end
     end
 
+    # Unpad the given text by removing spaces that were added to make it a
+    # multiple of 4 bytes.
     def unpad_utf16(text)
       String.build do |str|
         last_char = nil
@@ -201,6 +72,24 @@ module Tourmaline
           last_char = c
         end
       end
+    end
+
+    # Convenience method to create and `Array` of `LabledPrice` from an `Array`
+    # of `NamedTuple(label: String, amount: Int32)`.
+    # TODO: Replace with a builder of some kind
+    def labeled_prices(lp : Array(NamedTuple(label: String, amount: Int32)))
+      lp.reduce([] of Tourmaline::LabeledPrice) { |acc, i|
+        acc << Tourmaline::LabeledPrice.new(label: i[:label], amount: i[:amount])
+      }
+    end
+
+    # Convenience method to create an `Array` of `ShippingOption` from a
+    # `NamedTuple(id: String, title: String, prices: Array(LabeledPrice))`.
+    # TODO: Replace with a builder of some kind
+    def shipping_options(options : Array(NamedTuple(id: String, title: String, prices: Array(LabeledPrice))))
+      lp.reduce([] of Tourmaline::ShippingOption) { |acc, i|
+        acc << Tourmaline::ShippingOption.new(id: i[:id], title: i[:title], prices: i[:prices])
+      }
     end
   end
 end

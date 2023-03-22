@@ -1,7 +1,6 @@
 module Tourmaline
   class Game
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter title : String
 

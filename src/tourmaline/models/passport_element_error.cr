@@ -1,7 +1,6 @@
 module Tourmaline
   class PassportElementError
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter source : String
 

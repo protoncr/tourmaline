@@ -1,7 +1,6 @@
 module Tourmaline
   class MenuButtonDefault
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter type : String
 

@@ -1,7 +1,6 @@
 module Tourmaline
   struct LoginURL
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter url : String
 

@@ -1,7 +1,6 @@
 module Tourmaline
   class Location
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter longitude : Float64
 

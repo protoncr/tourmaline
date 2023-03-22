@@ -4,7 +4,6 @@ require "../../keyboard_builder"
 module Tourmaline
   class InlineKeyboardMarkup
     include JSON::Serializable
-    include Tourmaline::Model
 
     property inline_keyboard : Array(Array(InlineKeyboardButton))
 

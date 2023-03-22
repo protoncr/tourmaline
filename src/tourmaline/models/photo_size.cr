@@ -1,7 +1,6 @@
 module Tourmaline
   class PhotoSize
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter file_id : String
 

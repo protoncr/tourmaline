@@ -2,7 +2,6 @@ module Tourmaline
   # # This object represents a Telegram user or bot.
   class Update
     include JSON::Serializable
-    include Tourmaline::Model
 
     # The update‘s unique identifier. Update identifiers start from a certain
     # positive number and increase sequentially. This ID becomes especially
@@ -62,10 +61,6 @@ module Tourmaline
     # Optional. A request to join the chat has been sent. The bot must have the can_invite_users
     # administrator right in the chat to receive these updates.
     getter chat_join_request : ChatJoinRequest?
-
-    # Context object allowing data to be passed from middleware to handlers.
-    @[JSON::Field(ignore: true)]
-    getter context : Middleware::Context { Middleware::Context.new }
 
     @[JSON::Field(ignore: true)]
     getter update_actions : Array(UpdateAction) { UpdateAction.from_update(self) }

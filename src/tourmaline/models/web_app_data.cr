@@ -1,7 +1,6 @@
 module Tourmaline
   class WebAppData
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter data : String
 

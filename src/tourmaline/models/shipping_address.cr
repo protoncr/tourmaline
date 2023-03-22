@@ -1,7 +1,6 @@
 module Tourmaline
   class ShippingAddress
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter country_code : String
 

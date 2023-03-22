@@ -15,6 +15,4 @@ require "./tourmaline/client"
 # directory. For guides on using Tourmaline, see the official
 # Tourmaline [cookbook](https://tourmaline.dev/docs/cookbook/your-first-bot).
 module Tourmaline
-  include Tourmaline::Handlers
-  include Tourmaline::Annotations
 end

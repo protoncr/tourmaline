@@ -1,7 +1,6 @@
 module Tourmaline
   class Video
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter file_id : String
 

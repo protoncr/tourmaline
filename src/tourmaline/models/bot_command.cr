@@ -1,7 +1,6 @@
 module Tourmaline
   class BotCommand
     include JSON::Serializable
-    include Tourmaline::Model
 
     getter command : String
 

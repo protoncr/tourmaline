@@ -1,7 +1,6 @@
 module Tourmaline
   class InputMediaAudio
     include JSON::Serializable
-    include Tourmaline::Model
 
     @type = "audio"
 
