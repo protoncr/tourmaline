@@ -1,0 +1,6679 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tourmaline.dev/api_reference/Tourmaline/Context/">
+      
+      <link rel="icon" href="../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
+    
+    
+      
+        <title>Context - Tourmaline</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a617204b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#Tourmaline::Context" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tourmaline" class="md-header__button md-logo" aria-label="Tourmaline" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tourmaline
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Context
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../usage/" class="md-tabs__link">
+      Usage
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../resources/faq/" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../changelog/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tourmaline" class="md-nav__button md-logo" aria-label="Tourmaline" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg>
+
+    </a>
+    Tourmaline
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/protoncr/tourmaline/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../usage/">Usage</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Usage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../usage/getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http:/www.catb.org/~esr/faqs/smart-questions.html" class="md-nav__link">
+        Asking Questions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Tourmaline</a>
+          
+            <label for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Tourmaline" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tourmaline
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Animation/" class="md-nav__link">
+        Animation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Audio/" class="md-nav__link">
+        Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommand/" class="md-nav__link">
+        BotCommand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScope/" class="md-nav__link">
+        BotCommandScope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScopeAllChatAdministrators/" class="md-nav__link">
+        BotCommandScopeAllChatAdministrators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScopeAllGroupChats/" class="md-nav__link">
+        BotCommandScopeAllGroupChats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScopeAllPrivateChats/" class="md-nav__link">
+        BotCommandScopeAllPrivateChats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScopeChat/" class="md-nav__link">
+        BotCommandScopeChat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScopeChatAdministrators/" class="md-nav__link">
+        BotCommandScopeChatAdministrators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScopeChatMember/" class="md-nav__link">
+        BotCommandScopeChatMember
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotCommandScopeDefault/" class="md-nav__link">
+        BotCommandScopeDefault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotDescription/" class="md-nav__link">
+        BotDescription
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BotShortDescription/" class="md-nav__link">
+        BotShortDescription
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Button/" class="md-nav__link">
+        Button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CallbackGame/" class="md-nav__link">
+        CallbackGame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CallbackQuery/" class="md-nav__link">
+        CallbackQuery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CallbackQueryHandler/" class="md-nav__link">
+        CallbackQueryHandler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_18" type="checkbox" id="__nav_4_2_18" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Chat/">Chat</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Chat" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          Chat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chat/Type/" class="md-nav__link">
+        Type
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatAction/" class="md-nav__link">
+        ChatAction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatAdministratorRights/" class="md-nav__link">
+        ChatAdministratorRights
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatInviteLink/" class="md-nav__link">
+        ChatInviteLink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatJoinRequest/" class="md-nav__link">
+        ChatJoinRequest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatLocation/" class="md-nav__link">
+        ChatLocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMember/" class="md-nav__link">
+        ChatMember
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMemberAdministrator/" class="md-nav__link">
+        ChatMemberAdministrator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMemberBanned/" class="md-nav__link">
+        ChatMemberBanned
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMemberLeft/" class="md-nav__link">
+        ChatMemberLeft
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMemberMember/" class="md-nav__link">
+        ChatMemberMember
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMemberOwner/" class="md-nav__link">
+        ChatMemberOwner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMemberRestricted/" class="md-nav__link">
+        ChatMemberRestricted
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatMemberUpdated/" class="md-nav__link">
+        ChatMemberUpdated
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatPermissions/" class="md-nav__link">
+        ChatPermissions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChatPhoto/" class="md-nav__link">
+        ChatPhoto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChosenInlineResult/" class="md-nav__link">
+        ChosenInlineResult
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Client/" class="md-nav__link">
+        Client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommandHandler/" class="md-nav__link">
+        CommandHandler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Context
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Context
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::Context-constructors" class="md-nav__link">
+    Constructors
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context.new(client,update)" class="md-nav__link">
+    .new
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::Context-methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#answer_query(*,**)" class="md-nav__link">
+    #answer_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#api" class="md-nav__link">
+    #api
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#callback_query(*,**)" class="md-nav__link">
+    #callback_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#callback_query?(*,**,&)" class="md-nav__link">
+    #callback_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#channel_post(*,**,&)" class="md-nav__link">
+    #channel_post
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#channel_post?(*,**,&)" class="md-nav__link">
+    #channel_post?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#chosen_inline_result(*,**,&)" class="md-nav__link">
+    #chosen_inline_result
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#chosen_inline_result?(*,**)" class="md-nav__link">
+    #chosen_inline_result?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#client" class="md-nav__link">
+    #client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#command" class="md-nav__link">
+    #command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#command!" class="md-nav__link">
+    #command!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#delete_message(message_id)" class="md-nav__link">
+    #delete_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_channel_post(*,**,&)" class="md-nav__link">
+    #edited_channel_post
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_channel_post?(*,**)" class="md-nav__link">
+    #edited_channel_post?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_message(*,**)" class="md-nav__link">
+    #edited_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_message?(*,**)" class="md-nav__link">
+    #edited_message?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#forward_message(to_chat,**)" class="md-nav__link">
+    #forward_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#inline_query(*,**,&)" class="md-nav__link">
+    #inline_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#inline_query?(*,**,&)" class="md-nav__link">
+    #inline_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#message(*,**,&)" class="md-nav__link">
+    #message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#message!" class="md-nav__link">
+    #message!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#message?(*,**,&)" class="md-nav__link">
+    #message?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#pin_message(**)" class="md-nav__link">
+    #pin_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll(*,**)" class="md-nav__link">
+    #poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll?(*,**)" class="md-nav__link">
+    #poll?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll_answer(*,**)" class="md-nav__link">
+    #poll_answer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll_answer?(*,**)" class="md-nav__link">
+    #poll_answer?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#pre_checkout_query(*,**)" class="md-nav__link">
+    #pre_checkout_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#pre_checkout_query?(*,**)" class="md-nav__link">
+    #pre_checkout_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply(text,**)" class="md-nav__link">
+    #reply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_animation(*,**)" class="md-nav__link">
+    #reply_with_animation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_audio(*,**)" class="md-nav__link">
+    #reply_with_audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_basketball(*,**)" class="md-nav__link">
+    #reply_with_basketball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_contact(*,**)" class="md-nav__link">
+    #reply_with_contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_dart(*,**)" class="md-nav__link">
+    #reply_with_dart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_dice(*,**)" class="md-nav__link">
+    #reply_with_dice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_document(*,**)" class="md-nav__link">
+    #reply_with_document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_invoice(*,**)" class="md-nav__link">
+    #reply_with_invoice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_location(*,**)" class="md-nav__link">
+    #reply_with_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_media_group(*,**)" class="md-nav__link">
+    #reply_with_media_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_photo(*,**)" class="md-nav__link">
+    #reply_with_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_poll(*,**)" class="md-nav__link">
+    #reply_with_poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_sticker(*,**)" class="md-nav__link">
+    #reply_with_sticker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_venu(*,**)" class="md-nav__link">
+    #reply_with_venu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_video(*,**)" class="md-nav__link">
+    #reply_with_video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_video_note(*,**)" class="md-nav__link">
+    #reply_with_video_note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_voice(*,**)" class="md-nav__link">
+    #reply_with_voice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond(text,**)" class="md-nav__link">
+    #respond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_animation(*,**)" class="md-nav__link">
+    #respond_with_animation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_audio(*,**)" class="md-nav__link">
+    #respond_with_audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_basketball(*,**)" class="md-nav__link">
+    #respond_with_basketball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_contact(*,**)" class="md-nav__link">
+    #respond_with_contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_dart(*,**)" class="md-nav__link">
+    #respond_with_dart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_dice(*,**)" class="md-nav__link">
+    #respond_with_dice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_document(*,**)" class="md-nav__link">
+    #respond_with_document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_invoice(*,**)" class="md-nav__link">
+    #respond_with_invoice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_location(*,**)" class="md-nav__link">
+    #respond_with_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_media_group(*,**)" class="md-nav__link">
+    #respond_with_media_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_photo(*,**)" class="md-nav__link">
+    #respond_with_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_poll(*,**)" class="md-nav__link">
+    #respond_with_poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_sticker(*,**)" class="md-nav__link">
+    #respond_with_sticker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_venu(*,**)" class="md-nav__link">
+    #respond_with_venu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_video(*,**)" class="md-nav__link">
+    #respond_with_video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_video_note(*,**)" class="md-nav__link">
+    #respond_with_video_note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_voice(*,**)" class="md-nav__link">
+    #respond_with_voice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#send_chat_action(action)" class="md-nav__link">
+    #send_chat_action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#shipping_query(*,**,&)" class="md-nav__link">
+    #shipping_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#shipping_query?(*,**,&)" class="md-nav__link">
+    #shipping_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#text(strip_command)" class="md-nav__link">
+    #text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#text!(strip_command)" class="md-nav__link">
+    #text!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#unpin_message(**)" class="md-nav__link">
+    #unpin_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#update" class="md-nav__link">
+    #update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#with_message(&)" class="md-nav__link">
+    #with_message
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dice/" class="md-nav__link">
+        Dice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dispatcher/" class="md-nav__link">
+        Dispatcher
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Document/" class="md-nav__link">
+        Document
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EncryptedCredentials/" class="md-nav__link">
+        EncryptedCredentials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_43" type="checkbox" id="__nav_4_2_43" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../EncryptedPassportElement/">EncryptedPassportElement</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="EncryptedPassportElement" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_43">
+          <span class="md-nav__icon md-icon"></span>
+          EncryptedPassportElement
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EncryptedPassportElement/Type/" class="md-nav__link">
+        Type
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_44" type="checkbox" id="__nav_4_2_44" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Error/">Error</a>
+          
+            <label for="__nav_4_2_44">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Error" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_44">
+          <span class="md-nav__icon md-icon"></span>
+          Error
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BadRequest/" class="md-nav__link">
+        BadRequest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BadWebhook/" class="md-nav__link">
+        BadWebhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BadWebhookAddrInfo/" class="md-nav__link">
+        BadWebhookAddrInfo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BadWebhookNoAddressAssociatedWithHostname/" class="md-nav__link">
+        BadWebhookNoAddressAssociatedWithHostname
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BadWebhookPort/" class="md-nav__link">
+        BadWebhookPort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BotBlocked/" class="md-nav__link">
+        BotBlocked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BotDomainInvalid/" class="md-nav__link">
+        BotDomainInvalid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/BotKicked/" class="md-nav__link">
+        BotKicked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ButtonDataInvalid/" class="md-nav__link">
+        ButtonDataInvalid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ButtonURLInvalid/" class="md-nav__link">
+        ButtonURLInvalid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantDemoteChatCreator/" class="md-nav__link">
+        CantDemoteChatCreator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantGetUpdates/" class="md-nav__link">
+        CantGetUpdates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantInitiateConversation/" class="md-nav__link">
+        CantInitiateConversation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantParseEntities/" class="md-nav__link">
+        CantParseEntities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantParseUrl/" class="md-nav__link">
+        CantParseUrl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantRemoveChatOwner/" class="md-nav__link">
+        CantRemoveChatOwner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantRestrictSelf/" class="md-nav__link">
+        CantRestrictSelf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CantTalkWithBots/" class="md-nav__link">
+        CantTalkWithBots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ChatAdminRequired/" class="md-nav__link">
+        ChatAdminRequired
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ChatDescriptionIsNotModified/" class="md-nav__link">
+        ChatDescriptionIsNotModified
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ChatIdIsEmpty/" class="md-nav__link">
+        ChatIdIsEmpty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ChatNotFound/" class="md-nav__link">
+        ChatNotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ConflictError/" class="md-nav__link">
+        ConflictError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ConnectionLost/" class="md-nav__link">
+        ConnectionLost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/CurrencyTotalAmountInvalid/" class="md-nav__link">
+        CurrencyTotalAmountInvalid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/GroupDeactivated/" class="md-nav__link">
+        GroupDeactivated
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/InlineKeyboardExpected/" class="md-nav__link">
+        InlineKeyboardExpected
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/InvalidHTTPUrlContent/" class="md-nav__link">
+        InvalidHTTPUrlContent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/InvalidPeerID/" class="md-nav__link">
+        InvalidPeerID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/InvalidQueryID/" class="md-nav__link">
+        InvalidQueryID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/InvalidResultID/" class="md-nav__link">
+        InvalidResultID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/InvalidStickersSet/" class="md-nav__link">
+        InvalidStickersSet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/InvalidUserId/" class="md-nav__link">
+        InvalidUserId
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MemberListInaccessible/" class="md-nav__link">
+        MemberListInaccessible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageCantBeDeleted/" class="md-nav__link">
+        MessageCantBeDeleted
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageCantBeEdited/" class="md-nav__link">
+        MessageCantBeEdited
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageError/" class="md-nav__link">
+        MessageError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageIdInvalid/" class="md-nav__link">
+        MessageIdInvalid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageIdentifierNotSpecified/" class="md-nav__link">
+        MessageIdentifierNotSpecified
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageIsNotAPoll/" class="md-nav__link">
+        MessageIsNotAPoll
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageIsTooLong/" class="md-nav__link">
+        MessageIsTooLong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageNotModified/" class="md-nav__link">
+        MessageNotModified
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageTextIsEmpty/" class="md-nav__link">
+        MessageTextIsEmpty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageToDeleteNotFound/" class="md-nav__link">
+        MessageToDeleteNotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageToEditNotFound/" class="md-nav__link">
+        MessageToEditNotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageToForwardNotFound/" class="md-nav__link">
+        MessageToForwardNotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageToReplyNotFound/" class="md-nav__link">
+        MessageToReplyNotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MessageWithPollNotFound/" class="md-nav__link">
+        MessageWithPollNotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MethodIsNotAvailable/" class="md-nav__link">
+        MethodIsNotAvailable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MethodNotAvailableInPrivateChats/" class="md-nav__link">
+        MethodNotAvailableInPrivateChats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MethodNotKnown/" class="md-nav__link">
+        MethodNotKnown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/MigrateToChat/" class="md-nav__link">
+        MigrateToChat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/NeedAdministratorRightsInTheChannel/" class="md-nav__link">
+        NeedAdministratorRightsInTheChannel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/NetworkError/" class="md-nav__link">
+        NetworkError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/NoStickerInRequest/" class="md-nav__link">
+        NoStickerInRequest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/NotEnoughRightsOther/" class="md-nav__link">
+        NotEnoughRightsOther
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/NotEnoughRightsToPinMessage/" class="md-nav__link">
+        NotEnoughRightsToPinMessage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/NotEnoughRightsToRestrict/" class="md-nav__link">
+        NotEnoughRightsToRestrict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/NotFound/" class="md-nav__link">
+        NotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ObjectExpectedAsReplyMarkup/" class="md-nav__link">
+        ObjectExpectedAsReplyMarkup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PaymentProviderInvalid/" class="md-nav__link">
+        PaymentProviderInvalid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PhotoAsInputFileRequired/" class="md-nav__link">
+        PhotoAsInputFileRequired
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PhotoDimensions/" class="md-nav__link">
+        PhotoDimensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollCantBeStopped/" class="md-nav__link">
+        PollCantBeStopped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollCantHaveMoreOptions/" class="md-nav__link">
+        PollCantHaveMoreOptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollError/" class="md-nav__link">
+        PollError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollHasAlreadyClosed/" class="md-nav__link">
+        PollHasAlreadyClosed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollMustHaveMoreOptions/" class="md-nav__link">
+        PollMustHaveMoreOptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollOptionsMustBeNonEmpty/" class="md-nav__link">
+        PollOptionsMustBeNonEmpty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollQuestionMustBeNonEmpty/" class="md-nav__link">
+        PollQuestionMustBeNonEmpty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollSizeError/" class="md-nav__link">
+        PollSizeError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollsCantBeSentToPrivateChats/" class="md-nav__link">
+        PollsCantBeSentToPrivateChats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PollsOptionsLengthTooLong/" class="md-nav__link">
+        PollsOptionsLengthTooLong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/PoolRetryAttemptsExceeded/" class="md-nav__link">
+        PoolRetryAttemptsExceeded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/RequestTimeoutError/" class="md-nav__link">
+        RequestTimeoutError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ResultIdDuplicate/" class="md-nav__link">
+        ResultIdDuplicate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/RetryAfter/" class="md-nav__link">
+        RetryAfter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/StartParamInvalid/" class="md-nav__link">
+        StartParamInvalid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/TerminatedByOtherGetUpdates/" class="md-nav__link">
+        TerminatedByOtherGetUpdates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/Throttled/" class="md-nav__link">
+        Throttled
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/TooMuchMessages/" class="md-nav__link">
+        TooMuchMessages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/TypeOfFileMismatch/" class="md-nav__link">
+        TypeOfFileMismatch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/URLHostIsEmpty/" class="md-nav__link">
+        URLHostIsEmpty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/Unauthorized/" class="md-nav__link">
+        Unauthorized
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/UnavailableMembers/" class="md-nav__link">
+        UnavailableMembers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/UnsupportedUrlProtocol/" class="md-nav__link">
+        UnsupportedUrlProtocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/UserDeactivated/" class="md-nav__link">
+        UserDeactivated
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/UserNotFound/" class="md-nav__link">
+        UserNotFound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/ValidationError/" class="md-nav__link">
+        ValidationError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/WebhookRequireHTTPS/" class="md-nav__link">
+        WebhookRequireHTTPS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/WrongFileIdentifier/" class="md-nav__link">
+        WrongFileIdentifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/WrongLiveLocationPeriod/" class="md-nav__link">
+        WrongLiveLocationPeriod
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error/WrongRemoteFileIdSpecified/" class="md-nav__link">
+        WrongRemoteFileIdSpecified
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EventHandler/" class="md-nav__link">
+        EventHandler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EventHandlerProc/" class="md-nav__link">
+        EventHandlerProc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EventHandlerType/" class="md-nav__link">
+        EventHandlerType
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ForceReply/" class="md-nav__link">
+        ForceReply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ForumTopicClosed/" class="md-nav__link">
+        ForumTopicClosed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ForumTopicCreated/" class="md-nav__link">
+        ForumTopicCreated
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ForumTopicReopened/" class="md-nav__link">
+        ForumTopicReopened
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Game/" class="md-nav__link">
+        Game
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GameHighScore/" class="md-nav__link">
+        GameHighScore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HearsHandler/" class="md-nav__link">
+        HearsHandler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Helpers/" class="md-nav__link">
+        Helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineKeyboardButton/" class="md-nav__link">
+        InlineKeyboardButton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_57" type="checkbox" id="__nav_4_2_57" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../InlineKeyboardMarkup/">InlineKeyboardMarkup</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="InlineKeyboardMarkup" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_57">
+          <span class="md-nav__icon md-icon"></span>
+          InlineKeyboardMarkup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineKeyboardMarkup/Builder/" class="md-nav__link">
+        Builder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQuery/" class="md-nav__link">
+        InlineQuery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryHandler/" class="md-nav__link">
+        InlineQueryHandler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_60" type="checkbox" id="__nav_4_2_60" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../InlineQueryResult/">InlineQueryResult</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="InlineQueryResult" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_60">
+          <span class="md-nav__icon md-icon"></span>
+          InlineQueryResult
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResult/Builder/" class="md-nav__link">
+        Builder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultArticle/" class="md-nav__link">
+        InlineQueryResultArticle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultAudio/" class="md-nav__link">
+        InlineQueryResultAudio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedAudio/" class="md-nav__link">
+        InlineQueryResultCachedAudio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedDocument/" class="md-nav__link">
+        InlineQueryResultCachedDocument
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedGif/" class="md-nav__link">
+        InlineQueryResultCachedGif
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedMpeg4Gif/" class="md-nav__link">
+        InlineQueryResultCachedMpeg4Gif
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedPhoto/" class="md-nav__link">
+        InlineQueryResultCachedPhoto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedSticker/" class="md-nav__link">
+        InlineQueryResultCachedSticker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedVideo/" class="md-nav__link">
+        InlineQueryResultCachedVideo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultCachedVoice/" class="md-nav__link">
+        InlineQueryResultCachedVoice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultContact/" class="md-nav__link">
+        InlineQueryResultContact
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultDocument/" class="md-nav__link">
+        InlineQueryResultDocument
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultGame/" class="md-nav__link">
+        InlineQueryResultGame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultGif/" class="md-nav__link">
+        InlineQueryResultGif
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultLocation/" class="md-nav__link">
+        InlineQueryResultLocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultMpeg4Gif/" class="md-nav__link">
+        InlineQueryResultMpeg4Gif
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultPhoto/" class="md-nav__link">
+        InlineQueryResultPhoto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultVenue/" class="md-nav__link">
+        InlineQueryResultVenue
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultVideo/" class="md-nav__link">
+        InlineQueryResultVideo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InlineQueryResultVoice/" class="md-nav__link">
+        InlineQueryResultVoice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputContactMessageContent/" class="md-nav__link">
+        InputContactMessageContent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputInvoiceMessageContent/" class="md-nav__link">
+        InputInvoiceMessageContent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputLocationMessageContent/" class="md-nav__link">
+        InputLocationMessageContent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputMedia/" class="md-nav__link">
+        InputMedia
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputMediaAnimation/" class="md-nav__link">
+        InputMediaAnimation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputMediaAudio/" class="md-nav__link">
+        InputMediaAudio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputMediaDocument/" class="md-nav__link">
+        InputMediaDocument
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputMediaPhoto/" class="md-nav__link">
+        InputMediaPhoto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputMediaVideo/" class="md-nav__link">
+        InputMediaVideo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputMessageContent/" class="md-nav__link">
+        InputMessageContent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputSticker/" class="md-nav__link">
+        InputSticker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputTextMessageContent/" class="md-nav__link">
+        InputTextMessageContent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InputVenueMessageContent/" class="md-nav__link">
+        InputVenueMessageContent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Invoice/" class="md-nav__link">
+        Invoice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyboardBuilder/" class="md-nav__link">
+        KeyboardBuilder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyboardButton/" class="md-nav__link">
+        KeyboardButton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyboardButtonPollType/" class="md-nav__link">
+        KeyboardButtonPollType
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LabeledPrice/" class="md-nav__link">
+        LabeledPrice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Location/" class="md-nav__link">
+        Location
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LoginURL/" class="md-nav__link">
+        LoginURL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MaskPosition/" class="md-nav__link">
+        MaskPosition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MenuButton/" class="md-nav__link">
+        MenuButton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MenuButtonCommands/" class="md-nav__link">
+        MenuButtonCommands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MenuButtonDefault/" class="md-nav__link">
+        MenuButtonDefault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MenuButtonWebApp/" class="md-nav__link">
+        MenuButtonWebApp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_106" type="checkbox" id="__nav_4_2_106" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Message/">Message</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Message" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_106">
+          <span class="md-nav__icon md-icon"></span>
+          Message
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Message/SenderType/" class="md-nav__link">
+        SenderType
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MessageAutoDeleteTimerChanged/" class="md-nav__link">
+        MessageAutoDeleteTimerChanged
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MessageEntity/" class="md-nav__link">
+        MessageEntity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_109" type="checkbox" id="__nav_4_2_109" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Middleware/">Middleware</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Middleware" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_109">
+          <span class="md-nav__icon md-icon"></span>
+          Middleware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Middleware/Stop/" class="md-nav__link">
+        Stop
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OrderInfo/" class="md-nav__link">
+        OrderInfo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ParseMode/" class="md-nav__link">
+        ParseMode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportData/" class="md-nav__link">
+        PassportData
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementError/" class="md-nav__link">
+        PassportElementError
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorDataField/" class="md-nav__link">
+        PassportElementErrorDataField
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorFile/" class="md-nav__link">
+        PassportElementErrorFile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorFiles/" class="md-nav__link">
+        PassportElementErrorFiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorFrontSide/" class="md-nav__link">
+        PassportElementErrorFrontSide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorReverseSide/" class="md-nav__link">
+        PassportElementErrorReverseSide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorSelfie/" class="md-nav__link">
+        PassportElementErrorSelfie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorTranslationFile/" class="md-nav__link">
+        PassportElementErrorTranslationFile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorTranslationFiles/" class="md-nav__link">
+        PassportElementErrorTranslationFiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportElementErrorUnspecified/" class="md-nav__link">
+        PassportElementErrorUnspecified
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassportFile/" class="md-nav__link">
+        PassportFile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PhotoSize/" class="md-nav__link">
+        PhotoSize
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_125" type="checkbox" id="__nav_4_2_125" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Poll/">Poll</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Poll" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_125">
+          <span class="md-nav__icon md-icon"></span>
+          Poll
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Poll/Type/" class="md-nav__link">
+        Type
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PollAnswer/" class="md-nav__link">
+        PollAnswer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PollOption/" class="md-nav__link">
+        PollOption
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Poller/" class="md-nav__link">
+        Poller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PreCheckoutQuery/" class="md-nav__link">
+        PreCheckoutQuery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ProximityAlertTriggered/" class="md-nav__link">
+        ProximityAlertTriggered
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_131" type="checkbox" id="__nav_4_2_131" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../ReplyKeyboardMarkup/">ReplyKeyboardMarkup</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ReplyKeyboardMarkup" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_131">
+          <span class="md-nav__icon md-icon"></span>
+          ReplyKeyboardMarkup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReplyKeyboardMarkup/Builder/" class="md-nav__link">
+        Builder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReplyKeyboardRemove/" class="md-nav__link">
+        ReplyKeyboardRemove
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SentWebAppMessage/" class="md-nav__link">
+        SentWebAppMessage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Server/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ShippingAddress/" class="md-nav__link">
+        ShippingAddress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ShippingOption/" class="md-nav__link">
+        ShippingOption
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ShippingQuery/" class="md-nav__link">
+        ShippingQuery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_138" type="checkbox" id="__nav_4_2_138" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Sticker/">Sticker</a>
+          
+            <label for="__nav_4_2_138">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sticker" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_138">
+          <span class="md-nav__icon md-icon"></span>
+          Sticker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sticker/Format/" class="md-nav__link">
+        Format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sticker/Type/" class="md-nav__link">
+        Type
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../StickerSet/" class="md-nav__link">
+        StickerSet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SuccessfulPayment/" class="md-nav__link">
+        SuccessfulPayment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TFile/" class="md-nav__link">
+        TFile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Update/" class="md-nav__link">
+        Update
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UpdateAction/" class="md-nav__link">
+        UpdateAction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../User/" class="md-nav__link">
+        User
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UserProfilePhotos/" class="md-nav__link">
+        UserProfilePhotos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Venue/" class="md-nav__link">
+        Venue
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Video/" class="md-nav__link">
+        Video
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VideoChatEnded/" class="md-nav__link">
+        VideoChatEnded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VideoChatParticipantsInvited/" class="md-nav__link">
+        VideoChatParticipantsInvited
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VideoChatScheduled/" class="md-nav__link">
+        VideoChatScheduled
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VideoChatStarted/" class="md-nav__link">
+        VideoChatStarted
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VideoNote/" class="md-nav__link">
+        VideoNote
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Voice/" class="md-nav__link">
+        Voice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebAppData/" class="md-nav__link">
+        WebAppData
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebAppInfo/" class="md-nav__link">
+        WebAppInfo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebhookInfo/" class="md-nav__link">
+        WebhookInfo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::Context-constructors" class="md-nav__link">
+    Constructors
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context.new(client,update)" class="md-nav__link">
+    .new
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Tourmaline::Context-methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#answer_query(*,**)" class="md-nav__link">
+    #answer_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#api" class="md-nav__link">
+    #api
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#callback_query(*,**)" class="md-nav__link">
+    #callback_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#callback_query?(*,**,&)" class="md-nav__link">
+    #callback_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#channel_post(*,**,&)" class="md-nav__link">
+    #channel_post
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#channel_post?(*,**,&)" class="md-nav__link">
+    #channel_post?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#chosen_inline_result(*,**,&)" class="md-nav__link">
+    #chosen_inline_result
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#chosen_inline_result?(*,**)" class="md-nav__link">
+    #chosen_inline_result?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#client" class="md-nav__link">
+    #client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#command" class="md-nav__link">
+    #command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#command!" class="md-nav__link">
+    #command!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#delete_message(message_id)" class="md-nav__link">
+    #delete_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_channel_post(*,**,&)" class="md-nav__link">
+    #edited_channel_post
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_channel_post?(*,**)" class="md-nav__link">
+    #edited_channel_post?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_message(*,**)" class="md-nav__link">
+    #edited_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#edited_message?(*,**)" class="md-nav__link">
+    #edited_message?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#forward_message(to_chat,**)" class="md-nav__link">
+    #forward_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#inline_query(*,**,&)" class="md-nav__link">
+    #inline_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#inline_query?(*,**,&)" class="md-nav__link">
+    #inline_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#message(*,**,&)" class="md-nav__link">
+    #message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#message!" class="md-nav__link">
+    #message!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#message?(*,**,&)" class="md-nav__link">
+    #message?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#pin_message(**)" class="md-nav__link">
+    #pin_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll(*,**)" class="md-nav__link">
+    #poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll?(*,**)" class="md-nav__link">
+    #poll?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll_answer(*,**)" class="md-nav__link">
+    #poll_answer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#poll_answer?(*,**)" class="md-nav__link">
+    #poll_answer?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#pre_checkout_query(*,**)" class="md-nav__link">
+    #pre_checkout_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#pre_checkout_query?(*,**)" class="md-nav__link">
+    #pre_checkout_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply(text,**)" class="md-nav__link">
+    #reply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_animation(*,**)" class="md-nav__link">
+    #reply_with_animation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_audio(*,**)" class="md-nav__link">
+    #reply_with_audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_basketball(*,**)" class="md-nav__link">
+    #reply_with_basketball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_contact(*,**)" class="md-nav__link">
+    #reply_with_contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_dart(*,**)" class="md-nav__link">
+    #reply_with_dart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_dice(*,**)" class="md-nav__link">
+    #reply_with_dice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_document(*,**)" class="md-nav__link">
+    #reply_with_document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_invoice(*,**)" class="md-nav__link">
+    #reply_with_invoice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_location(*,**)" class="md-nav__link">
+    #reply_with_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_media_group(*,**)" class="md-nav__link">
+    #reply_with_media_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_photo(*,**)" class="md-nav__link">
+    #reply_with_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_poll(*,**)" class="md-nav__link">
+    #reply_with_poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_sticker(*,**)" class="md-nav__link">
+    #reply_with_sticker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_venu(*,**)" class="md-nav__link">
+    #reply_with_venu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_video(*,**)" class="md-nav__link">
+    #reply_with_video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_video_note(*,**)" class="md-nav__link">
+    #reply_with_video_note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#reply_with_voice(*,**)" class="md-nav__link">
+    #reply_with_voice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond(text,**)" class="md-nav__link">
+    #respond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_animation(*,**)" class="md-nav__link">
+    #respond_with_animation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_audio(*,**)" class="md-nav__link">
+    #respond_with_audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_basketball(*,**)" class="md-nav__link">
+    #respond_with_basketball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_contact(*,**)" class="md-nav__link">
+    #respond_with_contact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_dart(*,**)" class="md-nav__link">
+    #respond_with_dart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_dice(*,**)" class="md-nav__link">
+    #respond_with_dice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_document(*,**)" class="md-nav__link">
+    #respond_with_document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_invoice(*,**)" class="md-nav__link">
+    #respond_with_invoice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_location(*,**)" class="md-nav__link">
+    #respond_with_location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_media_group(*,**)" class="md-nav__link">
+    #respond_with_media_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_photo(*,**)" class="md-nav__link">
+    #respond_with_photo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_poll(*,**)" class="md-nav__link">
+    #respond_with_poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_sticker(*,**)" class="md-nav__link">
+    #respond_with_sticker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_venu(*,**)" class="md-nav__link">
+    #respond_with_venu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_video(*,**)" class="md-nav__link">
+    #respond_with_video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_video_note(*,**)" class="md-nav__link">
+    #respond_with_video_note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#respond_with_voice(*,**)" class="md-nav__link">
+    #respond_with_voice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#send_chat_action(action)" class="md-nav__link">
+    #send_chat_action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#shipping_query(*,**,&)" class="md-nav__link">
+    #shipping_query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#shipping_query?(*,**,&)" class="md-nav__link">
+    #shipping_query?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#text(strip_command)" class="md-nav__link">
+    #text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#text!(strip_command)" class="md-nav__link">
+    #text!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#unpin_message(**)" class="md-nav__link">
+    #unpin_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#update" class="md-nav__link">
+    #update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Context#with_message(&)" class="md-nav__link">
+    #with_message
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L2" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<div class="doc doc-object doc-type struct">
+<h1 id="Tourmaline::Context" class="doc doc-heading">struct <code>Tourmaline::Context</code>
+      <br/><small>inherits <code>Struct</code></small>
+<a href="#Tourmaline::Context" class="headerlink" title="Permanent link">#</a></h1>
+  <div class="doc doc-contents first">
+
+      <div class="doc doc-children">
+
+
+
+<h2 id="Tourmaline::Context-constructors">Constructors<a href="#Tourmaline::Context-constructors" class="headerlink" title="Permanent link">#</a></h2>
+
+<div class="doc doc-object doc-method doc-class_method">
+<h3 id="Tourmaline::Context.new(client,update)" class="doc doc-heading">    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">client</span> <span class="p">:</span> <a href="../Client/#Tourmaline::Client">Client</a><span class="p">,</span> <span class="n">update</span> <span class="p">:</span> <a href="../Update/#Tourmaline::Update">Update</a><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context.new(client,update)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L6">View source</a>
+</div><h2 id="Tourmaline::Context-methods">Methods<a href="#Tourmaline::Context-methods" class="headerlink" title="Permanent link">#</a></h2>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#answer_query(*,**)" class="doc doc-heading">    <code>
+      #answer_query<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#answer_query(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Context aware query answer</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L119">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#api" class="doc doc-heading">    <code>
+      #api<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Client/#Tourmaline::Client">Tourmaline::Client</a></code></span>
+    </code>
+<a href="#Tourmaline::Context#api" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Slightly shorter alias for the client</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L10">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#callback_query(*,**)" class="doc doc-heading">    <code>
+      #callback_query<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#callback_query(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#callback_query(*,**,&amp;)" class="doc doc-heading">    <code>
+      #callback_query<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#callback_query(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#callback_query?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #callback_query?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#callback_query?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#callback_query?(*,**)" class="doc doc-heading">    <code>
+      #callback_query?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#callback_query?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#channel_post(*,**,&amp;)" class="doc doc-heading">    <code>
+      #channel_post<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#channel_post(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#channel_post(*,**)" class="doc doc-heading">    <code>
+      #channel_post<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#channel_post(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#channel_post?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #channel_post?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#channel_post?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#channel_post?(*,**)" class="doc doc-heading">    <code>
+      #channel_post?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#channel_post?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#chosen_inline_result(*,**,&amp;)" class="doc doc-heading">    <code>
+      #chosen_inline_result<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#chosen_inline_result(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#chosen_inline_result(*,**)" class="doc doc-heading">    <code>
+      #chosen_inline_result<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#chosen_inline_result(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#chosen_inline_result?(*,**)" class="doc doc-heading">    <code>
+      #chosen_inline_result?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#chosen_inline_result?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#chosen_inline_result?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #chosen_inline_result?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#chosen_inline_result?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#client" class="doc doc-heading">    <code>
+      #client<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Client/#Tourmaline::Client">Client</a></code></span>
+    </code>
+<a href="#Tourmaline::Context#client" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L3">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#command" class="doc doc-heading">    <code>
+      #command<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#command" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Get the command name, return nil if there is no message</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L46">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#command!" class="doc doc-heading">    <code>
+      #command!<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#command!" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Get the command name, raise an exception if there is no message</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L54">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#delete_message(message_id)" class="doc doc-heading">    <code>
+      #delete_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">message_id</span> <span class="p">:</span> <span class="n">Int32</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#delete_message(message_id)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Context aware message deletion</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L91">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_channel_post(*,**,&amp;)" class="doc doc-heading">    <code>
+      #edited_channel_post<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_channel_post(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_channel_post(*,**)" class="doc doc-heading">    <code>
+      #edited_channel_post<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_channel_post(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_channel_post?(*,**)" class="doc doc-heading">    <code>
+      #edited_channel_post?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_channel_post?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_channel_post?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #edited_channel_post?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_channel_post?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_message(*,**)" class="doc doc-heading">    <code>
+      #edited_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_message(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_message(*,**,&amp;)" class="doc doc-heading">    <code>
+      #edited_message<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_message(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_message?(*,**)" class="doc doc-heading">    <code>
+      #edited_message?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_message?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#edited_message?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #edited_message?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#edited_message?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#forward_message(to_chat,**)" class="doc doc-heading">    <code>
+      #forward_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">to_chat</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#forward_message(to_chat,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Context aware forward</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L98">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#inline_query(*,**,&amp;)" class="doc doc-heading">    <code>
+      #inline_query<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#inline_query(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#inline_query(*,**)" class="doc doc-heading">    <code>
+      #inline_query<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#inline_query(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#inline_query?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #inline_query?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#inline_query?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#inline_query?(*,**)" class="doc doc-heading">    <code>
+      #inline_query?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#inline_query?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#message(*,**,&amp;)" class="doc doc-heading">    <code>
+      #message<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#message(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#message(*,**)" class="doc doc-heading">    <code>
+      #message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#message(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#message" class="doc doc-heading">    <code>
+      #message<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#message" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Retuns the message, edited_message, channel_post, edited_channel_post, callback_query.message, or nil</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L21">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#message!" class="doc doc-heading">    <code>
+      #message!<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#message!" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Returns the message, edited_message, channel_post, edited_channel_post, callback_query.message, or raises an exception</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L26">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#message?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #message?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#message?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#message?(*,**)" class="doc doc-heading">    <code>
+      #message?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#message?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#pin_message(**)" class="doc doc-heading">    <code>
+      #pin_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#pin_message(**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Context aware pinning</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L105">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll(*,**)" class="doc doc-heading">    <code>
+      #poll<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll(*,**,&amp;)" class="doc doc-heading">    <code>
+      #poll<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll?(*,**)" class="doc doc-heading">    <code>
+      #poll?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #poll?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll_answer(*,**)" class="doc doc-heading">    <code>
+      #poll_answer<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll_answer(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll_answer(*,**,&amp;)" class="doc doc-heading">    <code>
+      #poll_answer<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll_answer(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll_answer?(*,**)" class="doc doc-heading">    <code>
+      #poll_answer?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll_answer?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#poll_answer?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #poll_answer?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#poll_answer?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#pre_checkout_query(*,**)" class="doc doc-heading">    <code>
+      #pre_checkout_query<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#pre_checkout_query(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#pre_checkout_query(*,**,&amp;)" class="doc doc-heading">    <code>
+      #pre_checkout_query<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#pre_checkout_query(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#pre_checkout_query?(*,**)" class="doc doc-heading">    <code>
+      #pre_checkout_query?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#pre_checkout_query?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#pre_checkout_query?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #pre_checkout_query?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#pre_checkout_query?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply(text,**)" class="doc doc-heading">    <code>
+      #reply<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">text</span> <span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply(text,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L66">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_animation(*,**)" class="doc doc-heading">    <code>
+      #reply_with_animation<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_animation(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a animation</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_audio(*,**)" class="doc doc-heading">    <code>
+      #reply_with_audio<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_audio(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a audio</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_basketball(*,**)" class="doc doc-heading">    <code>
+      #reply_with_basketball<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_basketball(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a basketball</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_contact(*,**)" class="doc doc-heading">    <code>
+      #reply_with_contact<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_contact(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a contact</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_dart(*,**)" class="doc doc-heading">    <code>
+      #reply_with_dart<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_dart(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a dart</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_dice(*,**)" class="doc doc-heading">    <code>
+      #reply_with_dice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_dice(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a dice</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_document(*,**)" class="doc doc-heading">    <code>
+      #reply_with_document<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_document(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a document</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_invoice(*,**)" class="doc doc-heading">    <code>
+      #reply_with_invoice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_invoice(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a invoice</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_location(*,**)" class="doc doc-heading">    <code>
+      #reply_with_location<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_location(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a location</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_media_group(*,**)" class="doc doc-heading">    <code>
+      #reply_with_media_group<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_media_group(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a media_group</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_photo(*,**)" class="doc doc-heading">    <code>
+      #reply_with_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_photo(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a photo</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_poll(*,**)" class="doc doc-heading">    <code>
+      #reply_with_poll<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_poll(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a poll</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_sticker(*,**)" class="doc doc-heading">    <code>
+      #reply_with_sticker<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_sticker(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a sticker</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_venu(*,**)" class="doc doc-heading">    <code>
+      #reply_with_venu<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_venu(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a venu</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_video(*,**)" class="doc doc-heading">    <code>
+      #reply_with_video<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_video(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a video</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_video_note(*,**)" class="doc doc-heading">    <code>
+      #reply_with_video_note<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_video_note(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a video_note</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#reply_with_voice(*,**)" class="doc doc-heading">    <code>
+      #reply_with_voice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#reply_with_voice(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Reply directly to the incoming message with a voice</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond(text,**)" class="doc doc-heading">    <code>
+      #respond<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">text</span> <span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond(text,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond to the incoming message</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L59">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_animation(*,**)" class="doc doc-heading">    <code>
+      #respond_with_animation<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_animation(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a animation</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_audio(*,**)" class="doc doc-heading">    <code>
+      #respond_with_audio<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_audio(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a audio</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_basketball(*,**)" class="doc doc-heading">    <code>
+      #respond_with_basketball<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_basketball(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a basketball</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_contact(*,**)" class="doc doc-heading">    <code>
+      #respond_with_contact<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_contact(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a contact</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_dart(*,**)" class="doc doc-heading">    <code>
+      #respond_with_dart<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_dart(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a dart</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_dice(*,**)" class="doc doc-heading">    <code>
+      #respond_with_dice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_dice(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a dice</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_document(*,**)" class="doc doc-heading">    <code>
+      #respond_with_document<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_document(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a document</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_invoice(*,**)" class="doc doc-heading">    <code>
+      #respond_with_invoice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_invoice(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a invoice</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_location(*,**)" class="doc doc-heading">    <code>
+      #respond_with_location<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_location(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a location</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_media_group(*,**)" class="doc doc-heading">    <code>
+      #respond_with_media_group<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_media_group(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a media_group</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_photo(*,**)" class="doc doc-heading">    <code>
+      #respond_with_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_photo(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a photo</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_poll(*,**)" class="doc doc-heading">    <code>
+      #respond_with_poll<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_poll(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a poll</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_sticker(*,**)" class="doc doc-heading">    <code>
+      #respond_with_sticker<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_sticker(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a sticker</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_venu(*,**)" class="doc doc-heading">    <code>
+      #respond_with_venu<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_venu(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a venu</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_video(*,**)" class="doc doc-heading">    <code>
+      #respond_with_video<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_video(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a video</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_video_note(*,**)" class="doc doc-heading">    <code>
+      #respond_with_video_note<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_video_note(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a video_note</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#respond_with_voice(*,**)" class="doc doc-heading">    <code>
+      #respond_with_voice<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#respond_with_voice(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Respond with a voice</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L73">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#send_chat_action(action)" class="doc doc-heading">    <code>
+      #send_chat_action<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">action</span> <span class="p">:</span> <a href="../ChatAction/#Tourmaline::ChatAction">ChatAction</a><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#send_chat_action(action)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Context aware chat actions</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L132">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#shipping_query(*,**,&amp;)" class="doc doc-heading">    <code>
+      #shipping_query<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#shipping_query(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#shipping_query(*,**)" class="doc doc-heading">    <code>
+      #shipping_query<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#shipping_query(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#shipping_query?(*,**,&amp;)" class="doc doc-heading">    <code>
+      #shipping_query?<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#shipping_query?(*,**,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#shipping_query?(*,**)" class="doc doc-heading">    <code>
+      #shipping_query?<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#shipping_query?(*,**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Pass all update methods to the update object</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L15">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#text(strip_command)" class="doc doc-heading">    <code>
+      #text<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">strip_command</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#text(strip_command)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Get the message text, return nil if there is no message</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L31">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#text!(strip_command)" class="doc doc-heading">    <code>
+      #text!<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">strip_command</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#text!(strip_command)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Get the message text, raise an exception if there is no message</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L41">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#unpin_message(**)" class="doc doc-heading">    <code>
+      #unpin_message<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Context#unpin_message(**)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Context aware unpinning</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L112">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#update" class="doc doc-heading">    <code>
+      #update<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Update/#Tourmaline::Update">Update</a></code></span>
+    </code>
+<a href="#Tourmaline::Context#update" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L4">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Context#with_message(&amp;)" class="doc doc-heading">    <code>
+      #with_message<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
+    </code>
+<a href="#Tourmaline::Context#with_message(&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>If the update contains a message, pass it to the block. Less boilerplate.</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/ec3a2ea502b5114eb24a3f2caeb3098aed5e5525/src/tourmaline/context.cr#L139">View source</a>
+</div>      </div>
+  </div>
+
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Contact/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Contact" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Contact
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Dice/" class="md-footer__link md-footer__link--next" aria-label="Next: Dice" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Dice
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
+      
+    
+  </body>
+</html>
