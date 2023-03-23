@@ -91,11 +91,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://tourmaline.dev/api_reference/Tourmaline/Button/</loc>
-         <lastmod>2023-03-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/CallbackGame/</loc>
          <lastmod>2023-03-23</lastmod>
          <changefreq>daily</changefreq>
@@ -192,6 +187,11 @@
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatPhoto/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ChatShared/</loc>
          <lastmod>2023-03-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -751,6 +751,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/ForumTopicEdited/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/ForumTopicReopened/</loc>
          <lastmod>2023-03-23</lastmod>
          <changefreq>daily</changefreq>
@@ -762,6 +767,16 @@
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/GameHighScore/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/GeneralForumTopicHidden/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/GeneralForumTopicUnhidden/</loc>
          <lastmod>2023-03-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -992,6 +1007,16 @@
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/KeyboardButtonPollType/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/KeyboardButtonRequestChat/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/KeyboardButtonRequestUser/</loc>
          <lastmod>2023-03-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1266,6 +1291,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/UserShared/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/Venue/</loc>
          <lastmod>2023-03-23</lastmod>
          <changefreq>daily</changefreq>
@@ -1317,6 +1347,11 @@
     </url>
     <url>
          <loc>https://tourmaline.dev/api_reference/Tourmaline/WebhookInfo/</loc>
+         <lastmod>2023-03-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tourmaline.dev/api_reference/Tourmaline/WriteAccessAllowed/</loc>
          <lastmod>2023-03-23</lastmod>
          <changefreq>daily</changefreq>
     </url>

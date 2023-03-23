@@ -689,20 +689,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../Button/" class="md-nav__link">
-        Button
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../CallbackGame/" class="md-nav__link">
         CallbackGame
       </a>
@@ -748,7 +734,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_18" type="checkbox" id="__nav_4_2_18" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_17" type="checkbox" id="__nav_4_2_17" >
       
       
       
@@ -761,7 +747,7 @@
         </div>
       
       <nav class="md-nav" aria-label="Chat" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_18">
+        <label class="md-nav__title" for="__nav_4_2_17">
           <span class="md-nav__icon md-icon"></span>
           Chat
         </label>
@@ -1004,6 +990,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../ChatShared/" class="md-nav__link">
+        ChatShared
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ChosenInlineResult/" class="md-nav__link">
         ChosenInlineResult
       </a>
@@ -1211,6 +1211,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client#close_general_forum_topic(chat)" class="md-nav__link">
+    #close_general_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client#copy_message(chat,from_chat,message,message_thread_id,caption,parse_mode,caption_entities,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #copy_message
   </a>
@@ -1346,6 +1353,13 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::Client#edit_forum_topic(chat,message_thread_id,name,icon_custom_emoji_id)" class="md-nav__link">
     #edit_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client#edit_general_forum_topic(chat,name)" class="md-nav__link">
+    #edit_general_forum_topic
   </a>
   
 </li>
@@ -1526,6 +1540,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client#hide_general_forum_topic(chat)" class="md-nav__link">
+    #hide_general_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client#kick_chat_member(*,**)" class="md-nav__link">
     #kick_chat_member
   </a>
@@ -1554,7 +1575,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#on(*,&)" class="md-nav__link">
+  <a href="#Tourmaline::Client#on(action,&)" class="md-nav__link">
     #on
   </a>
   
@@ -1596,6 +1617,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client#reopen_general_forum_topic(chat)" class="md-nav__link">
+    #reopen_general_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client#request(type,method,params)" class="md-nav__link">
     #request
   </a>
@@ -1610,7 +1638,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#restrict_chat_member(chat,user,permissions,until_date)" class="md-nav__link">
+  <a href="#Tourmaline::Client#restrict_chat_member(chat,user,permissions,use_independent_chat_permissions,until_date)" class="md-nav__link">
     #restrict_chat_member
   </a>
   
@@ -1624,7 +1652,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_animation
   </a>
   
@@ -1652,7 +1680,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_chat_action(chat,action)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_chat_action(chat,action,message_thread)" class="md-nav__link">
     #send_chat_action
   </a>
   
@@ -1729,7 +1757,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,has_spoiler,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_photo
   </a>
   
@@ -1771,7 +1799,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_video
   </a>
   
@@ -1820,7 +1848,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#set_chat_permissions(chat,permissions)" class="md-nav__link">
+  <a href="#Tourmaline::Client#set_chat_permissions(chat,permissions,use_independent_chat_permissions)" class="md-nav__link">
     #set_chat_permissions
   </a>
   
@@ -1969,6 +1997,13 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::Client#unban_chat_sender_chat(chat,sender_chat)" class="md-nav__link">
     #unban_chat_sender_chat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client#unhide_general_forum_topic(chat)" class="md-nav__link">
+    #unhide_general_forum_topic
   </a>
   
 </li>
@@ -3607,6 +3642,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../ForumTopicEdited/" class="md-nav__link">
+        ForumTopicEdited
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ForumTopicReopened/" class="md-nav__link">
         ForumTopicReopened
       </a>
@@ -3637,6 +3686,34 @@
     <li class="md-nav__item">
       <a href="../GameHighScore/" class="md-nav__link">
         GameHighScore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GeneralForumTopicHidden/" class="md-nav__link">
+        GeneralForumTopicHidden
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GeneralForumTopicUnhidden/" class="md-nav__link">
+        GeneralForumTopicUnhidden
       </a>
     </li>
   
@@ -3694,7 +3771,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_57" type="checkbox" id="__nav_4_2_57" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_60" type="checkbox" id="__nav_4_2_60" >
       
       
       
@@ -3707,7 +3784,7 @@
         </div>
       
       <nav class="md-nav" aria-label="InlineKeyboardMarkup" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_57">
+        <label class="md-nav__title" for="__nav_4_2_60">
           <span class="md-nav__icon md-icon"></span>
           InlineKeyboardMarkup
         </label>
@@ -3771,7 +3848,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_60" type="checkbox" id="__nav_4_2_60" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_63" type="checkbox" id="__nav_4_2_63" >
       
       
       
@@ -3784,7 +3861,7 @@
         </div>
       
       <nav class="md-nav" aria-label="InlineQueryResult" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_60">
+        <label class="md-nav__title" for="__nav_4_2_63">
           <span class="md-nav__icon md-icon"></span>
           InlineQueryResult
         </label>
@@ -4335,6 +4412,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../KeyboardButtonRequestChat/" class="md-nav__link">
+        KeyboardButtonRequestChat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KeyboardButtonRequestUser/" class="md-nav__link">
+        KeyboardButtonRequestUser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../LabeledPrice/" class="md-nav__link">
         LabeledPrice
       </a>
@@ -4450,7 +4555,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_106" type="checkbox" id="__nav_4_2_106" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_111" type="checkbox" id="__nav_4_2_111" >
       
       
       
@@ -4463,7 +4568,7 @@
         </div>
       
       <nav class="md-nav" aria-label="Message" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_106">
+        <label class="md-nav__title" for="__nav_4_2_111">
           <span class="md-nav__icon md-icon"></span>
           Message
         </label>
@@ -4527,7 +4632,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_109" type="checkbox" id="__nav_4_2_109" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_114" type="checkbox" id="__nav_4_2_114" >
       
       
       
@@ -4540,7 +4645,7 @@
         </div>
       
       <nav class="md-nav" aria-label="Middleware" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_109">
+        <label class="md-nav__title" for="__nav_4_2_114">
           <span class="md-nav__icon md-icon"></span>
           Middleware
         </label>
@@ -4786,7 +4891,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_125" type="checkbox" id="__nav_4_2_125" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_130" type="checkbox" id="__nav_4_2_130" >
       
       
       
@@ -4799,7 +4904,7 @@
         </div>
       
       <nav class="md-nav" aria-label="Poll" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_125">
+        <label class="md-nav__title" for="__nav_4_2_130">
           <span class="md-nav__icon md-icon"></span>
           Poll
         </label>
@@ -4905,7 +5010,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_131" type="checkbox" id="__nav_4_2_131" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_136" type="checkbox" id="__nav_4_2_136" >
       
       
       
@@ -4918,7 +5023,7 @@
         </div>
       
       <nav class="md-nav" aria-label="ReplyKeyboardMarkup" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_131">
+        <label class="md-nav__title" for="__nav_4_2_136">
           <span class="md-nav__icon md-icon"></span>
           ReplyKeyboardMarkup
         </label>
@@ -5038,7 +5143,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_138" type="checkbox" id="__nav_4_2_138" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_143" type="checkbox" id="__nav_4_2_143" >
       
       
       
@@ -5048,14 +5153,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../Sticker/">Sticker</a>
           
-            <label for="__nav_4_2_138">
+            <label for="__nav_4_2_143">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="Sticker" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_138">
+        <label class="md-nav__title" for="__nav_4_2_143">
           <span class="md-nav__icon md-icon"></span>
           Sticker
         </label>
@@ -5188,6 +5293,20 @@
     <li class="md-nav__item">
       <a href="../UserProfilePhotos/" class="md-nav__link">
         UserProfilePhotos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UserShared/" class="md-nav__link">
+        UserShared
       </a>
     </li>
   
@@ -5342,6 +5461,20 @@
     <li class="md-nav__item">
       <a href="../WebhookInfo/" class="md-nav__link">
         WebhookInfo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WriteAccessAllowed/" class="md-nav__link">
+        WriteAccessAllowed
       </a>
     </li>
   
@@ -5547,6 +5680,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client#close_general_forum_topic(chat)" class="md-nav__link">
+    #close_general_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client#copy_message(chat,from_chat,message,message_thread_id,caption,parse_mode,caption_entities,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #copy_message
   </a>
@@ -5682,6 +5822,13 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::Client#edit_forum_topic(chat,message_thread_id,name,icon_custom_emoji_id)" class="md-nav__link">
     #edit_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Client#edit_general_forum_topic(chat,name)" class="md-nav__link">
+    #edit_general_forum_topic
   </a>
   
 </li>
@@ -5862,6 +6009,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client#hide_general_forum_topic(chat)" class="md-nav__link">
+    #hide_general_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client#kick_chat_member(*,**)" class="md-nav__link">
     #kick_chat_member
   </a>
@@ -5890,7 +6044,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#on(*,&)" class="md-nav__link">
+  <a href="#Tourmaline::Client#on(action,&)" class="md-nav__link">
     #on
   </a>
   
@@ -5932,6 +6086,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client#reopen_general_forum_topic(chat)" class="md-nav__link">
+    #reopen_general_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client#request(type,method,params)" class="md-nav__link">
     #request
   </a>
@@ -5946,7 +6107,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#restrict_chat_member(chat,user,permissions,until_date)" class="md-nav__link">
+  <a href="#Tourmaline::Client#restrict_chat_member(chat,user,permissions,use_independent_chat_permissions,until_date)" class="md-nav__link">
     #restrict_chat_member
   </a>
   
@@ -5960,7 +6121,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_animation
   </a>
   
@@ -5988,7 +6149,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_chat_action(chat,action)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_chat_action(chat,action,message_thread)" class="md-nav__link">
     #send_chat_action
   </a>
   
@@ -6065,7 +6226,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,has_spoiler,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_photo
   </a>
   
@@ -6107,7 +6268,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="md-nav__link">
     #send_video
   </a>
   
@@ -6156,7 +6317,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Client#set_chat_permissions(chat,permissions)" class="md-nav__link">
+  <a href="#Tourmaline::Client#set_chat_permissions(chat,permissions,use_independent_chat_permissions)" class="md-nav__link">
     #set_chat_permissions
   </a>
   
@@ -6310,6 +6471,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Client#unhide_general_forum_topic(chat)" class="md-nav__link">
+    #unhide_general_forum_topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Client#unpin_all_chat_messages(chat)" class="md-nav__link">
     #unpin_all_chat_messages
   </a>
@@ -6368,7 +6536,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L22" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L22" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -6435,7 +6603,7 @@ instance of <code>Client</code> and add event handlers to it.</p>
 <dd>a password to use for a proxy that requires authentication</dd>
 </dl>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L81">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L81">View source</a>
 </div><h2 id="Tourmaline::Client-methods">Methods<a href="#Tourmaline::Client-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6447,7 +6615,7 @@ instance of <code>Client</code> and add event handlers to it.</p>
 <p>Use this method to add a new sticker to a set created by the bot.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2166">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2243">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6470,7 +6638,7 @@ terms. Otherwise, you may use links like
 that open your bot with a parameter.</p>
 </div>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L375">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L375">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6483,7 +6651,7 @@ that open your bot with a parameter.</p>
 On success, True is returned. No more than
 <strong>50</strong> results per query are allowed.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L394">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L394">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6501,7 +6669,7 @@ On success, <code>true</code> is returned.</p>
 pre-checkout query was sent.</p>
 </blockquote>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2000">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2077">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6515,7 +6683,7 @@ was specified, the Client API will send a <code>Update</code> with a shipping_qu
 the bot. Use this method to reply to shipping queries.
 On success, <code>true</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1979">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2056">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6528,7 +6696,7 @@ On success, <code>true</code> is returned.</p>  </div>
 message on behalf of the user to the chat from which the query originated.
 On success, a SentWebAppMessage object is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1772">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1849">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6542,7 +6710,7 @@ in the chat for this to work and must have the can_invite_users
 administrator right.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L996">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1060">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6564,7 +6732,7 @@ Otherwise members may only be removed by the group's creator or
 by the member that added them.</p>
 </blockquote>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L738">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L800">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6580,7 +6748,7 @@ administrator in the supergroup or channel for this to work and
 must have the appropriate administrator rights.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L902">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L966">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6593,7 +6761,7 @@ Returns True on success.</p>  </div>
 started. Refreshing can be done by setting
 <code>@bot</code> to <code>get_me</code>.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L30">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L30">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6606,7 +6774,7 @@ started. Refreshing can be done by setting
 started. Refreshing can be done by setting
 <code>@bot</code> to <code>get_me</code>.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L30">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L30">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6617,7 +6785,7 @@ started. Refreshing can be done by setting
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L32">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L32">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6632,7 +6800,7 @@ launched again after server restart. The method will return error 429 in the fir
 minutes after the bot is launched.</p>
 <p>Returns <code>true</code> on success. Requires no parameters.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L340">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L340">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6646,7 +6814,21 @@ an administrator in the chat for this to work and must have the can_manage_topic
 administrator rights, unless it is the creator of the topic.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L624">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L624">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Client#close_general_forum_topic(chat)" class="doc doc-heading">    <code>
+      #close_general_forum_topic<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Client#close_general_forum_topic(chat)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Use this method to close an open 'General' topic in a forum supergroup chat. The bot must
+be an administrator in the chat for this to work and must have the
+can_manage_topics administrator rights.
+Returns True on success.</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L695">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6657,7 +6839,7 @@ Returns True on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1345">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1418">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6672,7 +6854,7 @@ administrator rights. The link can be revoked using the method
 revokeChatInviteLink.
 Returns the new invite link as ChatInviteLink object.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L935">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L999">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6685,7 +6867,7 @@ Returns the new invite link as ChatInviteLink object.</p>  </div>
 in the chat for this to work and must have the can_manage_topics administrator rights.
 Returns information about the created topic as a ForumTopic object.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L587">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L587">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6697,7 +6879,7 @@ Returns information about the created topic as a ForumTopic object.</p>  </div>
 <p>Use this method to create a link for an invoice.
 Returns the created invoice link as String on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1929">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2006">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6710,7 +6892,7 @@ Returns the created invoice link as String on success.</p>  </div>
 edit the created sticker set. You must use exactly one of the fields <code>png_sticker</code> or <code>tgs_sticker</code>.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2142">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2219">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6724,7 +6906,7 @@ in the chat for this to work and must have the can_invite_users
 administrator right.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1007">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1071">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6735,7 +6917,7 @@ Returns True on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L34">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L34">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6746,7 +6928,7 @@ Returns True on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L34">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L34">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6764,7 +6946,7 @@ Returns <code>true</code> on success.</p>
 <code>All Members Are Admins</code> setting is off in the target group.</p>
 </blockquote>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L880">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L944">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6779,7 +6961,7 @@ admin rights. Use the field can_set_sticker_set optionally returned in
 <code>#get_chat</code> requests to check if the bot can use this method.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2192">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2269">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6793,7 +6975,7 @@ supergroup chat. The bot must be an administrator in the chat for this to
 work and must have the can_delete_messages administrator rights.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L653">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L653">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6813,7 +6995,7 @@ with the following limitations:
   channel, it can delete any message there.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L424">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L424">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6826,7 +7008,7 @@ Returns <code>true</code> on success.</p>  </div>
 After deletion, higher level commands will be shown to affected users.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1697">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1774">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6838,7 +7020,7 @@ Returns True on success.</p>  </div>
 <p>Use this method to delete a sticker from a set created by the bot.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2200">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2277">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6850,7 +7032,7 @@ Returns <code>true</code> on success.</p>  </div>
 <p>Use this method to delete a sticker set that was created by the bot.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2267">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2344">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6862,7 +7044,7 @@ Returns True on success.</p>  </div>
 <p>Use this method to remove webhook integration if you decide to switch
 back to getUpdates.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2319">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2396">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6873,7 +7055,7 @@ back to getUpdates.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L116">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L116">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6884,7 +7066,7 @@ back to getUpdates.</p>  </div>
   <div class="doc doc-contents ">
 <p>Given a file_id, download the file and return its path on the file system.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L701">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L763">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6898,12 +7080,12 @@ bot must be an administrator in the chat for this to work and must
 have the appropriate administrator rights.
 Returns the edited invite link as a ChatInviteLink object.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L957">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1021">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::Client#edit_forum_topic(chat,message_thread_id,name,icon_custom_emoji_id)" class="doc doc-heading">    <code>
-      #edit_forum_topic<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">message_thread_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">icon_custom_emoji_id</span><span class="p">)</span></code></span>
+      #edit_forum_topic<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">message_thread_id</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">icon_custom_emoji_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
 <a href="#Tourmaline::Client#edit_forum_topic(chat,message_thread_id,name,icon_custom_emoji_id)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
@@ -6913,7 +7095,21 @@ can_manage_topics administrator rights, unless it is the
 creator of the topic.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L606">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L606">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Client#edit_general_forum_topic(chat,name)" class="doc doc-heading">    <code>
+      #edit_general_forum_topic<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Client#edit_general_forum_topic(chat,name)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Use this method to edit the name of the 'General' topic in a forum supergroup chat. The
+bot must be an administrator in the chat for this to work and must have
+can_manage_topics administrator rights.
+Returns True on success.</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L681">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6927,7 +7123,7 @@ if edited message is sent by the bot, the edited
 <code>Message</code> is returned, otherwise <code>true</code>
 is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L435">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L435">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6942,7 +7138,7 @@ its live_period expires or editing is explicitly disabled by a call to
 <p>On success, if the edited message wasn't by the bot, the edited <code>Message</code> is
 returned, otherwise <code>true</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1616">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1693">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6953,7 +7149,7 @@ returned, otherwise <code>true</code> is returned.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1407">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1482">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6967,7 +7163,7 @@ On success, if edited message is sent by the bot, the
 edited <code>Message</code> is returned, otherwise <code>true</code> is
 returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L463">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L463">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6980,7 +7176,7 @@ returned.</p>  </div>
 On success, if the edited message is not an inline message,
 the edited Message is returned, otherwise true is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L484">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L484">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6994,7 +7190,7 @@ generated link is revoked. The bot must be an administrator in the chat
 for this to work and must have the appropriate admin rights.
 Returns the new invite link as <code>String</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L924">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L988">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7006,7 +7202,7 @@ Returns the new invite link as <code>String</code> on success.</p>  </div>
 <p>Use this method to forward messages of any kind. On success,
 the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L512">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L512">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7031,7 +7227,7 @@ chat, then use MTProto if that fails. When using MTProto this method
 is <strong>heavily</strong> rate limited, so be careful.</p>
 </div>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L543">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L543">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7046,7 +7242,7 @@ about all chat administrators except other bots. If the chat is a
 group or a supergroup and no administrators were appointed,
 only the creator will be returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L554">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L554">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7058,7 +7254,7 @@ only the creator will be returned.</p>  </div>
 <p>Use this method to get information about a member of a chat. Returns a
 <code>ChatMember</code> object on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L562">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L562">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7070,7 +7266,7 @@ only the creator will be returned.</p>  </div>
 <p>Use this method to get the number of members in a chat.
 Returns <code>Int32</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L571">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L571">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7082,7 +7278,7 @@ Returns <code>Int32</code> on success.</p>  </div>
 <p>Use this method to get information about custom emoji stickers by their identifiers.
 Returns an Array of Sticker objects.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2109">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2186">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7100,7 +7296,7 @@ the link will be valid for at least 1 hour. When the link
 expires, a new one can be requested by calling <code>#get_file</code> again.</p>
 <p>To simplify retrieving a link for a file, use the <code>#get_file_link</code> method.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L686">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L748">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7112,7 +7308,7 @@ expires, a new one can be requested by calling <code>#get_file</code> again.</p>
 <p>Takes a file id and returns a link to download the file. The link will be valid
 for at least one hour.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L694">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L756">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7125,7 +7321,7 @@ for at least one hour.</p>  </div>
 Requires no parameters.
 Returns an Array of Sticker objects.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L580">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L580">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7144,7 +7340,7 @@ user and his neighbors are not among them. Please note that this behavior
 is subject to change.</p>
 </blockquote>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1833">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1910">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7157,7 +7353,7 @@ is subject to change.</p>
 no parameters. Returns basic information about the bot
 in form of a <code>User</code> object.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L319">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L319">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7169,7 +7365,7 @@ in form of a <code>User</code> object.</p>  </div>
 <p>Use this method to get the current list of the bot's commands. Requires no parameters.
 Returns Array of BotCommand on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1687">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1764">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7181,7 +7377,7 @@ Returns Array of BotCommand on success.</p>  </div>
 <p>Use this method to get the current default administrator rights of the bot.
 Returns ChatAdministratorRights on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1763">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1840">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7193,7 +7389,7 @@ Returns ChatAdministratorRights on success.</p>  </div>
 <p>Use this method to get the current bot description for the given user language.
 Returns BotDescription on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1715">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1792">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7205,7 +7401,7 @@ Returns BotDescription on success.</p>  </div>
 <p>Use this method to get the current bot short description for the given user language.
 Returns BotShortDescription on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1733">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1810">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7217,7 +7413,7 @@ Returns BotShortDescription on success.</p>  </div>
 <p>Use this method to get a sticker set.
 On success, a <code>StickerSet</code> object is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2101">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2178">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7230,7 +7426,7 @@ On success, a <code>StickerSet</code> object is returned.</p>  </div>
 (<a href="http://en.wikipedia.org/wiki/Push_technology#Long_polling">wiki</a>).
 An <code>Array</code> of <code>Update</code> objects is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L347">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L347">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7242,7 +7438,7 @@ An <code>Array</code> of <code>Update</code> objects is returned.</p>  </div>
 <p>Use this method to get a list of profile pictures for a user.
 Returns a <code>UserProfilePhotos</code> object.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L715">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L777">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7256,7 +7452,21 @@ On success, returns a <code>WebhookInfo</code> object. If the bot is using
 <code>#getUpdates</code>, will return an object with the
 url field empty.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2313">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2390">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Client#hide_general_forum_topic(chat)" class="doc doc-heading">    <code>
+      #hide_general_forum_topic<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Client#hide_general_forum_topic(chat)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be
+an administrator in the chat for this to work and must have the can_manage_topics
+administrator rights. The topic will be automatically closed if it was open.
+Returns True on success.</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L719">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7267,7 +7477,7 @@ url field empty.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L754">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L816">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7280,7 +7490,7 @@ url field empty.</p>  </div>
 supergroup, or channel.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1084">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1153">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7296,7 +7506,7 @@ local server, but will not be able to log in back to the cloud Bot API server fo
 10 minutes.</p>
 <p>Returns <code>true</code> on success. Requires no parameters.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L330">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L330">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7312,18 +7522,7 @@ have the appropriate admin right. Works by calling
 set to <code>false</code>.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L781">View source</a>
-</div>
-
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Client#on(*,&amp;)" class="doc doc-heading">    <code>
-      #on<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">actions</span> <span class="p">:</span> <span class="n">Symbol</span> <span class="o">|</span> <a href="../UpdateAction/#Tourmaline::UpdateAction">UpdateAction</a><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="../Context/#Tourmaline::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
-    </code>
-<a href="#Tourmaline::Client#on(*,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-  </div>
-
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L124">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L843">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7334,7 +7533,18 @@ Returns <code>true</code> on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L120">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L120">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Client#on(*,&amp;)" class="doc doc-heading">    <code>
+      #on<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="o">*</span><span class="n">actions</span> <span class="p">:</span> <span class="n">Symbol</span> <span class="o">|</span> <a href="../UpdateAction/#Tourmaline::UpdateAction">UpdateAction</a><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span> <span class="p">:</span> <a href="../Context/#Tourmaline::Context">Context</a> <span class="o">-&gt;</span> <span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Client#on(*,&amp;)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L124">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7349,7 +7559,7 @@ have the <code>can_pin_messages</code> admin right in the supergroup or
 <code>can_edit_messages</code> admin right in the channel.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1055">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1124">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7360,7 +7570,7 @@ Returns <code>true</code> on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L141">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L141">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7375,7 +7585,7 @@ have the appropriate admin rights. Pass False for all boolean
 parameters to demote a user.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L823">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L887">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7386,7 +7596,7 @@ Returns <code>true</code> on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L135">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L135">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7401,7 +7611,21 @@ can_manage_topics administrator rights, unless it is the
 creator of the topic.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L639">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L639">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Client#reopen_general_forum_topic(chat)" class="doc doc-heading">    <code>
+      #reopen_general_forum_topic<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Client#reopen_general_forum_topic(chat)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an
+administrator in the chat for this to work and must have the can_manage_topics
+administrator rights. The topic will be automatically unhidden if it was hidden.
+Returns True on success.</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L707">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7412,7 +7636,7 @@ Returns True on success.</p>  </div>
   <div class="doc doc-contents ">
 <p>Sends a request to the Telegram Client API. Returns the response, parsed as a <code>U</code>.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L167">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L167">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7423,14 +7647,14 @@ Returns True on success.</p>  </div>
   <div class="doc doc-contents ">
 <p>Sends a request to the Telegram Client API. Returns the raw response.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L161">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L161">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Client#restrict_chat_member(chat,user,permissions,until_date)" class="doc doc-heading">    <code>
-      #restrict_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">permissions</span><span class="p">,</span> <span class="n">until_date</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Client#restrict_chat_member(chat,user,permissions,use_independent_chat_permissions,until_date)" class="doc doc-heading">    <code>
+      #restrict_chat_member<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">permissions</span><span class="p">,</span> <span class="n">use_independent_chat_permissions</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">until_date</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Client#restrict_chat_member(chat,user,permissions,until_date)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Client#restrict_chat_member(chat,user,permissions,use_independent_chat_permissions,until_date)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
 <p>Use this method to restrict a user in a supergroup. The bot must be an
 administrator in the supergroup for this to work and must have the
@@ -7438,7 +7662,7 @@ appropriate admin rights. Pass True for all permissions to
 lift restrictions from a user.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L801">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L863">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7453,18 +7677,18 @@ administrator in the chat for this to work and must have the
 appropriate administrator rights.
 Returns the revoked invite link as ChatInviteLink object.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L983">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1047">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="doc doc-heading">    <code>
-      #send_animation<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">animation</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">thumbnail</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a> <span class="o">=</span> <span class="n">default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">protect_content</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="doc doc-heading">    <code>
+      #send_animation<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">animation</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">thumbnail</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">has_spoiler</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a> <span class="o">=</span> <span class="n">default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">protect_content</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Client#send_animation(chat,animation,message_thread_id,duration,width,height,thumbnail,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1132">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1201">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7481,7 +7705,7 @@ changed in the future.</p>
 <p>For sending voice messages, use the <code>#sendVoice</code> method instead.
 TODO: Add filesize checking and validation.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1098">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1167">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7493,7 +7717,7 @@ TODO: Add filesize checking and validation.</p>  </div>
 <p>Use this method to send a basketball (🏀 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1218">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1291">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7505,14 +7729,14 @@ On success, the sent Message is returned.</p>  </div>
 <p>Use this method to send a bowling (🎳 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1218">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1291">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Client#send_chat_action(chat,action)" class="doc doc-heading">    <code>
-      #send_chat_action<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">action</span> <span class="p">:</span> <a href="../ChatAction/#Tourmaline::ChatAction">ChatAction</a><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Client#send_chat_action(chat,action,message_thread)" class="doc doc-heading">    <code>
+      #send_chat_action<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">action</span> <span class="p">:</span> <a href="../ChatAction/#Tourmaline::ChatAction">ChatAction</a><span class="p">,</span> <span class="n">message_thread</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Client#send_chat_action(chat,action)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Client#send_chat_action(chat,action,message_thread)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
 <p>Use this method when you need to tell the user that something is happening on the
 bot's side. The status is set for 5 seconds or less (when a message arrives
@@ -7527,7 +7751,7 @@ will see a “sending photo” status for the bot.</p>
 <p>We only recommend using this method when a response from the bot will take a
 noticeable amount of time to arrive.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1180">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1251">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7539,7 +7763,7 @@ noticeable amount of time to arrive.</p>  </div>
 <p>Use this method to send phone contacts.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1192">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1265">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7551,7 +7775,7 @@ On success, the sent <code>Message</code> is returned.</p>  </div>
 <p>Use this method to send a dart (🎯 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1218">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1291">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7563,7 +7787,7 @@ On success, the sent Message is returned.</p>  </div>
 <p>Use this method to send a dice (🎲 emoji), which will have a random value from 1 to 6.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1218">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1291">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7578,7 +7802,7 @@ of any type of up to <strong>50 MB</strong> in size, this limit
 may be changed in the future.
 TODO: Add filesize checking and validation.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1251">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1324">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7590,7 +7814,7 @@ TODO: Add filesize checking and validation.</p>  </div>
 <p>Use this method to send a football (⚽️ emoji), which will have a random value from 1 to 5.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1218">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1291">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7602,7 +7826,7 @@ On success, the sent Message is returned.</p>  </div>
 <p>Use this method to send a game.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1781">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1858">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7614,7 +7838,7 @@ On success, the sent <code>Message</code> is returned.</p>  </div>
 <p>Use this method to send invoices.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1869">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1946">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7626,7 +7850,7 @@ On success, the sent <code>Message</code> is returned.</p>  </div>
 <p>Use this method to send point on the map.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1283">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1356">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7638,7 +7862,7 @@ On success, the sent <code>Message</code> is returned.</p>  </div>
 <p>Use this method to send a group of photos or videos as an album.
 On success, an array of the sent <code>Messages</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1431">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1506">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7650,19 +7874,19 @@ On success, an array of the sent <code>Messages</code> is returned.</p>  </div>
 <p>Use this method to send text messages.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1317">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1390">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="doc doc-heading">    <code>
-      #send_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a> <span class="o">=</span> <span class="n">default_parse_mode</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">protect_content</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,has_spoiler,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="doc doc-heading">    <code>
+      #send_photo<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a> <span class="o">=</span> <span class="n">default_parse_mode</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">has_spoiler</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">protect_content</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Client#send_photo(chat,photo,message_thread_id,caption,parse_mode,caption_entities,has_spoiler,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
 <p>Use this method to send photos.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1377">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1450">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7674,7 +7898,7 @@ On success, the sent <code>Message</code> is returned.</p>  </div>
 <p>Use this method to send a native poll.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2014">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2091">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7686,7 +7910,7 @@ On success, the sent Message is returned.</p>  </div>
 <p>Use this method to send a slot_machine (🎰 emoji), which will have a random value from 1 to 64.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1218">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1291">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7698,7 +7922,7 @@ On success, the sent Message is returned.</p>  </div>
 <p>Use this method to send a soccerball (⚽️ emoji), which will have a random value from 1 to 5.
 On success, the sent Message is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1218">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1291">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7711,7 +7935,7 @@ On success, the sent Message is returned.</p>  </div>
 On success, the sent <code>Message</code> is returned.</p>
 <p>See: <a href="https://core.telegram.org/bots/api#stickers">https://core.telegram.org/bots/api#stickers</a> for more info.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2075">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2152">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7723,14 +7947,14 @@ On success, the sent <code>Message</code> is returned.</p>
 <p>Use this method to send information about a venue.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1453">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1528">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="doc doc-heading">    <code>
-      #send_video<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a> <span class="o">=</span> <span class="n">default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">protect_content</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="doc doc-heading">    <code>
+      #send_video<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">video</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">MessageEntity</span><span class="p">,</span> <span class="n">has_spoiler</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">parse_mode</span> <span class="p">:</span> <a href="../ParseMode/#Tourmaline::ParseMode">ParseMode</a> <span class="o">=</span> <span class="n">default_parse_mode</span><span class="p">,</span> <span class="n">disable_notification</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">protect_content</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">allow_sending_without_reply</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Client#send_video(chat,video,message_thread_id,duration,width,height,caption,caption_entities,has_spoiler,parse_mode,disable_notification,protect_content,reply_to_message,allow_sending_without_reply,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
 <p>Use this method to send video files, Telegram clients support mp4 videos
 (other formats may be sent as Document).
@@ -7739,7 +7963,7 @@ video files of up to <strong>50 MB</strong> in size, this limit may be
 changed in the future.
 TODO: Add filesize checking and validation.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1495">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1570">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7753,7 +7977,7 @@ clients support rounded square <code>mp4</code> videos of up to <strong>1</stron
 Use this method to send video messages.
 On success, the sent <code>Message</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1535">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1612">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7770,7 +7994,7 @@ On success, the sent <code>Message</code> is returned. Bots can currently send v
 messages of up to <strong>50 MB</strong> in size, this limit may be changed in the future.
 TODO: Add filesize checking and validation.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1578">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1655">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7781,7 +8005,7 @@ TODO: Add filesize checking and validation.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L145">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L145">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7793,7 +8017,7 @@ TODO: Add filesize checking and validation.</p>  </div>
 <p>Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L888">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L952">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7807,7 +8031,7 @@ The bot must be an administrator in the chat for this to work and
 must have the appropriate admin rights.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1043">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1112">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7819,21 +8043,21 @@ Returns <code>true</code> on success.</p>  </div>
 <p>Use this method to change the bot's menu button in a private chat, or the default menu button.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1741">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1818">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Client#set_chat_permissions(chat,permissions)" class="doc doc-heading">    <code>
-      #set_chat_permissions<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">permissions</span><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Client#set_chat_permissions(chat,permissions,use_independent_chat_permissions)" class="doc doc-heading">    <code>
+      #set_chat_permissions<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="n">permissions</span><span class="p">,</span> <span class="n">use_independent_chat_permissions</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Client#set_chat_permissions(chat,permissions)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Client#set_chat_permissions(chat,permissions,use_independent_chat_permissions)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
 <p>Use this method to set default chat permissions for all members. The bot must be
 an administrator in the group or a supergroup for this to work and must have
 the can_restrict_members admin rights.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1018">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1082">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7851,7 +8075,7 @@ Returns <code>true</code> on success.</p>
 <code>All Members Are Admins</code> setting is off in the target group.</p>
 </blockquote>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L866">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L930">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7867,7 +8091,7 @@ optionally returned in <code>#get_chat</code> requests to check if the
 bot can use this method.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2121">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2198">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7885,7 +8109,7 @@ Returns <code>true</code> on success.</p>
 work if the <code>All Members Are Admins</code> setting is off in the target group.</p>
 </blockquote>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1032">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1101">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7897,7 +8121,7 @@ work if the <code>All Members Are Admins</code> setting is off in the target gro
 <p>Use this method to set the thumbnail of a custom emoji sticker set.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2258">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2335">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7912,7 +8136,7 @@ returns <code>true</code>.</p>
 <p>Raises an error, if the new score is not greater than the user's current
 score in the chat and force is <code>false</code> (default).</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1805">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1882">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7924,7 +8148,7 @@ score in the chat and force is <code>false</code> (default).</p>  </div>
 <p>Use this method to change the list of the bot's commands.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1671">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1748">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7938,7 +8162,7 @@ as an administrator to groups or channels. These rights will be suggested to use
 they are are free to modify the list before adding the bot.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1754">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1831">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7950,7 +8174,7 @@ Returns True on success.</p>  </div>
 <p>Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1706">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1783">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7963,7 +8187,7 @@ Returns True on success.</p>  </div>
 together with the link when users share the bot.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1724">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1801">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7981,7 +8205,7 @@ for any reason. For example, if a birthday date seems invalid, a submitted docum
 a scan shows evidence of tampering, etc. Supply some details in the error message to make
 sure the user knows how to correct the issues.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1857">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1934">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7994,7 +8218,7 @@ sure the user knows how to correct the issues.</p>  </div>
 The sticker must belong to a sticker set created by the bot.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2209">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2286">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8007,7 +8231,7 @@ Returns True on success.</p>  </div>
 The sticker must belong to a sticker set created by the bot.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2219">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2296">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8020,7 +8244,7 @@ Returns True on success.</p>  </div>
 that was created by the bot.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2229">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2306">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8032,7 +8256,7 @@ Returns True on success.</p>  </div>
 <p>Use this method to move a sticker in a set created by the bot to a specific position.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2180">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2257">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8045,7 +8269,7 @@ Returns <code>true</code> on success.</p>  </div>
 set for animated sticker sets only.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2248">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2325">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8057,7 +8281,7 @@ Returns <code>true</code> on success.</p>  </div>
 <p>Use this method to set the title of a created sticker set.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2238">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2315">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8075,7 +8299,7 @@ Returns <code>true</code> on success.</p>
 using a secret path in the URL, e.g. <code>https://www.example.com/&lt;token&gt;</code>. Since nobody
 else knows your bot‘s token, you can be pretty sure it’s us.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2282">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2359">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8089,7 +8313,7 @@ live_period expires.</p>
 <p>On success, if the message was sent by the bot, the sent
 <code>Message</code> is returned, otherwise <code>true</code> is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1651">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1728">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8101,7 +8325,7 @@ live_period expires.</p>
 <p>Use this method to stop a poll which was sent by the bot.
 On success, the stopped <code>Poll</code> with the final results is returned.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2059">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2136">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8116,7 +8340,7 @@ automatically, but will be able to join via link, etc.
 The bot must be an administrator for this to work.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L763">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L825">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8130,7 +8354,21 @@ The bot must be an administrator for this to work and must have the
 appropriate administrator rights.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L913">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L977">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Client#unhide_general_forum_topic(chat)" class="doc doc-heading">    <code>
+      #unhide_general_forum_topic<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">chat</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Client#unhide_general_forum_topic(chat)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an
+administrator in the chat for this to work and must have the can_manage_topics
+administrator rights.
+Returns True on success.</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L731">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8141,7 +8379,7 @@ Returns True on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1075">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1144">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8155,7 +8393,7 @@ must be an administrator in the chat for this to work and must have the
 can_pin_messages administrator right in the supergroup.
 Returns True on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L667">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L667">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8170,7 +8408,7 @@ have the ‘can_pin_messages’ admin right in the supergroup or
 ‘can_edit_messages’ admin right in the channel.
 Returns <code>true</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L1068">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L1137">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8181,7 +8419,7 @@ Returns <code>true</code> on success.</p>  </div>
   <div class="doc doc-contents ">
 <p>Use this to unset the webhook and stop receiving updates to your bot.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2305">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2382">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8195,7 +8433,7 @@ Returns <code>true</code> on success.</p>  </div>
 used multiple times).
 Returns the uploaded <code>TFile</code> on success.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L2132">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L2209">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -8206,7 +8444,7 @@ Returns the uploaded <code>TFile</code> on success.</p>  </div>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/db5277d0d4ee33a434bd95b0941d42c9d572f3cc/src/tourmaline/client.cr#L131">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/caa4a93ed36167c8b9c9922660907710c41143e0/src/tourmaline/client.cr#L131">View source</a>
 </div>      </div>
   </div>
 
