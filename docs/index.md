@@ -54,17 +54,17 @@ hide:
 
 ```crystal
 require "tourmaline"
-include Tourmaline # To shorten things
 
-bot = Client.new(bot_token: "YOUR_API_TOKEN")
+client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
 
-echo_handler = Handlers::CommandHandler.new("echo") do |ctx|
-ctx.message.reply(ctx.text)
+echo_handler = Tourmaline::CommandHandler.new("echo") do |ctx|
+  text = ctx.text.to_s
+    ctx.reply(text) unless text.empty?
 end
 
-bot.add_event_handler(echo_handler)
-bot.poll
+client.register(echo_handler)
 
+client.poll
 ```
 
 </div>
