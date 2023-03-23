@@ -607,7 +607,7 @@ module Tourmaline
       chat,
       message_thread_id,
       name = nil,
-      icon_custom_emoji_id = nil,
+      icon_custom_emoji_id = nil
     )
       request(Bool, "editForumTopic", {
         chat_id:              extract_id(chat),
@@ -1254,8 +1254,8 @@ module Tourmaline
       message_thread = nil
     )
       request(Bool, "sendChatAction", {
-        chat_id: extract_id(chat),
-        action:  action.to_s,
+        chat_id:           extract_id(chat),
+        action:            action.to_s,
         message_thread_id: extract_id(message_thread),
       })
     end
