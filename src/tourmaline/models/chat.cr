@@ -26,9 +26,9 @@ module Tourmaline
 
     getter emoji_status_custom_emoji_id : String?
 
-    getter has_private_forwards : Bool?
+    getter? has_private_forwards : Bool?
 
-    getter has_restricted_voice_and_video_messages : Bool?
+    getter? has_restricted_voice_and_video_messages : Bool?
 
     getter join_to_send_messages : Bool?
 
@@ -46,11 +46,15 @@ module Tourmaline
 
     getter message_auto_delete_time : Int32?
 
-    getter has_protected_content : Bool?
+    getter? has_aggressive_anti_spam_enabled : Bool?
+
+    getter? has_hidden_members : Bool?
+
+    getter? has_protected_content : Bool?
 
     getter sticker_set_name : String?
 
-    getter can_set_sticker_set : Bool?
+    getter? can_set_sticker_set : Bool?
 
     getter linked_chat_id : Int64?
 

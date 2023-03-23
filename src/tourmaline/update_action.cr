@@ -48,13 +48,18 @@ module Tourmaline
     VideoNote
     Invoice
     SuccessfulPayment
+    UserShared
+    ChatShared
     ConnectedWebsite
     PassportData
     PollAnswer
     ProximityAlertTriggered
     ForumTopicCreated
+    ForumTopicEdited
     ForumTopicClosed
     ForumTopicReopened
+    GeneralForumTopicHidden
+    GeneralForumTopicUnhidden
     VideoChatScheduled
     VideoChatStarted
     VideoChatEnded
@@ -147,13 +152,18 @@ module Tourmaline
         actions << UpdateAction::VideoNote if message.video_note
         actions << UpdateAction::Invoice if message.invoice
         actions << UpdateAction::SuccessfulPayment if message.successful_payment
+        actions << UpdateAction::UserShared if message.user_shared
+        actions << UpdateAction::ChatShared if message.chat_shared
         actions << UpdateAction::ConnectedWebsite if message.connected_website
         actions << UpdateAction::PassportData if message.passport_data
         actions << UpdateAction::ProximityAlertTriggered if message.proximity_alert_triggered
         actions << UpdateAction::VideoChatScheduled if message.video_chat_scheduled
         actions << UpdateAction::ForumTopicCreated if message.forum_topic_created
+        actions << UpdateAction::ForumTopicEdited if message.forum_topic_edited
         actions << UpdateAction::ForumTopicClosed if message.forum_topic_closed
         actions << UpdateAction::ForumTopicReopened if message.forum_topic_reopened
+        actions << UpdateAction::GeneralForumTopicHidden if message.general_forum_topic_hidden
+        actions << UpdateAction::GeneralForumTopicUnhidden if message.general_forum_topic_unhidden
         actions << UpdateAction::VideoChatStarted if message.video_chat_started
         actions << UpdateAction::VideoChatEnded if message.video_chat_ended
         actions << UpdateAction::VideoChatParticipantsInvited if message.video_chat_participants_invited

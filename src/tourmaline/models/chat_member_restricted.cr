@@ -15,7 +15,17 @@ module Tourmaline
 
     getter? can_send_messages : Bool
 
-    getter? can_send_media_messages : Bool
+    getter? can_send_audios : Bool
+
+    getter? can_send_documents : Bool
+
+    getter? can_send_photos : Bool
+
+    getter? can_send_videos : Bool
+
+    getter? can_send_video_notes : Bool
+
+    getter? can_send_voice_notes : Bool
 
     getter? can_send_polls : Bool
 

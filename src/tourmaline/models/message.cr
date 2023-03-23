@@ -79,6 +79,8 @@ module Tourmaline
 
     getter caption_entities : Array(MessageEntity) = [] of Tourmaline::MessageEntity
 
+    getter has_media_spoiler : Bool?
+
     getter contact : Contact?
 
     getter dice : Dice?
@@ -119,6 +121,10 @@ module Tourmaline
 
     getter successful_payment : SuccessfulPayment?
 
+    getter user_shared : UserShared?
+
+    getter chat_shared : ChatShared?
+
     getter connected_website : String?
 
     getter passport_data : PassportData?
@@ -127,9 +133,15 @@ module Tourmaline
 
     getter forum_topic_created : ForumTopicCreated?
 
+    getter forum_topic_edited : ForumTopicEdited?
+
     getter forum_topic_closed : ForumTopicClosed?
 
     getter forum_topic_reopened : ForumTopicReopened?
+
+    getter general_forum_topic_hidden : GeneralForumTopicHidden?
+
+    getter general_forum_topic_unhidden : GeneralForumTopicUnhidden?
 
     getter video_chat_scheduled : VideoChatScheduled?
 

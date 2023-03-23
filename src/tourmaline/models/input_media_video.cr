@@ -20,10 +20,12 @@ module Tourmaline
 
     property duration : Int32?
 
-    property supports_streaming : Bool?
+    property? supports_streaming : Bool?
+
+    property? has_spoiler : Bool?
 
     def initialize(@media, @thumb = nil, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
-                   @width = nil, @height = nil, duration = nil, @supports_streaming = nil)
+                   @width = nil, @height = nil, duration = nil, @supports_streaming = nil, @has_spoiler = false)
     end
   end
 end

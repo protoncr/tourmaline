@@ -606,8 +606,8 @@ module Tourmaline
     def edit_forum_topic(
       chat,
       message_thread_id,
-      name,
-      icon_custom_emoji_id
+      name = nil,
+      icon_custom_emoji_id = nil,
     )
       request(Bool, "editForumTopic", {
         chat_id:              extract_id(chat),
@@ -671,6 +671,68 @@ module Tourmaline
       request(Bool, "unpinAllForumTopicMessages", {
         chat_id:           extract_id(chat),
         message_thread_id: message_thread_id,
+      })
+    end
+
+    # Use this method to edit the name of the 'General' topic in a forum supergroup chat. The
+    # bot must be an administrator in the chat for this to work and must have
+    # can_manage_topics administrator rights.
+    # Returns True on success.
+    def edit_general_forum_topic(
+      chat,
+      name
+    )
+      request(Bool, "editGeneralForumTopic", {
+        chat_id: extract_id(chat),
+        name:    name,
+      })
+    end
+
+    # Use this method to close an open 'General' topic in a forum supergroup chat. The bot must
+    # be an administrator in the chat for this to work and must have the
+    # can_manage_topics administrator rights.
+    # Returns True on success.
+    def close_general_forum_topic(
+      chat
+    )
+      request(Bool, "closeGeneralForumTopic", {
+        chat_id: extract_id(chat),
+      })
+    end
+
+    # Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an
+    # administrator in the chat for this to work and must have the can_manage_topics
+    # administrator rights. The topic will be automatically unhidden if it was hidden.
+    # Returns True on success.
+    def reopen_general_forum_topic(
+      chat
+    )
+      request(Bool, "reopenGeneralForumTopic", {
+        chat_id: extract_id(chat),
+      })
+    end
+
+    # Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be
+    # an administrator in the chat for this to work and must have the can_manage_topics
+    # administrator rights. The topic will be automatically closed if it was open.
+    # Returns True on success.
+    def hide_general_forum_topic(
+      chat
+    )
+      request(Bool, "hideGeneralForumTopic", {
+        chat_id: extract_id(chat),
+      })
+    end
+
+    # Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an
+    # administrator in the chat for this to work and must have the can_manage_topics
+    # administrator rights.
+    # Returns True on success.
+    def unhide_general_forum_topic(
+      chat
+    )
+      request(Bool, "unhideGeneralForumTopic", {
+        chat_id: extract_id(chat),
       })
     end
 
@@ -802,16 +864,18 @@ module Tourmaline
       chat,
       user,
       permissions,
+      use_independent_chat_permissions = false,
       until_date = nil
     )
       until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
       permissions = permissions.is_a?(NamedTuple) ? ChatPermissions.new(**permissions) : permissions
 
       request(Bool, "restrictChatMember", {
-        chat_id:     extract_id(chat),
-        user_id:     extract_id(user_id),
-        until_date:  until_date,
-        permissions: permissions.to_json,
+        chat_id:                          extract_id(chat),
+        user_id:                          extract_id(user_id),
+        until_date:                       until_date,
+        permissions:                      permissions.to_json,
+        use_independent_chat_permissions: use_independent_chat_permissions,
       })
     end
 
@@ -1015,10 +1079,15 @@ module Tourmaline
     # an administrator in the group or a supergroup for this to work and must have
     # the can_restrict_members admin rights.
     # Returns True on success.
-    def set_chat_permissions(chat, permissions)
+    def set_chat_permissions(
+      chat,
+      permissions,
+      use_independent_chat_permissions = false
+    )
       request(Bool, "setChatPermissions", {
-        chat_id:     extract_id(chat),
-        permissions: permissions.to_json,
+        chat_id:                          extract_id(chat),
+        permissions:                      permissions.to_json,
+        use_independent_chat_permissions: use_independent_chat_permissions,
       })
     end
 
@@ -1139,6 +1208,7 @@ module Tourmaline
       thumbnail = nil,
       caption = nil,
       caption_entities = [] of MessageEntity,
+      has_spoiler = false,
       parse_mode : ParseMode = default_parse_mode,
       disable_notification = false,
       protect_content = false,
@@ -1156,6 +1226,7 @@ module Tourmaline
         thumbnail:                   thumbnail,
         caption:                     caption,
         caption_entities:            caption_entities,
+        has_spoiler:                 has_spoiler,
         parse_mode:                  parse_mode,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
@@ -1179,11 +1250,13 @@ module Tourmaline
     # noticeable amount of time to arrive.
     def send_chat_action(
       chat,
-      action : ChatAction
+      action : ChatAction,
+      message_thread = nil
     )
       request(Bool, "sendChatAction", {
         chat_id: extract_id(chat),
         action:  action.to_s,
+        message_thread_id: extract_id(message_thread),
       })
     end
 
@@ -1381,6 +1454,7 @@ module Tourmaline
       caption = nil,
       parse_mode : ParseMode = default_parse_mode,
       caption_entities = [] of MessageEntity,
+      has_spoiler = false,
       disable_notification = false,
       protect_content = false,
       reply_to_message = nil,
@@ -1396,6 +1470,7 @@ module Tourmaline
         caption:                     caption,
         parse_mode:                  parse_mode,
         caption_entities:            caption_entities,
+        has_spoiler:                 has_spoiler,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
         reply_to_message_id:         extract_id(reply_to_message),
@@ -1501,6 +1576,7 @@ module Tourmaline
       height = nil,
       caption = nil,
       caption_entities = [] of MessageEntity,
+      has_spoiler = false,
       parse_mode : ParseMode = default_parse_mode,
       disable_notification = false,
       protect_content = false,
@@ -1519,6 +1595,7 @@ module Tourmaline
         height:                      height,
         caption:                     caption,
         caption_entities:            caption_entities,
+        has_spoiler:                 has_spoiler,
         parse_mode:                  parse_mode,
         disable_notification:        disable_notification,
         protect_content:             protect_content,

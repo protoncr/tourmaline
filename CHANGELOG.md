@@ -2,6 +2,17 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.28.0
+
+**This release contains major breaking changes. If you currently rely on Tourmaline as a framework you may not want to update.**
+
+- Added full support for Bot API versions 6.4, 6.5, and 6.6
+- **(breaking change)** Removed all annotation based handlers.
+- **(breaking change)** Removed the `Handlers` namespace. All handlers now fall directly under `Tourmaline`.
+- **(breaking change)** Stripped Tourmaline of all _magic_. Models no longer have a `client` instance passed to them, instead we will now rely on the `Tourmaline::Context` which is passed to all handler callbacks.
+
+Examples have been updated.
+
 ## 0.27.0
 - Added full support for Bot API 6.3
 - **(breaking change)** All `is_` prefixed properties in models have been replaced with `?` getters. For instance, `is_anonymous` is now `anonymous?`.

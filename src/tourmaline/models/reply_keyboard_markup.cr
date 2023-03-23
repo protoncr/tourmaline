@@ -2,41 +2,12 @@ require "json"
 require "../keyboard_builder"
 
 module Tourmaline
-  alias Button = KeyboardButton | InlineKeyboardButton
-
-  class KeyboardButton
-    include JSON::Serializable
-
-    property text : String
-
-    property request_contact : Bool = false
-
-    property request_location : Bool = false
-
-    property request_poll : KeyboardButtonPollType?
-
-    property web_app : WebAppInfo?
-
-    def initialize(@text : String, @request_contact = false, @request_location = false, @request_poll = nil, @web_app = nil)
-    end
-  end
-
-  # This object represents type of a poll, which is allowed to be
-  # created and sent when the corresponding button is pressed.
-  class KeyboardButtonPollType
-    include JSON::Serializable
-
-    @[JSON::Field(converter: Tourmaline::Poll::PollTypeConverter)]
-    property type : Poll::Type
-
-    def initialize(@type)
-    end
-  end
-
   class ReplyKeyboardMarkup
     include JSON::Serializable
 
     property keyboard : Array(Array(KeyboardButton))
+
+    property is_persistent : Bool = false
 
     property resize_keyboard : Bool = false
 
