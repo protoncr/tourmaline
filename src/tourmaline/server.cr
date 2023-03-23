@@ -15,9 +15,9 @@ module Tourmaline
         Fiber.current.telegram_bot_server_http_context = context
         begin
           block.call(context)
-          rescue ex
+        rescue ex
           Log.error(exception: ex) { "Server error" }
-          ensure
+        ensure
           Fiber.current.telegram_bot_server_http_context = nil
         end
       end
@@ -39,8 +39,8 @@ module Tourmaline
     # :ditto:
     def serve(path = "/", host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, no_middleware_check = false)
       serve(host, port, ssl_certificate_path, ssl_key_path, no_middleware_check) do |context|
-          next unless context.request.method == "POST"
-          next unless context.request.path == path
+        next unless context.request.method == "POST"
+        next unless context.request.path == path
         if body = context.request.body
           update = Update.from_json(body)
           @client.dispatcher.process(update)

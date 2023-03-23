@@ -74,7 +74,7 @@ module Tourmaline
       # Respond with a {{content_type.id}}
       def respond_with_{{content_type.id}}(*args, **kwargs)
         with_message do |message|
-          @client.send_{{ content_type.id  }}(message.chat, *args, **kwargs)
+          @client.send_{{ content_type.id }}(message.chat, *args, **kwargs)
         end
       end
 
@@ -82,7 +82,7 @@ module Tourmaline
       def reply_with_{{content_type.id}}(*args, **kwargs)
         with_message do |message|
           kwargs = kwargs.merge(reply_to_message: message.message_id)
-          @client.send_{{ content_type.id  }}(message.chat, *args, **kwargs)
+          @client.send_{{ content_type.id }}(message.chat, *args, **kwargs)
         end
       end
     {% end %}

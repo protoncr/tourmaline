@@ -2,7 +2,7 @@ module Tourmaline
   class InputSticker
     include JSON::Serializable
 
-    property sticker  : String | File
+    property sticker : String | File
 
     property emoji_list : Array(String)
 

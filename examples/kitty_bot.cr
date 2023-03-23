@@ -35,4 +35,3 @@ end
 client.register(help_command, about_command, kitty_command)
 
 client.poll
-

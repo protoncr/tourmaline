@@ -17,8 +17,8 @@ INVOICE = {
 }
 
 SHIPPING_OPTIONS = [
-Tourmaline::ShippingOption.new("unicorn", "Unicorn express", [Tourmaline::LabeledPrice.new(label: "Unicorn", amount: 2000)]),
-Tourmaline::ShippingOption.new("slowpoke", "Slowpoke Mail", [Tourmaline::LabeledPrice.new(label: "Unicorn", amount: 100)]),
+  Tourmaline::ShippingOption.new("unicorn", "Unicorn express", [Tourmaline::LabeledPrice.new(label: "Unicorn", amount: 2000)]),
+  Tourmaline::ShippingOption.new("slowpoke", "Slowpoke Mail", [Tourmaline::LabeledPrice.new(label: "Unicorn", amount: 100)]),
 ]
 
 REPLY_MARKUP = Tourmaline::InlineKeyboardMarkup.build do
@@ -31,7 +31,7 @@ start_command = Tourmaline::CommandHandler.new("start") do |ctx|
 end
 
 buy_command = Tourmaline::CommandHandler.new("buy") do |ctx|
-  ctx.reply_with_invoice(**INVOICE.merge({ reply_markup: REPLY_MARKUP }))
+  ctx.reply_with_invoice(**INVOICE.merge({reply_markup: REPLY_MARKUP}))
 end
 
 client.register(start_command, buy_command)

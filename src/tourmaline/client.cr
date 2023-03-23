@@ -22,7 +22,7 @@ module Tourmaline
   class Client
     include Logger
 
-    DEFAULT_API_URL          = "https://api.telegram.org/"
+    DEFAULT_API_URL = "https://api.telegram.org/"
 
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
@@ -2247,9 +2247,9 @@ module Tourmaline
     # Returns `true` on success.
     def set_sticker_set_thumbnail(name, user, thumbnail = nil)
       request(Bool, "setStickerSetThumbnail", {
-        name:    name,
-        user_id: extract_id(user_id),
-        thumbnail:  thumbnail,
+        name:      name,
+        user_id:   extract_id(user_id),
+        thumbnail: thumbnail,
       })
     end
 
