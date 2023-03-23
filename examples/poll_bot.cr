@@ -1,47 +1,43 @@
 require "../src/tourmaline"
 
-class PollBot < Tourmaline::Client
-  KEYBOARD = ReplyKeyboardMarkup.build do
-    poll_request_button "Create poll", :regular
-    poll_request_button "Create quiz", :quiz
-  end
+client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
 
-  @[Command("start")]
-  def start_command(ctx)
-    ctx.message.reply("Use the command /poll or /quiz to begin", reply_markup: KEYBOARD)
-  end
-
-  @[On(:poll)]
-  def on_poll(update)
-    puts "Poll update:"
-    pp update.poll
-  end
-
-  @[On(:poll_answer)]
-  def on_poll_answer(update)
-    puts "Poll answer:"
-    pp update.poll_answer
-  end
-
-  @[Command("poll")]
-  def poll_command(ctx)
-    ctx.message.reply_with_poll(
-      "Your favorite math constant",
-      ["x", "e", "π", "φ", "γ"],
-      anonymous: false
-    )
-  end
-
-  @[Command("quiz")]
-  def quiz_command(ctx)
-    ctx.message.reply_with_poll(
-      "2b|!2b",
-      ["True", "False"],
-      correct_option_id: 0,
-      type: Poll::Type::Quiz
-    )
-  end
+KEYBOARD = Tourmaline::ReplyKeyboardMarkup.build do
+  poll_request_button "Create poll", :regular
+  poll_request_button "Create quiz", :quiz
 end
 
-bot = PollBot.new(bot_token: ENV["API_KEY"])
-bot.poll
+start_command = Tourmaline::CommandHandler.new("start") do |ctx|
+  ctx.reply("Use the command /poll or /quiz to begin", reply_markup: KEYBOARD)
+end
+
+poll_command = Tourmaline::CommandHandler.new("poll") do |ctx|
+  ctx.reply_with_poll(
+    "Your favorite math constant",
+    ["x", "e", "π", "φ", "γ"],
+    anonymous: false
+  )
+end
+
+quiz_command = Tourmaline::CommandHandler.new("quiz") do |ctx|
+  ctx.reply_with_poll(
+    "2b|!2b",
+    ["True", "False"],
+    correct_option_id: 0,
+    type: Tourmaline::Poll::Type::Quiz
+  )
+end
+
+client.register(start_command, poll_command, quiz_command)
+
+client.on(:poll) do |ctx|
+  puts "Poll update:"
+  pp ctx.poll
+end
+
+client.on(:poll_answer) do |ctx|
+  puts "Poll answer:"
+  pp ctx.poll_answer
+end
+
+client.poll

@@ -6,7 +6,7 @@ module Tourmaline
 
     getter file_unique_id : String
 
-    getter thumb : PhotoSize?
+    getter thumbnail : PhotoSize?
 
     getter file_name : String?
 

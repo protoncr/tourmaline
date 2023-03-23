@@ -10,7 +10,7 @@ module Tourmaline
 
     getter duration : Int32
 
-    getter thumb : PhotoSize?
+    getter thumbnail : PhotoSize?
 
     getter file_size : Int32?
   end

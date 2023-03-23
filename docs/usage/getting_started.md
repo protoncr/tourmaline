@@ -23,29 +23,35 @@ Now it's time to write some code. Open `src/echo_bot.cr` or whatever file was ge
 ```crystal linenums="1"
 require "tourmaline" # (1)
 
-class EchoBot < Tourmaline::Client # (2)
-  @[Command("echo")] # (3)
-  def echo_command(ctx)
-    ctx.message.reply(ctx.text) # (4)
-  end
+client = Tourmaline::Client.new(ENV["BOT_TOKEN"]) # (2)
+
+echo_handler = Tourmaline::CommandHandler.new("echo") do |ctx| # (3)
+  text = ctx.text.to_s
+  ctx.reply(text) unless text.empty? # (4)
 end
 
-bot = EchoBot.new(bot_token: ENV["API_KEY"]) # (5)
-bot.poll # (6)
+client.register(echo_handler) # (5)
+
+client.poll # (6)
 ```
 
 1. First we have to import Tourmaline into our code. In Crystal this is done with the `require` statement.
-2. Next we extend `Tourmaline::Client` and use it to create our own class.
-3. In this example we're going to go with the annotation approach to creating bots. Annotations use the `@[Annotation(params)]` syntax and can decorate classes and methods. In this case, we're annotating the `echo_command` method with the `Command` annotation, which turns the method into a command handler.
-4. Within the `echo_command` method we're just going to echo whatever the user said back to them, so we use the `reply` method which exists on the `Message` object and send `ctx.text` (the user's message text minus the command) back to them.
-5. Almost done. Now we need to create a new instance of our `EchoBot`. Since we extended `Tourmaline::Client` and didn't provide a custom initializer our bot takes the same arguments, so we can provide it with our API Key as an environment variable.
-6. The last step is to start our bot. We can do that by "long polling" using the `poll` method.
+2. Next we create a new `Client` object. This is the main object that we will be using to interact with the Telegram Bot API. Into the `Client` we pass our bot's API token, which we will be getting from the BotFather. We will be storing this in an environment variable, so we use `ENV["BOT_TOKEN"]` to get the value of the `BOT_TOKEN` environment variable. If you are not familiar with environment variables, you can read more about them [here](https://en.wikipedia.org/wiki/Environment_variable).
+3. Tourmaline uses a system of handlers to handle different types of events. In this case we are creating a `CommandHandler` which will handle the `/echo` command. The first argument to the `CommandHandler` is the name of the command, and the second argument is a block of code that will be executed when the command is received. The block of code is passed a `Context` object, which contains information about the command and the message that triggered it.
+4. The `Context` object has a `text` property which contains the text of the message that triggered the command. We can use this to get the text of the message and reply with it. We use the `reply` method to send a message back to the chat that the command was sent in. We also check to make sure that the message isn't empty, because if the user just sends `/echo` without any text, the message will be empty.
+5. Now that we have created our handler, we need to register it with the `Client` so that it can be used. This is done with the `register` method.
+6. Finally, we call the `poll` method on the `Client` to start the bot. This method will block the current thread, so it is important that you call it at the end of your code.
 
 And that's really all their is to it. Now we can run our code!
 
 ```sh
-export API_KEY=YOUR_BOT_API_TOKEN
+export LOG_LEVEL=info # by default you won't see any logs, so we set the log level to info
+export BOT_TOKEN=YOUR_BOT_API_TOKEN
 crystal run ./src/echo_bot.cr
 ```
 
-You should be greeted with a log message in your console telling you that your bot is running, and if you visit your bot on Telegram and run the `/echo` command with some text (eg `/echo hello world`), you should receive a message in reply.
+If all goes well, you should see something like this:
+
+```sh
+2023-03-23T00:17:53.778090Z   INFO - tourmaline.poller: Polling for updates...
+```

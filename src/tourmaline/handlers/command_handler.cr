@@ -5,6 +5,7 @@ module Tourmaline
     getter commands : Array(String)
 
     def initialize(commands : String | Array(String), @proc : EventHandlerProc)
+      super()
       @commands = commands.is_a?(String) ? [commands] : commands
     end
 

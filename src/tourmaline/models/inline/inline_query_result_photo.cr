@@ -6,7 +6,7 @@ module Tourmaline
 
     property photo_url : String
 
-    property thumb_url : String
+    property thumbnail_url : String
 
     property photo_width : Int32?
 
@@ -26,7 +26,7 @@ module Tourmaline
 
     property input_message_content : InputMessageContent?
 
-    def initialize(@id, @photo_url, @thumb_url, @photo_width = nil, @photo_height = nil, @title = nil,
+    def initialize(@id, @photo_url, @thumbnail_url, @photo_width = nil, @photo_height = nil, @title = nil,
                    @description = nil, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
                    @reply_markup = nil, @input_message_content = nil)
     end

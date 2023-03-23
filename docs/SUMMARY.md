@@ -1,21 +1,9 @@
 * [Home](index.md)
 * [Usage](usage/index.md)
     * [Getting Started](usage/getting_started.md)
-* Features
-    * [Handlers](features/handlers.md)
-    * [Async](features/async.md)
-    * [Stage](features/stage.md)
-    * [Formatting](features/format.md)
-    * [Background Jobs](features/background_jobs.md)
-    * [Emoji Support](features/emoji_support.md)
-    * [Kemal Middleware](features/kemal_middleware.md)
-    * [Multilevel Menus](features/multilevel_menus.md)
-    * [Paginated Keyboards](features/paginated_keyboards.md)
-    * [TDLight](features/tdlight.md)
 * Resources
     * [FAQ](resources/faq.md)
     * [Asking Questions](http://www.catb.org/~esr/faqs/smart-questions.html)
 * API Reference
     * [Changelog](changelog.md)
     * [Tourmaline](api_reference/Tourmaline/)
-    * [String](api_reference/String/)

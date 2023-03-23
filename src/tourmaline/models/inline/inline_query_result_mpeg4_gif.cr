@@ -12,9 +12,9 @@ module Tourmaline
 
     getter mpeg4_duration : Int32?
 
-    getter thumb_url : String?
+    getter thumbnail_url : String?
 
-    getter thumb_mime_type : String?
+    getter thumbnail_mime_type : String?
 
     getter title : String?
 
@@ -28,9 +28,9 @@ module Tourmaline
 
     getter input_message_content : InputMessageContent?
 
-    def initialize(@id, @mpeg4_url, @mpeg4_width = nil, @mpeg4_height = nil, @mpeg4_duration = nil, @thumb_url = nil,
-                   @title = nil, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
-                   @reply_markup = nil, @input_message_content = nil)
+    def initialize(@id, @mpeg4_url, @mpeg4_width = nil, @mpeg4_height = nil, @mpeg4_duration = nil, @thumbnail_url = nil,
+                   @thumbnail_mime_type = nil, @title = nil, @caption = nil, @parse_mode = nil,
+                   @caption_entities = [] of MessageEntity, @reply_markup = nil, @input_message_content = nil)
     end
   end
 end

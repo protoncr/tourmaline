@@ -1,22 +1,20 @@
 require "../src/tourmaline"
 require "../src/tourmaline/extra/paginated_keyboard"
 
-class PaginationBot < Tourmaline::Client
-  @[Command("start")]
-  def start_command(ctx)
-    results = ('a'..'z').to_a.map(&.to_s)
+client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
 
-    keyboard = PaginatedKeyboard.new(
-      self,
-      results: results,
-      per_page: 5,
-      prefix: "{index}. ",
-      footer: "\nPage: {page} of {page count}"
-    )
+start_command = Tourmaline::CommandHandler.new(:start) do |ctx|
+  results = ('a'..'z').to_a.map(&.to_s)
 
-    ctx.message.reply_with_paginated_keyboard(keyboard, parse_mode: :markdown)
-  end
+  PaginatedKeyboard.new(
+    ctx,
+    results: results,
+    per_page: 5,
+    prefix: "{index}. ",
+    footer: "\nPage: {page} of {page count}"
+  ).send
 end
 
-bot = PaginationBot.new(bot_token: ENV["API_KEY"])
-bot.poll
+client.register(start_command)
+
+client.poll

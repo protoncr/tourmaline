@@ -1,14 +1,15 @@
 require "../src/tourmaline"
 
-class InlineQueryBot < Tourmaline::Client
-  @[OnInlineQuery("")]
-  def on_inline_query(ctx)
-    results = InlineQueryResult.build do
+client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
+
+on_inline_query = Tourmaline::InlineQueryHandler.new(/.*/) do |ctx|
+  if query = ctx.inline_query
+    results = Tourmaline::InlineQueryResult.build do
       article(
         id: "query",
         title: "Inline title",
-        input_message_content: InputTextMessageContent.new("Click!"),
-        description: "Your query: #{ctx.query.query}"
+        input_message_content: Tourmaline::InputTextMessageContent.new("Click!"),
+        description: "Your query: #{query.query}"
       )
 
       photo(
@@ -25,9 +26,10 @@ class InlineQueryBot < Tourmaline::Client
       )
     end
 
-    ctx.query.answer(results)
+    ctx.answer_query(results)
   end
 end
 
-bot = InlineQueryBot.new(bot_token: ENV["API_KEY"])
-bot.poll
+client.register(on_inline_query)
+
+client.poll

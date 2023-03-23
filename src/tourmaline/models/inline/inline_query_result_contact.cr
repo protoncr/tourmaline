@@ -16,14 +16,14 @@ module Tourmaline
 
     getter input_message_content : InputMessageContent?
 
-    getter thumb_url : String?
+    getter thumbnail_url : String?
 
-    getter thumb_width : Int32?
+    getter thumbnail_width : Int32?
 
-    getter thumb_height : Int32?
+    getter thumbnail_height : Int32?
 
     def initialize(@id, @phone_number, @first_name, @last_name = nil, @user_id = nil, @reply_markup = nil, @input_message_content = nil,
-                   @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
+                   @thumbnail_url = nil, @thumbnail_width = nil, @thumbnail_height = nil)
     end
   end
 end

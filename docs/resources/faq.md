@@ -10,9 +10,9 @@ If the answer to that question is "yes", as I hope it is, then there are a few t
 
 Assuming you have the right token, be sure to check that your bot is actually running and that you have a working internet connection. Try running your bot with the `LOG_LEVEL` environement variable set to `DEBUG` and check the logs. When running in polling mode you should see a whole bunch of calls to `getUpdates`.
 
-If that didn't work, you may need to check if group privacy mode is turned on. Go to BotFather, send the command `/mybots`, select your bot, go to `Bot Settings > Group Privacy > Turn off`. This should only be necessary if your bot is running in groups and you're using non-standard command prefixes, or other handlers like the [HearsHandler][Tourmaline::Handlers::HearsHandler].
+If that didn't work, you may need to check if group privacy mode is turned on. Go to BotFather, send the command `/mybots`, select your bot, go to `Bot Settings > Group Privacy > Turn off`. This should only be necessary if your bot is running in groups and you're using non-standard command prefixes, or other handlers like the [HearsHandler][Tourmaline::HearsHandler].
 
-Lastly be sure to check the commands you're trying to send. The standard [CommandHandler][Tourmaline::Handlers::CommandHandler] will only respond to commands with the `/` prefix. Also be sure to remember that command names should be unprefixed. For example:
+Lastly be sure to check the commands you're trying to send. The standard [CommandHandler][Tourmaline::CommandHandler] will only respond to commands with the `/` prefix. Also be sure to remember that command names should be unprefixed. For example:
 
 ```diff
 - @[Command("/echo")]
@@ -66,7 +66,7 @@ def persist_users(update)
 end
 ```
 
-The one exception to this rule is [chat members][Tourmaline::ChatMember]. If you know the user's id or username and a group that they belong to which your bot also belongs to, you can use [#get_chat_member][Tourmaline::Client::CoreMethods#get_chat_member(chat,user)] to get their [ChatMember][Tourmaline::ChatMember] record.
+The one exception to this rule is [chat members][Tourmaline::ChatMember]. If you know the user's id or username and a group that they belong to which your bot also belongs to, you can use [#get_chat_member][Tourmaline::Client#get_chat_member(chat,user)] to get their [ChatMember][Tourmaline::ChatMember] record.
 
 ### I have a question not listed here, where can I ask?
 

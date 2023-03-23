@@ -8,7 +8,7 @@ module Tourmaline
 
     property mime_type : String
 
-    property thumb_url : String
+    property thumbnail_url : String
 
     property title : String
 
@@ -30,7 +30,7 @@ module Tourmaline
 
     property input_message_content : InputMessageContent?
 
-    def initialize(@id, @video_url, @mime_type, @thumb_url, @title, @caption = nil, @parse_mode = nil,
+    def initialize(@id, @video_url, @mime_type, @thumbnail_url, @title, @caption = nil, @parse_mode = nil,
                    @caption_entities = [] of MessageEntity, @video_width = nil, @video_height = nil,
                    @video_duration = nil, @description = nil, @reply_markup = nil, @input_message_content = nil)
     end

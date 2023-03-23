@@ -1,59 +1,51 @@
 require "../src/tourmaline"
 
-class ShopBot < Tourmaline::Client
-  INVOICE = {
-    title:           "Working Time Machine",
-    description:     "Want to visit your great-great-great-grandparents? Make a fortune at the races? Shake hands with Hammurabi and take a stroll in the Hanging Gardens? Order our Working Time Machine today!",
-    payload:         {coupon: "BLACK FRIDAY"}.to_s,
-    provider_token:  ENV["PROVIDER_TOKEN"],
-    start_parameter: "time-machine-sku",
-    currency:        "usd",
-    prices:          [
-      LabeledPrice.new(label: "Working Time Machine", amount: 4200),
-      LabeledPrice.new(label: "Gift Wrapping", amount: 1000),
-    ],
-    photo_url: "https://img.clipartfest.com/5a7f4b14461d1ab2caaa656bcee42aeb_future-me-fredo-and-pidjin-the-webcomic-time-travel-cartoon_390-240.png",
-  }
+client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
 
-  SHIPPING_OPTIONS = [
-    ShippingOption.new("unicorn", "Unicorn express", [LabeledPrice.new(label: "Unicorn", amount: 2000)]),
-    ShippingOption.new("slowpoke", "Slowpoke Mail", [LabeledPrice.new(label: "Unicorn", amount: 100)]),
-  ]
+INVOICE = {
+  title:           "Working Time Machine",
+  description:     "Want to visit your great-great-great-grandparents? Make a fortune at the races? Shake hands with Hammurabi and take a stroll in the Hanging Gardens? Order our Working Time Machine today!",
+  payload:         {coupon: "BLACK FRIDAY"}.to_s,
+  provider_token:  ENV["PROVIDER_TOKEN"],
+  start_parameter: "time-machine-sku",
+  currency:        "usd",
+  prices:          [
+    Tourmaline::LabeledPrice.new(label: "Working Time Machine", amount: 4200),
+    Tourmaline::LabeledPrice.new(label: "Gift Wrapping", amount: 1000),
+  ],
+  photo_url: "https://img.clipartfest.com/5a7f4b14461d1ab2caaa656bcee42aeb_future-me-fredo-and-pidjin-the-webcomic-time-travel-cartoon_390-240.png",
+}
 
-  REPLY_MARKUP = InlineKeyboardMarkup.build do
-    pay_button "💸 Buy"
-    url_button "❤️", "https://github.com/watzon/tourmaline"
-  end
+SHIPPING_OPTIONS = [
+Tourmaline::ShippingOption.new("unicorn", "Unicorn express", [Tourmaline::LabeledPrice.new(label: "Unicorn", amount: 2000)]),
+Tourmaline::ShippingOption.new("slowpoke", "Slowpoke Mail", [Tourmaline::LabeledPrice.new(label: "Unicorn", amount: 100)]),
+]
 
-  @[Command("start")]
-  def start_command(ctx)
-    ctx.message.reply_with_invoice(**INVOICE)
-  end
-
-  @[Command("buy")]
-  def buy_command(ctx)
-    ctx.message.reply_with_invoice(**INVOICE, reply_markup: REPLY_MARKUP)
-  end
-
-  @[On(:shipping_query)]
-  def on_shipping_query(ctx)
-    if query = ctx.shipping_query
-      query.answer(true, shipping_options: SHIPPING_OPTIONS)
-    end
-  end
-
-  @[On(:pre_checkout_query)]
-  def on_pre_checkout_query(ctx)
-    if query = ctx.pre_checkout_query
-      query.answer(true)
-    end
-  end
-
-  @[On(:successful_payment)]
-  def on_successful_payment(ctx)
-    puts "Wooooo"
-  end
+REPLY_MARKUP = Tourmaline::InlineKeyboardMarkup.build do
+  pay_button "💸 Buy"
+  url_button "❤️", "https://github.com/watzon/tourmaline"
 end
 
-bot = ShopBot.new(bot_token: ENV["API_KEY"])
-bot.poll
+start_command = Tourmaline::CommandHandler.new("start") do |ctx|
+  ctx.reply_with_invoice(**INVOICE)
+end
+
+buy_command = Tourmaline::CommandHandler.new("buy") do |ctx|
+  ctx.reply_with_invoice(**INVOICE.merge({ reply_markup: REPLY_MARKUP }))
+end
+
+client.register(start_command, buy_command)
+
+client.on(:shipping_query) do |ctx|
+  ctx.answer_query(true, shipping_options: SHIPPING_OPTIONS)
+end
+
+client.on(:pre_checkout_query) do |ctx|
+  query.answer(true)
+end
+
+client.on(:successful_payment) do |ctx|
+  ctx.reply("Thank you for your purchase!")
+end
+
+client.poll

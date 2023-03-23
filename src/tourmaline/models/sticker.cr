@@ -18,7 +18,7 @@ module Tourmaline
     @[JSON::Field(key: "is_video")]
     getter? video : Bool
 
-    getter thumb : PhotoSize?
+    getter thumbnail : PhotoSize?
 
     getter emoji : String?
 
@@ -36,6 +36,20 @@ module Tourmaline
       Regular
       Mask
       CustomEmoji
+
+      def self.new(pull : JSON::PullParser)
+        parse(pull.read_string.camelcase)
+      end
+
+      def to_json(json : JSON::Builder)
+        json.string(to_s.underscore)
+      end
+    end
+
+    enum Format
+      Static
+      Animated
+      Video
 
       def self.new(pull : JSON::PullParser)
         parse(pull.read_string.camelcase)

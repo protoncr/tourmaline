@@ -16,6 +16,6 @@ module Tourmaline
 
     getter stickers : Array(Sticker)
 
-    getter thumb : PhotoSize?
+    getter thumbnail : PhotoSize?
   end
 end

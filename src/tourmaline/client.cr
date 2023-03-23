@@ -23,7 +23,6 @@ module Tourmaline
     include Logger
 
     DEFAULT_API_URL          = "https://api.telegram.org/"
-    DEFAULT_COMMAND_PREFIXES = ["/"]
 
     # Gets the name of the Client at the time the Client was
     # started. Refreshing can be done by setting
@@ -49,6 +48,9 @@ module Tourmaline
     # :    the API endpoint to use for requests; default is `https://api.telegram.org`, but for
     #      TDLight methods to work you may consider hosting your own instance or using one of
     #      the official ones such as `https://telegram.rest`
+    #
+    # `default_parse_mode`
+    # :    the default parse mode to use for messages; default is `ParseMode::None` (no formatting)
     #
     # `pool_capacity`
     # :    the maximum number of concurrent HTTP connections to use
@@ -78,7 +80,7 @@ module Tourmaline
     # :    a password to use for a proxy that requires authentication
     def initialize(@bot_token : String,
                    @endpoint = DEFAULT_API_URL,
-                   @default_parse_mode = ParseMode::Markdown,
+                   @default_parse_mode : ParseMode = ParseMode::Markdown,
                    pool_capacity = 200,
                    initial_pool_size = 20,
                    pool_timeout = 0.1,
@@ -119,12 +121,21 @@ module Tourmaline
       dispatcher.on(action, &block)
     end
 
+    def on(*actions : Symbol | UpdateAction, &block : Context ->)
+      actions.each do |action|
+        action = UpdateAction.parse(action.to_s) if action.is_a?(Symbol)
+        dispatcher.on(action, &block)
+      end
+    end
+
     def use(middleware : Middleware)
       dispatcher.use(middleware)
     end
 
-    def register(handler : EventHandler)
-      dispatcher.register(handler)
+    def register(*handlers : EventHandler)
+      handlers.each do |handler|
+        dispatcher.register(handler)
+      end
     end
 
     def poll
@@ -144,7 +155,7 @@ module Tourmaline
     end
 
     # :nodoc:
-    MULTIPART_METHODS = %w(sendAudio sendDocument sendPhoto sendVideo sendAnimation sendVoice sendVideoNote)
+    MULTIPART_METHODS = %w(sendAudio sendDocument sendPhoto sendVideo sendAnimation sendVoice sendVideoNote sendMediaGroup)
 
     # Sends a request to the Telegram Client API. Returns the raw response.
     def request_raw(method : String, params = {} of String => String)
@@ -167,10 +178,10 @@ module Tourmaline
         begin
           if multipart
             config = build_form_data_config(params)
-            response = client.exec(**config, path: path)
+            response = client.exec(**config.merge({path: path}))
           else
             config = build_json_config(params)
-            response = client.exec(**config, path: path)
+            response = client.exec(**config.merge({path: path}))
           end
         rescue ex : IO::Error | IO::TimeoutError
           Log.error { ex.message }
@@ -191,11 +202,18 @@ module Tourmaline
       end
     end
 
-    protected def object_or_id(object)
+    protected def extract_id(object)
+      return if object.nil?
       if object.responds_to?(:id)
         return object.id
+      elsif object.responds_to?(:message_id)
+        return object.message_id
+      elsif object.responds_to?(:file_id)
+        return object.file_id
+      elsif object.responds_to?(:to_i)
+        return object.to_i
       end
-      object
+      raise ArgumentError.new("Expected object with id or message_id, or integer, got #{object.class}")
     end
 
     protected def build_json_config(payload)
@@ -254,9 +272,9 @@ module Tourmaline
 
     protected def attach_form_media(form : MIME::Multipart::Builder, value : InputMedia)
       media = value.media
-      thumb = value.responds_to?(:thumb) ? value.thumb : nil
+      thumbnail = value.responds_to?(:thumbnail) ? value.thumbnail : nil
 
-      {media: media, thumb: thumb}.each do |key, item|
+      {media: media, thumbnail: thumbnail}.each do |key, item|
         item = check_open_local_file(item)
         if item.is_a?(File)
           id = Random.new.random_bytes(16).hexstring
@@ -269,8 +287,8 @@ module Tourmaline
 
           if key == :media
             value.media = "attach://#{id}"
-          elsif value.responds_to?(:thumb)
-            value.thumb = "attach://#{id}"
+          elsif value.responds_to?(:thumbnail)
+            value.thumbnail = "attach://#{id}"
           end
         end
       end
@@ -404,12 +422,9 @@ module Tourmaline
     #   channel, it can delete any message there.
     # Returns `true` on success.
     def delete_message(chat, message)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      message_id = message.is_a?(Int::Primitive | Nil) ? message : message.message_id
-
       request(Bool, "deleteMessage", {
-        chat_id:    chat_id,
-        message_id: message_id,
+        chat_id:    extract_id(chat),
+        message_id: extract_id(message),
       })
     end
 
@@ -422,7 +437,7 @@ module Tourmaline
       caption,
       message = nil,
       inline_message = nil,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       caption_entities = [] of MessageEntity,
       reply_markup = nil
     )
@@ -430,16 +445,11 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
-      inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
-
       request(Bool | Message, "editMessageCaption", {
-        chat_id:           chat_id,
+        chat_id:           extract_id(chat),
         caption:           caption,
-        message_id:        message_id,
-        inline_message_id: inline_message_id,
+        message_id:        extract_id(message),
+        inline_message_id: extract_id(inline_message),
         parse_mode:        parse_mode,
         caption_entities:  caption_entities,
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
@@ -460,14 +470,10 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
-      inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
-
       request(Bool | Message, "editMessageReplyMarkup", {
-        chat_id:           chat_id,
-        message_id:        message_id,
-        inline_message_id: inline_message_id,
+        chat_id:           extract_id(chat),
+        message_id:        extract_id(message),
+        inline_message_id: extract_id(inline_message_id),
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
     end
@@ -480,7 +486,7 @@ module Tourmaline
       chat = nil,
       message = nil,
       inline_message = nil,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       entities = [] of MessageEntity,
       disable_link_preview = false,
       reply_markup = nil
@@ -489,19 +495,10 @@ module Tourmaline
         raise "edit_message_text requires either a chat and a message, or an inline_message"
       end
 
-      if !inline_message
-        chat_id = chat.is_a?(Int::Primitive | String | Nil) ? chat : chat.id
-        message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
-      else
-        inline_message_id = inline_message.is_a?(String | Int::Primitive) ? inline_message : inline_message.id
-      end
-
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
-
       request(Message | Bool, "editMessageText", {
-        chat_id:                  chat_id,
-        message_id:               message_id,
-        inline_message_id:        inline_message_id,
+        chat_id:                  extract_id(chat),
+        message_id:               extract_id(message),
+        inline_message_id:        extract_id(inline_message),
         text:                     text,
         parse_mode:               parse_mode,
         entities:                 entities,
@@ -520,15 +517,11 @@ module Tourmaline
       disable_notification = false,
       protect_content = false
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      message_id = message.is_a?(Int) ? message : message.id
-      from_chat_id = from_chat.is_a?(Int) ? from_chat : from_chat.id
-
       request(Message, "forwardMessage", {
-        chat_id:              chat_id,
+        chat_id:              extract_id(chat),
         message_thread_id:    message_thread_id,
-        from_chat_id:         from_chat_id,
-        message_id:           message_id,
+        from_chat_id:         extract_id(from_chat_id),
+        message_id:           extract_id(message_id),
         disable_notification: disable_notification,
         protect_content:      protect_content,
       })
@@ -548,10 +541,8 @@ module Tourmaline
     #     chat, then use MTProto if that fails. When using MTProto this method
     #     is __heavily__ rate limited, so be careful.
     def get_chat(chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Chat, "getChat", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
@@ -561,35 +552,25 @@ module Tourmaline
     # group or a supergroup and no administrators were appointed,
     # only the creator will be returned.
     def get_chat_administrators(chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Array(ChatMember), "getChatAdministrators", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
     # Use this method to get information about a member of a chat. Returns a
     # `ChatMember` object on success.
     def get_chat_member(chat, user)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
-
       chat_member = request(ChatMember, "getChatMember", {
-        chat_id: chat_id,
-        user_id: user_id,
+        chat_id: extract_id(chat),
+        user_id: extract_id(user_id),
       })
-
-      chat_member.chat_id = chat_id
-      chat_member
     end
 
     # Use this method to get the number of members in a chat.
     # Returns `Int32` on success.
     def get_chat_members_count(chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Int32, "getChatMembersCount", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
@@ -609,10 +590,8 @@ module Tourmaline
       icon_color = nil,
       icon_custom_emoji_id = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(ForumTopic, "createForumTopic", {
-        chat_id:              chat_id,
+        chat_id:              extract_id(chat),
         name:                 name,
         icon_color:           icon_color,
         icon_custom_emoji_id: icon_custom_emoji_id,
@@ -630,10 +609,8 @@ module Tourmaline
       name,
       icon_custom_emoji_id
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "editForumTopic", {
-        chat_id:              chat_id,
+        chat_id:              extract_id(chat),
         message_thread_id:    message_thread_id,
         name:                 name,
         icon_custom_emoji_id: icon_custom_emoji_id,
@@ -648,10 +625,8 @@ module Tourmaline
       chat,
       message_thread_id
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "closeForumTopic", {
-        chat_id:           chat_id,
+        chat_id:           extract_id(chat),
         message_thread_id: message_thread_id,
       })
     end
@@ -665,10 +640,8 @@ module Tourmaline
       chat,
       message_thread_id
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "reopenForumTopic", {
-        chat_id:           chat_id,
+        chat_id:           extract_id(chat),
         message_thread_id: message_thread_id,
       })
     end
@@ -681,10 +654,8 @@ module Tourmaline
       chat,
       message_thread_id
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "deleteForumTopic", {
-        chat_id:           chat_id,
+        chat_id:           extract_id(chat),
         message_thread_id: message_thread_id,
       })
     end
@@ -697,10 +668,8 @@ module Tourmaline
       chat,
       message_thread_id
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "unpinAllForumTopicMessages", {
-        chat_id:           chat_id,
+        chat_id:           extract_id(chat),
         message_thread_id: message_thread_id,
       })
     end
@@ -748,10 +717,8 @@ module Tourmaline
       offset = nil,
       limit = nil
     )
-      user_id = user.is_a?(Int) ? user : user.id
-
       request(UserProfilePhotos, "getUserProfilePhotos", {
-        user_id: user_id,
+        user_id: extract_id(user_id),
         offset:  offset,
         limit:   limit,
       })
@@ -774,13 +741,11 @@ module Tourmaline
       until_date = nil,
       revoke_messages = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
       until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
 
       request(Bool, "banChatMember", {
-        chat_id:         chat_id,
-        user_id:         user_id,
+        chat_id:         extract_id(chat),
+        user_id:         extract_id(user_id),
         until_date:      until_date,
         revoke_messages: revoke_messages,
       })
@@ -800,12 +765,9 @@ module Tourmaline
       user,
       only_if_banned = false
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
-
       request(Bool, "unbanChatMember", {
-        chat_id:        chat_id,
-        user_id:        user_id,
+        chat_id:        extract_id(chat),
+        user_id:        extract_id(user_id),
         only_if_banned: only_if_banned,
       })
     end
@@ -842,14 +804,12 @@ module Tourmaline
       permissions,
       until_date = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
       until_date = until_date.to_unix unless (until_date.is_a?(Int) || until_date.nil?)
       permissions = permissions.is_a?(NamedTuple) ? ChatPermissions.new(**permissions) : permissions
 
       request(Bool, "restrictChatMember", {
-        chat_id:     chat_id,
-        user_id:     user_id,
+        chat_id:     extract_id(chat),
+        user_id:     extract_id(user_id),
         until_date:  until_date,
         permissions: permissions.to_json,
       })
@@ -877,12 +837,9 @@ module Tourmaline
       can_promote_members = nil,
       can_manage_topics = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
-
       request(Bool, "promoteChatMember", {
-        chat_id:                chat_id,
-        user_id:                user_id,
+        chat_id:                extract_id(chat),
+        user_id:                extract_id(user_id),
         is_anonymous:           is_anonymous,
         until_date:             until_date,
         can_manage_chat:        can_manage_chat,
@@ -907,10 +864,8 @@ module Tourmaline
     # > **Note:** In regular groups (non-supergroups), this method will only work if the
     # > `All Members Are Admins` setting is off in the target group.
     def set_chat_photo(chat, photo)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "setChatPhoto", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
         photo:   photo,
       })
     end
@@ -923,22 +878,17 @@ module Tourmaline
     # > **Note:** In regular groups (non-supergroups), this method will only work if the
     # `All Members Are Admins` setting is off in the target group.
     def delete_chat_photo(chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "deleteChatPhoto", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
     # Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
     # Returns True on success.
     def set_chat_admininstrator_custom_title(chat, user, custom_title)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
-
       request(Bool, "setChatAdministratorCustomTitle", {
-        chat_id:      chat_id,
-        user_id:      user_id,
+        chat_id:      extract_id(chat),
+        user_id:      extract_id(user_id),
         custom_title: custom_title,
       })
     end
@@ -950,12 +900,9 @@ module Tourmaline
     # must have the appropriate administrator rights.
     # Returns True on success.
     def ban_chat_sender_chat(chat, sender_chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      sender_chat_id = sender_chat.is_a?(Int::Primitive) ? sender_chat : sender_chat.id
-
       request(Bool, "banChatSenderChat", {
-        chat_id:        chat_id,
-        sender_chat_id: sender_chat_id,
+        chat_id:        extract_id(chat),
+        sender_chat_id: extract_id(sender_chat_id),
       })
     end
 
@@ -964,12 +911,9 @@ module Tourmaline
     # appropriate administrator rights.
     # Returns True on success.
     def unban_chat_sender_chat(chat, sender_chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      sender_chat_id = sender_chat.is_a?(Int::Primitive) ? sender_chat : sender_chat.id
-
       request(Bool, "unbanChatSenderChat", {
-        chat_id:        chat_id,
-        sender_chat_id: sender_chat_id,
+        chat_id:        extract_id(chat),
+        sender_chat_id: extract_id(sender_chat_id),
       })
     end
 
@@ -978,10 +922,8 @@ module Tourmaline
     # for this to work and must have the appropriate admin rights.
     # Returns the new invite link as `String` on success.
     def export_chat_invite_link(chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(String, "exportChatInviteLink", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
@@ -997,11 +939,10 @@ module Tourmaline
       member_limit = nil,
       creates_join_request = false
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
       expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
 
       request(ChatInviteLink, "createChatInviteLink", {
-        chat_id:              chat_id,
+        chat_id:              extract_id(chat),
         name:                 name,
         expire_date:          expire_date,
         member_limit:         member_limit,
@@ -1021,12 +962,11 @@ module Tourmaline
       member_limit = nil,
       creates_join_request = false
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
       invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
       expire_date = expire_date.to_unix unless (expire_date.is_a?(Int) || expire_date.nil?)
 
       request(ChatInviteLink, "editChatInviteLink", {
-        chat_id:              chat_id,
+        chat_id:              extract_id(chat),
         invite_link:          invite_link,
         name:                 name,
         expire_date:          expire_date,
@@ -1041,11 +981,10 @@ module Tourmaline
     # appropriate administrator rights.
     # Returns the revoked invite link as ChatInviteLink object.
     def revoke_chat_invite_link(chat, invite_link)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
       invite_link = invite_link.is_a?(String) ? invite_link : invite_link.invite_link
 
       request(ChatInviteLink, "revokeChatInviteLink", {
-        chat_id:     chat_id,
+        chat_id:     extract_id(chat),
         invite_link: invite_link,
       })
     end
@@ -1055,12 +994,9 @@ module Tourmaline
     # administrator right.
     # Returns True on success.
     def approve_chat_join_request(chat, user)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
-
       request(Bool, "approveChatJoinRequest", {
-        chat_id: chat_id,
-        user_id: user_id,
+        chat_id: extract_id(chat),
+        user_id: extract_id(user_id),
       })
     end
 
@@ -1069,12 +1005,9 @@ module Tourmaline
     # administrator right.
     # Returns True on success.
     def decline_chat_join_request(chat, user)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      user_id = user.is_a?(Int) ? user : user.id
-
       request(Bool, "declineChatJoinRequest", {
-        chat_id: chat_id,
-        user_id: user_id,
+        chat_id: extract_id(chat),
+        user_id: extract_id(user_id),
       })
     end
 
@@ -1083,10 +1016,8 @@ module Tourmaline
     # the can_restrict_members admin rights.
     # Returns True on success.
     def set_chat_permissions(chat, permissions)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "setChatPermissions", {
-        chat_id:     chat_id,
+        chat_id:     extract_id(chat),
         permissions: permissions.to_json,
       })
     end
@@ -1099,10 +1030,8 @@ module Tourmaline
     # > **Note:** In regular groups (non-supergroups), this method will only
     # > work if the `All Members Are Admins` setting is off in the target group.
     def set_chat_title(chat, title)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "setchatTitle", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
         title:   title,
       })
     end
@@ -1112,10 +1041,8 @@ module Tourmaline
     # must have the appropriate admin rights.
     # Returns `true` on success.
     def set_chat_description(chat, description)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "setchatDescription", {
-        chat_id:     chat_id,
+        chat_id:     extract_id(chat),
         description: description,
       })
     end
@@ -1126,12 +1053,9 @@ module Tourmaline
     # `can_edit_messages` admin right in the channel.
     # Returns `true` on success.
     def pin_chat_message(chat, message, disable_notification = false)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      message_id = message.is_a?(Int) ? message : message.id
-
       request(Bool, "pinChatMessage", {
-        chat_id:              chat_id,
-        message_id:           message_id,
+        chat_id:              extract_id(chat),
+        message_id:           extract_id(message_id),
         disable_notification: disable_notification,
       })
     end
@@ -1142,20 +1066,15 @@ module Tourmaline
     # ‘can_edit_messages’ admin right in the channel.
     # Returns `true` on success.
     def unpin_chat_message(chat, message = nil)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
-
       request(Bool, "unpinChatMessage", {
-        chat_id:    chat_id,
-        message_id: message_id,
+        chat_id:    extract_id(chat),
+        message_id: extract_id(message_id),
       })
     end
 
     def unpin_all_chat_messages(chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "unpinAllChatMessages", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
@@ -1163,10 +1082,8 @@ module Tourmaline
     # supergroup, or channel.
     # Returns `true` on success.
     def leave_chat(chat)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "leaveChat", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
@@ -1187,19 +1104,15 @@ module Tourmaline
       duration = nil,
       preformer = nil,
       title = nil,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       disable_notification = false,
       protect_content = false,
       reply_to_message = nil,
       allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
-
       request(Message, "sendAudio", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         audio:                       audio,
         caption:                     caption,
@@ -1210,7 +1123,7 @@ module Tourmaline
         parse_mode:                  parse_mode,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1223,34 +1136,30 @@ module Tourmaline
       duration = nil,
       width = nil,
       height = nil,
-      thumb = nil,
+      thumbnail = nil,
       caption = nil,
       caption_entities = [] of MessageEntity,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       disable_notification = false,
       protect_content = false,
       reply_to_message = nil,
       allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
-
       request(Message, "sendAnimation", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         animation:                   animation,
         duration:                    duration,
         width:                       width,
         height:                      height,
-        thumb:                       thumb,
+        thumbnail:                   thumbnail,
         caption:                     caption,
         caption_entities:            caption_entities,
         parse_mode:                  parse_mode,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1272,10 +1181,8 @@ module Tourmaline
       chat,
       action : ChatAction
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-
       request(Bool, "sendChatAction", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
         action:  action.to_s,
       })
     end
@@ -1294,18 +1201,15 @@ module Tourmaline
       allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-
       request(Message, "sendContact", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         phone_number:                phone_number,
         first_name:                  first_name,
         last_name:                   last_name,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1327,12 +1231,12 @@ module Tourmaline
         reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
         request(Message, "sendDice", {
-          chat_id:              chat_id,
+          chat_id:              extract_id(chat),
           message_thread_id:    message_thread_id,
           emoji:                {{ val[1] }},
           disable_notification: disable_notification,
           protect_content: protect_content,
-          reply_to_message_id:  reply_to_message_id,
+          reply_to_message_id:  extract_id(reply_to_message),
           allow_sending_without_reply:         allow_sending_without_reply,
           reply_markup:         reply_markup,
         })
@@ -1350,7 +1254,7 @@ module Tourmaline
       message_thread_id = nil,
       caption = nil,
       caption_entities = [] of MessageEntity,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       disable_notification = false,
       protect_content = false,
       reply_to_message = nil,
@@ -1358,12 +1262,9 @@ module Tourmaline
       reply_markup = nil
     )
       document = check_open_local_file(document)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
       request(Message, "sendDocument", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         document:                    document,
         caption:                     caption,
@@ -1371,7 +1272,7 @@ module Tourmaline
         parse_mode:                  parse_mode,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1394,11 +1295,8 @@ module Tourmaline
       allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-
       request(Message, "sendLocation", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         latitude:                    latitude,
         longitude:                   longitude,
@@ -1408,7 +1306,7 @@ module Tourmaline
         proximity_alert_radius:      proximity_alert_radius,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1420,7 +1318,7 @@ module Tourmaline
       chat,
       text,
       message_thread_id = nil,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       entities = [] of MessageEntity,
       link_preview = false,
       disable_notification = false,
@@ -1429,12 +1327,8 @@ module Tourmaline
       allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
-
       request(Message, "sendMessage", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         text:                        text,
         parse_mode:                  parse_mode,
@@ -1442,7 +1336,7 @@ module Tourmaline
         disable_web_page_preview:    !link_preview,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1454,7 +1348,7 @@ module Tourmaline
       message,
       message_thread_id = nil,
       caption = nil,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       caption_entities = [] of MessageEntity,
       disable_notification = false,
       protect_content = false,
@@ -1462,23 +1356,17 @@ module Tourmaline
       allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      from_chat_id = from_chat.is_a?(Int::Primitive | String) ? from_chat : from_chat.id
-      message_id = message.is_a?(Int::Primitive) ? message : message.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
-
       request("copyMessage", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
-        from_chat_id:                from_chat_id,
-        message_id:                  message_id,
+        from_chat_id:                extract_id(from_chat_id),
+        message_id:                  extract_id(message_id),
         caption:                     caption,
         parse_mode:                  parse_mode,
         caption_entities:            caption_entities,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1491,7 +1379,7 @@ module Tourmaline
       photo,
       message_thread_id = nil,
       caption = nil,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       caption_entities = [] of MessageEntity,
       disable_notification = false,
       protect_content = false,
@@ -1500,12 +1388,9 @@ module Tourmaline
       reply_markup = nil
     )
       photo = check_open_local_file(photo)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int) || reply_to_message.nil? ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
       request(Message, "sendPhoto", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         photo:                       photo,
         caption:                     caption,
@@ -1513,7 +1398,7 @@ module Tourmaline
         caption_entities:            caption_entities,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1526,20 +1411,17 @@ module Tourmaline
       inline_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
       media = check_open_local_file(media)
-      message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
-      inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
 
       if !message_id && !inline_message_id
         raise "Either a message or inline_message is required"
       end
 
       request(Message, "editMessageMedia", {
-        chat_id:           chat_id,
+        chat_id:           extract_id(chat),
         media:             media,
-        message_id:        message_id,
-        inline_message_id: inline_message_id,
+        message_id:        extract_id(message_id),
+        inline_message_id: extract_id(inline_message_id),
         reply_markup:      reply_markup,
       })
     end
@@ -1555,16 +1437,13 @@ module Tourmaline
       reply_to_message = nil,
       allow_sending_without_reply = false
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-
       request(Array(Message), "sendMediaGroup", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         media:                       media,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
       })
     end
@@ -1588,11 +1467,8 @@ module Tourmaline
       allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-
       request(Message, "sendVenue", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         latitude:                    latitude,
         longitude:                   longitude,
@@ -1604,7 +1480,7 @@ module Tourmaline
         google_place_type:           google_place_type,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1625,7 +1501,7 @@ module Tourmaline
       height = nil,
       caption = nil,
       caption_entities = [] of MessageEntity,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       disable_notification = false,
       protect_content = false,
       reply_to_message = nil,
@@ -1633,12 +1509,9 @@ module Tourmaline
       reply_markup = nil
     )
       video = check_open_local_file(video)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
       request(Message, "sendVideo", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         video:                       video,
         duration:                    duration,
@@ -1649,7 +1522,7 @@ module Tourmaline
         parse_mode:                  parse_mode,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1668,7 +1541,7 @@ module Tourmaline
       height = nil,
       caption = nil,
       caption_entities = [] of MessageEntity,
-      parse_mode = default_parse_mode,
+      parse_mode : ParseMode = default_parse_mode,
       disable_notification = false,
       protect_content = false,
       reply_to_message = nil,
@@ -1676,12 +1549,9 @@ module Tourmaline
       reply_markup = nil
     )
       video_note = check_open_local_file(video_note)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-      parse_mode = parse_mode && !parse_mode.is_a?(ParseMode) ? ParseMode.parse(parse_mode.to_s) : parse_mode
 
       request(Message, "sendVideoNote", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         video_note:                  video_note,
         duration:                    duration,
@@ -1692,7 +1562,7 @@ module Tourmaline
         parse_mode:                  parse_mode,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1721,11 +1591,9 @@ module Tourmaline
       reply_markup = nil
     )
       voice = check_open_local_file(voice)
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
 
       request(Message, "sendVoice", {
-        chat_id:                     chat_id,
+        chat_id:                     extract_id(chat),
         message_thread_id:           message_thread_id,
         voice:                       voice,
         caption:                     caption,
@@ -1733,7 +1601,7 @@ module Tourmaline
         duration:                    duration,
         disable_notification:        disable_notification,
         protect_content:             protect_content,
-        reply_to_message_id:         reply_to_message_id,
+        reply_to_message_id:         extract_id(reply_to_message),
         allow_sending_without_reply: allow_sending_without_reply,
         reply_markup:                reply_markup ? reply_markup.to_json : nil,
       })
@@ -1761,20 +1629,16 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      message_id = message.is_a?(Int::Primitive | Nil) ? message : message.id
-      inline_message_id = inline_message.is_a?(Int::Primitive | Nil) ? inline_message : inline_message.id
-
       request(Bool | Message, "editMessageLiveLocation", {
-        chat_id:                chat_id,
+        chat_id:                extract_id(chat),
         latitude:               latitude,
         longitude:              longitude,
         horizontal_accuracy:    horizontal_accuracy,
         live_period:            live_period,
         proximity_alert_radius: proximity_alert_radius,
         heading:                heading,
-        message_id:             message_id,
-        inline_message_id:      inline_message_id,
+        message_id:             extract_id(message_id),
+        inline_message_id:      extract_id(inline_message_id),
         reply_markup:           reply_markup ? reply_markup.to_json : nil,
       })
     end
@@ -1794,14 +1658,10 @@ module Tourmaline
         raise "A message_id or inline_message_id is required"
       end
 
-      chat_id = object_or_id(chat)
-      message_id = object_or_id(message)
-      inline_message_id = object_or_id(inline_message)
-
       request(Bool | Message, "stopMessageLiveLocation", {
-        chat_id:           chat_id,
-        message_id:        message_id,
-        inline_message_id: inline_message_id,
+        chat_id:           extract_id(chat),
+        message_id:        extract_id(message_id),
+        inline_message_id: extract_id(inline_message_id),
         reply_markup:      reply_markup ? reply_markup.to_json : nil,
       })
     end
@@ -1841,6 +1701,52 @@ module Tourmaline
       })
     end
 
+    # Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty.
+    # Returns True on success.
+    def set_my_description(description : String, language_code : String? = nil)
+      request(Bool, "setMyDescription", {
+        description:   description,
+        language_code: language_code,
+      })
+    end
+
+    # Use this method to get the current bot description for the given user language.
+    # Returns BotDescription on success.
+    def get_my_description(language_code : String? = nil)
+      request(BotDescription, "getMyDescription", {
+        language_code: language_code,
+      })
+    end
+
+    # Use this method to change the bot's short description, which is shown on the bot's profile page and is sent
+    # together with the link when users share the bot.
+    # Returns True on success.
+    def set_my_short_description(description : String, language_code : String? = nil)
+      request(Bool, "setMyShortDescription", {
+        description:   description,
+        language_code: language_code,
+      })
+    end
+
+    # Use this method to get the current bot short description for the given user language.
+    # Returns BotShortDescription on success.
+    def get_my_short_description(language_code : String? = nil)
+      request(BotShortDescription, "getMyShortDescription", {
+        language_code: language_code,
+      })
+    end
+
+    # Use this method to change the bot's menu button in a private chat, or the default menu button.
+    # Returns True on success.
+    def set_chat_menu_button(chat, menu_button : MenuButton? = nil)
+      chat_id = extract_id(chat)
+
+      request(Bool, "setChatMenuButton", {
+        chat_id:     extract_id(chat),
+        menu_button: menu_button ? menu_button.to_json : nil,
+      })
+    end
+
     # Use this method to change the default administrator rights requested by the bot when it's added
     # as an administrator to groups or channels. These rights will be suggested to users, but
     # they are are free to modify the list before adding the bot.
@@ -1873,19 +1779,19 @@ module Tourmaline
     # Use this method to send a game.
     # On success, the sent `Message` is returned.
     def send_game(
-      chat_id,
+      chat,
       game_short_name,
       message_thread_id = nil,
-      disable_notification = nil,
+      disable_notification = false,
       reply_to_message_id = nil,
       reply_markup = nil
     )
       request(Message, "sendGame", {
-        chat_id:              chat_id,
+        chat_id:              extract_id(chat),
         message_thread_id:    message_thread_id,
         game_short_name:      game_short_name,
         disable_notification: disable_notification,
-        reply_to_message_id:  reply_to_message_id,
+        reply_to_message_id:  extract_id(reply_to_message),
         reply_markup:         reply_markup,
       })
     end
@@ -1906,13 +1812,13 @@ module Tourmaline
       inline_message_id = nil
     )
       request(Bool | Message, "setGameScore", {
-        user_id:              user_id,
+        user_id:              extract_id(user_id),
         score:                score,
         force:                force,
         disable_edit_message: disable_edit_message,
-        chat_id:              chat_id,
-        message_id:           message_id,
-        inline_message_id:    inline_message_id,
+        chat_id:              extract_id(chat),
+        message_id:           extract_id(message_id),
+        inline_message_id:    extract_id(inline_message_id),
       })
     end
 
@@ -1931,10 +1837,10 @@ module Tourmaline
       inline_message_id = nil
     )
       request(Array(GameHighScore), "getGameHighScores", {
-        user_id:           user_id,
-        chat_id:           chat_id,
-        message_id:        message_id,
-        inline_message_id: inline_message_id,
+        user_id:           extract_id(user_id),
+        chat_id:           extract_id(chat),
+        message_id:        extract_id(message_id),
+        inline_message_id: extract_id(inline_message_id),
       })
     end
 
@@ -1953,7 +1859,7 @@ module Tourmaline
       errors : Array(PassportElementError)
     )
       request(Bool, "sendSticker", {
-        user_id: user_id,
+        user_id: extract_id(user_id),
         errors:  errors,
       })
     end
@@ -1984,15 +1890,12 @@ module Tourmaline
       send_phone_number_to_provider = nil,
       send_email_to_provider = nil,
       is_flexible = nil,
-      disable_notification = nil,
+      disable_notification = false,
       reply_to_message = nil,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int) ? reply_to_message : reply_to_message.message_id
-
       request(Message, "sendInvoice", {
-        chat_id:                       chat_id,
+        chat_id:                       extract_id(chat),
         message_thread_id:             message_thread_id,
         title:                         title,
         description:                   description,
@@ -2016,7 +1919,7 @@ module Tourmaline
         send_email_to_provider:        send_email_to_provider,
         is_flexible:                   is_flexible,
         disable_notification:          disable_notification,
-        reply_to_message_id:           reply_to_message_id,
+        reply_to_message_id:           extract_id(reply_to_message),
         reply_markup:                  reply_markup,
       })
     end
@@ -2135,13 +2038,8 @@ module Tourmaline
         raise "Quiz poll type requires a correct_option_id be set."
       end
 
-      chat_id = chat.is_a?(Int) ? chat : chat.id
-      if reply_to_message
-        reply_to_message = reply_to_message.is_a?(Int) ? reply_to_message : reply_to_message.message_id
-      end
-
       request(Message, "sendPoll", {
-        chat_id:                 chat_id,
+        chat_id:                 extract_id(chat),
         question:                question,
         options:                 options,
         anonymous:               anonymous,
@@ -2163,12 +2061,9 @@ module Tourmaline
       message,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int) ? chat : chat.id
-      message_id = message.is_a?(Int) ? message : message.message_id
-
       request(Poll, "stopPoll", {
-        chat_id:      chat_id,
-        message_id:   message_id,
+        chat_id:      extract_id(chat),
+        message_id:   extract_id(message_id),
         reply_markup: reply_markup,
       })
     end
@@ -2181,20 +2076,23 @@ module Tourmaline
       chat,
       sticker,
       message_thread_id = nil,
-      disable_notification = nil,
+      emoji = nil,
+      disable_notification = false,
+      protect_content = false,
       reply_to_message = nil,
+      allow_sending_without_reply = false,
       reply_markup = nil
     )
-      chat_id = chat.is_a?(Int::Primitive | String) ? chat : chat.id
-      reply_to_message_id = reply_to_message.is_a?(Int::Primitive | Nil) ? reply_to_message : reply_to_message.message_id
-
       request(Message, "sendSticker", {
-        chat_id:              chat_id,
-        message_thread_id:    message_thread_id,
-        sticker:              sticker,
-        disable_notification: disable_notification,
-        reply_to_message_id:  reply_to_message_id,
-        reply_markup:         reply_markup,
+        chat_id:                     extract_id(chat),
+        message_thread_id:           message_thread_id,
+        emoji:                       emoji,
+        protect_content:             protect_content,
+        sticker:                     sticker,
+        disable_notification:        disable_notification,
+        reply_to_message_id:         extract_id(reply_to_message),
+        allow_sending_without_reply: allow_sending_without_reply,
+        reply_markup:                reply_markup,
       })
     end
 
@@ -2220,34 +2118,21 @@ module Tourmaline
     # optionally returned in `#get_chat` requests to check if the
     # bot can use this method.
     # Returns `true` on success.
-    def set_chat_sticker_set(chat_id, sticker_set_name)
+    def set_chat_sticker_set(chat, sticker_set_name)
       request(Bool, "setChatStickerSet", {
-        chat_id:          chat_id,
+        chat_id:          extract_id(chat),
         sticker_set_name: sticker_set_name,
       })
     end
 
-    # Use this method to add a new sticker to a set created by the bot.
-    # Returns `true` on success.
-    def add_sticker_to_set(
-      user_id,
-      name,
-      emojis,
-      png_sticker = nil,
-      tgs_sticker = nil,
-      webm_sticker = nil,
-      mask_position = nil
-    )
-      raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker || webm_sticker
-
-      request(bool, "addStickerToSet", {
-        user_id:       user_id,
-        name:          name,
-        png_sticker:   png_sticker,
-        tgs_sticker:   tgs_sticker,
-        webm_sticker:  webm_sticker,
-        emojis:        emojis,
-        mask_position: mask_position,
+    # Use this method to upload a .png file with a sticker for later use in
+    # `#create_new_sticker_set` and `#add_sticker_to_set` methods (can be
+    # used multiple times).
+    # Returns the uploaded `TFile` on success.
+    def upload_sticker_file(user_id, png_sticker)
+      request(TFile, "uploadStickerFile", {
+        user_id:     extract_id(user_id),
+        png_sticker: png_sticker,
       })
     end
 
@@ -2258,25 +2143,44 @@ module Tourmaline
       user_id,
       name,
       title,
-      emojis,
-      png_sticker = nil,
-      tgs_sticker = nil,
-      webm_sticker = nil,
-      sticker_type = nil,
-      mask_position = nil
+      stickers : Array(InputSticker),
+      sticker_format : Sticker::Format,
+      sticker_type : Sticker::Type? = nil,
+      needs_repainting = false
     )
-      raise "A sticker is required, but none was provided" unless png_sticker || tgs_sticker || webm_sticker
+      raise "A list of stickers are required, but none were provided" if stickers.empty?
 
       request(Bool, "createNewStickerSet", {
-        user_id:       user_id,
-        name:          name,
-        title:         title,
-        png_sticker:   png_sticker,
-        tgs_sticker:   tgs_sticker,
-        webm_sticker:  webm_sticker,
-        sticker_type:  sticker_type,
-        emojis:        emojis,
-        mask_position: mask_position,
+        user_id:          extract_id(user_id),
+        name:             name,
+        title:            title,
+        stickers:         stickers,
+        sticker_format:   sticker_format,
+        sticker_type:     sticker_type,
+        needs_repainting: needs_repainting,
+      })
+    end
+
+    # Use this method to add a new sticker to a set created by the bot.
+    # Returns `true` on success.
+    def add_sticker_to_set(
+      user_id,
+      name,
+      sticker
+    )
+      request(bool, "addStickerToSet", {
+        user_id: extract_id(user_id),
+        name:    name,
+        sticker: sticker,
+      })
+    end
+
+    # Use this method to move a sticker in a set created by the bot to a specific position.
+    # Returns `true` on success.
+    def set_sticker_position_in_set(sticker, position)
+      request(Bool, "setStickerPositionInSet", {
+        sticker:  extract_id(sticker),
+        position: position,
       })
     end
 
@@ -2287,7 +2191,7 @@ module Tourmaline
     # Returns `true` on success.
     def delete_chat_sticker_set(chat_id)
       request(Bool, "deleteChatStickerSet", {
-        chat_id: chat_id,
+        chat_id: extract_id(chat),
       })
     end
 
@@ -2295,40 +2199,74 @@ module Tourmaline
     # Returns `true` on success.
     def delete_sticker_from_set(sticker)
       request(Bool, "deleteStickerFromSet", {
-        sticker: sticker,
+        sticker: extract_id(sticker),
       })
     end
 
-    # Use this method to move a sticker in a set created by the bot to a specific position.
-    # Returns `true` on success.
-    def set_sticker_position_in_set(sticker, position)
-      request(Bool, "setStickerPositionInSet", {
-        sticker:  sticker,
-        position: position,
+    # Use this method to change the list of emoji assigned to a regular or custom emoji sticker.
+    # The sticker must belong to a sticker set created by the bot.
+    # Returns True on success.
+    def set_sticker_emoji_list(sticker, emoji_list)
+      request(Bool, "setStickerEmoji", {
+        sticker:    extract_id(sticker),
+        emoji_list: emoji_list,
       })
     end
 
-    # Use this method to upload a .png file with a sticker for later use in
-    # `#create_new_sticker_set` and `#add_sticker_to_set` methods (can be
-    # used multiple times).
-    # Returns the uploaded `TFile` on success.
-    def upload_sticker_file(user_id, png_sticker)
-      request(TFile, "uploadStickerFile", {
-        user_id:     user_id,
-        png_sticker: png_sticker,
+    # Use this method to change search keywords assigned to a regular or custom emoji sticker.
+    # The sticker must belong to a sticker set created by the bot.
+    # Returns True on success.
+    def set_sticker_keywords(sticker, keywords)
+      request(Bool, "setStickerKeywords", {
+        sticker:  extract_id(sticker),
+        keywords: keywords,
+      })
+    end
+
+    # Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set
+    # that was created by the bot.
+    # Returns True on success.
+    def set_sticker_mask_position(sticker, position)
+      request(Bool, "setStickerMaskPosition", {
+        sticker:       extract_id(sticker),
+        mask_position: position,
+      })
+    end
+
+    # Use this method to set the title of a created sticker set.
+    # Returns True on success.
+    def set_sticker_set_title(name, title)
+      request(Bool, "setStickerSetTitle", {
+        name:  name,
+        title: title,
       })
     end
 
     # Use this method to set the thumbnail of a sticker set. Animated thumbnails can be
     # set for animated sticker sets only.
     # Returns `true` on success.
-    def set_sticker_set_thumb(name, user, thumb = nil)
-      user_id = user.is_a?(Int) ? user : user.id
-
-      request(Bool, "setStickerSetThumb", {
+    def set_sticker_set_thumbnail(name, user, thumbnail = nil)
+      request(Bool, "setStickerSetThumbnail", {
         name:    name,
-        user_id: user_id,
-        thumb:   thumb,
+        user_id: extract_id(user_id),
+        thumbnail:  thumbnail,
+      })
+    end
+
+    # Use this method to set the thumbnail of a custom emoji sticker set.
+    # Returns True on success.
+    def set_custom_emoji_sticker_set_thumbnail(name, custom_emoji_id = nil)
+      request(Bool, "setCustomEmojiStickerSetThumbnail", {
+        name:            name,
+        custom_emoji_id: custom_emoji_id,
+      })
+    end
+
+    # Use this method to delete a sticker set that was created by the bot.
+    # Returns True on success.
+    def delete_sticker_set(name)
+      request(Bool, "deleteStickerSet", {
+        name: name,
       })
     end
 

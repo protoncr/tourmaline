@@ -18,6 +18,6 @@ module Tourmaline
 
     getter file_size : Int64?
 
-    getter thumb : PhotoSize?
+    getter thumbnail : PhotoSize?
   end
 end

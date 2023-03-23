@@ -22,15 +22,15 @@ module Tourmaline
 
     getter input_message_content : InputMessageContent?
 
-    getter thumb_url : String
+    getter thumbnail_url : String
 
-    getter thumb_width : Int32?
+    getter thumbnail_width : Int32?
 
-    getter thumb_height : Int32?
+    getter thumbnail_height : Int32?
 
     def initialize(@id, @title, @caption = nil, @parse_mode = nil, @caption_entities = [] of MessageEntity,
                    @document_url = nil, @mime_type = nil, @description = nil, @reply_markup = nil,
-                   @input_message_content = nil, @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
+                   @input_message_content = nil, @thumbnail_url = nil, @thumbnail_width = nil, @thumbnail_height = nil)
     end
   end
 end

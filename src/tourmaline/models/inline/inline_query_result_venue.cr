@@ -24,15 +24,15 @@ module Tourmaline
 
     getter input_message_content : InputMessageContent?
 
-    getter thumb_url : String?
+    getter thumbnail_url : String?
 
-    getter thumb_width : Int32?
+    getter thumbnail_width : Int32?
 
-    getter thumb_height : Int32?
+    getter thumbnail_height : Int32?
 
     def initialize(@id, @latitude, @longitude, @title, @address, @foursquare_id = nil, @foursquare_type = nil,
                    @reply_markup = nil, @google_place_id = nil, @google_place_type = nil, @input_message_content = nil,
-                   @thumb_url = nil, @thumb_width = nil, @thumb_height = nil)
+                   @thumbnail_url = nil, @thumbnail_width = nil, @thumbnail_height = nil)
     end
   end
 end

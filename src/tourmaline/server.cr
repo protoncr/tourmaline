@@ -11,12 +11,6 @@ module Tourmaline
     # Start an HTTP server at the specified `host` and `port` that listens for
     # updates using Telegram's webhooks.
     def serve(host = "127.0.0.1", port = 8081, ssl_certificate_path = nil, ssl_key_path = nil, no_middleware_check = false, &block : HTTP::Server::Context ->)
-      unless no_middleware_check
-        if @middlewares.empty?
-          self.use(EventMiddleware.new)
-        end
-      end
-
       @server = server = HTTP::Server.new do |context|
         Fiber.current.telegram_bot_server_http_context = context
         begin
