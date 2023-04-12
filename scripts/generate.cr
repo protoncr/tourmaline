@@ -3,7 +3,7 @@ require "http/client"
 require "code_writer"
 
 METHODS_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__), "../src/tourmaline/client/api.cr"))
-TYPES_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__), "../src/tourmaline/types/api.cr"))
+TYPES_OUTPUT   = File.expand_path(File.join(File.dirname(__FILE__), "../src/tourmaline/types/api.cr"))
 
 API_JSON_ENDPOINT = "https://raw.githubusercontent.com/PaulSonOfLars/telegram-bot-api-spec/master/api.min.json"
 
@@ -60,7 +60,6 @@ def get_spec
   spec = HTTP::Client.get(API_JSON_ENDPOINT)
   Api.from_json(spec.body)
 end
-
 
 def type_to_cr(type : String | Array(String))
   if type.is_a?(Array)
