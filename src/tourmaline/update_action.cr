@@ -115,7 +115,7 @@ module Tourmaline
       if message = update.message
         actions << UpdateAction::Message
         actions << UpdateAction::ThreadMessage if message.message_thread_id
-        actions << UpdateAction::ReplyMessage if message.reply_message
+        actions << UpdateAction::ReplyMessage if message.reply_to_message
         actions << UpdateAction::ForwardedMessage if message.forward_date
 
         if chat = message.chat
@@ -140,12 +140,12 @@ module Tourmaline
         actions << UpdateAction::LeftChatMember if message.left_chat_member
         actions << UpdateAction::NewChatTitle if message.new_chat_title
         actions << UpdateAction::NewChatPhoto if message.new_chat_photo.size > 0
-        actions << UpdateAction::DeleteChatPhoto if message.delete_chat_photo
-        actions << UpdateAction::GroupChatCreated if message.group_chat_created
+        actions << UpdateAction::DeleteChatPhoto if message.delete_chat_photo?
+        actions << UpdateAction::GroupChatCreated if message.group_chat_created?
         actions << UpdateAction::MessageAutoDeleteTimerChanged if message.message_auto_delete_timer_changed
         actions << UpdateAction::MigrateToChatId if message.migrate_from_chat_id
-        actions << UpdateAction::SupergroupChatCreated if message.supergroup_chat_created
-        actions << UpdateAction::ChannelChatCreated if message.channel_chat_created
+        actions << UpdateAction::SupergroupChatCreated if message.supergroup_chat_created?
+        actions << UpdateAction::ChannelChatCreated if message.channel_chat_created?
         actions << UpdateAction::MigrateFromChatId if message.migrate_from_chat_id
         actions << UpdateAction::Game if message.game
         actions << UpdateAction::Poll if message.poll

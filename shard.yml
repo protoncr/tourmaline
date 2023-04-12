@@ -32,5 +32,9 @@ development_dependencies:
   spectator:
     github: icy-arctic-fox/spectator
     version: ~> 0.11.3
+  code_writer:
+    path: ../code_writer
+    # github: watzon/code_writer
+    # branch: main
 
 license: MIT

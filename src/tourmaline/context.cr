@@ -58,15 +58,15 @@ module Tourmaline
     # Respond to the incoming message
     def respond(text : String, **kwargs)
       with_message do |message|
-        @client.send_message(message.chat, text, **kwargs)
+        @client.send_message(message.chat.id, text, **kwargs)
       end
     end
 
     # Reply directly to the incoming message
     def reply(text : String, **kwargs)
       with_message do |message|
-        kwargs = kwargs.merge(reply_to_message: message.message_id)
-        @client.send_message(message.chat, text, **kwargs)
+        kwargs = kwargs.merge(reply_to_message_id: message.message_id)
+        @client.send_message(message.chat.id, text, **kwargs)
       end
     end
 
@@ -74,15 +74,15 @@ module Tourmaline
       # Respond with a {{content_type.id}}
       def respond_with_{{content_type.id}}(*args, **kwargs)
         with_message do |message|
-          @client.send_{{ content_type.id }}(message.chat, *args, **kwargs)
+          @client.send_{{ content_type.id }}(message.chat.id, *args, **kwargs)
         end
       end
 
       # Reply directly to the incoming message with a {{content_type.id}}
       def reply_with_{{content_type.id}}(*args, **kwargs)
         with_message do |message|
-          kwargs = kwargs.merge(reply_to_message: message.message_id)
-          @client.send_{{ content_type.id }}(message.chat, *args, **kwargs)
+          kwargs = kwargs.merge(reply_to_message_id: message.message_id)
+          @client.send_{{ content_type.id }}(message.chat.id, *args, **kwargs)
         end
       end
     {% end %}
@@ -90,7 +90,7 @@ module Tourmaline
     # Context aware message deletion
     def delete_message(message_id : Int32)
       with_message do |message|
-        @client.delete_message(message.chat, message_id)
+        @client.delete_message(message.chat.id, message_id)
       end
     end
 
@@ -104,14 +104,14 @@ module Tourmaline
     # Context aware pinning
     def pin_message(**args)
       with_message do |message|
-        @client.pin_chat_message(message.chat, message.id, **args)
+        @client.pin_chat_message(message.chat.id, message.id, **args)
       end
     end
 
     # Context aware unpinning
     def unpin_message(**args)
       with_message do |message|
-        @client.unpin_chat_message(message.chat, **args)
+        @client.unpin_chat_message(message.chat.id, **args)
       end
     end
 
@@ -131,7 +131,7 @@ module Tourmaline
     # Context aware chat actions
     def send_chat_action(action : ChatAction)
       with_message do |message|
-        @client.send_chat_action(message.chat, action)
+        @client.send_chat_action(message.chat.id, action)
       end
     end
 
