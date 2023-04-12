@@ -16,19 +16,11 @@ dependencies:
   http_proxy:
     github: mamantoha/http_proxy
     branch: master
-  html5:
-    github: naqvis/crystal-html5
-    version: ~> 0.4.0
 
 development_dependencies:
   ngrok:
     github: watzon/ngrok.cr
     version: 0.3.1
-  kemal:
-    github: kemalcr/kemal
-  mosquito:
-    github: mosquito-cr/mosquito
-    version: ~> 0.11.0
   spectator:
     github: icy-arctic-fox/spectator
     version: ~> 0.11.3
