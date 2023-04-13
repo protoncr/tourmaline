@@ -81,4 +81,4 @@ If you want a new feature feel free to submit an issue or open a pull request.
 
 Thanks to all the people that have contributed to this project!
 
-[![Contributors](https://contrib.rocks/image?repo=protoncr/tourmaline)](https://github.com/protoncr/tourmaline/graphs/contributors)]
+[![Contributors](https://contrib.rocks/image?repo=protoncr/tourmaline)](https://github.com/protoncr/tourmaline/graphs/contributors)
