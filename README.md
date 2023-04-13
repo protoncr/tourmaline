@@ -34,7 +34,7 @@ client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
 
 echo_handler = Tourmaline::CommandHandler.new("echo") do |ctx|
   text = ctx.text.to_s
-    ctx.reply(text) unless text.empty?
+  ctx.reply(text) unless text.empty?
 end
 
 client.register(echo_handler)
@@ -42,10 +42,11 @@ client.register(echo_handler)
 client.poll
 ```
 
-## Development
+## Roadmap
 
-This currently supports the following features:
+The following features are/will be implemented:
 
+- [x] HTTP/HTTP Proxies
 - [x] Client API
   - [x] Implementation examples
   - [x] Handlers for commands, queries, and more
@@ -59,16 +60,14 @@ This currently supports the following features:
   - [x] Games
   - [x] Polls
   - [x] Telegram Passport
-- [x] HTTP/HTTP Proxies
+- [ ] Framework Adapters
+  - [ ] Kemal
+  - [ ] Amber
+  - [ ] Lucky
+  - [ ] Athena
+  - [ ] Grip
 
 If you want a new feature feel free to submit an issue or open a pull request.
-
-## Who's Using Tourmaline
-
-If you're using Tourmaline and would like to have your bot added to this list, just submit a PR!
-
-- [PixieImageBot](https://t.me/pixieimagebot)
-- [Utilibot](https://t.me/watzonutilitbot)
 
 ## Contributing
 
@@ -80,4 +79,6 @@ If you're using Tourmaline and would like to have your bot added to this list, j
 
 ## Contributors
 
-- [watzon](https://github.com/watzon) Chris Watson - creator, maintainer
+Thanks to all the people that have contributed to this project!
+
+[![Contributors](https://contrib.rocks/image?repo=protoncr/tourmaline)](https://github.com/protoncr/tourmaline/graphs/contributors)]
