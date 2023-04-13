@@ -6,14 +6,16 @@ send_live_location = Tourmaline::CommandHandler.new("start") do |ctx|
   begin
     lat = 40.7608
     lon = 111.8910
-    loc = ctx.message.reply_with_location(lat, lon, live_period: 60)
-    loop do
-      lat += rand * 0.0001
-      lon += rand * 0.0001
-      loc.edit_live_location(lat, lon)
-      sleep(5)
+    if loc = ctx.reply_with_location(latitude: lat, longitude: lon, live_period: 60)
+      loop do
+        lat += rand * 0.001
+        lon += rand * 0.001
+        ctx.edit_live_location(latitude: lat, longitude: lon)
+        sleep(5)
+      end
     end
   rescue ex : Tourmaline::Error::MessageCantBeEdited
+    ctx.reply("Message can't be edited")
   end
 end
 

@@ -2,15 +2,14 @@ require "../src/tourmaline"
 
 client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
 
-REPLY_MARKUP = Tourmaline::ReplyKeyboardMarkup.build do
-  button "/kitty"
-  button "/kittygif"
-end
-
 API_URL = "https://thecatapi.com/api/images/get"
 
 help_command = Tourmaline::CommandHandler.new(["help", "start"]) do |ctx|
-  ctx.reply("😺 Use commands: /kitty, /kittygif and /about", reply_markup: REPLY_MARKUP)
+  markup = client.build_reply_keyboard_markup do |kb|
+    kb.button "/kitty"
+    kb.button "/kittygif"
+  end
+  ctx.reply("😺 Use commands: /kitty, /kittygif and /about", reply_markup: markup)
 end
 
 about_command = Tourmaline::CommandHandler.new("about") do |ctx|

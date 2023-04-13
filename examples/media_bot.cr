@@ -7,7 +7,7 @@ ANIMATION_URL_2 = "https://media.giphy.com/media/LrmU6jXIjwziE/giphy.gif"
 LOCAL_FILE      = File.expand_path("./cat.jpg", __DIR__)
 
 local_command = Tourmaline::CommandHandler.new("local") do |ctx|
-  ctx.reply_with_photo(LOCAL_FILE)
+  ctx.reply_with_photo(File.open(LOCAL_FILE, "rb"))
 end
 
 url_command = Tourmaline::CommandHandler.new("url") do |ctx|
@@ -21,13 +21,12 @@ end
 caption_command = Tourmaline::CommandHandler.new("caption") do |ctx|
   ctx.reply_with_photo(
     "https://picsum.photos/200/300/?#{rand}",
-    caption: "Caption **text**",
-    parse_mode: :markdown
+    caption: "Caption **text**"
   )
 end
 
 document_command = Tourmaline::CommandHandler.new("document") do |ctx|
-  ctx.reply_with_document(LOCAL_FILE)
+  ctx.reply_with_document(File.open(LOCAL_FILE, "rb"))
 end
 
 album_command = Tourmaline::CommandHandler.new("album") do |ctx|
@@ -46,7 +45,7 @@ end
 editmedia_command = Tourmaline::CommandHandler.new("editmedia") do |ctx|
   ctx.reply_with_animation(
     ANIMATION_URL_1,
-    reply_markup: Tourmaline::InlineKeyboardMarkup.build do |kb|
+    reply_markup: client.build_inline_keyboard_markup do |kb|
       kb.callback_button("Change media", "swap_media")
     end
   )
@@ -54,7 +53,7 @@ end
 
 on_swap_media = Tourmaline::CallbackQueryHandler.new("swap_media") do |ctx|
   ctx.with_message do |msg|
-    ctx.client.edit_message_media(msg.chat, message: msg, media: Tourmaline::InputMediaAnimation.new(ANIMATION_URL_2))
+    ctx.client.edit_message_media(media: Tourmaline::InputMediaAnimation.new(ANIMATION_URL_2), message_id: msg.message_id, chat_id: msg.chat.id)
   end
 end
 

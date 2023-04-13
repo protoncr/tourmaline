@@ -4,15 +4,17 @@ module Tourmaline
   # Base builder class for `InlineKeyboardMarkup::Builder` and
   # `ReplyKeyboardMarkup::Builder`.
   abstract class KeyboardBuilder(T, G)
-    property force_reply : Bool
+    property? force_reply : Bool
 
-    property remove_keyboard : Bool
+    property? remove_keyboard : Bool
 
-    property selective : Bool
+    property? selective : Bool
 
-    property resize : Bool
+    property? resize : Bool
 
-    property one_time : Bool
+    property? one_time : Bool
+
+    property? persistent : Bool
 
     property input_field_placeholder : String?
 
@@ -23,6 +25,7 @@ module Tourmaline
       @keyboard = [] of T,
       @resize = false,
       @one_time = false,
+      @persistent = false,
       @input_field_placeholder = nil
     )
     end

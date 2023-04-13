@@ -2,20 +2,19 @@ require "../src/tourmaline"
 
 client = Tourmaline::Client.new(ENV["BOT_TOKEN"])
 
-KEYBOARD = Tourmaline::ReplyKeyboardMarkup.build do
-  poll_request_button "Create poll", :regular
-  poll_request_button "Create quiz", :quiz
-end
-
 start_command = Tourmaline::CommandHandler.new("start") do |ctx|
-  ctx.reply("Use the command /poll or /quiz to begin", reply_markup: KEYBOARD)
+  keyboard = client.build_reply_keyboard_markup do |kb|
+    kb.poll_request_button "Create poll", :regular
+    kb.poll_request_button "Create quiz", :quiz
+  end
+  ctx.reply("Use the command /poll or /quiz to begin", reply_markup: keyboard)
 end
 
 poll_command = Tourmaline::CommandHandler.new("poll") do |ctx|
   ctx.reply_with_poll(
     "Your favorite math constant",
     ["x", "e", "π", "φ", "γ"],
-    anonymous: false
+    is_anonymous: false
   )
 end
 
@@ -24,7 +23,7 @@ quiz_command = Tourmaline::CommandHandler.new("quiz") do |ctx|
     "2b|!2b",
     ["True", "False"],
     correct_option_id: 0,
-    type: Tourmaline::Poll::Type::Quiz
+    type: "quiz"
   )
 end
 

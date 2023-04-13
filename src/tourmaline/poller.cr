@@ -21,7 +21,7 @@ module Tourmaline
         updates = @client.get_updates(offset: offset, timeout: 30)
         updates.each do |update|
           @client.dispatcher.process(update)
-          @offset = update.update_id + 1
+          @offset = Int64.new(update.update_id + 1)
         end
       end
     end
