@@ -836,7 +836,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::ChatAdministratorRights.new(pull)" class="md-nav__link">
+  <a href="#Tourmaline::ChatAdministratorRights.new(is_anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members,can_promote_members,can_change_info,can_invite_users,can_post_messages,can_edit_messages,can_pin_messages,can_manage_topics)" class="md-nav__link">
     .new
   </a>
   
@@ -856,8 +856,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::ChatAdministratorRights#anonymous?" class="md-nav__link">
-    #anonymous?
+  <a href="#Tourmaline::ChatAdministratorRights#can_change_info=(can_change_info)" class="md-nav__link">
+    #can_change_info=
   </a>
   
 </li>
@@ -870,8 +870,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_delete_messages=(can_delete_messages)" class="md-nav__link">
+    #can_delete_messages=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_delete_messages?" class="md-nav__link">
     #can_delete_messages?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_edit_messages=(can_edit_messages)" class="md-nav__link">
+    #can_edit_messages=
   </a>
   
 </li>
@@ -884,8 +898,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_invite_users=(can_invite_users)" class="md-nav__link">
+    #can_invite_users=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_invite_users?" class="md-nav__link">
     #can_invite_users?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_manage_chat=(can_manage_chat)" class="md-nav__link">
+    #can_manage_chat=
   </a>
   
 </li>
@@ -898,8 +926,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_manage_topics=(can_manage_topics)" class="md-nav__link">
+    #can_manage_topics=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_manage_topics?" class="md-nav__link">
     #can_manage_topics?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_manage_video_chats=(can_manage_video_chats)" class="md-nav__link">
+    #can_manage_video_chats=
   </a>
   
 </li>
@@ -912,8 +954,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_pin_messages=(can_pin_messages)" class="md-nav__link">
+    #can_pin_messages=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_pin_messages?" class="md-nav__link">
     #can_pin_messages?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_post_messages=(can_post_messages)" class="md-nav__link">
+    #can_post_messages=
   </a>
   
 </li>
@@ -926,6 +982,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_promote_members=(can_promote_members)" class="md-nav__link">
+    #can_promote_members=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_promote_members?" class="md-nav__link">
     #can_promote_members?
   </a>
@@ -933,8 +996,29 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_restrict_members=(can_restrict_members)" class="md-nav__link">
+    #can_restrict_members=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_restrict_members?" class="md-nav__link">
     #can_restrict_members?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#is_anonymous=(is_anonymous)" class="md-nav__link">
+    #is_anonymous=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#is_anonymous?" class="md-nav__link">
+    #is_anonymous?
   </a>
   
 </li>
@@ -1168,10 +1252,91 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_35" type="checkbox" id="__nav_4_2_35" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Client/">Client</a>
+          
+            <label for="__nav_4_2_35">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Client" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_35">
+          <span class="md-nav__icon md-icon"></span>
+          Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../Client/" class="md-nav__link">
-        Client
+      <a href="../Client/Api/" class="md-nav__link">
+        Api
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Client/InlineKeyboardMarkupBuilder/" class="md-nav__link">
+        InlineKeyboardMarkupBuilder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Client/InlineQueryResultBuilder/" class="md-nav__link">
+        InlineQueryResultBuilder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Client/ReplyKeyboardMarkupBuilder/" class="md-nav__link">
+        ReplyKeyboardMarkupBuilder
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1280,45 +1445,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_43" type="checkbox" id="__nav_4_2_43" >
-      
-      
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../EncryptedPassportElement/">EncryptedPassportElement</a>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="EncryptedPassportElement" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_43">
-          <span class="md-nav__icon md-icon"></span>
-          EncryptedPassportElement
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../EncryptedPassportElement/Type/" class="md-nav__link">
-        Type
+      <a href="../EncryptedPassportElement/" class="md-nav__link">
+        EncryptedPassportElement
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -2713,8 +2843,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../File/" class="md-nav__link">
+        File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ForceReply/" class="md-nav__link">
         ForceReply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ForumTopic/" class="md-nav__link">
+        ForumTopic
       </a>
     </li>
   
@@ -2880,45 +3038,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_60" type="checkbox" id="__nav_4_2_60" >
-      
-      
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../InlineKeyboardMarkup/">InlineKeyboardMarkup</a>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="InlineKeyboardMarkup" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_60">
-          <span class="md-nav__icon md-icon"></span>
-          InlineKeyboardMarkup
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../InlineKeyboardMarkup/Builder/" class="md-nav__link">
-        Builder
+      <a href="../InlineKeyboardMarkup/" class="md-nav__link">
+        InlineKeyboardMarkup
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -2957,45 +3080,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_63" type="checkbox" id="__nav_4_2_63" >
-      
-      
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../InlineQueryResult/">InlineQueryResult</a>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="InlineQueryResult" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_63">
-          <span class="md-nav__icon md-icon"></span>
-          InlineQueryResult
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../InlineQueryResult/Builder/" class="md-nav__link">
-        Builder
+      <a href="../InlineQueryResult/" class="md-nav__link">
+        InlineQueryResult
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -3301,6 +3389,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../InputFile/" class="md-nav__link">
+        InputFile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../InputInvoiceMessageContent/" class="md-nav__link">
         InputInvoiceMessageContent
       </a>
@@ -3581,8 +3683,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../LoginURL/" class="md-nav__link">
-        LoginURL
+      <a href="../LoginUrl/" class="md-nav__link">
+        LoginUrl
       </a>
     </li>
   
@@ -3668,7 +3770,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_111" type="checkbox" id="__nav_4_2_111" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_114" type="checkbox" id="__nav_4_2_114" >
       
       
       
@@ -3681,7 +3783,7 @@
         </div>
       
       <nav class="md-nav" aria-label="Message" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_111">
+        <label class="md-nav__title" for="__nav_4_2_114">
           <span class="md-nav__icon md-icon"></span>
           Message
         </label>
@@ -3741,11 +3843,25 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../MessageId/" class="md-nav__link">
+        MessageId
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_114" type="checkbox" id="__nav_4_2_114" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_118" type="checkbox" id="__nav_4_2_118" >
       
       
       
@@ -3758,7 +3874,7 @@
         </div>
       
       <nav class="md-nav" aria-label="Middleware" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_114">
+        <label class="md-nav__title" for="__nav_4_2_118">
           <span class="md-nav__icon md-icon"></span>
           Middleware
         </label>
@@ -4000,45 +4116,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_130" type="checkbox" id="__nav_4_2_130" >
-      
-      
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../Poll/">Poll</a>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="Poll" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_130">
-          <span class="md-nav__icon md-icon"></span>
-          Poll
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../Poll/Type/" class="md-nav__link">
-        Type
+      <a href="../Poll/" class="md-nav__link">
+        Poll
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -4119,45 +4200,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_136" type="checkbox" id="__nav_4_2_136" >
-      
-      
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../ReplyKeyboardMarkup/">ReplyKeyboardMarkup</a>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="ReplyKeyboardMarkup" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_136">
-          <span class="md-nav__icon md-icon"></span>
-          ReplyKeyboardMarkup
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../ReplyKeyboardMarkup/Builder/" class="md-nav__link">
-        Builder
+      <a href="../ReplyKeyboardMarkup/" class="md-nav__link">
+        ReplyKeyboardMarkup
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -4171,6 +4217,20 @@
     <li class="md-nav__item">
       <a href="../ReplyKeyboardRemove/" class="md-nav__link">
         ReplyKeyboardRemove
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ResponseParameters/" class="md-nav__link">
+        ResponseParameters
       </a>
     </li>
   
@@ -4252,63 +4312,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_143" type="checkbox" id="__nav_4_2_143" >
-      
-      
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../Sticker/">Sticker</a>
-          
-            <label for="__nav_4_2_143">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="Sticker" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_143">
-          <span class="md-nav__icon md-icon"></span>
-          Sticker
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../Sticker/Format/" class="md-nav__link">
-        Format
+      <a href="../Sticker/" class="md-nav__link">
+        Sticker
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Sticker/Type/" class="md-nav__link">
-        Type
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -4336,20 +4343,6 @@
     <li class="md-nav__item">
       <a href="../SuccessfulPayment/" class="md-nav__link">
         SuccessfulPayment
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TFile/" class="md-nav__link">
-        TFile
       </a>
     </li>
   
@@ -4642,7 +4635,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::ChatAdministratorRights.new(pull)" class="md-nav__link">
+  <a href="#Tourmaline::ChatAdministratorRights.new(is_anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members,can_promote_members,can_change_info,can_invite_users,can_post_messages,can_edit_messages,can_pin_messages,can_manage_topics)" class="md-nav__link">
     .new
   </a>
   
@@ -4662,8 +4655,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::ChatAdministratorRights#anonymous?" class="md-nav__link">
-    #anonymous?
+  <a href="#Tourmaline::ChatAdministratorRights#can_change_info=(can_change_info)" class="md-nav__link">
+    #can_change_info=
   </a>
   
 </li>
@@ -4676,8 +4669,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_delete_messages=(can_delete_messages)" class="md-nav__link">
+    #can_delete_messages=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_delete_messages?" class="md-nav__link">
     #can_delete_messages?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_edit_messages=(can_edit_messages)" class="md-nav__link">
+    #can_edit_messages=
   </a>
   
 </li>
@@ -4690,8 +4697,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_invite_users=(can_invite_users)" class="md-nav__link">
+    #can_invite_users=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_invite_users?" class="md-nav__link">
     #can_invite_users?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_manage_chat=(can_manage_chat)" class="md-nav__link">
+    #can_manage_chat=
   </a>
   
 </li>
@@ -4704,8 +4725,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_manage_topics=(can_manage_topics)" class="md-nav__link">
+    #can_manage_topics=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_manage_topics?" class="md-nav__link">
     #can_manage_topics?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_manage_video_chats=(can_manage_video_chats)" class="md-nav__link">
+    #can_manage_video_chats=
   </a>
   
 </li>
@@ -4718,8 +4753,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_pin_messages=(can_pin_messages)" class="md-nav__link">
+    #can_pin_messages=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_pin_messages?" class="md-nav__link">
     #can_pin_messages?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_post_messages=(can_post_messages)" class="md-nav__link">
+    #can_post_messages=
   </a>
   
 </li>
@@ -4732,6 +4781,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_promote_members=(can_promote_members)" class="md-nav__link">
+    #can_promote_members=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_promote_members?" class="md-nav__link">
     #can_promote_members?
   </a>
@@ -4739,8 +4795,29 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#can_restrict_members=(can_restrict_members)" class="md-nav__link">
+    #can_restrict_members=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::ChatAdministratorRights#can_restrict_members?" class="md-nav__link">
     #can_restrict_members?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#is_anonymous=(is_anonymous)" class="md-nav__link">
+    #is_anonymous=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::ChatAdministratorRights#is_anonymous?" class="md-nav__link">
+    #is_anonymous?
   </a>
   
 </li>
@@ -4762,7 +4839,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L2" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1749" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -4772,7 +4849,7 @@
       <br/><small>inherits <code>Reference</code></small>
 <a href="#Tourmaline::ChatAdministratorRights" class="headerlink" title="Permanent link">#</a></h1>
   <div class="doc doc-contents first">
-
+<p>Represents the rights of an administrator in a chat.</p>
       <div class="doc doc-children">
 
             <h2>Included modules</h2>
@@ -4782,6 +4859,17 @@
 <h2 id="Tourmaline::ChatAdministratorRights-constructors">Constructors<a href="#Tourmaline::ChatAdministratorRights-constructors" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-class_method">
+<h3 id="Tourmaline::ChatAdministratorRights.new(is_anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members,can_promote_members,can_change_info,can_invite_users,can_post_messages,can_edit_messages,can_pin_messages,can_manage_topics)" class="doc doc-heading">    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">is_anonymous</span><span class="p">,</span> <span class="n">can_manage_chat</span><span class="p">,</span> <span class="n">can_delete_messages</span><span class="p">,</span> <span class="n">can_manage_video_chats</span><span class="p">,</span> <span class="n">can_restrict_members</span><span class="p">,</span> <span class="n">can_promote_members</span><span class="p">,</span> <span class="n">can_change_info</span><span class="p">,</span> <span class="n">can_invite_users</span><span class="p">,</span> <span class="n">can_post_messages</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_edit_messages</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_pin_messages</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">can_manage_topics</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights.new(is_anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members,can_promote_members,can_change_info,can_invite_users,can_post_messages,can_edit_messages,can_pin_messages,can_manage_topics)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1788">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-class_method">
 <h3 id="Tourmaline::ChatAdministratorRights.new(pull)" class="doc doc-heading">    <code>
       .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">pull</span> <span class="p">:</span> <span class="n">JSON</span><span class="o">::</span><span class="n">PullParser</span><span class="p">)</span></code></span>
     </code>
@@ -4789,29 +4877,18 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L3">View source</a>
-</div>
-
-<div class="doc doc-object doc-method doc-class_method">
-<h3 id="Tourmaline::ChatAdministratorRights.new(anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members,can_promote_members,can_change_info,can_invite_users,can_post_messages,can_edit_messages,can_pin_messages,can_manage_topics)" class="doc doc-heading">    <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">anonymous</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_manage_chat</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_delete_messages</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_manage_video_chats</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_restrict_members</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_promote_members</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_change_info</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_invite_users</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_post_messages</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_edit_messages</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_pin_messages</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">can_manage_topics</span> <span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></span>
-    </code>
-<a href="#Tourmaline::ChatAdministratorRights.new(anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members,can_promote_members,can_change_info,can_invite_users,can_post_messages,can_edit_messages,can_pin_messages,can_manage_topics)" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-  </div>
-
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L30">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1750">View source</a>
 </div><h2 id="Tourmaline::ChatAdministratorRights-methods">Methods<a href="#Tourmaline::ChatAdministratorRights-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::ChatAdministratorRights#anonymous?" class="doc doc-heading">    <code>
-      #anonymous?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool</span></code></span>
+<h3 id="Tourmaline::ChatAdministratorRights#can_change_info=(can_change_info)" class="doc doc-heading">    <code>
+      #can_change_info=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_change_info</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::ChatAdministratorRights#anonymous?" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::ChatAdministratorRights#can_change_info=(can_change_info)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the user is allowed to change the chat title, photo and other settings</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L6">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1771">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4820,9 +4897,20 @@
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_change_info?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the user is allowed to change the chat title, photo and other settings</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L18">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1771">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_delete_messages=(can_delete_messages)" class="doc doc-heading">    <code>
+      #can_delete_messages=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_delete_messages</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_delete_messages=(can_delete_messages)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the administrator can delete messages of other users</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1759">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4831,20 +4919,42 @@
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_delete_messages?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the administrator can delete messages of other users</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L10">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1759">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_edit_messages=(can_edit_messages)" class="doc doc-heading">    <code>
+      #can_edit_messages=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_edit_messages</span> <span class="p">:</span> <span class="n">Bool?</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_edit_messages=(can_edit_messages)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the administrator can edit messages of other users and can pin messages; channels only</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1780">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::ChatAdministratorRights#can_edit_messages?" class="doc doc-heading">    <code>
-      #can_edit_messages?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool</span></code></span>
+      #can_edit_messages?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool?</span></code></span>
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_edit_messages?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>Optional. True, if the administrator can edit messages of other users and can pin messages; channels only</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L24">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1780">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_invite_users=(can_invite_users)" class="doc doc-heading">    <code>
+      #can_invite_users=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_invite_users</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_invite_users=(can_invite_users)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the user is allowed to invite new users to the chat</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1774">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4853,9 +4963,20 @@
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_invite_users?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the user is allowed to invite new users to the chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L20">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1774">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_manage_chat=(can_manage_chat)" class="doc doc-heading">    <code>
+      #can_manage_chat=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_manage_chat</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_manage_chat=(can_manage_chat)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1756">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4864,20 +4985,42 @@
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_manage_chat?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L8">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1756">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_manage_topics=(can_manage_topics)" class="doc doc-heading">    <code>
+      #can_manage_topics=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_manage_topics</span> <span class="p">:</span> <span class="n">Bool?</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_manage_topics=(can_manage_topics)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1786">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::ChatAdministratorRights#can_manage_topics?" class="doc doc-heading">    <code>
-      #can_manage_topics?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool</span></code></span>
+      #can_manage_topics?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool?</span></code></span>
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_manage_topics?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L28">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1786">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_manage_video_chats=(can_manage_video_chats)" class="doc doc-heading">    <code>
+      #can_manage_video_chats=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_manage_video_chats</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_manage_video_chats=(can_manage_video_chats)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the administrator can manage video chats</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1762">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4886,31 +5029,64 @@
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_manage_video_chats?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the administrator can manage video chats</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L12">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1762">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_pin_messages=(can_pin_messages)" class="doc doc-heading">    <code>
+      #can_pin_messages=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_pin_messages</span> <span class="p">:</span> <span class="n">Bool?</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_pin_messages=(can_pin_messages)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the user is allowed to pin messages; groups and supergroups only</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1783">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::ChatAdministratorRights#can_pin_messages?" class="doc doc-heading">    <code>
-      #can_pin_messages?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool</span></code></span>
+      #can_pin_messages?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool?</span></code></span>
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_pin_messages?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>Optional. True, if the user is allowed to pin messages; groups and supergroups only</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L26">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1783">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_post_messages=(can_post_messages)" class="doc doc-heading">    <code>
+      #can_post_messages=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_post_messages</span> <span class="p">:</span> <span class="n">Bool?</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_post_messages=(can_post_messages)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the administrator can post in the channel; channels only</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1777">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::ChatAdministratorRights#can_post_messages?" class="doc doc-heading">    <code>
-      #can_post_messages?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool</span></code></span>
+      #can_post_messages?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool?</span></code></span>
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_post_messages?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>Optional. True, if the administrator can post in the channel; channels only</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L22">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1777">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_promote_members=(can_promote_members)" class="doc doc-heading">    <code>
+      #can_promote_members=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_promote_members</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_promote_members=(can_promote_members)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1768">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4919,9 +5095,20 @@
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_promote_members?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L16">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1768">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#can_restrict_members=(can_restrict_members)" class="doc doc-heading">    <code>
+      #can_restrict_members=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">can_restrict_members</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#can_restrict_members=(can_restrict_members)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the administrator can restrict, ban or unban chat members</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1765">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4930,9 +5117,31 @@
     </code>
 <a href="#Tourmaline::ChatAdministratorRights#can_restrict_members?" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-  </div>
+<p>True, if the administrator can restrict, ban or unban chat members</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/083e9ba75e871a7aa6c9b6c9af2d303f05e92959/src/tourmaline/models/chat_administrator_rights.cr#L14">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1765">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#is_anonymous=(is_anonymous)" class="doc doc-heading">    <code>
+      #is_anonymous=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">is_anonymous</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#is_anonymous=(is_anonymous)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the user's presence in the chat is hidden</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1753">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::ChatAdministratorRights#is_anonymous?" class="doc doc-heading">    <code>
+      #is_anonymous?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool</span></code></span>
+    </code>
+<a href="#Tourmaline::ChatAdministratorRights#is_anonymous?" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>True, if the user's presence in the chat is hidden</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/2292ad0096dbe3d48677065e2348f7c011602bca/src/tourmaline/types/api.cr#L1753">View source</a>
 </div>      </div>
   </div>
 
