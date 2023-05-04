@@ -1260,9 +1260,17 @@ module Tourmaline
     end
   end
   
-  # This object represents a service message about a user allowing a bot added to the attachment menu to write messages. Currently holds no information.
+  # This object represents a service message about a user allowing a bot to write messages after adding the bot to the attachment menu or launching a Web App from a link.
   class WriteAccessAllowed
     include JSON::Serializable
+    
+    # Optional. Name of the Web App which was launched from a link
+    property web_app_name : String | ::Nil
+    
+    def initialize(
+      @web_app_name : String | ::Nil = nil
+    )
+    end
   end
   
   # This object represents a service message about a video chat scheduled in the chat.
@@ -1570,6 +1578,9 @@ module Tourmaline
     # Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted. This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options.
     property switch_inline_query_current_chat : String | ::Nil
     
+    # Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field
+    property switch_inline_query_chosen_chat : Tourmaline::SwitchInlineQueryChosenChat | ::Nil
+    
     # Optional. Description of the game that will be launched when the user presses the button. NOTE: This type of button must always be the first button in the first row.
     property callback_game : Tourmaline::CallbackGame | ::Nil
     
@@ -1584,6 +1595,7 @@ module Tourmaline
       @login_url : Tourmaline::LoginUrl | ::Nil = nil, 
       @switch_inline_query : String | ::Nil = nil, 
       @switch_inline_query_current_chat : String | ::Nil = nil, 
+      @switch_inline_query_chosen_chat : Tourmaline::SwitchInlineQueryChosenChat | ::Nil = nil, 
       @callback_game : Tourmaline::CallbackGame | ::Nil = nil, 
       @pay : Bool | ::Nil = nil
     )
@@ -1612,6 +1624,35 @@ module Tourmaline
       @forward_text : String | ::Nil = nil, 
       @bot_username : String | ::Nil = nil, 
       @request_write_access : Bool | ::Nil = nil
+    )
+    end
+  end
+  
+  # This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.
+  class SwitchInlineQueryChosenChat
+    include JSON::Serializable
+    
+    # Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted
+    property query : String | ::Nil
+    
+    # Optional. True, if private chats with users can be chosen
+    property? allow_user_chats : Bool | ::Nil
+    
+    # Optional. True, if private chats with bots can be chosen
+    property? allow_bot_chats : Bool | ::Nil
+    
+    # Optional. True, if group and supergroup chats can be chosen
+    property? allow_group_chats : Bool | ::Nil
+    
+    # Optional. True, if channel chats can be chosen
+    property? allow_channel_chats : Bool | ::Nil
+    
+    def initialize(
+      @query : String | ::Nil = nil, 
+      @allow_user_chats : Bool | ::Nil = nil, 
+      @allow_bot_chats : Bool | ::Nil = nil, 
+      @allow_group_chats : Bool | ::Nil = nil, 
+      @allow_channel_chats : Bool | ::Nil = nil
     )
     end
   end
@@ -2070,13 +2111,17 @@ module Tourmaline
     # Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
     property invite_link : Tourmaline::ChatInviteLink | ::Nil
     
+    # Optional. True, if the user joined the chat via a chat folder invite link
+    property? via_chat_folder_invite_link : Bool | ::Nil
+    
     def initialize(
       @chat, 
       @from, 
       @date, 
       @old_chat_member, 
       @new_chat_member, 
-      @invite_link : Tourmaline::ChatInviteLink | ::Nil = nil
+      @invite_link : Tourmaline::ChatInviteLink | ::Nil = nil, 
+      @via_chat_folder_invite_link : Bool | ::Nil = nil
     )
     end
   end
@@ -2352,6 +2397,19 @@ module Tourmaline
       @type, 
       @chat_id, 
       @user_id
+    )
+    end
+  end
+  
+  # This object represents the bot's name.
+  class BotName
+    include JSON::Serializable
+    
+    # The bot's name
+    property name : String
+    
+    def initialize(
+      @name
     )
     end
   end
@@ -2868,6 +2926,27 @@ module Tourmaline
       @offset, 
       @chat_type : String | ::Nil = nil, 
       @location : Tourmaline::Location | ::Nil = nil
+    )
+    end
+  end
+  
+  # This object represents a button to be shown above inline query results. You must use exactly one of the optional fields.
+  class InlineQueryResultsButton
+    include JSON::Serializable
+    
+    # Label text on the button
+    property text : String
+    
+    # Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to switch back to the inline mode using the method switchInlineQuery inside the Web App.
+    property web_app : Tourmaline::WebAppInfo | ::Nil
+    
+    # Optional. Deep-linking parameter for the /start message sent to the bot when a user presses the button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed. Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities.
+    property start_parameter : String | ::Nil
+    
+    def initialize(
+      @text, 
+      @web_app : Tourmaline::WebAppInfo | ::Nil = nil, 
+      @start_parameter : String | ::Nil = nil
     )
     end
   end

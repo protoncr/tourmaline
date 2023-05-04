@@ -1143,6 +1143,26 @@ module Tourmaline
         })
       end
       
+      # Use this method to change the bot's name. Returns True on success.
+      def set_my_name(
+        name : String | ::Nil = nil, 
+        language_code : String | ::Nil = nil
+      )
+        request(Bool, "setMyName", {
+          name: name, 
+          language_code: language_code
+        })
+      end
+      
+      # Use this method to get the current bot name for the given user language. Returns BotName on success.
+      def get_my_name(
+        language_code : String | ::Nil = nil
+      )
+        request(Tourmaline::BotName, "getMyName", {
+          language_code: language_code
+        })
+      end
+      
       # Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
       def set_my_description(
         description : String | ::Nil = nil, 
@@ -1567,8 +1587,7 @@ module Tourmaline
         cache_time : Int32 | Int64 | ::Nil = nil, 
         is_personal : Bool | ::Nil = nil, 
         next_offset : String | ::Nil = nil, 
-        switch_pm_text : String | ::Nil = nil, 
-        switch_pm_parameter : String | ::Nil = nil
+        button : Tourmaline::InlineQueryResultsButton | ::Nil = nil
       )
         request(Bool, "answerInlineQuery", {
           inline_query_id: inline_query_id, 
@@ -1576,8 +1595,7 @@ module Tourmaline
           cache_time: cache_time, 
           is_personal: is_personal, 
           next_offset: next_offset, 
-          switch_pm_text: switch_pm_text, 
-          switch_pm_parameter: switch_pm_parameter
+          button: button.try(&.to_json)
         })
       end
       
