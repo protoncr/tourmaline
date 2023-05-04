@@ -2,6 +2,29 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.29.0
+
+**The core functionality of Tourmaline is now auto generated from the official Bot API documentation. This means that Tourmaline will always be up to date with the latest version of the Bot API.**
+
+### Added:
+
+- New method set_my_name to change the bot's name. Returns True on success.
+- New method get_my_name to get the current bot name for the user's language. Returns BotName on success.
+- New Tourmaline::BotName class to represent the bot's name.
+- New Tourmaline::InlineQueryResultsButton class to represent a button shown above inline query results.
+- New Tourmaline::SwitchInlineQueryChosenChat class to represent an inline button for switching the user to inline mode in a chosen chat.
+
+### Changed:
+
+- Updated Tourmaline::WriteAccessAllowed class to include an optional web_app_name property for the Web App launched from a link.
+- Modified Tourmaline::InlineKeyboardButton class to include an optional switch_inline_query_chosen_chat property.
+- Updated Tourmaline::CallbackQuery class to include an optional via_chat_folder_invite_link property.
+- Modified answerInlineQuery method to accept a Tourmaline::InlineQueryResultsButton instead of switch_pm_text and switch_pm_parameter parameters.
+
+### Fixed:
+
+No bug fixes reported in this diff.
+
 ## 0.28.0
 
 **This release contains major breaking changes. If you currently rely on Tourmaline as a framework you may not want to update.**
