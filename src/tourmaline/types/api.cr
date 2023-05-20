@@ -7,1405 +7,1405 @@ module Tourmaline
   # At most one of the optional parameters can be present in any given update.
   class Update
     include JSON::Serializable
-    
+
     # The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
     property update_id : Int32 | Int64
-    
+
     # Optional. New incoming message of any kind - text, photo, sticker, etc.
     property message : Tourmaline::Message | ::Nil
-    
+
     # Optional. New version of a message that is known to the bot and was edited
     property edited_message : Tourmaline::Message | ::Nil
-    
+
     # Optional. New incoming channel post of any kind - text, photo, sticker, etc.
     property channel_post : Tourmaline::Message | ::Nil
-    
+
     # Optional. New version of a channel post that is known to the bot and was edited
     property edited_channel_post : Tourmaline::Message | ::Nil
-    
+
     # Optional. New incoming inline query
     property inline_query : Tourmaline::InlineQuery | ::Nil
-    
+
     # Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
     property chosen_inline_result : Tourmaline::ChosenInlineResult | ::Nil
-    
+
     # Optional. New incoming callback query
     property callback_query : Tourmaline::CallbackQuery | ::Nil
-    
+
     # Optional. New incoming shipping query. Only for invoices with flexible price
     property shipping_query : Tourmaline::ShippingQuery | ::Nil
-    
+
     # Optional. New incoming pre-checkout query. Contains full information about checkout
     property pre_checkout_query : Tourmaline::PreCheckoutQuery | ::Nil
-    
+
     # Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
     property poll : Tourmaline::Poll | ::Nil
-    
+
     # Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
     property poll_answer : Tourmaline::PollAnswer | ::Nil
-    
+
     # Optional. The bot's chat member status was updated in a chat. For private chats, this update is received only when the bot is blocked or unblocked by the user.
     property my_chat_member : Tourmaline::ChatMemberUpdated | ::Nil
-    
+
     # Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify "chat_member" in the list of allowed_updates to receive these updates.
     property chat_member : Tourmaline::ChatMemberUpdated | ::Nil
-    
+
     # Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
     property chat_join_request : Tourmaline::ChatJoinRequest | ::Nil
-    
+
     def initialize(
-      @update_id, 
-      @message : Tourmaline::Message | ::Nil = nil, 
-      @edited_message : Tourmaline::Message | ::Nil = nil, 
-      @channel_post : Tourmaline::Message | ::Nil = nil, 
-      @edited_channel_post : Tourmaline::Message | ::Nil = nil, 
-      @inline_query : Tourmaline::InlineQuery | ::Nil = nil, 
-      @chosen_inline_result : Tourmaline::ChosenInlineResult | ::Nil = nil, 
-      @callback_query : Tourmaline::CallbackQuery | ::Nil = nil, 
-      @shipping_query : Tourmaline::ShippingQuery | ::Nil = nil, 
-      @pre_checkout_query : Tourmaline::PreCheckoutQuery | ::Nil = nil, 
-      @poll : Tourmaline::Poll | ::Nil = nil, 
-      @poll_answer : Tourmaline::PollAnswer | ::Nil = nil, 
-      @my_chat_member : Tourmaline::ChatMemberUpdated | ::Nil = nil, 
-      @chat_member : Tourmaline::ChatMemberUpdated | ::Nil = nil, 
+      @update_id,
+      @message : Tourmaline::Message | ::Nil = nil,
+      @edited_message : Tourmaline::Message | ::Nil = nil,
+      @channel_post : Tourmaline::Message | ::Nil = nil,
+      @edited_channel_post : Tourmaline::Message | ::Nil = nil,
+      @inline_query : Tourmaline::InlineQuery | ::Nil = nil,
+      @chosen_inline_result : Tourmaline::ChosenInlineResult | ::Nil = nil,
+      @callback_query : Tourmaline::CallbackQuery | ::Nil = nil,
+      @shipping_query : Tourmaline::ShippingQuery | ::Nil = nil,
+      @pre_checkout_query : Tourmaline::PreCheckoutQuery | ::Nil = nil,
+      @poll : Tourmaline::Poll | ::Nil = nil,
+      @poll_answer : Tourmaline::PollAnswer | ::Nil = nil,
+      @my_chat_member : Tourmaline::ChatMemberUpdated | ::Nil = nil,
+      @chat_member : Tourmaline::ChatMemberUpdated | ::Nil = nil,
       @chat_join_request : Tourmaline::ChatJoinRequest | ::Nil = nil
     )
     end
   end
-  
+
   # Describes the current status of a webhook.
   class WebhookInfo
     include JSON::Serializable
-    
+
     # Webhook URL, may be empty if webhook is not set up
     property url : String
-    
+
     # True, if a custom certificate was provided for webhook certificate checks
     property? has_custom_certificate : Bool
-    
+
     # Number of updates awaiting delivery
     property pending_update_count : Int32 | Int64
-    
+
     # Optional. Currently used webhook IP address
     property ip_address : String | ::Nil
-    
+
     # Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook
     @[JSON::Field(converter: Time::EpochConverter)]
     property last_error_date : Time | ::Nil
-    
+
     # Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook
     property last_error_message : String | ::Nil
-    
+
     # Optional. Unix time of the most recent error that happened when trying to synchronize available updates with Telegram datacenters
     @[JSON::Field(converter: Time::EpochConverter)]
     property last_synchronization_error_date : Time | ::Nil
-    
+
     # Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
     property max_connections : Int32 | Int64 | ::Nil
-    
+
     # Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member
     property allowed_updates : Array(String) = [] of String
-    
+
     def initialize(
-      @url, 
-      @has_custom_certificate, 
-      @pending_update_count, 
-      @ip_address : String | ::Nil = nil, 
-      @last_error_date : Int32 | Int64 | ::Nil = nil, 
-      @last_error_message : String | ::Nil = nil, 
-      @last_synchronization_error_date : Int32 | Int64 | ::Nil = nil, 
-      @max_connections : Int32 | Int64 | ::Nil = nil, 
+      @url,
+      @has_custom_certificate,
+      @pending_update_count,
+      @ip_address : String | ::Nil = nil,
+      @last_error_date : Int32 | Int64 | ::Nil = nil,
+      @last_error_message : String | ::Nil = nil,
+      @last_synchronization_error_date : Int32 | Int64 | ::Nil = nil,
+      @max_connections : Int32 | Int64 | ::Nil = nil,
       @allowed_updates : Array(String) = [] of String
     )
     end
   end
-  
+
   # This object represents a Telegram user or bot.
   class User
     include JSON::Serializable
-    
+
     # Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
     property id : Int32 | Int64
-    
+
     # True, if this user is a bot
     property? is_bot : Bool
-    
+
     # User's or bot's first name
     property first_name : String
-    
+
     # Optional. User's or bot's last name
     property last_name : String | ::Nil
-    
+
     # Optional. User's or bot's username
     property username : String | ::Nil
-    
+
     # Optional. IETF language tag of the user's language
     property language_code : String | ::Nil
-    
+
     # Optional. True, if this user is a Telegram Premium user
     property? is_premium : Bool | ::Nil
-    
+
     # Optional. True, if this user added the bot to the attachment menu
     property? added_to_attachment_menu : Bool | ::Nil
-    
+
     # Optional. True, if the bot can be invited to groups. Returned only in getMe.
     property? can_join_groups : Bool | ::Nil
-    
+
     # Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
     property? can_read_all_group_messages : Bool | ::Nil
-    
+
     # Optional. True, if the bot supports inline queries. Returned only in getMe.
     property? supports_inline_queries : Bool | ::Nil
-    
+
     def initialize(
-      @id, 
-      @is_bot, 
-      @first_name, 
-      @last_name : String | ::Nil = nil, 
-      @username : String | ::Nil = nil, 
-      @language_code : String | ::Nil = nil, 
-      @is_premium : Bool | ::Nil = nil, 
-      @added_to_attachment_menu : Bool | ::Nil = nil, 
-      @can_join_groups : Bool | ::Nil = nil, 
-      @can_read_all_group_messages : Bool | ::Nil = nil, 
+      @id,
+      @is_bot,
+      @first_name,
+      @last_name : String | ::Nil = nil,
+      @username : String | ::Nil = nil,
+      @language_code : String | ::Nil = nil,
+      @is_premium : Bool | ::Nil = nil,
+      @added_to_attachment_menu : Bool | ::Nil = nil,
+      @can_join_groups : Bool | ::Nil = nil,
+      @can_read_all_group_messages : Bool | ::Nil = nil,
       @supports_inline_queries : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a chat.
   class Chat
     include JSON::Serializable
-    
+
     # Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
     property id : Int32 | Int64
-    
+
     # Type of chat, can be either "private", "group", "supergroup" or "channel"
     property type : String
-    
+
     # Optional. Title, for supergroups, channels and group chats
     property title : String | ::Nil
-    
+
     # Optional. Username, for private chats, supergroups and channels if available
     property username : String | ::Nil
-    
+
     # Optional. First name of the other party in a private chat
     property first_name : String | ::Nil
-    
+
     # Optional. Last name of the other party in a private chat
     property last_name : String | ::Nil
-    
+
     # Optional. True, if the supergroup chat is a forum (has topics enabled)
     property? is_forum : Bool | ::Nil
-    
+
     # Optional. Chat photo. Returned only in getChat.
     property photo : Tourmaline::ChatPhoto | ::Nil
-    
+
     # Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels. Returned only in getChat.
     property active_usernames : Array(String) = [] of String
-    
+
     # Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
     property emoji_status_custom_emoji_id : String | ::Nil
-    
+
     # Optional. Bio of the other party in a private chat. Returned only in getChat.
     property bio : String | ::Nil
-    
+
     # Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user. Returned only in getChat.
     property? has_private_forwards : Bool | ::Nil
-    
+
     # Optional. True, if the privacy settings of the other party restrict sending voice and video note messages in the private chat. Returned only in getChat.
     property? has_restricted_voice_and_video_messages : Bool | ::Nil
-    
+
     # Optional. True, if users need to join the supergroup before they can send messages. Returned only in getChat.
     property? join_to_send_messages : Bool | ::Nil
-    
+
     # Optional. True, if all users directly joining the supergroup need to be approved by supergroup administrators. Returned only in getChat.
     property? join_by_request : Bool | ::Nil
-    
+
     # Optional. Description, for groups, supergroups and channel chats. Returned only in getChat.
     property description : String | ::Nil
-    
+
     # Optional. Primary invite link, for groups, supergroups and channel chats. Returned only in getChat.
     property invite_link : String | ::Nil
-    
+
     # Optional. The most recent pinned message (by sending date). Returned only in getChat.
     property pinned_message : Tourmaline::Message | ::Nil
-    
+
     # Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.
     property permissions : Tourmaline::ChatPermissions | ::Nil
-    
+
     # Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user; in seconds. Returned only in getChat.
     property slow_mode_delay : Int32 | Int64 | ::Nil
-    
+
     # Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
     @[JSON::Field(converter: Time::EpochConverter)]
     property message_auto_delete_time : Time | ::Nil
-    
+
     # Optional. True, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat administrators. Returned only in getChat.
     property? has_aggressive_anti_spam_enabled : Bool | ::Nil
-    
+
     # Optional. True, if non-administrators can only get the list of bots and administrators in the chat. Returned only in getChat.
     property? has_hidden_members : Bool | ::Nil
-    
+
     # Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
     property? has_protected_content : Bool | ::Nil
-    
+
     # Optional. For supergroups, name of group sticker set. Returned only in getChat.
     property sticker_set_name : String | ::Nil
-    
+
     # Optional. True, if the bot can change the group sticker set. Returned only in getChat.
     property? can_set_sticker_set : Bool | ::Nil
-    
+
     # Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
     property linked_chat_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
     property location : Tourmaline::ChatLocation | ::Nil
-    
+
     def initialize(
-      @id, 
-      @type, 
-      @title : String | ::Nil = nil, 
-      @username : String | ::Nil = nil, 
-      @first_name : String | ::Nil = nil, 
-      @last_name : String | ::Nil = nil, 
-      @is_forum : Bool | ::Nil = nil, 
-      @photo : Tourmaline::ChatPhoto | ::Nil = nil, 
-      @active_usernames : Array(String) = [] of String, 
-      @emoji_status_custom_emoji_id : String | ::Nil = nil, 
-      @bio : String | ::Nil = nil, 
-      @has_private_forwards : Bool | ::Nil = nil, 
-      @has_restricted_voice_and_video_messages : Bool | ::Nil = nil, 
-      @join_to_send_messages : Bool | ::Nil = nil, 
-      @join_by_request : Bool | ::Nil = nil, 
-      @description : String | ::Nil = nil, 
-      @invite_link : String | ::Nil = nil, 
-      @pinned_message : Tourmaline::Message | ::Nil = nil, 
-      @permissions : Tourmaline::ChatPermissions | ::Nil = nil, 
-      @slow_mode_delay : Int32 | Int64 | ::Nil = nil, 
-      @message_auto_delete_time : Int32 | Int64 | ::Nil = nil, 
-      @has_aggressive_anti_spam_enabled : Bool | ::Nil = nil, 
-      @has_hidden_members : Bool | ::Nil = nil, 
-      @has_protected_content : Bool | ::Nil = nil, 
-      @sticker_set_name : String | ::Nil = nil, 
-      @can_set_sticker_set : Bool | ::Nil = nil, 
-      @linked_chat_id : Int32 | Int64 | ::Nil = nil, 
+      @id,
+      @type,
+      @title : String | ::Nil = nil,
+      @username : String | ::Nil = nil,
+      @first_name : String | ::Nil = nil,
+      @last_name : String | ::Nil = nil,
+      @is_forum : Bool | ::Nil = nil,
+      @photo : Tourmaline::ChatPhoto | ::Nil = nil,
+      @active_usernames : Array(String) = [] of String,
+      @emoji_status_custom_emoji_id : String | ::Nil = nil,
+      @bio : String | ::Nil = nil,
+      @has_private_forwards : Bool | ::Nil = nil,
+      @has_restricted_voice_and_video_messages : Bool | ::Nil = nil,
+      @join_to_send_messages : Bool | ::Nil = nil,
+      @join_by_request : Bool | ::Nil = nil,
+      @description : String | ::Nil = nil,
+      @invite_link : String | ::Nil = nil,
+      @pinned_message : Tourmaline::Message | ::Nil = nil,
+      @permissions : Tourmaline::ChatPermissions | ::Nil = nil,
+      @slow_mode_delay : Int32 | Int64 | ::Nil = nil,
+      @message_auto_delete_time : Int32 | Int64 | ::Nil = nil,
+      @has_aggressive_anti_spam_enabled : Bool | ::Nil = nil,
+      @has_hidden_members : Bool | ::Nil = nil,
+      @has_protected_content : Bool | ::Nil = nil,
+      @sticker_set_name : String | ::Nil = nil,
+      @can_set_sticker_set : Bool | ::Nil = nil,
+      @linked_chat_id : Int32 | Int64 | ::Nil = nil,
       @location : Tourmaline::ChatLocation | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a message.
   class Message
     include JSON::Serializable
-    
+
     # Unique message identifier inside this chat
     property message_id : Int32 | Int64
-    
+
     # Date the message was sent in Unix time
     @[JSON::Field(converter: Time::EpochConverter)]
     property date : Time
-    
+
     # Conversation the message belongs to
     property chat : Tourmaline::Chat
-    
+
     # Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
     property message_thread_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. Sender of the message; empty for messages sent to channels. For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
     property from : Tourmaline::User | ::Nil
-    
+
     # Optional. Sender of the message, sent on behalf of a chat. For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group administrators, the linked channel for messages automatically forwarded to the discussion group. For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
     property sender_chat : Tourmaline::Chat | ::Nil
-    
+
     # Optional. For forwarded messages, sender of the original message
     property forward_from : Tourmaline::User | ::Nil
-    
+
     # Optional. For messages forwarded from channels or from anonymous administrators, information about the original sender chat
     property forward_from_chat : Tourmaline::Chat | ::Nil
-    
+
     # Optional. For messages forwarded from channels, identifier of the original message in the channel
     property forward_from_message_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. For forwarded messages that were originally sent in channels or by an anonymous chat administrator, signature of the message sender if present
     property forward_signature : String | ::Nil
-    
+
     # Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages
     property forward_sender_name : String | ::Nil
-    
+
     # Optional. For forwarded messages, date the original message was sent in Unix time
     @[JSON::Field(converter: Time::EpochConverter)]
     property forward_date : Time | ::Nil
-    
+
     # Optional. True, if the message is sent to a forum topic
     property? is_topic_message : Bool | ::Nil
-    
+
     # Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
     property? is_automatic_forward : Bool | ::Nil
-    
+
     # Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
     property reply_to_message : Tourmaline::Message | ::Nil
-    
+
     # Optional. Bot through which the message was sent
     property via_bot : Tourmaline::User | ::Nil
-    
+
     # Optional. Date the message was last edited in Unix time
     @[JSON::Field(converter: Time::EpochConverter)]
     property edit_date : Time | ::Nil
-    
+
     # Optional. True, if the message can't be forwarded
     property? has_protected_content : Bool | ::Nil
-    
+
     # Optional. The unique identifier of a media message group this message belongs to
     property media_group_id : String | ::Nil
-    
+
     # Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
     property author_signature : String | ::Nil
-    
+
     # Optional. For text messages, the actual UTF-8 text of the message
     property text : String | ::Nil
-    
+
     # Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
     property entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
     property animation : Tourmaline::Animation | ::Nil
-    
+
     # Optional. Message is an audio file, information about the file
     property audio : Tourmaline::Audio | ::Nil
-    
+
     # Optional. Message is a general file, information about the file
     property document : Tourmaline::Document | ::Nil
-    
+
     # Optional. Message is a photo, available sizes of the photo
     property photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize
-    
+
     # Optional. Message is a sticker, information about the sticker
     property sticker : Tourmaline::Sticker | ::Nil
-    
+
     # Optional. Message is a video, information about the video
     property video : Tourmaline::Video | ::Nil
-    
+
     # Optional. Message is a video note, information about the video message
     property video_note : Tourmaline::VideoNote | ::Nil
-    
+
     # Optional. Message is a voice message, information about the file
     property voice : Tourmaline::Voice | ::Nil
-    
+
     # Optional. Caption for the animation, audio, document, photo, video or voice
     property caption : String | ::Nil
-    
+
     # Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. True, if the message media is covered by a spoiler animation
     property? has_media_spoiler : Bool | ::Nil
-    
+
     # Optional. Message is a shared contact, information about the contact
     property contact : Tourmaline::Contact | ::Nil
-    
+
     # Optional. Message is a dice with random value
     property dice : Tourmaline::Dice | ::Nil
-    
+
     # Optional. Message is a game, information about the game. More about games: https://core.telegram.org/bots/api#games
     property game : Tourmaline::Game | ::Nil
-    
+
     # Optional. Message is a native poll, information about the poll
     property poll : Tourmaline::Poll | ::Nil
-    
+
     # Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set
     property venue : Tourmaline::Venue | ::Nil
-    
+
     # Optional. Message is a shared location, information about the location
     property location : Tourmaline::Location | ::Nil
-    
+
     # Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)
     property new_chat_members : Array(Tourmaline::User) = [] of Tourmaline::User
-    
+
     # Optional. A member was removed from the group, information about them (this member may be the bot itself)
     property left_chat_member : Tourmaline::User | ::Nil
-    
+
     # Optional. A chat title was changed to this value
     property new_chat_title : String | ::Nil
-    
+
     # Optional. A chat photo was change to this value
     property new_chat_photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize
-    
+
     # Optional. Service message: the chat photo was deleted
     property? delete_chat_photo : Bool | ::Nil
-    
+
     # Optional. Service message: the group has been created
     property? group_chat_created : Bool | ::Nil
-    
+
     # Optional. Service message: the supergroup has been created. This field can't be received in a message coming through updates, because bot can't be a member of a supergroup when it is created. It can only be found in reply_to_message if someone replies to a very first message in a directly created supergroup.
     property? supergroup_chat_created : Bool | ::Nil
-    
+
     # Optional. Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel.
     property? channel_chat_created : Bool | ::Nil
-    
+
     # Optional. Service message: auto-delete timer settings changed in the chat
     property message_auto_delete_timer_changed : Tourmaline::MessageAutoDeleteTimerChanged | ::Nil
-    
+
     # Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
     property migrate_to_chat_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
     property migrate_from_chat_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
     property pinned_message : Tourmaline::Message | ::Nil
-    
+
     # Optional. Message is an invoice for a payment, information about the invoice. More about payments: https://core.telegram.org/bots/api#payments
     property invoice : Tourmaline::Invoice | ::Nil
-    
+
     # Optional. Message is a service message about a successful payment, information about the payment. More about payments: https://core.telegram.org/bots/api#payments
     property successful_payment : Tourmaline::SuccessfulPayment | ::Nil
-    
+
     # Optional. Service message: a user was shared with the bot
     property user_shared : Tourmaline::UserShared | ::Nil
-    
+
     # Optional. Service message: a chat was shared with the bot
     property chat_shared : Tourmaline::ChatShared | ::Nil
-    
+
     # Optional. The domain name of the website on which the user has logged in. More about Telegram Login: https://core.telegram.org/widgets/login
     property connected_website : String | ::Nil
-    
+
     # Optional. Service message: the user allowed the bot added to the attachment menu to write messages
     property write_access_allowed : Tourmaline::WriteAccessAllowed | ::Nil
-    
+
     # Optional. Telegram Passport data
     property passport_data : Tourmaline::PassportData | ::Nil
-    
+
     # Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
     property proximity_alert_triggered : Tourmaline::ProximityAlertTriggered | ::Nil
-    
+
     # Optional. Service message: forum topic created
     property forum_topic_created : Tourmaline::ForumTopicCreated | ::Nil
-    
+
     # Optional. Service message: forum topic edited
     property forum_topic_edited : Tourmaline::ForumTopicEdited | ::Nil
-    
+
     # Optional. Service message: forum topic closed
     property forum_topic_closed : Tourmaline::ForumTopicClosed | ::Nil
-    
+
     # Optional. Service message: forum topic reopened
     property forum_topic_reopened : Tourmaline::ForumTopicReopened | ::Nil
-    
+
     # Optional. Service message: the 'General' forum topic hidden
     property general_forum_topic_hidden : Tourmaline::GeneralForumTopicHidden | ::Nil
-    
+
     # Optional. Service message: the 'General' forum topic unhidden
     property general_forum_topic_unhidden : Tourmaline::GeneralForumTopicUnhidden | ::Nil
-    
+
     # Optional. Service message: video chat scheduled
     property video_chat_scheduled : Tourmaline::VideoChatScheduled | ::Nil
-    
+
     # Optional. Service message: video chat started
     property video_chat_started : Tourmaline::VideoChatStarted | ::Nil
-    
+
     # Optional. Service message: video chat ended
     property video_chat_ended : Tourmaline::VideoChatEnded | ::Nil
-    
+
     # Optional. Service message: new participants invited to a video chat
     property video_chat_participants_invited : Tourmaline::VideoChatParticipantsInvited | ::Nil
-    
+
     # Optional. Service message: data sent by a Web App
     property web_app_data : Tourmaline::WebAppData | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     def initialize(
-      @message_id, 
-      @date, 
-      @chat, 
-      @message_thread_id : Int32 | Int64 | ::Nil = nil, 
-      @from : Tourmaline::User | ::Nil = nil, 
-      @sender_chat : Tourmaline::Chat | ::Nil = nil, 
-      @forward_from : Tourmaline::User | ::Nil = nil, 
-      @forward_from_chat : Tourmaline::Chat | ::Nil = nil, 
-      @forward_from_message_id : Int32 | Int64 | ::Nil = nil, 
-      @forward_signature : String | ::Nil = nil, 
-      @forward_sender_name : String | ::Nil = nil, 
-      @forward_date : Int32 | Int64 | ::Nil = nil, 
-      @is_topic_message : Bool | ::Nil = nil, 
-      @is_automatic_forward : Bool | ::Nil = nil, 
-      @reply_to_message : Tourmaline::Message | ::Nil = nil, 
-      @via_bot : Tourmaline::User | ::Nil = nil, 
-      @edit_date : Int32 | Int64 | ::Nil = nil, 
-      @has_protected_content : Bool | ::Nil = nil, 
-      @media_group_id : String | ::Nil = nil, 
-      @author_signature : String | ::Nil = nil, 
-      @text : String | ::Nil = nil, 
-      @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @animation : Tourmaline::Animation | ::Nil = nil, 
-      @audio : Tourmaline::Audio | ::Nil = nil, 
-      @document : Tourmaline::Document | ::Nil = nil, 
-      @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize, 
-      @sticker : Tourmaline::Sticker | ::Nil = nil, 
-      @video : Tourmaline::Video | ::Nil = nil, 
-      @video_note : Tourmaline::VideoNote | ::Nil = nil, 
-      @voice : Tourmaline::Voice | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @has_media_spoiler : Bool | ::Nil = nil, 
-      @contact : Tourmaline::Contact | ::Nil = nil, 
-      @dice : Tourmaline::Dice | ::Nil = nil, 
-      @game : Tourmaline::Game | ::Nil = nil, 
-      @poll : Tourmaline::Poll | ::Nil = nil, 
-      @venue : Tourmaline::Venue | ::Nil = nil, 
-      @location : Tourmaline::Location | ::Nil = nil, 
-      @new_chat_members : Array(Tourmaline::User) = [] of Tourmaline::User, 
-      @left_chat_member : Tourmaline::User | ::Nil = nil, 
-      @new_chat_title : String | ::Nil = nil, 
-      @new_chat_photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize, 
-      @delete_chat_photo : Bool | ::Nil = nil, 
-      @group_chat_created : Bool | ::Nil = nil, 
-      @supergroup_chat_created : Bool | ::Nil = nil, 
-      @channel_chat_created : Bool | ::Nil = nil, 
-      @message_auto_delete_timer_changed : Tourmaline::MessageAutoDeleteTimerChanged | ::Nil = nil, 
-      @migrate_to_chat_id : Int32 | Int64 | ::Nil = nil, 
-      @migrate_from_chat_id : Int32 | Int64 | ::Nil = nil, 
-      @pinned_message : Tourmaline::Message | ::Nil = nil, 
-      @invoice : Tourmaline::Invoice | ::Nil = nil, 
-      @successful_payment : Tourmaline::SuccessfulPayment | ::Nil = nil, 
-      @user_shared : Tourmaline::UserShared | ::Nil = nil, 
-      @chat_shared : Tourmaline::ChatShared | ::Nil = nil, 
-      @connected_website : String | ::Nil = nil, 
-      @write_access_allowed : Tourmaline::WriteAccessAllowed | ::Nil = nil, 
-      @passport_data : Tourmaline::PassportData | ::Nil = nil, 
-      @proximity_alert_triggered : Tourmaline::ProximityAlertTriggered | ::Nil = nil, 
-      @forum_topic_created : Tourmaline::ForumTopicCreated | ::Nil = nil, 
-      @forum_topic_edited : Tourmaline::ForumTopicEdited | ::Nil = nil, 
-      @forum_topic_closed : Tourmaline::ForumTopicClosed | ::Nil = nil, 
-      @forum_topic_reopened : Tourmaline::ForumTopicReopened | ::Nil = nil, 
-      @general_forum_topic_hidden : Tourmaline::GeneralForumTopicHidden | ::Nil = nil, 
-      @general_forum_topic_unhidden : Tourmaline::GeneralForumTopicUnhidden | ::Nil = nil, 
-      @video_chat_scheduled : Tourmaline::VideoChatScheduled | ::Nil = nil, 
-      @video_chat_started : Tourmaline::VideoChatStarted | ::Nil = nil, 
-      @video_chat_ended : Tourmaline::VideoChatEnded | ::Nil = nil, 
-      @video_chat_participants_invited : Tourmaline::VideoChatParticipantsInvited | ::Nil = nil, 
-      @web_app_data : Tourmaline::WebAppData | ::Nil = nil, 
+      @message_id,
+      @date,
+      @chat,
+      @message_thread_id : Int32 | Int64 | ::Nil = nil,
+      @from : Tourmaline::User | ::Nil = nil,
+      @sender_chat : Tourmaline::Chat | ::Nil = nil,
+      @forward_from : Tourmaline::User | ::Nil = nil,
+      @forward_from_chat : Tourmaline::Chat | ::Nil = nil,
+      @forward_from_message_id : Int32 | Int64 | ::Nil = nil,
+      @forward_signature : String | ::Nil = nil,
+      @forward_sender_name : String | ::Nil = nil,
+      @forward_date : Int32 | Int64 | ::Nil = nil,
+      @is_topic_message : Bool | ::Nil = nil,
+      @is_automatic_forward : Bool | ::Nil = nil,
+      @reply_to_message : Tourmaline::Message | ::Nil = nil,
+      @via_bot : Tourmaline::User | ::Nil = nil,
+      @edit_date : Int32 | Int64 | ::Nil = nil,
+      @has_protected_content : Bool | ::Nil = nil,
+      @media_group_id : String | ::Nil = nil,
+      @author_signature : String | ::Nil = nil,
+      @text : String | ::Nil = nil,
+      @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @animation : Tourmaline::Animation | ::Nil = nil,
+      @audio : Tourmaline::Audio | ::Nil = nil,
+      @document : Tourmaline::Document | ::Nil = nil,
+      @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize,
+      @sticker : Tourmaline::Sticker | ::Nil = nil,
+      @video : Tourmaline::Video | ::Nil = nil,
+      @video_note : Tourmaline::VideoNote | ::Nil = nil,
+      @voice : Tourmaline::Voice | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @has_media_spoiler : Bool | ::Nil = nil,
+      @contact : Tourmaline::Contact | ::Nil = nil,
+      @dice : Tourmaline::Dice | ::Nil = nil,
+      @game : Tourmaline::Game | ::Nil = nil,
+      @poll : Tourmaline::Poll | ::Nil = nil,
+      @venue : Tourmaline::Venue | ::Nil = nil,
+      @location : Tourmaline::Location | ::Nil = nil,
+      @new_chat_members : Array(Tourmaline::User) = [] of Tourmaline::User,
+      @left_chat_member : Tourmaline::User | ::Nil = nil,
+      @new_chat_title : String | ::Nil = nil,
+      @new_chat_photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize,
+      @delete_chat_photo : Bool | ::Nil = nil,
+      @group_chat_created : Bool | ::Nil = nil,
+      @supergroup_chat_created : Bool | ::Nil = nil,
+      @channel_chat_created : Bool | ::Nil = nil,
+      @message_auto_delete_timer_changed : Tourmaline::MessageAutoDeleteTimerChanged | ::Nil = nil,
+      @migrate_to_chat_id : Int32 | Int64 | ::Nil = nil,
+      @migrate_from_chat_id : Int32 | Int64 | ::Nil = nil,
+      @pinned_message : Tourmaline::Message | ::Nil = nil,
+      @invoice : Tourmaline::Invoice | ::Nil = nil,
+      @successful_payment : Tourmaline::SuccessfulPayment | ::Nil = nil,
+      @user_shared : Tourmaline::UserShared | ::Nil = nil,
+      @chat_shared : Tourmaline::ChatShared | ::Nil = nil,
+      @connected_website : String | ::Nil = nil,
+      @write_access_allowed : Tourmaline::WriteAccessAllowed | ::Nil = nil,
+      @passport_data : Tourmaline::PassportData | ::Nil = nil,
+      @proximity_alert_triggered : Tourmaline::ProximityAlertTriggered | ::Nil = nil,
+      @forum_topic_created : Tourmaline::ForumTopicCreated | ::Nil = nil,
+      @forum_topic_edited : Tourmaline::ForumTopicEdited | ::Nil = nil,
+      @forum_topic_closed : Tourmaline::ForumTopicClosed | ::Nil = nil,
+      @forum_topic_reopened : Tourmaline::ForumTopicReopened | ::Nil = nil,
+      @general_forum_topic_hidden : Tourmaline::GeneralForumTopicHidden | ::Nil = nil,
+      @general_forum_topic_unhidden : Tourmaline::GeneralForumTopicUnhidden | ::Nil = nil,
+      @video_chat_scheduled : Tourmaline::VideoChatScheduled | ::Nil = nil,
+      @video_chat_started : Tourmaline::VideoChatStarted | ::Nil = nil,
+      @video_chat_ended : Tourmaline::VideoChatEnded | ::Nil = nil,
+      @video_chat_participants_invited : Tourmaline::VideoChatParticipantsInvited | ::Nil = nil,
+      @web_app_data : Tourmaline::WebAppData | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a unique message identifier.
   class MessageId
     include JSON::Serializable
-    
+
     # Unique message identifier
     property message_id : Int32 | Int64
-    
+
     def initialize(
       @message_id
     )
     end
   end
-  
+
   # This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
   class MessageEntity
     include JSON::Serializable
-    
+
     # Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag" ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers)
     property type : String
-    
+
     # Offset in UTF-16 code units to the start of the entity
     property offset : Int32 | Int64
-    
+
     # Length of the entity in UTF-16 code units
     property length : Int32 | Int64
-    
+
     # Optional. For "text_link" only, URL that will be opened after user taps on the text
     property url : String | ::Nil
-    
+
     # Optional. For "text_mention" only, the mentioned user
     property user : Tourmaline::User | ::Nil
-    
+
     # Optional. For "pre" only, the programming language of the entity text
     property language : String | ::Nil
-    
+
     # Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker
     property custom_emoji_id : String | ::Nil
-    
+
     def initialize(
-      @type, 
-      @offset, 
-      @length, 
-      @url : String | ::Nil = nil, 
-      @user : Tourmaline::User | ::Nil = nil, 
-      @language : String | ::Nil = nil, 
+      @type,
+      @offset,
+      @length,
+      @url : String | ::Nil = nil,
+      @user : Tourmaline::User | ::Nil = nil,
+      @language : String | ::Nil = nil,
       @custom_emoji_id : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents one size of a photo or a file / sticker thumbnail.
   class PhotoSize
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Photo width
     property width : Int32 | Int64
-    
+
     # Photo height
     property height : Int32 | Int64
-    
+
     # Optional. File size in bytes
     property file_size : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @width, 
-      @height, 
+      @file_id,
+      @file_unique_id,
+      @width,
+      @height,
       @file_size : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
   class Animation
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Video width as defined by sender
     property width : Int32 | Int64
-    
+
     # Video height as defined by sender
     property height : Int32 | Int64
-    
+
     # Duration of the video in seconds as defined by sender
     property duration : Int32 | Int64
-    
+
     # Optional. Animation thumbnail as defined by sender
     property thumbnail : Tourmaline::PhotoSize | ::Nil
-    
+
     # Optional. Original animation filename as defined by sender
     property file_name : String | ::Nil
-    
+
     # Optional. MIME type of the file as defined by sender
     property mime_type : String | ::Nil
-    
+
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     property file_size : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @width, 
-      @height, 
-      @duration, 
-      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil, 
-      @file_name : String | ::Nil = nil, 
-      @mime_type : String | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @width,
+      @height,
+      @duration,
+      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil,
+      @file_name : String | ::Nil = nil,
+      @mime_type : String | ::Nil = nil,
       @file_size : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents an audio file to be treated as music by the Telegram clients.
   class Audio
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Duration of the audio in seconds as defined by sender
     property duration : Int32 | Int64
-    
+
     # Optional. Performer of the audio as defined by sender or by audio tags
     property performer : String | ::Nil
-    
+
     # Optional. Title of the audio as defined by sender or by audio tags
     property title : String | ::Nil
-    
+
     # Optional. Original filename as defined by sender
     property file_name : String | ::Nil
-    
+
     # Optional. MIME type of the file as defined by sender
     property mime_type : String | ::Nil
-    
+
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     property file_size : Int32 | Int64 | ::Nil
-    
+
     # Optional. Thumbnail of the album cover to which the music file belongs
     property thumbnail : Tourmaline::PhotoSize | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @duration, 
-      @performer : String | ::Nil = nil, 
-      @title : String | ::Nil = nil, 
-      @file_name : String | ::Nil = nil, 
-      @mime_type : String | ::Nil = nil, 
-      @file_size : Int32 | Int64 | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @duration,
+      @performer : String | ::Nil = nil,
+      @title : String | ::Nil = nil,
+      @file_name : String | ::Nil = nil,
+      @mime_type : String | ::Nil = nil,
+      @file_size : Int32 | Int64 | ::Nil = nil,
       @thumbnail : Tourmaline::PhotoSize | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a general file (as opposed to photos, voice messages and audio files).
   class Document
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Optional. Document thumbnail as defined by sender
     property thumbnail : Tourmaline::PhotoSize | ::Nil
-    
+
     # Optional. Original filename as defined by sender
     property file_name : String | ::Nil
-    
+
     # Optional. MIME type of the file as defined by sender
     property mime_type : String | ::Nil
-    
+
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     property file_size : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil, 
-      @file_name : String | ::Nil = nil, 
-      @mime_type : String | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil,
+      @file_name : String | ::Nil = nil,
+      @mime_type : String | ::Nil = nil,
       @file_size : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a video file.
   class Video
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Video width as defined by sender
     property width : Int32 | Int64
-    
+
     # Video height as defined by sender
     property height : Int32 | Int64
-    
+
     # Duration of the video in seconds as defined by sender
     property duration : Int32 | Int64
-    
+
     # Optional. Video thumbnail
     property thumbnail : Tourmaline::PhotoSize | ::Nil
-    
+
     # Optional. Original filename as defined by sender
     property file_name : String | ::Nil
-    
+
     # Optional. MIME type of the file as defined by sender
     property mime_type : String | ::Nil
-    
+
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     property file_size : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @width, 
-      @height, 
-      @duration, 
-      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil, 
-      @file_name : String | ::Nil = nil, 
-      @mime_type : String | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @width,
+      @height,
+      @duration,
+      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil,
+      @file_name : String | ::Nil = nil,
+      @mime_type : String | ::Nil = nil,
       @file_size : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a video message (available in Telegram apps as of v.4.0).
   class VideoNote
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Video width and height (diameter of the video message) as defined by sender
     property length : Int32 | Int64
-    
+
     # Duration of the video in seconds as defined by sender
     property duration : Int32 | Int64
-    
+
     # Optional. Video thumbnail
     property thumbnail : Tourmaline::PhotoSize | ::Nil
-    
+
     # Optional. File size in bytes
     property file_size : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @length, 
-      @duration, 
-      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @length,
+      @duration,
+      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil,
       @file_size : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a voice note.
   class Voice
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Duration of the audio in seconds as defined by sender
     property duration : Int32 | Int64
-    
+
     # Optional. MIME type of the file as defined by sender
     property mime_type : String | ::Nil
-    
+
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     property file_size : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @duration, 
-      @mime_type : String | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @duration,
+      @mime_type : String | ::Nil = nil,
       @file_size : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a phone contact.
   class Contact
     include JSON::Serializable
-    
+
     # Contact's phone number
     property phone_number : String
-    
+
     # Contact's first name
     property first_name : String
-    
+
     # Optional. Contact's last name
     property last_name : String | ::Nil
-    
+
     # Optional. Contact's user identifier in Telegram. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
     property user_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. Additional data about the contact in the form of a vCard
     property vcard : String | ::Nil
-    
+
     def initialize(
-      @phone_number, 
-      @first_name, 
-      @last_name : String | ::Nil = nil, 
-      @user_id : Int32 | Int64 | ::Nil = nil, 
+      @phone_number,
+      @first_name,
+      @last_name : String | ::Nil = nil,
+      @user_id : Int32 | Int64 | ::Nil = nil,
       @vcard : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents an animated emoji that displays a random value.
   class Dice
     include JSON::Serializable
-    
+
     # Emoji on which the dice throw animation is based
     property emoji : String
-    
+
     # Value of the dice, 1-6 for "🎲", "🎯" and "🎳" base emoji, 1-5 for "🏀" and "⚽" base emoji, 1-64 for "🎰" base emoji
     property value : Int32 | Int64
-    
+
     def initialize(
-      @emoji, 
+      @emoji,
       @value
     )
     end
   end
-  
+
   # This object contains information about one answer option in a poll.
   class PollOption
     include JSON::Serializable
-    
+
     # Option text, 1-100 characters
     property text : String
-    
+
     # Number of users that voted for this option
     property voter_count : Int32 | Int64
-    
+
     def initialize(
-      @text, 
+      @text,
       @voter_count
     )
     end
   end
-  
+
   # This object represents an answer of a user in a non-anonymous poll.
   class PollAnswer
     include JSON::Serializable
-    
+
     # Unique poll identifier
     property poll_id : String
-    
+
     # The user, who changed the answer to the poll
     property user : Tourmaline::User
-    
+
     # 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
     property option_ids : Array(Int32 | Int64) = [] of Int32 | Int64
-    
+
     def initialize(
-      @poll_id, 
-      @user, 
+      @poll_id,
+      @user,
       @option_ids : Array(Int32 | Int64) = [] of Int32 | Int64
     )
     end
   end
-  
+
   # This object contains information about a poll.
   class Poll
     include JSON::Serializable
-    
+
     # Unique poll identifier
     property id : String
-    
+
     # Poll question, 1-300 characters
     property question : String
-    
+
     # Total number of users that voted in the poll
     property total_voter_count : Int32 | Int64
-    
+
     # True, if the poll is closed
     property? is_closed : Bool
-    
+
     # True, if the poll is anonymous
     property? is_anonymous : Bool
-    
+
     # Poll type, currently can be "regular" or "quiz"
     property type : String
-    
+
     # True, if the poll allows multiple answers
     property? allows_multiple_answers : Bool
-    
+
     # List of poll options
     property options : Array(Tourmaline::PollOption) = [] of Tourmaline::PollOption
-    
+
     # Optional. 0-based identifier of the correct answer option. Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
     property correct_option_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters
     property explanation : String | ::Nil
-    
+
     # Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation
     property explanation_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Amount of time in seconds the poll will be active after creation
     property open_period : Int32 | Int64 | ::Nil
-    
+
     # Optional. Point in time (Unix timestamp) when the poll will be automatically closed
     @[JSON::Field(converter: Time::EpochConverter)]
     property close_date : Time | ::Nil
-    
+
     def initialize(
-      @id, 
-      @question, 
-      @total_voter_count, 
-      @is_closed, 
-      @is_anonymous, 
-      @type, 
-      @allows_multiple_answers, 
-      @options : Array(Tourmaline::PollOption) = [] of Tourmaline::PollOption, 
-      @correct_option_id : Int32 | Int64 | ::Nil = nil, 
-      @explanation : String | ::Nil = nil, 
-      @explanation_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @open_period : Int32 | Int64 | ::Nil = nil, 
+      @id,
+      @question,
+      @total_voter_count,
+      @is_closed,
+      @is_anonymous,
+      @type,
+      @allows_multiple_answers,
+      @options : Array(Tourmaline::PollOption) = [] of Tourmaline::PollOption,
+      @correct_option_id : Int32 | Int64 | ::Nil = nil,
+      @explanation : String | ::Nil = nil,
+      @explanation_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @open_period : Int32 | Int64 | ::Nil = nil,
       @close_date : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a point on the map.
   class Location
     include JSON::Serializable
-    
+
     # Longitude as defined by sender
     property longitude : Float64
-    
+
     # Latitude as defined by sender
     property latitude : Float64
-    
+
     # Optional. The radius of uncertainty for the location, measured in meters; 0-1500
     property horizontal_accuracy : Float64 | ::Nil
-    
+
     # Optional. Time relative to the message sending date, during which the location can be updated; in seconds. For active live locations only.
     property live_period : Int32 | Int64 | ::Nil
-    
+
     # Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.
     property heading : Int32 | Int64 | ::Nil
-    
+
     # Optional. The maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
     property proximity_alert_radius : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @longitude, 
-      @latitude, 
-      @horizontal_accuracy : Float64 | ::Nil = nil, 
-      @live_period : Int32 | Int64 | ::Nil = nil, 
-      @heading : Int32 | Int64 | ::Nil = nil, 
+      @longitude,
+      @latitude,
+      @horizontal_accuracy : Float64 | ::Nil = nil,
+      @live_period : Int32 | Int64 | ::Nil = nil,
+      @heading : Int32 | Int64 | ::Nil = nil,
       @proximity_alert_radius : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a venue.
   class Venue
     include JSON::Serializable
-    
+
     # Venue location. Can't be a live location
     property location : Tourmaline::Location
-    
+
     # Name of the venue
     property title : String
-    
+
     # Address of the venue
     property address : String
-    
+
     # Optional. Foursquare identifier of the venue
     property foursquare_id : String | ::Nil
-    
+
     # Optional. Foursquare type of the venue. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
     property foursquare_type : String | ::Nil
-    
+
     # Optional. Google Places identifier of the venue
     property google_place_id : String | ::Nil
-    
+
     # Optional. Google Places type of the venue. (See supported types.)
     property google_place_type : String | ::Nil
-    
+
     def initialize(
-      @location, 
-      @title, 
-      @address, 
-      @foursquare_id : String | ::Nil = nil, 
-      @foursquare_type : String | ::Nil = nil, 
-      @google_place_id : String | ::Nil = nil, 
+      @location,
+      @title,
+      @address,
+      @foursquare_id : String | ::Nil = nil,
+      @foursquare_type : String | ::Nil = nil,
+      @google_place_id : String | ::Nil = nil,
       @google_place_type : String | ::Nil = nil
     )
     end
   end
-  
+
   # Describes data sent from a Web App to the bot.
   class WebAppData
     include JSON::Serializable
-    
+
     # The data. Be aware that a bad client can send arbitrary data in this field.
     property data : String
-    
+
     # Text of the web_app keyboard button from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field.
     property button_text : String
-    
+
     def initialize(
-      @data, 
+      @data,
       @button_text
     )
     end
   end
-  
+
   # This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
   class ProximityAlertTriggered
     include JSON::Serializable
-    
+
     # User that triggered the alert
     property traveler : Tourmaline::User
-    
+
     # User that set the alert
     property watcher : Tourmaline::User
-    
+
     # The distance between the users
     property distance : Int32 | Int64
-    
+
     def initialize(
-      @traveler, 
-      @watcher, 
+      @traveler,
+      @watcher,
       @distance
     )
     end
   end
-  
+
   # This object represents a service message about a change in auto-delete timer settings.
   class MessageAutoDeleteTimerChanged
     include JSON::Serializable
-    
+
     # New auto-delete time for messages in the chat; in seconds
     @[JSON::Field(converter: Time::EpochConverter)]
     property message_auto_delete_time : Time
-    
+
     def initialize(
       @message_auto_delete_time
     )
     end
   end
-  
+
   # This object represents a service message about a new forum topic created in the chat.
   class ForumTopicCreated
     include JSON::Serializable
-    
+
     # Name of the topic
     property name : String
-    
+
     # Color of the topic icon in RGB format
     property icon_color : Int32 | Int64
-    
+
     # Optional. Unique identifier of the custom emoji shown as the topic icon
     property icon_custom_emoji_id : String | ::Nil
-    
+
     def initialize(
-      @name, 
-      @icon_color, 
+      @name,
+      @icon_color,
       @icon_custom_emoji_id : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a service message about a forum topic closed in the chat. Currently holds no information.
   class ForumTopicClosed
     include JSON::Serializable
   end
-  
+
   # This object represents a service message about an edited forum topic.
   class ForumTopicEdited
     include JSON::Serializable
-    
+
     # Optional. New name of the topic, if it was edited
     property name : String | ::Nil
-    
+
     # Optional. New identifier of the custom emoji shown as the topic icon, if it was edited; an empty string if the icon was removed
     property icon_custom_emoji_id : String | ::Nil
-    
+
     def initialize(
-      @name : String | ::Nil = nil, 
+      @name : String | ::Nil = nil,
       @icon_custom_emoji_id : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a service message about a forum topic reopened in the chat. Currently holds no information.
   class ForumTopicReopened
     include JSON::Serializable
   end
-  
+
   # This object represents a service message about General forum topic hidden in the chat. Currently holds no information.
   class GeneralForumTopicHidden
     include JSON::Serializable
   end
-  
+
   # This object represents a service message about General forum topic unhidden in the chat. Currently holds no information.
   class GeneralForumTopicUnhidden
     include JSON::Serializable
   end
-  
+
   # This object contains information about the user whose identifier was shared with the bot using a KeyboardButtonRequestUser button.
   class UserShared
     include JSON::Serializable
-    
+
     # Identifier of the request
     property request_id : Int32 | Int64
-    
+
     # Identifier of the shared user. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the user and could be unable to use this identifier, unless the user is already known to the bot by some other means.
     property user_id : Int32 | Int64
-    
+
     def initialize(
-      @request_id, 
+      @request_id,
       @user_id
     )
     end
   end
-  
+
   # This object contains information about the chat whose identifier was shared with the bot using a KeyboardButtonRequestChat button.
   class ChatShared
     include JSON::Serializable
-    
+
     # Identifier of the request
     property request_id : Int32 | Int64
-    
+
     # Identifier of the shared chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be unable to use this identifier, unless the chat is already known to the bot by some other means.
     property chat_id : Int32 | Int64
-    
+
     def initialize(
-      @request_id, 
+      @request_id,
       @chat_id
     )
     end
   end
-  
+
   # This object represents a service message about a user allowing a bot to write messages after adding the bot to the attachment menu or launching a Web App from a link.
   class WriteAccessAllowed
     include JSON::Serializable
-    
+
     # Optional. Name of the Web App which was launched from a link
     property web_app_name : String | ::Nil
-    
+
     def initialize(
       @web_app_name : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a service message about a video chat scheduled in the chat.
   class VideoChatScheduled
     include JSON::Serializable
-    
+
     # Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator
     @[JSON::Field(converter: Time::EpochConverter)]
     property start_date : Time
-    
+
     def initialize(
       @start_date
     )
     end
   end
-  
+
   # This object represents a service message about a video chat started in the chat. Currently holds no information.
   class VideoChatStarted
     include JSON::Serializable
   end
-  
+
   # This object represents a service message about a video chat ended in the chat.
   class VideoChatEnded
     include JSON::Serializable
-    
+
     # Video chat duration in seconds
     property duration : Int32 | Int64
-    
+
     def initialize(
       @duration
     )
     end
   end
-  
+
   # This object represents a service message about new members invited to a video chat.
   class VideoChatParticipantsInvited
     include JSON::Serializable
-    
+
     # New members that were invited to the video chat
     property users : Array(Tourmaline::User) = [] of Tourmaline::User
-    
+
     def initialize(
       @users : Array(Tourmaline::User) = [] of Tourmaline::User
     )
     end
   end
-  
+
   # This object represent a user's profile pictures.
   class UserProfilePhotos
     include JSON::Serializable
-    
+
     # Total number of profile pictures the target user has
     property total_count : Int32 | Int64
-    
+
     # Requested profile pictures (in up to 4 sizes each)
     property photos : Array(Array(Tourmaline::PhotoSize)) = [] of Array(Tourmaline::PhotoSize)
-    
+
     def initialize(
-      @total_count, 
+      @total_count,
       @photos : Array(Array(Tourmaline::PhotoSize)) = [] of Array(Tourmaline::PhotoSize)
     )
     end
   end
-  
+
   # This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
   class File
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     property file_size : Int32 | Int64 | ::Nil
-    
+
     # Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
     property file_path : String | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @file_size : Int32 | Int64 | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @file_size : Int32 | Int64 | ::Nil = nil,
       @file_path : String | ::Nil = nil
     )
     end
   end
-  
+
   # Describes a Web App.
   class WebAppInfo
     include JSON::Serializable
-    
+
     # An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps
     property url : String
-    
+
     def initialize(
       @url
     )
     end
   end
-  
+
   # This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
   class ReplyKeyboardMarkup
     include JSON::Serializable
-    
+
     # Array of button rows, each represented by an Array of KeyboardButton objects
     property keyboard : Array(Array(Tourmaline::KeyboardButton)) = [] of Array(Tourmaline::KeyboardButton)
-    
+
     # Optional. Requests clients to always show the keyboard when the regular keyboard is hidden. Defaults to false, in which case the custom keyboard can be hidden and opened with a keyboard icon.
     property? is_persistent : Bool | ::Nil
-    
+
     # Optional. Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard.
     property? resize_keyboard : Bool | ::Nil
-    
+
     # Optional. Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be available, but clients will automatically display the usual letter-keyboard in the chat - the user can press a special button in the input field to see the custom keyboard again. Defaults to false.
     property? one_time_keyboard : Bool | ::Nil
-    
+
     # Optional. The placeholder to be shown in the input field when the keyboard is active; 1-64 characters
     property input_field_placeholder : String | ::Nil
-    
+
     # Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message. Example: A user requests to change the bot's language, bot replies to the request with a keyboard to select the new language. Other users in the group don't see the keyboard.
     property? selective : Bool | ::Nil
-    
+
     def initialize(
-      @keyboard : Array(Array(Tourmaline::KeyboardButton)) = [] of Array(Tourmaline::KeyboardButton), 
-      @is_persistent : Bool | ::Nil = nil, 
-      @resize_keyboard : Bool | ::Nil = nil, 
-      @one_time_keyboard : Bool | ::Nil = nil, 
-      @input_field_placeholder : String | ::Nil = nil, 
+      @keyboard : Array(Array(Tourmaline::KeyboardButton)) = [] of Array(Tourmaline::KeyboardButton),
+      @is_persistent : Bool | ::Nil = nil,
+      @resize_keyboard : Bool | ::Nil = nil,
+      @one_time_keyboard : Bool | ::Nil = nil,
+      @input_field_placeholder : String | ::Nil = nil,
       @selective : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents one button of the reply keyboard. For simple text buttons, String can be used instead of this object to specify the button text. The optional fields web_app, request_user, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
   # Note: request_contact and request_location options will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.
   # Note: request_poll option will only work in Telegram versions released after 23 January, 2020. Older clients will display unsupported message.
@@ -1413,436 +1413,436 @@ module Tourmaline
   # Note: request_user and request_chat options will only work in Telegram versions released after 3 February, 2023. Older clients will display unsupported message.
   class KeyboardButton
     include JSON::Serializable
-    
+
     # Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed
     property text : String
-    
+
     # Optional. If specified, pressing the button will open a list of suitable users. Tapping on any user will send their identifier to the bot in a "user_shared" service message. Available in private chats only.
     property request_user : Tourmaline::KeyboardButtonRequestUser | ::Nil
-    
+
     # Optional. If specified, pressing the button will open a list of suitable chats. Tapping on a chat will send its identifier to the bot in a "chat_shared" service message. Available in private chats only.
     property request_chat : Tourmaline::KeyboardButtonRequestChat | ::Nil
-    
+
     # Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only.
     property? request_contact : Bool | ::Nil
-    
+
     # Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only.
     property? request_location : Bool | ::Nil
-    
+
     # Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only.
     property request_poll : Tourmaline::KeyboardButtonPollType | ::Nil
-    
+
     # Optional. If specified, the described Web App will be launched when the button is pressed. The Web App will be able to send a "web_app_data" service message. Available in private chats only.
     property web_app : Tourmaline::WebAppInfo | ::Nil
-    
+
     def initialize(
-      @text, 
-      @request_user : Tourmaline::KeyboardButtonRequestUser | ::Nil = nil, 
-      @request_chat : Tourmaline::KeyboardButtonRequestChat | ::Nil = nil, 
-      @request_contact : Bool | ::Nil = nil, 
-      @request_location : Bool | ::Nil = nil, 
-      @request_poll : Tourmaline::KeyboardButtonPollType | ::Nil = nil, 
+      @text,
+      @request_user : Tourmaline::KeyboardButtonRequestUser | ::Nil = nil,
+      @request_chat : Tourmaline::KeyboardButtonRequestChat | ::Nil = nil,
+      @request_contact : Bool | ::Nil = nil,
+      @request_location : Bool | ::Nil = nil,
+      @request_poll : Tourmaline::KeyboardButtonPollType | ::Nil = nil,
       @web_app : Tourmaline::WebAppInfo | ::Nil = nil
     )
     end
   end
-  
+
   # This object defines the criteria used to request a suitable user. The identifier of the selected user will be shared with the bot when the corresponding button is pressed. More about requesting users: https://core.telegram.org/bots/features#chat-and-user-selection
   class KeyboardButtonRequestUser
     include JSON::Serializable
-    
+
     # Signed 32-bit identifier of the request, which will be received back in the UserShared object. Must be unique within the message
     property request_id : Int32 | Int64
-    
+
     # Optional. Pass True to request a bot, pass False to request a regular user. If not specified, no additional restrictions are applied.
     property? user_is_bot : Bool | ::Nil
-    
+
     # Optional. Pass True to request a premium user, pass False to request a non-premium user. If not specified, no additional restrictions are applied.
     property? user_is_premium : Bool | ::Nil
-    
+
     def initialize(
-      @request_id, 
-      @user_is_bot : Bool | ::Nil = nil, 
+      @request_id,
+      @user_is_bot : Bool | ::Nil = nil,
       @user_is_premium : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object defines the criteria used to request a suitable chat. The identifier of the selected chat will be shared with the bot when the corresponding button is pressed. More about requesting chats: https://core.telegram.org/bots/features#chat-and-user-selection
   class KeyboardButtonRequestChat
     include JSON::Serializable
-    
+
     # Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message
     property request_id : Int32 | Int64
-    
+
     # Pass True to request a channel chat, pass False to request a group or a supergroup chat.
     property? chat_is_channel : Bool
-    
+
     # Optional. Pass True to request a forum supergroup, pass False to request a non-forum chat. If not specified, no additional restrictions are applied.
     property? chat_is_forum : Bool | ::Nil
-    
+
     # Optional. Pass True to request a supergroup or a channel with a username, pass False to request a chat without a username. If not specified, no additional restrictions are applied.
     property? chat_has_username : Bool | ::Nil
-    
+
     # Optional. Pass True to request a chat owned by the user. Otherwise, no additional restrictions are applied.
     property? chat_is_created : Bool | ::Nil
-    
+
     # Optional. A JSON-serialized object listing the required administrator rights of the user in the chat. The rights must be a superset of bot_administrator_rights. If not specified, no additional restrictions are applied.
     property user_administrator_rights : Tourmaline::ChatAdministratorRights | ::Nil
-    
+
     # Optional. A JSON-serialized object listing the required administrator rights of the bot in the chat. The rights must be a subset of user_administrator_rights. If not specified, no additional restrictions are applied.
     property bot_administrator_rights : Tourmaline::ChatAdministratorRights | ::Nil
-    
+
     # Optional. Pass True to request a chat with the bot as a member. Otherwise, no additional restrictions are applied.
     property? bot_is_member : Bool | ::Nil
-    
+
     def initialize(
-      @request_id, 
-      @chat_is_channel, 
-      @chat_is_forum : Bool | ::Nil = nil, 
-      @chat_has_username : Bool | ::Nil = nil, 
-      @chat_is_created : Bool | ::Nil = nil, 
-      @user_administrator_rights : Tourmaline::ChatAdministratorRights | ::Nil = nil, 
-      @bot_administrator_rights : Tourmaline::ChatAdministratorRights | ::Nil = nil, 
+      @request_id,
+      @chat_is_channel,
+      @chat_is_forum : Bool | ::Nil = nil,
+      @chat_has_username : Bool | ::Nil = nil,
+      @chat_is_created : Bool | ::Nil = nil,
+      @user_administrator_rights : Tourmaline::ChatAdministratorRights | ::Nil = nil,
+      @bot_administrator_rights : Tourmaline::ChatAdministratorRights | ::Nil = nil,
       @bot_is_member : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
   class KeyboardButtonPollType
     include JSON::Serializable
-    
+
     # Optional. If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type.
     property type : String | ::Nil
-    
+
     def initialize(
       @type : String | ::Nil = nil
     )
     end
   end
-  
+
   # Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).
   class ReplyKeyboardRemove
     include JSON::Serializable
-    
+
     # Requests clients to remove the custom keyboard (user will not be able to summon this keyboard; if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup)
     property? remove_keyboard : Bool
-    
+
     # Optional. Use this parameter if you want to remove the keyboard for specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message. Example: A user votes in a poll, bot returns confirmation message in reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet.
     property? selective : Bool | ::Nil
-    
+
     def initialize(
-      @remove_keyboard, 
+      @remove_keyboard,
       @selective : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents an inline keyboard that appears right next to the message it belongs to.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.
   class InlineKeyboardMarkup
     include JSON::Serializable
-    
+
     # Array of button rows, each represented by an Array of InlineKeyboardButton objects
     property inline_keyboard : Array(Array(Tourmaline::InlineKeyboardButton)) = [] of Array(Tourmaline::InlineKeyboardButton)
-    
+
     def initialize(
       @inline_keyboard : Array(Array(Tourmaline::InlineKeyboardButton)) = [] of Array(Tourmaline::InlineKeyboardButton)
     )
     end
   end
-  
+
   # This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
   class InlineKeyboardButton
     include JSON::Serializable
-    
+
     # Label text on the button
     property text : String
-    
+
     # Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings.
     property url : String | ::Nil
-    
+
     # Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
     property callback_data : String | ::Nil
-    
+
     # Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available only in private chats between a user and the bot.
     property web_app : Tourmaline::WebAppInfo | ::Nil
-    
+
     # Optional. An HTTPS URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget.
     property login_url : Tourmaline::LoginUrl | ::Nil
-    
+
     # Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm... actions - in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen.
     property switch_inline_query : String | ::Nil
-    
+
     # Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted. This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options.
     property switch_inline_query_current_chat : String | ::Nil
-    
+
     # Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field
     property switch_inline_query_chosen_chat : Tourmaline::SwitchInlineQueryChosenChat | ::Nil
-    
+
     # Optional. Description of the game that will be launched when the user presses the button. NOTE: This type of button must always be the first button in the first row.
     property callback_game : Tourmaline::CallbackGame | ::Nil
-    
+
     # Optional. Specify True, to send a Pay button. NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
     property? pay : Bool | ::Nil
-    
+
     def initialize(
-      @text, 
-      @url : String | ::Nil = nil, 
-      @callback_data : String | ::Nil = nil, 
-      @web_app : Tourmaline::WebAppInfo | ::Nil = nil, 
-      @login_url : Tourmaline::LoginUrl | ::Nil = nil, 
-      @switch_inline_query : String | ::Nil = nil, 
-      @switch_inline_query_current_chat : String | ::Nil = nil, 
-      @switch_inline_query_chosen_chat : Tourmaline::SwitchInlineQueryChosenChat | ::Nil = nil, 
-      @callback_game : Tourmaline::CallbackGame | ::Nil = nil, 
+      @text,
+      @url : String | ::Nil = nil,
+      @callback_data : String | ::Nil = nil,
+      @web_app : Tourmaline::WebAppInfo | ::Nil = nil,
+      @login_url : Tourmaline::LoginUrl | ::Nil = nil,
+      @switch_inline_query : String | ::Nil = nil,
+      @switch_inline_query_current_chat : String | ::Nil = nil,
+      @switch_inline_query_chosen_chat : Tourmaline::SwitchInlineQueryChosenChat | ::Nil = nil,
+      @callback_game : Tourmaline::CallbackGame | ::Nil = nil,
       @pay : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:
   # Telegram apps support these buttons as of version 5.7.
   class LoginUrl
     include JSON::Serializable
-    
+
     # An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data. NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization.
     property url : String
-    
+
     # Optional. New text of the button in forwarded messages.
     property forward_text : String | ::Nil
-    
+
     # Optional. Username of a bot, which will be used for user authorization. See Setting up a bot for more details. If not specified, the current bot's username will be assumed. The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details.
     property bot_username : String | ::Nil
-    
+
     # Optional. Pass True to request the permission for your bot to send messages to the user.
     property? request_write_access : Bool | ::Nil
-    
+
     def initialize(
-      @url, 
-      @forward_text : String | ::Nil = nil, 
-      @bot_username : String | ::Nil = nil, 
+      @url,
+      @forward_text : String | ::Nil = nil,
+      @bot_username : String | ::Nil = nil,
       @request_write_access : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.
   class SwitchInlineQueryChosenChat
     include JSON::Serializable
-    
+
     # Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted
     property query : String | ::Nil
-    
+
     # Optional. True, if private chats with users can be chosen
     property? allow_user_chats : Bool | ::Nil
-    
+
     # Optional. True, if private chats with bots can be chosen
     property? allow_bot_chats : Bool | ::Nil
-    
+
     # Optional. True, if group and supergroup chats can be chosen
     property? allow_group_chats : Bool | ::Nil
-    
+
     # Optional. True, if channel chats can be chosen
     property? allow_channel_chats : Bool | ::Nil
-    
+
     def initialize(
-      @query : String | ::Nil = nil, 
-      @allow_user_chats : Bool | ::Nil = nil, 
-      @allow_bot_chats : Bool | ::Nil = nil, 
-      @allow_group_chats : Bool | ::Nil = nil, 
+      @query : String | ::Nil = nil,
+      @allow_user_chats : Bool | ::Nil = nil,
+      @allow_bot_chats : Bool | ::Nil = nil,
+      @allow_group_chats : Bool | ::Nil = nil,
       @allow_channel_chats : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name will be present.
   class CallbackQuery
     include JSON::Serializable
-    
+
     # Unique identifier for this query
     property id : String
-    
+
     # Sender
     property from : Tourmaline::User
-    
+
     # Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent. Useful for high scores in games.
     property chat_instance : String
-    
+
     # Optional. Message with the callback button that originated the query. Note that message content and message date will not be available if the message is too old
     property message : Tourmaline::Message | ::Nil
-    
+
     # Optional. Identifier of the message sent via the bot in inline mode, that originated the query.
     property inline_message_id : String | ::Nil
-    
+
     # Optional. Data associated with the callback button. Be aware that the message originated the query can contain no callback buttons with this data.
     property data : String | ::Nil
-    
+
     # Optional. Short name of a Game to be returned, serves as the unique identifier for the game
     property game_short_name : String | ::Nil
-    
+
     def initialize(
-      @id, 
-      @from, 
-      @chat_instance, 
-      @message : Tourmaline::Message | ::Nil = nil, 
-      @inline_message_id : String | ::Nil = nil, 
-      @data : String | ::Nil = nil, 
+      @id,
+      @from,
+      @chat_instance,
+      @message : Tourmaline::Message | ::Nil = nil,
+      @inline_message_id : String | ::Nil = nil,
+      @data : String | ::Nil = nil,
       @game_short_name : String | ::Nil = nil
     )
     end
   end
-  
+
   # Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode.
   class ForceReply
     include JSON::Serializable
-    
+
     # Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
     property? force_reply : Bool
-    
+
     # Optional. The placeholder to be shown in the input field when the reply is active; 1-64 characters
     property input_field_placeholder : String | ::Nil
-    
+
     # Optional. Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
     property? selective : Bool | ::Nil
-    
+
     def initialize(
-      @force_reply, 
-      @input_field_placeholder : String | ::Nil = nil, 
+      @force_reply,
+      @input_field_placeholder : String | ::Nil = nil,
       @selective : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a chat photo.
   class ChatPhoto
     include JSON::Serializable
-    
+
     # File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
     property small_file_id : String
-    
+
     # Unique file identifier of small (160x160) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property small_file_unique_id : String
-    
+
     # File identifier of big (640x640) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
     property big_file_id : String
-    
+
     # Unique file identifier of big (640x640) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property big_file_unique_id : String
-    
+
     def initialize(
-      @small_file_id, 
-      @small_file_unique_id, 
-      @big_file_id, 
+      @small_file_id,
+      @small_file_unique_id,
+      @big_file_id,
       @big_file_unique_id
     )
     end
   end
-  
+
   # Represents an invite link for a chat.
   class ChatInviteLink
     include JSON::Serializable
-    
+
     # The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with "...".
     property invite_link : String
-    
+
     # Creator of the link
     property creator : Tourmaline::User
-    
+
     # True, if users joining the chat via the link need to be approved by chat administrators
     property? creates_join_request : Bool
-    
+
     # True, if the link is primary
     property? is_primary : Bool
-    
+
     # True, if the link is revoked
     property? is_revoked : Bool
-    
+
     # Optional. Invite link name
     property name : String | ::Nil
-    
+
     # Optional. Point in time (Unix timestamp) when the link will expire or has been expired
     @[JSON::Field(converter: Time::EpochConverter)]
     property expire_date : Time | ::Nil
-    
+
     # Optional. The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
     property member_limit : Int32 | Int64 | ::Nil
-    
+
     # Optional. Number of pending join requests created using this link
     property pending_join_request_count : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @invite_link, 
-      @creator, 
-      @creates_join_request, 
-      @is_primary, 
-      @is_revoked, 
-      @name : String | ::Nil = nil, 
-      @expire_date : Int32 | Int64 | ::Nil = nil, 
-      @member_limit : Int32 | Int64 | ::Nil = nil, 
+      @invite_link,
+      @creator,
+      @creates_join_request,
+      @is_primary,
+      @is_revoked,
+      @name : String | ::Nil = nil,
+      @expire_date : Int32 | Int64 | ::Nil = nil,
+      @member_limit : Int32 | Int64 | ::Nil = nil,
       @pending_join_request_count : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # Represents the rights of an administrator in a chat.
   class ChatAdministratorRights
     include JSON::Serializable
-    
+
     # True, if the user's presence in the chat is hidden
     property? is_anonymous : Bool
-    
+
     # True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
     property? can_manage_chat : Bool
-    
+
     # True, if the administrator can delete messages of other users
     property? can_delete_messages : Bool
-    
+
     # True, if the administrator can manage video chats
     property? can_manage_video_chats : Bool
-    
+
     # True, if the administrator can restrict, ban or unban chat members
     property? can_restrict_members : Bool
-    
+
     # True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)
     property? can_promote_members : Bool
-    
+
     # True, if the user is allowed to change the chat title, photo and other settings
     property? can_change_info : Bool
-    
+
     # True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool
-    
+
     # Optional. True, if the administrator can post in the channel; channels only
     property? can_post_messages : Bool | ::Nil
-    
+
     # Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
     property? can_edit_messages : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to pin messages; groups and supergroups only
     property? can_pin_messages : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
     property? can_manage_topics : Bool | ::Nil
-    
+
     def initialize(
-      @is_anonymous, 
-      @can_manage_chat, 
-      @can_delete_messages, 
-      @can_manage_video_chats, 
-      @can_restrict_members, 
-      @can_promote_members, 
-      @can_change_info, 
-      @can_invite_users, 
-      @can_post_messages : Bool | ::Nil = nil, 
-      @can_edit_messages : Bool | ::Nil = nil, 
-      @can_pin_messages : Bool | ::Nil = nil, 
+      @is_anonymous,
+      @can_manage_chat,
+      @can_delete_messages,
+      @can_manage_video_chats,
+      @can_restrict_members,
+      @can_promote_members,
+      @can_change_info,
+      @can_invite_users,
+      @can_post_messages : Bool | ::Nil = nil,
+      @can_edit_messages : Bool | ::Nil = nil,
+      @can_pin_messages : Bool | ::Nil = nil,
       @can_manage_topics : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:
   # - ChatMemberOwner
   # - ChatMemberAdministrator
@@ -1851,439 +1851,439 @@ module Tourmaline
   # - ChatMemberLeft
   # - ChatMemberBanned
   alias ChatMember = Tourmaline::ChatMemberOwner | Tourmaline::ChatMemberAdministrator | Tourmaline::ChatMemberMember | Tourmaline::ChatMemberRestricted | Tourmaline::ChatMemberLeft | Tourmaline::ChatMemberBanned
-  
+
   # Represents a chat member that owns the chat and has all administrator privileges.
   class ChatMemberOwner
     include JSON::Serializable
-    
+
     # The member's status in the chat, always "creator"
     property status : String
-    
+
     # Information about the user
     property user : Tourmaline::User
-    
+
     # True, if the user's presence in the chat is hidden
     property? is_anonymous : Bool
-    
+
     # Optional. Custom title for this user
     property custom_title : String | ::Nil
-    
+
     def initialize(
-      @status, 
-      @user, 
-      @is_anonymous, 
+      @status,
+      @user,
+      @is_anonymous,
       @custom_title : String | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a chat member that has some additional privileges.
   class ChatMemberAdministrator
     include JSON::Serializable
-    
+
     # The member's status in the chat, always "administrator"
     property status : String
-    
+
     # Information about the user
     property user : Tourmaline::User
-    
+
     # True, if the bot is allowed to edit administrator privileges of that user
     property? can_be_edited : Bool
-    
+
     # True, if the user's presence in the chat is hidden
     property? is_anonymous : Bool
-    
+
     # True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
     property? can_manage_chat : Bool
-    
+
     # True, if the administrator can delete messages of other users
     property? can_delete_messages : Bool
-    
+
     # True, if the administrator can manage video chats
     property? can_manage_video_chats : Bool
-    
+
     # True, if the administrator can restrict, ban or unban chat members
     property? can_restrict_members : Bool
-    
+
     # True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)
     property? can_promote_members : Bool
-    
+
     # True, if the user is allowed to change the chat title, photo and other settings
     property? can_change_info : Bool
-    
+
     # True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool
-    
+
     # Optional. True, if the administrator can post in the channel; channels only
     property? can_post_messages : Bool | ::Nil
-    
+
     # Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
     property? can_edit_messages : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to pin messages; groups and supergroups only
     property? can_pin_messages : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
     property? can_manage_topics : Bool | ::Nil
-    
+
     # Optional. Custom title for this user
     property custom_title : String | ::Nil
-    
+
     def initialize(
-      @status, 
-      @user, 
-      @can_be_edited, 
-      @is_anonymous, 
-      @can_manage_chat, 
-      @can_delete_messages, 
-      @can_manage_video_chats, 
-      @can_restrict_members, 
-      @can_promote_members, 
-      @can_change_info, 
-      @can_invite_users, 
-      @can_post_messages : Bool | ::Nil = nil, 
-      @can_edit_messages : Bool | ::Nil = nil, 
-      @can_pin_messages : Bool | ::Nil = nil, 
-      @can_manage_topics : Bool | ::Nil = nil, 
+      @status,
+      @user,
+      @can_be_edited,
+      @is_anonymous,
+      @can_manage_chat,
+      @can_delete_messages,
+      @can_manage_video_chats,
+      @can_restrict_members,
+      @can_promote_members,
+      @can_change_info,
+      @can_invite_users,
+      @can_post_messages : Bool | ::Nil = nil,
+      @can_edit_messages : Bool | ::Nil = nil,
+      @can_pin_messages : Bool | ::Nil = nil,
+      @can_manage_topics : Bool | ::Nil = nil,
       @custom_title : String | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a chat member that has no additional privileges or restrictions.
   class ChatMemberMember
     include JSON::Serializable
-    
+
     # The member's status in the chat, always "member"
     property status : String
-    
+
     # Information about the user
     property user : Tourmaline::User
-    
+
     def initialize(
-      @status, 
+      @status,
       @user
     )
     end
   end
-  
+
   # Represents a chat member that is under certain restrictions in the chat. Supergroups only.
   class ChatMemberRestricted
     include JSON::Serializable
-    
+
     # The member's status in the chat, always "restricted"
     property status : String
-    
+
     # Information about the user
     property user : Tourmaline::User
-    
+
     # True, if the user is a member of the chat at the moment of the request
     property? is_member : Bool
-    
+
     # True, if the user is allowed to send text messages, contacts, invoices, locations and venues
     property? can_send_messages : Bool
-    
+
     # True, if the user is allowed to send audios
     property? can_send_audios : Bool
-    
+
     # True, if the user is allowed to send documents
     property? can_send_documents : Bool
-    
+
     # True, if the user is allowed to send photos
     property? can_send_photos : Bool
-    
+
     # True, if the user is allowed to send videos
     property? can_send_videos : Bool
-    
+
     # True, if the user is allowed to send video notes
     property? can_send_video_notes : Bool
-    
+
     # True, if the user is allowed to send voice notes
     property? can_send_voice_notes : Bool
-    
+
     # True, if the user is allowed to send polls
     property? can_send_polls : Bool
-    
+
     # True, if the user is allowed to send animations, games, stickers and use inline bots
     property? can_send_other_messages : Bool
-    
+
     # True, if the user is allowed to add web page previews to their messages
     property? can_add_web_page_previews : Bool
-    
+
     # True, if the user is allowed to change the chat title, photo and other settings
     property? can_change_info : Bool
-    
+
     # True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool
-    
+
     # True, if the user is allowed to pin messages
     property? can_pin_messages : Bool
-    
+
     # True, if the user is allowed to create forum topics
     property? can_manage_topics : Bool
-    
+
     # Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted forever
     @[JSON::Field(converter: Time::EpochConverter)]
     property until_date : Time
-    
+
     def initialize(
-      @status, 
-      @user, 
-      @is_member, 
-      @can_send_messages, 
-      @can_send_audios, 
-      @can_send_documents, 
-      @can_send_photos, 
-      @can_send_videos, 
-      @can_send_video_notes, 
-      @can_send_voice_notes, 
-      @can_send_polls, 
-      @can_send_other_messages, 
-      @can_add_web_page_previews, 
-      @can_change_info, 
-      @can_invite_users, 
-      @can_pin_messages, 
-      @can_manage_topics, 
+      @status,
+      @user,
+      @is_member,
+      @can_send_messages,
+      @can_send_audios,
+      @can_send_documents,
+      @can_send_photos,
+      @can_send_videos,
+      @can_send_video_notes,
+      @can_send_voice_notes,
+      @can_send_polls,
+      @can_send_other_messages,
+      @can_add_web_page_previews,
+      @can_change_info,
+      @can_invite_users,
+      @can_pin_messages,
+      @can_manage_topics,
       @until_date
     )
     end
   end
-  
+
   # Represents a chat member that isn't currently a member of the chat, but may join it themselves.
   class ChatMemberLeft
     include JSON::Serializable
-    
+
     # The member's status in the chat, always "left"
     property status : String
-    
+
     # Information about the user
     property user : Tourmaline::User
-    
+
     def initialize(
-      @status, 
+      @status,
       @user
     )
     end
   end
-  
+
   # Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
   class ChatMemberBanned
     include JSON::Serializable
-    
+
     # The member's status in the chat, always "kicked"
     property status : String
-    
+
     # Information about the user
     property user : Tourmaline::User
-    
+
     # Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
     @[JSON::Field(converter: Time::EpochConverter)]
     property until_date : Time
-    
+
     def initialize(
-      @status, 
-      @user, 
+      @status,
+      @user,
       @until_date
     )
     end
   end
-  
+
   # This object represents changes in the status of a chat member.
   class ChatMemberUpdated
     include JSON::Serializable
-    
+
     # Chat the user belongs to
     property chat : Tourmaline::Chat
-    
+
     # Performer of the action, which resulted in the change
     property from : Tourmaline::User
-    
+
     # Date the change was done in Unix time
     @[JSON::Field(converter: Time::EpochConverter)]
     property date : Time
-    
+
     # Previous information about the chat member
     property old_chat_member : Tourmaline::ChatMember
-    
+
     # New information about the chat member
     property new_chat_member : Tourmaline::ChatMember
-    
+
     # Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
     property invite_link : Tourmaline::ChatInviteLink | ::Nil
-    
+
     # Optional. True, if the user joined the chat via a chat folder invite link
     property? via_chat_folder_invite_link : Bool | ::Nil
-    
+
     def initialize(
-      @chat, 
-      @from, 
-      @date, 
-      @old_chat_member, 
-      @new_chat_member, 
-      @invite_link : Tourmaline::ChatInviteLink | ::Nil = nil, 
+      @chat,
+      @from,
+      @date,
+      @old_chat_member,
+      @new_chat_member,
+      @invite_link : Tourmaline::ChatInviteLink | ::Nil = nil,
       @via_chat_folder_invite_link : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a join request sent to a chat.
   class ChatJoinRequest
     include JSON::Serializable
-    
+
     # Chat to which the request was sent
     property chat : Tourmaline::Chat
-    
+
     # User that sent the join request
     property from : Tourmaline::User
-    
+
     # Identifier of a private chat with the user who sent the join request. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can use this identifier for 24 hours to send messages until the join request is processed, assuming no other administrator contacted the user.
     property user_chat_id : Int32 | Int64
-    
+
     # Date the request was sent in Unix time
     @[JSON::Field(converter: Time::EpochConverter)]
     property date : Time
-    
+
     # Optional. Bio of the user.
     property bio : String | ::Nil
-    
+
     # Optional. Chat invite link that was used by the user to send the join request
     property invite_link : Tourmaline::ChatInviteLink | ::Nil
-    
+
     def initialize(
-      @chat, 
-      @from, 
-      @user_chat_id, 
-      @date, 
-      @bio : String | ::Nil = nil, 
+      @chat,
+      @from,
+      @user_chat_id,
+      @date,
+      @bio : String | ::Nil = nil,
       @invite_link : Tourmaline::ChatInviteLink | ::Nil = nil
     )
     end
   end
-  
+
   # Describes actions that a non-administrator user is allowed to take in a chat.
   class ChatPermissions
     include JSON::Serializable
-    
+
     # Optional. True, if the user is allowed to send text messages, contacts, invoices, locations and venues
     property? can_send_messages : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send audios
     property? can_send_audios : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send documents
     property? can_send_documents : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send photos
     property? can_send_photos : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send videos
     property? can_send_videos : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send video notes
     property? can_send_video_notes : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send voice notes
     property? can_send_voice_notes : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send polls
     property? can_send_polls : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to send animations, games, stickers and use inline bots
     property? can_send_other_messages : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to add web page previews to their messages
     property? can_add_web_page_previews : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
     property? can_change_info : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
     property? can_pin_messages : Bool | ::Nil
-    
+
     # Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages
     property? can_manage_topics : Bool | ::Nil
-    
+
     def initialize(
-      @can_send_messages : Bool | ::Nil = nil, 
-      @can_send_audios : Bool | ::Nil = nil, 
-      @can_send_documents : Bool | ::Nil = nil, 
-      @can_send_photos : Bool | ::Nil = nil, 
-      @can_send_videos : Bool | ::Nil = nil, 
-      @can_send_video_notes : Bool | ::Nil = nil, 
-      @can_send_voice_notes : Bool | ::Nil = nil, 
-      @can_send_polls : Bool | ::Nil = nil, 
-      @can_send_other_messages : Bool | ::Nil = nil, 
-      @can_add_web_page_previews : Bool | ::Nil = nil, 
-      @can_change_info : Bool | ::Nil = nil, 
-      @can_invite_users : Bool | ::Nil = nil, 
-      @can_pin_messages : Bool | ::Nil = nil, 
+      @can_send_messages : Bool | ::Nil = nil,
+      @can_send_audios : Bool | ::Nil = nil,
+      @can_send_documents : Bool | ::Nil = nil,
+      @can_send_photos : Bool | ::Nil = nil,
+      @can_send_videos : Bool | ::Nil = nil,
+      @can_send_video_notes : Bool | ::Nil = nil,
+      @can_send_voice_notes : Bool | ::Nil = nil,
+      @can_send_polls : Bool | ::Nil = nil,
+      @can_send_other_messages : Bool | ::Nil = nil,
+      @can_add_web_page_previews : Bool | ::Nil = nil,
+      @can_change_info : Bool | ::Nil = nil,
+      @can_invite_users : Bool | ::Nil = nil,
+      @can_pin_messages : Bool | ::Nil = nil,
       @can_manage_topics : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a location to which a chat is connected.
   class ChatLocation
     include JSON::Serializable
-    
+
     # The location to which the supergroup is connected. Can't be a live location.
     property location : Tourmaline::Location
-    
+
     # Location address; 1-64 characters, as defined by the chat owner
     property address : String
-    
+
     def initialize(
-      @location, 
+      @location,
       @address
     )
     end
   end
-  
+
   # This object represents a forum topic.
   class ForumTopic
     include JSON::Serializable
-    
+
     # Unique identifier of the forum topic
     property message_thread_id : Int32 | Int64
-    
+
     # Name of the topic
     property name : String
-    
+
     # Color of the topic icon in RGB format
     property icon_color : Int32 | Int64
-    
+
     # Optional. Unique identifier of the custom emoji shown as the topic icon
     property icon_custom_emoji_id : String | ::Nil
-    
+
     def initialize(
-      @message_thread_id, 
-      @name, 
-      @icon_color, 
+      @message_thread_id,
+      @name,
+      @icon_color,
       @icon_custom_emoji_id : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a bot command.
   class BotCommand
     include JSON::Serializable
-    
+
     # Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores.
     property command : String
-    
+
     # Description of the command; 1-256 characters.
     property description : String
-    
+
     def initialize(
-      @command, 
+      @command,
       @description
     )
     end
   end
-  
+
   # This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:
   # - BotCommandScopeDefault
   # - BotCommandScopeAllPrivateChats
@@ -2293,224 +2293,224 @@ module Tourmaline
   # - BotCommandScopeChatAdministrators
   # - BotCommandScopeChatMember
   alias BotCommandScope = Tourmaline::BotCommandScopeDefault | Tourmaline::BotCommandScopeAllPrivateChats | Tourmaline::BotCommandScopeAllGroupChats | Tourmaline::BotCommandScopeAllChatAdministrators | Tourmaline::BotCommandScopeChat | Tourmaline::BotCommandScopeChatAdministrators | Tourmaline::BotCommandScopeChatMember
-  
+
   # Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified for the user.
   class BotCommandScopeDefault
     include JSON::Serializable
-    
+
     # Scope type, must be default
     property type : String
-    
+
     def initialize(
       @type
     )
     end
   end
-  
+
   # Represents the scope of bot commands, covering all private chats.
   class BotCommandScopeAllPrivateChats
     include JSON::Serializable
-    
+
     # Scope type, must be all_private_chats
     property type : String
-    
+
     def initialize(
       @type
     )
     end
   end
-  
+
   # Represents the scope of bot commands, covering all group and supergroup chats.
   class BotCommandScopeAllGroupChats
     include JSON::Serializable
-    
+
     # Scope type, must be all_group_chats
     property type : String
-    
+
     def initialize(
       @type
     )
     end
   end
-  
+
   # Represents the scope of bot commands, covering all group and supergroup chat administrators.
   class BotCommandScopeAllChatAdministrators
     include JSON::Serializable
-    
+
     # Scope type, must be all_chat_administrators
     property type : String
-    
+
     def initialize(
       @type
     )
     end
   end
-  
+
   # Represents the scope of bot commands, covering a specific chat.
   class BotCommandScopeChat
     include JSON::Serializable
-    
+
     # Scope type, must be chat
     property type : String
-    
+
     # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
     property chat_id : Int32 | Int64 | String
-    
+
     def initialize(
-      @type, 
+      @type,
       @chat_id
     )
     end
   end
-  
+
   # Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.
   class BotCommandScopeChatAdministrators
     include JSON::Serializable
-    
+
     # Scope type, must be chat_administrators
     property type : String
-    
+
     # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
     property chat_id : Int32 | Int64 | String
-    
+
     def initialize(
-      @type, 
+      @type,
       @chat_id
     )
     end
   end
-  
+
   # Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
   class BotCommandScopeChatMember
     include JSON::Serializable
-    
+
     # Scope type, must be chat_member
     property type : String
-    
+
     # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
     property chat_id : Int32 | Int64 | String
-    
+
     # Unique identifier of the target user
     property user_id : Int32 | Int64
-    
+
     def initialize(
-      @type, 
-      @chat_id, 
+      @type,
+      @chat_id,
       @user_id
     )
     end
   end
-  
+
   # This object represents the bot's name.
   class BotName
     include JSON::Serializable
-    
+
     # The bot's name
     property name : String
-    
+
     def initialize(
       @name
     )
     end
   end
-  
+
   # This object represents the bot's description.
   class BotDescription
     include JSON::Serializable
-    
+
     # The bot's description
     property description : String
-    
+
     def initialize(
       @description
     )
     end
   end
-  
+
   # This object represents the bot's short description.
   class BotShortDescription
     include JSON::Serializable
-    
+
     # The bot's short description
     property short_description : String
-    
+
     def initialize(
       @short_description
     )
     end
   end
-  
+
   # This object describes the bot's menu button in a private chat. It should be one of
   # - MenuButtonCommands
   # - MenuButtonWebApp
   # - MenuButtonDefault
   # If a menu button other than MenuButtonDefault is set for a private chat, then it is applied in the chat. Otherwise the default menu button is applied. By default, the menu button opens the list of bot commands.
   alias MenuButton = Tourmaline::MenuButtonCommands | Tourmaline::MenuButtonWebApp | Tourmaline::MenuButtonDefault
-  
+
   # Represents a menu button, which opens the bot's list of commands.
   class MenuButtonCommands
     include JSON::Serializable
-    
+
     # Type of the button, must be commands
     property type : String
-    
+
     def initialize(
       @type
     )
     end
   end
-  
+
   # Represents a menu button, which launches a Web App.
   class MenuButtonWebApp
     include JSON::Serializable
-    
+
     # Type of the button, must be web_app
     property type : String
-    
+
     # Text on the button
     property text : String
-    
+
     # Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
     property web_app : Tourmaline::WebAppInfo
-    
+
     def initialize(
-      @type, 
-      @text, 
+      @type,
+      @text,
       @web_app
     )
     end
   end
-  
+
   # Describes that no specific value for the menu button was set.
   class MenuButtonDefault
     include JSON::Serializable
-    
+
     # Type of the button, must be default
     property type : String
-    
+
     def initialize(
       @type
     )
     end
   end
-  
+
   # Describes why a request was unsuccessful.
   class ResponseParameters
     include JSON::Serializable
-    
+
     # Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
     property migrate_to_chat_id : Int32 | Int64 | ::Nil
-    
+
     # Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated
     property retry_after : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @migrate_to_chat_id : Int32 | Int64 | ::Nil = nil, 
+      @migrate_to_chat_id : Int32 | Int64 | ::Nil = nil,
       @retry_after : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents the content of a media message to be sent. It should be one of
   # - InputMediaAnimation
   # - InputMediaDocument
@@ -2518,439 +2518,439 @@ module Tourmaline
   # - InputMediaPhoto
   # - InputMediaVideo
   alias InputMedia = Tourmaline::InputMediaAnimation | Tourmaline::InputMediaDocument | Tourmaline::InputMediaAudio | Tourmaline::InputMediaPhoto | Tourmaline::InputMediaVideo
-  
+
   # Represents a photo to be sent.
   class InputMediaPhoto
     include JSON::Serializable
-    
+
     # File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property media : String
-    
+
     # Type of the result, must be photo
     property type : String = "photo"
-    
+
     # Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Pass True if the photo needs to be covered with a spoiler animation
     property? has_spoiler : Bool | ::Nil
-    
+
     def initialize(
-      @media, 
-      @type = "photo", 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
+      @media,
+      @type = "photo",
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
       @has_spoiler : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a video to be sent.
   class InputMediaVideo
     include JSON::Serializable
-    
+
     # File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property media : String
-    
+
     # Type of the result, must be video
     property type : String = "video"
-    
+
     # Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property thumbnail : ::File | String | ::Nil
-    
+
     # Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the video caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Video width
     property width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Video height
     property height : Int32 | Int64 | ::Nil
-    
+
     # Optional. Video duration in seconds
     property duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. Pass True if the uploaded video is suitable for streaming
     property? supports_streaming : Bool | ::Nil
-    
+
     # Optional. Pass True if the video needs to be covered with a spoiler animation
     property? has_spoiler : Bool | ::Nil
-    
+
     def initialize(
-      @media, 
-      @type = "video", 
-      @thumbnail : ::File | String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @width : Int32 | Int64 | ::Nil = nil, 
-      @height : Int32 | Int64 | ::Nil = nil, 
-      @duration : Int32 | Int64 | ::Nil = nil, 
-      @supports_streaming : Bool | ::Nil = nil, 
+      @media,
+      @type = "video",
+      @thumbnail : ::File | String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @width : Int32 | Int64 | ::Nil = nil,
+      @height : Int32 | Int64 | ::Nil = nil,
+      @duration : Int32 | Int64 | ::Nil = nil,
+      @supports_streaming : Bool | ::Nil = nil,
       @has_spoiler : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
   class InputMediaAnimation
     include JSON::Serializable
-    
+
     # File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property media : String
-    
+
     # Type of the result, must be animation
     property type : String = "animation"
-    
+
     # Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property thumbnail : ::File | String | ::Nil
-    
+
     # Optional. Caption of the animation to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the animation caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Animation width
     property width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Animation height
     property height : Int32 | Int64 | ::Nil
-    
+
     # Optional. Animation duration in seconds
     property duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. Pass True if the animation needs to be covered with a spoiler animation
     property? has_spoiler : Bool | ::Nil
-    
+
     def initialize(
-      @media, 
-      @type = "animation", 
-      @thumbnail : ::File | String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @width : Int32 | Int64 | ::Nil = nil, 
-      @height : Int32 | Int64 | ::Nil = nil, 
-      @duration : Int32 | Int64 | ::Nil = nil, 
+      @media,
+      @type = "animation",
+      @thumbnail : ::File | String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @width : Int32 | Int64 | ::Nil = nil,
+      @height : Int32 | Int64 | ::Nil = nil,
+      @duration : Int32 | Int64 | ::Nil = nil,
       @has_spoiler : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # Represents an audio file to be treated as music to be sent.
   class InputMediaAudio
     include JSON::Serializable
-    
+
     # File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property media : String
-    
+
     # Type of the result, must be audio
     property type : String = "audio"
-    
+
     # Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property thumbnail : ::File | String | ::Nil
-    
+
     # Optional. Caption of the audio to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the audio caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Duration of the audio in seconds
     property duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. Performer of the audio
     property performer : String | ::Nil
-    
+
     # Optional. Title of the audio
     property title : String | ::Nil
-    
+
     def initialize(
-      @media, 
-      @type = "audio", 
-      @thumbnail : ::File | String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @duration : Int32 | Int64 | ::Nil = nil, 
-      @performer : String | ::Nil = nil, 
+      @media,
+      @type = "audio",
+      @thumbnail : ::File | String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @duration : Int32 | Int64 | ::Nil = nil,
+      @performer : String | ::Nil = nil,
       @title : String | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a general file to be sent.
   class InputMediaDocument
     include JSON::Serializable
-    
+
     # File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property media : String
-    
+
     # Type of the result, must be document
     property type : String = "document"
-    
+
     # Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property thumbnail : ::File | String | ::Nil
-    
+
     # Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the document caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Disables automatic server-side content type detection for files uploaded using multipart/form-data. Always True, if the document is sent as part of an album.
     property? disable_content_type_detection : Bool | ::Nil
-    
+
     def initialize(
-      @media, 
-      @type = "document", 
-      @thumbnail : ::File | String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
+      @media,
+      @type = "document",
+      @thumbnail : ::File | String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
       @disable_content_type_detection : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
   class InputFile
     include JSON::Serializable
   end
-  
+
   # This object represents a sticker.
   class Sticker
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # Type of the sticker, currently one of "regular", "mask", "custom_emoji". The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
     property type : String
-    
+
     # Sticker width
     property width : Int32 | Int64
-    
+
     # Sticker height
     property height : Int32 | Int64
-    
+
     # True, if the sticker is animated
     property? is_animated : Bool
-    
+
     # True, if the sticker is a video sticker
     property? is_video : Bool
-    
+
     # Optional. Sticker thumbnail in the .WEBP or .JPG format
     property thumbnail : Tourmaline::PhotoSize | ::Nil
-    
+
     # Optional. Emoji associated with the sticker
     property emoji : String | ::Nil
-    
+
     # Optional. Name of the sticker set to which the sticker belongs
     property set_name : String | ::Nil
-    
+
     # Optional. For premium regular stickers, premium animation for the sticker
     property premium_animation : Tourmaline::File | ::Nil
-    
+
     # Optional. For mask stickers, the position where the mask should be placed
     property mask_position : Tourmaline::MaskPosition | ::Nil
-    
+
     # Optional. For custom emoji stickers, unique identifier of the custom emoji
     property custom_emoji_id : String | ::Nil
-    
+
     # Optional. True, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
     property? needs_repainting : Bool | ::Nil
-    
+
     # Optional. File size in bytes
     property file_size : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @type, 
-      @width, 
-      @height, 
-      @is_animated, 
-      @is_video, 
-      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil, 
-      @emoji : String | ::Nil = nil, 
-      @set_name : String | ::Nil = nil, 
-      @premium_animation : Tourmaline::File | ::Nil = nil, 
-      @mask_position : Tourmaline::MaskPosition | ::Nil = nil, 
-      @custom_emoji_id : String | ::Nil = nil, 
-      @needs_repainting : Bool | ::Nil = nil, 
+      @file_id,
+      @file_unique_id,
+      @type,
+      @width,
+      @height,
+      @is_animated,
+      @is_video,
+      @thumbnail : Tourmaline::PhotoSize | ::Nil = nil,
+      @emoji : String | ::Nil = nil,
+      @set_name : String | ::Nil = nil,
+      @premium_animation : Tourmaline::File | ::Nil = nil,
+      @mask_position : Tourmaline::MaskPosition | ::Nil = nil,
+      @custom_emoji_id : String | ::Nil = nil,
+      @needs_repainting : Bool | ::Nil = nil,
       @file_size : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a sticker set.
   class StickerSet
     include JSON::Serializable
-    
+
     # Sticker set name
     property name : String
-    
+
     # Sticker set title
     property title : String
-    
+
     # Type of stickers in the set, currently one of "regular", "mask", "custom_emoji"
     property sticker_type : String
-    
+
     # True, if the sticker set contains animated stickers
     property? is_animated : Bool
-    
+
     # True, if the sticker set contains video stickers
     property? is_video : Bool
-    
+
     # List of all set stickers
     property stickers : Array(Tourmaline::Sticker) = [] of Tourmaline::Sticker
-    
+
     # Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
     property thumbnail : Tourmaline::PhotoSize | ::Nil
-    
+
     def initialize(
-      @name, 
-      @title, 
-      @sticker_type, 
-      @is_animated, 
-      @is_video, 
-      @stickers : Array(Tourmaline::Sticker) = [] of Tourmaline::Sticker, 
+      @name,
+      @title,
+      @sticker_type,
+      @is_animated,
+      @is_video,
+      @stickers : Array(Tourmaline::Sticker) = [] of Tourmaline::Sticker,
       @thumbnail : Tourmaline::PhotoSize | ::Nil = nil
     )
     end
   end
-  
+
   # This object describes the position on faces where a mask should be placed by default.
   class MaskPosition
     include JSON::Serializable
-    
+
     # The part of the face relative to which the mask should be placed. One of "forehead", "eyes", "mouth", or "chin".
     property point : String
-    
+
     # Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place mask just to the left of the default mask position.
     property x_shift : Float64
-    
+
     # Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. For example, 1.0 will place the mask just below the default mask position.
     property y_shift : Float64
-    
+
     # Mask scaling coefficient. For example, 2.0 means double size.
     property scale : Float64
-    
+
     def initialize(
-      @point, 
-      @x_shift, 
-      @y_shift, 
+      @point,
+      @x_shift,
+      @y_shift,
       @scale
     )
     end
   end
-  
+
   # This object describes a sticker to be added to a sticker set.
   class InputSticker
     include JSON::Serializable
-    
+
     # The added sticker. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, upload a new one using multipart/form-data, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. Animated and video stickers can't be uploaded via HTTP URL. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
     property sticker : ::File | String
-    
+
     # List of 1-20 emoji associated with the sticker
     property emoji_list : Array(String) = [] of String
-    
+
     # Optional. Position where the mask should be placed on faces. For "mask" stickers only.
     property mask_position : Tourmaline::MaskPosition | ::Nil
-    
+
     # Optional. List of 0-20 search keywords for the sticker with total length of up to 64 characters. For "regular" and "custom_emoji" stickers only.
     property keywords : Array(String) = [] of String
-    
+
     def initialize(
-      @sticker, 
-      @emoji_list : Array(String) = [] of String, 
-      @mask_position : Tourmaline::MaskPosition | ::Nil = nil, 
+      @sticker,
+      @emoji_list : Array(String) = [] of String,
+      @mask_position : Tourmaline::MaskPosition | ::Nil = nil,
       @keywords : Array(String) = [] of String
     )
     end
   end
-  
+
   # This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
   class InlineQuery
     include JSON::Serializable
-    
+
     # Unique identifier for this query
     property id : String
-    
+
     # Sender
     property from : Tourmaline::User
-    
+
     # Text of the query (up to 256 characters)
     property query : String
-    
+
     # Offset of the results to be returned, can be controlled by the bot
     property offset : String
-    
+
     # Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
     property chat_type : String | ::Nil
-    
+
     # Optional. Sender location, only for bots that request user location
     property location : Tourmaline::Location | ::Nil
-    
+
     def initialize(
-      @id, 
-      @from, 
-      @query, 
-      @offset, 
-      @chat_type : String | ::Nil = nil, 
+      @id,
+      @from,
+      @query,
+      @offset,
+      @chat_type : String | ::Nil = nil,
       @location : Tourmaline::Location | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a button to be shown above inline query results. You must use exactly one of the optional fields.
   class InlineQueryResultsButton
     include JSON::Serializable
-    
+
     # Label text on the button
     property text : String
-    
+
     # Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to switch back to the inline mode using the method switchInlineQuery inside the Web App.
     property web_app : Tourmaline::WebAppInfo | ::Nil
-    
+
     # Optional. Deep-linking parameter for the /start message sent to the bot when a user presses the button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed. Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities.
     property start_parameter : String | ::Nil
-    
+
     def initialize(
-      @text, 
-      @web_app : Tourmaline::WebAppInfo | ::Nil = nil, 
+      @text,
+      @web_app : Tourmaline::WebAppInfo | ::Nil = nil,
       @start_parameter : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:
   # - InlineQueryResultCachedAudio
   # - InlineQueryResultCachedDocument
@@ -2974,1062 +2974,1062 @@ module Tourmaline
   # - InlineQueryResultVoice
   # Note: All URLs passed in inline query results will be available to end users and therefore must be assumed to be public.
   alias InlineQueryResult = Tourmaline::InlineQueryResultCachedAudio | Tourmaline::InlineQueryResultCachedDocument | Tourmaline::InlineQueryResultCachedGif | Tourmaline::InlineQueryResultCachedMpeg4Gif | Tourmaline::InlineQueryResultCachedPhoto | Tourmaline::InlineQueryResultCachedSticker | Tourmaline::InlineQueryResultCachedVideo | Tourmaline::InlineQueryResultCachedVoice | Tourmaline::InlineQueryResultArticle | Tourmaline::InlineQueryResultAudio | Tourmaline::InlineQueryResultContact | Tourmaline::InlineQueryResultGame | Tourmaline::InlineQueryResultDocument | Tourmaline::InlineQueryResultGif | Tourmaline::InlineQueryResultLocation | Tourmaline::InlineQueryResultMpeg4Gif | Tourmaline::InlineQueryResultPhoto | Tourmaline::InlineQueryResultVenue | Tourmaline::InlineQueryResultVideo | Tourmaline::InlineQueryResultVoice
-  
+
   # Represents a link to an article or web page.
   class InlineQueryResultArticle
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 Bytes
     property id : String
-    
+
     # Title of the result
     property title : String
-    
+
     # Content of the message to be sent
     property input_message_content : Tourmaline::InputMessageContent
-    
+
     # Type of the result, must be article
     property type : String = "article"
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. URL of the result
     property url : String | ::Nil
-    
+
     # Optional. Pass True if you don't want the URL to be shown in the message
     property? hide_url : Bool | ::Nil
-    
+
     # Optional. Short description of the result
     property description : String | ::Nil
-    
+
     # Optional. Url of the thumbnail for the result
     property thumbnail_url : String | ::Nil
-    
+
     # Optional. Thumbnail width
     property thumbnail_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Thumbnail height
     property thumbnail_height : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @id, 
-      @title, 
-      @input_message_content, 
-      @type = "article", 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
-      @url : String | ::Nil = nil, 
-      @hide_url : Bool | ::Nil = nil, 
-      @description : String | ::Nil = nil, 
-      @thumbnail_url : String | ::Nil = nil, 
-      @thumbnail_width : Int32 | Int64 | ::Nil = nil, 
+      @id,
+      @title,
+      @input_message_content,
+      @type = "article",
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
+      @url : String | ::Nil = nil,
+      @hide_url : Bool | ::Nil = nil,
+      @description : String | ::Nil = nil,
+      @thumbnail_url : String | ::Nil = nil,
+      @thumbnail_width : Int32 | Int64 | ::Nil = nil,
       @thumbnail_height : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
   class InlineQueryResultPhoto
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB
     property photo_url : String
-    
+
     # URL of the thumbnail for the photo
     property thumbnail_url : String
-    
+
     # Type of the result, must be photo
     property type : String = "photo"
-    
+
     # Optional. Width of the photo
     property photo_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Height of the photo
     property photo_height : Int32 | Int64 | ::Nil
-    
+
     # Optional. Title for the result
     property title : String | ::Nil
-    
+
     # Optional. Short description of the result
     property description : String | ::Nil
-    
+
     # Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the photo
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @photo_url, 
-      @thumbnail_url, 
-      @type = "photo", 
-      @photo_width : Int32 | Int64 | ::Nil = nil, 
-      @photo_height : Int32 | Int64 | ::Nil = nil, 
-      @title : String | ::Nil = nil, 
-      @description : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @photo_url,
+      @thumbnail_url,
+      @type = "photo",
+      @photo_width : Int32 | Int64 | ::Nil = nil,
+      @photo_height : Int32 | Int64 | ::Nil = nil,
+      @title : String | ::Nil = nil,
+      @description : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
   class InlineQueryResultGif
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid URL for the GIF file. File size must not exceed 1MB
     property gif_url : String
-    
+
     # URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
     property thumbnail_url : String
-    
+
     # Type of the result, must be gif
     property type : String = "gif"
-    
+
     # Optional. Width of the GIF
     property gif_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Height of the GIF
     property gif_height : Int32 | Int64 | ::Nil
-    
+
     # Optional. Duration of the GIF in seconds
     property gif_duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
     property thumbnail_mime_type : String | ::Nil
-    
+
     # Optional. Title for the result
     property title : String | ::Nil
-    
+
     # Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the GIF animation
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @gif_url, 
-      @thumbnail_url, 
-      @type = "gif", 
-      @gif_width : Int32 | Int64 | ::Nil = nil, 
-      @gif_height : Int32 | Int64 | ::Nil = nil, 
-      @gif_duration : Int32 | Int64 | ::Nil = nil, 
-      @thumbnail_mime_type : String | ::Nil = nil, 
-      @title : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @gif_url,
+      @thumbnail_url,
+      @type = "gif",
+      @gif_width : Int32 | Int64 | ::Nil = nil,
+      @gif_height : Int32 | Int64 | ::Nil = nil,
+      @gif_duration : Int32 | Int64 | ::Nil = nil,
+      @thumbnail_mime_type : String | ::Nil = nil,
+      @title : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
   class InlineQueryResultMpeg4Gif
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid URL for the MPEG4 file. File size must not exceed 1MB
     property mpeg4_url : String
-    
+
     # URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
     property thumbnail_url : String
-    
+
     # Type of the result, must be mpeg4_gif
     property type : String = "mpeg4_gif"
-    
+
     # Optional. Video width
     property mpeg4_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Video height
     property mpeg4_height : Int32 | Int64 | ::Nil
-    
+
     # Optional. Video duration in seconds
     property mpeg4_duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
     property thumbnail_mime_type : String | ::Nil
-    
+
     # Optional. Title for the result
     property title : String | ::Nil
-    
+
     # Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the video animation
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @mpeg4_url, 
-      @thumbnail_url, 
-      @type = "mpeg4_gif", 
-      @mpeg4_width : Int32 | Int64 | ::Nil = nil, 
-      @mpeg4_height : Int32 | Int64 | ::Nil = nil, 
-      @mpeg4_duration : Int32 | Int64 | ::Nil = nil, 
-      @thumbnail_mime_type : String | ::Nil = nil, 
-      @title : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @mpeg4_url,
+      @thumbnail_url,
+      @type = "mpeg4_gif",
+      @mpeg4_width : Int32 | Int64 | ::Nil = nil,
+      @mpeg4_height : Int32 | Int64 | ::Nil = nil,
+      @mpeg4_duration : Int32 | Int64 | ::Nil = nil,
+      @thumbnail_mime_type : String | ::Nil = nil,
+      @title : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
   class InlineQueryResultVideo
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid URL for the embedded video player or video file
     property video_url : String
-    
+
     # MIME type of the content of the video URL, "text/html" or "video/mp4"
     property mime_type : String
-    
+
     # URL of the thumbnail (JPEG only) for the video
     property thumbnail_url : String
-    
+
     # Title for the result
     property title : String
-    
+
     # Type of the result, must be video
     property type : String = "video"
-    
+
     # Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the video caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Video width
     property video_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Video height
     property video_height : Int32 | Int64 | ::Nil
-    
+
     # Optional. Video duration in seconds
     property video_duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. Short description of the result
     property description : String | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @video_url, 
-      @mime_type, 
-      @thumbnail_url, 
-      @title, 
-      @type = "video", 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @video_width : Int32 | Int64 | ::Nil = nil, 
-      @video_height : Int32 | Int64 | ::Nil = nil, 
-      @video_duration : Int32 | Int64 | ::Nil = nil, 
-      @description : String | ::Nil = nil, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @video_url,
+      @mime_type,
+      @thumbnail_url,
+      @title,
+      @type = "video",
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @video_width : Int32 | Int64 | ::Nil = nil,
+      @video_height : Int32 | Int64 | ::Nil = nil,
+      @video_duration : Int32 | Int64 | ::Nil = nil,
+      @description : String | ::Nil = nil,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultAudio
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid URL for the audio file
     property audio_url : String
-    
+
     # Title
     property title : String
-    
+
     # Type of the result, must be audio
     property type : String = "audio"
-    
+
     # Optional. Caption, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the audio caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Performer
     property performer : String | ::Nil
-    
+
     # Optional. Audio duration in seconds
     property audio_duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the audio
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @audio_url, 
-      @title, 
-      @type = "audio", 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @performer : String | ::Nil = nil, 
-      @audio_duration : Int32 | Int64 | ::Nil = nil, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @audio_url,
+      @title,
+      @type = "audio",
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @performer : String | ::Nil = nil,
+      @audio_duration : Int32 | Int64 | ::Nil = nil,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultVoice
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid URL for the voice recording
     property voice_url : String
-    
+
     # Recording title
     property title : String
-    
+
     # Type of the result, must be voice
     property type : String = "voice"
-    
+
     # Optional. Caption, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the voice message caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Recording duration in seconds
     property voice_duration : Int32 | Int64 | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the voice recording
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @voice_url, 
-      @title, 
-      @type = "voice", 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @voice_duration : Int32 | Int64 | ::Nil = nil, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @voice_url,
+      @title,
+      @type = "voice",
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @voice_duration : Int32 | Int64 | ::Nil = nil,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultDocument
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # Title for the result
     property title : String
-    
+
     # A valid URL for the file
     property document_url : String
-    
+
     # MIME type of the content of the file, either "application/pdf" or "application/zip"
     property mime_type : String
-    
+
     # Type of the result, must be document
     property type : String = "document"
-    
+
     # Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the document caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Short description of the result
     property description : String | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the file
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     # Optional. URL of the thumbnail (JPEG only) for the file
     property thumbnail_url : String | ::Nil
-    
+
     # Optional. Thumbnail width
     property thumbnail_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Thumbnail height
     property thumbnail_height : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @id, 
-      @title, 
-      @document_url, 
-      @mime_type, 
-      @type = "document", 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @description : String | ::Nil = nil, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
-      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil, 
-      @thumbnail_url : String | ::Nil = nil, 
-      @thumbnail_width : Int32 | Int64 | ::Nil = nil, 
+      @id,
+      @title,
+      @document_url,
+      @mime_type,
+      @type = "document",
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @description : String | ::Nil = nil,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
+      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil,
+      @thumbnail_url : String | ::Nil = nil,
+      @thumbnail_width : Int32 | Int64 | ::Nil = nil,
       @thumbnail_height : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultLocation
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 Bytes
     property id : String
-    
+
     # Location latitude in degrees
     property latitude : Float64
-    
+
     # Location longitude in degrees
     property longitude : Float64
-    
+
     # Location title
     property title : String
-    
+
     # Type of the result, must be location
     property type : String = "location"
-    
+
     # Optional. The radius of uncertainty for the location, measured in meters; 0-1500
     property horizontal_accuracy : Float64 | ::Nil
-    
+
     # Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
     property live_period : Int32 | Int64 | ::Nil
-    
+
     # Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
     property heading : Int32 | Int64 | ::Nil
-    
+
     # Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
     property proximity_alert_radius : Int32 | Int64 | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the location
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     # Optional. Url of the thumbnail for the result
     property thumbnail_url : String | ::Nil
-    
+
     # Optional. Thumbnail width
     property thumbnail_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Thumbnail height
     property thumbnail_height : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @id, 
-      @latitude, 
-      @longitude, 
-      @title, 
-      @type = "location", 
-      @horizontal_accuracy : Float64 | ::Nil = nil, 
-      @live_period : Int32 | Int64 | ::Nil = nil, 
-      @heading : Int32 | Int64 | ::Nil = nil, 
-      @proximity_alert_radius : Int32 | Int64 | ::Nil = nil, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
-      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil, 
-      @thumbnail_url : String | ::Nil = nil, 
-      @thumbnail_width : Int32 | Int64 | ::Nil = nil, 
+      @id,
+      @latitude,
+      @longitude,
+      @title,
+      @type = "location",
+      @horizontal_accuracy : Float64 | ::Nil = nil,
+      @live_period : Int32 | Int64 | ::Nil = nil,
+      @heading : Int32 | Int64 | ::Nil = nil,
+      @proximity_alert_radius : Int32 | Int64 | ::Nil = nil,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
+      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil,
+      @thumbnail_url : String | ::Nil = nil,
+      @thumbnail_width : Int32 | Int64 | ::Nil = nil,
       @thumbnail_height : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultVenue
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 Bytes
     property id : String
-    
+
     # Latitude of the venue location in degrees
     property latitude : Float64
-    
+
     # Longitude of the venue location in degrees
     property longitude : Float64
-    
+
     # Title of the venue
     property title : String
-    
+
     # Address of the venue
     property address : String
-    
+
     # Type of the result, must be venue
     property type : String = "venue"
-    
+
     # Optional. Foursquare identifier of the venue if known
     property foursquare_id : String | ::Nil
-    
+
     # Optional. Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
     property foursquare_type : String | ::Nil
-    
+
     # Optional. Google Places identifier of the venue
     property google_place_id : String | ::Nil
-    
+
     # Optional. Google Places type of the venue. (See supported types.)
     property google_place_type : String | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the venue
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     # Optional. Url of the thumbnail for the result
     property thumbnail_url : String | ::Nil
-    
+
     # Optional. Thumbnail width
     property thumbnail_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Thumbnail height
     property thumbnail_height : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @id, 
-      @latitude, 
-      @longitude, 
-      @title, 
-      @address, 
-      @type = "venue", 
-      @foursquare_id : String | ::Nil = nil, 
-      @foursquare_type : String | ::Nil = nil, 
-      @google_place_id : String | ::Nil = nil, 
-      @google_place_type : String | ::Nil = nil, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
-      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil, 
-      @thumbnail_url : String | ::Nil = nil, 
-      @thumbnail_width : Int32 | Int64 | ::Nil = nil, 
+      @id,
+      @latitude,
+      @longitude,
+      @title,
+      @address,
+      @type = "venue",
+      @foursquare_id : String | ::Nil = nil,
+      @foursquare_type : String | ::Nil = nil,
+      @google_place_id : String | ::Nil = nil,
+      @google_place_type : String | ::Nil = nil,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
+      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil,
+      @thumbnail_url : String | ::Nil = nil,
+      @thumbnail_width : Int32 | Int64 | ::Nil = nil,
       @thumbnail_height : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultContact
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 Bytes
     property id : String
-    
+
     # Contact's phone number
     property phone_number : String
-    
+
     # Contact's first name
     property first_name : String
-    
+
     # Type of the result, must be contact
     property type : String = "contact"
-    
+
     # Optional. Contact's last name
     property last_name : String | ::Nil
-    
+
     # Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
     property vcard : String | ::Nil
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the contact
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     # Optional. Url of the thumbnail for the result
     property thumbnail_url : String | ::Nil
-    
+
     # Optional. Thumbnail width
     property thumbnail_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Thumbnail height
     property thumbnail_height : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @id, 
-      @phone_number, 
-      @first_name, 
-      @type = "contact", 
-      @last_name : String | ::Nil = nil, 
-      @vcard : String | ::Nil = nil, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
-      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil, 
-      @thumbnail_url : String | ::Nil = nil, 
-      @thumbnail_width : Int32 | Int64 | ::Nil = nil, 
+      @id,
+      @phone_number,
+      @first_name,
+      @type = "contact",
+      @last_name : String | ::Nil = nil,
+      @vcard : String | ::Nil = nil,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
+      @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil,
+      @thumbnail_url : String | ::Nil = nil,
+      @thumbnail_width : Int32 | Int64 | ::Nil = nil,
       @thumbnail_height : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a Game.
   # Note: This will only work in Telegram versions released after October 1, 2016. Older clients will not display any inline results if a game result is among them.
   class InlineQueryResultGame
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # Short name of the game
     property game_short_name : String
-    
+
     # Type of the result, must be game
     property type : String = "game"
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     def initialize(
-      @id, 
-      @game_short_name, 
-      @type = "game", 
+      @id,
+      @game_short_name,
+      @type = "game",
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
   class InlineQueryResultCachedPhoto
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid file identifier of the photo
     property photo_file_id : String
-    
+
     # Type of the result, must be photo
     property type : String = "photo"
-    
+
     # Optional. Title for the result
     property title : String | ::Nil
-    
+
     # Optional. Short description of the result
     property description : String | ::Nil
-    
+
     # Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the photo
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @photo_file_id, 
-      @type = "photo", 
-      @title : String | ::Nil = nil, 
-      @description : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @photo_file_id,
+      @type = "photo",
+      @title : String | ::Nil = nil,
+      @description : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
   class InlineQueryResultCachedGif
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid file identifier for the GIF file
     property gif_file_id : String
-    
+
     # Type of the result, must be gif
     property type : String = "gif"
-    
+
     # Optional. Title for the result
     property title : String | ::Nil
-    
+
     # Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the GIF animation
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @gif_file_id, 
-      @type = "gif", 
-      @title : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @gif_file_id,
+      @type = "gif",
+      @title : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
   class InlineQueryResultCachedMpeg4Gif
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid file identifier for the MPEG4 file
     property mpeg4_file_id : String
-    
+
     # Type of the result, must be mpeg4_gif
     property type : String = "mpeg4_gif"
-    
+
     # Optional. Title for the result
     property title : String | ::Nil
-    
+
     # Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the video animation
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @mpeg4_file_id, 
-      @type = "mpeg4_gif", 
-      @title : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @mpeg4_file_id,
+      @type = "mpeg4_gif",
+      @title : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.
   # Note: This will only work in Telegram versions released after 9 April, 2016 for static stickers and after 06 July, 2019 for animated stickers. Older clients will ignore them.
   class InlineQueryResultCachedSticker
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid file identifier of the sticker
     property sticker_file_id : String
-    
+
     # Type of the result, must be sticker
     property type : String = "sticker"
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the sticker
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @sticker_file_id, 
-      @type = "sticker", 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @sticker_file_id,
+      @type = "sticker",
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedDocument
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # Title for the result
     property title : String
-    
+
     # A valid file identifier for the file
     property document_file_id : String
-    
+
     # Type of the result, must be document
     property type : String = "document"
-    
+
     # Optional. Short description of the result
     property description : String | ::Nil
-    
+
     # Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the document caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the file
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @title, 
-      @document_file_id, 
-      @type = "document", 
-      @description : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @title,
+      @document_file_id,
+      @type = "document",
+      @description : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
   class InlineQueryResultCachedVideo
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid file identifier for the video file
     property video_file_id : String
-    
+
     # Title for the result
     property title : String
-    
+
     # Type of the result, must be video
     property type : String = "video"
-    
+
     # Optional. Short description of the result
     property description : String | ::Nil
-    
+
     # Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the video caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the video
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @video_file_id, 
-      @title, 
-      @type = "video", 
-      @description : String | ::Nil = nil, 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @video_file_id,
+      @title,
+      @type = "video",
+      @description : String | ::Nil = nil,
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedVoice
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid file identifier for the voice message
     property voice_file_id : String
-    
+
     # Voice message title
     property title : String
-    
+
     # Type of the result, must be voice
     property type : String = "voice"
-    
+
     # Optional. Caption, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the voice message caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the voice message
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @voice_file_id, 
-      @title, 
-      @type = "voice", 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @voice_file_id,
+      @title,
+      @type = "voice",
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
   # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedAudio
     include JSON::Serializable
-    
+
     # Unique identifier for this result, 1-64 bytes
     property id : String
-    
+
     # A valid file identifier for the audio file
     property audio_file_id : String
-    
+
     # Type of the result, must be audio
     property type : String = "audio"
-    
+
     # Optional. Caption, 0-1024 characters after entities parsing
     property caption : String | ::Nil
-    
+
     # Optional. Mode for parsing entities in the audio caption. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
-    
+
     # Optional. Content of the message to be sent instead of the audio
     property input_message_content : Tourmaline::InputMessageContent | ::Nil
-    
+
     def initialize(
-      @id, 
-      @audio_file_id, 
-      @type = "audio", 
-      @caption : String | ::Nil = nil, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
-      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil, 
+      @id,
+      @audio_file_id,
+      @type = "audio",
+      @caption : String | ::Nil = nil,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 5 types:
   # - InputTextMessageContent
   # - InputLocationMessageContent
@@ -4037,600 +4037,600 @@ module Tourmaline
   # - InputContactMessageContent
   # - InputInvoiceMessageContent
   alias InputMessageContent = Tourmaline::InputTextMessageContent | Tourmaline::InputLocationMessageContent | Tourmaline::InputVenueMessageContent | Tourmaline::InputContactMessageContent | Tourmaline::InputInvoiceMessageContent
-  
+
   # Represents the content of a text message to be sent as the result of an inline query.
   class InputTextMessageContent
     include JSON::Serializable
-    
+
     # Text of the message to be sent, 1-4096 characters
     property message_text : String
-    
+
     # Optional. Mode for parsing entities in the message text. See formatting options for more details.
     property parse_mode : ParseMode = ParseMode::Markdown
-    
+
     # Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
     property entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Disables link previews for links in the sent message
     property? disable_web_page_preview : Bool | ::Nil
-    
+
     def initialize(
-      @message_text, 
-      @parse_mode : ParseMode = ParseMode::Markdown, 
-      @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
+      @message_text,
+      @parse_mode : ParseMode = ParseMode::Markdown,
+      @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
       @disable_web_page_preview : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # Represents the content of a location message to be sent as the result of an inline query.
   class InputLocationMessageContent
     include JSON::Serializable
-    
+
     # Latitude of the location in degrees
     property latitude : Float64
-    
+
     # Longitude of the location in degrees
     property longitude : Float64
-    
+
     # Optional. The radius of uncertainty for the location, measured in meters; 0-1500
     property horizontal_accuracy : Float64 | ::Nil
-    
+
     # Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
     property live_period : Int32 | Int64 | ::Nil
-    
+
     # Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
     property heading : Int32 | Int64 | ::Nil
-    
+
     # Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
     property proximity_alert_radius : Int32 | Int64 | ::Nil
-    
+
     def initialize(
-      @latitude, 
-      @longitude, 
-      @horizontal_accuracy : Float64 | ::Nil = nil, 
-      @live_period : Int32 | Int64 | ::Nil = nil, 
-      @heading : Int32 | Int64 | ::Nil = nil, 
+      @latitude,
+      @longitude,
+      @horizontal_accuracy : Float64 | ::Nil = nil,
+      @live_period : Int32 | Int64 | ::Nil = nil,
+      @heading : Int32 | Int64 | ::Nil = nil,
       @proximity_alert_radius : Int32 | Int64 | ::Nil = nil
     )
     end
   end
-  
+
   # Represents the content of a venue message to be sent as the result of an inline query.
   class InputVenueMessageContent
     include JSON::Serializable
-    
+
     # Latitude of the venue in degrees
     property latitude : Float64
-    
+
     # Longitude of the venue in degrees
     property longitude : Float64
-    
+
     # Name of the venue
     property title : String
-    
+
     # Address of the venue
     property address : String
-    
+
     # Optional. Foursquare identifier of the venue, if known
     property foursquare_id : String | ::Nil
-    
+
     # Optional. Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
     property foursquare_type : String | ::Nil
-    
+
     # Optional. Google Places identifier of the venue
     property google_place_id : String | ::Nil
-    
+
     # Optional. Google Places type of the venue. (See supported types.)
     property google_place_type : String | ::Nil
-    
+
     def initialize(
-      @latitude, 
-      @longitude, 
-      @title, 
-      @address, 
-      @foursquare_id : String | ::Nil = nil, 
-      @foursquare_type : String | ::Nil = nil, 
-      @google_place_id : String | ::Nil = nil, 
+      @latitude,
+      @longitude,
+      @title,
+      @address,
+      @foursquare_id : String | ::Nil = nil,
+      @foursquare_type : String | ::Nil = nil,
+      @google_place_id : String | ::Nil = nil,
       @google_place_type : String | ::Nil = nil
     )
     end
   end
-  
+
   # Represents the content of a contact message to be sent as the result of an inline query.
   class InputContactMessageContent
     include JSON::Serializable
-    
+
     # Contact's phone number
     property phone_number : String
-    
+
     # Contact's first name
     property first_name : String
-    
+
     # Optional. Contact's last name
     property last_name : String | ::Nil
-    
+
     # Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
     property vcard : String | ::Nil
-    
+
     def initialize(
-      @phone_number, 
-      @first_name, 
-      @last_name : String | ::Nil = nil, 
+      @phone_number,
+      @first_name,
+      @last_name : String | ::Nil = nil,
       @vcard : String | ::Nil = nil
     )
     end
   end
-  
+
   # Represents the content of an invoice message to be sent as the result of an inline query.
   class InputInvoiceMessageContent
     include JSON::Serializable
-    
+
     # Product name, 1-32 characters
     property title : String
-    
+
     # Product description, 1-255 characters
     property description : String
-    
+
     # Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
     property payload : String
-    
+
     # Payment provider token, obtained via @BotFather
     property provider_token : String
-    
+
     # Three-letter ISO 4217 currency code, see more on currencies
     property currency : String
-    
+
     # Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
     property prices : Array(Tourmaline::LabeledPrice) = [] of Tourmaline::LabeledPrice
-    
+
     # Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0
     property max_tip_amount : Int32 | Int64 | ::Nil
-    
+
     # Optional. A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
     property suggested_tip_amounts : Array(Int32 | Int64) = [] of Int32 | Int64
-    
+
     # Optional. A JSON-serialized object for data about the invoice, which will be shared with the payment provider. A detailed description of the required fields should be provided by the payment provider.
     property provider_data : String | ::Nil
-    
+
     # Optional. URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service.
     property photo_url : String | ::Nil
-    
+
     # Optional. Photo size in bytes
     property photo_size : Int32 | Int64 | ::Nil
-    
+
     # Optional. Photo width
     property photo_width : Int32 | Int64 | ::Nil
-    
+
     # Optional. Photo height
     property photo_height : Int32 | Int64 | ::Nil
-    
+
     # Optional. Pass True if you require the user's full name to complete the order
     property? need_name : Bool | ::Nil
-    
+
     # Optional. Pass True if you require the user's phone number to complete the order
     property? need_phone_number : Bool | ::Nil
-    
+
     # Optional. Pass True if you require the user's email address to complete the order
     property? need_email : Bool | ::Nil
-    
+
     # Optional. Pass True if you require the user's shipping address to complete the order
     property? need_shipping_address : Bool | ::Nil
-    
+
     # Optional. Pass True if the user's phone number should be sent to provider
     property? send_phone_number_to_provider : Bool | ::Nil
-    
+
     # Optional. Pass True if the user's email address should be sent to provider
     property? send_email_to_provider : Bool | ::Nil
-    
+
     # Optional. Pass True if the final price depends on the shipping method
     property? is_flexible : Bool | ::Nil
-    
+
     def initialize(
-      @title, 
-      @description, 
-      @payload, 
-      @provider_token, 
-      @currency, 
-      @prices : Array(Tourmaline::LabeledPrice) = [] of Tourmaline::LabeledPrice, 
-      @max_tip_amount : Int32 | Int64 | ::Nil = nil, 
-      @suggested_tip_amounts : Array(Int32 | Int64) = [] of Int32 | Int64, 
-      @provider_data : String | ::Nil = nil, 
-      @photo_url : String | ::Nil = nil, 
-      @photo_size : Int32 | Int64 | ::Nil = nil, 
-      @photo_width : Int32 | Int64 | ::Nil = nil, 
-      @photo_height : Int32 | Int64 | ::Nil = nil, 
-      @need_name : Bool | ::Nil = nil, 
-      @need_phone_number : Bool | ::Nil = nil, 
-      @need_email : Bool | ::Nil = nil, 
-      @need_shipping_address : Bool | ::Nil = nil, 
-      @send_phone_number_to_provider : Bool | ::Nil = nil, 
-      @send_email_to_provider : Bool | ::Nil = nil, 
+      @title,
+      @description,
+      @payload,
+      @provider_token,
+      @currency,
+      @prices : Array(Tourmaline::LabeledPrice) = [] of Tourmaline::LabeledPrice,
+      @max_tip_amount : Int32 | Int64 | ::Nil = nil,
+      @suggested_tip_amounts : Array(Int32 | Int64) = [] of Int32 | Int64,
+      @provider_data : String | ::Nil = nil,
+      @photo_url : String | ::Nil = nil,
+      @photo_size : Int32 | Int64 | ::Nil = nil,
+      @photo_width : Int32 | Int64 | ::Nil = nil,
+      @photo_height : Int32 | Int64 | ::Nil = nil,
+      @need_name : Bool | ::Nil = nil,
+      @need_phone_number : Bool | ::Nil = nil,
+      @need_email : Bool | ::Nil = nil,
+      @need_shipping_address : Bool | ::Nil = nil,
+      @send_phone_number_to_provider : Bool | ::Nil = nil,
+      @send_email_to_provider : Bool | ::Nil = nil,
       @is_flexible : Bool | ::Nil = nil
     )
     end
   end
-  
+
   # Represents a result of an inline query that was chosen by the user and sent to their chat partner.
   # Note: It is necessary to enable inline feedback via @BotFather in order to receive these objects in updates.
   class ChosenInlineResult
     include JSON::Serializable
-    
+
     # The unique identifier for the result that was chosen
     property result_id : String
-    
+
     # The user that chose the result
     property from : Tourmaline::User
-    
+
     # The query that was used to obtain the result
     property query : String
-    
+
     # Optional. Sender location, only for bots that require user location
     property location : Tourmaline::Location | ::Nil
-    
+
     # Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.
     property inline_message_id : String | ::Nil
-    
+
     def initialize(
-      @result_id, 
-      @from, 
-      @query, 
-      @location : Tourmaline::Location | ::Nil = nil, 
+      @result_id,
+      @from,
+      @query,
+      @location : Tourmaline::Location | ::Nil = nil,
       @inline_message_id : String | ::Nil = nil
     )
     end
   end
-  
+
   # Describes an inline message sent by a Web App on behalf of a user.
   class SentWebAppMessage
     include JSON::Serializable
-    
+
     # Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message.
     property inline_message_id : String | ::Nil
-    
+
     def initialize(
       @inline_message_id : String | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents a portion of the price for goods or services.
   class LabeledPrice
     include JSON::Serializable
-    
+
     # Portion label
     property label : String
-    
+
     # Price of the product in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
     property amount : Int32 | Int64
-    
+
     def initialize(
-      @label, 
+      @label,
       @amount
     )
     end
   end
-  
+
   # This object contains basic information about an invoice.
   class Invoice
     include JSON::Serializable
-    
+
     # Product name
     property title : String
-    
+
     # Product description
     property description : String
-    
+
     # Unique bot deep-linking parameter that can be used to generate this invoice
     property start_parameter : String
-    
+
     # Three-letter ISO 4217 currency code
     property currency : String
-    
+
     # Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
     property total_amount : Int32 | Int64
-    
+
     def initialize(
-      @title, 
-      @description, 
-      @start_parameter, 
-      @currency, 
+      @title,
+      @description,
+      @start_parameter,
+      @currency,
       @total_amount
     )
     end
   end
-  
+
   # This object represents a shipping address.
   class ShippingAddress
     include JSON::Serializable
-    
+
     # Two-letter ISO 3166-1 alpha-2 country code
     property country_code : String
-    
+
     # State, if applicable
     property state : String
-    
+
     # City
     property city : String
-    
+
     # First line for the address
     property street_line1 : String
-    
+
     # Second line for the address
     property street_line2 : String
-    
+
     # Address post code
     property post_code : String
-    
+
     def initialize(
-      @country_code, 
-      @state, 
-      @city, 
-      @street_line1, 
-      @street_line2, 
+      @country_code,
+      @state,
+      @city,
+      @street_line1,
+      @street_line2,
       @post_code
     )
     end
   end
-  
+
   # This object represents information about an order.
   class OrderInfo
     include JSON::Serializable
-    
+
     # Optional. User name
     property name : String | ::Nil
-    
+
     # Optional. User's phone number
     property phone_number : String | ::Nil
-    
+
     # Optional. User email
     property email : String | ::Nil
-    
+
     # Optional. User shipping address
     property shipping_address : Tourmaline::ShippingAddress | ::Nil
-    
+
     def initialize(
-      @name : String | ::Nil = nil, 
-      @phone_number : String | ::Nil = nil, 
-      @email : String | ::Nil = nil, 
+      @name : String | ::Nil = nil,
+      @phone_number : String | ::Nil = nil,
+      @email : String | ::Nil = nil,
       @shipping_address : Tourmaline::ShippingAddress | ::Nil = nil
     )
     end
   end
-  
+
   # This object represents one shipping option.
   class ShippingOption
     include JSON::Serializable
-    
+
     # Shipping option identifier
     property id : String
-    
+
     # Option title
     property title : String
-    
+
     # List of price portions
     property prices : Array(Tourmaline::LabeledPrice) = [] of Tourmaline::LabeledPrice
-    
+
     def initialize(
-      @id, 
-      @title, 
+      @id,
+      @title,
       @prices : Array(Tourmaline::LabeledPrice) = [] of Tourmaline::LabeledPrice
     )
     end
   end
-  
+
   # This object contains basic information about a successful payment.
   class SuccessfulPayment
     include JSON::Serializable
-    
+
     # Three-letter ISO 4217 currency code
     property currency : String
-    
+
     # Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
     property total_amount : Int32 | Int64
-    
+
     # Bot specified invoice payload
     property invoice_payload : String
-    
+
     # Telegram payment identifier
     property telegram_payment_charge_id : String
-    
+
     # Provider payment identifier
     property provider_payment_charge_id : String
-    
+
     # Optional. Identifier of the shipping option chosen by the user
     property shipping_option_id : String | ::Nil
-    
+
     # Optional. Order information provided by the user
     property order_info : Tourmaline::OrderInfo | ::Nil
-    
+
     def initialize(
-      @currency, 
-      @total_amount, 
-      @invoice_payload, 
-      @telegram_payment_charge_id, 
-      @provider_payment_charge_id, 
-      @shipping_option_id : String | ::Nil = nil, 
+      @currency,
+      @total_amount,
+      @invoice_payload,
+      @telegram_payment_charge_id,
+      @provider_payment_charge_id,
+      @shipping_option_id : String | ::Nil = nil,
       @order_info : Tourmaline::OrderInfo | ::Nil = nil
     )
     end
   end
-  
+
   # This object contains information about an incoming shipping query.
   class ShippingQuery
     include JSON::Serializable
-    
+
     # Unique query identifier
     property id : String
-    
+
     # User who sent the query
     property from : Tourmaline::User
-    
+
     # Bot specified invoice payload
     property invoice_payload : String
-    
+
     # User specified shipping address
     property shipping_address : Tourmaline::ShippingAddress
-    
+
     def initialize(
-      @id, 
-      @from, 
-      @invoice_payload, 
+      @id,
+      @from,
+      @invoice_payload,
       @shipping_address
     )
     end
   end
-  
+
   # This object contains information about an incoming pre-checkout query.
   class PreCheckoutQuery
     include JSON::Serializable
-    
+
     # Unique query identifier
     property id : String
-    
+
     # User who sent the query
     property from : Tourmaline::User
-    
+
     # Three-letter ISO 4217 currency code
     property currency : String
-    
+
     # Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
     property total_amount : Int32 | Int64
-    
+
     # Bot specified invoice payload
     property invoice_payload : String
-    
+
     # Optional. Identifier of the shipping option chosen by the user
     property shipping_option_id : String | ::Nil
-    
+
     # Optional. Order information provided by the user
     property order_info : Tourmaline::OrderInfo | ::Nil
-    
+
     def initialize(
-      @id, 
-      @from, 
-      @currency, 
-      @total_amount, 
-      @invoice_payload, 
-      @shipping_option_id : String | ::Nil = nil, 
+      @id,
+      @from,
+      @currency,
+      @total_amount,
+      @invoice_payload,
+      @shipping_option_id : String | ::Nil = nil,
       @order_info : Tourmaline::OrderInfo | ::Nil = nil
     )
     end
   end
-  
+
   # Describes Telegram Passport data shared with the bot by the user.
   class PassportData
     include JSON::Serializable
-    
+
     # Encrypted credentials required to decrypt the data
     property credentials : Tourmaline::EncryptedCredentials
-    
+
     # Array with information about documents and other Telegram Passport elements that was shared with the bot
     property data : Array(Tourmaline::EncryptedPassportElement) = [] of Tourmaline::EncryptedPassportElement
-    
+
     def initialize(
-      @credentials, 
+      @credentials,
       @data : Array(Tourmaline::EncryptedPassportElement) = [] of Tourmaline::EncryptedPassportElement
     )
     end
   end
-  
+
   # This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.
   class PassportFile
     include JSON::Serializable
-    
+
     # Identifier for this file, which can be used to download or reuse the file
     property file_id : String
-    
+
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
-    
+
     # File size in bytes
     property file_size : Int32 | Int64
-    
+
     # Unix time when the file was uploaded
     @[JSON::Field(converter: Time::EpochConverter)]
     property file_date : Time
-    
+
     def initialize(
-      @file_id, 
-      @file_unique_id, 
-      @file_size, 
+      @file_id,
+      @file_unique_id,
+      @file_size,
       @file_date
     )
     end
   end
-  
+
   # Describes documents or other Telegram Passport elements shared with the bot by the user.
   class EncryptedPassportElement
     include JSON::Serializable
-    
+
     # Element type. One of "personal_details", "passport", "driver_license", "identity_card", "internal_passport", "address", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration", "phone_number", "email".
     property type : String
-    
+
     # Base64-encoded element hash for using in PassportElementErrorUnspecified
     property hash : String
-    
+
     # Optional. Base64-encoded encrypted Telegram Passport element data provided by the user, available for "personal_details", "passport", "driver_license", "identity_card", "internal_passport" and "address" types. Can be decrypted and verified using the accompanying EncryptedCredentials.
     property data : String | ::Nil
-    
+
     # Optional. User's verified phone number, available only for "phone_number" type
     property phone_number : String | ::Nil
-    
+
     # Optional. User's verified email address, available only for "email" type
     property email : String | ::Nil
-    
+
     # Optional. Array of encrypted files with documents provided by the user, available for "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
     property files : Array(Tourmaline::PassportFile) = [] of Tourmaline::PassportFile
-    
+
     # Optional. Encrypted file with the front side of the document, provided by the user. Available for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
     property front_side : Tourmaline::PassportFile | ::Nil
-    
+
     # Optional. Encrypted file with the reverse side of the document, provided by the user. Available for "driver_license" and "identity_card". The file can be decrypted and verified using the accompanying EncryptedCredentials.
     property reverse_side : Tourmaline::PassportFile | ::Nil
-    
+
     # Optional. Encrypted file with the selfie of the user holding a document, provided by the user; available for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
     property selfie : Tourmaline::PassportFile | ::Nil
-    
+
     # Optional. Array of encrypted files with translated versions of documents provided by the user. Available if requested for "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
     property translation : Array(Tourmaline::PassportFile) = [] of Tourmaline::PassportFile
-    
+
     def initialize(
-      @type, 
-      @hash, 
-      @data : String | ::Nil = nil, 
-      @phone_number : String | ::Nil = nil, 
-      @email : String | ::Nil = nil, 
-      @files : Array(Tourmaline::PassportFile) = [] of Tourmaline::PassportFile, 
-      @front_side : Tourmaline::PassportFile | ::Nil = nil, 
-      @reverse_side : Tourmaline::PassportFile | ::Nil = nil, 
-      @selfie : Tourmaline::PassportFile | ::Nil = nil, 
+      @type,
+      @hash,
+      @data : String | ::Nil = nil,
+      @phone_number : String | ::Nil = nil,
+      @email : String | ::Nil = nil,
+      @files : Array(Tourmaline::PassportFile) = [] of Tourmaline::PassportFile,
+      @front_side : Tourmaline::PassportFile | ::Nil = nil,
+      @reverse_side : Tourmaline::PassportFile | ::Nil = nil,
+      @selfie : Tourmaline::PassportFile | ::Nil = nil,
       @translation : Array(Tourmaline::PassportFile) = [] of Tourmaline::PassportFile
     )
     end
   end
-  
+
   # Describes data required for decrypting and authenticating EncryptedPassportElement. See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
   class EncryptedCredentials
     include JSON::Serializable
-    
+
     # Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets required for EncryptedPassportElement decryption and authentication
     property data : String
-    
+
     # Base64-encoded data hash for data authentication
     property hash : String
-    
+
     # Base64-encoded secret, encrypted with the bot's public RSA key, required for data decryption
     property secret : String
-    
+
     def initialize(
-      @data, 
-      @hash, 
+      @data,
+      @hash,
       @secret
     )
     end
   end
-  
+
   # This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:
   # - PassportElementErrorDataField
   # - PassportElementErrorFrontSide
@@ -4642,290 +4642,290 @@ module Tourmaline
   # - PassportElementErrorTranslationFiles
   # - PassportElementErrorUnspecified
   alias PassportElementError = Tourmaline::PassportElementErrorDataField | Tourmaline::PassportElementErrorFrontSide | Tourmaline::PassportElementErrorReverseSide | Tourmaline::PassportElementErrorSelfie | Tourmaline::PassportElementErrorFile | Tourmaline::PassportElementErrorFiles | Tourmaline::PassportElementErrorTranslationFile | Tourmaline::PassportElementErrorTranslationFiles | Tourmaline::PassportElementErrorUnspecified
-  
+
   # Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
   class PassportElementErrorDataField
     include JSON::Serializable
-    
+
     # Error source, must be data
     property source : String
-    
+
     # The section of the user's Telegram Passport which has the error, one of "personal_details", "passport", "driver_license", "identity_card", "internal_passport", "address"
     property type : String
-    
+
     # Name of the data field which has the error
     property field_name : String
-    
+
     # Base64-encoded data hash
     property data_hash : String
-    
+
     # Error message
     property message : String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @field_name, 
-      @data_hash, 
+      @source,
+      @type,
+      @field_name,
+      @data_hash,
       @message
     )
     end
   end
-  
+
   # Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
   class PassportElementErrorFrontSide
     include JSON::Serializable
-    
+
     # Error source, must be front_side
     property source : String
-    
+
     # The section of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport"
     property type : String
-    
+
     # Base64-encoded hash of the file with the front side of the document
     property file_hash : String
-    
+
     # Error message
     property message : String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @file_hash, 
+      @source,
+      @type,
+      @file_hash,
       @message
     )
     end
   end
-  
+
   # Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes.
   class PassportElementErrorReverseSide
     include JSON::Serializable
-    
+
     # Error source, must be reverse_side
     property source : String
-    
+
     # The section of the user's Telegram Passport which has the issue, one of "driver_license", "identity_card"
     property type : String
-    
+
     # Base64-encoded hash of the file with the reverse side of the document
     property file_hash : String
-    
+
     # Error message
     property message : String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @file_hash, 
+      @source,
+      @type,
+      @file_hash,
       @message
     )
     end
   end
-  
+
   # Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
   class PassportElementErrorSelfie
     include JSON::Serializable
-    
+
     # Error source, must be selfie
     property source : String
-    
+
     # The section of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport"
     property type : String
-    
+
     # Base64-encoded hash of the file with the selfie
     property file_hash : String
-    
+
     # Error message
     property message : String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @file_hash, 
+      @source,
+      @type,
+      @file_hash,
       @message
     )
     end
   end
-  
+
   # Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
   class PassportElementErrorFile
     include JSON::Serializable
-    
+
     # Error source, must be file
     property source : String
-    
+
     # The section of the user's Telegram Passport which has the issue, one of "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
     property type : String
-    
+
     # Base64-encoded file hash
     property file_hash : String
-    
+
     # Error message
     property message : String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @file_hash, 
+      @source,
+      @type,
+      @file_hash,
       @message
     )
     end
   end
-  
+
   # Represents an issue with a list of scans. The error is considered resolved when the list of files containing the scans changes.
   class PassportElementErrorFiles
     include JSON::Serializable
-    
+
     # Error source, must be files
     property source : String
-    
+
     # The section of the user's Telegram Passport which has the issue, one of "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
     property type : String
-    
+
     # Error message
     property message : String
-    
+
     # List of base64-encoded file hashes
     property file_hashes : Array(String) = [] of String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @message, 
+      @source,
+      @type,
+      @message,
       @file_hashes : Array(String) = [] of String
     )
     end
   end
-  
+
   # Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved when the file changes.
   class PassportElementErrorTranslationFile
     include JSON::Serializable
-    
+
     # Error source, must be translation_file
     property source : String
-    
+
     # Type of element of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
     property type : String
-    
+
     # Base64-encoded file hash
     property file_hash : String
-    
+
     # Error message
     property message : String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @file_hash, 
+      @source,
+      @type,
+      @file_hash,
       @message
     )
     end
   end
-  
+
   # Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
   class PassportElementErrorTranslationFiles
     include JSON::Serializable
-    
+
     # Error source, must be translation_files
     property source : String
-    
+
     # Type of element of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
     property type : String
-    
+
     # Error message
     property message : String
-    
+
     # List of base64-encoded file hashes
     property file_hashes : Array(String) = [] of String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @message, 
+      @source,
+      @type,
+      @message,
       @file_hashes : Array(String) = [] of String
     )
     end
   end
-  
+
   # Represents an issue in an unspecified place. The error is considered resolved when new data is added.
   class PassportElementErrorUnspecified
     include JSON::Serializable
-    
+
     # Error source, must be unspecified
     property source : String
-    
+
     # Type of element of the user's Telegram Passport which has the issue
     property type : String
-    
+
     # Base64-encoded element hash
     property element_hash : String
-    
+
     # Error message
     property message : String
-    
+
     def initialize(
-      @source, 
-      @type, 
-      @element_hash, 
+      @source,
+      @type,
+      @element_hash,
       @message
     )
     end
   end
-  
+
   # This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
   class Game
     include JSON::Serializable
-    
+
     # Title of the game
     property title : String
-    
+
     # Description of the game
     property description : String
-    
+
     # Photo that will be displayed in the game message in chats.
     property photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize
-    
+
     # Optional. Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters.
     property text : String | ::Nil
-    
+
     # Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
     property text_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
-    
+
     # Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
     property animation : Tourmaline::Animation | ::Nil
-    
+
     def initialize(
-      @title, 
-      @description, 
-      @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize, 
-      @text : String | ::Nil = nil, 
-      @text_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity, 
+      @title,
+      @description,
+      @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize,
+      @text : String | ::Nil = nil,
+      @text_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
       @animation : Tourmaline::Animation | ::Nil = nil
     )
     end
   end
-  
+
   # A placeholder, currently holds no information. Use BotFather to set up your game.
   class CallbackGame
     include JSON::Serializable
   end
-  
+
   # This object represents one row of the high scores table for a game.
   class GameHighScore
     include JSON::Serializable
-    
+
     # Position in high score table for the game
     property position : Int32 | Int64
-    
+
     # User
     property user : Tourmaline::User
-    
+
     # Score
     property score : Int32 | Int64
-    
+
     def initialize(
-      @position, 
-      @user, 
+      @position,
+      @user,
       @score
     )
     end

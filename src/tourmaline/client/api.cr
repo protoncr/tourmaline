@@ -7,1371 +7,1371 @@ module Tourmaline
     module Api
       # Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects.
       def get_updates(
-        offset : Int32 | Int64 | ::Nil = nil, 
-        limit : Int32 | Int64 | ::Nil = nil, 
-        timeout : Int32 | Int64 | ::Nil = nil, 
+        offset : Int32 | Int64 | ::Nil = nil,
+        limit : Int32 | Int64 | ::Nil = nil,
+        timeout : Int32 | Int64 | ::Nil = nil,
         allowed_updates : Array(String) | ::Nil = nil
       )
         request(Array(Tourmaline::Update), "getUpdates", {
-          offset: offset, 
-          limit: limit, 
-          timeout: timeout, 
-          allowed_updates: allowed_updates.try(&.to_json)
+          offset:          offset,
+          limit:           limit,
+          timeout:         timeout,
+          allowed_updates: allowed_updates.try(&.to_json),
         })
       end
-      
+
       # Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
       # If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header "X-Telegram-Bot-Api-Secret-Token" with the secret token as content.
       def set_webhook(
-        url : String, 
-        certificate : ::File | ::Nil = nil, 
-        ip_address : String | ::Nil = nil, 
-        max_connections : Int32 | Int64 | ::Nil = nil, 
-        allowed_updates : Array(String) | ::Nil = nil, 
-        drop_pending_updates : Bool | ::Nil = nil, 
+        url : String,
+        certificate : ::File | ::Nil = nil,
+        ip_address : String | ::Nil = nil,
+        max_connections : Int32 | Int64 | ::Nil = nil,
+        allowed_updates : Array(String) | ::Nil = nil,
+        drop_pending_updates : Bool | ::Nil = nil,
         secret_token : String | ::Nil = nil
       )
         request(Bool, "setWebhook", {
-          url: url, 
-          certificate: certificate, 
-          ip_address: ip_address, 
-          max_connections: max_connections, 
-          allowed_updates: allowed_updates.try(&.to_json), 
-          drop_pending_updates: drop_pending_updates, 
-          secret_token: secret_token
+          url:                  url,
+          certificate:          certificate,
+          ip_address:           ip_address,
+          max_connections:      max_connections,
+          allowed_updates:      allowed_updates.try(&.to_json),
+          drop_pending_updates: drop_pending_updates,
+          secret_token:         secret_token,
         })
       end
-      
+
       # Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
       def delete_webhook(
         drop_pending_updates : Bool | ::Nil = nil
       )
         request(Bool, "deleteWebhook", {
-          drop_pending_updates: drop_pending_updates
+          drop_pending_updates: drop_pending_updates,
         })
       end
-      
+
       # Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
       def get_webhook_info
         request(Tourmaline::WebhookInfo, "getWebhookInfo")
       end
-      
+
       # A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object.
       def get_me
         request(Tourmaline::User, "getMe")
       end
-      
+
       # Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
       def log_out
         request(Bool, "logOut")
       end
-      
+
       # Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.
       def close
         request(Bool, "close")
       end
-      
+
       # Use this method to send text messages. On success, the sent Message is returned.
       def send_message(
-        chat_id : Int32 | Int64 | String, 
-        text : String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        disable_web_page_preview : Bool | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        text : String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        disable_web_page_preview : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendMessage", {
-          chat_id: chat_id, 
-          text: text, 
-          message_thread_id: message_thread_id, 
-          parse_mode: parse_mode, 
-          entities: entities.try(&.to_json), 
-          disable_web_page_preview: disable_web_page_preview, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          text:                        text,
+          message_thread_id:           message_thread_id,
+          parse_mode:                  parse_mode,
+          entities:                    entities.try(&.to_json),
+          disable_web_page_preview:    disable_web_page_preview,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned.
       def forward_message(
-        chat_id : Int32 | Int64 | String, 
-        from_chat_id : Int32 | Int64 | String, 
-        message_id : Int32 | Int64, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        from_chat_id : Int32 | Int64 | String,
+        message_id : Int32 | Int64,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil
       )
         request(Tourmaline::Message, "forwardMessage", {
-          chat_id: chat_id, 
-          from_chat_id: from_chat_id, 
-          message_id: message_id, 
-          message_thread_id: message_thread_id, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content
+          chat_id:              chat_id,
+          from_chat_id:         from_chat_id,
+          message_id:           message_id,
+          message_thread_id:    message_thread_id,
+          disable_notification: disable_notification,
+          protect_content:      protect_content,
         })
       end
-      
+
       # Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
       def copy_message(
-        chat_id : Int32 | Int64 | String, 
-        from_chat_id : Int32 | Int64 | String, 
-        message_id : Int32 | Int64, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        from_chat_id : Int32 | Int64 | String,
+        message_id : Int32 | Int64,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::MessageId, "copyMessage", {
-          chat_id: chat_id, 
-          from_chat_id: from_chat_id, 
-          message_id: message_id, 
-          message_thread_id: message_thread_id, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          from_chat_id:                from_chat_id,
+          message_id:                  message_id,
+          message_thread_id:           message_thread_id,
+          caption:                     caption,
+          parse_mode:                  parse_mode,
+          caption_entities:            caption_entities.try(&.to_json),
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send photos. On success, the sent Message is returned.
       def send_photo(
-        chat_id : Int32 | Int64 | String, 
-        photo : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        has_spoiler : Bool | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        photo : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        has_spoiler : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendPhoto", {
-          chat_id: chat_id, 
-          photo: photo, 
-          message_thread_id: message_thread_id, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          has_spoiler: has_spoiler, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          photo:                       photo,
+          message_thread_id:           message_thread_id,
+          caption:                     caption,
+          parse_mode:                  parse_mode,
+          caption_entities:            caption_entities.try(&.to_json),
+          has_spoiler:                 has_spoiler,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
       # For sending voice messages, use the sendVoice method instead.
       def send_audio(
-        chat_id : Int32 | Int64 | String, 
-        audio : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        duration : Int32 | Int64 | ::Nil = nil, 
-        performer : String | ::Nil = nil, 
-        title : String | ::Nil = nil, 
-        thumbnail : ::File | String | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        audio : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        duration : Int32 | Int64 | ::Nil = nil,
+        performer : String | ::Nil = nil,
+        title : String | ::Nil = nil,
+        thumbnail : ::File | String | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendAudio", {
-          chat_id: chat_id, 
-          audio: audio, 
-          message_thread_id: message_thread_id, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          duration: duration, 
-          performer: performer, 
-          title: title, 
-          thumbnail: thumbnail, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          audio:                       audio,
+          message_thread_id:           message_thread_id,
+          caption:                     caption,
+          parse_mode:                  parse_mode,
+          caption_entities:            caption_entities.try(&.to_json),
+          duration:                    duration,
+          performer:                   performer,
+          title:                       title,
+          thumbnail:                   thumbnail,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
       def send_document(
-        chat_id : Int32 | Int64 | String, 
-        document : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        thumbnail : ::File | String | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        disable_content_type_detection : Bool | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        document : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        thumbnail : ::File | String | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        disable_content_type_detection : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendDocument", {
-          chat_id: chat_id, 
-          document: document, 
-          message_thread_id: message_thread_id, 
-          thumbnail: thumbnail, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          disable_content_type_detection: disable_content_type_detection, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                        chat_id,
+          document:                       document,
+          message_thread_id:              message_thread_id,
+          thumbnail:                      thumbnail,
+          caption:                        caption,
+          parse_mode:                     parse_mode,
+          caption_entities:               caption_entities.try(&.to_json),
+          disable_content_type_detection: disable_content_type_detection,
+          disable_notification:           disable_notification,
+          protect_content:                protect_content,
+          reply_to_message_id:            reply_to_message_id,
+          allow_sending_without_reply:    allow_sending_without_reply,
+          reply_markup:                   reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
       def send_video(
-        chat_id : Int32 | Int64 | String, 
-        video : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        duration : Int32 | Int64 | ::Nil = nil, 
-        width : Int32 | Int64 | ::Nil = nil, 
-        height : Int32 | Int64 | ::Nil = nil, 
-        thumbnail : ::File | String | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        has_spoiler : Bool | ::Nil = nil, 
-        supports_streaming : Bool | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        video : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        duration : Int32 | Int64 | ::Nil = nil,
+        width : Int32 | Int64 | ::Nil = nil,
+        height : Int32 | Int64 | ::Nil = nil,
+        thumbnail : ::File | String | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        has_spoiler : Bool | ::Nil = nil,
+        supports_streaming : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVideo", {
-          chat_id: chat_id, 
-          video: video, 
-          message_thread_id: message_thread_id, 
-          duration: duration, 
-          width: width, 
-          height: height, 
-          thumbnail: thumbnail, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          has_spoiler: has_spoiler, 
-          supports_streaming: supports_streaming, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          video:                       video,
+          message_thread_id:           message_thread_id,
+          duration:                    duration,
+          width:                       width,
+          height:                      height,
+          thumbnail:                   thumbnail,
+          caption:                     caption,
+          parse_mode:                  parse_mode,
+          caption_entities:            caption_entities.try(&.to_json),
+          has_spoiler:                 has_spoiler,
+          supports_streaming:          supports_streaming,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
       def send_animation(
-        chat_id : Int32 | Int64 | String, 
-        animation : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        duration : Int32 | Int64 | ::Nil = nil, 
-        width : Int32 | Int64 | ::Nil = nil, 
-        height : Int32 | Int64 | ::Nil = nil, 
-        thumbnail : ::File | String | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        has_spoiler : Bool | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        animation : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        duration : Int32 | Int64 | ::Nil = nil,
+        width : Int32 | Int64 | ::Nil = nil,
+        height : Int32 | Int64 | ::Nil = nil,
+        thumbnail : ::File | String | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        has_spoiler : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendAnimation", {
-          chat_id: chat_id, 
-          animation: animation, 
-          message_thread_id: message_thread_id, 
-          duration: duration, 
-          width: width, 
-          height: height, 
-          thumbnail: thumbnail, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          has_spoiler: has_spoiler, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          animation:                   animation,
+          message_thread_id:           message_thread_id,
+          duration:                    duration,
+          width:                       width,
+          height:                      height,
+          thumbnail:                   thumbnail,
+          caption:                     caption,
+          parse_mode:                  parse_mode,
+          caption_entities:            caption_entities.try(&.to_json),
+          has_spoiler:                 has_spoiler,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
       def send_voice(
-        chat_id : Int32 | Int64 | String, 
-        voice : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        duration : Int32 | Int64 | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        voice : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        duration : Int32 | Int64 | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVoice", {
-          chat_id: chat_id, 
-          voice: voice, 
-          message_thread_id: message_thread_id, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          duration: duration, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          voice:                       voice,
+          message_thread_id:           message_thread_id,
+          caption:                     caption,
+          parse_mode:                  parse_mode,
+          caption_entities:            caption_entities.try(&.to_json),
+          duration:                    duration,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
       def send_video_note(
-        chat_id : Int32 | Int64 | String, 
-        video_note : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        duration : Int32 | Int64 | ::Nil = nil, 
-        length : Int32 | Int64 | ::Nil = nil, 
-        thumbnail : ::File | String | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        video_note : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        duration : Int32 | Int64 | ::Nil = nil,
+        length : Int32 | Int64 | ::Nil = nil,
+        thumbnail : ::File | String | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVideoNote", {
-          chat_id: chat_id, 
-          video_note: video_note, 
-          message_thread_id: message_thread_id, 
-          duration: duration, 
-          length: length, 
-          thumbnail: thumbnail, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          video_note:                  video_note,
+          message_thread_id:           message_thread_id,
+          duration:                    duration,
+          length:                      length,
+          thumbnail:                   thumbnail,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
       def send_media_group(
-        chat_id : Int32 | Int64 | String, 
-        media : Array(Tourmaline::InputMediaAudio) | Array(Tourmaline::InputMediaDocument) | Array(Tourmaline::InputMediaPhoto) | Array(Tourmaline::InputMediaVideo), 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        media : Array(Tourmaline::InputMediaAudio) | Array(Tourmaline::InputMediaDocument) | Array(Tourmaline::InputMediaPhoto) | Array(Tourmaline::InputMediaVideo),
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
         allow_sending_without_reply : Bool | ::Nil = nil
       )
         request(Array(Tourmaline::Message), "sendMediaGroup", {
-          chat_id: chat_id, 
-          media: media.to_json, 
-          message_thread_id: message_thread_id, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply
+          chat_id:                     chat_id,
+          media:                       media.to_json,
+          message_thread_id:           message_thread_id,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
         })
       end
-      
+
       # Use this method to send point on the map. On success, the sent Message is returned.
       def send_location(
-        chat_id : Int32 | Int64 | String, 
-        latitude : Float64, 
-        longitude : Float64, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        horizontal_accuracy : Float64 | ::Nil = nil, 
-        live_period : Int32 | Int64 | ::Nil = nil, 
-        heading : Int32 | Int64 | ::Nil = nil, 
-        proximity_alert_radius : Int32 | Int64 | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        latitude : Float64,
+        longitude : Float64,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        horizontal_accuracy : Float64 | ::Nil = nil,
+        live_period : Int32 | Int64 | ::Nil = nil,
+        heading : Int32 | Int64 | ::Nil = nil,
+        proximity_alert_radius : Int32 | Int64 | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendLocation", {
-          chat_id: chat_id, 
-          latitude: latitude, 
-          longitude: longitude, 
-          message_thread_id: message_thread_id, 
-          horizontal_accuracy: horizontal_accuracy, 
-          live_period: live_period, 
-          heading: heading, 
-          proximity_alert_radius: proximity_alert_radius, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          latitude:                    latitude,
+          longitude:                   longitude,
+          message_thread_id:           message_thread_id,
+          horizontal_accuracy:         horizontal_accuracy,
+          live_period:                 live_period,
+          heading:                     heading,
+          proximity_alert_radius:      proximity_alert_radius,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send information about a venue. On success, the sent Message is returned.
       def send_venue(
-        chat_id : Int32 | Int64 | String, 
-        latitude : Float64, 
-        longitude : Float64, 
-        title : String, 
-        address : String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        foursquare_id : String | ::Nil = nil, 
-        foursquare_type : String | ::Nil = nil, 
-        google_place_id : String | ::Nil = nil, 
-        google_place_type : String | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        latitude : Float64,
+        longitude : Float64,
+        title : String,
+        address : String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        foursquare_id : String | ::Nil = nil,
+        foursquare_type : String | ::Nil = nil,
+        google_place_id : String | ::Nil = nil,
+        google_place_type : String | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVenue", {
-          chat_id: chat_id, 
-          latitude: latitude, 
-          longitude: longitude, 
-          title: title, 
-          address: address, 
-          message_thread_id: message_thread_id, 
-          foursquare_id: foursquare_id, 
-          foursquare_type: foursquare_type, 
-          google_place_id: google_place_id, 
-          google_place_type: google_place_type, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          latitude:                    latitude,
+          longitude:                   longitude,
+          title:                       title,
+          address:                     address,
+          message_thread_id:           message_thread_id,
+          foursquare_id:               foursquare_id,
+          foursquare_type:             foursquare_type,
+          google_place_id:             google_place_id,
+          google_place_type:           google_place_type,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send phone contacts. On success, the sent Message is returned.
       def send_contact(
-        chat_id : Int32 | Int64 | String, 
-        phone_number : String, 
-        first_name : String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        last_name : String | ::Nil = nil, 
-        vcard : String | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        phone_number : String,
+        first_name : String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        last_name : String | ::Nil = nil,
+        vcard : String | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendContact", {
-          chat_id: chat_id, 
-          phone_number: phone_number, 
-          first_name: first_name, 
-          message_thread_id: message_thread_id, 
-          last_name: last_name, 
-          vcard: vcard, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          phone_number:                phone_number,
+          first_name:                  first_name,
+          message_thread_id:           message_thread_id,
+          last_name:                   last_name,
+          vcard:                       vcard,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send a native poll. On success, the sent Message is returned.
       def send_poll(
-        chat_id : Int32 | Int64 | String, 
-        question : String, 
-        options : Array(String), 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        is_anonymous : Bool | ::Nil = nil, 
-        type : String | ::Nil = nil, 
-        allows_multiple_answers : Bool | ::Nil = nil, 
-        correct_option_id : Int32 | Int64 | ::Nil = nil, 
-        explanation : String | ::Nil = nil, 
-        explanation_parse_mode : String | ::Nil = nil, 
-        explanation_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        open_period : Int32 | Int64 | ::Nil = nil, 
-        close_date : Int32 | Int64 | ::Nil = nil, 
-        is_closed : Bool | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        question : String,
+        options : Array(String),
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        is_anonymous : Bool | ::Nil = nil,
+        type : String | ::Nil = nil,
+        allows_multiple_answers : Bool | ::Nil = nil,
+        correct_option_id : Int32 | Int64 | ::Nil = nil,
+        explanation : String | ::Nil = nil,
+        explanation_parse_mode : String | ::Nil = nil,
+        explanation_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        open_period : Int32 | Int64 | ::Nil = nil,
+        close_date : Int32 | Int64 | ::Nil = nil,
+        is_closed : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendPoll", {
-          chat_id: chat_id, 
-          question: question, 
-          options: options.to_json, 
-          message_thread_id: message_thread_id, 
-          is_anonymous: is_anonymous, 
-          type: type, 
-          allows_multiple_answers: allows_multiple_answers, 
-          correct_option_id: correct_option_id, 
-          explanation: explanation, 
-          explanation_parse_mode: explanation_parse_mode, 
-          explanation_entities: explanation_entities.try(&.to_json), 
-          open_period: open_period, 
-          close_date: close_date, 
-          is_closed: is_closed, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          question:                    question,
+          options:                     options.to_json,
+          message_thread_id:           message_thread_id,
+          is_anonymous:                is_anonymous,
+          type:                        type,
+          allows_multiple_answers:     allows_multiple_answers,
+          correct_option_id:           correct_option_id,
+          explanation:                 explanation,
+          explanation_parse_mode:      explanation_parse_mode,
+          explanation_entities:        explanation_entities.try(&.to_json),
+          open_period:                 open_period,
+          close_date:                  close_date,
+          is_closed:                   is_closed,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
       def send_dice(
-        chat_id : Int32 | Int64 | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        emoji : String | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        emoji : String | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendDice", {
-          chat_id: chat_id, 
-          message_thread_id: message_thread_id, 
-          emoji: emoji, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          message_thread_id:           message_thread_id,
+          emoji:                       emoji,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
       # We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
       def send_chat_action(
-        chat_id : Int32 | Int64 | String, 
-        action : String, 
+        chat_id : Int32 | Int64 | String,
+        action : String,
         message_thread_id : Int32 | Int64 | ::Nil = nil
       )
         request(Bool, "sendChatAction", {
-          chat_id: chat_id, 
-          action: action, 
-          message_thread_id: message_thread_id
+          chat_id:           chat_id,
+          action:            action,
+          message_thread_id: message_thread_id,
         })
       end
-      
+
       # Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
       def get_user_profile_photos(
-        user_id : Int32 | Int64, 
-        offset : Int32 | Int64 | ::Nil = nil, 
+        user_id : Int32 | Int64,
+        offset : Int32 | Int64 | ::Nil = nil,
         limit : Int32 | Int64 | ::Nil = nil
       )
         request(Tourmaline::UserProfilePhotos, "getUserProfilePhotos", {
-          user_id: user_id, 
-          offset: offset, 
-          limit: limit
+          user_id: user_id,
+          offset:  offset,
+          limit:   limit,
         })
       end
-      
+
       # Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
       # Note: This function may not preserve the original file name and MIME type. You should save the file's MIME type and name (if available) when the File object is received.
       def get_file(
         file_id : String
       )
         request(Tourmaline::File, "getFile", {
-          file_id: file_id
+          file_id: file_id,
         })
       end
-      
+
       # Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
       def ban_chat_member(
-        chat_id : Int32 | Int64 | String, 
-        user_id : Int32 | Int64, 
-        until_date : Int32 | Int64 | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        user_id : Int32 | Int64,
+        until_date : Int32 | Int64 | ::Nil = nil,
         revoke_messages : Bool | ::Nil = nil
       )
         request(Bool, "banChatMember", {
-          chat_id: chat_id, 
-          user_id: user_id, 
-          until_date: until_date, 
-          revoke_messages: revoke_messages
+          chat_id:         chat_id,
+          user_id:         user_id,
+          until_date:      until_date,
+          revoke_messages: revoke_messages,
         })
       end
-      
+
       # Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.
       def unban_chat_member(
-        chat_id : Int32 | Int64 | String, 
-        user_id : Int32 | Int64, 
+        chat_id : Int32 | Int64 | String,
+        user_id : Int32 | Int64,
         only_if_banned : Bool | ::Nil = nil
       )
         request(Bool, "unbanChatMember", {
-          chat_id: chat_id, 
-          user_id: user_id, 
-          only_if_banned: only_if_banned
+          chat_id:        chat_id,
+          user_id:        user_id,
+          only_if_banned: only_if_banned,
         })
       end
-      
+
       # Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
       def restrict_chat_member(
-        chat_id : Int32 | Int64 | String, 
-        user_id : Int32 | Int64, 
-        permissions : Tourmaline::ChatPermissions, 
-        use_independent_chat_permissions : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        user_id : Int32 | Int64,
+        permissions : Tourmaline::ChatPermissions,
+        use_independent_chat_permissions : Bool | ::Nil = nil,
         until_date : Int32 | Int64 | ::Nil = nil
       )
         request(Bool, "restrictChatMember", {
-          chat_id: chat_id, 
-          user_id: user_id, 
-          permissions: permissions.to_json, 
-          use_independent_chat_permissions: use_independent_chat_permissions, 
-          until_date: until_date
+          chat_id:                          chat_id,
+          user_id:                          user_id,
+          permissions:                      permissions.to_json,
+          use_independent_chat_permissions: use_independent_chat_permissions,
+          until_date:                       until_date,
         })
       end
-      
+
       # Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
       def promote_chat_member(
-        chat_id : Int32 | Int64 | String, 
-        user_id : Int32 | Int64, 
-        is_anonymous : Bool | ::Nil = nil, 
-        can_manage_chat : Bool | ::Nil = nil, 
-        can_post_messages : Bool | ::Nil = nil, 
-        can_edit_messages : Bool | ::Nil = nil, 
-        can_delete_messages : Bool | ::Nil = nil, 
-        can_manage_video_chats : Bool | ::Nil = nil, 
-        can_restrict_members : Bool | ::Nil = nil, 
-        can_promote_members : Bool | ::Nil = nil, 
-        can_change_info : Bool | ::Nil = nil, 
-        can_invite_users : Bool | ::Nil = nil, 
-        can_pin_messages : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        user_id : Int32 | Int64,
+        is_anonymous : Bool | ::Nil = nil,
+        can_manage_chat : Bool | ::Nil = nil,
+        can_post_messages : Bool | ::Nil = nil,
+        can_edit_messages : Bool | ::Nil = nil,
+        can_delete_messages : Bool | ::Nil = nil,
+        can_manage_video_chats : Bool | ::Nil = nil,
+        can_restrict_members : Bool | ::Nil = nil,
+        can_promote_members : Bool | ::Nil = nil,
+        can_change_info : Bool | ::Nil = nil,
+        can_invite_users : Bool | ::Nil = nil,
+        can_pin_messages : Bool | ::Nil = nil,
         can_manage_topics : Bool | ::Nil = nil
       )
         request(Bool, "promoteChatMember", {
-          chat_id: chat_id, 
-          user_id: user_id, 
-          is_anonymous: is_anonymous, 
-          can_manage_chat: can_manage_chat, 
-          can_post_messages: can_post_messages, 
-          can_edit_messages: can_edit_messages, 
-          can_delete_messages: can_delete_messages, 
-          can_manage_video_chats: can_manage_video_chats, 
-          can_restrict_members: can_restrict_members, 
-          can_promote_members: can_promote_members, 
-          can_change_info: can_change_info, 
-          can_invite_users: can_invite_users, 
-          can_pin_messages: can_pin_messages, 
-          can_manage_topics: can_manage_topics
+          chat_id:                chat_id,
+          user_id:                user_id,
+          is_anonymous:           is_anonymous,
+          can_manage_chat:        can_manage_chat,
+          can_post_messages:      can_post_messages,
+          can_edit_messages:      can_edit_messages,
+          can_delete_messages:    can_delete_messages,
+          can_manage_video_chats: can_manage_video_chats,
+          can_restrict_members:   can_restrict_members,
+          can_promote_members:    can_promote_members,
+          can_change_info:        can_change_info,
+          can_invite_users:       can_invite_users,
+          can_pin_messages:       can_pin_messages,
+          can_manage_topics:      can_manage_topics,
         })
       end
-      
+
       # Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
       def set_chat_administrator_custom_title(
-        chat_id : Int32 | Int64 | String, 
-        user_id : Int32 | Int64, 
+        chat_id : Int32 | Int64 | String,
+        user_id : Int32 | Int64,
         custom_title : String
       )
         request(Bool, "setChatAdministratorCustomTitle", {
-          chat_id: chat_id, 
-          user_id: user_id, 
-          custom_title: custom_title
+          chat_id:      chat_id,
+          user_id:      user_id,
+          custom_title: custom_title,
         })
       end
-      
+
       # Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.
       def ban_chat_sender_chat(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         sender_chat_id : Int32 | Int64
       )
         request(Bool, "banChatSenderChat", {
-          chat_id: chat_id, 
-          sender_chat_id: sender_chat_id
+          chat_id:        chat_id,
+          sender_chat_id: sender_chat_id,
         })
       end
-      
+
       # Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
       def unban_chat_sender_chat(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         sender_chat_id : Int32 | Int64
       )
         request(Bool, "unbanChatSenderChat", {
-          chat_id: chat_id, 
-          sender_chat_id: sender_chat_id
+          chat_id:        chat_id,
+          sender_chat_id: sender_chat_id,
         })
       end
-      
+
       # Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.
       def set_chat_permissions(
-        chat_id : Int32 | Int64 | String, 
-        permissions : Tourmaline::ChatPermissions, 
+        chat_id : Int32 | Int64 | String,
+        permissions : Tourmaline::ChatPermissions,
         use_independent_chat_permissions : Bool | ::Nil = nil
       )
         request(Bool, "setChatPermissions", {
-          chat_id: chat_id, 
-          permissions: permissions.to_json, 
-          use_independent_chat_permissions: use_independent_chat_permissions
+          chat_id:                          chat_id,
+          permissions:                      permissions.to_json,
+          use_independent_chat_permissions: use_independent_chat_permissions,
         })
       end
-      
+
       # Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.
       def export_chat_invite_link(
         chat_id : Int32 | Int64 | String
       )
         request(String, "exportChatInviteLink", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
       def create_chat_invite_link(
-        chat_id : Int32 | Int64 | String, 
-        name : String | ::Nil = nil, 
-        expire_date : Int32 | Int64 | ::Nil = nil, 
-        member_limit : Int32 | Int64 | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        name : String | ::Nil = nil,
+        expire_date : Int32 | Int64 | ::Nil = nil,
+        member_limit : Int32 | Int64 | ::Nil = nil,
         creates_join_request : Bool | ::Nil = nil
       )
         request(Tourmaline::ChatInviteLink, "createChatInviteLink", {
-          chat_id: chat_id, 
-          name: name, 
-          expire_date: expire_date, 
-          member_limit: member_limit, 
-          creates_join_request: creates_join_request
+          chat_id:              chat_id,
+          name:                 name,
+          expire_date:          expire_date,
+          member_limit:         member_limit,
+          creates_join_request: creates_join_request,
         })
       end
-      
+
       # Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
       def edit_chat_invite_link(
-        chat_id : Int32 | Int64 | String, 
-        invite_link : String, 
-        name : String | ::Nil = nil, 
-        expire_date : Int32 | Int64 | ::Nil = nil, 
-        member_limit : Int32 | Int64 | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        invite_link : String,
+        name : String | ::Nil = nil,
+        expire_date : Int32 | Int64 | ::Nil = nil,
+        member_limit : Int32 | Int64 | ::Nil = nil,
         creates_join_request : Bool | ::Nil = nil
       )
         request(Tourmaline::ChatInviteLink, "editChatInviteLink", {
-          chat_id: chat_id, 
-          invite_link: invite_link, 
-          name: name, 
-          expire_date: expire_date, 
-          member_limit: member_limit, 
-          creates_join_request: creates_join_request
+          chat_id:              chat_id,
+          invite_link:          invite_link,
+          name:                 name,
+          expire_date:          expire_date,
+          member_limit:         member_limit,
+          creates_join_request: creates_join_request,
         })
       end
-      
+
       # Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
       def revoke_chat_invite_link(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         invite_link : String
       )
         request(Tourmaline::ChatInviteLink, "revokeChatInviteLink", {
-          chat_id: chat_id, 
-          invite_link: invite_link
+          chat_id:     chat_id,
+          invite_link: invite_link,
         })
       end
-      
+
       # Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
       def approve_chat_join_request(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         user_id : Int32 | Int64
       )
         request(Bool, "approveChatJoinRequest", {
-          chat_id: chat_id, 
-          user_id: user_id
+          chat_id: chat_id,
+          user_id: user_id,
         })
       end
-      
+
       # Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
       def decline_chat_join_request(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         user_id : Int32 | Int64
       )
         request(Bool, "declineChatJoinRequest", {
-          chat_id: chat_id, 
-          user_id: user_id
+          chat_id: chat_id,
+          user_id: user_id,
         })
       end
-      
+
       # Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
       def set_chat_photo(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         photo : ::File
       )
         request(Bool, "setChatPhoto", {
-          chat_id: chat_id, 
-          photo: photo
+          chat_id: chat_id,
+          photo:   photo,
         })
       end
-      
+
       # Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
       def delete_chat_photo(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "deleteChatPhoto", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
       def set_chat_title(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         title : String
       )
         request(Bool, "setChatTitle", {
-          chat_id: chat_id, 
-          title: title
+          chat_id: chat_id,
+          title:   title,
         })
       end
-      
+
       # Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
       def set_chat_description(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         description : String | ::Nil = nil
       )
         request(Bool, "setChatDescription", {
-          chat_id: chat_id, 
-          description: description
+          chat_id:     chat_id,
+          description: description,
         })
       end
-      
+
       # Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
       def pin_chat_message(
-        chat_id : Int32 | Int64 | String, 
-        message_id : Int32 | Int64, 
+        chat_id : Int32 | Int64 | String,
+        message_id : Int32 | Int64,
         disable_notification : Bool | ::Nil = nil
       )
         request(Bool, "pinChatMessage", {
-          chat_id: chat_id, 
-          message_id: message_id, 
-          disable_notification: disable_notification
+          chat_id:              chat_id,
+          message_id:           message_id,
+          disable_notification: disable_notification,
         })
       end
-      
+
       # Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
       def unpin_chat_message(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         message_id : Int32 | Int64 | ::Nil = nil
       )
         request(Bool, "unpinChatMessage", {
-          chat_id: chat_id, 
-          message_id: message_id
+          chat_id:    chat_id,
+          message_id: message_id,
         })
       end
-      
+
       # Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
       def unpin_all_chat_messages(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "unpinAllChatMessages", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
       def leave_chat(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "leaveChat", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.
       def get_chat(
         chat_id : Int32 | Int64 | String
       )
         request(Tourmaline::Chat, "getChat", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.
       def get_chat_administrators(
         chat_id : Int32 | Int64 | String
       )
         request(Array(Tourmaline::ChatMember), "getChatAdministrators", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to get the number of members in a chat. Returns Int on success.
       def get_chat_member_count(
         chat_id : Int32 | Int64 | String
       )
         request(Int32 | Int64, "getChatMemberCount", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.
       def get_chat_member(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         user_id : Int32 | Int64
       )
         request(Tourmaline::ChatMember, "getChatMember", {
-          chat_id: chat_id, 
-          user_id: user_id
+          chat_id: chat_id,
+          user_id: user_id,
         })
       end
-      
+
       # Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
       def set_chat_sticker_set(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         sticker_set_name : String
       )
         request(Bool, "setChatStickerSet", {
-          chat_id: chat_id, 
-          sticker_set_name: sticker_set_name
+          chat_id:          chat_id,
+          sticker_set_name: sticker_set_name,
         })
       end
-      
+
       # Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
       def delete_chat_sticker_set(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "deleteChatStickerSet", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.
       def get_forum_topic_icon_stickers
         request(Array(Tourmaline::Sticker), "getForumTopicIconStickers")
       end
-      
+
       # Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
       def create_forum_topic(
-        chat_id : Int32 | Int64 | String, 
-        name : String, 
-        icon_color : Int32 | Int64 | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        name : String,
+        icon_color : Int32 | Int64 | ::Nil = nil,
         icon_custom_emoji_id : String | ::Nil = nil
       )
         request(Tourmaline::ForumTopic, "createForumTopic", {
-          chat_id: chat_id, 
-          name: name, 
-          icon_color: icon_color, 
-          icon_custom_emoji_id: icon_custom_emoji_id
+          chat_id:              chat_id,
+          name:                 name,
+          icon_color:           icon_color,
+          icon_custom_emoji_id: icon_custom_emoji_id,
         })
       end
-      
+
       # Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
       def edit_forum_topic(
-        chat_id : Int32 | Int64 | String, 
-        message_thread_id : Int32 | Int64, 
-        name : String | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        message_thread_id : Int32 | Int64,
+        name : String | ::Nil = nil,
         icon_custom_emoji_id : String | ::Nil = nil
       )
         request(Bool, "editForumTopic", {
-          chat_id: chat_id, 
-          message_thread_id: message_thread_id, 
-          name: name, 
-          icon_custom_emoji_id: icon_custom_emoji_id
+          chat_id:              chat_id,
+          message_thread_id:    message_thread_id,
+          name:                 name,
+          icon_custom_emoji_id: icon_custom_emoji_id,
         })
       end
-      
+
       # Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
       def close_forum_topic(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         message_thread_id : Int32 | Int64
       )
         request(Bool, "closeForumTopic", {
-          chat_id: chat_id, 
-          message_thread_id: message_thread_id
+          chat_id:           chat_id,
+          message_thread_id: message_thread_id,
         })
       end
-      
+
       # Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
       def reopen_forum_topic(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         message_thread_id : Int32 | Int64
       )
         request(Bool, "reopenForumTopic", {
-          chat_id: chat_id, 
-          message_thread_id: message_thread_id
+          chat_id:           chat_id,
+          message_thread_id: message_thread_id,
         })
       end
-      
+
       # Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
       def delete_forum_topic(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         message_thread_id : Int32 | Int64
       )
         request(Bool, "deleteForumTopic", {
-          chat_id: chat_id, 
-          message_thread_id: message_thread_id
+          chat_id:           chat_id,
+          message_thread_id: message_thread_id,
         })
       end
-      
+
       # Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
       def unpin_all_forum_topic_messages(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         message_thread_id : Int32 | Int64
       )
         request(Bool, "unpinAllForumTopicMessages", {
-          chat_id: chat_id, 
-          message_thread_id: message_thread_id
+          chat_id:           chat_id,
+          message_thread_id: message_thread_id,
         })
       end
-      
+
       # Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights. Returns True on success.
       def edit_general_forum_topic(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         name : String
       )
         request(Bool, "editGeneralForumTopic", {
-          chat_id: chat_id, 
-          name: name
+          chat_id: chat_id,
+          name:    name,
         })
       end
-      
+
       # Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
       def close_general_forum_topic(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "closeGeneralForumTopic", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success.
       def reopen_general_forum_topic(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "reopenGeneralForumTopic", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success.
       def hide_general_forum_topic(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "hideGeneralForumTopic", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
       def unhide_general_forum_topic(
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "unhideGeneralForumTopic", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
       def answer_callback_query(
-        callback_query_id : String, 
-        text : String | ::Nil = nil, 
-        show_alert : Bool | ::Nil = nil, 
-        url : String | ::Nil = nil, 
+        callback_query_id : String,
+        text : String | ::Nil = nil,
+        show_alert : Bool | ::Nil = nil,
+        url : String | ::Nil = nil,
         cache_time : Int32 | Int64 | ::Nil = nil
       )
         request(Bool, "answerCallbackQuery", {
-          callback_query_id: callback_query_id, 
-          text: text, 
-          show_alert: show_alert, 
-          url: url, 
-          cache_time: cache_time
+          callback_query_id: callback_query_id,
+          text:              text,
+          show_alert:        show_alert,
+          url:               url,
+          cache_time:        cache_time,
         })
       end
-      
+
       # Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
       def set_my_commands(
-        commands : Array(Tourmaline::BotCommand), 
-        scope : Tourmaline::BotCommandScope | ::Nil = nil, 
+        commands : Array(Tourmaline::BotCommand),
+        scope : Tourmaline::BotCommandScope | ::Nil = nil,
         language_code : String | ::Nil = nil
       )
         request(Bool, "setMyCommands", {
-          commands: commands.to_json, 
-          scope: scope.try(&.to_json), 
-          language_code: language_code
+          commands:      commands.to_json,
+          scope:         scope.try(&.to_json),
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
       def delete_my_commands(
-        scope : Tourmaline::BotCommandScope | ::Nil = nil, 
+        scope : Tourmaline::BotCommandScope | ::Nil = nil,
         language_code : String | ::Nil = nil
       )
         request(Bool, "deleteMyCommands", {
-          scope: scope.try(&.to_json), 
-          language_code: language_code
+          scope:         scope.try(&.to_json),
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.
       def get_my_commands(
-        scope : Tourmaline::BotCommandScope | ::Nil = nil, 
+        scope : Tourmaline::BotCommandScope | ::Nil = nil,
         language_code : String | ::Nil = nil
       )
         request(Array(Tourmaline::BotCommand), "getMyCommands", {
-          scope: scope.try(&.to_json), 
-          language_code: language_code
+          scope:         scope.try(&.to_json),
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to change the bot's name. Returns True on success.
       def set_my_name(
-        name : String | ::Nil = nil, 
+        name : String | ::Nil = nil,
         language_code : String | ::Nil = nil
       )
         request(Bool, "setMyName", {
-          name: name, 
-          language_code: language_code
+          name:          name,
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to get the current bot name for the given user language. Returns BotName on success.
       def get_my_name(
         language_code : String | ::Nil = nil
       )
         request(Tourmaline::BotName, "getMyName", {
-          language_code: language_code
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
       def set_my_description(
-        description : String | ::Nil = nil, 
+        description : String | ::Nil = nil,
         language_code : String | ::Nil = nil
       )
         request(Bool, "setMyDescription", {
-          description: description, 
-          language_code: language_code
+          description:   description,
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to get the current bot description for the given user language. Returns BotDescription on success.
       def get_my_description(
         language_code : String | ::Nil = nil
       )
         request(Tourmaline::BotDescription, "getMyDescription", {
-          language_code: language_code
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
       def set_my_short_description(
-        short_description : String | ::Nil = nil, 
+        short_description : String | ::Nil = nil,
         language_code : String | ::Nil = nil
       )
         request(Bool, "setMyShortDescription", {
-          short_description: short_description, 
-          language_code: language_code
+          short_description: short_description,
+          language_code:     language_code,
         })
       end
-      
+
       # Use this method to get the current bot short description for the given user language. Returns BotShortDescription on success.
       def get_my_short_description(
         language_code : String | ::Nil = nil
       )
         request(Tourmaline::BotShortDescription, "getMyShortDescription", {
-          language_code: language_code
+          language_code: language_code,
         })
       end
-      
+
       # Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
       def set_chat_menu_button(
-        chat_id : Int32 | Int64 | ::Nil = nil, 
+        chat_id : Int32 | Int64 | ::Nil = nil,
         menu_button : Tourmaline::MenuButton | ::Nil = nil
       )
         request(Bool, "setChatMenuButton", {
-          chat_id: chat_id, 
-          menu_button: menu_button.try(&.to_json)
+          chat_id:     chat_id,
+          menu_button: menu_button.try(&.to_json),
         })
       end
-      
+
       # Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
       def get_chat_menu_button(
         chat_id : Int32 | Int64 | ::Nil = nil
       )
         request(Tourmaline::MenuButton, "getChatMenuButton", {
-          chat_id: chat_id
+          chat_id: chat_id,
         })
       end
-      
+
       # Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success.
       def set_my_default_administrator_rights(
-        rights : Tourmaline::ChatAdministratorRights | ::Nil = nil, 
+        rights : Tourmaline::ChatAdministratorRights | ::Nil = nil,
         for_channels : Bool | ::Nil = nil
       )
         request(Bool, "setMyDefaultAdministratorRights", {
-          rights: rights.try(&.to_json), 
-          for_channels: for_channels
+          rights:       rights.try(&.to_json),
+          for_channels: for_channels,
         })
       end
-      
+
       # Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.
       def get_my_default_administrator_rights(
         for_channels : Bool | ::Nil = nil
       )
         request(Tourmaline::ChatAdministratorRights, "getMyDefaultAdministratorRights", {
-          for_channels: for_channels
+          for_channels: for_channels,
         })
       end
-      
+
       # Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
       def edit_message_text(
-        text : String, 
-        chat_id : Int32 | Int64 | String | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
-        inline_message_id : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
-        disable_web_page_preview : Bool | ::Nil = nil, 
+        text : String,
+        chat_id : Int32 | Int64 | String | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
+        inline_message_id : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        disable_web_page_preview : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageText", {
-          text: text, 
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id, 
-          parse_mode: parse_mode, 
-          entities: entities.try(&.to_json), 
-          disable_web_page_preview: disable_web_page_preview, 
-          reply_markup: reply_markup.try(&.to_json)
+          text:                     text,
+          chat_id:                  chat_id,
+          message_id:               message_id,
+          inline_message_id:        inline_message_id,
+          parse_mode:               parse_mode,
+          entities:                 entities.try(&.to_json),
+          disable_web_page_preview: disable_web_page_preview,
+          reply_markup:             reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
       def edit_message_caption(
-        chat_id : Int32 | Int64 | String | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
-        inline_message_id : String | ::Nil = nil, 
-        caption : String | ::Nil = nil, 
-        parse_mode : ParseMode = default_parse_mode, 
-        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
+        inline_message_id : String | ::Nil = nil,
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageCaption", {
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id, 
-          caption: caption, 
-          parse_mode: parse_mode, 
-          caption_entities: caption_entities.try(&.to_json), 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:           chat_id,
+          message_id:        message_id,
+          inline_message_id: inline_message_id,
+          caption:           caption,
+          parse_mode:        parse_mode,
+          caption_entities:  caption_entities.try(&.to_json),
+          reply_markup:      reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
       def edit_message_media(
-        media : Tourmaline::InputMedia, 
-        chat_id : Int32 | Int64 | String | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
-        inline_message_id : String | ::Nil = nil, 
+        media : Tourmaline::InputMedia,
+        chat_id : Int32 | Int64 | String | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
+        inline_message_id : String | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageMedia", {
-          media: media.to_json, 
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id, 
-          reply_markup: reply_markup.try(&.to_json)
+          media:             media.to_json,
+          chat_id:           chat_id,
+          message_id:        message_id,
+          inline_message_id: inline_message_id,
+          reply_markup:      reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
       def edit_message_live_location(
-        latitude : Float64, 
-        longitude : Float64, 
-        chat_id : Int32 | Int64 | String | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
-        inline_message_id : String | ::Nil = nil, 
-        horizontal_accuracy : Float64 | ::Nil = nil, 
-        heading : Int32 | Int64 | ::Nil = nil, 
-        proximity_alert_radius : Int32 | Int64 | ::Nil = nil, 
+        latitude : Float64,
+        longitude : Float64,
+        chat_id : Int32 | Int64 | String | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
+        inline_message_id : String | ::Nil = nil,
+        horizontal_accuracy : Float64 | ::Nil = nil,
+        heading : Int32 | Int64 | ::Nil = nil,
+        proximity_alert_radius : Int32 | Int64 | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageLiveLocation", {
-          latitude: latitude, 
-          longitude: longitude, 
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id, 
-          horizontal_accuracy: horizontal_accuracy, 
-          heading: heading, 
-          proximity_alert_radius: proximity_alert_radius, 
-          reply_markup: reply_markup.try(&.to_json)
+          latitude:               latitude,
+          longitude:              longitude,
+          chat_id:                chat_id,
+          message_id:             message_id,
+          inline_message_id:      inline_message_id,
+          horizontal_accuracy:    horizontal_accuracy,
+          heading:                heading,
+          proximity_alert_radius: proximity_alert_radius,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
       def stop_message_live_location(
-        chat_id : Int32 | Int64 | String | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
-        inline_message_id : String | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
+        inline_message_id : String | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "stopMessageLiveLocation", {
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:           chat_id,
+          message_id:        message_id,
+          inline_message_id: inline_message_id,
+          reply_markup:      reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
       def edit_message_reply_markup(
-        chat_id : Int32 | Int64 | String | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
-        inline_message_id : String | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
+        inline_message_id : String | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageReplyMarkup", {
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:           chat_id,
+          message_id:        message_id,
+          inline_message_id: inline_message_id,
+          reply_markup:      reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
       def stop_poll(
-        chat_id : Int32 | Int64 | String, 
-        message_id : Int32 | Int64, 
+        chat_id : Int32 | Int64 | String,
+        message_id : Int32 | Int64,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Poll, "stopPoll", {
-          chat_id: chat_id, 
-          message_id: message_id, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:      chat_id,
+          message_id:   message_id,
+          reply_markup: reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to delete a message, including service messages, with the following limitations:
       # - A message can only be deleted if it was sent less than 48 hours ago.
       # - Service messages about a supergroup, channel, or forum topic creation can't be deleted.
@@ -1383,442 +1383,441 @@ module Tourmaline
       # - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.
       # Returns True on success.
       def delete_message(
-        chat_id : Int32 | Int64 | String, 
+        chat_id : Int32 | Int64 | String,
         message_id : Int32 | Int64
       )
         request(Bool, "deleteMessage", {
-          chat_id: chat_id, 
-          message_id: message_id
+          chat_id:    chat_id,
+          message_id: message_id,
         })
       end
-      
+
       # Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
       def send_sticker(
-        chat_id : Int32 | Int64 | String, 
-        sticker : ::File | String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        emoji : String | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        sticker : ::File | String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        emoji : String | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendSticker", {
-          chat_id: chat_id, 
-          sticker: sticker, 
-          message_thread_id: message_thread_id, 
-          emoji: emoji, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          sticker:                     sticker,
+          message_thread_id:           message_thread_id,
+          emoji:                       emoji,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to get a sticker set. On success, a StickerSet object is returned.
       def get_sticker_set(
         name : String
       )
         request(Tourmaline::StickerSet, "getStickerSet", {
-          name: name
+          name: name,
         })
       end
-      
+
       # Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.
       def get_custom_emoji_stickers(
         custom_emoji_ids : Array(String)
       )
         request(Array(Tourmaline::Sticker), "getCustomEmojiStickers", {
-          custom_emoji_ids: custom_emoji_ids
+          custom_emoji_ids: custom_emoji_ids,
         })
       end
-      
+
       # Use this method to upload a file with a sticker for later use in the createNewStickerSet and addStickerToSet methods (the file can be used multiple times). Returns the uploaded File on success.
       def upload_sticker_file(
-        user_id : Int32 | Int64, 
-        sticker : ::File, 
+        user_id : Int32 | Int64,
+        sticker : ::File,
         sticker_format : String
       )
         request(Tourmaline::File, "uploadStickerFile", {
-          user_id: user_id, 
-          sticker: sticker, 
-          sticker_format: sticker_format
+          user_id:        user_id,
+          sticker:        sticker,
+          sticker_format: sticker_format,
         })
       end
-      
+
       # Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.
       def create_new_sticker_set(
-        user_id : Int32 | Int64, 
-        name : String, 
-        title : String, 
-        stickers : Array(Tourmaline::InputSticker), 
-        sticker_format : String, 
-        sticker_type : String | ::Nil = nil, 
+        user_id : Int32 | Int64,
+        name : String,
+        title : String,
+        stickers : Array(Tourmaline::InputSticker),
+        sticker_format : String,
+        sticker_type : String | ::Nil = nil,
         needs_repainting : Bool | ::Nil = nil
       )
         request(Bool, "createNewStickerSet", {
-          user_id: user_id, 
-          name: name, 
-          title: title, 
-          stickers: stickers.to_json, 
-          sticker_format: sticker_format, 
-          sticker_type: sticker_type, 
-          needs_repainting: needs_repainting
+          user_id:          user_id,
+          name:             name,
+          title:            title,
+          stickers:         stickers.to_json,
+          sticker_format:   sticker_format,
+          sticker_type:     sticker_type,
+          needs_repainting: needs_repainting,
         })
       end
-      
+
       # Use this method to add a new sticker to a set created by the bot. The format of the added sticker must match the format of the other stickers in the set. Emoji sticker sets can have up to 200 stickers. Animated and video sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
       def add_sticker_to_set(
-        user_id : Int32 | Int64, 
-        name : String, 
+        user_id : Int32 | Int64,
+        name : String,
         sticker : Tourmaline::InputSticker
       )
         request(Bool, "addStickerToSet", {
-          user_id: user_id, 
-          name: name, 
-          sticker: sticker.to_json
+          user_id: user_id,
+          name:    name,
+          sticker: sticker.to_json,
         })
       end
-      
+
       # Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
       def set_sticker_position_in_set(
-        sticker : String, 
+        sticker : String,
         position : Int32 | Int64
       )
         request(Bool, "setStickerPositionInSet", {
-          sticker: sticker, 
-          position: position
+          sticker:  sticker,
+          position: position,
         })
       end
-      
+
       # Use this method to delete a sticker from a set created by the bot. Returns True on success.
       def delete_sticker_from_set(
         sticker : String
       )
         request(Bool, "deleteStickerFromSet", {
-          sticker: sticker
+          sticker: sticker,
         })
       end
-      
+
       # Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
       def set_sticker_emoji_list(
-        sticker : String, 
+        sticker : String,
         emoji_list : Array(String)
       )
         request(Bool, "setStickerEmojiList", {
-          sticker: sticker, 
-          emoji_list: emoji_list.to_json
+          sticker:    sticker,
+          emoji_list: emoji_list.to_json,
         })
       end
-      
+
       # Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
       def set_sticker_keywords(
-        sticker : String, 
+        sticker : String,
         keywords : Array(String) | ::Nil = nil
       )
         request(Bool, "setStickerKeywords", {
-          sticker: sticker, 
-          keywords: keywords.try(&.to_json)
+          sticker:  sticker,
+          keywords: keywords.try(&.to_json),
         })
       end
-      
+
       # Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
       def set_sticker_mask_position(
-        sticker : String, 
+        sticker : String,
         mask_position : Tourmaline::MaskPosition | ::Nil = nil
       )
         request(Bool, "setStickerMaskPosition", {
-          sticker: sticker, 
-          mask_position: mask_position.try(&.to_json)
+          sticker:       sticker,
+          mask_position: mask_position.try(&.to_json),
         })
       end
-      
+
       # Use this method to set the title of a created sticker set. Returns True on success.
       def set_sticker_set_title(
-        name : String, 
+        name : String,
         title : String
       )
         request(Bool, "setStickerSetTitle", {
-          name: name, 
-          title: title
+          name:  name,
+          title: title,
         })
       end
-      
+
       # Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns True on success.
       def set_sticker_set_thumbnail(
-        name : String, 
-        user_id : Int32 | Int64, 
+        name : String,
+        user_id : Int32 | Int64,
         thumbnail : ::File | String | ::Nil = nil
       )
         request(Bool, "setStickerSetThumbnail", {
-          name: name, 
-          user_id: user_id, 
-          thumbnail: thumbnail
+          name:      name,
+          user_id:   user_id,
+          thumbnail: thumbnail,
         })
       end
-      
+
       # Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
       def set_custom_emoji_sticker_set_thumbnail(
-        name : String, 
+        name : String,
         custom_emoji_id : String | ::Nil = nil
       )
         request(Bool, "setCustomEmojiStickerSetThumbnail", {
-          name: name, 
-          custom_emoji_id: custom_emoji_id
+          name:            name,
+          custom_emoji_id: custom_emoji_id,
         })
       end
-      
+
       # Use this method to delete a sticker set that was created by the bot. Returns True on success.
       def delete_sticker_set(
         name : String
       )
         request(Bool, "deleteStickerSet", {
-          name: name
+          name: name,
         })
       end
-      
+
       # Use this method to send answers to an inline query. On success, True is returned.
       # No more than 50 results per query are allowed.
       def answer_inline_query(
-        inline_query_id : String, 
-        results : Array(Tourmaline::InlineQueryResult), 
-        cache_time : Int32 | Int64 | ::Nil = nil, 
-        is_personal : Bool | ::Nil = nil, 
-        next_offset : String | ::Nil = nil, 
+        inline_query_id : String,
+        results : Array(Tourmaline::InlineQueryResult),
+        cache_time : Int32 | Int64 | ::Nil = nil,
+        is_personal : Bool | ::Nil = nil,
+        next_offset : String | ::Nil = nil,
         button : Tourmaline::InlineQueryResultsButton | ::Nil = nil
       )
         request(Bool, "answerInlineQuery", {
-          inline_query_id: inline_query_id, 
-          results: results.to_json, 
-          cache_time: cache_time, 
-          is_personal: is_personal, 
-          next_offset: next_offset, 
-          button: button.try(&.to_json)
+          inline_query_id: inline_query_id,
+          results:         results.to_json,
+          cache_time:      cache_time,
+          is_personal:     is_personal,
+          next_offset:     next_offset,
+          button:          button.try(&.to_json),
         })
       end
-      
+
       # Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
       def answer_web_app_query(
-        web_app_query_id : String, 
+        web_app_query_id : String,
         result : Tourmaline::InlineQueryResult
       )
         request(Tourmaline::SentWebAppMessage, "answerWebAppQuery", {
-          web_app_query_id: web_app_query_id, 
-          result: result.to_json
+          web_app_query_id: web_app_query_id,
+          result:           result.to_json,
         })
       end
-      
+
       # Use this method to send invoices. On success, the sent Message is returned.
       def send_invoice(
-        chat_id : Int32 | Int64 | String, 
-        title : String, 
-        description : String, 
-        payload : String, 
-        provider_token : String, 
-        currency : String, 
-        prices : Array(Tourmaline::LabeledPrice), 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        max_tip_amount : Int32 | Int64 | ::Nil = nil, 
-        suggested_tip_amounts : Array(Int32 | Int64) | ::Nil = nil, 
-        start_parameter : String | ::Nil = nil, 
-        provider_data : String | ::Nil = nil, 
-        photo_url : String | ::Nil = nil, 
-        photo_size : Int32 | Int64 | ::Nil = nil, 
-        photo_width : Int32 | Int64 | ::Nil = nil, 
-        photo_height : Int32 | Int64 | ::Nil = nil, 
-        need_name : Bool | ::Nil = nil, 
-        need_phone_number : Bool | ::Nil = nil, 
-        need_email : Bool | ::Nil = nil, 
-        need_shipping_address : Bool | ::Nil = nil, 
-        send_phone_number_to_provider : Bool | ::Nil = nil, 
-        send_email_to_provider : Bool | ::Nil = nil, 
-        is_flexible : Bool | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64 | String,
+        title : String,
+        description : String,
+        payload : String,
+        provider_token : String,
+        currency : String,
+        prices : Array(Tourmaline::LabeledPrice),
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        max_tip_amount : Int32 | Int64 | ::Nil = nil,
+        suggested_tip_amounts : Array(Int32 | Int64) | ::Nil = nil,
+        start_parameter : String | ::Nil = nil,
+        provider_data : String | ::Nil = nil,
+        photo_url : String | ::Nil = nil,
+        photo_size : Int32 | Int64 | ::Nil = nil,
+        photo_width : Int32 | Int64 | ::Nil = nil,
+        photo_height : Int32 | Int64 | ::Nil = nil,
+        need_name : Bool | ::Nil = nil,
+        need_phone_number : Bool | ::Nil = nil,
+        need_email : Bool | ::Nil = nil,
+        need_shipping_address : Bool | ::Nil = nil,
+        send_phone_number_to_provider : Bool | ::Nil = nil,
+        send_email_to_provider : Bool | ::Nil = nil,
+        is_flexible : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message, "sendInvoice", {
-          chat_id: chat_id, 
-          title: title, 
-          description: description, 
-          payload: payload, 
-          provider_token: provider_token, 
-          currency: currency, 
-          prices: prices.to_json, 
-          message_thread_id: message_thread_id, 
-          max_tip_amount: max_tip_amount, 
-          suggested_tip_amounts: suggested_tip_amounts.try(&.to_json), 
-          start_parameter: start_parameter, 
-          provider_data: provider_data.try(&.to_json), 
-          photo_url: photo_url, 
-          photo_size: photo_size, 
-          photo_width: photo_width, 
-          photo_height: photo_height, 
-          need_name: need_name, 
-          need_phone_number: need_phone_number, 
-          need_email: need_email, 
-          need_shipping_address: need_shipping_address, 
-          send_phone_number_to_provider: send_phone_number_to_provider, 
-          send_email_to_provider: send_email_to_provider, 
-          is_flexible: is_flexible, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                       chat_id,
+          title:                         title,
+          description:                   description,
+          payload:                       payload,
+          provider_token:                provider_token,
+          currency:                      currency,
+          prices:                        prices.to_json,
+          message_thread_id:             message_thread_id,
+          max_tip_amount:                max_tip_amount,
+          suggested_tip_amounts:         suggested_tip_amounts.try(&.to_json),
+          start_parameter:               start_parameter,
+          provider_data:                 provider_data.try(&.to_json),
+          photo_url:                     photo_url,
+          photo_size:                    photo_size,
+          photo_width:                   photo_width,
+          photo_height:                  photo_height,
+          need_name:                     need_name,
+          need_phone_number:             need_phone_number,
+          need_email:                    need_email,
+          need_shipping_address:         need_shipping_address,
+          send_phone_number_to_provider: send_phone_number_to_provider,
+          send_email_to_provider:        send_email_to_provider,
+          is_flexible:                   is_flexible,
+          disable_notification:          disable_notification,
+          protect_content:               protect_content,
+          reply_to_message_id:           reply_to_message_id,
+          allow_sending_without_reply:   allow_sending_without_reply,
+          reply_markup:                  reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to create a link for an invoice. Returns the created invoice link as String on success.
       def create_invoice_link(
-        title : String, 
-        description : String, 
-        payload : String, 
-        provider_token : String, 
-        currency : String, 
-        prices : Array(Tourmaline::LabeledPrice), 
-        max_tip_amount : Int32 | Int64 | ::Nil = nil, 
-        suggested_tip_amounts : Array(Int32 | Int64) | ::Nil = nil, 
-        provider_data : String | ::Nil = nil, 
-        photo_url : String | ::Nil = nil, 
-        photo_size : Int32 | Int64 | ::Nil = nil, 
-        photo_width : Int32 | Int64 | ::Nil = nil, 
-        photo_height : Int32 | Int64 | ::Nil = nil, 
-        need_name : Bool | ::Nil = nil, 
-        need_phone_number : Bool | ::Nil = nil, 
-        need_email : Bool | ::Nil = nil, 
-        need_shipping_address : Bool | ::Nil = nil, 
-        send_phone_number_to_provider : Bool | ::Nil = nil, 
-        send_email_to_provider : Bool | ::Nil = nil, 
+        title : String,
+        description : String,
+        payload : String,
+        provider_token : String,
+        currency : String,
+        prices : Array(Tourmaline::LabeledPrice),
+        max_tip_amount : Int32 | Int64 | ::Nil = nil,
+        suggested_tip_amounts : Array(Int32 | Int64) | ::Nil = nil,
+        provider_data : String | ::Nil = nil,
+        photo_url : String | ::Nil = nil,
+        photo_size : Int32 | Int64 | ::Nil = nil,
+        photo_width : Int32 | Int64 | ::Nil = nil,
+        photo_height : Int32 | Int64 | ::Nil = nil,
+        need_name : Bool | ::Nil = nil,
+        need_phone_number : Bool | ::Nil = nil,
+        need_email : Bool | ::Nil = nil,
+        need_shipping_address : Bool | ::Nil = nil,
+        send_phone_number_to_provider : Bool | ::Nil = nil,
+        send_email_to_provider : Bool | ::Nil = nil,
         is_flexible : Bool | ::Nil = nil
       )
         request(String, "createInvoiceLink", {
-          title: title, 
-          description: description, 
-          payload: payload, 
-          provider_token: provider_token, 
-          currency: currency, 
-          prices: prices.to_json, 
-          max_tip_amount: max_tip_amount, 
-          suggested_tip_amounts: suggested_tip_amounts.try(&.to_json), 
-          provider_data: provider_data.try(&.to_json), 
-          photo_url: photo_url, 
-          photo_size: photo_size, 
-          photo_width: photo_width, 
-          photo_height: photo_height, 
-          need_name: need_name, 
-          need_phone_number: need_phone_number, 
-          need_email: need_email, 
-          need_shipping_address: need_shipping_address, 
-          send_phone_number_to_provider: send_phone_number_to_provider, 
-          send_email_to_provider: send_email_to_provider, 
-          is_flexible: is_flexible
+          title:                         title,
+          description:                   description,
+          payload:                       payload,
+          provider_token:                provider_token,
+          currency:                      currency,
+          prices:                        prices.to_json,
+          max_tip_amount:                max_tip_amount,
+          suggested_tip_amounts:         suggested_tip_amounts.try(&.to_json),
+          provider_data:                 provider_data.try(&.to_json),
+          photo_url:                     photo_url,
+          photo_size:                    photo_size,
+          photo_width:                   photo_width,
+          photo_height:                  photo_height,
+          need_name:                     need_name,
+          need_phone_number:             need_phone_number,
+          need_email:                    need_email,
+          need_shipping_address:         need_shipping_address,
+          send_phone_number_to_provider: send_phone_number_to_provider,
+          send_email_to_provider:        send_email_to_provider,
+          is_flexible:                   is_flexible,
         })
       end
-      
+
       # If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
       def answer_shipping_query(
-        shipping_query_id : String, 
-        ok : Bool, 
-        shipping_options : Array(Tourmaline::ShippingOption) | ::Nil = nil, 
+        shipping_query_id : String,
+        ok : Bool,
+        shipping_options : Array(Tourmaline::ShippingOption) | ::Nil = nil,
         error_message : String | ::Nil = nil
       )
         request(Bool, "answerShippingQuery", {
-          shipping_query_id: shipping_query_id, 
-          ok: ok, 
-          shipping_options: shipping_options.try(&.to_json), 
-          error_message: error_message
+          shipping_query_id: shipping_query_id,
+          ok:                ok,
+          shipping_options:  shipping_options.try(&.to_json),
+          error_message:     error_message,
         })
       end
-      
+
       # Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
       def answer_pre_checkout_query(
-        pre_checkout_query_id : String, 
-        ok : Bool, 
+        pre_checkout_query_id : String,
+        ok : Bool,
         error_message : String | ::Nil = nil
       )
         request(Bool, "answerPreCheckoutQuery", {
-          pre_checkout_query_id: pre_checkout_query_id, 
-          ok: ok, 
-          error_message: error_message
+          pre_checkout_query_id: pre_checkout_query_id,
+          ok:                    ok,
+          error_message:         error_message,
         })
       end
-      
+
       # Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
       # Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
       def set_passport_data_errors(
-        user_id : Int32 | Int64, 
+        user_id : Int32 | Int64,
         errors : Array(Tourmaline::PassportElementError)
       )
         request(Bool, "setPassportDataErrors", {
-          user_id: user_id, 
-          errors: errors.to_json
+          user_id: user_id,
+          errors:  errors.to_json,
         })
       end
-      
+
       # Use this method to send a game. On success, the sent Message is returned.
       def send_game(
-        chat_id : Int32 | Int64, 
-        game_short_name : String, 
-        message_thread_id : Int32 | Int64 | ::Nil = nil, 
-        disable_notification : Bool | ::Nil = nil, 
-        protect_content : Bool | ::Nil = nil, 
-        reply_to_message_id : Int32 | Int64 | ::Nil = nil, 
-        allow_sending_without_reply : Bool | ::Nil = nil, 
+        chat_id : Int32 | Int64,
+        game_short_name : String,
+        message_thread_id : Int32 | Int64 | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_to_message_id : Int32 | Int64 | ::Nil = nil,
+        allow_sending_without_reply : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message, "sendGame", {
-          chat_id: chat_id, 
-          game_short_name: game_short_name, 
-          message_thread_id: message_thread_id, 
-          disable_notification: disable_notification, 
-          protect_content: protect_content, 
-          reply_to_message_id: reply_to_message_id, 
-          allow_sending_without_reply: allow_sending_without_reply, 
-          reply_markup: reply_markup.try(&.to_json)
+          chat_id:                     chat_id,
+          game_short_name:             game_short_name,
+          message_thread_id:           message_thread_id,
+          disable_notification:        disable_notification,
+          protect_content:             protect_content,
+          reply_to_message_id:         reply_to_message_id,
+          allow_sending_without_reply: allow_sending_without_reply,
+          reply_markup:                reply_markup.try(&.to_json),
         })
       end
-      
+
       # Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
       def set_game_score(
-        user_id : Int32 | Int64, 
-        score : Int32 | Int64, 
-        force : Bool | ::Nil = nil, 
-        disable_edit_message : Bool | ::Nil = nil, 
-        chat_id : Int32 | Int64 | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
+        user_id : Int32 | Int64,
+        score : Int32 | Int64,
+        force : Bool | ::Nil = nil,
+        disable_edit_message : Bool | ::Nil = nil,
+        chat_id : Int32 | Int64 | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "setGameScore", {
-          user_id: user_id, 
-          score: score, 
-          force: force, 
-          disable_edit_message: disable_edit_message, 
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id
+          user_id:              user_id,
+          score:                score,
+          force:                force,
+          disable_edit_message: disable_edit_message,
+          chat_id:              chat_id,
+          message_id:           message_id,
+          inline_message_id:    inline_message_id,
         })
       end
-      
+
       # Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
       def get_game_high_scores(
-        user_id : Int32 | Int64, 
-        chat_id : Int32 | Int64 | ::Nil = nil, 
-        message_id : Int32 | Int64 | ::Nil = nil, 
+        user_id : Int32 | Int64,
+        chat_id : Int32 | Int64 | ::Nil = nil,
+        message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil
       )
         request(Array(Tourmaline::GameHighScore), "getGameHighScores", {
-          user_id: user_id, 
-          chat_id: chat_id, 
-          message_id: message_id, 
-          inline_message_id: inline_message_id
+          user_id:           user_id,
+          chat_id:           chat_id,
+          message_id:        message_id,
+          inline_message_id: inline_message_id,
         })
       end
-      
     end
   end
 end

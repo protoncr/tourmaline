@@ -88,7 +88,7 @@ module Tourmaline
       end
     {% end %}
 
-    {% for name, emoji in {"dice" => "🎲" , "dart" => "🎯" , "basketball" => "🏀" , "football" => "🏈" , "slot_machine" => "🎰", "bowling" => "🎳"} %}
+    {% for name, emoji in {"dice" => "🎲", "dart" => "🎯", "basketball" => "🏀", "football" => "🏈", "slot_machine" => "🎰", "bowling" => "🎳"} %}
       # Respond with a {{name.id}}
       def respond_with_{{name.id}}(**kwargs)
         with_message do |message|
