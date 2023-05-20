@@ -18,16 +18,24 @@ module Tourmaline
       Log.info { "Polling for updates..." }
       @polling = true
       while @polling
-        updates = @client.get_updates(offset: offset, timeout: 30)
-        updates.each do |update|
-          @client.dispatcher.process(update)
-          @offset = Int64.new(update.update_id + 1)
-        end
+        poll_and_dispatch
       end
     end
 
     def stop
       @polling = false
+    end
+
+    def poll_and_dispatch
+      updates = get_updates
+      updates.each do |update|
+        @client.dispatcher.process(update)
+        @offset = Int64.new(update.update_id + 1)
+      end
+    end
+
+    def get_updates
+      @client.get_updates(offset: offset, timeout: 30)
     end
   end
 end
