@@ -162,7 +162,7 @@ module Tourmaline
 
     # Sends a request to the Telegram Client API. Returns the raw response.
     def request_raw(method : String, params = {} of String => String)
-      path = ::File.join("/bot#{bot_token}", method)
+      path = "/bot#{bot_token}/#{method}"
       request_internal(path, params, multipart: MULTIPART_METHODS.includes?(method))
     end
 
