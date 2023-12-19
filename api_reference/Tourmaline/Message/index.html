@@ -4136,6 +4136,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../Story/" class="md-nav__link">
+        Story
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../SuccessfulPayment/" class="md-nav__link">
         SuccessfulPayment
       </a>
@@ -4444,7 +4458,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Message.new(message_id,date,chat,message_thread_id,from,sender_chat,forward_from,forward_from_chat,forward_from_message_id,forward_signature,forward_sender_name,forward_date,is_topic_message,is_automatic_forward,reply_to_message,via_bot,edit_date,has_protected_content,media_group_id,author_signature,text,entities,animation,audio,document,photo,sticker,video,video_note,voice,caption,caption_entities,has_media_spoiler,contact,dice,game,poll,venue,location,new_chat_members,left_chat_member,new_chat_title,new_chat_photo,delete_chat_photo,group_chat_created,supergroup_chat_created,channel_chat_created,message_auto_delete_timer_changed,migrate_to_chat_id,migrate_from_chat_id,pinned_message,invoice,successful_payment,user_shared,chat_shared,connected_website,write_access_allowed,passport_data,proximity_alert_triggered,forum_topic_created,forum_topic_edited,forum_topic_closed,forum_topic_reopened,general_forum_topic_hidden,general_forum_topic_unhidden,video_chat_scheduled,video_chat_started,video_chat_ended,video_chat_participants_invited,web_app_data,reply_markup)" class="md-nav__link">
+  <a href="#Tourmaline::Message.new(message_id,date,chat,message_thread_id,from,sender_chat,forward_from,forward_from_chat,forward_from_message_id,forward_signature,forward_sender_name,forward_date,is_topic_message,is_automatic_forward,reply_to_message,via_bot,edit_date,has_protected_content,media_group_id,author_signature,text,entities,animation,audio,document,photo,sticker,story,video,video_note,voice,caption,caption_entities,has_media_spoiler,contact,dice,game,poll,venue,location,new_chat_members,left_chat_member,new_chat_title,new_chat_photo,delete_chat_photo,group_chat_created,supergroup_chat_created,channel_chat_created,message_auto_delete_timer_changed,migrate_to_chat_id,migrate_from_chat_id,pinned_message,invoice,successful_payment,user_shared,chat_shared,connected_website,write_access_allowed,passport_data,proximity_alert_triggered,forum_topic_created,forum_topic_edited,forum_topic_closed,forum_topic_reopened,general_forum_topic_hidden,general_forum_topic_unhidden,video_chat_scheduled,video_chat_started,video_chat_ended,video_chat_participants_invited,web_app_data,reply_markup)" class="md-nav__link">
     .new
   </a>
   
@@ -5276,6 +5290,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::Message#story" class="md-nav__link">
+    #story
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::Message#story=(story)" class="md-nav__link">
+    #story=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::Message#successful_payment" class="md-nav__link">
     #successful_payment
   </a>
@@ -5318,7 +5346,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::Message#text_entities(type)" class="md-nav__link">
+  <a href="#Tourmaline::Message#text_entities" class="md-nav__link">
     #text_entities
   </a>
   
@@ -5516,7 +5544,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L299" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L304" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -5536,14 +5564,14 @@
 <h2 id="Tourmaline::Message-constructors">Constructors<a href="#Tourmaline::Message-constructors" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-class_method">
-<h3 id="Tourmaline::Message.new(message_id,date,chat,message_thread_id,from,sender_chat,forward_from,forward_from_chat,forward_from_message_id,forward_signature,forward_sender_name,forward_date,is_topic_message,is_automatic_forward,reply_to_message,via_bot,edit_date,has_protected_content,media_group_id,author_signature,text,entities,animation,audio,document,photo,sticker,video,video_note,voice,caption,caption_entities,has_media_spoiler,contact,dice,game,poll,venue,location,new_chat_members,left_chat_member,new_chat_title,new_chat_photo,delete_chat_photo,group_chat_created,supergroup_chat_created,channel_chat_created,message_auto_delete_timer_changed,migrate_to_chat_id,migrate_from_chat_id,pinned_message,invoice,successful_payment,user_shared,chat_shared,connected_website,write_access_allowed,passport_data,proximity_alert_triggered,forum_topic_created,forum_topic_edited,forum_topic_closed,forum_topic_reopened,general_forum_topic_hidden,general_forum_topic_unhidden,video_chat_scheduled,video_chat_started,video_chat_ended,video_chat_participants_invited,web_app_data,reply_markup)" class="doc doc-heading">    <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">message_id</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">chat</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">from</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">sender_chat</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Tourmaline::Chat?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_from</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_from_chat</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Tourmaline::Chat?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_from_message_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_signature</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_sender_name</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_date</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">is_topic_message</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">is_automatic_forward</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="p">:</span> <a href="#Tourmaline::Message">Tourmaline::Message?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">via_bot</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">edit_date</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">has_protected_content</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">media_group_id</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">author_signature</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">text</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">entities</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../MessageEntity/#Tourmaline::MessageEntity">Tourmaline::MessageEntity</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">MessageEntity</span><span class="p">,</span> <span class="n">animation</span> <span class="p">:</span> <a href="../Animation/#Tourmaline::Animation">Tourmaline::Animation?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">audio</span> <span class="p">:</span> <a href="../Audio/#Tourmaline::Audio">Tourmaline::Audio?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">document</span> <span class="p">:</span> <a href="../Document/#Tourmaline::Document">Tourmaline::Document?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">photo</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../PhotoSize/#Tourmaline::PhotoSize">Tourmaline::PhotoSize</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">PhotoSize</span><span class="p">,</span> <span class="n">sticker</span> <span class="p">:</span> <a href="../Sticker/#Tourmaline::Sticker">Tourmaline::Sticker?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video</span> <span class="p">:</span> <a href="../Video/#Tourmaline::Video">Tourmaline::Video?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_note</span> <span class="p">:</span> <a href="../VideoNote/#Tourmaline::VideoNote">Tourmaline::VideoNote?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">voice</span> <span class="p">:</span> <a href="../Voice/#Tourmaline::Voice">Tourmaline::Voice?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../MessageEntity/#Tourmaline::MessageEntity">Tourmaline::MessageEntity</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">MessageEntity</span><span class="p">,</span> <span class="n">has_media_spoiler</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">contact</span> <span class="p">:</span> <a href="../Contact/#Tourmaline::Contact">Tourmaline::Contact?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">dice</span> <span class="p">:</span> <a href="../Dice/#Tourmaline::Dice">Tourmaline::Dice?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">game</span> <span class="p">:</span> <a href="../Game/#Tourmaline::Game">Tourmaline::Game?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">poll</span> <span class="p">:</span> <a href="../Poll/#Tourmaline::Poll">Tourmaline::Poll?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">venue</span> <span class="p">:</span> <a href="../Venue/#Tourmaline::Venue">Tourmaline::Venue?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">location</span> <span class="p">:</span> <a href="../Location/#Tourmaline::Location">Tourmaline::Location?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">new_chat_members</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../User/#Tourmaline::User">Tourmaline::User</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">User</span><span class="p">,</span> <span class="n">left_chat_member</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">new_chat_title</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">new_chat_photo</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../PhotoSize/#Tourmaline::PhotoSize">Tourmaline::PhotoSize</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">PhotoSize</span><span class="p">,</span> <span class="n">delete_chat_photo</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">group_chat_created</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">supergroup_chat_created</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">channel_chat_created</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">message_auto_delete_timer_changed</span> <span class="p">:</span> <a href="../MessageAutoDeleteTimerChanged/#Tourmaline::MessageAutoDeleteTimerChanged">Tourmaline::MessageAutoDeleteTimerChanged?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">migrate_to_chat_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">migrate_from_chat_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">pinned_message</span> <span class="p">:</span> <a href="#Tourmaline::Message">Tourmaline::Message?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">invoice</span> <span class="p">:</span> <a href="../Invoice/#Tourmaline::Invoice">Tourmaline::Invoice?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">successful_payment</span> <span class="p">:</span> <a href="../SuccessfulPayment/#Tourmaline::SuccessfulPayment">Tourmaline::SuccessfulPayment?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">user_shared</span> <span class="p">:</span> <a href="../UserShared/#Tourmaline::UserShared">Tourmaline::UserShared?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">chat_shared</span> <span class="p">:</span> <a href="../ChatShared/#Tourmaline::ChatShared">Tourmaline::ChatShared?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">connected_website</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">write_access_allowed</span> <span class="p">:</span> <a href="../WriteAccessAllowed/#Tourmaline::WriteAccessAllowed">Tourmaline::WriteAccessAllowed?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">passport_data</span> <span class="p">:</span> <a href="../PassportData/#Tourmaline::PassportData">Tourmaline::PassportData?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proximity_alert_triggered</span> <span class="p">:</span> <a href="../ProximityAlertTriggered/#Tourmaline::ProximityAlertTriggered">Tourmaline::ProximityAlertTriggered?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_created</span> <span class="p">:</span> <a href="../ForumTopicCreated/#Tourmaline::ForumTopicCreated">Tourmaline::ForumTopicCreated?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_edited</span> <span class="p">:</span> <a href="../ForumTopicEdited/#Tourmaline::ForumTopicEdited">Tourmaline::ForumTopicEdited?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_closed</span> <span class="p">:</span> <a href="../ForumTopicClosed/#Tourmaline::ForumTopicClosed">Tourmaline::ForumTopicClosed?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_reopened</span> <span class="p">:</span> <a href="../ForumTopicReopened/#Tourmaline::ForumTopicReopened">Tourmaline::ForumTopicReopened?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">general_forum_topic_hidden</span> <span class="p">:</span> <a href="../GeneralForumTopicHidden/#Tourmaline::GeneralForumTopicHidden">Tourmaline::GeneralForumTopicHidden?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">general_forum_topic_unhidden</span> <span class="p">:</span> <a href="../GeneralForumTopicUnhidden/#Tourmaline::GeneralForumTopicUnhidden">Tourmaline::GeneralForumTopicUnhidden?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_scheduled</span> <span class="p">:</span> <a href="../VideoChatScheduled/#Tourmaline::VideoChatScheduled">Tourmaline::VideoChatScheduled?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_started</span> <span class="p">:</span> <a href="../VideoChatStarted/#Tourmaline::VideoChatStarted">Tourmaline::VideoChatStarted?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_ended</span> <span class="p">:</span> <a href="../VideoChatEnded/#Tourmaline::VideoChatEnded">Tourmaline::VideoChatEnded?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_participants_invited</span> <span class="p">:</span> <a href="../VideoChatParticipantsInvited/#Tourmaline::VideoChatParticipantsInvited">Tourmaline::VideoChatParticipantsInvited?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">web_app_data</span> <span class="p">:</span> <a href="../WebAppData/#Tourmaline::WebAppData">Tourmaline::WebAppData?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="p">:</span> <a href="../InlineKeyboardMarkup/#Tourmaline::InlineKeyboardMarkup">Tourmaline::InlineKeyboardMarkup?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+<h3 id="Tourmaline::Message.new(message_id,date,chat,message_thread_id,from,sender_chat,forward_from,forward_from_chat,forward_from_message_id,forward_signature,forward_sender_name,forward_date,is_topic_message,is_automatic_forward,reply_to_message,via_bot,edit_date,has_protected_content,media_group_id,author_signature,text,entities,animation,audio,document,photo,sticker,story,video,video_note,voice,caption,caption_entities,has_media_spoiler,contact,dice,game,poll,venue,location,new_chat_members,left_chat_member,new_chat_title,new_chat_photo,delete_chat_photo,group_chat_created,supergroup_chat_created,channel_chat_created,message_auto_delete_timer_changed,migrate_to_chat_id,migrate_from_chat_id,pinned_message,invoice,successful_payment,user_shared,chat_shared,connected_website,write_access_allowed,passport_data,proximity_alert_triggered,forum_topic_created,forum_topic_edited,forum_topic_closed,forum_topic_reopened,general_forum_topic_hidden,general_forum_topic_unhidden,video_chat_scheduled,video_chat_started,video_chat_ended,video_chat_participants_invited,web_app_data,reply_markup)" class="doc doc-heading">    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">message_id</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">chat</span><span class="p">,</span> <span class="n">message_thread_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">from</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">sender_chat</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Tourmaline::Chat?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_from</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_from_chat</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Tourmaline::Chat?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_from_message_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_signature</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_sender_name</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forward_date</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">is_topic_message</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">is_automatic_forward</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_to_message</span> <span class="p">:</span> <a href="#Tourmaline::Message">Tourmaline::Message?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">via_bot</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">edit_date</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">has_protected_content</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">media_group_id</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">author_signature</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">text</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">entities</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../MessageEntity/#Tourmaline::MessageEntity">Tourmaline::MessageEntity</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">MessageEntity</span><span class="p">,</span> <span class="n">animation</span> <span class="p">:</span> <a href="../Animation/#Tourmaline::Animation">Tourmaline::Animation?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">audio</span> <span class="p">:</span> <a href="../Audio/#Tourmaline::Audio">Tourmaline::Audio?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">document</span> <span class="p">:</span> <a href="../Document/#Tourmaline::Document">Tourmaline::Document?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">photo</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../PhotoSize/#Tourmaline::PhotoSize">Tourmaline::PhotoSize</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">PhotoSize</span><span class="p">,</span> <span class="n">sticker</span> <span class="p">:</span> <a href="../Sticker/#Tourmaline::Sticker">Tourmaline::Sticker?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">story</span> <span class="p">:</span> <a href="../Story/#Tourmaline::Story">Tourmaline::Story?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video</span> <span class="p">:</span> <a href="../Video/#Tourmaline::Video">Tourmaline::Video?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_note</span> <span class="p">:</span> <a href="../VideoNote/#Tourmaline::VideoNote">Tourmaline::VideoNote?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">voice</span> <span class="p">:</span> <a href="../Voice/#Tourmaline::Voice">Tourmaline::Voice?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">caption_entities</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../MessageEntity/#Tourmaline::MessageEntity">Tourmaline::MessageEntity</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">MessageEntity</span><span class="p">,</span> <span class="n">has_media_spoiler</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">contact</span> <span class="p">:</span> <a href="../Contact/#Tourmaline::Contact">Tourmaline::Contact?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">dice</span> <span class="p">:</span> <a href="../Dice/#Tourmaline::Dice">Tourmaline::Dice?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">game</span> <span class="p">:</span> <a href="../Game/#Tourmaline::Game">Tourmaline::Game?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">poll</span> <span class="p">:</span> <a href="../Poll/#Tourmaline::Poll">Tourmaline::Poll?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">venue</span> <span class="p">:</span> <a href="../Venue/#Tourmaline::Venue">Tourmaline::Venue?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">location</span> <span class="p">:</span> <a href="../Location/#Tourmaline::Location">Tourmaline::Location?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">new_chat_members</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../User/#Tourmaline::User">Tourmaline::User</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">User</span><span class="p">,</span> <span class="n">left_chat_member</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">new_chat_title</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">new_chat_photo</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><a href="../PhotoSize/#Tourmaline::PhotoSize">Tourmaline::PhotoSize</a><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Tourmaline</span><span class="o">::</span><span class="n">PhotoSize</span><span class="p">,</span> <span class="n">delete_chat_photo</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">group_chat_created</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">supergroup_chat_created</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">channel_chat_created</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">message_auto_delete_timer_changed</span> <span class="p">:</span> <a href="../MessageAutoDeleteTimerChanged/#Tourmaline::MessageAutoDeleteTimerChanged">Tourmaline::MessageAutoDeleteTimerChanged?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">migrate_to_chat_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">migrate_from_chat_id</span> <span class="p">:</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span> <span class="o">|</span> <span class="n">Nil</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">pinned_message</span> <span class="p">:</span> <a href="#Tourmaline::Message">Tourmaline::Message?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">invoice</span> <span class="p">:</span> <a href="../Invoice/#Tourmaline::Invoice">Tourmaline::Invoice?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">successful_payment</span> <span class="p">:</span> <a href="../SuccessfulPayment/#Tourmaline::SuccessfulPayment">Tourmaline::SuccessfulPayment?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">user_shared</span> <span class="p">:</span> <a href="../UserShared/#Tourmaline::UserShared">Tourmaline::UserShared?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">chat_shared</span> <span class="p">:</span> <a href="../ChatShared/#Tourmaline::ChatShared">Tourmaline::ChatShared?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">connected_website</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">write_access_allowed</span> <span class="p">:</span> <a href="../WriteAccessAllowed/#Tourmaline::WriteAccessAllowed">Tourmaline::WriteAccessAllowed?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">passport_data</span> <span class="p">:</span> <a href="../PassportData/#Tourmaline::PassportData">Tourmaline::PassportData?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">proximity_alert_triggered</span> <span class="p">:</span> <a href="../ProximityAlertTriggered/#Tourmaline::ProximityAlertTriggered">Tourmaline::ProximityAlertTriggered?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_created</span> <span class="p">:</span> <a href="../ForumTopicCreated/#Tourmaline::ForumTopicCreated">Tourmaline::ForumTopicCreated?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_edited</span> <span class="p">:</span> <a href="../ForumTopicEdited/#Tourmaline::ForumTopicEdited">Tourmaline::ForumTopicEdited?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_closed</span> <span class="p">:</span> <a href="../ForumTopicClosed/#Tourmaline::ForumTopicClosed">Tourmaline::ForumTopicClosed?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">forum_topic_reopened</span> <span class="p">:</span> <a href="../ForumTopicReopened/#Tourmaline::ForumTopicReopened">Tourmaline::ForumTopicReopened?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">general_forum_topic_hidden</span> <span class="p">:</span> <a href="../GeneralForumTopicHidden/#Tourmaline::GeneralForumTopicHidden">Tourmaline::GeneralForumTopicHidden?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">general_forum_topic_unhidden</span> <span class="p">:</span> <a href="../GeneralForumTopicUnhidden/#Tourmaline::GeneralForumTopicUnhidden">Tourmaline::GeneralForumTopicUnhidden?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_scheduled</span> <span class="p">:</span> <a href="../VideoChatScheduled/#Tourmaline::VideoChatScheduled">Tourmaline::VideoChatScheduled?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_started</span> <span class="p">:</span> <a href="../VideoChatStarted/#Tourmaline::VideoChatStarted">Tourmaline::VideoChatStarted?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_ended</span> <span class="p">:</span> <a href="../VideoChatEnded/#Tourmaline::VideoChatEnded">Tourmaline::VideoChatEnded?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">video_chat_participants_invited</span> <span class="p">:</span> <a href="../VideoChatParticipantsInvited/#Tourmaline::VideoChatParticipantsInvited">Tourmaline::VideoChatParticipantsInvited?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">web_app_data</span> <span class="p">:</span> <a href="../WebAppData/#Tourmaline::WebAppData">Tourmaline::WebAppData?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">reply_markup</span> <span class="p">:</span> <a href="../InlineKeyboardMarkup/#Tourmaline::InlineKeyboardMarkup">Tourmaline::InlineKeyboardMarkup?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::Message.new(message_id,date,chat,message_thread_id,from,sender_chat,forward_from,forward_from_chat,forward_from_message_id,forward_signature,forward_sender_name,forward_date,is_topic_message,is_automatic_forward,reply_to_message,via_bot,edit_date,has_protected_content,media_group_id,author_signature,text,entities,animation,audio,document,photo,sticker,video,video_note,voice,caption,caption_entities,has_media_spoiler,contact,dice,game,poll,venue,location,new_chat_members,left_chat_member,new_chat_title,new_chat_photo,delete_chat_photo,group_chat_created,supergroup_chat_created,channel_chat_created,message_auto_delete_timer_changed,migrate_to_chat_id,migrate_from_chat_id,pinned_message,invoice,successful_payment,user_shared,chat_shared,connected_website,write_access_allowed,passport_data,proximity_alert_triggered,forum_topic_created,forum_topic_edited,forum_topic_closed,forum_topic_reopened,general_forum_topic_hidden,general_forum_topic_unhidden,video_chat_scheduled,video_chat_started,video_chat_ended,video_chat_participants_invited,web_app_data,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::Message.new(message_id,date,chat,message_thread_id,from,sender_chat,forward_from,forward_from_chat,forward_from_message_id,forward_signature,forward_sender_name,forward_date,is_topic_message,is_automatic_forward,reply_to_message,via_bot,edit_date,has_protected_content,media_group_id,author_signature,text,entities,animation,audio,document,photo,sticker,story,video,video_note,voice,caption,caption_entities,has_media_spoiler,contact,dice,game,poll,venue,location,new_chat_members,left_chat_member,new_chat_title,new_chat_photo,delete_chat_photo,group_chat_created,supergroup_chat_created,channel_chat_created,message_auto_delete_timer_changed,migrate_to_chat_id,migrate_from_chat_id,pinned_message,invoice,successful_payment,user_shared,chat_shared,connected_website,write_access_allowed,passport_data,proximity_alert_triggered,forum_topic_created,forum_topic_edited,forum_topic_closed,forum_topic_reopened,general_forum_topic_hidden,general_forum_topic_unhidden,video_chat_scheduled,video_chat_started,video_chat_ended,video_chat_participants_invited,web_app_data,reply_markup)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L518">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L526">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-class_method">
@@ -5554,7 +5582,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L300">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L305">View source</a>
 </div><h2 id="Tourmaline::Message-methods">Methods<a href="#Tourmaline::Message-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5565,7 +5593,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L372">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L377">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5576,7 +5604,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L372">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L377">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5587,7 +5615,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is an audio file, information about the file</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L375">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L380">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5598,7 +5626,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is an audio file, information about the file</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L375">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L380">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5609,7 +5637,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L363">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L368">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5620,7 +5648,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L363">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L368">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5631,7 +5659,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Caption for the animation, audio, document, photo, video or voice</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L396">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L404">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5642,7 +5670,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Caption for the animation, audio, document, photo, video or voice</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L396">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L404">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5653,7 +5681,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L399">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L407">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5664,7 +5692,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L399">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L407">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5675,7 +5703,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L444">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L452">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5686,7 +5714,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L444">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L452">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5697,7 +5725,7 @@
   <div class="doc doc-contents ">
 <p>Conversation the message belongs to</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L310">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L315">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5708,7 +5736,7 @@
   <div class="doc doc-contents ">
 <p>Conversation the message belongs to</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L310">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L315">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5719,7 +5747,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: a chat was shared with the bot</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L468">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L476">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5730,7 +5758,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: a chat was shared with the bot</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L468">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L476">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5741,7 +5769,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L56">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L56">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5752,7 +5780,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L67">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L67">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5763,7 +5791,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The domain name of the website on which the user has logged in. More about Telegram Login: <a href="https://core.telegram.org/widgets/login">https://core.telegram.org/widgets/login</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L471">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L479">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5774,7 +5802,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The domain name of the website on which the user has logged in. More about Telegram Login: <a href="https://core.telegram.org/widgets/login">https://core.telegram.org/widgets/login</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L471">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L479">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5785,7 +5813,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a shared contact, information about the contact</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L405">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L413">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5796,7 +5824,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a shared contact, information about the contact</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L405">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L413">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5807,7 +5835,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L307">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L312">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5818,7 +5846,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L307">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L312">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5829,7 +5857,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the chat photo was deleted</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L435">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L443">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5840,7 +5868,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the chat photo was deleted</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L435">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L443">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5851,7 +5879,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a dice with random value</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L408">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L416">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5862,7 +5890,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a dice with random value</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L408">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L416">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5873,7 +5901,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a general file, information about the file</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L378">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L383">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5884,7 +5912,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a general file, information about the file</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L378">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L383">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5895,7 +5923,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L354">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L359">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5906,7 +5934,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L354">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L359">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5917,7 +5945,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L369">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L374">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5928,7 +5956,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L369">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L374">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5939,7 +5967,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L3">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L3">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5950,7 +5978,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic closed</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L489">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L497">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5961,7 +5989,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic closed</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L489">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L497">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5972,7 +6000,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic created</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L483">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L491">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5983,7 +6011,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic created</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L483">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L491">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -5994,7 +6022,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic edited</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L486">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L494">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6005,7 +6033,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic edited</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L486">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L494">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6016,7 +6044,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic reopened</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L492">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L500">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6027,7 +6055,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: forum topic reopened</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L492">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L500">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6038,7 +6066,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L338">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L343">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6049,7 +6077,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L338">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L343">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6060,7 +6088,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For forwarded messages, sender of the original message</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L322">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L327">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6071,7 +6099,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For forwarded messages, sender of the original message</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L322">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L327">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6082,7 +6110,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For messages forwarded from channels or from anonymous administrators, information about the original sender chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L325">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L330">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6093,7 +6121,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For messages forwarded from channels or from anonymous administrators, information about the original sender chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L325">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L330">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6104,7 +6132,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For messages forwarded from channels, identifier of the original message in the channel</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L328">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L333">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6115,7 +6143,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For messages forwarded from channels, identifier of the original message in the channel</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L328">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L333">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6126,7 +6154,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L334">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L339">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6137,7 +6165,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L334">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L339">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6148,7 +6176,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For forwarded messages that were originally sent in channels or by an anonymous chat administrator, signature of the message sender if present</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L331">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L336">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6159,7 +6187,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For forwarded messages that were originally sent in channels or by an anonymous chat administrator, signature of the message sender if present</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L331">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L336">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6170,7 +6198,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Sender of the message; empty for messages sent to channels. For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L316">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L321">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6181,7 +6209,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Sender of the message; empty for messages sent to channels. For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L316">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L321">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6192,7 +6220,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a game, information about the game. More about games: <a href="https://core.telegram.org/bots/api#games">https://core.telegram.org/bots/api#games</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L411">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L419">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6203,7 +6231,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a game, information about the game. More about games: <a href="https://core.telegram.org/bots/api#games">https://core.telegram.org/bots/api#games</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L411">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L419">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6214,7 +6242,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the 'General' forum topic hidden</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L495">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L503">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6225,7 +6253,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the 'General' forum topic hidden</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L495">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L503">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6236,7 +6264,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the 'General' forum topic unhidden</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L498">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L506">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6247,7 +6275,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the 'General' forum topic unhidden</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L498">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L506">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6258,7 +6286,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the group has been created</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L438">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L446">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6269,7 +6297,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the group has been created</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L438">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L446">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6280,7 +6308,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message media is covered by a spoiler animation</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L402">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L410">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6291,7 +6319,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message media is covered by a spoiler animation</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L402">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L410">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6302,7 +6330,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message can't be forwarded</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L357">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L362">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6313,7 +6341,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message can't be forwarded</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L357">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L362">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6324,7 +6352,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is an invoice for a payment, information about the invoice. More about payments: <a href="https://core.telegram.org/bots/api#payments">https://core.telegram.org/bots/api#payments</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L459">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L467">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6335,7 +6363,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is an invoice for a payment, information about the invoice. More about payments: <a href="https://core.telegram.org/bots/api#payments">https://core.telegram.org/bots/api#payments</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L459">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L467">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6346,7 +6374,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L344">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L349">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6357,7 +6385,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L344">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L349">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6368,7 +6396,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message is sent to a forum topic</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L341">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L346">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6379,7 +6407,7 @@
   <div class="doc doc-contents ">
 <p>Optional. True, if the message is sent to a forum topic</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L341">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L346">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6390,7 +6418,7 @@
   <div class="doc doc-contents ">
 <p>Optional. A member was removed from the group, information about them (this member may be the bot itself)</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L426">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L434">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6401,7 +6429,7 @@
   <div class="doc doc-contents ">
 <p>Optional. A member was removed from the group, information about them (this member may be the bot itself)</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L426">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L434">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6412,7 +6440,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L23">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L23">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6423,7 +6451,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a shared location, information about the location</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L420">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L428">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6434,7 +6462,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a shared location, information about the location</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L420">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L428">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6445,7 +6473,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The unique identifier of a media message group this message belongs to</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L360">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L365">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6456,7 +6484,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The unique identifier of a media message group this message belongs to</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L360">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L365">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6467,7 +6495,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: auto-delete timer settings changed in the chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L447">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L455">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6478,7 +6506,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: auto-delete timer settings changed in the chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L447">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L455">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6489,7 +6517,7 @@
   <div class="doc doc-contents ">
 <p>Unique message identifier inside this chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L303">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L308">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6500,7 +6528,7 @@
   <div class="doc doc-contents ">
 <p>Unique message identifier inside this chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L303">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L308">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6511,7 +6539,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Unique identifier of a message thread to which the message belongs; for supergroups only</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L313">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L318">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6522,7 +6550,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Unique identifier of a message thread to which the message belongs; for supergroups only</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L313">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L318">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6533,7 +6561,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L453">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L461">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6544,7 +6572,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L453">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L461">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6555,7 +6583,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L450">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L458">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6566,7 +6594,7 @@
   <div class="doc doc-contents ">
 <p>Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L450">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L458">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6577,7 +6605,7 @@
   <div class="doc doc-contents ">
 <p>Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L423">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L431">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6588,7 +6616,7 @@
   <div class="doc doc-contents ">
 <p>Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L423">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L431">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6599,7 +6627,7 @@
   <div class="doc doc-contents ">
 <p>Optional. A chat photo was change to this value</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L432">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L440">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6610,7 +6638,7 @@
   <div class="doc doc-contents ">
 <p>Optional. A chat photo was change to this value</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L432">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L440">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6621,7 +6649,7 @@
   <div class="doc doc-contents ">
 <p>Optional. A chat title was changed to this value</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L429">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L437">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6632,7 +6660,7 @@
   <div class="doc doc-contents ">
 <p>Optional. A chat title was changed to this value</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L429">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L437">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6643,7 +6671,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Telegram Passport data</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L477">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L485">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6654,7 +6682,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Telegram Passport data</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L477">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L485">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6665,7 +6693,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a photo, available sizes of the photo</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L381">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L386">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6676,7 +6704,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a photo, available sizes of the photo</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L381">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L386">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6687,7 +6715,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L456">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L464">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6698,7 +6726,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L456">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L464">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6709,7 +6737,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a native poll, information about the poll</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L414">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L422">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6720,7 +6748,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a native poll, information about the poll</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L414">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L422">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6731,7 +6759,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L480">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L488">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6742,7 +6770,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L480">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L488">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6753,7 +6781,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L516">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L524">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6764,7 +6792,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L516">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L524">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6775,7 +6803,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L347">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L352">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6786,7 +6814,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L347">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L352">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6797,7 +6825,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Sender of the message, sent on behalf of a chat. For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group administrators, the linked channel for messages automatically forwarded to the discussion group. For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L319">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L324">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6808,7 +6836,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Sender of the message, sent on behalf of a chat. For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group administrators, the linked channel for messages automatically forwarded to the discussion group. For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L319">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L324">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6819,7 +6847,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L71">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L71">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6830,7 +6858,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a sticker, information about the sticker</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L384">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L389">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6841,7 +6869,29 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a sticker, information about the sticker</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L384">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L389">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Message#story" class="doc doc-heading">    <code>
+      #story<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Story/#Tourmaline::Story">Tourmaline::Story?</a></code></span>
+    </code>
+<a href="#Tourmaline::Message#story" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. Message is a forwarded story</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L392">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Message#story=(story)" class="doc doc-heading">    <code>
+      #story=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">story</span> <span class="p">:</span> <a href="../Story/#Tourmaline::Story">Tourmaline::Story?</a><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Message#story=(story)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. Message is a forwarded story</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L392">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6852,7 +6902,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a service message about a successful payment, information about the payment. More about payments: <a href="https://core.telegram.org/bots/api#payments">https://core.telegram.org/bots/api#payments</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L462">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L470">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6863,7 +6913,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a service message about a successful payment, information about the payment. More about payments: <a href="https://core.telegram.org/bots/api#payments">https://core.telegram.org/bots/api#payments</a></p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L462">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L470">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6874,7 +6924,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the supergroup has been created. This field can't be received in a message coming through updates, because bot can't be a member of a supergroup when it is created. It can only be found in reply_to_message if someone replies to a very first message in a directly created supergroup.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L441">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L449">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6885,7 +6935,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: the supergroup has been created. This field can't be received in a message coming through updates, because bot can't be a member of a supergroup when it is created. It can only be found in reply_to_message if someone replies to a very first message in a directly created supergroup.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L441">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L449">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6896,7 +6946,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For text messages, the actual UTF-8 text of the message</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L366">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L371">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6907,18 +6957,7 @@
   <div class="doc doc-contents ">
 <p>Optional. For text messages, the actual UTF-8 text of the message</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L366">View source</a>
-</div>
-
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Tourmaline::Message#text_entities(type)" class="doc doc-heading">    <code>
-      #text_entities<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="k">type</span> <span class="p">:</span> <span class="n">String</span><span class="p">)</span></code></span>
-    </code>
-<a href="#Tourmaline::Message#text_entities(type)" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-  </div>
-
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L39">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L371">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6929,7 +6968,18 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L31">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L31">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::Message#text_entities(type)" class="doc doc-heading">    <code>
+      #text_entities<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="k">type</span> <span class="p">:</span> <span class="n">String</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::Message#text_entities(type)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L39">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6940,7 +6990,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: a user was shared with the bot</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L465">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L473">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6951,7 +7001,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: a user was shared with the bot</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L465">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L473">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6962,7 +7012,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L52">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L52">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6973,7 +7023,7 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/custom/message.cr#L43">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/custom/message.cr#L43">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6984,7 +7034,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L417">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L425">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -6995,7 +7045,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L417">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L425">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7006,7 +7056,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Bot through which the message was sent</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L350">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L355">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7017,7 +7067,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Bot through which the message was sent</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L350">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L355">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7028,7 +7078,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a video, information about the video</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L387">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L395">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7039,7 +7089,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a video, information about the video</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L387">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L395">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7050,7 +7100,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: video chat ended</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L507">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L515">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7061,7 +7111,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: video chat ended</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L507">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L515">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7072,7 +7122,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: new participants invited to a video chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L510">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L518">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7083,7 +7133,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: new participants invited to a video chat</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L510">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L518">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7094,7 +7144,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: video chat scheduled</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L501">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L509">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7105,7 +7155,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: video chat scheduled</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L501">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L509">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7116,7 +7166,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: video chat started</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L504">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L512">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7127,7 +7177,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: video chat started</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L504">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L512">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7138,7 +7188,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a video note, information about the video message</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L390">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L398">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7149,7 +7199,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a video note, information about the video message</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L390">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L398">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7160,7 +7210,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a voice message, information about the file</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L393">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L401">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7171,7 +7221,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Message is a voice message, information about the file</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L393">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L401">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7182,7 +7232,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: data sent by a Web App</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L513">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L521">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7193,7 +7243,7 @@
   <div class="doc doc-contents ">
 <p>Optional. Service message: data sent by a Web App</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L513">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L521">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7202,9 +7252,9 @@
     </code>
 <a href="#Tourmaline::Message#write_access_allowed" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>Optional. Service message: the user allowed the bot added to the attachment menu to write messages</p>  </div>
+<p>Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L474">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L482">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -7213,9 +7263,9 @@
     </code>
 <a href="#Tourmaline::Message#write_access_allowed=(write_access_allowed)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>Optional. Service message: the user allowed the bot added to the attachment menu to write messages</p>  </div>
+<p>Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L474">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L482">View source</a>
 </div>      </div>
   </div>
 

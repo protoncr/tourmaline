@@ -4134,6 +4134,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../Story/" class="md-nav__link">
+        Story
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../SuccessfulPayment/" class="md-nav__link">
         SuccessfulPayment
       </a>
@@ -4448,6 +4462,34 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_attachment_menu=(from_attachment_menu)" class="md-nav__link">
+    #from_attachment_menu=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_attachment_menu?" class="md-nav__link">
+    #from_attachment_menu?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_request=(from_request)" class="md-nav__link">
+    #from_request=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_request?" class="md-nav__link">
+    #from_request?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::WriteAccessAllowed#web_app_name" class="md-nav__link">
     #web_app_name
   </a>
@@ -4543,6 +4585,34 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_attachment_menu=(from_attachment_menu)" class="md-nav__link">
+    #from_attachment_menu=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_attachment_menu?" class="md-nav__link">
+    #from_attachment_menu?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_request=(from_request)" class="md-nav__link">
+    #from_request=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::WriteAccessAllowed#from_request?" class="md-nav__link">
+    #from_request?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#Tourmaline::WriteAccessAllowed#web_app_name" class="md-nav__link">
     #web_app_name
   </a>
@@ -4573,7 +4643,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L1264" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1282" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -4583,7 +4653,7 @@
       <br/><small>inherits <code>Reference</code></small>
 <a href="#Tourmaline::WriteAccessAllowed" class="headerlink" title="Permanent link">#</a></h1>
   <div class="doc doc-contents first">
-<p>This object represents a service message about a user allowing a bot to write messages after adding the bot to the attachment menu or launching a Web App from a link.</p>
+<p>This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.</p>
       <div class="doc doc-children">
 
             <h2>Included modules</h2>
@@ -4600,19 +4670,63 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L1265">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1283">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-class_method">
-<h3 id="Tourmaline::WriteAccessAllowed.new(web_app_name)" class="doc doc-heading">    <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">web_app_name</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+<h3 id="Tourmaline::WriteAccessAllowed.new(from_request,web_app_name,from_attachment_menu)" class="doc doc-heading">    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">from_request</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">web_app_name</span> <span class="p">:</span> <span class="n">String?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">from_attachment_menu</span> <span class="p">:</span> <span class="n">Bool?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
     </code>
-<a href="#Tourmaline::WriteAccessAllowed.new(web_app_name)" class="headerlink" title="Permanent link">#</a></h3>
+<a href="#Tourmaline::WriteAccessAllowed.new(from_request,web_app_name,from_attachment_menu)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L1270">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1294">View source</a>
 </div><h2 id="Tourmaline::WriteAccessAllowed-methods">Methods<a href="#Tourmaline::WriteAccessAllowed-methods" class="headerlink" title="Permanent link">#</a></h2>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::WriteAccessAllowed#from_attachment_menu=(from_attachment_menu)" class="doc doc-heading">    <code>
+      #from_attachment_menu=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">from_attachment_menu</span> <span class="p">:</span> <span class="n">Bool?</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::WriteAccessAllowed#from_attachment_menu=(from_attachment_menu)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the access was granted when the bot was added to the attachment or side menu</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1292">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::WriteAccessAllowed#from_attachment_menu?" class="doc doc-heading">    <code>
+      #from_attachment_menu?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool?</span></code></span>
+    </code>
+<a href="#Tourmaline::WriteAccessAllowed#from_attachment_menu?" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the access was granted when the bot was added to the attachment or side menu</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1292">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::WriteAccessAllowed#from_request=(from_request)" class="doc doc-heading">    <code>
+      #from_request=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">from_request</span> <span class="p">:</span> <span class="n">Bool?</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::WriteAccessAllowed#from_request=(from_request)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the access was granted after the user accepted an explicit request from a Web App sent by the method requestWriteAccess</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1286">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::WriteAccessAllowed#from_request?" class="doc doc-heading">    <code>
+      #from_request?<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">Bool?</span></code></span>
+    </code>
+<a href="#Tourmaline::WriteAccessAllowed#from_request?" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. True, if the access was granted after the user accepted an explicit request from a Web App sent by the method requestWriteAccess</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1286">View source</a>
+</div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::WriteAccessAllowed#web_app_name" class="doc doc-heading">    <code>
@@ -4620,9 +4734,9 @@
     </code>
 <a href="#Tourmaline::WriteAccessAllowed#web_app_name" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>Optional. Name of the Web App which was launched from a link</p>  </div>
+<p>Optional. Name of the Web App, if the access was granted when the Web App was launched from a link</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L1268">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1289">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4631,9 +4745,9 @@
     </code>
 <a href="#Tourmaline::WriteAccessAllowed#web_app_name=(web_app_name)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>Optional. Name of the Web App which was launched from a link</p>  </div>
+<p>Optional. Name of the Web App, if the access was granted when the Web App was launched from a link</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L1268">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L1289">View source</a>
 </div>      </div>
   </div>
 

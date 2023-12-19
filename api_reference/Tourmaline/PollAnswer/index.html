@@ -3966,7 +3966,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::PollAnswer.new(poll_id,user,option_ids)" class="md-nav__link">
+  <a href="#Tourmaline::PollAnswer.new(pull)" class="md-nav__link">
     .new
   </a>
   
@@ -4023,6 +4023,20 @@
           <li class="md-nav__item">
   <a href="#Tourmaline::PollAnswer#user=(user)" class="md-nav__link">
     #user=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::PollAnswer#voter_chat" class="md-nav__link">
+    #voter_chat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::PollAnswer#voter_chat=(voter_chat)" class="md-nav__link">
+    #voter_chat=
   </a>
   
 </li>
@@ -4231,6 +4245,20 @@
     <li class="md-nav__item">
       <a href="../StickerSet/" class="md-nav__link">
         StickerSet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Story/" class="md-nav__link">
+        Story
       </a>
     </li>
   
@@ -4551,7 +4579,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Tourmaline::PollAnswer.new(poll_id,user,option_ids)" class="md-nav__link">
+  <a href="#Tourmaline::PollAnswer.new(pull)" class="md-nav__link">
     .new
   </a>
   
@@ -4612,6 +4640,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#Tourmaline::PollAnswer#voter_chat" class="md-nav__link">
+    #voter_chat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tourmaline::PollAnswer#voter_chat=(voter_chat)" class="md-nav__link">
+    #voter_chat=
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4629,7 +4671,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L967" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L981" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -4649,17 +4691,6 @@
 <h2 id="Tourmaline::PollAnswer-constructors">Constructors<a href="#Tourmaline::PollAnswer-constructors" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-class_method">
-<h3 id="Tourmaline::PollAnswer.new(poll_id,user,option_ids)" class="doc doc-heading">    <code>
-      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">poll_id</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">option_ids</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span><span class="p">)</span></code></span>
-    </code>
-<a href="#Tourmaline::PollAnswer.new(poll_id,user,option_ids)" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-  </div>
-
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L979">View source</a>
-</div>
-
-<div class="doc doc-object doc-method doc-class_method">
 <h3 id="Tourmaline::PollAnswer.new(pull)" class="doc doc-heading">    <code>
       .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">pull</span> <span class="p">:</span> <span class="n">JSON</span><span class="o">::</span><span class="n">PullParser</span><span class="p">)</span></code></span>
     </code>
@@ -4667,7 +4698,18 @@
   <div class="doc doc-contents ">
   </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L968">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L982">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-class_method">
+<h3 id="Tourmaline::PollAnswer.new(poll_id,option_ids,voter_chat,user)" class="doc doc-heading">    <code>
+      .new<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">poll_id</span><span class="p">,</span> <span class="n">option_ids</span> <span class="p">:</span> <span class="n">Array</span><span class="p">(</span><span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span><span class="p">)</span> <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="n">Int32</span> <span class="o">|</span> <span class="n">Int64</span><span class="p">,</span> <span class="n">voter_chat</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Tourmaline::Chat?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">user</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::PollAnswer.new(poll_id,option_ids,voter_chat,user)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L996">View source</a>
 </div><h2 id="Tourmaline::PollAnswer-methods">Methods<a href="#Tourmaline::PollAnswer-methods" class="headerlink" title="Permanent link">#</a></h2>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4676,9 +4718,9 @@
     </code>
 <a href="#Tourmaline::PollAnswer#option_ids" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.</p>  </div>
+<p>0-based identifiers of chosen answer options. May be empty if the vote was retracted.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L977">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L988">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4687,9 +4729,9 @@
     </code>
 <a href="#Tourmaline::PollAnswer#option_ids=(option_ids)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.</p>  </div>
+<p>0-based identifiers of chosen answer options. May be empty if the vote was retracted.</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L977">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L988">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4700,7 +4742,7 @@
   <div class="doc doc-contents ">
 <p>Unique poll identifier</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L971">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L985">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
@@ -4711,29 +4753,51 @@
   <div class="doc doc-contents ">
 <p>Unique poll identifier</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L971">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L985">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::PollAnswer#user" class="doc doc-heading">    <code>
-      #user<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User</a></code></span>
+      #user<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a></code></span>
     </code>
 <a href="#Tourmaline::PollAnswer#user" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>The user, who changed the answer to the poll</p>  </div>
+<p>Optional. The user that changed the answer to the poll, if the voter isn't anonymous</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L974">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L994">View source</a>
 </div>
 
 <div class="doc doc-object doc-method doc-instance_method">
 <h3 id="Tourmaline::PollAnswer#user=(user)" class="doc doc-heading">    <code>
-      #user=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User</a><span class="p">)</span></code></span>
+      #user=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">user</span> <span class="p">:</span> <a href="../User/#Tourmaline::User">Tourmaline::User?</a><span class="p">)</span></code></span>
     </code>
 <a href="#Tourmaline::PollAnswer#user=(user)" class="headerlink" title="Permanent link">#</a></h3>
   <div class="doc doc-contents ">
-<p>The user, who changed the answer to the poll</p>  </div>
+<p>Optional. The user that changed the answer to the poll, if the voter isn't anonymous</p>  </div>
 
-    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/81940948612f5cec50cf89d95bb760dc1bee3ae6/src/tourmaline/types/api.cr#L974">View source</a>
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L994">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::PollAnswer#voter_chat" class="doc doc-heading">    <code>
+      #voter_chat<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Tourmaline::Chat?</a></code></span>
+    </code>
+<a href="#Tourmaline::PollAnswer#voter_chat" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. The chat that changed the answer to the poll, if the voter is anonymous</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L991">View source</a>
+</div>
+
+<div class="doc doc-object doc-method doc-instance_method">
+<h3 id="Tourmaline::PollAnswer#voter_chat=(voter_chat)" class="doc doc-heading">    <code>
+      #voter_chat=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">voter_chat</span> <span class="p">:</span> <a href="../Chat/#Tourmaline::Chat">Tourmaline::Chat?</a><span class="p">)</span></code></span>
+    </code>
+<a href="#Tourmaline::PollAnswer#voter_chat=(voter_chat)" class="headerlink" title="Permanent link">#</a></h3>
+  <div class="doc doc-contents ">
+<p>Optional. The chat that changed the answer to the poll, if the voter is anonymous</p>  </div>
+
+    <a class="doc-source-link" href="https://github.com/protoncr/tourmaline/blob/0895bca4baa95fd91e015e774440d75931d7f794/src/tourmaline/types/api.cr#L991">View source</a>
 </div>      </div>
   </div>
 
