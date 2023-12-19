@@ -207,6 +207,10 @@ module Tourmaline
     # Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
     property emoji_status_custom_emoji_id : String | ::Nil
 
+    # Optional. Expiration date of the emoji status of the other party in a private chat in Unix time, if any. Returned only in getChat.
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property emoji_status_expiration_date : Time | ::Nil
+
     # Optional. Bio of the other party in a private chat. Returned only in getChat.
     property bio : String | ::Nil
 
@@ -273,6 +277,7 @@ module Tourmaline
       @photo : Tourmaline::ChatPhoto | ::Nil = nil,
       @active_usernames : Array(String) = [] of String,
       @emoji_status_custom_emoji_id : String | ::Nil = nil,
+      @emoji_status_expiration_date : Int32 | Int64 | ::Nil = nil,
       @bio : String | ::Nil = nil,
       @has_private_forwards : Bool | ::Nil = nil,
       @has_restricted_voice_and_video_messages : Bool | ::Nil = nil,
@@ -383,6 +388,9 @@ module Tourmaline
     # Optional. Message is a sticker, information about the sticker
     property sticker : Tourmaline::Sticker | ::Nil
 
+    # Optional. Message is a forwarded story
+    property story : Tourmaline::Story | ::Nil
+
     # Optional. Message is a video, information about the video
     property video : Tourmaline::Video | ::Nil
 
@@ -470,7 +478,7 @@ module Tourmaline
     # Optional. The domain name of the website on which the user has logged in. More about Telegram Login: https://core.telegram.org/widgets/login
     property connected_website : String | ::Nil
 
-    # Optional. Service message: the user allowed the bot added to the attachment menu to write messages
+    # Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess
     property write_access_allowed : Tourmaline::WriteAccessAllowed | ::Nil
 
     # Optional. Telegram Passport data
@@ -543,6 +551,7 @@ module Tourmaline
       @document : Tourmaline::Document | ::Nil = nil,
       @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize,
       @sticker : Tourmaline::Sticker | ::Nil = nil,
+      @story : Tourmaline::Story | ::Nil = nil,
       @video : Tourmaline::Video | ::Nil = nil,
       @video_note : Tourmaline::VideoNote | ::Nil = nil,
       @voice : Tourmaline::Voice | ::Nil = nil,
@@ -793,6 +802,11 @@ module Tourmaline
     end
   end
 
+  # This object represents a message about a forwarded story in the chat. Currently holds no information.
+  class Story
+    include JSON::Serializable
+  end
+
   # This object represents a video file.
   class Video
     include JSON::Serializable
@@ -970,16 +984,20 @@ module Tourmaline
     # Unique poll identifier
     property poll_id : String
 
-    # The user, who changed the answer to the poll
-    property user : Tourmaline::User
-
-    # 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
+    # 0-based identifiers of chosen answer options. May be empty if the vote was retracted.
     property option_ids : Array(Int32 | Int64) = [] of Int32 | Int64
+
+    # Optional. The chat that changed the answer to the poll, if the voter is anonymous
+    property voter_chat : Tourmaline::Chat | ::Nil
+
+    # Optional. The user that changed the answer to the poll, if the voter isn't anonymous
+    property user : Tourmaline::User | ::Nil
 
     def initialize(
       @poll_id,
-      @user,
-      @option_ids : Array(Int32 | Int64) = [] of Int32 | Int64
+      @option_ids : Array(Int32 | Int64) = [] of Int32 | Int64,
+      @voter_chat : Tourmaline::Chat | ::Nil = nil,
+      @user : Tourmaline::User | ::Nil = nil
     )
     end
   end
@@ -1260,15 +1278,23 @@ module Tourmaline
     end
   end
 
-  # This object represents a service message about a user allowing a bot to write messages after adding the bot to the attachment menu or launching a Web App from a link.
+  # This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.
   class WriteAccessAllowed
     include JSON::Serializable
 
-    # Optional. Name of the Web App which was launched from a link
+    # Optional. True, if the access was granted after the user accepted an explicit request from a Web App sent by the method requestWriteAccess
+    property? from_request : Bool | ::Nil
+
+    # Optional. Name of the Web App, if the access was granted when the Web App was launched from a link
     property web_app_name : String | ::Nil
 
+    # Optional. True, if the access was granted when the bot was added to the attachment or side menu
+    property? from_attachment_menu : Bool | ::Nil
+
     def initialize(
-      @web_app_name : String | ::Nil = nil
+      @from_request : Bool | ::Nil = nil,
+      @web_app_name : String | ::Nil = nil,
+      @from_attachment_menu : Bool | ::Nil = nil
     )
     end
   end
@@ -1572,7 +1598,7 @@ module Tourmaline
     # Optional. An HTTPS URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget.
     property login_url : Tourmaline::LoginUrl | ::Nil
 
-    # Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm... actions - in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen.
+    # Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted.
     property switch_inline_query : String | ::Nil
 
     # Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted. This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options.
@@ -1793,7 +1819,7 @@ module Tourmaline
     # True, if the user's presence in the chat is hidden
     property? is_anonymous : Bool
 
-    # True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
+    # True, if the administrator can access the chat event log, boost list in channels, see channel members, report spam messages, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
     property? can_manage_chat : Bool
 
     # True, if the administrator can delete messages of other users
@@ -1802,7 +1828,7 @@ module Tourmaline
     # True, if the administrator can manage video chats
     property? can_manage_video_chats : Bool
 
-    # True, if the administrator can restrict, ban or unban chat members
+    # True, if the administrator can restrict, ban or unban chat members, or access supergroup statistics
     property? can_restrict_members : Bool
 
     # True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)
@@ -1814,7 +1840,7 @@ module Tourmaline
     # True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool
 
-    # Optional. True, if the administrator can post in the channel; channels only
+    # Optional. True, if the administrator can post messages in the channel, or access channel statistics; channels only
     property? can_post_messages : Bool | ::Nil
 
     # Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
@@ -1822,6 +1848,15 @@ module Tourmaline
 
     # Optional. True, if the user is allowed to pin messages; groups and supergroups only
     property? can_pin_messages : Bool | ::Nil
+
+    # Optional. True, if the administrator can post stories in the channel; channels only
+    property? can_post_stories : Bool | ::Nil
+
+    # Optional. True, if the administrator can edit stories posted by other users; channels only
+    property? can_edit_stories : Bool | ::Nil
+
+    # Optional. True, if the administrator can delete stories posted by other users; channels only
+    property? can_delete_stories : Bool | ::Nil
 
     # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
     property? can_manage_topics : Bool | ::Nil
@@ -1838,6 +1873,9 @@ module Tourmaline
       @can_post_messages : Bool | ::Nil = nil,
       @can_edit_messages : Bool | ::Nil = nil,
       @can_pin_messages : Bool | ::Nil = nil,
+      @can_post_stories : Bool | ::Nil = nil,
+      @can_edit_stories : Bool | ::Nil = nil,
+      @can_delete_stories : Bool | ::Nil = nil,
       @can_manage_topics : Bool | ::Nil = nil
     )
     end
@@ -1893,7 +1931,7 @@ module Tourmaline
     # True, if the user's presence in the chat is hidden
     property? is_anonymous : Bool
 
-    # True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
+    # True, if the administrator can access the chat event log, boost list in channels, see channel members, report spam messages, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
     property? can_manage_chat : Bool
 
     # True, if the administrator can delete messages of other users
@@ -1902,7 +1940,7 @@ module Tourmaline
     # True, if the administrator can manage video chats
     property? can_manage_video_chats : Bool
 
-    # True, if the administrator can restrict, ban or unban chat members
+    # True, if the administrator can restrict, ban or unban chat members, or access supergroup statistics
     property? can_restrict_members : Bool
 
     # True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)
@@ -1914,7 +1952,7 @@ module Tourmaline
     # True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool
 
-    # Optional. True, if the administrator can post in the channel; channels only
+    # Optional. True, if the administrator can post messages in the channel, or access channel statistics; channels only
     property? can_post_messages : Bool | ::Nil
 
     # Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
@@ -1922,6 +1960,15 @@ module Tourmaline
 
     # Optional. True, if the user is allowed to pin messages; groups and supergroups only
     property? can_pin_messages : Bool | ::Nil
+
+    # Optional. True, if the administrator can post stories in the channel; channels only
+    property? can_post_stories : Bool | ::Nil
+
+    # Optional. True, if the administrator can edit stories posted by other users; channels only
+    property? can_edit_stories : Bool | ::Nil
+
+    # Optional. True, if the administrator can delete stories posted by other users; channels only
+    property? can_delete_stories : Bool | ::Nil
 
     # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
     property? can_manage_topics : Bool | ::Nil
@@ -1944,6 +1991,9 @@ module Tourmaline
       @can_post_messages : Bool | ::Nil = nil,
       @can_edit_messages : Bool | ::Nil = nil,
       @can_pin_messages : Bool | ::Nil = nil,
+      @can_post_stories : Bool | ::Nil = nil,
+      @can_edit_stories : Bool | ::Nil = nil,
+      @can_delete_stories : Bool | ::Nil = nil,
       @can_manage_topics : Bool | ::Nil = nil,
       @custom_title : String | ::Nil = nil
     )
@@ -2022,7 +2072,7 @@ module Tourmaline
     # True, if the user is allowed to create forum topics
     property? can_manage_topics : Bool
 
-    # Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted forever
+    # Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
     @[JSON::Field(converter: Time::EpochConverter)]
     property until_date : Time
 
@@ -2076,7 +2126,7 @@ module Tourmaline
     # Information about the user
     property user : Tourmaline::User
 
-    # Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
+    # Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever
     @[JSON::Field(converter: Time::EpochConverter)]
     property until_date : Time
 
@@ -2136,7 +2186,7 @@ module Tourmaline
     # User that sent the join request
     property from : Tourmaline::User
 
-    # Identifier of a private chat with the user who sent the join request. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can use this identifier for 24 hours to send messages until the join request is processed, assuming no other administrator contacted the user.
+    # Identifier of a private chat with the user who sent the join request. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can use this identifier for 5 minutes to send messages until the join request is processed, assuming no other administrator contacted the user.
     property user_chat_id : Int32 | Int64
 
     # Date the request was sent in Unix time

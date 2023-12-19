@@ -2,6 +2,13 @@
 
 I will do my best to keep this updated with changes as they happen.
 
+## 0.30.0
+
+### Added:
+
+- Full support for Bot API 6.9
+- See [the official Bot API changelog](https://core.telegram.org/bots/api#september-22-2023) for a complete list of changes.
+
 ## 0.29.0
 
 **The core functionality of Tourmaline is now auto generated from the official Bot API documentation. This means that Tourmaline will always be up to date with the latest version of the Bot API.**

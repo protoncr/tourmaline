@@ -668,15 +668,18 @@ module Tourmaline
         user_id : Int32 | Int64,
         is_anonymous : Bool | ::Nil = nil,
         can_manage_chat : Bool | ::Nil = nil,
-        can_post_messages : Bool | ::Nil = nil,
-        can_edit_messages : Bool | ::Nil = nil,
         can_delete_messages : Bool | ::Nil = nil,
         can_manage_video_chats : Bool | ::Nil = nil,
         can_restrict_members : Bool | ::Nil = nil,
         can_promote_members : Bool | ::Nil = nil,
         can_change_info : Bool | ::Nil = nil,
         can_invite_users : Bool | ::Nil = nil,
+        can_post_messages : Bool | ::Nil = nil,
+        can_edit_messages : Bool | ::Nil = nil,
         can_pin_messages : Bool | ::Nil = nil,
+        can_post_stories : Bool | ::Nil = nil,
+        can_edit_stories : Bool | ::Nil = nil,
+        can_delete_stories : Bool | ::Nil = nil,
         can_manage_topics : Bool | ::Nil = nil
       )
         request(Bool, "promoteChatMember", {
@@ -684,15 +687,18 @@ module Tourmaline
           user_id:                user_id,
           is_anonymous:           is_anonymous,
           can_manage_chat:        can_manage_chat,
-          can_post_messages:      can_post_messages,
-          can_edit_messages:      can_edit_messages,
           can_delete_messages:    can_delete_messages,
           can_manage_video_chats: can_manage_video_chats,
           can_restrict_members:   can_restrict_members,
           can_promote_members:    can_promote_members,
           can_change_info:        can_change_info,
           can_invite_users:       can_invite_users,
+          can_post_messages:      can_post_messages,
+          can_edit_messages:      can_edit_messages,
           can_pin_messages:       can_pin_messages,
+          can_post_stories:       can_post_stories,
+          can_edit_stories:       can_edit_stories,
+          can_delete_stories:     can_delete_stories,
           can_manage_topics:      can_manage_topics,
         })
       end
@@ -1087,6 +1093,15 @@ module Tourmaline
         chat_id : Int32 | Int64 | String
       )
         request(Bool, "unhideGeneralForumTopic", {
+          chat_id: chat_id,
+        })
+      end
+
+      # Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
+      def unpin_all_general_forum_topic_messages(
+        chat_id : Int32 | Int64 | String
+      )
+        request(Bool, "unpinAllGeneralForumTopicMessages", {
           chat_id: chat_id,
         })
       end
