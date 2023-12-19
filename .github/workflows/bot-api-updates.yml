@@ -1,0 +1,48 @@
+# Github workflow to update the code when the bot API is updated.
+# Runs every day, and can be manually triggered.
+# On trigger, runs the generate script at `scripts/generate.cr`, commits the changes (if any) to the `develop` branch,
+# and opens a pull request to merge the changes into `master`.
+
+name: Update code
+on:
+    workflow_dispatch: {} # Allow manual triggering
+    schedule:
+        - cron: "0 0 * * *"
+jobs:
+    update:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+              crystal-version: [1.10.1]
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  ref: develop
+            - uses: oprypin/install-crystal@v1
+              with:
+                crystal: ${{ matrix.crystal-version }}
+            - name: Install dependencies
+              run: shards install
+            - name: Generate code
+              id: generate
+              run: crystal scripts/generate.cr
+            - name: Commit changes
+              run: |
+                  git config --local user.email "cawatson1993@gmail.com"
+                  git config --local user.name "Chris Watson"
+                  git add .
+                  git commit -am "bot api update"
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch: develop
+            - name: Create pull request
+              uses: peter-evans/create-pull-request@v3
+              with:
+                token: ${{ secrets.GITHUB_TOKEN }}
+                commit-message: "bot api update"
+                title: "bot api update"
+                body: ${{ steps.generate.outputs.output }}
+                branch: develop
+                base: master
