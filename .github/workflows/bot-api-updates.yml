@@ -26,6 +26,8 @@ jobs:
             - name: Generate code
               id: generate
               run: crystal scripts/generate.cr
+            - name: Format code
+              run: crystal tool format
             - name: Commit changes
               run: |
                   git config --local user.email "cawatson1993@gmail.com"
