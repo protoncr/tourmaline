@@ -604,7 +604,7 @@ module Tourmaline
         })
       end
 
-      # Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. In albums, bots must react to the first message. Returns True on success.
+      # Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Returns True on success.
       def set_message_reaction(
         chat_id : Int32 | Int64 | String,
         message_id : Int32 | Int64,
