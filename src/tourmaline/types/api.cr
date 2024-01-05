@@ -26,7 +26,7 @@ module Tourmaline
     # Optional. A reaction to a message was changed by a user. The bot must be an administrator in the chat and must explicitly specify "message_reaction" in the list of allowed_updates to receive these updates. The update isn't received for reactions set by bots.
     property message_reaction : Tourmaline::MessageReactionUpdated | ::Nil
 
-    # Optional. Reactions to a message with anonymous reactions were changed. The bot must be an administrator in the chat and must explicitly specify "message_reaction_count" in the list of allowed_updates to receive these updates.
+    # Optional. Reactions to a message with anonymous reactions were changed. The bot must be an administrator in the chat and must explicitly specify "message_reaction_count" in the list of allowed_updates to receive these updates. The updates are grouped and can be sent with delay up to a few minutes.
     property message_reaction_count : Tourmaline::MessageReactionCountUpdated | ::Nil
 
     # Optional. New incoming inline query
