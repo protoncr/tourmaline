@@ -8,19 +8,19 @@ module Tourmaline
   class Update
     include JSON::Serializable
 
-    # The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
+    # The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
     property update_id : Int32 | Int64
 
     # Optional. New incoming message of any kind - text, photo, sticker, etc.
     property message : Tourmaline::Message | ::Nil
 
-    # Optional. New version of a message that is known to the bot and was edited
+    # Optional. New version of a message that is known to the bot and was edited. This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
     property edited_message : Tourmaline::Message | ::Nil
 
     # Optional. New incoming channel post of any kind - text, photo, sticker, etc.
     property channel_post : Tourmaline::Message | ::Nil
 
-    # Optional. New version of a channel post that is known to the bot and was edited
+    # Optional. New version of a channel post that is known to the bot and was edited. This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
     property edited_channel_post : Tourmaline::Message | ::Nil
 
     # Optional. A reaction to a message was changed by a user. The bot must be an administrator in the chat and must explicitly specify "message_reaction" in the list of allowed_updates to receive these updates. The update isn't received for reactions set by bots.
@@ -44,7 +44,7 @@ module Tourmaline
     # Optional. New incoming pre-checkout query. Contains full information about checkout
     property pre_checkout_query : Tourmaline::PreCheckoutQuery | ::Nil
 
-    # Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
+    # Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot
     property poll : Tourmaline::Poll | ::Nil
 
     # Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
@@ -1928,9 +1928,6 @@ module Tourmaline
   end
 
   # This object represents one button of the reply keyboard. For simple text buttons, String can be used instead of this object to specify the button text. The optional fields web_app, request_users, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
-  # Note: request_contact and request_location options will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.
-  # Note: request_poll option will only work in Telegram versions released after 23 January, 2020. Older clients will display unsupported message.
-  # Note: web_app option will only work in Telegram versions released after 16 April, 2022. Older clients will display unsupported message.
   # Note: request_users and request_chat options will only work in Telegram versions released after 3 February, 2023. Older clients will display unsupported message.
   class KeyboardButton
     include JSON::Serializable
@@ -2065,7 +2062,6 @@ module Tourmaline
   end
 
   # This object represents an inline keyboard that appears right next to the message it belongs to.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.
   class InlineKeyboardMarkup
     include JSON::Serializable
 
@@ -2085,7 +2081,7 @@ module Tourmaline
     # Label text on the button
     property text : String
 
-    # Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings.
+    # Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their identifier without using a username, if this is allowed by their privacy settings.
     property url : String | ::Nil
 
     # Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
@@ -4106,7 +4102,6 @@ module Tourmaline
   end
 
   # Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultAudio
     include JSON::Serializable
 
@@ -4160,7 +4155,6 @@ module Tourmaline
   end
 
   # Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultVoice
     include JSON::Serializable
 
@@ -4210,7 +4204,6 @@ module Tourmaline
   end
 
   # Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultDocument
     include JSON::Serializable
 
@@ -4276,7 +4269,6 @@ module Tourmaline
   end
 
   # Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultLocation
     include JSON::Serializable
 
@@ -4342,7 +4334,6 @@ module Tourmaline
   end
 
   # Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultVenue
     include JSON::Serializable
 
@@ -4412,7 +4403,6 @@ module Tourmaline
   end
 
   # Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultContact
     include JSON::Serializable
 
@@ -4466,7 +4456,6 @@ module Tourmaline
   end
 
   # Represents a Game.
-  # Note: This will only work in Telegram versions released after October 1, 2016. Older clients will not display any inline results if a game result is among them.
   class InlineQueryResultGame
     include JSON::Serializable
 
@@ -4631,7 +4620,6 @@ module Tourmaline
   end
 
   # Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.
-  # Note: This will only work in Telegram versions released after 9 April, 2016 for static stickers and after 06 July, 2019 for animated stickers. Older clients will ignore them.
   class InlineQueryResultCachedSticker
     include JSON::Serializable
 
@@ -4661,7 +4649,6 @@ module Tourmaline
   end
 
   # Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedDocument
     include JSON::Serializable
 
@@ -4760,7 +4747,6 @@ module Tourmaline
   end
 
   # Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedVoice
     include JSON::Serializable
 
@@ -4806,7 +4792,6 @@ module Tourmaline
   end
 
   # Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedAudio
     include JSON::Serializable
 
