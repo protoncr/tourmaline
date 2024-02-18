@@ -269,7 +269,7 @@ module Tourmaline
     # Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.
     property permissions : Tourmaline::ChatPermissions | ::Nil
 
-    # Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user; in seconds. Returned only in getChat.
+    # Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged user; in seconds. Returned only in getChat.
     property slow_mode_delay : Int32 | Int64 | ::Nil
 
     # Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
@@ -1742,7 +1742,7 @@ module Tourmaline
     # The chat that created the giveaway
     property chat : Tourmaline::Chat
 
-    # Identifier of the messsage with the giveaway in the chat
+    # Identifier of the message with the giveaway in the chat
     property giveaway_message_id : Int32 | Int64
 
     # Point in time (Unix timestamp) when winners of the giveaway were selected
@@ -1820,10 +1820,10 @@ module Tourmaline
     # Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used
     property url : String | ::Nil
 
-    # Optional. True, if the media in the link preview is suppposed to be shrunk; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
+    # Optional. True, if the media in the link preview is supposed to be shrunk; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
     property? prefer_small_media : Bool | ::Nil
 
-    # Optional. True, if the media in the link preview is suppposed to be enlarged; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
+    # Optional. True, if the media in the link preview is supposed to be enlarged; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
     property? prefer_large_media : Bool | ::Nil
 
     # Optional. True, if the link preview must be shown above the message text; otherwise, the link preview will be shown below the message text
@@ -3262,7 +3262,7 @@ module Tourmaline
     # Chat which was boosted
     property chat : Tourmaline::Chat
 
-    # Infomation about the chat boost
+    # Information about the chat boost
     property boost : Tourmaline::ChatBoost
 
     def initialize(
