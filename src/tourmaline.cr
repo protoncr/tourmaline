@@ -12,7 +12,7 @@ require "./tourmaline/client"
 #
 # For usage examples, see the
 # [examples](https://github.com/watzon/tourmaline/tree/master/examples)
-# directory. For guides on using Tourmaline, see the official
-# Tourmaline [cookbook](https://tourmaline.dev/docs/cookbook/your-first-bot).
+# directory. For guides on using Tourmaline, see the
+# [usage docs section](https://tourmaline.dev/usage/).
 module Tourmaline
 end
