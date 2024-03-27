@@ -1412,11 +1412,11 @@ module Tourmaline
   class Location
     include JSON::Serializable
 
-    # Longitude as defined by sender
-    property longitude : Float64
-
     # Latitude as defined by sender
     property latitude : Float64
+
+    # Longitude as defined by sender
+    property longitude : Float64
 
     # Optional. The radius of uncertainty for the location, measured in meters; 0-1500
     property horizontal_accuracy : Float64 | ::Nil
@@ -1431,8 +1431,8 @@ module Tourmaline
     property proximity_alert_radius : Int32 | Int64 | ::Nil
 
     def initialize(
-      @longitude,
       @latitude,
+      @longitude,
       @horizontal_accuracy : Float64 | ::Nil = nil,
       @live_period : Int32 | Int64 | ::Nil = nil,
       @heading : Int32 | Int64 | ::Nil = nil,
