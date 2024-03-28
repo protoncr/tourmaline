@@ -8,19 +8,19 @@ module Tourmaline
   class Update
     include JSON::Serializable
 
-    # The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
+    # The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
     property update_id : Int32 | Int64
 
     # Optional. New incoming message of any kind - text, photo, sticker, etc.
     property message : Tourmaline::Message | ::Nil
 
-    # Optional. New version of a message that is known to the bot and was edited
+    # Optional. New version of a message that is known to the bot and was edited. This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
     property edited_message : Tourmaline::Message | ::Nil
 
     # Optional. New incoming channel post of any kind - text, photo, sticker, etc.
     property channel_post : Tourmaline::Message | ::Nil
 
-    # Optional. New version of a channel post that is known to the bot and was edited
+    # Optional. New version of a channel post that is known to the bot and was edited. This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
     property edited_channel_post : Tourmaline::Message | ::Nil
 
     # Optional. A reaction to a message was changed by a user. The bot must be an administrator in the chat and must explicitly specify "message_reaction" in the list of allowed_updates to receive these updates. The update isn't received for reactions set by bots.
@@ -44,7 +44,7 @@ module Tourmaline
     # Optional. New incoming pre-checkout query. Contains full information about checkout
     property pre_checkout_query : Tourmaline::PreCheckoutQuery | ::Nil
 
-    # Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
+    # Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot
     property poll : Tourmaline::Poll | ::Nil
 
     # Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
@@ -272,6 +272,9 @@ module Tourmaline
     # Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged user; in seconds. Returned only in getChat.
     property slow_mode_delay : Int32 | Int64 | ::Nil
 
+    # Optional. For supergroups, the minimum number of boosts that a non-administrator user needs to add in order to ignore slow mode and chat permissions. Returned only in getChat.
+    property unrestrict_boost_count : Int32 | Int64 | ::Nil
+
     # Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
     @[JSON::Field(converter: Time::EpochConverter)]
     property message_auto_delete_time : Time | ::Nil
@@ -293,6 +296,9 @@ module Tourmaline
 
     # Optional. True, if the bot can change the group sticker set. Returned only in getChat.
     property? can_set_sticker_set : Bool | ::Nil
+
+    # Optional. For supergroups, the name of the group's custom emoji sticker set. Custom emoji from this set can be used by all users and bots in the group. Returned only in getChat.
+    property custom_emoji_sticker_set_name : String | ::Nil
 
     # Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
     property linked_chat_id : Int32 | Int64 | ::Nil
@@ -327,6 +333,7 @@ module Tourmaline
       @pinned_message : Tourmaline::Message | ::Nil = nil,
       @permissions : Tourmaline::ChatPermissions | ::Nil = nil,
       @slow_mode_delay : Int32 | Int64 | ::Nil = nil,
+      @unrestrict_boost_count : Int32 | Int64 | ::Nil = nil,
       @message_auto_delete_time : Int32 | Int64 | ::Nil = nil,
       @has_aggressive_anti_spam_enabled : Bool | ::Nil = nil,
       @has_hidden_members : Bool | ::Nil = nil,
@@ -334,6 +341,7 @@ module Tourmaline
       @has_visible_history : Bool | ::Nil = nil,
       @sticker_set_name : String | ::Nil = nil,
       @can_set_sticker_set : Bool | ::Nil = nil,
+      @custom_emoji_sticker_set_name : String | ::Nil = nil,
       @linked_chat_id : Int32 | Int64 | ::Nil = nil,
       @location : Tourmaline::ChatLocation | ::Nil = nil
     )
@@ -363,6 +371,9 @@ module Tourmaline
     # Optional. Sender of the message, sent on behalf of a chat. For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group administrators, the linked channel for messages automatically forwarded to the discussion group. For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
     property sender_chat : Tourmaline::Chat | ::Nil
 
+    # Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+    property sender_boost_count : Int32 | Int64 | ::Nil
+
     # Optional. Information about the original message for forwarded messages
     property forward_origin : Tourmaline::MessageOrigin | ::Nil
 
@@ -380,6 +391,9 @@ module Tourmaline
 
     # Optional. For replies that quote part of the original message, the quoted part of the message
     property quote : Tourmaline::TextQuote | ::Nil
+
+    # Optional. For replies to a story, the original story
+    property reply_to_story : Tourmaline::Story | ::Nil
 
     # Optional. Bot through which the message was sent
     property via_bot : Tourmaline::User | ::Nil
@@ -520,6 +534,9 @@ module Tourmaline
     # Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
     property proximity_alert_triggered : Tourmaline::ProximityAlertTriggered | ::Nil
 
+    # Optional. Service message: user boosted the chat
+    property boost_added : Tourmaline::ChatBoostAdded | ::Nil
+
     # Optional. Service message: forum topic created
     property forum_topic_created : Tourmaline::ForumTopicCreated | ::Nil
 
@@ -575,12 +592,14 @@ module Tourmaline
       @message_thread_id : Int32 | Int64 | ::Nil = nil,
       @from : Tourmaline::User | ::Nil = nil,
       @sender_chat : Tourmaline::Chat | ::Nil = nil,
+      @sender_boost_count : Int32 | Int64 | ::Nil = nil,
       @forward_origin : Tourmaline::MessageOrigin | ::Nil = nil,
       @is_topic_message : Bool | ::Nil = nil,
       @is_automatic_forward : Bool | ::Nil = nil,
       @reply_to_message : Tourmaline::Message | ::Nil = nil,
       @external_reply : Tourmaline::ExternalReplyInfo | ::Nil = nil,
       @quote : Tourmaline::TextQuote | ::Nil = nil,
+      @reply_to_story : Tourmaline::Story | ::Nil = nil,
       @via_bot : Tourmaline::User | ::Nil = nil,
       @edit_date : Int32 | Int64 | ::Nil = nil,
       @has_protected_content : Bool | ::Nil = nil,
@@ -627,6 +646,7 @@ module Tourmaline
       @write_access_allowed : Tourmaline::WriteAccessAllowed | ::Nil = nil,
       @passport_data : Tourmaline::PassportData | ::Nil = nil,
       @proximity_alert_triggered : Tourmaline::ProximityAlertTriggered | ::Nil = nil,
+      @boost_added : Tourmaline::ChatBoostAdded | ::Nil = nil,
       @forum_topic_created : Tourmaline::ForumTopicCreated | ::Nil = nil,
       @forum_topic_edited : Tourmaline::ForumTopicEdited | ::Nil = nil,
       @forum_topic_closed : Tourmaline::ForumTopicClosed | ::Nil = nil,
@@ -1146,9 +1166,21 @@ module Tourmaline
     end
   end
 
-  # This object represents a message about a forwarded story in the chat. Currently holds no information.
+  # This object represents a story.
   class Story
     include JSON::Serializable
+
+    # Chat that posted the story
+    property chat : Tourmaline::Chat
+
+    # Unique identifier for the story in the chat
+    property id : Int32 | Int64
+
+    def initialize(
+      @chat,
+      @id
+    )
+    end
   end
 
   # This object represents a video file.
@@ -1412,11 +1444,11 @@ module Tourmaline
   class Location
     include JSON::Serializable
 
-    # Longitude as defined by sender
-    property longitude : Float64
-
     # Latitude as defined by sender
     property latitude : Float64
+
+    # Longitude as defined by sender
+    property longitude : Float64
 
     # Optional. The radius of uncertainty for the location, measured in meters; 0-1500
     property horizontal_accuracy : Float64 | ::Nil
@@ -1431,8 +1463,8 @@ module Tourmaline
     property proximity_alert_radius : Int32 | Int64 | ::Nil
 
     def initialize(
-      @longitude,
       @latitude,
+      @longitude,
       @horizontal_accuracy : Float64 | ::Nil = nil,
       @live_period : Int32 | Int64 | ::Nil = nil,
       @heading : Int32 | Int64 | ::Nil = nil,
@@ -1526,6 +1558,19 @@ module Tourmaline
 
     def initialize(
       @message_auto_delete_time
+    )
+    end
+  end
+
+  # This object represents a service message about a user boosting a chat.
+  class ChatBoostAdded
+    include JSON::Serializable
+
+    # Number of boosts added by the user
+    property boost_count : Int32 | Int64
+
+    def initialize(
+      @boost_count
     )
     end
   end
@@ -1928,9 +1973,6 @@ module Tourmaline
   end
 
   # This object represents one button of the reply keyboard. For simple text buttons, String can be used instead of this object to specify the button text. The optional fields web_app, request_users, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
-  # Note: request_contact and request_location options will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.
-  # Note: request_poll option will only work in Telegram versions released after 23 January, 2020. Older clients will display unsupported message.
-  # Note: web_app option will only work in Telegram versions released after 16 April, 2022. Older clients will display unsupported message.
   # Note: request_users and request_chat options will only work in Telegram versions released after 3 February, 2023. Older clients will display unsupported message.
   class KeyboardButton
     include JSON::Serializable
@@ -2065,7 +2107,6 @@ module Tourmaline
   end
 
   # This object represents an inline keyboard that appears right next to the message it belongs to.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.
   class InlineKeyboardMarkup
     include JSON::Serializable
 
@@ -2085,7 +2126,7 @@ module Tourmaline
     # Label text on the button
     property text : String
 
-    # Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings.
+    # Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their identifier without using a username, if this is allowed by their privacy settings.
     property url : String | ::Nil
 
     # Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
@@ -2318,7 +2359,7 @@ module Tourmaline
     # True, if the user's presence in the chat is hidden
     property? is_anonymous : Bool
 
-    # True, if the administrator can access the chat event log, boost list in channels, see channel members, report spam messages, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
+    # True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
     property? can_manage_chat : Bool
 
     # True, if the administrator can delete messages of other users
@@ -2339,25 +2380,25 @@ module Tourmaline
     # True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool
 
-    # Optional. True, if the administrator can post messages in the channel, or access channel statistics; channels only
+    # True, if the administrator can post stories to the chat
+    property? can_post_stories : Bool
+
+    # True, if the administrator can edit stories posted by other users
+    property? can_edit_stories : Bool
+
+    # True, if the administrator can delete stories posted by other users
+    property? can_delete_stories : Bool
+
+    # Optional. True, if the administrator can post messages in the channel, or access channel statistics; for channels only
     property? can_post_messages : Bool | ::Nil
 
-    # Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
+    # Optional. True, if the administrator can edit messages of other users and can pin messages; for channels only
     property? can_edit_messages : Bool | ::Nil
 
-    # Optional. True, if the user is allowed to pin messages; groups and supergroups only
+    # Optional. True, if the user is allowed to pin messages; for groups and supergroups only
     property? can_pin_messages : Bool | ::Nil
 
-    # Optional. True, if the administrator can post stories in the channel; channels only
-    property? can_post_stories : Bool | ::Nil
-
-    # Optional. True, if the administrator can edit stories posted by other users; channels only
-    property? can_edit_stories : Bool | ::Nil
-
-    # Optional. True, if the administrator can delete stories posted by other users; channels only
-    property? can_delete_stories : Bool | ::Nil
-
-    # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+    # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
     property? can_manage_topics : Bool | ::Nil
 
     def initialize(
@@ -2369,12 +2410,12 @@ module Tourmaline
       @can_promote_members,
       @can_change_info,
       @can_invite_users,
+      @can_post_stories,
+      @can_edit_stories,
+      @can_delete_stories,
       @can_post_messages : Bool | ::Nil = nil,
       @can_edit_messages : Bool | ::Nil = nil,
       @can_pin_messages : Bool | ::Nil = nil,
-      @can_post_stories : Bool | ::Nil = nil,
-      @can_edit_stories : Bool | ::Nil = nil,
-      @can_delete_stories : Bool | ::Nil = nil,
       @can_manage_topics : Bool | ::Nil = nil
     )
     end
@@ -2468,7 +2509,7 @@ module Tourmaline
     # True, if the user's presence in the chat is hidden
     property? is_anonymous : Bool
 
-    # True, if the administrator can access the chat event log, boost list in channels, see channel members, report spam messages, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
+    # True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
     property? can_manage_chat : Bool
 
     # True, if the administrator can delete messages of other users
@@ -2489,25 +2530,25 @@ module Tourmaline
     # True, if the user is allowed to invite new users to the chat
     property? can_invite_users : Bool
 
-    # Optional. True, if the administrator can post messages in the channel, or access channel statistics; channels only
+    # True, if the administrator can post stories to the chat
+    property? can_post_stories : Bool
+
+    # True, if the administrator can edit stories posted by other users
+    property? can_edit_stories : Bool
+
+    # True, if the administrator can delete stories posted by other users
+    property? can_delete_stories : Bool
+
+    # Optional. True, if the administrator can post messages in the channel, or access channel statistics; for channels only
     property? can_post_messages : Bool | ::Nil
 
-    # Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
+    # Optional. True, if the administrator can edit messages of other users and can pin messages; for channels only
     property? can_edit_messages : Bool | ::Nil
 
-    # Optional. True, if the user is allowed to pin messages; groups and supergroups only
+    # Optional. True, if the user is allowed to pin messages; for groups and supergroups only
     property? can_pin_messages : Bool | ::Nil
 
-    # Optional. True, if the administrator can post stories in the channel; channels only
-    property? can_post_stories : Bool | ::Nil
-
-    # Optional. True, if the administrator can edit stories posted by other users; channels only
-    property? can_edit_stories : Bool | ::Nil
-
-    # Optional. True, if the administrator can delete stories posted by other users; channels only
-    property? can_delete_stories : Bool | ::Nil
-
-    # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+    # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
     property? can_manage_topics : Bool | ::Nil
 
     # Optional. Custom title for this user
@@ -2525,12 +2566,12 @@ module Tourmaline
       @can_promote_members,
       @can_change_info,
       @can_invite_users,
+      @can_post_stories,
+      @can_edit_stories,
+      @can_delete_stories,
       @can_post_messages : Bool | ::Nil = nil,
       @can_edit_messages : Bool | ::Nil = nil,
       @can_pin_messages : Bool | ::Nil = nil,
-      @can_post_stories : Bool | ::Nil = nil,
-      @can_edit_stories : Bool | ::Nil = nil,
-      @can_delete_stories : Bool | ::Nil = nil,
       @can_manage_topics : Bool | ::Nil = nil,
       @custom_title : String | ::Nil = nil
     )
@@ -4106,7 +4147,6 @@ module Tourmaline
   end
 
   # Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultAudio
     include JSON::Serializable
 
@@ -4160,7 +4200,6 @@ module Tourmaline
   end
 
   # Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultVoice
     include JSON::Serializable
 
@@ -4210,7 +4249,6 @@ module Tourmaline
   end
 
   # Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultDocument
     include JSON::Serializable
 
@@ -4276,7 +4314,6 @@ module Tourmaline
   end
 
   # Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultLocation
     include JSON::Serializable
 
@@ -4342,7 +4379,6 @@ module Tourmaline
   end
 
   # Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultVenue
     include JSON::Serializable
 
@@ -4412,7 +4448,6 @@ module Tourmaline
   end
 
   # Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultContact
     include JSON::Serializable
 
@@ -4466,7 +4501,6 @@ module Tourmaline
   end
 
   # Represents a Game.
-  # Note: This will only work in Telegram versions released after October 1, 2016. Older clients will not display any inline results if a game result is among them.
   class InlineQueryResultGame
     include JSON::Serializable
 
@@ -4631,7 +4665,6 @@ module Tourmaline
   end
 
   # Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.
-  # Note: This will only work in Telegram versions released after 9 April, 2016 for static stickers and after 06 July, 2019 for animated stickers. Older clients will ignore them.
   class InlineQueryResultCachedSticker
     include JSON::Serializable
 
@@ -4661,7 +4694,6 @@ module Tourmaline
   end
 
   # Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedDocument
     include JSON::Serializable
 
@@ -4760,7 +4792,6 @@ module Tourmaline
   end
 
   # Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedVoice
     include JSON::Serializable
 
@@ -4806,7 +4837,6 @@ module Tourmaline
   end
 
   # Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
-  # Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
   class InlineQueryResultCachedAudio
     include JSON::Serializable
 
@@ -5388,28 +5418,28 @@ module Tourmaline
     # Base64-encoded element hash for using in PassportElementErrorUnspecified
     property hash : String
 
-    # Optional. Base64-encoded encrypted Telegram Passport element data provided by the user, available for "personal_details", "passport", "driver_license", "identity_card", "internal_passport" and "address" types. Can be decrypted and verified using the accompanying EncryptedCredentials.
+    # Optional. Base64-encoded encrypted Telegram Passport element data provided by the user; available only for "personal_details", "passport", "driver_license", "identity_card", "internal_passport" and "address" types. Can be decrypted and verified using the accompanying EncryptedCredentials.
     property data : String | ::Nil
 
-    # Optional. User's verified phone number, available only for "phone_number" type
+    # Optional. User's verified phone number; available only for "phone_number" type
     property phone_number : String | ::Nil
 
-    # Optional. User's verified email address, available only for "email" type
+    # Optional. User's verified email address; available only for "email" type
     property email : String | ::Nil
 
-    # Optional. Array of encrypted files with documents provided by the user, available for "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
+    # Optional. Array of encrypted files with documents provided by the user; available only for "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
     property files : Array(Tourmaline::PassportFile) = [] of Tourmaline::PassportFile
 
-    # Optional. Encrypted file with the front side of the document, provided by the user. Available for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
+    # Optional. Encrypted file with the front side of the document, provided by the user; available only for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
     property front_side : Tourmaline::PassportFile | ::Nil
 
-    # Optional. Encrypted file with the reverse side of the document, provided by the user. Available for "driver_license" and "identity_card". The file can be decrypted and verified using the accompanying EncryptedCredentials.
+    # Optional. Encrypted file with the reverse side of the document, provided by the user; available only for "driver_license" and "identity_card". The file can be decrypted and verified using the accompanying EncryptedCredentials.
     property reverse_side : Tourmaline::PassportFile | ::Nil
 
-    # Optional. Encrypted file with the selfie of the user holding a document, provided by the user; available for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
+    # Optional. Encrypted file with the selfie of the user holding a document, provided by the user; available if requested for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
     property selfie : Tourmaline::PassportFile | ::Nil
 
-    # Optional. Array of encrypted files with translated versions of documents provided by the user. Available if requested for "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
+    # Optional. Array of encrypted files with translated versions of documents provided by the user; available if requested for "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
     property translation : Array(Tourmaline::PassportFile) = [] of Tourmaline::PassportFile
 
     def initialize(
