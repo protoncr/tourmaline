@@ -129,7 +129,7 @@ module Tourmaline
         request(Array(Tourmaline::MessageId), "forwardMessages", {
           chat_id:              chat_id,
           from_chat_id:         from_chat_id,
-          message_ids:          message_ids,
+          message_ids:          message_ids.to_json,
           message_thread_id:    message_thread_id,
           disable_notification: disable_notification,
           protect_content:      protect_content,
@@ -178,7 +178,7 @@ module Tourmaline
         request(Array(Tourmaline::MessageId), "copyMessages", {
           chat_id:              chat_id,
           from_chat_id:         from_chat_id,
-          message_ids:          message_ids,
+          message_ids:          message_ids.to_json,
           message_thread_id:    message_thread_id,
           disable_notification: disable_notification,
           protect_content:      protect_content,
@@ -614,7 +614,7 @@ module Tourmaline
         request(Bool, "setMessageReaction", {
           chat_id:    chat_id,
           message_id: message_id,
-          reaction:   reaction,
+          reaction:   reaction.try(&.to_json),
           is_big:     is_big,
         })
       end
@@ -699,12 +699,12 @@ module Tourmaline
         can_promote_members : Bool | ::Nil = nil,
         can_change_info : Bool | ::Nil = nil,
         can_invite_users : Bool | ::Nil = nil,
-        can_post_messages : Bool | ::Nil = nil,
-        can_edit_messages : Bool | ::Nil = nil,
-        can_pin_messages : Bool | ::Nil = nil,
         can_post_stories : Bool | ::Nil = nil,
         can_edit_stories : Bool | ::Nil = nil,
         can_delete_stories : Bool | ::Nil = nil,
+        can_post_messages : Bool | ::Nil = nil,
+        can_edit_messages : Bool | ::Nil = nil,
+        can_pin_messages : Bool | ::Nil = nil,
         can_manage_topics : Bool | ::Nil = nil
       )
         request(Bool, "promoteChatMember", {
@@ -718,12 +718,12 @@ module Tourmaline
           can_promote_members:    can_promote_members,
           can_change_info:        can_change_info,
           can_invite_users:       can_invite_users,
-          can_post_messages:      can_post_messages,
-          can_edit_messages:      can_edit_messages,
-          can_pin_messages:       can_pin_messages,
           can_post_stories:       can_post_stories,
           can_edit_stories:       can_edit_stories,
           can_delete_stories:     can_delete_stories,
+          can_post_messages:      can_post_messages,
+          can_edit_messages:      can_edit_messages,
+          can_pin_messages:       can_pin_messages,
           can_manage_topics:      can_manage_topics,
         })
       end
@@ -1450,7 +1450,7 @@ module Tourmaline
       )
         request(Bool, "deleteMessages", {
           chat_id:     chat_id,
-          message_ids: message_ids,
+          message_ids: message_ids.to_json,
         })
       end
 
@@ -1491,7 +1491,7 @@ module Tourmaline
         custom_emoji_ids : Array(String)
       )
         request(Array(Tourmaline::Sticker), "getCustomEmojiStickers", {
-          custom_emoji_ids: custom_emoji_ids,
+          custom_emoji_ids: custom_emoji_ids.to_json,
         })
       end
 
