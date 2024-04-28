@@ -16,6 +16,9 @@ dependencies:
   http_proxy:
     github: mamantoha/http_proxy
     branch: master
+  rate_limiter:
+    github: lbarasti/rate_limiter
+    version: ~> v1.0.1
 
 development_dependencies:
   ngrok:
@@ -28,5 +31,6 @@ development_dependencies:
     # path: ../code_writer
     github: watzon/code_writer
     branch: main
+
 
 license: MIT
