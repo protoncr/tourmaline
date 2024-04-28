@@ -32,5 +32,4 @@ development_dependencies:
     github: watzon/code_writer
     branch: main
 
-
 license: MIT
