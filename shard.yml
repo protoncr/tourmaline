@@ -18,7 +18,7 @@ dependencies:
     branch: master
   rate_limiter:
     github: lbarasti/rate_limiter
-    version: ~> v1.0.1
+    version: ~> 1.0.1
 
 development_dependencies:
   ngrok:
