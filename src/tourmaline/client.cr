@@ -180,7 +180,7 @@ module Tourmaline
     def request_internal(path, params = {} of String => String, multipart = false)
       # Wrap this so pool can attempt a retry
       using_connection do |client|
-        @rate_limiter.get
+        @rate_limiter.try &.get
         Log.debug { "sending ►► #{path.split("/").last}(#{params.to_pretty_json})" }
 
         begin
