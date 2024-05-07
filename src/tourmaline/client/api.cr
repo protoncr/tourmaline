@@ -75,6 +75,7 @@ module Tourmaline
       def send_message(
         chat_id : Int32 | Int64 | String,
         text : String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
         entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
@@ -85,16 +86,17 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendMessage", {
-          chat_id:              chat_id,
-          text:                 text,
-          message_thread_id:    message_thread_id,
-          parse_mode:           parse_mode,
-          entities:             entities.try(&.to_json),
-          link_preview_options: link_preview_options,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          text:                   text,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          parse_mode:             parse_mode,
+          entities:               entities.try(&.to_json),
+          link_preview_options:   link_preview_options,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -129,7 +131,7 @@ module Tourmaline
         request(Array(Tourmaline::MessageId), "forwardMessages", {
           chat_id:              chat_id,
           from_chat_id:         from_chat_id,
-          message_ids:          message_ids,
+          message_ids:          message_ids.to_json,
           message_thread_id:    message_thread_id,
           disable_notification: disable_notification,
           protect_content:      protect_content,
@@ -178,7 +180,7 @@ module Tourmaline
         request(Array(Tourmaline::MessageId), "copyMessages", {
           chat_id:              chat_id,
           from_chat_id:         from_chat_id,
-          message_ids:          message_ids,
+          message_ids:          message_ids.to_json,
           message_thread_id:    message_thread_id,
           disable_notification: disable_notification,
           protect_content:      protect_content,
@@ -190,6 +192,7 @@ module Tourmaline
       def send_photo(
         chat_id : Int32 | Int64 | String,
         photo : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
@@ -201,17 +204,18 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendPhoto", {
-          chat_id:              chat_id,
-          photo:                photo,
-          message_thread_id:    message_thread_id,
-          caption:              caption,
-          parse_mode:           parse_mode,
-          caption_entities:     caption_entities.try(&.to_json),
-          has_spoiler:          has_spoiler,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          photo:                  photo,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          caption:                caption,
+          parse_mode:             parse_mode,
+          caption_entities:       caption_entities.try(&.to_json),
+          has_spoiler:            has_spoiler,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -220,6 +224,7 @@ module Tourmaline
       def send_audio(
         chat_id : Int32 | Int64 | String,
         audio : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
@@ -234,20 +239,21 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendAudio", {
-          chat_id:              chat_id,
-          audio:                audio,
-          message_thread_id:    message_thread_id,
-          caption:              caption,
-          parse_mode:           parse_mode,
-          caption_entities:     caption_entities.try(&.to_json),
-          duration:             duration,
-          performer:            performer,
-          title:                title,
-          thumbnail:            thumbnail,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          audio:                  audio,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          caption:                caption,
+          parse_mode:             parse_mode,
+          caption_entities:       caption_entities.try(&.to_json),
+          duration:               duration,
+          performer:              performer,
+          title:                  title,
+          thumbnail:              thumbnail,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -255,6 +261,7 @@ module Tourmaline
       def send_document(
         chat_id : Int32 | Int64 | String,
         document : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         thumbnail : ::File | String | ::Nil = nil,
         caption : String | ::Nil = nil,
@@ -269,6 +276,7 @@ module Tourmaline
         request(Tourmaline::Message, "sendDocument", {
           chat_id:                        chat_id,
           document:                       document,
+          business_connection_id:         business_connection_id,
           message_thread_id:              message_thread_id,
           thumbnail:                      thumbnail,
           caption:                        caption,
@@ -286,6 +294,7 @@ module Tourmaline
       def send_video(
         chat_id : Int32 | Int64 | String,
         video : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         duration : Int32 | Int64 | ::Nil = nil,
         width : Int32 | Int64 | ::Nil = nil,
@@ -302,22 +311,23 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVideo", {
-          chat_id:              chat_id,
-          video:                video,
-          message_thread_id:    message_thread_id,
-          duration:             duration,
-          width:                width,
-          height:               height,
-          thumbnail:            thumbnail,
-          caption:              caption,
-          parse_mode:           parse_mode,
-          caption_entities:     caption_entities.try(&.to_json),
-          has_spoiler:          has_spoiler,
-          supports_streaming:   supports_streaming,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          video:                  video,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          duration:               duration,
+          width:                  width,
+          height:                 height,
+          thumbnail:              thumbnail,
+          caption:                caption,
+          parse_mode:             parse_mode,
+          caption_entities:       caption_entities.try(&.to_json),
+          has_spoiler:            has_spoiler,
+          supports_streaming:     supports_streaming,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -325,6 +335,7 @@ module Tourmaline
       def send_animation(
         chat_id : Int32 | Int64 | String,
         animation : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         duration : Int32 | Int64 | ::Nil = nil,
         width : Int32 | Int64 | ::Nil = nil,
@@ -340,28 +351,30 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendAnimation", {
-          chat_id:              chat_id,
-          animation:            animation,
-          message_thread_id:    message_thread_id,
-          duration:             duration,
-          width:                width,
-          height:               height,
-          thumbnail:            thumbnail,
-          caption:              caption,
-          parse_mode:           parse_mode,
-          caption_entities:     caption_entities.try(&.to_json),
-          has_spoiler:          has_spoiler,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          animation:              animation,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          duration:               duration,
+          width:                  width,
+          height:                 height,
+          thumbnail:              thumbnail,
+          caption:                caption,
+          parse_mode:             parse_mode,
+          caption_entities:       caption_entities.try(&.to_json),
+          has_spoiler:            has_spoiler,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
-      # Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+      # Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
       def send_voice(
         chat_id : Int32 | Int64 | String,
         voice : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
@@ -373,17 +386,18 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVoice", {
-          chat_id:              chat_id,
-          voice:                voice,
-          message_thread_id:    message_thread_id,
-          caption:              caption,
-          parse_mode:           parse_mode,
-          caption_entities:     caption_entities.try(&.to_json),
-          duration:             duration,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          voice:                  voice,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          caption:                caption,
+          parse_mode:             parse_mode,
+          caption_entities:       caption_entities.try(&.to_json),
+          duration:               duration,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -391,6 +405,7 @@ module Tourmaline
       def send_video_note(
         chat_id : Int32 | Int64 | String,
         video_note : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         duration : Int32 | Int64 | ::Nil = nil,
         length : Int32 | Int64 | ::Nil = nil,
@@ -401,16 +416,17 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVideoNote", {
-          chat_id:              chat_id,
-          video_note:           video_note,
-          message_thread_id:    message_thread_id,
-          duration:             duration,
-          length:               length,
-          thumbnail:            thumbnail,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          video_note:             video_note,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          duration:               duration,
+          length:                 length,
+          thumbnail:              thumbnail,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -418,18 +434,20 @@ module Tourmaline
       def send_media_group(
         chat_id : Int32 | Int64 | String,
         media : Array(Tourmaline::InputMediaAudio) | Array(Tourmaline::InputMediaDocument) | Array(Tourmaline::InputMediaPhoto) | Array(Tourmaline::InputMediaVideo),
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil
       )
         request(Array(Tourmaline::Message), "sendMediaGroup", {
-          chat_id:              chat_id,
-          media:                media.to_json,
-          message_thread_id:    message_thread_id,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
+          chat_id:                chat_id,
+          media:                  media.to_json,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
         })
       end
 
@@ -438,6 +456,7 @@ module Tourmaline
         chat_id : Int32 | Int64 | String,
         latitude : Float64,
         longitude : Float64,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         horizontal_accuracy : Float64 | ::Nil = nil,
         live_period : Int32 | Int64 | ::Nil = nil,
@@ -452,6 +471,7 @@ module Tourmaline
           chat_id:                chat_id,
           latitude:               latitude,
           longitude:              longitude,
+          business_connection_id: business_connection_id,
           message_thread_id:      message_thread_id,
           horizontal_accuracy:    horizontal_accuracy,
           live_period:            live_period,
@@ -471,6 +491,7 @@ module Tourmaline
         longitude : Float64,
         title : String,
         address : String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         foursquare_id : String | ::Nil = nil,
         foursquare_type : String | ::Nil = nil,
@@ -482,20 +503,21 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVenue", {
-          chat_id:              chat_id,
-          latitude:             latitude,
-          longitude:            longitude,
-          title:                title,
-          address:              address,
-          message_thread_id:    message_thread_id,
-          foursquare_id:        foursquare_id,
-          foursquare_type:      foursquare_type,
-          google_place_id:      google_place_id,
-          google_place_type:    google_place_type,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          latitude:               latitude,
+          longitude:              longitude,
+          title:                  title,
+          address:                address,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          foursquare_id:          foursquare_id,
+          foursquare_type:        foursquare_type,
+          google_place_id:        google_place_id,
+          google_place_type:      google_place_type,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -504,6 +526,7 @@ module Tourmaline
         chat_id : Int32 | Int64 | String,
         phone_number : String,
         first_name : String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         last_name : String | ::Nil = nil,
         vcard : String | ::Nil = nil,
@@ -513,16 +536,17 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendContact", {
-          chat_id:              chat_id,
-          phone_number:         phone_number,
-          first_name:           first_name,
-          message_thread_id:    message_thread_id,
-          last_name:            last_name,
-          vcard:                vcard,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          phone_number:           phone_number,
+          first_name:             first_name,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          last_name:              last_name,
+          vcard:                  vcard,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -530,8 +554,11 @@ module Tourmaline
       def send_poll(
         chat_id : Int32 | Int64 | String,
         question : String,
-        options : Array(String),
+        options : Array(Tourmaline::InputPollOption),
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
+        question_parse_mode : String | ::Nil = nil,
+        question_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
         is_anonymous : Bool | ::Nil = nil,
         type : String | ::Nil = nil,
         allows_multiple_answers : Bool | ::Nil = nil,
@@ -551,7 +578,10 @@ module Tourmaline
           chat_id:                 chat_id,
           question:                question,
           options:                 options.to_json,
+          business_connection_id:  business_connection_id,
           message_thread_id:       message_thread_id,
+          question_parse_mode:     question_parse_mode,
+          question_entities:       question_entities.try(&.to_json),
           is_anonymous:            is_anonymous,
           type:                    type,
           allows_multiple_answers: allows_multiple_answers,
@@ -572,6 +602,7 @@ module Tourmaline
       # Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
       def send_dice(
         chat_id : Int32 | Int64 | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         emoji : String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
@@ -580,13 +611,14 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendDice", {
-          chat_id:              chat_id,
-          message_thread_id:    message_thread_id,
-          emoji:                emoji,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          emoji:                  emoji,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -595,12 +627,14 @@ module Tourmaline
       def send_chat_action(
         chat_id : Int32 | Int64 | String,
         action : String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil
       )
         request(Bool, "sendChatAction", {
-          chat_id:           chat_id,
-          action:            action,
-          message_thread_id: message_thread_id,
+          chat_id:                chat_id,
+          action:                 action,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
         })
       end
 
@@ -614,7 +648,7 @@ module Tourmaline
         request(Bool, "setMessageReaction", {
           chat_id:    chat_id,
           message_id: message_id,
-          reaction:   reaction,
+          reaction:   reaction.try(&.to_json),
           is_big:     is_big,
         })
       end
@@ -699,12 +733,12 @@ module Tourmaline
         can_promote_members : Bool | ::Nil = nil,
         can_change_info : Bool | ::Nil = nil,
         can_invite_users : Bool | ::Nil = nil,
-        can_post_messages : Bool | ::Nil = nil,
-        can_edit_messages : Bool | ::Nil = nil,
-        can_pin_messages : Bool | ::Nil = nil,
         can_post_stories : Bool | ::Nil = nil,
         can_edit_stories : Bool | ::Nil = nil,
         can_delete_stories : Bool | ::Nil = nil,
+        can_post_messages : Bool | ::Nil = nil,
+        can_edit_messages : Bool | ::Nil = nil,
+        can_pin_messages : Bool | ::Nil = nil,
         can_manage_topics : Bool | ::Nil = nil
       )
         request(Bool, "promoteChatMember", {
@@ -718,12 +752,12 @@ module Tourmaline
           can_promote_members:    can_promote_members,
           can_change_info:        can_change_info,
           can_invite_users:       can_invite_users,
-          can_post_messages:      can_post_messages,
-          can_edit_messages:      can_edit_messages,
-          can_pin_messages:       can_pin_messages,
           can_post_stories:       can_post_stories,
           can_edit_stories:       can_edit_stories,
           can_delete_stories:     can_delete_stories,
+          can_post_messages:      can_post_messages,
+          can_edit_messages:      can_edit_messages,
+          can_pin_messages:       can_pin_messages,
           can_manage_topics:      can_manage_topics,
         })
       end
@@ -938,11 +972,11 @@ module Tourmaline
         })
       end
 
-      # Use this method to get up to date information about the chat. Returns a Chat object on success.
+      # Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.
       def get_chat(
         chat_id : Int32 | Int64 | String
       )
-        request(Tourmaline::Chat, "getChat", {
+        request(Tourmaline::ChatFullInfo, "getChat", {
           chat_id: chat_id,
         })
       end
@@ -1159,6 +1193,15 @@ module Tourmaline
         })
       end
 
+      # Use this method to get information about the connection of the bot with a business account. Returns a BusinessConnection object on success.
+      def get_business_connection(
+        business_connection_id : String
+      )
+        request(Tourmaline::BusinessConnection, "getBusinessConnection", {
+          business_connection_id: business_connection_id,
+        })
+      end
+
       # Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
       def set_my_commands(
         commands : Array(Tourmaline::BotCommand),
@@ -1362,6 +1405,7 @@ module Tourmaline
         chat_id : Int32 | Int64 | String | ::Nil = nil,
         message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil,
+        live_period : Int32 | Int64 | ::Nil = nil,
         horizontal_accuracy : Float64 | ::Nil = nil,
         heading : Int32 | Int64 | ::Nil = nil,
         proximity_alert_radius : Int32 | Int64 | ::Nil = nil,
@@ -1373,6 +1417,7 @@ module Tourmaline
           chat_id:                chat_id,
           message_id:             message_id,
           inline_message_id:      inline_message_id,
+          live_period:            live_period,
           horizontal_accuracy:    horizontal_accuracy,
           heading:                heading,
           proximity_alert_radius: proximity_alert_radius,
@@ -1450,7 +1495,7 @@ module Tourmaline
       )
         request(Bool, "deleteMessages", {
           chat_id:     chat_id,
-          message_ids: message_ids,
+          message_ids: message_ids.to_json,
         })
       end
 
@@ -1458,6 +1503,7 @@ module Tourmaline
       def send_sticker(
         chat_id : Int32 | Int64 | String,
         sticker : ::File | String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         emoji : String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
@@ -1466,14 +1512,15 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendSticker", {
-          chat_id:              chat_id,
-          sticker:              sticker,
-          message_thread_id:    message_thread_id,
-          emoji:                emoji,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          sticker:                sticker,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          emoji:                  emoji,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -1491,11 +1538,11 @@ module Tourmaline
         custom_emoji_ids : Array(String)
       )
         request(Array(Tourmaline::Sticker), "getCustomEmojiStickers", {
-          custom_emoji_ids: custom_emoji_ids,
+          custom_emoji_ids: custom_emoji_ids.to_json,
         })
       end
 
-      # Use this method to upload a file with a sticker for later use in the createNewStickerSet and addStickerToSet methods (the file can be used multiple times). Returns the uploaded File on success.
+      # Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times). Returns the uploaded File on success.
       def upload_sticker_file(
         user_id : Int32 | Int64,
         sticker : ::File,
@@ -1514,7 +1561,6 @@ module Tourmaline
         name : String,
         title : String,
         stickers : Array(Tourmaline::InputSticker),
-        sticker_format : String,
         sticker_type : String | ::Nil = nil,
         needs_repainting : Bool | ::Nil = nil
       )
@@ -1523,13 +1569,12 @@ module Tourmaline
           name:             name,
           title:            title,
           stickers:         stickers.to_json,
-          sticker_format:   sticker_format,
           sticker_type:     sticker_type,
           needs_repainting: needs_repainting,
         })
       end
 
-      # Use this method to add a new sticker to a set created by the bot. The format of the added sticker must match the format of the other stickers in the set. Emoji sticker sets can have up to 200 stickers. Animated and video sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
+      # Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns True on success.
       def add_sticker_to_set(
         user_id : Int32 | Int64,
         name : String,
@@ -1559,6 +1604,21 @@ module Tourmaline
       )
         request(Bool, "deleteStickerFromSet", {
           sticker: sticker,
+        })
+      end
+
+      # Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success.
+      def replace_sticker_in_set(
+        user_id : Int32 | Int64,
+        name : String,
+        old_sticker : String,
+        sticker : Tourmaline::InputSticker
+      )
+        request(Bool, "replaceStickerInSet", {
+          user_id:     user_id,
+          name:        name,
+          old_sticker: old_sticker,
+          sticker:     sticker.to_json,
         })
       end
 
@@ -1610,11 +1670,13 @@ module Tourmaline
       def set_sticker_set_thumbnail(
         name : String,
         user_id : Int32 | Int64,
+        format : String,
         thumbnail : ::File | String | ::Nil = nil
       )
         request(Bool, "setStickerSetThumbnail", {
           name:      name,
           user_id:   user_id,
+          format:    format,
           thumbnail: thumbnail,
         })
       end
@@ -1822,6 +1884,7 @@ module Tourmaline
       def send_game(
         chat_id : Int32 | Int64,
         game_short_name : String,
+        business_connection_id : String | ::Nil = nil,
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
@@ -1829,13 +1892,14 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message, "sendGame", {
-          chat_id:              chat_id,
-          game_short_name:      game_short_name,
-          message_thread_id:    message_thread_id,
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          game_short_name:        game_short_name,
+          business_connection_id: business_connection_id,
+          message_thread_id:      message_thread_id,
+          disable_notification:   disable_notification,
+          protect_content:        protect_content,
+          reply_parameters:       reply_parameters,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
