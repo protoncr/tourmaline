@@ -38,6 +38,8 @@ module Tourmaline
 
     @dispatcher : Dispatcher?
 
+    @rate_limiter : RateLimiter::Limiter?
+
     private getter pool : DB::Pool(HTTP::Client)
 
     # Create a new instance of `Tourmaline::Client`.
@@ -92,7 +94,9 @@ module Tourmaline
                    proxy_host = nil,
                    proxy_port = nil,
                    proxy_user = nil,
-                   proxy_pass = nil)
+                   proxy_pass = nil,
+                   @rate_limiter = RateLimiter.new(interval: 1.second / 30)
+                   )
       if !proxy
         if proxy_uri
           proxy_uri = proxy_uri.is_a?(URI) ? proxy_uri : URI.parse(proxy_uri.starts_with?("http") ? proxy_uri : "http://#{proxy_uri}")
@@ -176,6 +180,7 @@ module Tourmaline
     def request_internal(path, params = {} of String => String, multipart = false)
       # Wrap this so pool can attempt a retry
       using_connection do |client|
+        @rate_limiter.try &.get
         Log.debug { "sending ►► #{path.split("/").last}(#{params.to_pretty_json})" }
 
         begin
