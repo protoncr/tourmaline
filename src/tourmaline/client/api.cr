@@ -147,23 +147,25 @@ module Tourmaline
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
         caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        show_caption_above_media : Bool | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::MessageId, "copyMessage", {
-          chat_id:              chat_id,
-          from_chat_id:         from_chat_id,
-          message_id:           message_id,
-          message_thread_id:    message_thread_id,
-          caption:              caption,
-          parse_mode:           parse_mode,
-          caption_entities:     caption_entities.try(&.to_json),
-          disable_notification: disable_notification,
-          protect_content:      protect_content,
-          reply_parameters:     reply_parameters,
-          reply_markup:         reply_markup.try(&.to_json),
+          chat_id:                  chat_id,
+          from_chat_id:             from_chat_id,
+          message_id:               message_id,
+          message_thread_id:        message_thread_id,
+          caption:                  caption,
+          parse_mode:               parse_mode,
+          caption_entities:         caption_entities.try(&.to_json),
+          show_caption_above_media: show_caption_above_media,
+          disable_notification:     disable_notification,
+          protect_content:          protect_content,
+          reply_parameters:         reply_parameters,
+          reply_markup:             reply_markup.try(&.to_json),
         })
       end
 
@@ -1337,9 +1339,10 @@ module Tourmaline
         })
       end
 
-      # Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+      # Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
       def edit_message_text(
         text : String,
+        business_connection_id : String | ::Nil = nil,
         chat_id : Int32 | Int64 | String | ::Nil = nil,
         message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil,
@@ -1349,19 +1352,21 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageText", {
-          text:                 text,
-          chat_id:              chat_id,
-          message_id:           message_id,
-          inline_message_id:    inline_message_id,
-          parse_mode:           parse_mode,
-          entities:             entities.try(&.to_json),
-          link_preview_options: link_preview_options,
-          reply_markup:         reply_markup.try(&.to_json),
+          text:                   text,
+          business_connection_id: business_connection_id,
+          chat_id:                chat_id,
+          message_id:             message_id,
+          inline_message_id:      inline_message_id,
+          parse_mode:             parse_mode,
+          entities:               entities.try(&.to_json),
+          link_preview_options:   link_preview_options,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
-      # Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+      # Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
       def edit_message_caption(
+        business_connection_id : String | ::Nil = nil,
         chat_id : Int32 | Int64 | String | ::Nil = nil,
         message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil,
@@ -1371,30 +1376,34 @@ module Tourmaline
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageCaption", {
-          chat_id:           chat_id,
-          message_id:        message_id,
-          inline_message_id: inline_message_id,
-          caption:           caption,
-          parse_mode:        parse_mode,
-          caption_entities:  caption_entities.try(&.to_json),
-          reply_markup:      reply_markup.try(&.to_json),
+          business_connection_id:   business_connection_id,
+          chat_id:                  chat_id,
+          message_id:               message_id,
+          inline_message_id:        inline_message_id,
+          caption:                  caption,
+          parse_mode:               parse_mode,
+          caption_entities:         caption_entities.try(&.to_json),
+          show_caption_above_media: show_caption_above_media,
+          reply_markup:             reply_markup.try(&.to_json),
         })
       end
 
-      # Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+      # Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
       def edit_message_media(
         media : Tourmaline::InputMedia,
+        business_connection_id : String | ::Nil = nil,
         chat_id : Int32 | Int64 | String | ::Nil = nil,
         message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageMedia", {
-          media:             media.to_json,
-          chat_id:           chat_id,
-          message_id:        message_id,
-          inline_message_id: inline_message_id,
-          reply_markup:      reply_markup.try(&.to_json),
+          media:                  media.to_json,
+          business_connection_id: business_connection_id,
+          chat_id:                chat_id,
+          message_id:             message_id,
+          inline_message_id:      inline_message_id,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -1402,6 +1411,7 @@ module Tourmaline
       def edit_message_live_location(
         latitude : Float64,
         longitude : Float64,
+        business_connection_id : String | ::Nil = nil,
         chat_id : Int32 | Int64 | String | ::Nil = nil,
         message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil,
@@ -1414,6 +1424,7 @@ module Tourmaline
         request(Tourmaline::Message | Bool, "editMessageLiveLocation", {
           latitude:               latitude,
           longitude:              longitude,
+          business_connection_id: business_connection_id,
           chat_id:                chat_id,
           message_id:             message_id,
           inline_message_id:      inline_message_id,
@@ -1427,31 +1438,35 @@ module Tourmaline
 
       # Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
       def stop_message_live_location(
+        business_connection_id : String | ::Nil = nil,
         chat_id : Int32 | Int64 | String | ::Nil = nil,
         message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "stopMessageLiveLocation", {
-          chat_id:           chat_id,
-          message_id:        message_id,
-          inline_message_id: inline_message_id,
-          reply_markup:      reply_markup.try(&.to_json),
+          business_connection_id: business_connection_id,
+          chat_id:                chat_id,
+          message_id:             message_id,
+          inline_message_id:      inline_message_id,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
-      # Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+      # Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
       def edit_message_reply_markup(
+        business_connection_id : String | ::Nil = nil,
         chat_id : Int32 | Int64 | String | ::Nil = nil,
         message_id : Int32 | Int64 | ::Nil = nil,
         inline_message_id : String | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageReplyMarkup", {
-          chat_id:           chat_id,
-          message_id:        message_id,
-          inline_message_id: inline_message_id,
-          reply_markup:      reply_markup.try(&.to_json),
+          business_connection_id: business_connection_id,
+          chat_id:                chat_id,
+          message_id:             message_id,
+          inline_message_id:      inline_message_id,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -1459,12 +1474,14 @@ module Tourmaline
       def stop_poll(
         chat_id : Int32 | Int64 | String,
         message_id : Int32 | Int64,
+        business_connection_id : String | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Poll, "stopPoll", {
-          chat_id:      chat_id,
-          message_id:   message_id,
-          reply_markup: reply_markup.try(&.to_json),
+          chat_id:                chat_id,
+          message_id:             message_id,
+          business_connection_id: business_connection_id,
+          reply_markup:           reply_markup.try(&.to_json),
         })
       end
 
@@ -1865,6 +1882,28 @@ module Tourmaline
           pre_checkout_query_id: pre_checkout_query_id,
           ok:                    ok,
           error_message:         error_message,
+        })
+      end
+
+      # Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
+      def get_star_transactions(
+        offset : Int32 | Int64 | ::Nil = nil,
+        limit : Int32 | Int64 | ::Nil = nil
+      )
+        request(Tourmaline::StarTransactions, "getStarTransactions", {
+          offset: offset,
+          limit:  limit,
+        })
+      end
+
+      # Refunds a successful payment in Telegram Stars. Returns True on success.
+      def refund_star_payment(
+        user_id : Int32 | Int64,
+        telegram_payment_charge_id : String
+      )
+        request(Bool, "refundStarPayment", {
+          user_id:                    user_id,
+          telegram_payment_charge_id: telegram_payment_charge_id,
         })
       end
 

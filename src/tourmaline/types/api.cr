@@ -26,7 +26,7 @@ module Tourmaline
     # Optional. The bot was connected to or disconnected from a business account, or a user edited an existing connection with the bot
     property business_connection : Tourmaline::BusinessConnection | ::Nil
 
-    # Optional. New non-service message from a connected business account
+    # Optional. New message from a connected business account
     property business_message : Tourmaline::Message | ::Nil
 
     # Optional. New version of a message from a connected business account
@@ -329,7 +329,7 @@ module Tourmaline
     # Optional. True, if users need to join the supergroup before they can send messages
     property? join_to_send_messages : Bool | ::Nil
 
-    # Optional. True, if all users directly joining the supergroup need to be approved by supergroup administrators
+    # Optional. True, if all users directly joining the supergroup without using an invite link need to be approved by supergroup administrators
     property? join_by_request : Bool | ::Nil
 
     # Optional. Description, for groups, supergroups and channel chats
@@ -1570,11 +1570,11 @@ module Tourmaline
   class Location
     include JSON::Serializable
 
-    # Longitude as defined by sender
-    property longitude : Float64
-
     # Latitude as defined by sender
     property latitude : Float64
+
+    # Longitude as defined by sender
+    property longitude : Float64
 
     # Optional. The radius of uncertainty for the location, measured in meters; 0-1500
     property horizontal_accuracy : Float64 | ::Nil
@@ -1589,8 +1589,8 @@ module Tourmaline
     property proximity_alert_radius : Int32 | Int64 | ::Nil
 
     def initialize(
-      @longitude,
       @latitude,
+      @longitude,
       @horizontal_accuracy : Float64 | ::Nil = nil,
       @live_period : Int32 | Int64 | ::Nil = nil,
       @heading : Int32 | Int64 | ::Nil = nil,
@@ -2505,7 +2505,7 @@ module Tourmaline
     # Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their identifier without using a username, if this is allowed by their privacy settings.
     property url : String | ::Nil
 
-    # Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes. Not supported for messages sent on behalf of a Telegram Business account.
+    # Optional. Data to be sent in a callback query to the bot when the button is pressed, 1-64 bytes
     property callback_data : String | ::Nil
 
     # Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available only in private chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
@@ -2820,7 +2820,7 @@ module Tourmaline
     # Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
     property invite_link : Tourmaline::ChatInviteLink | ::Nil
 
-    # Optional. True, if the user joined the chat after sending a direct join request and being approved by an administrator
+    # Optional. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator
     property? via_join_request : Bool | ::Nil
 
     # Optional. True, if the user joined the chat via a chat folder invite link
@@ -5885,6 +5885,156 @@ module Tourmaline
       @invoice_payload,
       @shipping_option_id : String | ::Nil = nil,
       @order_info : Tourmaline::OrderInfo | ::Nil = nil
+    )
+    end
+  end
+
+  # This object describes the state of a revenue withdrawal operation. Currently, it can be one of
+  # - RevenueWithdrawalStatePending
+  # - RevenueWithdrawalStateSucceeded
+  # - RevenueWithdrawalStateFailed
+  alias RevenueWithdrawalState = Tourmaline::RevenueWithdrawalStatePending | Tourmaline::RevenueWithdrawalStateSucceeded | Tourmaline::RevenueWithdrawalStateFailed
+
+  # The withdrawal is in progress.
+  class RevenueWithdrawalStatePending
+    include JSON::Serializable
+
+    # Type of the state, always "pending"
+    property type : String
+
+    def initialize(
+      @type
+    )
+    end
+  end
+
+  # The withdrawal succeeded.
+  class RevenueWithdrawalStateSucceeded
+    include JSON::Serializable
+
+    # Type of the state, always "succeeded"
+    property type : String
+
+    # Date the withdrawal was completed in Unix time
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property date : Time
+
+    # An HTTPS URL that can be used to see transaction details
+    property url : String
+
+    def initialize(
+      @type,
+      @date,
+      @url
+    )
+    end
+  end
+
+  # The withdrawal failed and the transaction was refunded.
+  class RevenueWithdrawalStateFailed
+    include JSON::Serializable
+
+    # Type of the state, always "failed"
+    property type : String
+
+    def initialize(
+      @type
+    )
+    end
+  end
+
+  # This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of
+  # - TransactionPartnerFragment
+  # - TransactionPartnerUser
+  # - TransactionPartnerOther
+  alias TransactionPartner = Tourmaline::TransactionPartnerFragment | Tourmaline::TransactionPartnerUser | Tourmaline::TransactionPartnerOther
+
+  # Describes a withdrawal transaction with Fragment.
+  class TransactionPartnerFragment
+    include JSON::Serializable
+
+    # Type of the transaction partner, always "fragment"
+    property type : String
+
+    # Optional. State of the transaction if the transaction is outgoing
+    property withdrawal_state : Tourmaline::RevenueWithdrawalState | ::Nil
+
+    def initialize(
+      @type,
+      @withdrawal_state : Tourmaline::RevenueWithdrawalState | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a transaction with a user.
+  class TransactionPartnerUser
+    include JSON::Serializable
+
+    # Type of the transaction partner, always "user"
+    property type : String
+
+    # Information about the user
+    property user : Tourmaline::User
+
+    def initialize(
+      @type,
+      @user
+    )
+    end
+  end
+
+  # Describes a transaction with an unknown source or recipient.
+  class TransactionPartnerOther
+    include JSON::Serializable
+
+    # Type of the transaction partner, always "other"
+    property type : String
+
+    def initialize(
+      @type
+    )
+    end
+  end
+
+  # Describes a Telegram Star transaction.
+  class StarTransaction
+    include JSON::Serializable
+
+    # Unique identifier of the transaction. Coincides with the identifer of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
+    property id : String
+
+    # Number of Telegram Stars transferred by the transaction
+    property amount : Int32 | Int64
+
+    # Date the transaction was created in Unix time
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property date : Time
+
+    # Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions
+    property source : Tourmaline::TransactionPartner | ::Nil
+
+    # Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions
+    property receiver : Tourmaline::TransactionPartner | ::Nil
+
+    def initialize(
+      @id,
+      @amount,
+      @date,
+      @source : Tourmaline::TransactionPartner | ::Nil = nil,
+      @receiver : Tourmaline::TransactionPartner | ::Nil = nil
+    )
+    end
+  end
+
+  # Contains a list of Telegram Star transactions.
+  class StarTransactions
+    include JSON::Serializable
+
+    # The list of transactions
+    property transactions : Array(Tourmaline::StarTransaction) = [] of Tourmaline::StarTransaction
+
+    def initialize(
+      @transactions : Array(Tourmaline::StarTransaction) = [] of Tourmaline::StarTransaction
     )
     end
   end
