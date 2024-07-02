@@ -82,6 +82,7 @@ module Tourmaline
         link_preview_options : Tourmaline::LinkPreviewOptions | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -95,6 +96,7 @@ module Tourmaline
           link_preview_options:   link_preview_options,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -138,7 +140,7 @@ module Tourmaline
         })
       end
 
-      # Use this method to copy messages of any kind. Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
+      # Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
       def copy_message(
         chat_id : Int32 | Int64 | String,
         from_chat_id : Int32 | Int64 | String,
@@ -167,7 +169,7 @@ module Tourmaline
         })
       end
 
-      # Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
+      # Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
       def copy_messages(
         chat_id : Int32 | Int64 | String,
         from_chat_id : Int32 | Int64 | String,
@@ -197,25 +199,29 @@ module Tourmaline
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
         caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        show_caption_above_media : Bool | ::Nil = nil,
         has_spoiler : Bool | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendPhoto", {
-          chat_id:                chat_id,
-          photo:                  photo,
-          business_connection_id: business_connection_id,
-          message_thread_id:      message_thread_id,
-          caption:                caption,
-          parse_mode:             parse_mode,
-          caption_entities:       caption_entities.try(&.to_json),
-          has_spoiler:            has_spoiler,
-          disable_notification:   disable_notification,
-          protect_content:        protect_content,
-          reply_parameters:       reply_parameters,
-          reply_markup:           reply_markup.try(&.to_json),
+          chat_id:                  chat_id,
+          photo:                    photo,
+          business_connection_id:   business_connection_id,
+          message_thread_id:        message_thread_id,
+          caption:                  caption,
+          parse_mode:               parse_mode,
+          caption_entities:         caption_entities.try(&.to_json),
+          show_caption_above_media: show_caption_above_media,
+          has_spoiler:              has_spoiler,
+          disable_notification:     disable_notification,
+          protect_content:          protect_content,
+          message_effect_id:        message_effect_id,
+          reply_parameters:         reply_parameters,
+          reply_markup:             reply_markup.try(&.to_json),
         })
       end
 
@@ -235,6 +241,7 @@ module Tourmaline
         thumbnail : ::File | String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -252,6 +259,7 @@ module Tourmaline
           thumbnail:              thumbnail,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -270,6 +278,7 @@ module Tourmaline
         disable_content_type_detection : Bool | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -285,6 +294,7 @@ module Tourmaline
           disable_content_type_detection: disable_content_type_detection,
           disable_notification:           disable_notification,
           protect_content:                protect_content,
+          message_effect_id:              message_effect_id,
           reply_parameters:               reply_parameters,
           reply_markup:                   reply_markup.try(&.to_json),
         })
@@ -303,31 +313,35 @@ module Tourmaline
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
         caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        show_caption_above_media : Bool | ::Nil = nil,
         has_spoiler : Bool | ::Nil = nil,
         supports_streaming : Bool | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendVideo", {
-          chat_id:                chat_id,
-          video:                  video,
-          business_connection_id: business_connection_id,
-          message_thread_id:      message_thread_id,
-          duration:               duration,
-          width:                  width,
-          height:                 height,
-          thumbnail:              thumbnail,
-          caption:                caption,
-          parse_mode:             parse_mode,
-          caption_entities:       caption_entities.try(&.to_json),
-          has_spoiler:            has_spoiler,
-          supports_streaming:     supports_streaming,
-          disable_notification:   disable_notification,
-          protect_content:        protect_content,
-          reply_parameters:       reply_parameters,
-          reply_markup:           reply_markup.try(&.to_json),
+          chat_id:                  chat_id,
+          video:                    video,
+          business_connection_id:   business_connection_id,
+          message_thread_id:        message_thread_id,
+          duration:                 duration,
+          width:                    width,
+          height:                   height,
+          thumbnail:                thumbnail,
+          caption:                  caption,
+          parse_mode:               parse_mode,
+          caption_entities:         caption_entities.try(&.to_json),
+          show_caption_above_media: show_caption_above_media,
+          has_spoiler:              has_spoiler,
+          supports_streaming:       supports_streaming,
+          disable_notification:     disable_notification,
+          protect_content:          protect_content,
+          message_effect_id:        message_effect_id,
+          reply_parameters:         reply_parameters,
+          reply_markup:             reply_markup.try(&.to_json),
         })
       end
 
@@ -344,29 +358,33 @@ module Tourmaline
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
         caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        show_caption_above_media : Bool | ::Nil = nil,
         has_spoiler : Bool | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
         request(Tourmaline::Message, "sendAnimation", {
-          chat_id:                chat_id,
-          animation:              animation,
-          business_connection_id: business_connection_id,
-          message_thread_id:      message_thread_id,
-          duration:               duration,
-          width:                  width,
-          height:                 height,
-          thumbnail:              thumbnail,
-          caption:                caption,
-          parse_mode:             parse_mode,
-          caption_entities:       caption_entities.try(&.to_json),
-          has_spoiler:            has_spoiler,
-          disable_notification:   disable_notification,
-          protect_content:        protect_content,
-          reply_parameters:       reply_parameters,
-          reply_markup:           reply_markup.try(&.to_json),
+          chat_id:                  chat_id,
+          animation:                animation,
+          business_connection_id:   business_connection_id,
+          message_thread_id:        message_thread_id,
+          duration:                 duration,
+          width:                    width,
+          height:                   height,
+          thumbnail:                thumbnail,
+          caption:                  caption,
+          parse_mode:               parse_mode,
+          caption_entities:         caption_entities.try(&.to_json),
+          show_caption_above_media: show_caption_above_media,
+          has_spoiler:              has_spoiler,
+          disable_notification:     disable_notification,
+          protect_content:          protect_content,
+          message_effect_id:        message_effect_id,
+          reply_parameters:         reply_parameters,
+          reply_markup:             reply_markup.try(&.to_json),
         })
       end
 
@@ -382,6 +400,7 @@ module Tourmaline
         duration : Int32 | Int64 | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -396,6 +415,7 @@ module Tourmaline
           duration:               duration,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -412,6 +432,7 @@ module Tourmaline
         thumbnail : ::File | String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -425,8 +446,38 @@ module Tourmaline
           thumbnail:              thumbnail,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
+        })
+      end
+
+      # Use this method to send paid media to channel chats. On success, the sent Message is returned.
+      def send_paid_media(
+        chat_id : Int32 | Int64 | String,
+        star_count : Int32 | Int64,
+        media : Array(Tourmaline::InputPaidMedia),
+        caption : String | ::Nil = nil,
+        parse_mode : ParseMode = default_parse_mode,
+        caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        show_caption_above_media : Bool | ::Nil = nil,
+        disable_notification : Bool | ::Nil = nil,
+        protect_content : Bool | ::Nil = nil,
+        reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
+        reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
+      )
+        request(Tourmaline::Message, "sendPaidMedia", {
+          chat_id:                  chat_id,
+          star_count:               star_count,
+          media:                    media.to_json,
+          caption:                  caption,
+          parse_mode:               parse_mode,
+          caption_entities:         caption_entities.try(&.to_json),
+          show_caption_above_media: show_caption_above_media,
+          disable_notification:     disable_notification,
+          protect_content:          protect_content,
+          reply_parameters:         reply_parameters,
+          reply_markup:             reply_markup.try(&.to_json),
         })
       end
 
@@ -438,6 +489,7 @@ module Tourmaline
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil
       )
         request(Array(Tourmaline::Message), "sendMediaGroup", {
@@ -447,6 +499,7 @@ module Tourmaline
           message_thread_id:      message_thread_id,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
         })
       end
@@ -464,6 +517,7 @@ module Tourmaline
         proximity_alert_radius : Int32 | Int64 | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -479,6 +533,7 @@ module Tourmaline
           proximity_alert_radius: proximity_alert_radius,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -499,6 +554,7 @@ module Tourmaline
         google_place_type : String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -516,6 +572,7 @@ module Tourmaline
           google_place_type:      google_place_type,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -532,6 +589,7 @@ module Tourmaline
         vcard : String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -545,6 +603,7 @@ module Tourmaline
           vcard:                  vcard,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -571,6 +630,7 @@ module Tourmaline
         is_closed : Bool | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -594,6 +654,7 @@ module Tourmaline
           is_closed:               is_closed,
           disable_notification:    disable_notification,
           protect_content:         protect_content,
+          message_effect_id:       message_effect_id,
           reply_parameters:        reply_parameters,
           reply_markup:            reply_markup.try(&.to_json),
         })
@@ -607,6 +668,7 @@ module Tourmaline
         emoji : String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -617,6 +679,7 @@ module Tourmaline
           emoji:                  emoji,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -1368,6 +1431,7 @@ module Tourmaline
         caption : String | ::Nil = nil,
         parse_mode : ParseMode = default_parse_mode,
         caption_entities : Array(Tourmaline::MessageEntity) | ::Nil = nil,
+        show_caption_above_media : Bool | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
         request(Tourmaline::Message | Bool, "editMessageCaption", {
@@ -1508,6 +1572,7 @@ module Tourmaline
         emoji : String | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | Tourmaline::ReplyKeyboardMarkup | Tourmaline::ReplyKeyboardRemove | Tourmaline::ForceReply | ::Nil = nil
       )
@@ -1519,6 +1584,7 @@ module Tourmaline
           emoji:                  emoji,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })
@@ -1738,10 +1804,10 @@ module Tourmaline
         title : String,
         description : String,
         payload : String,
-        provider_token : String,
         currency : String,
         prices : Array(Tourmaline::LabeledPrice),
         message_thread_id : Int32 | Int64 | ::Nil = nil,
+        provider_token : String | ::Nil = nil,
         max_tip_amount : Int32 | Int64 | ::Nil = nil,
         suggested_tip_amounts : Array(Int32 | Int64) | ::Nil = nil,
         start_parameter : String | ::Nil = nil,
@@ -1759,6 +1825,7 @@ module Tourmaline
         is_flexible : Bool | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
@@ -1767,10 +1834,10 @@ module Tourmaline
           title:                         title,
           description:                   description,
           payload:                       payload,
-          provider_token:                provider_token,
           currency:                      currency,
           prices:                        prices.to_json,
           message_thread_id:             message_thread_id,
+          provider_token:                provider_token,
           max_tip_amount:                max_tip_amount,
           suggested_tip_amounts:         suggested_tip_amounts.try(&.to_json),
           start_parameter:               start_parameter,
@@ -1788,6 +1855,7 @@ module Tourmaline
           is_flexible:                   is_flexible,
           disable_notification:          disable_notification,
           protect_content:               protect_content,
+          message_effect_id:             message_effect_id,
           reply_parameters:              reply_parameters,
           reply_markup:                  reply_markup.try(&.to_json),
         })
@@ -1798,9 +1866,9 @@ module Tourmaline
         title : String,
         description : String,
         payload : String,
-        provider_token : String,
         currency : String,
         prices : Array(Tourmaline::LabeledPrice),
+        provider_token : String | ::Nil = nil,
         max_tip_amount : Int32 | Int64 | ::Nil = nil,
         suggested_tip_amounts : Array(Int32 | Int64) | ::Nil = nil,
         provider_data : String | ::Nil = nil,
@@ -1820,9 +1888,9 @@ module Tourmaline
           title:                         title,
           description:                   description,
           payload:                       payload,
-          provider_token:                provider_token,
           currency:                      currency,
           prices:                        prices.to_json,
+          provider_token:                provider_token,
           max_tip_amount:                max_tip_amount,
           suggested_tip_amounts:         suggested_tip_amounts.try(&.to_json),
           provider_data:                 provider_data.try(&.to_json),
@@ -1888,6 +1956,7 @@ module Tourmaline
         message_thread_id : Int32 | Int64 | ::Nil = nil,
         disable_notification : Bool | ::Nil = nil,
         protect_content : Bool | ::Nil = nil,
+        message_effect_id : String | ::Nil = nil,
         reply_parameters : Tourmaline::ReplyParameters | ::Nil = nil,
         reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil
       )
@@ -1898,6 +1967,7 @@ module Tourmaline
           message_thread_id:      message_thread_id,
           disable_notification:   disable_notification,
           protect_content:        protect_content,
+          message_effect_id:      message_effect_id,
           reply_parameters:       reply_parameters,
           reply_markup:           reply_markup.try(&.to_json),
         })

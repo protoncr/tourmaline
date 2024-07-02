@@ -344,6 +344,9 @@ module Tourmaline
     # Optional. Default chat member permissions, for groups and supergroups
     property permissions : Tourmaline::ChatPermissions | ::Nil
 
+    # Optional. True, if paid media messages can be sent or forwarded to the channel chat. The field is available only for channel chats.
+    property? can_send_paid_media : Bool | ::Nil
+
     # Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged user; in seconds
     property slow_mode_delay : Int32 | Int64 | ::Nil
 
@@ -413,6 +416,7 @@ module Tourmaline
       @invite_link : String | ::Nil = nil,
       @pinned_message : Tourmaline::Message | ::Nil = nil,
       @permissions : Tourmaline::ChatPermissions | ::Nil = nil,
+      @can_send_paid_media : Bool | ::Nil = nil,
       @slow_mode_delay : Int32 | Int64 | ::Nil = nil,
       @unrestrict_boost_count : Int32 | Int64 | ::Nil = nil,
       @message_auto_delete_time : Int32 | Int64 | ::Nil = nil,
@@ -510,6 +514,9 @@ module Tourmaline
     # Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
     property link_preview_options : Tourmaline::LinkPreviewOptions | ::Nil
 
+    # Optional. Unique identifier of the message effect added to the message
+    property effect_id : String | ::Nil
+
     # Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
     property animation : Tourmaline::Animation | ::Nil
 
@@ -518,6 +525,9 @@ module Tourmaline
 
     # Optional. Message is a general file, information about the file
     property document : Tourmaline::Document | ::Nil
+
+    # Optional. Message contains paid media; information about the paid media
+    property paid_media : Tourmaline::PaidMediaInfo | ::Nil
 
     # Optional. Message is a photo, available sizes of the photo
     property photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize
@@ -537,11 +547,14 @@ module Tourmaline
     # Optional. Message is a voice message, information about the file
     property voice : Tourmaline::Voice | ::Nil
 
-    # Optional. Caption for the animation, audio, document, photo, video or voice
+    # Optional. Caption for the animation, audio, document, paid media, photo, video or voice
     property caption : String | ::Nil
 
     # Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
+
+    # Optional. True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
 
     # Optional. True, if the message media is covered by a spoiler animation
     property? has_media_spoiler : Bool | ::Nil
@@ -704,9 +717,11 @@ module Tourmaline
       @text : String | ::Nil = nil,
       @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
       @link_preview_options : Tourmaline::LinkPreviewOptions | ::Nil = nil,
+      @effect_id : String | ::Nil = nil,
       @animation : Tourmaline::Animation | ::Nil = nil,
       @audio : Tourmaline::Audio | ::Nil = nil,
       @document : Tourmaline::Document | ::Nil = nil,
+      @paid_media : Tourmaline::PaidMediaInfo | ::Nil = nil,
       @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize,
       @sticker : Tourmaline::Sticker | ::Nil = nil,
       @story : Tourmaline::Story | ::Nil = nil,
@@ -715,6 +730,7 @@ module Tourmaline
       @voice : Tourmaline::Voice | ::Nil = nil,
       @caption : String | ::Nil = nil,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @has_media_spoiler : Bool | ::Nil = nil,
       @contact : Tourmaline::Contact | ::Nil = nil,
       @dice : Tourmaline::Dice | ::Nil = nil,
@@ -808,7 +824,7 @@ module Tourmaline
   class MessageEntity
     include JSON::Serializable
 
-    # Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag" ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers)
+    # Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag" ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers)
     property type : String
 
     # Offset in UTF-16 code units to the start of the entity
@@ -891,6 +907,9 @@ module Tourmaline
     # Optional. Message is a general file, information about the file
     property document : Tourmaline::Document | ::Nil
 
+    # Optional. Message contains paid media; information about the paid media
+    property paid_media : Tourmaline::PaidMediaInfo | ::Nil
+
     # Optional. Message is a photo, available sizes of the photo
     property photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize
 
@@ -947,6 +966,7 @@ module Tourmaline
       @animation : Tourmaline::Animation | ::Nil = nil,
       @audio : Tourmaline::Audio | ::Nil = nil,
       @document : Tourmaline::Document | ::Nil = nil,
+      @paid_media : Tourmaline::PaidMediaInfo | ::Nil = nil,
       @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize,
       @sticker : Tourmaline::Sticker | ::Nil = nil,
       @story : Tourmaline::Story | ::Nil = nil,
@@ -1150,22 +1170,22 @@ module Tourmaline
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
 
-    # Video width as defined by sender
+    # Video width as defined by the sender
     property width : Int32 | Int64
 
-    # Video height as defined by sender
+    # Video height as defined by the sender
     property height : Int32 | Int64
 
-    # Duration of the video in seconds as defined by sender
+    # Duration of the video in seconds as defined by the sender
     property duration : Int32 | Int64
 
-    # Optional. Animation thumbnail as defined by sender
+    # Optional. Animation thumbnail as defined by the sender
     property thumbnail : Tourmaline::PhotoSize | ::Nil
 
-    # Optional. Original animation filename as defined by sender
+    # Optional. Original animation filename as defined by the sender
     property file_name : String | ::Nil
 
-    # Optional. MIME type of the file as defined by sender
+    # Optional. MIME type of the file as defined by the sender
     property mime_type : String | ::Nil
 
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
@@ -1195,19 +1215,19 @@ module Tourmaline
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
 
-    # Duration of the audio in seconds as defined by sender
+    # Duration of the audio in seconds as defined by the sender
     property duration : Int32 | Int64
 
-    # Optional. Performer of the audio as defined by sender or by audio tags
+    # Optional. Performer of the audio as defined by the sender or by audio tags
     property performer : String | ::Nil
 
-    # Optional. Title of the audio as defined by sender or by audio tags
+    # Optional. Title of the audio as defined by the sender or by audio tags
     property title : String | ::Nil
 
-    # Optional. Original filename as defined by sender
+    # Optional. Original filename as defined by the sender
     property file_name : String | ::Nil
 
-    # Optional. MIME type of the file as defined by sender
+    # Optional. MIME type of the file as defined by the sender
     property mime_type : String | ::Nil
 
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
@@ -1240,13 +1260,13 @@ module Tourmaline
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
 
-    # Optional. Document thumbnail as defined by sender
+    # Optional. Document thumbnail as defined by the sender
     property thumbnail : Tourmaline::PhotoSize | ::Nil
 
-    # Optional. Original filename as defined by sender
+    # Optional. Original filename as defined by the sender
     property file_name : String | ::Nil
 
-    # Optional. MIME type of the file as defined by sender
+    # Optional. MIME type of the file as defined by the sender
     property mime_type : String | ::Nil
 
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
@@ -1290,22 +1310,22 @@ module Tourmaline
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
 
-    # Video width as defined by sender
+    # Video width as defined by the sender
     property width : Int32 | Int64
 
-    # Video height as defined by sender
+    # Video height as defined by the sender
     property height : Int32 | Int64
 
-    # Duration of the video in seconds as defined by sender
+    # Duration of the video in seconds as defined by the sender
     property duration : Int32 | Int64
 
     # Optional. Video thumbnail
     property thumbnail : Tourmaline::PhotoSize | ::Nil
 
-    # Optional. Original filename as defined by sender
+    # Optional. Original filename as defined by the sender
     property file_name : String | ::Nil
 
-    # Optional. MIME type of the file as defined by sender
+    # Optional. MIME type of the file as defined by the sender
     property mime_type : String | ::Nil
 
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
@@ -1335,10 +1355,10 @@ module Tourmaline
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
 
-    # Video width and height (diameter of the video message) as defined by sender
+    # Video width and height (diameter of the video message) as defined by the sender
     property length : Int32 | Int64
 
-    # Duration of the video in seconds as defined by sender
+    # Duration of the video in seconds as defined by the sender
     property duration : Int32 | Int64
 
     # Optional. Video thumbnail
@@ -1368,10 +1388,10 @@ module Tourmaline
     # Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     property file_unique_id : String
 
-    # Duration of the audio in seconds as defined by sender
+    # Duration of the audio in seconds as defined by the sender
     property duration : Int32 | Int64
 
-    # Optional. MIME type of the file as defined by sender
+    # Optional. MIME type of the file as defined by the sender
     property mime_type : String | ::Nil
 
     # Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
@@ -1383,6 +1403,88 @@ module Tourmaline
       @duration,
       @mime_type : String | ::Nil = nil,
       @file_size : Int32 | Int64 | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes the paid media added to a message.
+  class PaidMediaInfo
+    include JSON::Serializable
+
+    # The number of Telegram Stars that must be paid to buy access to the media
+    property star_count : Int32 | Int64
+
+    # Information about the paid media
+    property paid_media : Array(Tourmaline::PaidMedia) = [] of Tourmaline::PaidMedia
+
+    def initialize(
+      @star_count,
+      @paid_media : Array(Tourmaline::PaidMedia) = [] of Tourmaline::PaidMedia
+    )
+    end
+  end
+
+  # This object describes paid media. Currently, it can be one of
+  # - PaidMediaPreview
+  # - PaidMediaPhoto
+  # - PaidMediaVideo
+  alias PaidMedia = Tourmaline::PaidMediaPreview | Tourmaline::PaidMediaPhoto | Tourmaline::PaidMediaVideo
+
+  # The paid media isn't available before the payment.
+  class PaidMediaPreview
+    include JSON::Serializable
+
+    # Type of the paid media, always "preview"
+    property type : String
+
+    # Optional. Media width as defined by the sender
+    property width : Int32 | Int64 | ::Nil
+
+    # Optional. Media height as defined by the sender
+    property height : Int32 | Int64 | ::Nil
+
+    # Optional. Duration of the media in seconds as defined by the sender
+    property duration : Int32 | Int64 | ::Nil
+
+    def initialize(
+      @type,
+      @width : Int32 | Int64 | ::Nil = nil,
+      @height : Int32 | Int64 | ::Nil = nil,
+      @duration : Int32 | Int64 | ::Nil = nil
+    )
+    end
+  end
+
+  # The paid media is a photo.
+  class PaidMediaPhoto
+    include JSON::Serializable
+
+    # Type of the paid media, always "photo"
+    property type : String
+
+    # The photo
+    property photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize
+
+    def initialize(
+      @type,
+      @photo : Array(Tourmaline::PhotoSize) = [] of Tourmaline::PhotoSize
+    )
+    end
+  end
+
+  # The paid media is a video.
+  class PaidMediaVideo
+    include JSON::Serializable
+
+    # Type of the paid media, always "video"
+    property type : String
+
+    # The video
+    property video : Tourmaline::Video
+
+    def initialize(
+      @type,
+      @video
     )
     end
   end
@@ -1454,7 +1556,7 @@ module Tourmaline
     end
   end
 
-  # This object contains information about one answer option in a poll to send.
+  # This object contains information about one answer option in a poll to be sent.
   class InputPollOption
     include JSON::Serializable
 
@@ -1570,7 +1672,10 @@ module Tourmaline
   class Location
     include JSON::Serializable
 
-    # Longitude as defined by sender
+    # Latitude as defined by the sender
+    property latitude : Float64
+
+    # Longitude as defined by the sender
     property longitude : Float64
 
     # Latitude as defined by sender
@@ -2324,7 +2429,7 @@ module Tourmaline
     end
   end
 
-  # This object represents one button of the reply keyboard. For simple text buttons, String can be used instead of this object to specify the button text. The optional fields web_app, request_users, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
+  # This object represents one button of the reply keyboard. At most one of the optional fields must be used to specify type of the button. For simple text buttons, String can be used instead of this object to specify the button text.
   # Note: request_users and request_chat options will only work in Telegram versions released after 3 February, 2023. Older clients will display unsupported message.
   class KeyboardButton
     include JSON::Serializable
@@ -2495,7 +2600,7 @@ module Tourmaline
     end
   end
 
-  # This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
+  # This object represents one button of an inline keyboard. Exactly one of the optional fields must be used to specify type of the button.
   class InlineKeyboardButton
     include JSON::Serializable
 
@@ -2526,7 +2631,7 @@ module Tourmaline
     # Optional. Description of the game that will be launched when the user presses the button. NOTE: This type of button must always be the first button in the first row.
     property callback_game : Tourmaline::CallbackGame | ::Nil
 
-    # Optional. Specify True, to send a Pay button. NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
+    # Optional. Specify True, to send a Pay button. Substrings "⭐" and "XTR" in the buttons's text will be replaced with a Telegram Star icon. NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
     property? pay : Bool | ::Nil
 
     def initialize(
@@ -3653,7 +3758,7 @@ module Tourmaline
     # Text on the button
     property text : String
 
-    # Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
+    # Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Alternatively, a t.me link to a Web App of the bot can be specified in the object instead of the Web App's URL, in which case the Web App will be opened as if the user pressed the link.
     property web_app : Tourmaline::WebAppInfo
 
     def initialize(
@@ -3924,6 +4029,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Pass True if the photo needs to be covered with a spoiler animation
     property? has_spoiler : Bool | ::Nil
 
@@ -3933,6 +4041,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @has_spoiler : Bool | ::Nil = nil
     )
     end
@@ -3960,6 +4069,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Video width
     property width : Int32 | Int64 | ::Nil
 
@@ -3982,6 +4094,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @width : Int32 | Int64 | ::Nil = nil,
       @height : Int32 | Int64 | ::Nil = nil,
       @duration : Int32 | Int64 | ::Nil = nil,
@@ -4013,6 +4126,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Animation width
     property width : Int32 | Int64 | ::Nil
 
@@ -4032,6 +4148,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @width : Int32 | Int64 | ::Nil = nil,
       @height : Int32 | Int64 | ::Nil = nil,
       @duration : Int32 | Int64 | ::Nil = nil,
@@ -4125,6 +4242,65 @@ module Tourmaline
   # This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
   class InputFile
     include JSON::Serializable
+  end
+
+  # This object describes the paid media to be sent. Currently, it can be one of
+  # - InputPaidMediaPhoto
+  # - InputPaidMediaVideo
+  alias InputPaidMedia = Tourmaline::InputPaidMediaPhoto | Tourmaline::InputPaidMediaVideo
+
+  # The paid media to send is a photo.
+  class InputPaidMediaPhoto
+    include JSON::Serializable
+
+    # Type of the media, must be photo
+    property type : String
+
+    # File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
+    property media : String
+
+    def initialize(
+      @type,
+      @media
+    )
+    end
+  end
+
+  # The paid media to send is a video.
+  class InputPaidMediaVideo
+    include JSON::Serializable
+
+    # Type of the media, must be video
+    property type : String
+
+    # File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
+    property media : String
+
+    # Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
+    property thumbnail : ::File | String | ::Nil
+
+    # Optional. Video width
+    property width : Int32 | Int64 | ::Nil
+
+    # Optional. Video height
+    property height : Int32 | Int64 | ::Nil
+
+    # Optional. Video duration in seconds
+    property duration : Int32 | Int64 | ::Nil
+
+    # Optional. Pass True if the uploaded video is suitable for streaming
+    property? supports_streaming : Bool | ::Nil
+
+    def initialize(
+      @type,
+      @media,
+      @thumbnail : ::File | String | ::Nil = nil,
+      @width : Int32 | Int64 | ::Nil = nil,
+      @height : Int32 | Int64 | ::Nil = nil,
+      @duration : Int32 | Int64 | ::Nil = nil,
+      @supports_streaming : Bool | ::Nil = nil
+    )
+    end
   end
 
   # This object represents a sticker.
@@ -4447,6 +4623,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
 
@@ -4465,6 +4644,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
@@ -4511,6 +4691,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
 
@@ -4530,6 +4713,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
@@ -4576,6 +4760,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
 
@@ -4595,6 +4782,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
@@ -4632,6 +4820,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Video width
     property video_width : Int32 | Int64 | ::Nil
 
@@ -4660,6 +4851,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @video_width : Int32 | Int64 | ::Nil = nil,
       @video_height : Int32 | Int64 | ::Nil = nil,
       @video_duration : Int32 | Int64 | ::Nil = nil,
@@ -5077,6 +5269,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
 
@@ -5092,6 +5287,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
@@ -5123,6 +5319,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
 
@@ -5137,6 +5336,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
@@ -5168,6 +5368,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
 
@@ -5182,6 +5385,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
@@ -5294,6 +5498,9 @@ module Tourmaline
     # Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     property caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
 
+    # Optional. Pass True, if the caption must be shown above the message media
+    property? show_caption_above_media : Bool | ::Nil
+
     # Optional. Inline keyboard attached to the message
     property reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil
 
@@ -5309,6 +5516,7 @@ module Tourmaline
       @caption : String | ::Nil = nil,
       @parse_mode : ParseMode = ParseMode::Markdown,
       @caption_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @show_caption_above_media : Bool | ::Nil = nil,
       @reply_markup : Tourmaline::InlineKeyboardMarkup | ::Nil = nil,
       @input_message_content : Tourmaline::InputMessageContent | ::Nil = nil
     )
@@ -5546,16 +5754,16 @@ module Tourmaline
     # Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
     property payload : String
 
-    # Payment provider token, obtained via @BotFather
-    property provider_token : String
-
-    # Three-letter ISO 4217 currency code, see more on currencies
+    # Three-letter ISO 4217 currency code, see more on currencies. Pass "XTR" for payments in Telegram Stars.
     property currency : String
 
-    # Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
+    # Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
     property prices : Array(Tourmaline::LabeledPrice) = [] of Tourmaline::LabeledPrice
 
-    # Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0
+    # Optional. Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
+    property provider_token : String | ::Nil
+
+    # Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars.
     property max_tip_amount : Int32 | Int64 | ::Nil
 
     # Optional. A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
@@ -5576,34 +5784,34 @@ module Tourmaline
     # Optional. Photo height
     property photo_height : Int32 | Int64 | ::Nil
 
-    # Optional. Pass True if you require the user's full name to complete the order
+    # Optional. Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram Stars.
     property? need_name : Bool | ::Nil
 
-    # Optional. Pass True if you require the user's phone number to complete the order
+    # Optional. Pass True if you require the user's phone number to complete the order. Ignored for payments in Telegram Stars.
     property? need_phone_number : Bool | ::Nil
 
-    # Optional. Pass True if you require the user's email address to complete the order
+    # Optional. Pass True if you require the user's email address to complete the order. Ignored for payments in Telegram Stars.
     property? need_email : Bool | ::Nil
 
-    # Optional. Pass True if you require the user's shipping address to complete the order
+    # Optional. Pass True if you require the user's shipping address to complete the order. Ignored for payments in Telegram Stars.
     property? need_shipping_address : Bool | ::Nil
 
-    # Optional. Pass True if the user's phone number should be sent to provider
+    # Optional. Pass True if the user's phone number should be sent to the provider. Ignored for payments in Telegram Stars.
     property? send_phone_number_to_provider : Bool | ::Nil
 
-    # Optional. Pass True if the user's email address should be sent to provider
+    # Optional. Pass True if the user's email address should be sent to the provider. Ignored for payments in Telegram Stars.
     property? send_email_to_provider : Bool | ::Nil
 
-    # Optional. Pass True if the final price depends on the shipping method
+    # Optional. Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
     property? is_flexible : Bool | ::Nil
 
     def initialize(
       @title,
       @description,
       @payload,
-      @provider_token,
       @currency,
       @prices : Array(Tourmaline::LabeledPrice) = [] of Tourmaline::LabeledPrice,
+      @provider_token : String | ::Nil = nil,
       @max_tip_amount : Int32 | Int64 | ::Nil = nil,
       @suggested_tip_amounts : Array(Int32 | Int64) = [] of Int32 | Int64,
       @provider_data : String | ::Nil = nil,
@@ -5695,7 +5903,7 @@ module Tourmaline
     # Unique bot deep-linking parameter that can be used to generate this invoice
     property start_parameter : String
 
-    # Three-letter ISO 4217 currency code
+    # Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars
     property currency : String
 
     # Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
@@ -5794,13 +6002,13 @@ module Tourmaline
   class SuccessfulPayment
     include JSON::Serializable
 
-    # Three-letter ISO 4217 currency code
+    # Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars
     property currency : String
 
     # Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
     property total_amount : Int32 | Int64
 
-    # Bot specified invoice payload
+    # Bot-specified invoice payload
     property invoice_payload : String
 
     # Telegram payment identifier
@@ -5837,7 +6045,7 @@ module Tourmaline
     # User who sent the query
     property from : Tourmaline::User
 
-    # Bot specified invoice payload
+    # Bot-specified invoice payload
     property invoice_payload : String
 
     # User specified shipping address
@@ -5862,13 +6070,13 @@ module Tourmaline
     # User who sent the query
     property from : Tourmaline::User
 
-    # Three-letter ISO 4217 currency code
+    # Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars
     property currency : String
 
     # Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
     property total_amount : Int32 | Int64
 
-    # Bot specified invoice payload
+    # Bot-specified invoice payload
     property invoice_payload : String
 
     # Optional. Identifier of the shipping option chosen by the user
@@ -5885,6 +6093,174 @@ module Tourmaline
       @invoice_payload,
       @shipping_option_id : String | ::Nil = nil,
       @order_info : Tourmaline::OrderInfo | ::Nil = nil
+    )
+    end
+  end
+
+  # This object describes the state of a revenue withdrawal operation. Currently, it can be one of
+  # - RevenueWithdrawalStatePending
+  # - RevenueWithdrawalStateSucceeded
+  # - RevenueWithdrawalStateFailed
+  alias RevenueWithdrawalState = Tourmaline::RevenueWithdrawalStatePending | Tourmaline::RevenueWithdrawalStateSucceeded | Tourmaline::RevenueWithdrawalStateFailed
+
+  # The withdrawal is in progress.
+  class RevenueWithdrawalStatePending
+    include JSON::Serializable
+
+    # Type of the state, always "pending"
+    property type : String
+
+    def initialize(
+      @type
+    )
+    end
+  end
+
+  # The withdrawal succeeded.
+  class RevenueWithdrawalStateSucceeded
+    include JSON::Serializable
+
+    # Type of the state, always "succeeded"
+    property type : String
+
+    # Date the withdrawal was completed in Unix time
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property date : Time
+
+    # An HTTPS URL that can be used to see transaction details
+    property url : String
+
+    def initialize(
+      @type,
+      @date,
+      @url
+    )
+    end
+  end
+
+  # The withdrawal failed and the transaction was refunded.
+  class RevenueWithdrawalStateFailed
+    include JSON::Serializable
+
+    # Type of the state, always "failed"
+    property type : String
+
+    def initialize(
+      @type
+    )
+    end
+  end
+
+  # This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of
+  # - TransactionPartnerUser
+  # - TransactionPartnerFragment
+  # - TransactionPartnerTelegramAds
+  # - TransactionPartnerOther
+  alias TransactionPartner = Tourmaline::TransactionPartnerUser | Tourmaline::TransactionPartnerFragment | Tourmaline::TransactionPartnerTelegramAds | Tourmaline::TransactionPartnerOther
+
+  # Describes a transaction with a user.
+  class TransactionPartnerUser
+    include JSON::Serializable
+
+    # Type of the transaction partner, always "user"
+    property type : String
+
+    # Information about the user
+    property user : Tourmaline::User
+
+    # Optional. Bot-specified invoice payload
+    property invoice_payload : String | ::Nil
+
+    def initialize(
+      @type,
+      @user,
+      @invoice_payload : String | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a withdrawal transaction with Fragment.
+  class TransactionPartnerFragment
+    include JSON::Serializable
+
+    # Type of the transaction partner, always "fragment"
+    property type : String
+
+    # Optional. State of the transaction if the transaction is outgoing
+    property withdrawal_state : Tourmaline::RevenueWithdrawalState | ::Nil
+
+    def initialize(
+      @type,
+      @withdrawal_state : Tourmaline::RevenueWithdrawalState | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a withdrawal transaction to the Telegram Ads platform.
+  class TransactionPartnerTelegramAds
+    include JSON::Serializable
+
+    # Type of the transaction partner, always "telegram_ads"
+    property type : String
+
+    def initialize(
+      @type
+    )
+    end
+  end
+
+  # Describes a transaction with an unknown source or recipient.
+  class TransactionPartnerOther
+    include JSON::Serializable
+
+    # Type of the transaction partner, always "other"
+    property type : String
+
+    def initialize(
+      @type
+    )
+    end
+  end
+
+  # Describes a Telegram Star transaction.
+  class StarTransaction
+    include JSON::Serializable
+
+    # Unique identifier of the transaction. Coincides with the identifer of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
+    property id : String
+
+    # Number of Telegram Stars transferred by the transaction
+    property amount : Int32 | Int64
+
+    # Date the transaction was created in Unix time
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property date : Time
+
+    # Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions
+    property source : Tourmaline::TransactionPartner | ::Nil
+
+    # Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions
+    property receiver : Tourmaline::TransactionPartner | ::Nil
+
+    def initialize(
+      @id,
+      @amount,
+      @date,
+      @source : Tourmaline::TransactionPartner | ::Nil = nil,
+      @receiver : Tourmaline::TransactionPartner | ::Nil = nil
+    )
+    end
+  end
+
+  # Contains a list of Telegram Star transactions.
+  class StarTransactions
+    include JSON::Serializable
+
+    # The list of transactions
+    property transactions : Array(Tourmaline::StarTransaction) = [] of Tourmaline::StarTransaction
+
+    def initialize(
+      @transactions : Array(Tourmaline::StarTransaction) = [] of Tourmaline::StarTransaction
     )
     end
   end
