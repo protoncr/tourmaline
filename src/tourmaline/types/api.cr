@@ -238,6 +238,9 @@ module Tourmaline
     # Optional. True, if the supergroup chat is a forum (has topics enabled)
     property? is_forum : Bool | ::Nil
 
+    # Optional. True, if the chat is the direct messages chat of a channel
+    property? is_direct_messages : Bool | ::Nil
+
     def initialize(
       @id,
       @type,
@@ -245,7 +248,8 @@ module Tourmaline
       @username : String | ::Nil = nil,
       @first_name : String | ::Nil = nil,
       @last_name : String | ::Nil = nil,
-      @is_forum : Bool | ::Nil = nil
+      @is_forum : Bool | ::Nil = nil,
+      @is_direct_messages : Bool | ::Nil = nil
     )
     end
   end
@@ -281,6 +285,9 @@ module Tourmaline
     # Optional. True, if the supergroup chat is a forum (has topics enabled)
     property? is_forum : Bool | ::Nil
 
+    # Optional. True, if the chat is the direct messages chat of a channel
+    property? is_direct_messages : Bool | ::Nil
+
     # Optional. Chat photo
     property photo : Tourmaline::ChatPhoto | ::Nil
 
@@ -301,6 +308,9 @@ module Tourmaline
 
     # Optional. For private chats, the personal channel of the user
     property personal_chat : Tourmaline::Chat | ::Nil
+
+    # Optional. Information about the corresponding channel chat; for direct messages chats only
+    property parent_chat : Tourmaline::Chat | ::Nil
 
     # Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed.
     property available_reactions : Array(Tourmaline::ReactionType) = [] of Tourmaline::ReactionType
@@ -398,6 +408,7 @@ module Tourmaline
       @first_name : String | ::Nil = nil,
       @last_name : String | ::Nil = nil,
       @is_forum : Bool | ::Nil = nil,
+      @is_direct_messages : Bool | ::Nil = nil,
       @photo : Tourmaline::ChatPhoto | ::Nil = nil,
       @active_usernames : Array(String) = [] of String,
       @birthdate : Tourmaline::Birthdate | ::Nil = nil,
@@ -405,6 +416,7 @@ module Tourmaline
       @business_location : Tourmaline::BusinessLocation | ::Nil = nil,
       @business_opening_hours : Tourmaline::BusinessOpeningHours | ::Nil = nil,
       @personal_chat : Tourmaline::Chat | ::Nil = nil,
+      @parent_chat : Tourmaline::Chat | ::Nil = nil,
       @available_reactions : Array(Tourmaline::ReactionType) = [] of Tourmaline::ReactionType,
       @background_custom_emoji_id : String | ::Nil = nil,
       @profile_accent_color_id : Int32 | Int64 | ::Nil = nil,
@@ -454,6 +466,9 @@ module Tourmaline
     # Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
     property message_thread_id : Int32 | Int64 | ::Nil
 
+    # Optional. Information about the direct messages chat topic that contains the message
+    property direct_messages_topic : Tourmaline::DirectMessagesTopic | ::Nil
+
     # Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
     property from : Tourmaline::User | ::Nil
 
@@ -490,6 +505,9 @@ module Tourmaline
     # Optional. For replies to a story, the original story
     property reply_to_story : Tourmaline::Story | ::Nil
 
+    # Optional. Identifier of the specific checklist task that is being replied to
+    property reply_to_checklist_task_id : Int32 | Int64 | ::Nil
+
     # Optional. Bot through which the message was sent
     property via_bot : Tourmaline::User | ::Nil
 
@@ -502,6 +520,9 @@ module Tourmaline
 
     # Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message
     property? is_from_offline : Bool | ::Nil
+
+    # Optional. True, if the message is a paid post. Note that such posts must not be deleted for 24 hours to receive the payment and can't be edited.
+    property? is_paid_post : Bool | ::Nil
 
     # Optional. The unique identifier of a media message group this message belongs to
     property media_group_id : String | ::Nil
@@ -517,6 +538,9 @@ module Tourmaline
 
     # Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
     property link_preview_options : Tourmaline::LinkPreviewOptions | ::Nil
+
+    # Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't be edited.
+    property suggested_post_info : Tourmaline::SuggestedPostInfo | ::Nil
 
     # Optional. Unique identifier of the message effect added to the message
     property effect_id : String | ::Nil
@@ -680,6 +704,24 @@ module Tourmaline
     # Optional. Service message: a giveaway without public winners was completed
     property giveaway_completed : Tourmaline::GiveawayCompleted | ::Nil
 
+    # Optional. Service message: the price for paid messages has changed in the chat
+    property paid_message_price_changed : Tourmaline::PaidMessagePriceChanged | ::Nil
+
+    # Optional. Service message: a suggested post was approved
+    property suggested_post_approved : Tourmaline::SuggestedPostApproved | ::Nil
+
+    # Optional. Service message: approval of a suggested post has failed
+    property suggested_post_approval_failed : Tourmaline::SuggestedPostApprovalFailed | ::Nil
+
+    # Optional. Service message: a suggested post was declined
+    property suggested_post_declined : Tourmaline::SuggestedPostDeclined | ::Nil
+
+    # Optional. Service message: payment for a suggested post was received
+    property suggested_post_paid : Tourmaline::SuggestedPostPaid | ::Nil
+
+    # Optional. Service message: payment for a suggested post was refunded
+    property suggested_post_refunded : Tourmaline::SuggestedPostRefunded | ::Nil
+
     # Optional. Service message: video chat scheduled
     property video_chat_scheduled : Tourmaline::VideoChatScheduled | ::Nil
 
@@ -703,6 +745,7 @@ module Tourmaline
       @date,
       @chat,
       @message_thread_id : Int32 | Int64 | ::Nil = nil,
+      @direct_messages_topic : Tourmaline::DirectMessagesTopic | ::Nil = nil,
       @from : Tourmaline::User | ::Nil = nil,
       @sender_chat : Tourmaline::Chat | ::Nil = nil,
       @sender_boost_count : Int32 | Int64 | ::Nil = nil,
@@ -715,15 +758,18 @@ module Tourmaline
       @external_reply : Tourmaline::ExternalReplyInfo | ::Nil = nil,
       @quote : Tourmaline::TextQuote | ::Nil = nil,
       @reply_to_story : Tourmaline::Story | ::Nil = nil,
+      @reply_to_checklist_task_id : Int32 | Int64 | ::Nil = nil,
       @via_bot : Tourmaline::User | ::Nil = nil,
       @edit_date : Int32 | Int64 | ::Nil = nil,
       @has_protected_content : Bool | ::Nil = nil,
       @is_from_offline : Bool | ::Nil = nil,
+      @is_paid_post : Bool | ::Nil = nil,
       @media_group_id : String | ::Nil = nil,
       @author_signature : String | ::Nil = nil,
       @text : String | ::Nil = nil,
       @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
       @link_preview_options : Tourmaline::LinkPreviewOptions | ::Nil = nil,
+      @suggested_post_info : Tourmaline::SuggestedPostInfo | ::Nil = nil,
       @effect_id : String | ::Nil = nil,
       @animation : Tourmaline::Animation | ::Nil = nil,
       @audio : Tourmaline::Audio | ::Nil = nil,
@@ -778,6 +824,12 @@ module Tourmaline
       @giveaway : Tourmaline::Giveaway | ::Nil = nil,
       @giveaway_winners : Tourmaline::GiveawayWinners | ::Nil = nil,
       @giveaway_completed : Tourmaline::GiveawayCompleted | ::Nil = nil,
+      @paid_message_price_changed : Tourmaline::PaidMessagePriceChanged | ::Nil = nil,
+      @suggested_post_approved : Tourmaline::SuggestedPostApproved | ::Nil = nil,
+      @suggested_post_approval_failed : Tourmaline::SuggestedPostApprovalFailed | ::Nil = nil,
+      @suggested_post_declined : Tourmaline::SuggestedPostDeclined | ::Nil = nil,
+      @suggested_post_paid : Tourmaline::SuggestedPostPaid | ::Nil = nil,
+      @suggested_post_refunded : Tourmaline::SuggestedPostRefunded | ::Nil = nil,
       @video_chat_scheduled : Tourmaline::VideoChatScheduled | ::Nil = nil,
       @video_chat_started : Tourmaline::VideoChatStarted | ::Nil = nil,
       @video_chat_ended : Tourmaline::VideoChatEnded | ::Nil = nil,
@@ -1002,7 +1054,7 @@ module Tourmaline
     # Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it is specified
     property message_id : Int32 | Int64
 
-    # Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account.
+    # Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account and messages from channel direct messages chats.
     property chat_id : Int32 | Int64 | String | ::Nil
 
     # Optional. Pass True if the message should be sent even if the specified message to be replied to is not found. Always False for replies in another chat or forum topic. Always True for messages sent on behalf of a business account.
@@ -1020,6 +1072,9 @@ module Tourmaline
     # Optional. Position of the quote in the original message in UTF-16 code units
     property quote_position : Int32 | Int64 | ::Nil
 
+    # Optional. Identifier of the specific checklist task to be replied to
+    property checklist_task_id : Int32 | Int64 | ::Nil
+
     def initialize(
       @message_id,
       @chat_id : Int32 | Int64 | String | ::Nil = nil,
@@ -1027,7 +1082,8 @@ module Tourmaline
       @quote : String | ::Nil = nil,
       @quote_parse_mode : String | ::Nil = nil,
       @quote_entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
-      @quote_position : Int32 | Int64 | ::Nil = nil
+      @quote_position : Int32 | Int64 | ::Nil = nil,
+      @checklist_task_id : Int32 | Int64 | ::Nil = nil
     )
     end
   end
@@ -2198,7 +2254,135 @@ module Tourmaline
     end
   end
 
-  # This object represents a service message about the creation of a scheduled giveaway. Currently holds no information.
+  # Describes a service message about a change in the price of paid messages within a chat.
+  class PaidMessagePriceChanged
+    include JSON::Serializable
+
+    # The new number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message
+    property paid_message_star_count : Int32 | Int64
+
+    def initialize(
+      @paid_message_star_count
+    )
+    end
+  end
+
+  # Describes a service message about a change in the price of direct messages sent to a channel chat.
+  class DirectMessagePriceChanged
+    include JSON::Serializable
+
+    # True, if direct messages are enabled for the channel chat; false otherwise
+    property? are_direct_messages_enabled : Bool
+
+    # Optional. The new number of Telegram Stars that must be paid by users for each direct message sent to the channel. Does not apply to users who have been exempted by administrators. Defaults to 0.
+    property direct_message_star_count : Int32 | Int64 | ::Nil
+
+    def initialize(
+      @are_direct_messages_enabled,
+      @direct_message_star_count : Int32 | Int64 | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a service message about the approval of a suggested post.
+  class SuggestedPostApproved
+    include JSON::Serializable
+
+    # Date when the post will be published
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property send_date : Time
+
+    # Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
+    property suggested_post_message : Tourmaline::Message | ::Nil
+
+    # Optional. Amount paid for the post
+    property price : Tourmaline::SuggestedPostPrice | ::Nil
+
+    def initialize(
+      @send_date,
+      @suggested_post_message : Tourmaline::Message | ::Nil = nil,
+      @price : Tourmaline::SuggestedPostPrice | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a service message about the failed approval of a suggested post. Currently, only caused by insufficient user funds at the time of approval.
+  class SuggestedPostApprovalFailed
+    include JSON::Serializable
+
+    # Expected price of the post
+    property price : Tourmaline::SuggestedPostPrice
+
+    # Optional. Message containing the suggested post whose approval has failed. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
+    property suggested_post_message : Tourmaline::Message | ::Nil
+
+    def initialize(
+      @price,
+      @suggested_post_message : Tourmaline::Message | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a service message about the rejection of a suggested post.
+  class SuggestedPostDeclined
+    include JSON::Serializable
+
+    # Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
+    property suggested_post_message : Tourmaline::Message | ::Nil
+
+    # Optional. Comment with which the post was declined
+    property comment : String | ::Nil
+
+    def initialize(
+      @suggested_post_message : Tourmaline::Message | ::Nil = nil,
+      @comment : String | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a service message about a successful payment for a suggested post.
+  class SuggestedPostPaid
+    include JSON::Serializable
+
+    # Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins
+    property currency : String
+
+    # Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
+    property suggested_post_message : Tourmaline::Message | ::Nil
+
+    # Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only
+    property amount : Int32 | Int64 | ::Nil
+
+    # Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only
+    property star_amount : Tourmaline::StarAmount | ::Nil
+
+    def initialize(
+      @currency,
+      @suggested_post_message : Tourmaline::Message | ::Nil = nil,
+      @amount : Int32 | Int64 | ::Nil = nil,
+      @star_amount : Tourmaline::StarAmount | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a service message about a payment refund for a suggested post.
+  class SuggestedPostRefunded
+    include JSON::Serializable
+
+    # Reason for the refund. Currently, one of "post_deleted" if the post was deleted within 24 hours of being posted or removed from scheduled messages without being posted, or "payment_refunded" if the payer refunded their payment.
+    property reason : String
+
+    # Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
+    property suggested_post_message : Tourmaline::Message | ::Nil
+
+    def initialize(
+      @reason,
+      @suggested_post_message : Tourmaline::Message | ::Nil = nil
+    )
+    end
+  end
+
+  # This object represents a service message about the creation of a scheduled giveaway.
   class GiveawayCreated
     include JSON::Serializable
   end
@@ -2627,13 +2811,13 @@ module Tourmaline
     # Optional. An HTTPS URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget.
     property login_url : Tourmaline::LoginUrl | ::Nil
 
-    # Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent on behalf of a Telegram Business account.
+    # Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account.
     property switch_inline_query : String | ::Nil
 
-    # Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted. This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent on behalf of a Telegram Business account.
+    # Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted. This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a Telegram Business account.
     property switch_inline_query_current_chat : String | ::Nil
 
-    # Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent on behalf of a Telegram Business account.
+    # Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account.
     property switch_inline_query_chosen_chat : Tourmaline::SwitchInlineQueryChosenChat | ::Nil
 
     # Optional. Description of the button that copies the specified text to the clipboard.
@@ -2915,6 +3099,9 @@ module Tourmaline
     # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
     property? can_manage_topics : Bool | ::Nil
 
+    # Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only
+    property? can_manage_direct_messages : Bool | ::Nil
+
     def initialize(
       @is_anonymous,
       @can_manage_chat,
@@ -2930,7 +3117,8 @@ module Tourmaline
       @can_post_messages : Bool | ::Nil = nil,
       @can_edit_messages : Bool | ::Nil = nil,
       @can_pin_messages : Bool | ::Nil = nil,
-      @can_manage_topics : Bool | ::Nil = nil
+      @can_manage_topics : Bool | ::Nil = nil,
+      @can_manage_direct_messages : Bool | ::Nil = nil
     )
     end
   end
@@ -3069,6 +3257,9 @@ module Tourmaline
     # Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
     property? can_manage_topics : Bool | ::Nil
 
+    # Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only
+    property? can_manage_direct_messages : Bool | ::Nil
+
     # Optional. Custom title for this user
     property custom_title : String | ::Nil
 
@@ -3091,6 +3282,7 @@ module Tourmaline
       @can_edit_messages : Bool | ::Nil = nil,
       @can_pin_messages : Bool | ::Nil = nil,
       @can_manage_topics : Bool | ::Nil = nil,
+      @can_manage_direct_messages : Bool | ::Nil = nil,
       @custom_title : String | ::Nil = nil
     )
     end
@@ -3607,6 +3799,433 @@ module Tourmaline
     end
   end
 
+  # This object represents a gift that can be sent by the bot.
+  class Gift
+    include JSON::Serializable
+
+    # Unique identifier of the gift
+    property id : String
+
+    # The sticker that represents the gift
+    property sticker : Tourmaline::Sticker
+
+    # The number of Telegram Stars that must be paid to send the sticker
+    property star_count : Int32 | Int64
+
+    # Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique one
+    property upgrade_star_count : Int32 | Int64 | ::Nil
+
+    # Optional. The total number of the gifts of this type that can be sent; for limited gifts only
+    property total_count : Int32 | Int64 | ::Nil
+
+    # Optional. The number of remaining gifts of this type that can be sent; for limited gifts only
+    property remaining_count : Int32 | Int64 | ::Nil
+
+    # Optional. Information about the chat that published the gift
+    property publisher_chat : Tourmaline::Chat | ::Nil
+
+    def initialize(
+      @id,
+      @sticker,
+      @star_count,
+      @upgrade_star_count : Int32 | Int64 | ::Nil = nil,
+      @total_count : Int32 | Int64 | ::Nil = nil,
+      @remaining_count : Int32 | Int64 | ::Nil = nil,
+      @publisher_chat : Tourmaline::Chat | ::Nil = nil
+    )
+    end
+  end
+
+  # This object represent a list of gifts.
+  class Gifts
+    include JSON::Serializable
+
+    # The list of gifts
+    property gifts : Array(Tourmaline::Gift) = [] of Tourmaline::Gift
+
+    def initialize(
+      @gifts : Array(Tourmaline::Gift) = [] of Tourmaline::Gift
+    )
+    end
+  end
+
+  # This object describes the model of a unique gift.
+  class UniqueGiftModel
+    include JSON::Serializable
+
+    # Name of the model
+    property name : String
+
+    # The sticker that represents the unique gift
+    property sticker : Tourmaline::Sticker
+
+    # The number of unique gifts that receive this model for every 1000 gifts upgraded
+    property rarity_per_mille : Int32 | Int64
+
+    def initialize(
+      @name,
+      @sticker,
+      @rarity_per_mille
+    )
+    end
+  end
+
+  # This object describes the symbol shown on the pattern of a unique gift.
+  class UniqueGiftSymbol
+    include JSON::Serializable
+
+    # Name of the symbol
+    property name : String
+
+    # The sticker that represents the unique gift
+    property sticker : Tourmaline::Sticker
+
+    # The number of unique gifts that receive this model for every 1000 gifts upgraded
+    property rarity_per_mille : Int32 | Int64
+
+    def initialize(
+      @name,
+      @sticker,
+      @rarity_per_mille
+    )
+    end
+  end
+
+  # This object describes the colors of the backdrop of a unique gift.
+  class UniqueGiftBackdropColors
+    include JSON::Serializable
+
+    # The color in the center of the backdrop in RGB format
+    property center_color : Int32 | Int64
+
+    # The color on the edges of the backdrop in RGB format
+    property edge_color : Int32 | Int64
+
+    # The color to be applied to the symbol in RGB format
+    property symbol_color : Int32 | Int64
+
+    # The color for the text on the backdrop in RGB format
+    property text_color : Int32 | Int64
+
+    def initialize(
+      @center_color,
+      @edge_color,
+      @symbol_color,
+      @text_color
+    )
+    end
+  end
+
+  # This object describes the backdrop of a unique gift.
+  class UniqueGiftBackdrop
+    include JSON::Serializable
+
+    # Name of the backdrop
+    property name : String
+
+    # Colors of the backdrop
+    property colors : Tourmaline::UniqueGiftBackdropColors
+
+    # The number of unique gifts that receive this backdrop for every 1000 gifts upgraded
+    property rarity_per_mille : Int32 | Int64
+
+    def initialize(
+      @name,
+      @colors,
+      @rarity_per_mille
+    )
+    end
+  end
+
+  # This object describes a unique gift that was upgraded from a regular gift.
+  class UniqueGift
+    include JSON::Serializable
+
+    # Human-readable name of the regular gift from which this unique gift was upgraded
+    property base_name : String
+
+    # Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas
+    property name : String
+
+    # Unique number of the upgraded gift among gifts upgraded from the same regular gift
+    property number : Int32 | Int64
+
+    # Model of the gift
+    property model : Tourmaline::UniqueGiftModel
+
+    # Symbol of the gift
+    property symbol : Tourmaline::UniqueGiftSymbol
+
+    # Backdrop of the gift
+    property backdrop : Tourmaline::UniqueGiftBackdrop
+
+    # Optional. Information about the chat that published the gift
+    property publisher_chat : Tourmaline::Chat | ::Nil
+
+    def initialize(
+      @base_name,
+      @name,
+      @number,
+      @model,
+      @symbol,
+      @backdrop,
+      @publisher_chat : Tourmaline::Chat | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a service message about a regular gift that was sent or received.
+  class GiftInfo
+    include JSON::Serializable
+
+    # Information about the gift
+    property gift : Tourmaline::Gift
+
+    # Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts
+    property owned_gift_id : String | ::Nil
+
+    # Optional. Number of Telegram Stars that can be claimed by the receiver by converting the gift; omitted if conversion to Telegram Stars is impossible
+    property convert_star_count : Int32 | Int64 | ::Nil
+
+    # Optional. Number of Telegram Stars that were prepaid by the sender for the ability to upgrade the gift
+    property prepaid_upgrade_star_count : Int32 | Int64 | ::Nil
+
+    # Optional. True, if the gift can be upgraded to a unique gift
+    property? can_be_upgraded : Bool | ::Nil
+
+    # Optional. Text of the message that was added to the gift
+    property text : String | ::Nil
+
+    # Optional. Special entities that appear in the text
+    property entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
+
+    # Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
+    property? is_private : Bool | ::Nil
+
+    def initialize(
+      @gift,
+      @owned_gift_id : String | ::Nil = nil,
+      @convert_star_count : Int32 | Int64 | ::Nil = nil,
+      @prepaid_upgrade_star_count : Int32 | Int64 | ::Nil = nil,
+      @can_be_upgraded : Bool | ::Nil = nil,
+      @text : String | ::Nil = nil,
+      @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @is_private : Bool | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a service message about a unique gift that was sent or received.
+  class UniqueGiftInfo
+    include JSON::Serializable
+
+    # Information about the gift
+    property gift : Tourmaline::UniqueGift
+
+    # Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, or "resale" for gifts bought from other users
+    property origin : String
+
+    # Optional. For gifts bought from other users, the price paid for the gift
+    property last_resale_star_count : Int32 | Int64 | ::Nil
+
+    # Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts
+    property owned_gift_id : String | ::Nil
+
+    # Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift
+    property transfer_star_count : Int32 | Int64 | ::Nil
+
+    # Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property next_transfer_date : Time | ::Nil
+
+    def initialize(
+      @gift,
+      @origin,
+      @last_resale_star_count : Int32 | Int64 | ::Nil = nil,
+      @owned_gift_id : String | ::Nil = nil,
+      @transfer_star_count : Int32 | Int64 | ::Nil = nil,
+      @next_transfer_date : Int32 | Int64 | ::Nil = nil
+    )
+    end
+  end
+
+  # This object describes a gift received and owned by a user or a chat. Currently, it can be one of
+  # - OwnedGiftRegular
+  # - OwnedGiftUnique
+  alias OwnedGift = Tourmaline::OwnedGiftRegular | Tourmaline::OwnedGiftUnique
+
+  # Describes a regular gift owned by a user or a chat.
+  class OwnedGiftRegular
+    include JSON::Serializable
+
+    # Type of the gift, always "regular"
+    property type : String
+
+    # Information about the regular gift
+    property gift : Tourmaline::Gift
+
+    # Date the gift was sent in Unix time
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property send_date : Time
+
+    # Optional. Unique identifier of the gift for the bot; for gifts received on behalf of business accounts only
+    property owned_gift_id : String | ::Nil
+
+    # Optional. Sender of the gift if it is a known user
+    property sender_user : Tourmaline::User | ::Nil
+
+    # Optional. Text of the message that was added to the gift
+    property text : String | ::Nil
+
+    # Optional. Special entities that appear in the text
+    property entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity
+
+    # Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
+    property? is_private : Bool | ::Nil
+
+    # Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only
+    property? is_saved : Bool | ::Nil
+
+    # Optional. True, if the gift can be upgraded to a unique gift; for gifts received on behalf of business accounts only
+    property? can_be_upgraded : Bool | ::Nil
+
+    # Optional. True, if the gift was refunded and isn't available anymore
+    property? was_refunded : Bool | ::Nil
+
+    # Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars
+    property convert_star_count : Int32 | Int64 | ::Nil
+
+    # Optional. Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift
+    property prepaid_upgrade_star_count : Int32 | Int64 | ::Nil
+
+    def initialize(
+      @type,
+      @gift,
+      @send_date,
+      @owned_gift_id : String | ::Nil = nil,
+      @sender_user : Tourmaline::User | ::Nil = nil,
+      @text : String | ::Nil = nil,
+      @entities : Array(Tourmaline::MessageEntity) = [] of Tourmaline::MessageEntity,
+      @is_private : Bool | ::Nil = nil,
+      @is_saved : Bool | ::Nil = nil,
+      @can_be_upgraded : Bool | ::Nil = nil,
+      @was_refunded : Bool | ::Nil = nil,
+      @convert_star_count : Int32 | Int64 | ::Nil = nil,
+      @prepaid_upgrade_star_count : Int32 | Int64 | ::Nil = nil
+    )
+    end
+  end
+
+  # Describes a unique gift received and owned by a user or a chat.
+  class OwnedGiftUnique
+    include JSON::Serializable
+
+    # Type of the gift, always "unique"
+    property type : String
+
+    # Information about the unique gift
+    property gift : Tourmaline::UniqueGift
+
+    # Date the gift was sent in Unix time
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property send_date : Time
+
+    # Optional. Unique identifier of the received gift for the bot; for gifts received on behalf of business accounts only
+    property owned_gift_id : String | ::Nil
+
+    # Optional. Sender of the gift if it is a known user
+    property sender_user : Tourmaline::User | ::Nil
+
+    # Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only
+    property? is_saved : Bool | ::Nil
+
+    # Optional. True, if the gift can be transferred to another owner; for gifts received on behalf of business accounts only
+    property? can_be_transferred : Bool | ::Nil
+
+    # Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift
+    property transfer_star_count : Int32 | Int64 | ::Nil
+
+    # Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
+    @[JSON::Field(converter: Time::EpochConverter)]
+    property next_transfer_date : Time | ::Nil
+
+    def initialize(
+      @type,
+      @gift,
+      @send_date,
+      @owned_gift_id : String | ::Nil = nil,
+      @sender_user : Tourmaline::User | ::Nil = nil,
+      @is_saved : Bool | ::Nil = nil,
+      @can_be_transferred : Bool | ::Nil = nil,
+      @transfer_star_count : Int32 | Int64 | ::Nil = nil,
+      @next_transfer_date : Int32 | Int64 | ::Nil = nil
+    )
+    end
+  end
+
+  # Contains the list of gifts received and owned by a user or a chat.
+  class OwnedGifts
+    include JSON::Serializable
+
+    # The total number of gifts owned by the user or the chat
+    property total_count : Int32 | Int64
+
+    # The list of gifts
+    property gifts : Array(Tourmaline::OwnedGift) = [] of Tourmaline::OwnedGift
+
+    # Optional. Offset for the next request. If empty, then there are no more results
+    property next_offset : String | ::Nil
+
+    def initialize(
+      @total_count,
+      @gifts : Array(Tourmaline::OwnedGift) = [] of Tourmaline::OwnedGift,
+      @next_offset : String | ::Nil = nil
+    )
+    end
+  end
+
+  # This object describes the types of gifts that can be gifted to a user or a chat.
+  class AcceptedGiftTypes
+    include JSON::Serializable
+
+    # True, if unlimited regular gifts are accepted
+    property? unlimited_gifts : Bool
+
+    # True, if limited regular gifts are accepted
+    property? limited_gifts : Bool
+
+    # True, if unique gifts or gifts that can be upgraded to unique for free are accepted
+    property? unique_gifts : Bool
+
+    # True, if a Telegram Premium subscription is accepted
+    property? premium_subscription : Bool
+
+    def initialize(
+      @unlimited_gifts,
+      @limited_gifts,
+      @unique_gifts,
+      @premium_subscription
+    )
+    end
+  end
+
+  # Describes an amount of Telegram Stars.
+  class StarAmount
+    include JSON::Serializable
+
+    # Integer amount of Telegram Stars, rounded to 0; can be negative
+    property amount : Int32 | Int64
+
+    # Optional. The number of 1/1000000000 shares of Telegram Stars; from -999999999 to 999999999; can be negative if and only if amount is non-positive
+    property nanostar_amount : Int32 | Int64 | ::Nil
+
+    def initialize(
+      @amount,
+      @nanostar_amount : Int32 | Int64 | ::Nil = nil
+    )
+    end
+  end
+
   # This object represents a bot command.
   class BotCommand
     include JSON::Serializable
@@ -3693,7 +4312,7 @@ module Tourmaline
     # Scope type, must be chat
     property type : String
 
-    # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+    # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported.
     property chat_id : Int32 | Int64 | String
 
     def initialize(
@@ -3710,7 +4329,7 @@ module Tourmaline
     # Scope type, must be chat_administrators
     property type : String
 
-    # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+    # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported.
     property chat_id : Int32 | Int64 | String
 
     def initialize(
@@ -3727,7 +4346,7 @@ module Tourmaline
     # Scope type, must be chat_member
     property type : String
 
-    # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+    # Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported.
     property chat_id : Int32 | Int64 | String
 
     # Unique identifier of the target user
