@@ -16,6 +16,9 @@ dependencies:
   http_proxy:
     github: mamantoha/http_proxy
     branch: master
+  rate_limiter:
+    github: lbarasti/rate_limiter
+    version: ~> 1.0.1
 
 development_dependencies:
   ngrok:
